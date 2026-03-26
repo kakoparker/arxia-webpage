@@ -1,0 +1,201 @@
+<h2>Portfolio Page UX — Pick an approach</h2>
+<p class="subtitle">How should visitors explore the full portfolio on the dedicated /portfolio page?</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Tabbed Domain Filter</h3>
+      <p>Horizontal tab bar at the top with all domain categories. Clicking a tab filters the grid below. "All" tab shows everything. Cards animate in/out on filter change.</p>
+      <div class="mockup" style="margin-top:12px;">
+        <div class="mockup-header">Layout Preview</div>
+        <div class="mockup-body" style="padding:16px;">
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:2px;color:#a0aec0;font-family:monospace;">// Our Portfolio</div>
+          <div style="font-size:22px;font-weight:700;color:#162036;margin:8px 0 16px;">Our Portfolio</div>
+
+          <!-- Tab bar -->
+          <div style="display:flex;gap:0;border-bottom:1px solid #e2e8f0;margin-bottom:24px;">
+            <div style="padding:10px 16px;font-size:11px;text-transform:uppercase;letter-spacing:1.5px;font-family:monospace;border-bottom:2px solid #ED1C24;color:#162036;font-weight:600;">All</div>
+            <div style="padding:10px 16px;font-size:11px;text-transform:uppercase;letter-spacing:1.5px;font-family:monospace;color:#a0aec0;">e-Government</div>
+            <div style="padding:10px 16px;font-size:11px;text-transform:uppercase;letter-spacing:1.5px;font-family:monospace;color:#a0aec0;">Interoperability</div>
+            <div style="padding:10px 16px;font-size:11px;text-transform:uppercase;letter-spacing:1.5px;font-family:monospace;color:#a0aec0;">AI</div>
+            <div style="padding:10px 16px;font-size:11px;text-transform:uppercase;letter-spacing:1.5px;font-family:monospace;color:#a0aec0;">e-Procurement</div>
+            <div style="padding:10px 16px;font-size:11px;text-transform:uppercase;letter-spacing:1.5px;font-family:monospace;color:#a0aec0;">More...</div>
+          </div>
+
+          <!-- Card grid -->
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+            <div style="border:1px solid #e2e8f0;padding:16px;">
+              <div style="background:#f7fafc;height:80px;display:flex;align-items:center;justify-content:center;color:#a0aec0;font-size:12px;margin-bottom:12px;">Project Image</div>
+              <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:#4a5568;font-family:monospace;margin-bottom:6px;">e-Government · Senegal · 2025</div>
+              <div style="font-size:14px;font-weight:600;color:#162036;">Digital Transformation of Senegal</div>
+              <div style="font-size:12px;color:#4a5568;margin-top:4px;">GIZ (consortium led by GOPA)</div>
+            </div>
+            <div style="border:1px solid #e2e8f0;padding:16px;">
+              <div style="background:#f7fafc;height:80px;display:flex;align-items:center;justify-content:center;color:#a0aec0;font-size:12px;margin-bottom:12px;">Project Image</div>
+              <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:#4a5568;font-family:monospace;margin-bottom:6px;">AI · Rwanda · 2021–2023</div>
+              <div style="font-size:14px;font-weight:600;color:#162036;">Mbaza Chatbot – AI Virtual Assistant</div>
+              <div style="font-size:12px;color:#4a5568;margin-top:4px;">GIZ / Rwanda Biomedical Center</div>
+            </div>
+            <div style="border:1px solid #e2e8f0;padding:16px;">
+              <div style="background:#f7fafc;height:80px;display:flex;align-items:center;justify-content:center;color:#a0aec0;font-size:12px;margin-bottom:12px;">Project Image</div>
+              <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:#4a5568;font-family:monospace;margin-bottom:6px;">Interoperability · Cambodia · 2025</div>
+              <div style="font-size:14px;font-weight:600;color:#162036;">Digital Social Protection Platform</div>
+              <div style="font-size:12px;color:#4a5568;margin-top:4px;">Swiss TPH</div>
+            </div>
+          </div>
+          <div style="text-align:center;margin-top:12px;font-size:11px;color:#a0aec0;">... more cards below ...</div>
+        </div>
+      </div>
+      <div class="pros-cons" style="margin-top:12px;">
+        <div class="pros"><h4>Pros</h4><ul><li>Familiar pattern, easy to scan</li><li>Simple implementation</li><li>Shows project count per domain</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Flat — all cards look the same</li><li>Tab bar gets crowded with 8 domains</li><li>No narrative structure per domain</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Domain Sections with Anchor Nav</h3>
+      <p>Page scrolls through domain sections vertically. Each section has its own header, description, and project cards. A sticky side nav or top nav lets you jump between sections.</p>
+      <div class="mockup" style="margin-top:12px;">
+        <div class="mockup-header">Layout Preview</div>
+        <div class="mockup-body" style="padding:16px;">
+          <div style="display:flex;gap:24px;">
+            <!-- Sticky side nav -->
+            <div style="width:180px;flex-shrink:0;border-right:1px solid #e2e8f0;padding-right:16px;">
+              <div style="font-size:9px;text-transform:uppercase;letter-spacing:2px;color:#a0aec0;font-family:monospace;margin-bottom:12px;">Domains</div>
+              <div style="font-size:12px;color:#162036;font-weight:600;padding:6px 0;border-left:3px solid #ED1C24;padding-left:12px;">e-Government</div>
+              <div style="font-size:12px;color:#a0aec0;padding:6px 0;padding-left:15px;">Interoperability</div>
+              <div style="font-size:12px;color:#a0aec0;padding:6px 0;padding-left:15px;">AI</div>
+              <div style="font-size:12px;color:#a0aec0;padding:6px 0;padding-left:15px;">e-Procurement</div>
+              <div style="font-size:12px;color:#a0aec0;padding:6px 0;padding-left:15px;">e-Invoicing</div>
+              <div style="font-size:12px;color:#a0aec0;padding:6px 0;padding-left:15px;">Web Portals</div>
+              <div style="font-size:12px;color:#a0aec0;padding:6px 0;padding-left:15px;">Data Governance</div>
+              <div style="font-size:12px;color:#a0aec0;padding:6px 0;padding-left:15px;">Ecosystem Building</div>
+            </div>
+            <!-- Main content -->
+            <div style="flex:1;">
+              <div style="font-size:11px;text-transform:uppercase;letter-spacing:2px;color:#a0aec0;font-family:monospace;">// 01 — e-Government</div>
+              <div style="font-size:20px;font-weight:700;color:#162036;margin:8px 0;">e-Government and Govtech</div>
+              <div style="width:48px;height:3px;background:#ED1C24;margin-bottom:12px;"></div>
+              <div style="font-size:13px;color:#4a5568;margin-bottom:16px;max-width:540px;">We design and implement citizen-centric digital services that modernize public administration.</div>
+
+              <!-- Cards -->
+              <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;">
+                <div style="border:1px solid #e2e8f0;padding:14px;">
+                  <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:#4a5568;font-family:monospace;margin-bottom:4px;">Senegal · 2025</div>
+                  <div style="font-size:13px;font-weight:600;color:#162036;">Digital Transformation of Senegal</div>
+                  <div style="font-size:11px;color:#4a5568;margin-top:4px;">GIZ (consortium led by GOPA)</div>
+                </div>
+                <div style="border:1px solid #e2e8f0;padding:14px;">
+                  <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:#4a5568;font-family:monospace;margin-bottom:4px;">Ethiopia · 2025</div>
+                  <div style="font-size:13px;font-weight:600;color:#162036;">Input-Output Coefficient Platform</div>
+                  <div style="font-size:11px;color:#4a5568;margin-top:4px;">GIZ / Ministry of Industry</div>
+                </div>
+                <div style="border:1px solid #e2e8f0;padding:14px;">
+                  <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:#4a5568;font-family:monospace;margin-bottom:4px;">Romania · 2020</div>
+                  <div style="font-size:13px;font-weight:600;color:#162036;">e-Government Strategy of Romania</div>
+                  <div style="font-size:11px;color:#4a5568;margin-top:4px;">Ernst & Young consortium</div>
+                </div>
+                <div style="border:1px solid #e2e8f0;padding:14px;border-left:3px solid #a0aec0;">
+                  <div style="font-size:11px;color:#a0aec0;text-align:center;">+ 4 more projects</div>
+                </div>
+              </div>
+
+              <div style="margin-top:32px;padding-top:24px;border-top:1px solid #e2e8f0;">
+                <div style="font-size:11px;text-transform:uppercase;letter-spacing:2px;color:#a0aec0;font-family:monospace;">// 02 — Interoperability</div>
+                <div style="font-size:20px;font-weight:700;color:#162036;margin:8px 0;">Interoperability and Standardization</div>
+                <div style="width:48px;height:3px;background:#ED1C24;margin-bottom:12px;"></div>
+                <div style="font-size:11px;color:#a0aec0;">... section continues ...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pros-cons" style="margin-top:12px;">
+        <div class="pros"><h4>Pros</h4><ul><li>Each domain gets context and narrative</li><li>Sticky nav shows full scope at a glance</li><li>Natural reading flow, easy to deep-dive</li><li>SEO-friendly with distinct sections</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Long page with 47 projects</li><li>Side nav takes horizontal space on mobile</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Domain Cards → Expandable Sections</h3>
+      <p>Landing view shows 8 domain "cards" as the entry point. Clicking a domain expands inline (or scrolls to) its project list. Compact overview first, details on demand.</p>
+      <div class="mockup" style="margin-top:12px;">
+        <div class="mockup-header">Layout Preview</div>
+        <div class="mockup-body" style="padding:16px;">
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:2px;color:#a0aec0;font-family:monospace;">// Our Portfolio</div>
+          <div style="font-size:22px;font-weight:700;color:#162036;margin:8px 0 8px;">Our Portfolio</div>
+          <div style="width:48px;height:3px;background:#ED1C24;margin-bottom:16px;"></div>
+          <div style="font-size:13px;color:#4a5568;margin-bottom:24px;">47 projects across 8 domains. Select a domain to explore.</div>
+
+          <!-- Domain cards grid -->
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px;">
+            <div style="border:1px solid #162036;padding:16px;background:#162036;color:white;cursor:pointer;">
+              <div style="font-size:18px;font-weight:700;">7</div>
+              <div style="font-size:12px;font-weight:600;margin-top:4px;">e-Government</div>
+              <div style="font-size:10px;color:#a0aec0;margin-top:2px;">▼ Expanded</div>
+            </div>
+            <div style="border:1px solid #e2e8f0;padding:16px;cursor:pointer;">
+              <div style="font-size:18px;font-weight:700;color:#162036;">6</div>
+              <div style="font-size:12px;font-weight:600;color:#162036;margin-top:4px;">Interoperability</div>
+              <div style="font-size:10px;color:#a0aec0;margin-top:2px;">Click to explore →</div>
+            </div>
+            <div style="border:1px solid #e2e8f0;padding:16px;cursor:pointer;">
+              <div style="font-size:18px;font-weight:700;color:#162036;">12</div>
+              <div style="font-size:12px;font-weight:600;color:#162036;margin-top:4px;">Artificial Intelligence</div>
+              <div style="font-size:10px;color:#a0aec0;margin-top:2px;">Click to explore →</div>
+            </div>
+            <div style="border:1px solid #e2e8f0;padding:16px;cursor:pointer;">
+              <div style="font-size:18px;font-weight:700;color:#162036;">3</div>
+              <div style="font-size:12px;font-weight:600;color:#162036;margin-top:4px;">e-Procurement</div>
+              <div style="font-size:10px;color:#a0aec0;margin-top:2px;">Click to explore →</div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px;">
+            <div style="border:1px solid #e2e8f0;padding:16px;">
+              <div style="font-size:18px;font-weight:700;color:#162036;">1</div>
+              <div style="font-size:12px;font-weight:600;color:#162036;margin-top:4px;">e-Invoicing</div>
+            </div>
+            <div style="border:1px solid #e2e8f0;padding:16px;">
+              <div style="font-size:18px;font-weight:700;color:#162036;">9</div>
+              <div style="font-size:12px;font-weight:600;color:#162036;margin-top:4px;">Web Portals</div>
+            </div>
+            <div style="border:1px solid #e2e8f0;padding:16px;">
+              <div style="font-size:18px;font-weight:700;color:#162036;">4</div>
+              <div style="font-size:12px;font-weight:600;color:#162036;margin-top:4px;">Data Governance</div>
+            </div>
+            <div style="border:1px solid #e2e8f0;padding:16px;">
+              <div style="font-size:18px;font-weight:700;color:#162036;">1</div>
+              <div style="font-size:12px;font-weight:600;color:#162036;margin-top:4px;">Strategy</div>
+            </div>
+          </div>
+
+          <!-- Expanded section -->
+          <div style="border:1px solid #162036;border-top:3px solid #ED1C24;padding:20px;">
+            <div style="font-size:11px;text-transform:uppercase;letter-spacing:2px;color:#a0aec0;font-family:monospace;">e-Government and Govtech · 7 projects</div>
+            <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px;">
+              <div style="border:1px solid #e2e8f0;padding:12px;">
+                <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;font-family:monospace;color:#4a5568;">Senegal · 2025</div>
+                <div style="font-size:13px;font-weight:600;color:#162036;margin-top:4px;">Digital Transformation of Senegal</div>
+              </div>
+              <div style="border:1px solid #e2e8f0;padding:12px;">
+                <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;font-family:monospace;color:#4a5568;">Ethiopia · 2025</div>
+                <div style="font-size:13px;font-weight:600;color:#162036;margin-top:4px;">Input-Output Coefficient Platform</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pros-cons" style="margin-top:12px;">
+        <div class="pros"><h4>Pros</h4><ul><li>Overview-first: see all domains + counts</li><li>Progressive disclosure — not overwhelming</li><li>Shows scale (47 projects!) immediately</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Extra click to see projects</li><li>Accordion/expand patterns can feel clunky</li><li>Less narrative context per domain</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>

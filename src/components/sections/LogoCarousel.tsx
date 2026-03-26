@@ -1,0 +1,27 @@
+"use client";
+
+import Image from "next/image";
+import { clientLogos } from "@/data/clients";
+
+export function LogoCarousel() {
+  const logos = [...clientLogos, ...clientLogos];
+
+  return (
+    <section className="blueprint-grid-light py-12 overflow-hidden">
+      <div className="logo-carousel-track flex items-center gap-16 w-max">
+        {logos.map((logo, i) => (
+          <div key={`${logo.alt}-${i}`} className="flex-shrink-0">
+            <Image
+              src={logo.src}
+              alt={logo.alt}
+              width={logo.width}
+              height={logo.height}
+              className="h-10 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}

@@ -1,0 +1,337 @@
+@import "tailwindcss";
+
+/* ============================================
+   ARXIA DESIGN TOKENS
+   ============================================ */
+:root {
+  /* Color */
+  --blueprint-blue: #162036;
+  --blueprint-dark: #0D1520;
+  --accent-red: #ED1C24;
+  --gray-dark: #4A5568;
+  --gray-medium: #A0AEC0;
+  --gray-light: #E2E8F0;
+  --gray-lightest: #F7FAFC;
+  --white: #FFFFFF;
+  --body-text: #171616;
+
+  /* Typography Scale */
+  --font-primary: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --text-hero: clamp(36px, 5vw, 72px);
+  --text-h1: clamp(28px, 3.5vw, 48px);
+  --text-h2: clamp(26px, 3vw, 36px);
+  --text-h3: clamp(18px, 2vw, 24px);
+  --text-body: 16px;
+  --text-small: 14px;
+  --text-caption: 12px;
+  --text-annotation: 11px;
+
+  /* Spacing (8px base unit) */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 64px;
+  --space-7: 80px;
+  --space-8: 100px;
+  --space-9: 120px;
+
+  /* Layout */
+  --content-max: 1200px;
+  --content-narrow: 720px;
+  --margin-page: max(10%, 24px);
+  --grid-columns: 12;
+  --grid-gap: 24px;
+
+  /* Motion */
+  --ease-default: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  --duration-entrance: 700ms;
+
+  /* Elevation */
+  --shadow-card: 0 2px 12px rgba(22, 32, 54, 0.04);
+  --shadow-card-hover: 0 4px 20px rgba(22, 32, 54, 0.08);
+
+  /* Blueprint Grid */
+  --grid-minor: 20px;
+  --grid-major: 100px;
+}
+
+/* ============================================
+   TAILWIND THEME EXTENSION
+   ============================================ */
+@theme {
+  --color-blueprint-blue: #162036;
+  --color-blueprint-dark: #0D1520;
+  --color-accent-red: #ED1C24;
+  --color-gray-dark: #4A5568;
+  --color-gray-medium: #A0AEC0;
+  --color-gray-light: #E2E8F0;
+  --color-gray-lightest: #F7FAFC;
+  --color-body-text: #171616;
+
+  --font-family-primary: 'Inter', system-ui, sans-serif;
+  --font-family-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --shadow-card: 0 2px 12px rgba(22, 32, 54, 0.04);
+  --shadow-card-hover: 0 4px 20px rgba(22, 32, 54, 0.08);
+}
+
+/* ============================================
+   BASE RESET
+   ============================================ */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  color: var(--body-text);
+  font-size: var(--text-body);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   BLUEPRINT GRID BACKGROUNDS
+   ============================================ */
+.blueprint-grid-dark {
+  background-color: var(--blueprint-dark);
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.025) 0px,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px,
+      transparent var(--grid-minor)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.025) 0px,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px,
+      transparent var(--grid-minor)
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.05) 0px,
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px,
+      transparent var(--grid-major)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.05) 0px,
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px,
+      transparent var(--grid-major)
+    );
+}
+
+.blueprint-grid-light {
+  background-color: var(--white);
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(160, 174, 192, 0.12) 0px,
+      rgba(160, 174, 192, 0.12) 1px,
+      transparent 1px,
+      transparent var(--grid-minor)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(160, 174, 192, 0.12) 0px,
+      rgba(160, 174, 192, 0.12) 1px,
+      transparent 1px,
+      transparent var(--grid-minor)
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(160, 174, 192, 0.25) 0px,
+      rgba(160, 174, 192, 0.25) 1px,
+      transparent 1px,
+      transparent var(--grid-major)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(160, 174, 192, 0.25) 0px,
+      rgba(160, 174, 192, 0.25) 1px,
+      transparent 1px,
+      transparent var(--grid-major)
+    );
+}
+
+.blueprint-grid-ultra-light {
+  background-color: var(--gray-lightest);
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(160, 174, 192, 0.10) 0px,
+      rgba(160, 174, 192, 0.10) 1px,
+      transparent 1px,
+      transparent var(--grid-minor)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(160, 174, 192, 0.10) 0px,
+      rgba(160, 174, 192, 0.10) 1px,
+      transparent 1px,
+      transparent var(--grid-minor)
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(160, 174, 192, 0.20) 0px,
+      rgba(160, 174, 192, 0.20) 1px,
+      transparent 1px,
+      transparent var(--grid-major)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(160, 174, 192, 0.20) 0px,
+      rgba(160, 174, 192, 0.20) 1px,
+      transparent 1px,
+      transparent var(--grid-major)
+    );
+}
+
+/* ============================================
+   SCROLL ANIMATIONS
+   ============================================ */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--duration-entrance) var(--ease-default),
+              transform var(--duration-entrance) var(--ease-default);
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Accent line draw-in animation */
+.accent-line-animate {
+  width: 0;
+  transition: width var(--duration-entrance) var(--ease-default);
+}
+
+.accent-line-animate.visible {
+  width: 48px;
+}
+
+/* ============================================
+   HERO WORD ROTATION
+   ============================================ */
+@keyframes word-rotate {
+  0%, 14% { opacity: 1; transform: translateY(0); }
+  16.66%, 97% { opacity: 0; transform: translateY(-20px); }
+  98%, 100% { opacity: 0; transform: translateY(20px); }
+}
+
+.rotating-word {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  animation: word-rotate 18s var(--ease-default) infinite;
+}
+
+.rotating-word:nth-child(1) { animation-delay: 0s; }
+.rotating-word:nth-child(2) { animation-delay: 3s; }
+.rotating-word:nth-child(3) { animation-delay: 6s; }
+.rotating-word:nth-child(4) { animation-delay: 9s; }
+.rotating-word:nth-child(5) { animation-delay: 12s; }
+.rotating-word:nth-child(6) { animation-delay: 15s; }
+
+/* ============================================
+   LOGO CAROUSEL
+   ============================================ */
+@keyframes logo-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.logo-carousel-track {
+  animation: logo-scroll 40s linear infinite;
+}
+
+.logo-carousel-track:hover {
+  animation-play-state: paused;
+}
+
+/* ============================================
+   MAP DOTS
+   ============================================ */
+/* Regular dots are static — no animation */
+
+/* ============================================
+   FOCUS STATES
+   ============================================ */
+:focus-visible {
+  outline: 2px solid var(--blueprint-blue);
+  outline-offset: 2px;
+}
+
+.blueprint-grid-dark :focus-visible,
+.blueprint-grid-dark:focus-visible {
+  outline-color: var(--white);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================
+   MOBILE ADJUSTMENTS
+   ============================================ */
+@media (max-width: 639px) {
+  .blueprint-grid-dark,
+  .blueprint-grid-light,
+  .blueprint-grid-ultra-light {
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        rgba(160, 174, 192, 0.07) 0px,
+        rgba(160, 174, 192, 0.07) 1px,
+        transparent 1px,
+        transparent var(--grid-minor)
+      ),
+      repeating-linear-gradient(
+        90deg,
+        rgba(160, 174, 192, 0.07) 0px,
+        rgba(160, 174, 192, 0.07) 1px,
+        transparent 1px,
+        transparent var(--grid-minor)
+      ),
+      repeating-linear-gradient(
+        0deg,
+        rgba(160, 174, 192, 0.14) 0px,
+        rgba(160, 174, 192, 0.14) 1px,
+        transparent 1px,
+        transparent var(--grid-major)
+      ),
+      repeating-linear-gradient(
+        90deg,
+        rgba(160, 174, 192, 0.14) 0px,
+        rgba(160, 174, 192, 0.14) 1px,
+        transparent 1px,
+        transparent var(--grid-major)
+      );
+  }
+}

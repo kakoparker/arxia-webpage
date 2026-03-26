@@ -1,0 +1,98 @@
+<h2>Project Card Detail Level</h2>
+<p class="subtitle">How much information should each project card show on the portfolio page?</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Compact — Metadata + Title</h3>
+      <p>Clean, scannable cards. Country, year, title, and client. No description — the section header provides domain context.</p>
+      <div class="mockup" style="margin-top:12px;">
+        <div class="mockup-header">Card Preview</div>
+        <div class="mockup-body" style="padding:16px;">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+            <div style="border:1px solid #e2e8f0;padding:20px;">
+              <div style="font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:#4a5568;font-family:monospace;">Senegal · 2025</div>
+              <div style="font-size:14px;font-weight:600;color:#162036;margin-top:8px;line-height:1.3;">Digital Transformation of Senegal — Goin' Digital</div>
+              <div style="font-size:11px;color:#a0aec0;margin-top:8px;">GIZ (consortium led by GOPA)</div>
+            </div>
+            <div style="border:1px solid #e2e8f0;padding:20px;">
+              <div style="font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:#4a5568;font-family:monospace;">Ethiopia · 2025</div>
+              <div style="font-size:14px;font-weight:600;color:#162036;margin-top:8px;line-height:1.3;">Input-Output Coefficient Digital Platform</div>
+              <div style="font-size:11px;color:#a0aec0;margin-top:8px;">GIZ / Ministry of Industry</div>
+            </div>
+            <div style="border:1px solid #e2e8f0;padding:20px;">
+              <div style="font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:#4a5568;font-family:monospace;">Multi-Country · 2025</div>
+              <div style="font-size:14px;font-weight:600;color:#162036;margin-top:8px;line-height:1.3;">GovStack Adoption Training — Africa</div>
+              <div style="font-size:11px;color:#a0aec0;margin-top:8px;">GIZ / ITU</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Standard — With Description (Recommended)</h3>
+      <p>Adds the project description. Gives visitors enough context to understand each project without clicking through.</p>
+      <div class="mockup" style="margin-top:12px;">
+        <div class="mockup-header">Card Preview</div>
+        <div class="mockup-body" style="padding:16px;">
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;">
+            <div style="border:1px solid #e2e8f0;padding:20px;">
+              <div style="font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:#4a5568;font-family:monospace;">Senegal · 2025</div>
+              <div style="font-size:14px;font-weight:600;color:#162036;margin-top:8px;line-height:1.3;">Digital Transformation of Senegal — Goin' Digital</div>
+              <div style="font-size:12px;color:#4a5568;margin-top:8px;line-height:1.6;">Consultancy for the digital transformation of the Government of Senegal, enabling adoption of the GovStack framework aligned with the national strategy.</div>
+              <div style="font-size:11px;color:#a0aec0;margin-top:10px;">GIZ (consortium led by GOPA)</div>
+            </div>
+            <div style="border:1px solid #e2e8f0;padding:20px;">
+              <div style="font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:#4a5568;font-family:monospace;">Ethiopia · 2025</div>
+              <div style="font-size:14px;font-weight:600;color:#162036;margin-top:8px;line-height:1.3;">Input-Output Coefficient Digital Platform</div>
+              <div style="font-size:12px;color:#4a5568;margin-top:8px;line-height:1.6;">Consultancy and implementation of Input-Output Coefficient mechanism as digital platform using Workflow Building Block under GovStack.</div>
+              <div style="font-size:11px;color:#a0aec0;margin-top:10px;">GIZ / Ministry of Industry of Ethiopia</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Rich — With Country Flag + Tags</h3>
+      <p>Adds country flag emoji, domain tag pill, and the description. Most informative but visually heavier.</p>
+      <div class="mockup" style="margin-top:12px;">
+        <div class="mockup-header">Card Preview</div>
+        <div class="mockup-body" style="padding:16px;">
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;">
+            <div style="border:1px solid #e2e8f0;padding:20px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <div style="font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:#4a5568;font-family:monospace;">🇸🇳 Senegal · 2025</div>
+                <div style="font-size:8px;text-transform:uppercase;letter-spacing:1px;background:#f7fafc;border:1px solid #e2e8f0;padding:2px 8px;font-family:monospace;color:#4a5568;">e-Government</div>
+              </div>
+              <div style="font-size:14px;font-weight:600;color:#162036;margin-top:8px;line-height:1.3;">Digital Transformation of Senegal — Goin' Digital</div>
+              <div style="font-size:12px;color:#4a5568;margin-top:8px;line-height:1.6;">Consultancy for the digital transformation of the Government of Senegal, enabling adoption of the GovStack framework.</div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;">
+                <div style="font-size:11px;color:#a0aec0;">GIZ (consortium led by GOPA)</div>
+              </div>
+            </div>
+            <div style="border:1px solid #e2e8f0;padding:20px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <div style="font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:#4a5568;font-family:monospace;">🇪🇹 Ethiopia · 2025</div>
+                <div style="font-size:8px;text-transform:uppercase;letter-spacing:1px;background:#f7fafc;border:1px solid #e2e8f0;padding:2px 8px;font-family:monospace;color:#4a5568;">e-Government</div>
+              </div>
+              <div style="font-size:14px;font-weight:600;color:#162036;margin-top:8px;line-height:1.3;">Input-Output Coefficient Digital Platform</div>
+              <div style="font-size:12px;color:#4a5568;margin-top:8px;line-height:1.6;">Consultancy and implementation of Input-Output Coefficient mechanism as digital platform using Workflow Building Block under GovStack.</div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;">
+                <div style="font-size:11px;color:#a0aec0;">GIZ / Ministry of Industry</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

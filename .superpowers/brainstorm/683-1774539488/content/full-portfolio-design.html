@@ -1,0 +1,191 @@
+<h2>Final Design — Portfolio System</h2>
+<p class="subtitle">Complete overview of the homepage section + dedicated portfolio page</p>
+
+<div class="section">
+  <h3>Part 1: Homepage — 6 Featured Cases</h3>
+  <p>Replace the 6 placeholder cases (Alpha–Zeta) with real flagship projects, one per domain. "View Full Portfolio →" links to /portfolio.</p>
+
+  <div class="mockup">
+    <div class="mockup-header">Homepage Portfolio Section</div>
+    <div class="mockup-body" style="padding:20px;background:#fff;">
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:2.5px;color:#a0aec0;font-family:monospace;">// Portfolio</div>
+      <div style="font-size:24px;font-weight:700;color:#162036;margin:8px 0;">Our Portfolio</div>
+      <div style="width:48px;height:3px;background:#ED1C24;margin-bottom:12px;"></div>
+      <div style="font-size:14px;color:#4a5568;margin-bottom:24px;max-width:540px;">Selected projects that define what we do</div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px;">
+        <!-- Row 1 -->
+        <div style="border:1px solid #e2e8f0;padding:18px;">
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:#4a5568;font-family:monospace;background:#f7fafc;display:inline-block;padding:2px 6px;border:1px solid #e2e8f0;">e-Government</div>
+          <div style="font-size:14px;font-weight:600;color:#162036;margin-top:10px;line-height:1.3;">Digital Transformation of Senegal</div>
+          <div style="font-size:12px;color:#4a5568;margin-top:6px;line-height:1.5;">Consultancy for the digital transformation of the Government of Senegal, enabling adoption of the GovStack framework.</div>
+        </div>
+        <div style="border:1px solid #e2e8f0;padding:18px;">
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:#4a5568;font-family:monospace;background:#f7fafc;display:inline-block;padding:2px 6px;border:1px solid #e2e8f0;">Interoperability</div>
+          <div style="font-size:14px;font-weight:600;color:#162036;margin-top:10px;line-height:1.3;">Digital Social Protection Platform — Cambodia</div>
+          <div style="font-size:12px;color:#4a5568;margin-top:6px;line-height:1.5;">Platform Architecture integrating X-Road, following GovStack approach.</div>
+        </div>
+        <div style="border:1px solid #e2e8f0;padding:18px;">
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:#4a5568;font-family:monospace;background:#f7fafc;display:inline-block;padding:2px 6px;border:1px solid #e2e8f0;">Artificial Intelligence</div>
+          <div style="font-size:14px;font-weight:600;color:#162036;margin-top:10px;line-height:1.3;">Mbaza Chatbot — AI Virtual Assistant</div>
+          <div style="font-size:12px;color:#4a5568;margin-top:6px;line-height:1.5;">Multi-channel AI NLP-based virtual assistant for government communication with citizens.</div>
+        </div>
+        <!-- Row 2 -->
+        <div style="border:1px solid #e2e8f0;padding:18px;">
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:#4a5568;font-family:monospace;background:#f7fafc;display:inline-block;padding:2px 6px;border:1px solid #e2e8f0;">e-Procurement</div>
+          <div style="font-size:14px;font-weight:600;color:#162036;margin-top:10px;line-height:1.3;">E-Procurement Web Platform — Romania</div>
+          <div style="font-size:12px;color:#4a5568;margin-top:6px;line-height:1.5;">Web platform for public institutions providing workflows for the entire procurement lifecycle. 100+ institutions.</div>
+        </div>
+        <div style="border:1px solid #e2e8f0;padding:18px;">
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:#4a5568;font-family:monospace;background:#f7fafc;display:inline-block;padding:2px 6px;border:1px solid #e2e8f0;">Web Portals</div>
+          <div style="font-size:14px;font-weight:600;color:#162036;margin-top:10px;line-height:1.3;">Government Web Portals — Rwanda</div>
+          <div style="font-size:12px;color:#4a5568;margin-top:6px;line-height:1.5;">Design and deployment of multi-tenant architecture holding over 350 government websites.</div>
+        </div>
+        <div style="border:1px solid #e2e8f0;padding:18px;">
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:#4a5568;font-family:monospace;background:#f7fafc;display:inline-block;padding:2px 6px;border:1px solid #e2e8f0;">e-Invoicing</div>
+          <div style="font-size:14px;font-weight:600;color:#162036;margin-top:10px;line-height:1.3;">Electronic Invoicing — Central African Republic</div>
+          <div style="font-size:12px;color:#4a5568;margin-top:6px;line-height:1.5;">Consultancy and implementation for electronic invoicing and commercial transaction reporting.</div>
+        </div>
+      </div>
+
+      <div style="text-align:center;">
+        <div style="display:inline-block;background:#162036;color:white;padding:12px 28px;font-size:14px;font-weight:600;cursor:pointer;">View Full Portfolio →</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Part 2: /portfolio Page — Domain Sections with Sticky Nav</h3>
+  <p>Full portfolio page with 8 domain sections, 47 total projects. Sticky side nav on desktop, horizontal scroll tabs on mobile.</p>
+
+  <div class="mockup">
+    <div class="mockup-header">Portfolio Page — /portfolio</div>
+    <div class="mockup-body" style="padding:0;">
+      <!-- Navbar -->
+      <div style="background:#0D1520;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;">
+        <div style="color:white;font-weight:700;font-size:14px;">ARXIA</div>
+        <div style="display:flex;gap:20px;">
+          <span style="color:#a0aec0;font-size:10px;text-transform:uppercase;letter-spacing:2px;font-family:monospace;">About</span>
+          <span style="color:#a0aec0;font-size:10px;text-transform:uppercase;letter-spacing:2px;font-family:monospace;">Expertise</span>
+          <span style="color:white;font-size:10px;text-transform:uppercase;letter-spacing:2px;font-family:monospace;border-bottom:1px solid #ED1C24;">Portfolio</span>
+          <span style="color:#a0aec0;font-size:10px;text-transform:uppercase;letter-spacing:2px;font-family:monospace;">News</span>
+          <span style="color:#a0aec0;font-size:10px;text-transform:uppercase;letter-spacing:2px;font-family:monospace;">Contact</span>
+        </div>
+      </div>
+
+      <!-- Hero banner -->
+      <div style="background:#0D1520;padding:40px 20px 32px;">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:2.5px;color:#a0aec0;font-family:monospace;">// Portfolio</div>
+        <div style="font-size:28px;font-weight:300;color:white;margin:8px 0;">Our Portfolio</div>
+        <div style="width:48px;height:3px;background:#ED1C24;margin:12px 0;"></div>
+        <div style="font-size:14px;color:#a0aec0;max-width:540px;line-height:1.7;">47 projects across 8 domains of expertise. Two decades of digital transformation, interoperability, and capacity building across 20+ countries.</div>
+        <!-- Stats row -->
+        <div style="display:flex;gap:32px;margin-top:20px;">
+          <div>
+            <div style="font-size:28px;font-weight:700;color:white;">47</div>
+            <div style="font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:#a0aec0;font-family:monospace;">Projects</div>
+          </div>
+          <div>
+            <div style="font-size:28px;font-weight:700;color:white;">20+</div>
+            <div style="font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:#a0aec0;font-family:monospace;">Countries</div>
+          </div>
+          <div>
+            <div style="font-size:28px;font-weight:700;color:white;">8</div>
+            <div style="font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:#a0aec0;font-family:monospace;">Domains</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main content with side nav -->
+      <div style="display:flex;padding:32px 20px;">
+        <!-- Sticky side nav -->
+        <div style="width:200px;flex-shrink:0;padding-right:20px;border-right:1px solid #e2e8f0;">
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:2px;color:#a0aec0;font-family:monospace;margin-bottom:16px;">Domains</div>
+
+          <div style="padding:8px 0 8px 12px;border-left:3px solid #ED1C24;font-size:12px;font-weight:600;color:#162036;margin-bottom:2px;">e-Government <span style="color:#a0aec0;font-weight:400;">(7)</span></div>
+          <div style="padding:8px 0 8px 15px;font-size:12px;color:#a0aec0;margin-bottom:2px;">Interoperability <span style="font-weight:400;">(6)</span></div>
+          <div style="padding:8px 0 8px 15px;font-size:12px;color:#a0aec0;margin-bottom:2px;">e-Procurement <span style="font-weight:400;">(3)</span></div>
+          <div style="padding:8px 0 8px 15px;font-size:12px;color:#a0aec0;margin-bottom:2px;">Web Development <span style="font-weight:400;">(9)</span></div>
+          <div style="padding:8px 0 8px 15px;font-size:12px;color:#a0aec0;margin-bottom:2px;">AI <span style="font-weight:400;">(12)</span></div>
+          <div style="padding:8px 0 8px 15px;font-size:12px;color:#a0aec0;margin-bottom:2px;">e-Invoicing <span style="font-weight:400;">(1)</span></div>
+          <div style="padding:8px 0 8px 15px;font-size:12px;color:#a0aec0;margin-bottom:2px;">Data Governance <span style="font-weight:400;">(4)</span></div>
+          <div style="padding:8px 0 8px 15px;font-size:12px;color:#a0aec0;margin-bottom:2px;">Strategy <span style="font-weight:400;">(1)</span></div>
+        </div>
+
+        <!-- Content area -->
+        <div style="flex:1;padding-left:32px;">
+          <!-- Section 1 -->
+          <div style="margin-bottom:40px;">
+            <div style="font-size:11px;text-transform:uppercase;letter-spacing:2.5px;color:#a0aec0;font-family:monospace;">// 01</div>
+            <div style="font-size:22px;font-weight:700;color:#162036;margin:6px 0;">e-Government and Govtech</div>
+            <div style="width:48px;height:3px;background:#ED1C24;margin:10px 0;"></div>
+            <div style="font-size:13px;color:#4a5568;max-width:540px;line-height:1.6;margin-bottom:20px;">We design and implement citizen-centric digital services that modernize public administration, improve transparency, and reduce bureaucratic friction.</div>
+
+            <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;">
+              <div style="border:1px solid #e2e8f0;padding:18px;">
+                <div style="font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:#4a5568;font-family:monospace;">Senegal · 2025</div>
+                <div style="font-size:14px;font-weight:600;color:#162036;margin-top:8px;line-height:1.3;">Digital Transformation of Senegal — Goin' Digital</div>
+                <div style="font-size:12px;color:#4a5568;margin-top:8px;line-height:1.6;">Consultancy for the digital transformation of the Government of Senegal, enabling adoption of the GovStack framework aligned with the national strategy New Deal Technologique.</div>
+                <div style="font-size:11px;color:#a0aec0;margin-top:10px;">GIZ (consortium led by GOPA)</div>
+              </div>
+              <div style="border:1px solid #e2e8f0;padding:18px;">
+                <div style="font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:#4a5568;font-family:monospace;">Ethiopia · 2025</div>
+                <div style="font-size:14px;font-weight:600;color:#162036;margin-top:8px;line-height:1.3;">Input-Output Coefficient Digital Platform</div>
+                <div style="font-size:12px;color:#4a5568;margin-top:8px;line-height:1.6;">Consultancy and implementation of Input-Output Coefficient mechanism as digital platform using the Workflow Building Block under the GovStack framework.</div>
+                <div style="font-size:11px;color:#a0aec0;margin-top:10px;">GIZ / Ministry of Industry of Ethiopia</div>
+              </div>
+              <div style="border:1px solid #e2e8f0;padding:18px;">
+                <div style="font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:#4a5568;font-family:monospace;">Multi-Country · 2025</div>
+                <div style="font-size:14px;font-weight:600;color:#162036;margin-top:8px;line-height:1.3;">GovStack Adoption Training — Africa</div>
+                <div style="font-size:12px;color:#4a5568;margin-top:8px;line-height:1.6;">Training for the adoption of GovStack to governments in five African countries.</div>
+                <div style="font-size:11px;color:#a0aec0;margin-top:10px;">GIZ / ITU</div>
+              </div>
+              <div style="border:1px solid #e2e8f0;padding:18px;display:flex;align-items:center;justify-content:center;color:#a0aec0;font-size:12px;">
+                + 4 more projects in this section
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2 preview -->
+          <div style="padding-top:24px;border-top:1px solid #e2e8f0;">
+            <div style="font-size:11px;text-transform:uppercase;letter-spacing:2.5px;color:#a0aec0;font-family:monospace;">// 02</div>
+            <div style="font-size:22px;font-weight:700;color:#162036;margin:6px 0;">Interoperability and Standardization</div>
+            <div style="width:48px;height:3px;background:#ED1C24;margin:10px 0;"></div>
+            <div style="font-size:13px;color:#a0aec0;">... section continues with 6 project cards ...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Design Decisions Summary</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div style="background:#f8f9fa;padding:16px;border-radius:8px;">
+      <div class="label">Homepage</div>
+      <p style="margin:4px 0;">6 flagship cases, one per main domain</p>
+    </div>
+    <div style="background:#f8f9fa;padding:16px;border-radius:8px;">
+      <div class="label">Portfolio Page</div>
+      <p style="margin:4px 0;">Domain sections with sticky side nav</p>
+    </div>
+    <div style="background:#f8f9fa;padding:16px;border-radius:8px;">
+      <div class="label">Card Detail</div>
+      <p style="margin:4px 0;">Country, year, title, description, client</p>
+    </div>
+    <div style="background:#f8f9fa;padding:16px;border-radius:8px;">
+      <div class="label">Mobile Nav</div>
+      <p style="margin:4px 0;">Horizontal scroll tabs replacing side nav</p>
+    </div>
+    <div style="background:#f8f9fa;padding:16px;border-radius:8px;">
+      <div class="label">Categories</div>
+      <p style="margin:4px 0;">8 domain sections, 47 total projects</p>
+    </div>
+    <div style="background:#f8f9fa;padding:16px;border-radius:8px;">
+      <div class="label">Card Grid</div>
+      <p style="margin:4px 0;">2-col on desktop, 1-col on mobile</p>
+    </div>
+  </div>
+</div>

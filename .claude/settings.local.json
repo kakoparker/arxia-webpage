@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__mcp-registry__search_mcp_registry",
+      "WebFetch(domain:stitch.withgoogle.com)",
+      "WebSearch",
+      "Bash(claude mcp:*)",
+      "mcp__Claude_Preview__preview_start"
+    ]
+  }
+}
