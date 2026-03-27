@@ -28,8 +28,8 @@ export function Hero() {
   const isHovering = useMousePosition(sectionRef);
 
   useAnimationFrame(() => {
-    offsetRef.current.x = (offsetRef.current.x + 0.08) % 100;
-    offsetRef.current.y = (offsetRef.current.y + 0.08) % 100;
+    offsetRef.current.x = (offsetRef.current.x + 0.056) % 100;
+    offsetRef.current.y = (offsetRef.current.y + 0.056) % 100;
     const { x, y } = offsetRef.current;
     scrollGridRef.current?.setOffset(x, y);
     revealGridRef.current?.setOffset(x, y);
@@ -38,7 +38,7 @@ export function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="hero-grid-bg relative min-h-screen flex items-center justify-center px-[var(--margin-page)] max-sm:px-6 pt-14 overflow-hidden"
+      className="hero-grid-bg relative min-h-[85vh] flex items-center justify-center px-[var(--margin-page)] max-sm:px-6 pt-14 overflow-hidden"
     >
       {/* z-10: Auto-scrolling grid — subtle ambient drift */}
       <div className="absolute inset-0 z-10 hidden sm:block">
@@ -117,8 +117,8 @@ export function Hero() {
             ))}
           </span>
         </h1>
-        <div className="mt-10">
-          <Button variant="primary" href="#contact">
+        <div className="mt-[34px]">
+          <Button variant="primary" href="#contact" className="!px-5 !py-1.5 !min-h-0 !text-[13px]">
             Contact Us
           </Button>
         </div>
