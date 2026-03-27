@@ -229,6 +229,50 @@ body {
 }
 
 /* ============================================
+   HERO GRID BACKGROUND
+   Mobile: full blueprint grid (CSS fallback)
+   Desktop: plain bg color (SVG grid takes over)
+   ============================================ */
+.hero-grid-bg {
+  background-color: var(--blueprint-dark);
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.025) 0px,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px,
+      transparent var(--grid-minor)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.025) 0px,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px,
+      transparent var(--grid-minor)
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.05) 0px,
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px,
+      transparent var(--grid-major)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.05) 0px,
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px,
+      transparent var(--grid-major)
+    );
+}
+
+@media (min-width: 640px) {
+  .hero-grid-bg {
+    background-image: none;
+  }
+}
+
+/* ============================================
    HERO WORD ROTATION
    ============================================ */
 @keyframes word-rotate {
@@ -239,8 +283,10 @@ body {
 
 .rotating-word {
   position: absolute;
-  left: 0;
   top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
   opacity: 0;
   animation: word-rotate 18s var(--ease-default) infinite;
 }
