@@ -7,6 +7,7 @@ import { Domains } from "@/components/sections/Domains";
 import { GlobalPresence } from "@/components/sections/GlobalPresence";
 import { Portfolio } from "@/components/sections/Portfolio";
 import { News } from "@/components/sections/News";
+import { CallToAction } from "@/components/sections/CallToAction";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
         <GlobalPresence />
         <Portfolio />
         <News />
+        <CallToAction />
       </main>
       <Footer />
     </>

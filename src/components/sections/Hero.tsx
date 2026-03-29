@@ -28,8 +28,8 @@ export function Hero() {
   const isHovering = useMousePosition(sectionRef);
 
   useAnimationFrame(() => {
-    offsetRef.current.x = (offsetRef.current.x + 0.056) % 100;
-    offsetRef.current.y = (offsetRef.current.y + 0.056) % 100;
+    offsetRef.current.x = (offsetRef.current.x + 0.042) % 100;
+    offsetRef.current.y = (offsetRef.current.y + 0.042) % 100;
     const { x, y } = offsetRef.current;
     scrollGridRef.current?.setOffset(x, y);
     revealGridRef.current?.setOffset(x, y);
