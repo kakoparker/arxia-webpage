@@ -2,7 +2,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
 import { LogoCarousel } from "@/components/sections/LogoCarousel";
-import { Introduction } from "@/components/sections/Introduction";
+import { WhoWeServe } from "@/components/sections/WhoWeServe";
 import { Domains } from "@/components/sections/Domains";
 import { GlobalPresence } from "@/components/sections/GlobalPresence";
 import { Portfolio } from "@/components/sections/Portfolio";
@@ -16,7 +16,7 @@ export default function Home() {
       <main>
         <Hero />
         <LogoCarousel />
-        <Introduction />
+        <WhoWeServe />
         <Domains />
         <GlobalPresence />
         <Portfolio />

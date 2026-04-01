@@ -273,45 +273,39 @@ body {
 }
 
 /* ============================================
-   HERO WORD ROTATION
+   HERO TEXT SCRAMBLE
+   (Handled by useTextScramble hook — no CSS animation needed)
    ============================================ */
-@keyframes word-rotate {
-  0%, 14% { opacity: 1; transform: translateY(0); }
-  16.66%, 97% { opacity: 0; transform: translateY(-20px); }
-  98%, 100% { opacity: 0; transform: translateY(20px); }
-}
-
-.rotating-word {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  text-align: center;
-  opacity: 0;
-  animation: word-rotate 18s var(--ease-default) infinite;
-}
-
-.rotating-word:nth-child(1) { animation-delay: 0s; }
-.rotating-word:nth-child(2) { animation-delay: 3s; }
-.rotating-word:nth-child(3) { animation-delay: 6s; }
-.rotating-word:nth-child(4) { animation-delay: 9s; }
-.rotating-word:nth-child(5) { animation-delay: 12s; }
-.rotating-word:nth-child(6) { animation-delay: 15s; }
 
 /* ============================================
    LOGO CAROUSEL
+   (Handled by useAnimationFrame + GSAP velocity — no CSS animation needed)
    ============================================ */
-@keyframes logo-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+
+/* ============================================
+   SPOTLIGHT BORDER CARDS (News section)
+   ============================================ */
+.spotlight-card {
+  position: relative;
 }
 
-.logo-carousel-track {
-  animation: logo-scroll 40s linear infinite;
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: radial-gradient(
+    300px circle at var(--mx, -1000px) var(--my, -1000px),
+    rgba(237, 28, 36, 0.12),
+    transparent 60%
+  );
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-.logo-carousel-track:hover {
-  animation-play-state: paused;
+.spotlight-card-group:hover .spotlight-card::before {
+  opacity: 1;
 }
 
 /* ============================================
