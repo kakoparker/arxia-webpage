@@ -9,11 +9,13 @@ const footerLinks = {
     { label: "Careers", href: "#" },
   ],
   services: [
-    { label: "e-Government", href: "#expertise" },
-    { label: "Interoperability", href: "#expertise" },
-    { label: "Artificial Intelligence", href: "#expertise" },
-    { label: "e-Procurement", href: "#expertise" },
-    { label: "e-Invoicing", href: "#expertise" },
+    { label: "e-Government", href: "/domains/e-government" },
+    { label: "Interoperability", href: "/domains/interoperability" },
+    { label: "Artificial Intelligence", href: "/domains/ai" },
+    { label: "e-Procurement", href: "/domains/e-procurement" },
+    { label: "e-Invoicing", href: "/domains/e-invoicing" },
+    { label: "Web Portals", href: "/domains/web-portals" },
+    { label: "Ecosystem Building", href: "/domains/ecosystem-building" },
   ],
 };
 

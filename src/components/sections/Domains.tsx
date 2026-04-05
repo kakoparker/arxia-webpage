@@ -188,7 +188,7 @@ function DesktopAccordion({
               </p>
 
               <a
-                href={`/portfolio?domain=${domain.slug}`}
+                href={`/domains/${domain.slug}`}
                 className="text-accent-red/85 hover:text-accent-red transition-colors duration-200"
                 style={{
                   fontFamily: "var(--font-mono)",
@@ -378,7 +378,7 @@ function MobileAccordion({
                 </p>
                 <a
                   className="text-accent-red/85 hover:text-accent-red transition-colors duration-200"
-                  href={`/portfolio?domain=${domain.slug}`}
+                  href={`/domains/${domain.slug}`}
                   onClick={(e: React.MouseEvent) => e.stopPropagation()}
                   style={{
                     fontFamily: "var(--font-mono)",
