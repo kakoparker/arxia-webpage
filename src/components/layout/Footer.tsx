@@ -9,13 +9,33 @@ const footerLinks = {
     { label: "Careers", href: "#" },
   ],
   services: [
-    { label: "e-Government", href: "/domains/e-government" },
-    { label: "Interoperability", href: "/domains/interoperability" },
-    { label: "Artificial Intelligence", href: "/domains/ai" },
-    { label: "e-Procurement", href: "/domains/e-procurement" },
-    { label: "e-Invoicing", href: "/domains/e-invoicing" },
-    { label: "Web Portals", href: "/domains/web-portals" },
-    { label: "Ecosystem Building", href: "/domains/ecosystem-building" },
+    {
+      vertical: "Government",
+      links: [
+        { label: "Digital Transformation", href: "/domains/digital-transformation" },
+        { label: "Agentic State & AI", href: "/domains/agentic-state" },
+        { label: "Interoperability", href: "/domains/interoperability" },
+        { label: "e-Procurement", href: "/domains/e-procurement" },
+        { label: "e-Invoicing", href: "/domains/e-invoicing" },
+        { label: "Gov. Portals", href: "/domains/government-portals" },
+      ],
+    },
+    {
+      vertical: "Ecosystems",
+      links: [
+        { label: "AI-Powered Ecosystems", href: "/domains/ai-ecosystems" },
+        { label: "Internationalization", href: "/domains/internationalization" },
+        { label: "Capacity Building", href: "/domains/capacity-building" },
+      ],
+    },
+    {
+      vertical: "Companies",
+      links: [
+        { label: "Digital Transformation", href: "/domains/corporate-transformation" },
+        { label: "Artificial Intelligence", href: "/domains/corporate-ai" },
+        { label: "Data Governance", href: "/domains/corporate-data" },
+      ],
+    },
   ],
 };
 
@@ -72,18 +92,35 @@ export function Footer() {
             <h3 className="font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2.5px] text-accent-red/85 mb-6">
               Services
             </h3>
-            <ul className="space-y-3">
-              {footerLinks.services.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-gray-medium text-[var(--text-small)] hover:text-white transition-colors duration-200"
+            <div className="space-y-5">
+              {footerLinks.services.map((group) => (
+                <div key={group.vertical}>
+                  <p
+                    className="text-white/40 mb-2"
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "9px",
+                      letterSpacing: "1.5px",
+                      textTransform: "uppercase",
+                    }}
                   >
-                    {link.label}
-                  </a>
-                </li>
+                    {group.vertical}
+                  </p>
+                  <ul className="space-y-2">
+                    {group.links.map((link) => (
+                      <li key={link.href}>
+                        <a
+                          href={link.href}
+                          className="text-gray-medium text-[var(--text-small)] hover:text-white transition-colors duration-200"
+                        >
+                          {link.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
 
           {/* Contact */}

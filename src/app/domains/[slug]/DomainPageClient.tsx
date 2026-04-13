@@ -8,6 +8,13 @@ import {
   FileText,
   Globe,
   Sprout,
+  Landmark,
+  Workflow,
+  Bot,
+  Sparkles,
+  Globe2,
+  GraduationCap,
+  Database,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
@@ -26,6 +33,13 @@ const iconMap: Record<string, LucideIcon> = {
   FileText,
   Globe,
   Sprout,
+  Landmark,
+  Workflow,
+  Bot,
+  Sparkles,
+  Globe2,
+  GraduationCap,
+  Database,
 };
 
 interface DomainPageClientProps {
@@ -46,6 +60,7 @@ export function DomainPageClient({ slug }: DomainPageClientProps) {
           title={domain.title}
           description={domain.description}
           icon={Icon}
+          parentVerticalName={domain.parentVertical}
         />
         <DomainServices categories={domain.categories} />
         <DomainPortfolio relatedCategories={domain.relatedPortfolioCategories} />
