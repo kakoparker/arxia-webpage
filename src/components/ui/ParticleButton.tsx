@@ -79,7 +79,7 @@ export function ParticleButton({
   );
 
   return (
-    <button ref={btnRef} onClick={handleClick} {...props}>
+    <button ref={btnRef} onClick={handleClick} suppressHydrationWarning {...props}>
       {children}
     </button>
   );

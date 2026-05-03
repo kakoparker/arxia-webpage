@@ -1,10 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    unoptimized: false,
+    formats: ["image/avif", "image/webp"],
+    // SVGs in /public/logos/clients are vendored, statically known files
+    // (Wikimedia Commons sources). CSP blocks any script execution at the
+    // browser layer; this only enables next/image to optimize them.
+    dangerouslyAllowSVG: true,
+    contentDispositionType: "attachment",
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   productionBrowserSourceMaps: false,
-  serverExternalPackages: [],
   turbopack: {
     root: process.cwd(),
   },

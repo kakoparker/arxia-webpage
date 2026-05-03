@@ -102,6 +102,27 @@ body {
 }
 
 /* ============================================
+   SCROLL SNAP — section-by-section after the fork
+   ============================================
+   `proximity` (not `mandatory`) so:
+     • Hero / Logos / Fork keep their free-scroll feel
+     • only kicks in as the user nears a snap target
+     • respects scroll-padding-top so sections land below the fixed navbar
+*/
+html {
+  scroll-snap-type: y proximity;
+  scroll-padding-top: 72px;
+}
+.snap-section {
+  scroll-snap-align: start;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-snap-type: none;
+  }
+}
+
+/* ============================================
    BLUEPRINT GRID BACKGROUNDS
    ============================================ */
 .blueprint-grid-dark {
@@ -198,6 +219,42 @@ body {
       90deg,
       rgba(160, 174, 192, 0.20) 0px,
       rgba(160, 174, 192, 0.20) 1px,
+      transparent 1px,
+      transparent var(--grid-major)
+    );
+}
+
+/* Variant keyed to --blueprint-blue (#162036) rather than --blueprint-dark.
+   Used by the Govtech fork panel — same grid treatment as the dark variant
+   but on the firm's primary brand blue. */
+.blueprint-grid-blue {
+  background-color: var(--blueprint-blue);
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.04) 0px,
+      rgba(255, 255, 255, 0.04) 1px,
+      transparent 1px,
+      transparent var(--grid-minor)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.04) 0px,
+      rgba(255, 255, 255, 0.04) 1px,
+      transparent 1px,
+      transparent var(--grid-minor)
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.08) 0px,
+      rgba(255, 255, 255, 0.08) 1px,
+      transparent 1px,
+      transparent var(--grid-major)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.08) 0px,
+      rgba(255, 255, 255, 0.08) 1px,
       transparent 1px,
       transparent var(--grid-major)
     );

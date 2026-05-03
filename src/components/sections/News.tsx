@@ -1,37 +1,18 @@
-"use client";
-
-import { useRef, useCallback } from "react";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Card } from "@/components/ui/Card";
 import { Tag } from "@/components/ui/Tag";
 import { Button } from "@/components/ui/Button";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { newsArticles } from "@/data/news";
+import {
+  NewsScrollReveal,
+  NewsSpotlightGrid,
+} from "./NewsAnimations";
 
 export function News() {
-  const ref = useScrollAnimation();
-  const gridRef = useRef<HTMLDivElement>(null);
-
-  // Spotlight border: track mouse across all cards in the grid
-  const handleMouseMove = useCallback(
-    (e: React.MouseEvent<HTMLDivElement>) => {
-      const grid = gridRef.current;
-      if (!grid) return;
-
-      const cards = grid.querySelectorAll<HTMLElement>(".spotlight-card");
-      cards.forEach((card) => {
-        const rect = card.getBoundingClientRect();
-        card.style.setProperty("--mx", `${e.clientX - rect.left}px`);
-        card.style.setProperty("--my", `${e.clientY - rect.top}px`);
-      });
-    },
-    []
-  );
-
   return (
     <SectionContainer mode="ultra-light" id="news">
-      <div ref={ref}>
+      <NewsScrollReveal>
         <div
           data-animate
           data-animate-index="0"
@@ -40,11 +21,7 @@ export function News() {
           <SectionHeader annotation="News" heading="Latest News" />
         </div>
 
-        <div
-          ref={gridRef}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 spotlight-card-group"
-          onMouseMove={handleMouseMove}
-        >
+        <NewsSpotlightGrid className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 spotlight-card-group">
           {newsArticles.map((article, i) => (
             <div
               key={article.slug}
@@ -71,12 +48,12 @@ export function News() {
               </div>
             </div>
           ))}
-        </div>
+        </NewsSpotlightGrid>
 
         <div className="text-center">
           <Button variant="primary">All News →</Button>
         </div>
-      </div>
+      </NewsScrollReveal>
     </SectionContainer>
   );
 }

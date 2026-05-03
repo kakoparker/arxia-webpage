@@ -14,7 +14,7 @@ export function DomainCTA({ domainTitle }: DomainCTAProps) {
   const ref = useScrollAnimation();
 
   return (
-    <SectionContainer mode="dark" showCornerMarks>
+    <SectionContainer mode="dark" showCornerMarks id="contact">
       <div ref={ref}>
         <div
           data-animate

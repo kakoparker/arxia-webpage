@@ -11,25 +11,25 @@ interface GlobeProps {
 
 const DEFAULT_MARKERS: Array<{ location: [number, number]; size: number }> = [
   { location: [44.4268, 26.1025], size: 0.08 },   // Romania (HQ)
-  { location: [-33.4489, -70.6693], size: 0.05 },  // Chile
-  { location: [4.711, -74.0721], size: 0.05 },     // Colombia
-  { location: [-12.0464, -77.0428], size: 0.05 },  // Peru
-  { location: [13.6929, -89.2182], size: 0.05 },   // El Salvador
-  { location: [52.52, 13.405], size: 0.05 },       // Germany
-  { location: [46.948, 7.4474], size: 0.05 },      // Switzerland
-  { location: [48.2082, 16.3738], size: 0.05 },    // Austria
-  { location: [50.4501, 30.5234], size: 0.05 },    // Ukraine
-  { location: [36.8065, 10.1815], size: 0.05 },    // Tunisia
-  { location: [14.7167, -17.4677], size: 0.05 },   // Senegal
-  { location: [5.6037, -0.187], size: 0.05 },      // Ghana
-  { location: [9.0579, 7.4951], size: 0.05 },      // Nigeria
-  { location: [4.3947, 18.5582], size: 0.05 },     // CAR
-  { location: [4.8594, 31.5713], size: 0.05 },     // South Sudan
-  { location: [0.3476, 32.5825], size: 0.05 },     // Uganda
-  { location: [-1.9403, 29.8739], size: 0.05 },    // Rwanda
-  { location: [-3.3731, 29.3189], size: 0.05 },    // Burundi
-  { location: [-15.3875, 28.3228], size: 0.05 },   // Zambia
-  { location: [11.5564, 104.9282], size: 0.05 },   // Cambodia
+  { location: [-33.4489, -70.6693], size: 0.07 },  // Chile
+  { location: [4.711, -74.0721], size: 0.07 },     // Colombia
+  { location: [-12.0464, -77.0428], size: 0.07 },  // Peru
+  { location: [13.6929, -89.2182], size: 0.07 },   // El Salvador
+  { location: [52.52, 13.405], size: 0.07 },       // Germany
+  { location: [46.948, 7.4474], size: 0.07 },      // Switzerland
+  { location: [48.2082, 16.3738], size: 0.07 },    // Austria
+  { location: [50.4501, 30.5234], size: 0.07 },    // Ukraine
+  { location: [36.8065, 10.1815], size: 0.07 },    // Tunisia
+  { location: [14.7167, -17.4677], size: 0.07 },   // Senegal
+  { location: [5.6037, -0.187], size: 0.07 },      // Ghana
+  { location: [9.0579, 7.4951], size: 0.07 },      // Nigeria
+  { location: [4.3947, 18.5582], size: 0.07 },     // CAR
+  { location: [4.8594, 31.5713], size: 0.07 },     // South Sudan
+  { location: [0.3476, 32.5825], size: 0.07 },     // Uganda
+  { location: [-1.9403, 29.8739], size: 0.07 },    // Rwanda
+  { location: [-3.3731, 29.3189], size: 0.07 },    // Burundi
+  { location: [-15.3875, 28.3228], size: 0.07 },   // Zambia
+  { location: [11.5564, 104.9282], size: 0.07 },   // Cambodia
 ];
 
 export function Globe({ className, markers = DEFAULT_MARKERS }: GlobeProps) {

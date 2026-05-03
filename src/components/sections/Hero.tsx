@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
+import { useGSAP } from "@gsap/react";
 import { CornerMarks } from "@/components/ui/CornerMarks";
 import { Button } from "@/components/ui/Button";
 import {
@@ -11,6 +12,8 @@ import { useAnimationFrame } from "@/hooks/useAnimationFrame";
 import { useMousePosition } from "@/hooks/useMousePosition";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { gsap, ScrollTrigger } from "@/hooks/useGsapScrollTrigger";
+
+gsap.registerPlugin(useGSAP);
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -32,25 +35,42 @@ export function Hero() {
   const mobileScrollRef = useScrollAnimation();
   const isHovering = useMousePosition(sectionRef);
 
-  // Detect mobile
+  // Detect mobile. Kill ScrollTriggers synchronously before flipping,
+  // otherwise GSAP's pin-spacer leaves the DOM out of sync with React
+  // and unmounting throws "removeChild: not a child of this node".
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 640);
+    const check = () => {
+      const next = window.innerWidth < 640;
+      setIsMobile((prev) => {
+        if (prev !== next) {
+          ScrollTrigger.getAll().forEach((st) => {
+            const trigger = st.trigger as Node | undefined;
+            if (trigger && sectionRef.current?.parentNode?.contains(trigger)) {
+              st.kill();
+            }
+          });
+        }
+        return next;
+      });
+    };
     check();
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  // Grid drift animation
+  // Grid drift animation — desktop only (mobile doesn't render the grids).
+  // Reveal grid only updates while hovering (it's at opacity:0 otherwise).
   useAnimationFrame(() => {
+    if (isMobile) return;
     offsetRef.current.x = (offsetRef.current.x + 0.042) % 100;
     offsetRef.current.y = (offsetRef.current.y + 0.042) % 100;
     const { x, y } = offsetRef.current;
     scrollGridRef.current?.setOffset(x, y);
-    revealGridRef.current?.setOffset(x, y);
+    if (isHovering) revealGridRef.current?.setOffset(x, y);
   });
 
   // GSAP: curtain reveal + content fade-in (desktop only)
-  useEffect(() => {
+  useGSAP(() => {
     if (isMobile) return;
 
     const prefersReduced = window.matchMedia(
@@ -81,16 +101,15 @@ export function Hero() {
     const wrapper = pinWrapperRef.current;
     if (!wrapper) return;
 
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: wrapper,
-          start: "top top",
-          end: "+=300%",
-          pin: true,
-          scrub: 0.5,
-        },
-      });
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: wrapper,
+        start: "top top",
+        end: "+=300%",
+        pin: true,
+        scrub: 0.5,
+      },
+    });
 
       // Curtains slide apart (0% → 60%)
       tl.to(
@@ -128,16 +147,13 @@ export function Hero() {
         35
       );
 
-      // CTA fades in (50% → 60%)
-      tl.to(
-        ctaRef.current,
-        { opacity: 1, y: 0, ease: "power1.out", duration: 10 },
-        50
-      );
-    });
-
-    return () => ctx.revert();
-  }, [isMobile]);
+    // CTA fades in (50% → 60%)
+    tl.to(
+      ctaRef.current,
+      { opacity: 1, y: 0, ease: "power1.out", duration: 10 },
+      50
+    );
+  }, { dependencies: [isMobile] });
 
   // ─── Mobile: simple layout, no curtains ───────────────────────
   if (isMobile) {
@@ -172,9 +188,8 @@ export function Hero() {
               fontSize: "clamp(36px, 5vw, 72px)",
             }}
           >
-            Technology
-            <br />
-            to transform nations
+            <span className="block">Technology</span>
+            <span className="block">{" "}to transform nations</span>
           </h1>
 
           <div
@@ -186,7 +201,7 @@ export function Hero() {
           <p
             data-animate
             data-animate-index="2"
-            className="animate-on-scroll text-gray-medium font-normal text-center mx-auto"
+            className="animate-on-scroll text-gray-light font-normal text-center mx-auto"
             style={{
               fontFamily: "var(--font-primary)",
               fontSize: "16px",
@@ -194,7 +209,7 @@ export function Hero() {
               maxWidth: "640px",
             }}
           >
-            empowering governments, industries and ecosystems to build their
+            Empowering governments, industries and ecosystems to build their
             digital future
           </p>
 
@@ -206,7 +221,7 @@ export function Hero() {
             <Button
               variant="primary"
               href="#contact"
-              className="!px-5 !py-1.5 !min-h-0 !text-[13px]"
+              className="!px-5 !py-1.5 !min-h-0 !text-[13px] !bg-accent-red hover:!bg-[#c8161d]"
             >
               Contact Us
             </Button>
@@ -286,9 +301,8 @@ export function Hero() {
               transform: "translateY(20px)",
             }}
           >
-            Technology
-            <br />
-            to transform nations
+            <span className="block">Technology</span>
+            <span className="block">{" "}to transform nations</span>
           </h1>
 
           <div
@@ -299,7 +313,7 @@ export function Hero() {
 
           <p
             ref={subtitleRef}
-            className="text-gray-medium font-normal text-center mx-auto"
+            className="text-gray-light font-normal text-center mx-auto"
             style={{
               fontFamily: "var(--font-primary)",
               fontSize: "clamp(16px, 1.8vw, 20px)",
@@ -309,7 +323,7 @@ export function Hero() {
               transform: "translateY(20px)",
             }}
           >
-            empowering governments, industries and ecosystems to build their
+            Empowering governments, industries and ecosystems to build their
             digital future
           </p>
 
@@ -321,7 +335,7 @@ export function Hero() {
             <Button
               variant="primary"
               href="#contact"
-              className="!px-5 !py-1.5 !min-h-0 !text-[13px]"
+              className="!px-5 !py-1.5 !min-h-0 !text-[13px] !bg-accent-red hover:!bg-[#c8161d]"
             >
               Contact Us
             </Button>
