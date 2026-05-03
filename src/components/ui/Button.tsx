@@ -32,14 +32,14 @@ export function Button({
 
   if (href) {
     return (
-      <a href={href} className={cls}>
+      <a href={href} className={cls} suppressHydrationWarning>
         {children}
       </a>
     );
   }
 
   return (
-    <button className={cls} {...props}>
+    <button className={cls} suppressHydrationWarning {...props}>
       {children}
     </button>
   );

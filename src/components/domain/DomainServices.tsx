@@ -1,6 +1,6 @@
 "use client";
 
-import { Compass, Wrench, GraduationCap, Package } from "lucide-react";
+import { Compass, Wrench, Package } from "lucide-react";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Card } from "@/components/ui/Card";
@@ -10,7 +10,6 @@ import type { ServiceCategory } from "@/data/domain-pages";
 const categoryIcons = {
   Consultancy: Compass,
   Services: Wrench,
-  Training: GraduationCap,
   Products: Package,
 } as const;
 
@@ -90,7 +89,7 @@ export function DomainServices({ categories }: DomainServicesProps) {
                             }}
                           >
                             {item.title}
-                            {item.isComingSoon && (
+                            {item.isRoadmap && (
                               <span
                                 className="ml-2 inline-block px-1.5 py-0.5 border border-accent-red/30 text-accent-red/70 align-middle"
                                 style={{
@@ -100,7 +99,7 @@ export function DomainServices({ categories }: DomainServicesProps) {
                                   textTransform: "uppercase",
                                 }}
                               >
-                                Coming Soon
+                                Roadmap
                               </span>
                             )}
                           </p>

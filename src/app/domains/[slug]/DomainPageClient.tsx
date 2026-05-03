@@ -63,7 +63,7 @@ export function DomainPageClient({ slug }: DomainPageClientProps) {
           parentVerticalName={domain.parentVertical}
         />
         <DomainServices categories={domain.categories} />
-        <DomainPortfolio relatedCategories={domain.relatedPortfolioCategories} />
+        <DomainPortfolio relatedCategories={[]} />
         <DomainCTA domainTitle={domain.title} />
       </main>
       <Footer />

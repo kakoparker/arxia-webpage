@@ -1,8 +1,7 @@
 export const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Expertise", href: "#expertise" },
-  { label: "Global Presence", href: "#presence" },
+  { label: "Govtech", href: "/govtech" },
+  { label: "Industries", href: "/industries" },
   { label: "Portfolio", href: "/portfolio" },
-  { label: "News", href: "#news" },
-  { label: "Contact", href: "#contact" },
+  { label: "News", href: "/#news" },
+  { label: "Contact", href: "/#contact" },
 ];
