@@ -229,7 +229,6 @@ function Chapter({
               />
             ))}
           </div>
-          <SectionCTA vertical={vertical} dark={dark} />
         </div>
       </div>
     );
@@ -334,36 +333,8 @@ function Chapter({
                 })}
               </div>
             </div>
-
-          {/* CTA — pinned in the same view as the cards */}
-          <SectionCTA vertical={vertical} dark={dark} />
         </div>
       </div>
-    </div>
-  );
-}
-
-
-function SectionCTA({
-  vertical,
-  dark,
-}: {
-  vertical: ArxiaVertical;
-  dark: boolean;
-}) {
-  return (
-    <div className="mt-10 flex justify-end">
-      <Link
-        href={`/${vertical.slug}`}
-        className={`inline-flex items-center gap-3 font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2px] px-6 py-3 border transition-colors ${
-          dark
-            ? "border-white/30 text-white hover:bg-white hover:text-blueprint-blue"
-            : "border-blueprint-blue/30 text-blueprint-blue hover:bg-blueprint-blue hover:text-white"
-        }`}
-      >
-        Explore all {vertical.shortName} domains
-        <span aria-hidden>→</span>
-      </Link>
     </div>
   );
 }
@@ -385,8 +356,8 @@ function DomainCard({
 
   const cardBg = dark
     ? state === "active"
-      ? "bg-white/[0.05] border-white/[0.18]"
-      : "bg-white/[0.02] border-white/[0.08]"
+      ? "bg-blueprint-blue border-white/[0.18] shadow-[var(--shadow-card-hover)]"
+      : "bg-blueprint-blue/80 border-white/[0.10]"
     : state === "active"
     ? "bg-white border-accent-red/30 shadow-[var(--shadow-card-hover)]"
     : "bg-white/80 border-gray-light";
@@ -397,7 +368,7 @@ function DomainCard({
   return (
     <Link
       href={`/${verticalSlug}/${domain.slug}`}
-      className={`block group border p-8 lg:p-10 transition-all duration-500 ${cardBg}`}
+      className={`relative block group border px-8 pt-8 pb-20 lg:px-10 lg:pt-10 lg:pb-24 transition-all duration-500 ${cardBg}`}
     >
       <div className="flex items-center justify-between mb-6">
         <div
@@ -457,6 +428,15 @@ function DomainCard({
           </li>
         ))}
       </ul>
+
+      {/* Explore pill — bottom-right corner. Visual only; the card itself is the Link. */}
+      <span
+        aria-hidden
+        className="absolute bottom-6 right-6 lg:bottom-8 lg:right-8 inline-flex items-center gap-1.5 bg-accent-red text-white font-[family-name:var(--font-jetbrains)] text-[10px] uppercase tracking-[1.5px] px-3 py-1.5 group-hover:bg-[#c8161d] group-hover:translate-x-0.5 transition-all duration-200"
+      >
+        Explore
+        <span aria-hidden>→</span>
+      </span>
     </Link>
   );
 }

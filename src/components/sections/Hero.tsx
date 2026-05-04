@@ -182,7 +182,7 @@ export function Hero() {
           <h1
             data-animate
             data-animate-index="0"
-            className="animate-on-scroll font-light leading-[1.1] tracking-[-1.5px] text-white w-full"
+            className="animate-on-scroll font-bold leading-[1.1] tracking-[-0.5px] text-white w-full"
             style={{
               fontFamily: "var(--font-primary)",
               fontSize: "clamp(36px, 5vw, 72px)",
@@ -293,7 +293,7 @@ export function Hero() {
         <div className="relative z-40 mx-auto max-w-[var(--content-max)] w-full flex flex-col items-center text-center">
           <h1
             ref={headingRef}
-            className="font-light leading-[1.1] tracking-[-1.5px] text-white w-full"
+            className="font-bold leading-[1.1] tracking-[-0.5px] text-white w-full"
             style={{
               fontFamily: "var(--font-primary)",
               fontSize: "clamp(36px, 5vw, 72px)",

@@ -105,28 +105,28 @@ export const domainPages: DomainPageData[] = [
             title: "National Registries system and API gateway implementation",
             description:
               "End-to-end delivery of a country's national registries and data-exchange backbone, with X-Road / Pub-Sub messaging and API gateway built in. From reference architecture to certificate authority, central server, and first-mile ministry integrations — built on proven open stacks so the state never sits on a vendor-locked core.",
-            image: "/images/services/govtech-data/national-data-exchange-illustration-v2.webp",
+            image: "/images/services/govtech-data/national-registries-api-gateway-illustration.webp",
           },
           {
             slug: "api-gateway",
             title: "API gateway and registry design",
             description:
               "Government-grade API gateway with access control, quota, observability, plus a public API registry so partner institutions can discover and consume data responsibly.",
-            image: "/images/services/govtech-data/api-gateway-illustration-v2.webp",
+            image: "/images/services/govtech-data/api-gateway-illustration.webp",
           },
           {
             slug: "regional-platform",
             title: "Regional data-sharing platform architecture",
             description:
               "Multi-country platform design for regional bodies (e.g. ICGLR) where 10+ member states must share data under shared governance and technical rules.",
-            image: "/images/services/govtech-data/regional-platform-illustration-v2.webp",
+            image: "/images/services/govtech-data/regional-platform-illustration.webp",
           },
           {
             slug: "software-integration",
             title: "Software integration",
             description:
               "Hands-on integration of public-sector systems — line-ministry applications, legacy databases, and modern APIs — connected through the national data-exchange layer with full operator handover.",
-            image: "/images/services/govtech-data/software-integration-illustration-v2.webp",
+            image: "/images/services/govtech-data/software-integration-illustration.webp",
           },
         ],
       },
@@ -152,14 +152,14 @@ export const domainPages: DomainPageData[] = [
             title: "Workshop: Data Governance for public institutions",
             description:
               "Structured workshop for ministry leadership, legal teams, and digital agency staff. Covers governance frameworks, accountability roles, consent regimes, and how to embed data-protection rules into day-to-day institutional practice.",
-            image: "/images/services/govtech-data/training-data-governance-illustration-v2.webp",
+            image: "/images/services/govtech-data/training-data-governance-illustration.webp",
           },
           {
             slug: "training-interop-strategies",
             title: "Workshop: Interoperability Strategies for Public Institutions",
             description:
               "Non-technical workshop for policymakers and ministry leadership. Builds shared vocabulary on GovStack, X-Road and Pub-Sub patterns, so decisions about data-sharing initiatives are made on substance rather than on acronyms.",
-            image: "/images/services/govtech-data/training-interop-strategies-illustration-v2.webp",
+            image: "/images/services/govtech-data/training-interop-strategies-illustration.webp",
           },
         ],
       },
