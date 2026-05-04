@@ -95,7 +95,9 @@ export function DomainPageView({ vertical, domain }: DomainPageViewProps) {
       <ScrollProgressRail sections={railSections} />
       <main>
         <DomainHero
-          title={`${page.title} — ${page.tagline}`}
+          title={`${page.title.toUpperCase()} for ${
+            vertical === "govtech" ? "GOVERNMENT" : "INDUSTRIES"
+          }`}
           description={page.description}
           icon={Icon}
           parentVerticalName={page.parentVertical}

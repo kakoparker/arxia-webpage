@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    formats: ["image/avif", "image/webp"],
+    // WebP only — AVIF's denoiser strips the subtle blueprint-grid texture
+    // baked into our canonical paper surfaces, breaking the brand standard.
+    // WebP encodes at higher fidelity for the same target quality.
+    formats: ["image/webp"],
     // SVGs in /public/logos/clients are vendored, statically known files
     // (Wikimedia Commons sources). CSP blocks any script execution at the
     // browser layer; this only enables next/image to optimize them.

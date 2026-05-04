@@ -195,42 +195,42 @@ export const domainPages: DomainPageData[] = [
             title: "e-Government strategies and roadmaps",
             description:
               "National digitalization strategies translated into actionable roadmaps — sequencing, budget, governance, and institutional ownership so the strategy doesn't sit on a shelf.",
-            image: "/images/services/govtech-process/egov-strategy-illustration.webp",
+            image: "/images/services/govtech-process/egov-strategy-illustration-v2.webp",
           },
           {
             slug: "life-events-redesign",
             title: "Life-events and citizen-service redesign",
             description:
               "We redesign how citizens experience government moments — birth, business registration, retirement — by rebuilding the services behind them end-to-end.",
-            image: "/images/services/govtech-process/life-events-redesign-illustration.webp",
+            image: "/images/services/govtech-process/life-events-redesign-illustration-v2.webp",
           },
           {
             slug: "bpmn-process-design",
             title: "Process design and optimization (BPMN 2.0)",
             description:
               "BPMN 2.0 process modeling for public services — with formal notation, stakeholder walkthroughs, and executable pilots on leading workflow engines.",
-            image: "/images/services/govtech-process/bpmn-process-design-illustration.webp",
+            image: "/images/services/govtech-process/bpmn-process-design-illustration-v2.webp",
           },
           {
             slug: "eprocurement-strategy",
             title: "e-Procurement strategy, standards and regulatory alignment",
             description:
               "National procurement strategy work — from regulatory alignment and standards adoption to change-management design for procurement authorities.",
-            image: "/images/services/govtech-process/eprocurement-strategy-illustration.webp",
+            image: "/images/services/govtech-process/eprocurement-strategy-illustration-v2.webp",
           },
           {
             slug: "einvoicing-advisory",
             title: "e-Invoicing strategy and tax-compliance advisory",
             description:
               "Electronic invoicing strategies that stay compliant with local tax law and align with emerging regional and international reporting standards.",
-            image: "/images/services/govtech-process/einvoicing-advisory-illustration.webp",
+            image: "/images/services/govtech-process/einvoicing-advisory-illustration-v2.webp",
           },
           {
             slug: "portal-standardization",
             title: "Web-portal standardization and multi-tenant architecture",
             description:
               "Design systems, accessibility audits (WCAG AA as a floor, not a nice-to-have), and multi-tenant portal architectures that let hundreds of government sites share one operational backbone with per-institution autonomy and central governance.",
-            image: "/images/services/govtech-process/portal-standardization-illustration.webp",
+            image: "/images/services/govtech-process/portal-standardization-illustration-v2.webp",
           },
         ],
       },
@@ -284,14 +284,14 @@ export const domainPages: DomainPageData[] = [
             title: "ProcessPlayer",
             description:
               "Full-lifecycle public procurement platform — planning, execution, framework agreements, and contract management. 50+ organizations, 30,000+ references, SaaS and on-premise.",
-            image: "/images/services/govtech-process/processplayer-illustration.webp",
+            image: "/images/services/govtech-process/processplayer-illustration-v2.webp",
           },
           {
             slug: "arxia-portal-framework",
-            title: "Arxia Portal Framework",
+            title: "Standardized Government Portals",
             description:
               "Multi-tenant, WCAG-compliant government portal stack on TYPO3 and Drupal. Powers 350+ sites in Rwanda and is built to expand to other administrations without ground-up rewrites.",
-            image: "/images/services/govtech-process/arxia-portal-framework-illustration.webp",
+            image: "/images/services/govtech-process/arxia-portal-framework-illustration-v2.webp",
           },
         ],
       },
@@ -307,8 +307,15 @@ export const domainPages: DomainPageData[] = [
             image: "/images/services/govtech-process/bpmn-coaching-illustration-v2.webp",
           },
           {
+            slug: "training-typo3",
+            title: "TYPO3 Technical Training for the Public Sector for Standardized Government Portals",
+            description:
+              "Hands-on TYPO3 training for in-house government technical teams — installation, multi-tenant configuration, content modelling, accessibility (WCAG), and long-term maintenance of the portal stack that powers Standardized Government Portals.",
+            image: "/images/services/govtech-process/training-typo3-illustration-v2.webp",
+          },
+          {
             slug: "ecosystem-capacity",
-            title: "Ecosystem capacity building and internationalization",
+            title: "Ecosystem Internationalization and Value Proposition",
             description:
               "Programs that equip local tech ecosystems to deliver DPI work themselves and compete internationally — from train-the-trainer to export readiness.",
             image: "/images/services/govtech-process/ecosystem-capacity-illustration-v2.webp",
