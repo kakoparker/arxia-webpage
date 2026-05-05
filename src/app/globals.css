@@ -340,32 +340,6 @@ html {
    ============================================ */
 
 /* ============================================
-   SPOTLIGHT BORDER CARDS (News section)
-   ============================================ */
-.spotlight-card {
-  position: relative;
-}
-
-.spotlight-card::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  background: radial-gradient(
-    300px circle at var(--mx, -1000px) var(--my, -1000px),
-    rgba(237, 28, 36, 0.12),
-    transparent 60%
-  );
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.spotlight-card-group:hover .spotlight-card::before {
-  opacity: 1;
-}
-
-/* ============================================
    MAP DOTS
    ============================================ */
 /* Regular dots are static — no animation */
