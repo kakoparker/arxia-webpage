@@ -122,11 +122,14 @@ function Chapter({
       if (!useEnhanced || !pinRef.current) return;
 
       const vh = window.innerHeight;
-      const pinDistance = (numCards - 1) * vh * 0.85;
+      // One viewport of scroll per card transition — gives the wheel a
+      // predictable "one swipe = one card" rhythm. Snap rounds any partial
+      // scroll to the nearest discrete card.
+      const pinDistance = (numCards - 1) * vh;
 
       ScrollTrigger.create({
         trigger: pinRef.current,
-        start: "top top+=72",
+        start: "top top",
         end: `+=${pinDistance}`,
         pin: true,
         pinSpacing: true,
@@ -136,9 +139,11 @@ function Chapter({
             const step = 1 / (numCards - 1);
             return Math.round(value / step) * step;
           },
-          duration: { min: 0.25, max: 0.55 },
+          duration: { min: 0.3, max: 0.6 },
+          delay: 0.05,
           ease: "power2.inOut",
           directional: false,
+          inertia: false,
         },
         onUpdate: (self) => {
           const idx = Math.min(
@@ -241,7 +246,7 @@ function Chapter({
         className={`${bgClass} relative`}
         style={{
           display: "flex",
-          minHeight: "calc(100vh - 72px)",
+          minHeight: "100vh",
           paddingTop: "80px",
           paddingBottom: "48px",
           paddingLeft: "max(10%, 24px)",
@@ -303,20 +308,19 @@ function Chapter({
                 </div>
               </div>
 
-              {/* Right column: card swap area */}
+              {/* Right column: card swap area. Cross-fade only — no
+                  translateY offset (the vertical shift between cards
+                  read as a "tilt" against the snap motion). Tighter
+                  duration so the swap settles within snap's window. */}
               <div className="relative" style={{ minHeight: "440px" }}>
                 {vertical.domains.map((d, i) => {
                   const isActive = i === activeIndex;
-                  const offset = i - activeIndex;
                   return (
                     <div
                       key={d.slug}
-                      className="absolute inset-0 transition-all duration-500 ease-out"
+                      className="absolute inset-0 transition-opacity duration-200 ease-out"
                       style={{
                         opacity: isActive ? 1 : 0,
-                        transform: `translateY(${offset * 24}px) scale(${
-                          isActive ? 1 : 0.97
-                        })`,
                         pointerEvents: isActive ? "auto" : "none",
                         zIndex: isActive ? 2 : 1,
                       }}

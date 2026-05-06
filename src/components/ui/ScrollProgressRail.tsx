@@ -103,6 +103,7 @@ export function ScrollProgressRail({
             className="group relative flex items-center justify-end w-4 h-4 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-red focus-visible:outline-offset-4"
             aria-label={`Jump to ${s.label}`}
             aria-current={isActive ? "true" : undefined}
+            suppressHydrationWarning
           >
             {/* Label — slides in on hover or when active */}
             <span
