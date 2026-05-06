@@ -4,7 +4,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
 import { LogoCarousel } from "@/components/sections/LogoCarousel";
-import { Fork } from "@/components/sections/Fork";
+import { Introduction } from "@/components/sections/Introduction";
 import { ScrollProgressRail } from "@/components/ui/ScrollProgressRail";
 
 // Below-the-fold sections — code-split for faster TTI. ssr:true keeps
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
 };
 
 const homeRailSections = [
-  { id: "fork", label: "Overview" },
+  { id: "intro", label: "About" },
   { id: "govtech", label: "Govtech" },
   { id: "industries", label: "Industries" },
   { id: "presence", label: "Presence" },
@@ -60,8 +60,11 @@ export default function Home() {
         {/* 2 — Clients */}
         <LogoCarousel />
 
-        {/* 3 — The two verticals (brief intro) */}
-        <Fork />
+        {/* 3 — Who we are. Pinned section: read intro → curtains close →
+            curtains part to reveal the Govtech | Industries split. The Fork
+            visual lives inside this section's reveal layer, so unpinning
+            transitions straight into the verticals below. */}
+        <Introduction />
 
         {/* 4 — Verticals: NOT outer-snap targets. Each one already pins
             internally (one scroll = one card). Adding an outer CSS snap on

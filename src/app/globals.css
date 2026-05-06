@@ -102,12 +102,12 @@ body {
 }
 
 /* ============================================
-   SCROLL SNAP — section-by-section after the fork
+   SCROLL SNAP — section-by-section after the verticals
    ============================================
-   `proximity` (not `mandatory`) so:
-     • Hero / Logos / Fork keep their free-scroll feel
-     • only kicks in as the user nears a snap target
-     • respects scroll-padding-top so sections land below the fixed navbar
+   `proximity` so it kicks in lazily (only when the user is already
+   close to a target). The verticals (govtech / industries) intentionally
+   carry no `.snap-section` — their internal GSAP pin+snap drives per-card
+   landings and we don't want browser CSS snap competing there.
 */
 html {
   scroll-snap-type: y proximity;
