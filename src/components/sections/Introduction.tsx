@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { useGSAP } from "@gsap/react";
 import { gsap, ScrollTrigger } from "@/hooks/useGsapScrollTrigger";
 
@@ -138,11 +139,13 @@ export function Introduction() {
         className="relative min-h-screen overflow-hidden"
         style={{ background: "var(--blueprint-dark)" }}
       >
-        {/* z-10: Govtech | Industries split — sits underneath everything,
-            revealed when the doors slide apart. */}
+        {/* z-10: Govtech | Industries split — sits underneath the doors,
+            revealed when they slide apart. `pointer-events-none` lets the
+            doors (z-30) absorb early clicks; the two CTA links opt back
+            into pointer events via `pointer-events-auto`. We do NOT
+            aria-hide this block — the CTAs are real nav. */}
         <div
           className="absolute inset-0 z-10 grid grid-cols-1 lg:grid-cols-2 pointer-events-none"
-          aria-hidden="true"
         >
           {/* Left — Govtech (dark) */}
           <div className="blueprint-grid-blue relative">
@@ -173,10 +176,13 @@ export function Introduction() {
                 Digital public infrastructure for governments and international
                 organizations
               </p>
-              <span className="inline-flex items-center gap-3 px-5 py-2.5 font-[family-name:var(--font-inter)] text-[13px] font-semibold tracking-[0.3px] border border-white/60 text-white">
+              <Link
+                href="/govtech"
+                className="pointer-events-auto inline-flex items-center gap-3 px-5 py-2.5 font-[family-name:var(--font-inter)] text-[13px] font-semibold tracking-[0.3px] border border-white/60 text-white hover:bg-white hover:text-blueprint-blue focus-visible:bg-white focus-visible:text-blueprint-blue focus-visible:outline-none transition-colors duration-200"
+              >
                 Explore Govtech
                 <span aria-hidden>→</span>
-              </span>
+              </Link>
             </div>
           </div>
 
@@ -209,10 +215,13 @@ export function Introduction() {
                 Enterprise transformation for mining, finance, retail,
                 universities, and beyond
               </p>
-              <span className="inline-flex items-center gap-3 px-5 py-2.5 font-[family-name:var(--font-inter)] text-[13px] font-semibold tracking-[0.3px] border border-blueprint-blue bg-blueprint-blue text-white">
+              <Link
+                href="/industries"
+                className="pointer-events-auto inline-flex items-center gap-3 px-5 py-2.5 font-[family-name:var(--font-inter)] text-[13px] font-semibold tracking-[0.3px] border border-blueprint-blue bg-blueprint-blue text-white hover:bg-blueprint-dark hover:border-blueprint-dark focus-visible:bg-blueprint-dark focus-visible:border-blueprint-dark focus-visible:outline-none transition-colors duration-200"
+              >
                 Explore Industries
                 <span aria-hidden>→</span>
-              </span>
+              </Link>
             </div>
           </div>
         </div>
