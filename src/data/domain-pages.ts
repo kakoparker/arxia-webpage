@@ -355,30 +355,35 @@ export const domainPages: DomainPageData[] = [
             title: "AI readiness assessments for government",
             description:
               "Diagnostic assessments of where your institution stands on data, skills, infrastructure, and legal readiness — and what to fix first to absorb AI responsibly.",
+            image: "/images/services/govtech-intelligence/ai-readiness-gov-illustration.webp",
           },
           {
             slug: "agentic-state-strategy",
             title: "Agentic State strategy and architecture",
             description:
               "Strategy and reference architectures for a public sector where AI agents handle citizen requests and inter-institutional coordination — not a chatbot bolted on, but a redesigned state.",
+            image: "/images/services/govtech-intelligence/agentic-state-strategy-illustration.webp",
           },
           {
             slug: "public-ai-governance",
             title: "AI governance frameworks for public sector",
             description:
               "AI governance frameworks aligned with ISO, EU AI Act, and emerging national rules — adapted for ministries, agencies, and international organizations.",
+            image: "/images/services/govtech-intelligence/public-ai-governance-illustration.webp",
           },
           {
             slug: "digital-maturity",
             title: "Digital maturity assessments",
             description:
               "Structured diagnostics that rank your institution's digital maturity and produce a defendable investment plan, not just a report.",
+            image: "/images/services/govtech-intelligence/digital-maturity-illustration.webp",
           },
           {
             slug: "responsible-ai-policy",
             title: "Responsible AI policy and procurement advisory",
             description:
               "Advisory on AI procurement policies, standard contract clauses, and transparency requirements — so your next AI tender starts from a stronger position.",
+            image: "/images/services/govtech-intelligence/responsible-ai-policy-illustration.webp",
           },
         ],
       },
