@@ -266,13 +266,6 @@ export const domainPages: DomainPageData[] = [
               "Government portals on TYPO3 and Drupal — multi-tenant, accessible, secure, and ready to scale from a single ministry to hundreds of institutions.",
             image: "/images/services/govtech-process/government-portals-illustration-v2.webp",
           },
-          {
-            slug: "govstack-adoption",
-            title: "GovStack adoption programs",
-            description:
-              "Country-level GovStack adoption — architecture alignment, building-block selection, pilots, and institutional readiness.",
-            image: "/images/services/govtech-process/govstack-adoption-illustration-v2.webp",
-          },
         ],
       },
       {
@@ -319,6 +312,13 @@ export const domainPages: DomainPageData[] = [
             description:
               "Programs that equip local tech ecosystems to deliver DPI work themselves and compete internationally — from train-the-trainer to export readiness.",
             image: "/images/services/govtech-process/ecosystem-capacity-illustration-v2.webp",
+          },
+          {
+            slug: "govstack-adoption",
+            title: "GovStack adoption programs",
+            description:
+              "Country-level GovStack adoption — architecture alignment, building-block selection, pilots, and institutional readiness.",
+            image: "/images/services/govtech-process/govstack-adoption-illustration-v2.webp",
           },
         ],
       },
