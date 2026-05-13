@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Card } from "@/components/ui/Card";
@@ -8,14 +10,16 @@ import { Tag } from "@/components/ui/Tag";
 import { newsArticles } from "@/data/news";
 
 export const metadata: Metadata = {
-  title: "News – Arxia",
+  title: "News",
   description:
     "Latest news, case studies, and updates from Arxia — digital transformation, Digital Public Infrastructure, and Agentic AI in action.",
 };
 
 export default function NewsIndexPage() {
   return (
-    <main>
+    <>
+      <Navbar />
+      <main id="main">
       <SectionContainer mode="ultra-light">
         <div className="mb-16">
           <SectionHeader
@@ -59,6 +63,8 @@ export default function NewsIndexPage() {
           ))}
         </div>
       </SectionContainer>
-    </main>
+      </main>
+      <Footer />
+    </>
   );
 }

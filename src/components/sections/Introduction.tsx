@@ -2,11 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
-import {
-  BlueprintGridSVG,
-  type BlueprintGridSVGHandle,
-} from "@/components/ui/BlueprintGridSVG";
-import { useAnimationFrame } from "@/hooks/useAnimationFrame";
 import { gsap, ScrollTrigger } from "@/hooks/useGsapScrollTrigger";
 
 gsap.registerPlugin(useGSAP);
@@ -14,8 +9,6 @@ gsap.registerPlugin(useGSAP);
 export function Introduction() {
   const sectionRef = useRef<HTMLElement>(null);
   const pinWrapperRef = useRef<HTMLDivElement>(null);
-  const gridRef = useRef<BlueprintGridSVGHandle>(null);
-  const offsetRef = useRef({ x: 0, y: 0 });
 
   const contentRef = useRef<HTMLDivElement>(null);
   const leftDoorRef = useRef<HTMLDivElement>(null);
@@ -45,13 +38,6 @@ export function Introduction() {
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
   }, []);
-
-  useAnimationFrame(() => {
-    if (isMobile) return;
-    offsetRef.current.x = (offsetRef.current.x + 0.042) % 100;
-    offsetRef.current.y = (offsetRef.current.y + 0.042) % 100;
-    gridRef.current?.setOffset(offsetRef.current.x, offsetRef.current.y);
-  });
 
   // Doors START closed (covering the whole viewport, with the intro paragraph
   // on top of them). On scroll: paragraph fades, then the doors slide apart
@@ -232,8 +218,9 @@ export function Introduction() {
         </div>
 
         {/* z-30: Doors — start fully closed (covering the split). They slide
-            apart on scroll to reveal the Govtech | Industries split. The blueprint
-            grid drifts inside the closed doors so the surface feels alive. */}
+            apart on scroll to reveal the Govtech | Industries split. Solid
+            blueprint-dark on both sides; no animated grid (the surface stays
+            calm so the intro copy is the only point of focus). */}
         <div
           ref={leftDoorRef}
           className="absolute top-0 bottom-0 left-0 z-30 overflow-hidden"
@@ -243,15 +230,7 @@ export function Introduction() {
             boxShadow: "inset -4px 0 20px rgba(0,0,0,0.3)",
           }}
           aria-hidden="true"
-        >
-          <div className="absolute inset-0">
-            <BlueprintGridSVG
-              ref={gridRef}
-              minorOpacity={0.03}
-              majorOpacity={0.06}
-            />
-          </div>
-        </div>
+        />
 
         <div
           ref={rightDoorRef}

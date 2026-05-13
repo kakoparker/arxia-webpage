@@ -5,13 +5,59 @@ import { ParticleButton } from "@/components/ui/ParticleButton";
 import { ArrowRight } from "lucide-react";
 import { useState, type FormEvent } from "react";
 
-export function CallToAction() {
-  const [submitted, setSubmitted] = useState(false);
+type SubmitState =
+  | { status: "idle" }
+  | { status: "pending" }
+  | { status: "error"; message: string }
+  | { status: "success" };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+export function CallToAction() {
+  const [state, setState] = useState<SubmitState>({ status: "idle" });
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    // Honeypot — bots fill every input; real users never see this field.
+    const honeypot = (data.get("website") ?? "").toString();
+    const payload = {
+      name: (data.get("name") ?? "").toString().trim(),
+      email: (data.get("email") ?? "").toString().trim(),
+      comment: (data.get("comment") ?? "").toString().trim(),
+      website: honeypot,
+    };
+
+    setState({ status: "pending" });
+    try {
+      const r = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const json = (await r.json().catch(() => ({}))) as {
+        ok?: boolean;
+        error?: string;
+      };
+      if (r.ok && json.ok) {
+        setState({ status: "success" });
+        form.reset();
+        return;
+      }
+      setState({
+        status: "error",
+        message: json.error ?? "Something went wrong. Please try again.",
+      });
+    } catch {
+      setState({
+        status: "error",
+        message: "Couldn't reach the server. Please try again.",
+      });
+    }
   };
+
+  const submitted = state.status === "success";
+  const pending = state.status === "pending";
+  const errorMessage = state.status === "error" ? state.message : null;
 
   return (
     <SectionContainer mode="dark" showCornerMarks id="contact">
@@ -38,7 +84,30 @@ export function CallToAction() {
               aria-label="Contact form"
               className="space-y-4"
               style={{ maxWidth: "480px" }}
+              noValidate
             >
+              {/* Honeypot — visually hidden, autofill-suppressed. Bots fill it;
+                  the API drops the submission silently when it's non-empty. */}
+              <div
+                aria-hidden="true"
+                style={{
+                  position: "absolute",
+                  left: "-9999px",
+                  width: "1px",
+                  height: "1px",
+                  overflow: "hidden",
+                }}
+              >
+                <label htmlFor="contact-website">Website</label>
+                <input
+                  id="contact-website"
+                  name="website"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
+
               <div>
                 <label
                   htmlFor="contact-name"
@@ -119,11 +188,23 @@ export function CallToAction() {
                 />
               </div>
 
+              {errorMessage && (
+                <p
+                  role="alert"
+                  className="font-[family-name:var(--font-inter)] text-accent-red text-[14px]"
+                >
+                  {errorMessage}
+                </p>
+              )}
+
               <ParticleButton
                 type="submit"
-                className="inline-flex items-center justify-center font-[family-name:var(--font-inter)] font-semibold text-[15px] tracking-[0.3px] px-9 py-3.5 min-h-12 rounded-none transition-all duration-200 cursor-pointer bg-white text-blueprint-blue hover:bg-gray-lightest hover:-translate-y-px focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                disabled={pending}
+                aria-busy={pending}
+                className="inline-flex items-center justify-center font-[family-name:var(--font-inter)] font-semibold text-[15px] tracking-[0.3px] px-9 py-3.5 min-h-12 rounded-none transition-all duration-200 cursor-pointer bg-white text-blueprint-blue hover:bg-gray-lightest hover:-translate-y-px focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
               >
-                Send Message <ArrowRight className="ml-2 h-4 w-4" />
+                {pending ? "Sending…" : "Send Message"}
+                {!pending && <ArrowRight className="ml-2 h-4 w-4" />}
               </ParticleButton>
             </form>
           )}

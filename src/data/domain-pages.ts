@@ -64,7 +64,7 @@ export const domainPages: DomainPageData[] = [
     iconName: "Database",
     description:
       "We architect the data layer of digital public infrastructure — interoperability, governance, and exchange frameworks that let institutions share information securely across departments, borders, and building blocks.",
-    metaTitle: "Govtech · Data — Interoperability & Data Governance — Arxia",
+    metaTitle: "Govtech · Data — Interoperability & Data Governance",
     metaDescription:
       "Data interoperability, governance, semantic standards, and cross-border data exchange systems for the public sector. Built on GovStack, X-Road, and open frameworks.",
     parentVertical: "Arxia Govtech",
@@ -181,7 +181,7 @@ export const domainPages: DomainPageData[] = [
     iconName: "Workflow",
     description:
       "BPMN-driven service design, end-to-end procurement and invoicing, and standardized government portals — modernizing how the state delivers value to citizens.",
-    metaTitle: "Govtech · Process — Service Design, e-Procurement & Portals — Arxia",
+    metaTitle: "Govtech · Process — Service Design, e-Procurement & Portals",
     metaDescription:
       "e-Government strategy, BPMN process design, e-procurement, e-invoicing, and standardized government portals. 20+ years across 20+ countries.",
     parentVertical: "Arxia Govtech",
@@ -341,7 +341,7 @@ export const domainPages: DomainPageData[] = [
     iconName: "Brain",
     description:
       "AI agents, intelligent automation, and AI-powered platforms that make the public sector proactive — from citizen-facing assistants to inter-institutional workflows.",
-    metaTitle: "Govtech · Intelligence — Agentic State & Public-Sector AI — Arxia",
+    metaTitle: "Govtech · Intelligence — Agentic State & Public-Sector AI",
     metaDescription:
       "AI agents, automated workflows, digital maturity tooling, and AI adoption programs for governments and international organizations.",
     parentVertical: "Arxia Govtech",
@@ -477,7 +477,7 @@ export const domainPages: DomainPageData[] = [
     iconName: "Database",
     description:
       "Data governance, quality, compliance, and integration frameworks that turn fragmented enterprise data into a durable competitive asset.",
-    metaTitle: "Industries · Data — Enterprise Data Governance — Arxia",
+    metaTitle: "Industries · Data — Enterprise Data Governance",
     metaDescription:
       "Enterprise data governance, master data management, GDPR compliance, data quality, and industry-specific data-sharing standards for regulated sectors.",
     parentVertical: "Arxia Industries",
@@ -603,7 +603,7 @@ export const domainPages: DomainPageData[] = [
     iconName: "Workflow",
     description:
       "Process digitalization, workflow automation, and system modernization — delivering measurable efficiency gains across complex enterprise landscapes.",
-    metaTitle: "Industries · Process — Enterprise Transformation — Arxia",
+    metaTitle: "Industries · Process — Enterprise Transformation",
     metaDescription:
       "Digital transformation strategy, process reengineering, system modernization, enterprise portals, and internationalization for industry.",
     parentVertical: "Arxia Industries",
@@ -729,7 +729,7 @@ export const domainPages: DomainPageData[] = [
     iconName: "Brain",
     description:
       "AI agents, acceleration programs, and governance frameworks that help enterprises adopt AI responsibly and at scale — with measurable ROI.",
-    metaTitle: "Industries · Intelligence — Enterprise AI — Arxia",
+    metaTitle: "Industries · Intelligence — Enterprise AI",
     metaDescription:
       "Enterprise AI strategy, governance, agents, automation, and acceleration programs for mining, finance, retail, universities, and beyond.",
     parentVertical: "Arxia Industries",

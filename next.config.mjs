@@ -17,28 +17,42 @@ const nextConfig = {
     root: process.cwd(),
   },
   async redirects() {
-    return [
-      {
-        source: "/domains/e-government",
-        destination: "/domains/digital-transformation",
-        permanent: true,
-      },
-      {
-        source: "/domains/ai",
-        destination: "/domains/agentic-state",
-        permanent: true,
-      },
-      {
-        source: "/domains/web-portals",
-        destination: "/domains/government-portals",
-        permanent: true,
-      },
-      {
-        source: "/domains/ecosystem-building",
-        destination: "/domains/ai-ecosystems",
-        permanent: true,
-      },
-    ];
+    // Canonical URLs are /govtech/[data|process|intelligence] and
+    // /industries/[data|process|intelligence]. Everything that ever lived
+    // under /domains/* — including the matrix slugs that briefly rendered
+    // at /domains/govtech-data etc. — 301s to its closest canonical page.
+    const map = {
+      // Legacy three-vertical scheme
+      "digital-transformation": "/govtech/process",
+      "agentic-state": "/govtech/intelligence",
+      "government-portals": "/govtech/process",
+      "ai-ecosystems": "/govtech/intelligence",
+      "interoperability": "/govtech/data",
+      "e-procurement": "/govtech/process",
+      "e-invoicing": "/govtech/process",
+      "e-government": "/govtech/process",
+      "web-portals": "/govtech/process",
+      "ai": "/govtech/intelligence",
+      "ecosystem-building": "/govtech/process",
+      "capacity-building": "/govtech/process",
+      "internationalization": "/industries/process",
+      "corporate-transformation": "/industries/process",
+      "corporate-ai": "/industries/intelligence",
+      "corporate-data": "/industries/data",
+      // Matrix slugs that briefly rendered under /domains/*
+      "govtech-data": "/govtech/data",
+      "govtech-process": "/govtech/process",
+      "govtech-intelligence": "/govtech/intelligence",
+      "industries-data": "/industries/data",
+      "industries-process": "/industries/process",
+      "industries-intelligence": "/industries/intelligence",
+    };
+
+    return Object.entries(map).map(([from, to]) => ({
+      source: `/domains/${from}`,
+      destination: to,
+      permanent: true,
+    }));
   },
 };
 

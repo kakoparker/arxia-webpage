@@ -73,10 +73,15 @@ export function DomainPageView({ vertical, domain }: DomainPageViewProps) {
   const Icon = iconMap[page.iconName] ?? Database;
   const siblings = verticalData.domains.filter((d) => d.slug !== domain);
 
-  // Sort + filter the page's categories into canonical order, skipping any
-  // category that has no items.
+  // Sort + filter the page's categories into canonical order. Roadmap items
+  // are dropped entirely (no "Coming soon" cards in v1); any category whose
+  // items become empty after filtering is skipped.
   const orderedCategories = CATEGORY_ORDER
-    .map((name) => page.categories.find((c) => c.name === name))
+    .map((name) => {
+      const category = page.categories.find((c) => c.name === name);
+      if (!category) return undefined;
+      return { ...category, items: category.items.filter((i) => !i.isRoadmap) };
+    })
     .filter(
       (c): c is NonNullable<typeof c> => Boolean(c && c.items.length > 0),
     );
@@ -110,8 +115,6 @@ export function DomainPageView({ vertical, domain }: DomainPageViewProps) {
             <DomainCategorySection
               key={category.name}
               category={category}
-              vertical={vertical}
-              domain={domain}
               mode={sectionMode}
             />
           );

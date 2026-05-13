@@ -58,14 +58,14 @@ function Chapter({
   dark: boolean;
   sectionId: string;
 }) {
-  const [isMobile, setIsMobile] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return window.innerWidth < 1024;
-  });
-  const [reducedMotion, setReducedMotion] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  });
+  // SSR/CSR safety: the server has no `window`, so we always render the
+  // non-enhanced (stacked) fallback on the server AND on the first client
+  // render. Once `mounted` flips in useEffect, we re-render with the real
+  // viewport / motion preference. Without this, the server and the client
+  // pick different branches during hydration and React throws.
+  const [mounted, setMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const pinRef = useRef<HTMLDivElement>(null);
   const numCards = vertical.domains.length;
@@ -91,6 +91,7 @@ function Chapter({
     const mql = window.matchMedia("(prefers-reduced-motion: reduce)");
     setReducedMotion(mql.matches);
     checkMobile();
+    setMounted(true);
     window.addEventListener("resize", checkMobile);
     const onMql = () => {
       const next = mql.matches;
@@ -107,7 +108,7 @@ function Chapter({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const useEnhanced = !isMobile && !reducedMotion && numCards > 1;
+  const useEnhanced = mounted && !isMobile && !reducedMotion && numCards > 1;
 
   // Pin + snap: pin the whole chapter while user scrolls through (N-1) viewports
   // of scroll distance. Snap forces clean landings on each card.

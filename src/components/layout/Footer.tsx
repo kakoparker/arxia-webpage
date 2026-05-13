@@ -3,37 +3,25 @@ import { Globe, ExternalLink, Mail, MapPin } from "lucide-react";
 
 const footerLinks = {
   company: [
-    { label: "About Us", href: "#about" },
-    { label: "Portfolio", href: "#portfolio" },
-    { label: "News", href: "#news" },
-    { label: "Careers", href: "#" },
+    { label: "About Us", href: "/#intro" },
+    { label: "Portfolio", href: "/portfolio" },
+    { label: "News", href: "/news" },
   ],
   services: [
     {
-      vertical: "Government",
+      vertical: "Govtech",
       links: [
-        { label: "Digital Transformation", href: "/domains/digital-transformation" },
-        { label: "Agentic State & AI", href: "/domains/agentic-state" },
-        { label: "Interoperability", href: "/domains/interoperability" },
-        { label: "e-Procurement", href: "/domains/e-procurement" },
-        { label: "e-Invoicing", href: "/domains/e-invoicing" },
-        { label: "Gov. Portals", href: "/domains/government-portals" },
+        { label: "Data", href: "/govtech/data" },
+        { label: "Process", href: "/govtech/process" },
+        { label: "Intelligence", href: "/govtech/intelligence" },
       ],
     },
     {
-      vertical: "Ecosystems",
+      vertical: "Industries",
       links: [
-        { label: "AI-Powered Ecosystems", href: "/domains/ai-ecosystems" },
-        { label: "Internationalization", href: "/domains/internationalization" },
-        { label: "Capacity Building", href: "/domains/capacity-building" },
-      ],
-    },
-    {
-      vertical: "Companies",
-      links: [
-        { label: "Digital Transformation", href: "/domains/corporate-transformation" },
-        { label: "Artificial Intelligence", href: "/domains/corporate-ai" },
-        { label: "Data Governance", href: "/domains/corporate-data" },
+        { label: "Data", href: "/industries/data" },
+        { label: "Process", href: "/industries/process" },
+        { label: "Intelligence", href: "/industries/intelligence" },
       ],
     },
   ],
@@ -48,7 +36,7 @@ const socialLinks = [
 export function Footer() {
   return (
     <footer
-      id="contact"
+      role="contentinfo"
       className="blueprint-grid-dark py-[var(--space-8)] px-[var(--margin-page)] max-sm:py-[60px] max-sm:px-6"
     >
       <div className="mx-auto max-w-[var(--content-max)]">
@@ -58,8 +46,8 @@ export function Footer() {
             <Image
               src="/logos/brand/arxia-logo-white.png"
               alt="Arxia"
-              width={120}
-              height={34}
+              width={307}
+              height={114}
               className="h-8 w-auto mb-6"
             />
             <p className="text-gray-medium text-[var(--text-small)] leading-[1.7] max-w-[280px]">
@@ -160,13 +148,13 @@ export function Footer() {
           </p>
           <div className="flex gap-6">
             <a
-              href="#"
+              href="/privacy"
               className="text-gray-medium/60 text-[var(--text-caption)] hover:text-gray-medium transition-colors duration-200"
             >
               Privacy Policy
             </a>
             <a
-              href="#"
+              href="/terms"
               className="text-gray-medium/60 text-[var(--text-caption)] hover:text-gray-medium transition-colors duration-200"
             >
               Terms of Service

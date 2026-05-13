@@ -1,13 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { Compass, Wrench, GraduationCap, Package } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import type { ServiceCategory } from "@/data/domain-pages";
-import type { VerticalSlug, DomainSlug } from "@/data/domains";
 
 const categoryIcons: Record<ServiceCategory["name"], LucideIcon> = {
   Consultancy: Compass,
@@ -25,21 +23,11 @@ const categoryAnnotation: Record<ServiceCategory["name"], string> = {
 
 interface DomainCategorySectionProps {
   category: ServiceCategory;
-  vertical: VerticalSlug;
-  domain: DomainSlug;
   mode: "light" | "ultra-light" | "dark";
 }
 
-/**
- * One category rendered as a full-width section: header (annotation + heading
- * + tagline) followed by a card grid. Each card has a title, short
- * description, and a "Learn more" button that points to the future
- * per-offering route at /{vertical}/{domain}/{item.slug}.
- */
 export function DomainCategorySection({
   category,
-  vertical,
-  domain,
   mode,
 }: DomainCategorySectionProps) {
   const ref = useScrollAnimation();
@@ -61,7 +49,6 @@ export function DomainCategorySection({
       : "hover:border-accent-red/40",
     cardTitle: isDark ? "text-white" : "text-blueprint-blue",
     cardBody: isDark ? "text-gray-light" : "text-gray-dark",
-    cardCtaIdle: isDark ? "text-accent-red" : "text-accent-red/85",
     imgBorder: isDark ? "border-white/10" : "border-gray-light",
   };
 
@@ -172,22 +159,9 @@ export function DomainCategorySection({
                   }}
                 >
                   {item.title}
-                  {item.isRoadmap && (
-                    <span
-                      className="ml-2 inline-block px-1.5 py-0.5 border border-accent-red/30 text-accent-red/70 align-middle"
-                      style={{
-                        fontFamily: "var(--font-mono)",
-                        fontSize: "8px",
-                        letterSpacing: "1px",
-                        textTransform: "uppercase",
-                      }}
-                    >
-                      Roadmap
-                    </span>
-                  )}
                 </h3>
                 <p
-                  className={`${tone.cardBody} flex-1 mb-6`}
+                  className={`${tone.cardBody} flex-1`}
                   style={{
                     fontFamily: "var(--font-primary)",
                     fontSize: "14.5px",
@@ -196,27 +170,6 @@ export function DomainCategorySection({
                 >
                   {item.description}
                 </p>
-                {item.isRoadmap ? (
-                  <span
-                    className="inline-flex items-center gap-2 font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2px] text-gray-medium cursor-default"
-                    aria-disabled
-                  >
-                    Coming soon
-                  </span>
-                ) : (
-                  <Link
-                    href={`/${vertical}/${domain}/${item.slug}`}
-                    className={`inline-flex items-center gap-2 font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2px] ${tone.cardCtaIdle} hover:text-accent-red transition-colors self-start`}
-                  >
-                    Learn more
-                    <span
-                      aria-hidden
-                      className="transition-transform duration-200 group-hover:translate-x-1"
-                    >
-                      →
-                    </span>
-                  </Link>
-                )}
               </div>
             </article>
           ))}

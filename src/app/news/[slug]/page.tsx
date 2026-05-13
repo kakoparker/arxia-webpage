@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { Tag } from "@/components/ui/Tag";
 import { newsArticles, getNewsArticle } from "@/data/news";
@@ -19,10 +21,10 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const article = getNewsArticle(slug);
-  if (!article) return { title: "Not Found – Arxia" };
+  if (!article) return { title: "Not Found" };
 
   return {
-    title: `${article.title} – Arxia`,
+    title: article.title,
     description: article.metaDescription,
     openGraph: {
       title: article.title,
@@ -40,7 +42,9 @@ export default async function NewsArticlePage({ params }: PageProps) {
   if (!article) notFound();
 
   return (
-    <main>
+    <>
+      <Navbar />
+      <main id="main">
       <SectionContainer mode="light">
         <article className="mx-auto" style={{ maxWidth: "780px" }}>
           <Link
@@ -165,6 +169,8 @@ export default async function NewsArticlePage({ params }: PageProps) {
           </div>
         </article>
       </SectionContainer>
-    </main>
+      </main>
+      <Footer />
+    </>
   );
 }

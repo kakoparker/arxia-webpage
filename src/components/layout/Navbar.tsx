@@ -63,8 +63,8 @@ export function Navbar() {
           <Image
             src="/logos/brand/arxia-logo-white.png"
             alt="Arxia"
-            width={100}
-            height={28}
+            width={307}
+            height={114}
             className="h-7 w-auto"
             priority
           />
