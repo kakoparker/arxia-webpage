@@ -411,12 +411,6 @@ export const domainPages: DomainPageData[] = [
               "Platforms that let your own teams launch new government services and AI agents in days, not quarters — with governance and auditability built in.",
           },
           {
-            slug: "ai-ecosystems",
-            title: "AI-Powered Ecosystem platforms",
-            description:
-              "AI-driven matchmaking, resource sharing, and cross-border collaboration platforms for national and regional tech ecosystems.",
-          },
-          {
             slug: "ai-acceleration-gov",
             title: "AI Acceleration Program for Government",
             description:
@@ -432,31 +426,21 @@ export const domainPages: DomainPageData[] = [
       },
       {
         name: "Products",
-        tagline: "Platforms and agents we build and evolve.",
+        tagline: "Platforms we own and evolve.",
         items: [
           {
-            slug: "sovereign-ai-eservices",
-            title: "Sovereign AI-powered e-Services",
+            slug: "ai-governance-platform-gov",
+            title: "AI Governance Platform for Governments",
             description:
-              "BPMN-based low-code platform for launching services and AI agents on sovereign, open-source stacks — with no hidden dependency on foreign-hosted AI providers.",
+              "Is your organization moving towards AI implementations and an agentic state? Then you need strong governance. Our platform monitors compliance, security vulnerabilities, and risk assessment across every AI system in use inside your organization.",
+            image: "/images/services/govtech-intelligence/ai-governance-platform-gov-illustration.webp",
           },
           {
-            slug: "sovereign-ai-workflows-gov",
-            title: "Sovereign AI Workflows",
+            slug: "holonn",
+            title: "Holonn — AI matchmaking and community platform for ecosystems",
             description:
-              "Secured, open-source AI workflow engine for government operations — deployable on national cloud or on-premise with full data residency.",
-          },
-          {
-            slug: "ai-agents-public",
-            title: "AI Agents for the Public Sector",
-            description:
-              "Prebuilt agent templates for the most common citizen-request and inter-institutional coordination patterns. Configurable, auditable, and deployable in weeks.",
-          },
-          {
-            slug: "digital-maturity-tool",
-            title: "Digital Maturity Tool",
-            description:
-              "AI-based digital maturity assessment and strategy development platform used by national and sub-national administrations to benchmark and plan.",
+              "Holonn lets business-support organizations and ecosystems — clusters, hubs, associations, and accelerators — aggregate their members' offerings using AI, creating interactive marketplaces that match companies with investors, clients, and partners.",
+            image: "/images/services/govtech-intelligence/holonn-illustration.webp",
           },
         ],
       },
