@@ -2,7 +2,16 @@
 
 The arxia.com marketing site — Next.js 16 app router, TypeScript, Tailwind CSS 4, GSAP for the pinned-scroll animations, Resend for the contact form, Plausible for analytics.
 
-For the brand system, design tokens, typography rules, and section-by-section content spec, see [CLAUDE.md](./CLAUDE.md).
+## Documentation map
+
+New to this repo? Read in this order:
+
+| Doc | What it covers |
+| --- | --- |
+| **This README** | Setup, scripts, env vars, deployment, content editing, pre-launch checklist |
+| [`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md) | How it fits together: the data-driven content model, routing, animation hooks, and "how do I add X" recipes. **Start here for your first code change.** |
+| [`docs/IMAGE-PIPELINE.md`](./docs/IMAGE-PIPELINE.md) | How every illustration is generated and post-processed. Required reading before touching `scripts/` or adding/regenerating card artwork. |
+| [`CLAUDE.md`](./CLAUDE.md) | The brand system: design tokens, colour rules, typography, and the section-by-section content spec. The authoritative design reference (despite the filename). |
 
 ---
 
@@ -95,13 +104,30 @@ src/
     sections/             # Hero, Introduction, VerticalInMotion, ...
     domain/               # Domain-page building blocks
     ui/                   # SectionContainer, Button, CornerMarks, ...
-  data/
+  data/                   # Content is data, not JSX — see docs/ARCHITECTURE.md
     domain-pages.ts       # Source of truth for the 6 domain landing pages
     domains.ts            # 2×3 matrix (verticals × Data/Process/Intelligence)
     portfolio.ts          # Portfolio cases
-    news.ts               # News articles
-public/                   # Logos, illustrations, news covers
+    portfolio-domains.ts  # Portfolio filter taxonomy
+    news.ts               # News articles (structured blocks, not raw HTML)
+    clients.ts            # Homepage client-logo carousel
+    navigation.ts         # Navbar + footer link structure
+  hooks/                  # GSAP / scroll / motion hooks (see ARCHITECTURE.md)
+  lib/utils.ts            # Shared helpers
+scripts/                  # Illustration pipeline — see docs/IMAGE-PIPELINE.md
+public/                   # Logos, illustrations, canonical paper textures
 ```
+
+## Illustration / image pipeline
+
+The service-card and domain illustrations are AI-generated line art,
+deterministically composited onto a fixed "blueprint paper" surface so every
+image matches. The tooling lives in `scripts/` (requires the `sharp`
+devDependency) and the full procedure — including prompt templates, the
+two surface modes, and the WebP-only delivery caveat — is documented in
+[`docs/IMAGE-PIPELINE.md`](./docs/IMAGE-PIPELINE.md). Note:
+`scripts/normalize-dark-bg.js` is **legacy** and superseded by
+`scripts/composite-bg.js`; do not use it for new work.
 
 ## Key URLs
 
