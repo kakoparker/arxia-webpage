@@ -1,5 +1,20 @@
 import Image from "next/image";
-import { Globe, ExternalLink, Mail, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
+
+// lucide-react 1.x dropped brand icons, so the LinkedIn mark is inline.
+// Uses currentColor so it inherits the footer's gray→white hover transition.
+function LinkedInIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+      className={className}
+    >
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
+    </svg>
+  );
+}
 
 const footerLinks = {
   company: [
@@ -27,10 +42,32 @@ const footerLinks = {
   ],
 };
 
-const socialLinks = [
-  { icon: Globe, href: "#", label: "LinkedIn" },
-  { icon: ExternalLink, href: "#", label: "Twitter" },
-  { icon: Mail, href: "#", label: "Email" },
+const offices = {
+  headquarters: "Cluj-Napoca, Romania",
+  others: ["Santiago, Chile", "Kampala, Uganda"],
+};
+
+const linkedinLinks = [
+  {
+    label: "Arxia",
+    role: "Company",
+    href: "https://www.linkedin.com/company/arxia",
+  },
+  {
+    label: "Daniel Homorodean",
+    role: "CEO",
+    href: "https://www.linkedin.com/in/danielhomorodean/",
+  },
+  {
+    label: "Carlos Parker",
+    role: "Head of International Business",
+    href: "https://www.linkedin.com/in/carlosparker/",
+  },
+  {
+    label: "Grace Labong",
+    role: "Business Development, Africa",
+    href: "https://www.linkedin.com/in/grace-labong-21536b63/",
+  },
 ];
 
 export function Footer() {
@@ -116,28 +153,88 @@ export function Footer() {
             <h3 className="font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2.5px] text-accent-red/85 mb-6">
               Contact
             </h3>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3 text-gray-medium text-[var(--text-small)]">
-                <Mail size={16} strokeWidth={1.5} className="mt-0.5 flex-shrink-0" />
-                <span>info@arxia.com</span>
-              </li>
-              <li className="flex items-start gap-3 text-gray-medium text-[var(--text-small)]">
+
+            <a
+              href="/#contact"
+              className="inline-flex items-center gap-2 text-gray-medium text-[var(--text-small)] hover:text-white transition-colors duration-200"
+            >
+              Get in touch via the contact form
+              <span aria-hidden>→</span>
+            </a>
+
+            {/* Locations */}
+            <div className="mt-6 space-y-4">
+              <div className="flex items-start gap-3 text-gray-medium text-[var(--text-small)]">
                 <MapPin size={16} strokeWidth={1.5} className="mt-0.5 flex-shrink-0" />
-                <span>Global Offices</span>
-              </li>
-            </ul>
-            <div className="flex gap-4 mt-6">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  aria-label={social.label}
-                  className="inline-flex items-center justify-center w-9 h-9 border border-gray-medium/30 text-gray-medium hover:text-white hover:border-gray-medium/60 transition-all duration-200 rounded-none"
-                >
-                  <social.icon size={16} strokeWidth={1.5} />
-                </a>
-              ))}
+                <div>
+                  <p
+                    className="text-white/40 mb-1"
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "9px",
+                      letterSpacing: "1.5px",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Headquarters
+                  </p>
+                  <p>{offices.headquarters}</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 text-gray-medium text-[var(--text-small)]">
+                <MapPin size={16} strokeWidth={1.5} className="mt-0.5 flex-shrink-0" />
+                <div>
+                  <p
+                    className="text-white/40 mb-1"
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "9px",
+                      letterSpacing: "1.5px",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Offices
+                  </p>
+                  {offices.others.map((city) => (
+                    <p key={city}>{city}</p>
+                  ))}
+                </div>
+              </div>
             </div>
+
+            {/* LinkedIn */}
+            <p
+              className="text-white/40 mt-6 mb-3"
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: "9px",
+                letterSpacing: "1.5px",
+                textTransform: "uppercase",
+              }}
+            >
+              Connect
+            </p>
+            <ul className="space-y-3">
+              {linkedinLinks.map((person) => (
+                <li key={person.href}>
+                  <a
+                    href={person.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${person.label} — ${person.role} on LinkedIn`}
+                    className="group flex items-start gap-3 text-gray-medium hover:text-white transition-colors duration-200"
+                  >
+                    <LinkedInIcon className="mt-0.5 flex-shrink-0 h-4 w-4" />
+                    <span className="text-[var(--text-small)] leading-tight">
+                      {person.label}
+                      <span className="block text-white/40 group-hover:text-gray-medium transition-colors duration-200 text-[var(--text-caption)]">
+                        {person.role}
+                      </span>
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
