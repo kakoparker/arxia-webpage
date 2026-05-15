@@ -88,9 +88,11 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+/* NOTE: do NOT set `scroll-behavior: smooth` on html. GSAP ScrollTrigger
+   (used for the homepage pinned/scrubbed sections) is incompatible with
+   CSS smooth scrolling — it fights programmatic scroll restoration and
+   leaves pinned timelines mismeasured (blank sections on back-navigation).
+   Anchor-link smoothing, if ever needed, must be done in JS instead. */
 
 body {
   font-family: var(--font-primary);

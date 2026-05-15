@@ -6,6 +6,7 @@ import { Hero } from "@/components/sections/Hero";
 import { LogoCarousel } from "@/components/sections/LogoCarousel";
 import { Introduction } from "@/components/sections/Introduction";
 import { ScrollProgressRail } from "@/components/ui/ScrollProgressRail";
+import { HomeScrollManager } from "@/components/util/HomeScrollManager";
 
 // Below-the-fold sections — code-split for faster TTI. ssr:true keeps
 // the markup in the server-rendered HTML for SEO/crawlers; only the
@@ -51,6 +52,7 @@ const homeRailSections = [
 export default function Home() {
   return (
     <>
+      <HomeScrollManager />
       <Navbar />
       <ScrollProgressRail sections={homeRailSections} />
       <main id="main" tabIndex={-1} className="outline-none">
