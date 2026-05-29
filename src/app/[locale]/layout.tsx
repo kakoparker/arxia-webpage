@@ -26,39 +26,55 @@ const SITE_TITLE = "Arxia — Digital Transformation & Digital Public Infrastruc
 const SITE_DESCRIPTION =
   "Arxia is a digital transformation and Digital Public Infrastructure company with more than 20 years in the international market. We develop and integrate solutions that transform countries, governments, and strategic industries.";
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: {
-    default: SITE_TITLE,
-    template: "%s — Arxia",
-  },
-  description: SITE_DESCRIPTION,
-  applicationName: SITE_NAME,
-  openGraph: {
-    title: SITE_TITLE,
-    description:
-      "We develop and integrate solutions that transform countries, governments, and strategic industries.",
-    url: SITE_URL,
-    siteName: SITE_NAME,
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: SITE_TITLE,
-    description:
-      "We develop and integrate solutions that transform countries, governments, and strategic industries.",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+const OG_LOCALE: Record<string, string> = {
+  en: "en_US",
+  es: "es_ES",
+  fr: "fr_FR",
+};
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const ogLocale = OG_LOCALE[locale] ?? "en_US";
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: {
+      default: SITE_TITLE,
+      template: "%s — Arxia",
+    },
+    description: SITE_DESCRIPTION,
+    applicationName: SITE_NAME,
+    openGraph: {
+      title: SITE_TITLE,
+      description:
+        "We develop and integrate solutions that transform countries, governments, and strategic industries.",
+      url: SITE_URL,
+      siteName: SITE_NAME,
+      type: "website",
+      locale: ogLocale,
+      alternateLocale: Object.values(OG_LOCALE).filter((l) => l !== ogLocale),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: SITE_TITLE,
+      description:
+        "We develop and integrate solutions that transform countries, governments, and strategic industries.",
+    },
+    robots: {
       index: true,
       follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
     },
-  },
-};
+  };
+}
 
 export const viewport: Viewport = {
   themeColor: "#0D1520",
