@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 import { DomainPageView } from "@/components/domain/DomainPageView";
 import { getDomainPageByMatrix } from "@/data/domain-pages";
 import type { DomainSlug } from "@/data/domains";
@@ -13,11 +14,11 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ domain: string }>;
+  params: Promise<{ locale: string; domain: string }>;
 }): Promise<Metadata> {
-  const { domain } = await params;
+  const { locale, domain } = await params;
   const page = VALID.includes(domain as DomainSlug)
-    ? getDomainPageByMatrix("industries", domain as DomainSlug)
+    ? getDomainPageByMatrix("industries", domain as DomainSlug, locale)
     : undefined;
   if (!page) return { title: "Not found" };
   return {
@@ -29,9 +30,10 @@ export async function generateMetadata({
 export default async function IndustriesDomainPage({
   params,
 }: {
-  params: Promise<{ domain: string }>;
+  params: Promise<{ locale: string; domain: string }>;
 }) {
-  const { domain } = await params;
+  const { locale, domain } = await params;
   if (!VALID.includes(domain as DomainSlug)) notFound();
+  setRequestLocale(locale);
   return <DomainPageView vertical="industries" domain={domain as DomainSlug} />;
 }

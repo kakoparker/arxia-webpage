@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import {
   Building2,
@@ -28,7 +28,7 @@ import { DomainCTA } from "@/components/domain/DomainCTA";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { ScrollProgressRail } from "@/components/ui/ScrollProgressRail";
 import { getDomainPageByMatrix } from "@/data/domain-pages";
-import { verticalsBySlug, type VerticalSlug, type DomainSlug } from "@/data/domains";
+import { getVertical, type VerticalSlug, type DomainSlug } from "@/data/domains";
 
 // Canonical category order for every domain page. Sections without items are
 // skipped at render time; the rail is filtered to match.
@@ -63,10 +63,11 @@ interface DomainPageViewProps {
  */
 export function DomainPageView({ vertical, domain }: DomainPageViewProps) {
   const t = useTranslations("Domain");
-  const page = getDomainPageByMatrix(vertical, domain);
+  const locale = useLocale();
+  const page = getDomainPageByMatrix(vertical, domain, locale);
   if (!page) return null;
 
-  const verticalData = verticalsBySlug[vertical];
+  const verticalData = getVertical(vertical, locale);
   const Icon = iconMap[page.iconName] ?? Database;
   const siblings = verticalData.domains.filter((d) => d.slug !== domain);
 

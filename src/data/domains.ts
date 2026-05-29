@@ -397,13 +397,61 @@ export const allDomains: Array<ExpertiseDomain & { verticalSlug: VerticalSlug }>
     v.domains.map((d) => ({ ...d, verticalSlug: v.slug }))
   );
 
-export function getVertical(slug: VerticalSlug): ArxiaVertical {
-  return verticalsBySlug[slug];
+// ─────────────────────────────────────────────────────────────────────────────
+// Localization — overlay translated text onto the English source of truth.
+// English keeps structure (slugs, icons, featuredProjectSlugs); es/fr overlay
+// only display text, by stable slug. Missing entries fall back to English.
+// ─────────────────────────────────────────────────────────────────────────────
+import { domainsEs, type VerticalTextOverlay } from "./i18n/domains.es";
+import { domainsFr } from "./i18n/domains.fr";
+
+const OVERLAYS: Record<string, Record<string, VerticalTextOverlay>> = {
+  es: domainsEs,
+  fr: domainsFr,
+};
+
+function localizeVertical(
+  v: ArxiaVertical,
+  overlay: VerticalTextOverlay | undefined
+): ArxiaVertical {
+  if (!overlay) return v;
+  return {
+    ...v,
+    tagline: overlay.tagline ?? v.tagline,
+    body: overlay.body ?? v.body,
+    domains: v.domains.map((d) => {
+      const o = overlay.domains?.[d.slug];
+      if (!o) return d;
+      return {
+        ...d,
+        name: o.name ?? d.name,
+        tagline: o.tagline ?? d.tagline,
+        description: o.description ?? d.description,
+        services: d.services.map((s, i) => ({
+          ...s,
+          title: o.services?.[i]?.title ?? s.title,
+          description: o.services?.[i]?.description ?? s.description,
+        })),
+      };
+    }),
+  };
+}
+
+export function getVertical(
+  slug: VerticalSlug,
+  locale: string = "en"
+): ArxiaVertical {
+  const base = verticalsBySlug[slug];
+  const overlay = OVERLAYS[locale]?.[slug];
+  return overlay ? localizeVertical(base, overlay) : base;
 }
 
 export function getDomain(
   verticalSlug: VerticalSlug,
-  domainSlug: DomainSlug
+  domainSlug: DomainSlug,
+  locale: string = "en"
 ): ExpertiseDomain | undefined {
-  return verticalsBySlug[verticalSlug].domains.find((d) => d.slug === domainSlug);
+  return getVertical(verticalSlug, locale).domains.find(
+    (d) => d.slug === domainSlug
+  );
 }

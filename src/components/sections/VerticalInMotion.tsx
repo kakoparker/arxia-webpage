@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useGSAP } from "@gsap/react";
 import { useTextScramble } from "@/hooks/useTextScramble";
@@ -9,7 +9,7 @@ import { gsap, ScrollTrigger } from "@/hooks/useGsapScrollTrigger";
 
 gsap.registerPlugin(useGSAP);
 import {
-  verticalsBySlug,
+  getVertical,
   type VerticalSlug,
   type ExpertiseDomain,
   type ArxiaVertical,
@@ -39,7 +39,8 @@ export function VerticalInMotion({
   tone = "dark",
   idSuffix,
 }: VerticalInMotionProps) {
-  const vertical = verticalsBySlug[verticalSlug];
+  const locale = useLocale();
+  const vertical = getVertical(verticalSlug, locale);
   const sectionId = `${verticalSlug}${idSuffix ? `-${idSuffix}` : ""}`;
   const dark = tone === "dark";
 
