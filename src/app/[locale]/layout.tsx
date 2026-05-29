@@ -1,7 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
-import "./globals.css";
+import { notFound } from "next/navigation";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
+import { routing } from "@/i18n/routing";
+import "../globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -30,9 +34,6 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   applicationName: SITE_NAME,
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     title: SITE_TITLE,
     description:
@@ -40,7 +41,6 @@ export const metadata: Metadata = {
     url: SITE_URL,
     siteName: SITE_NAME,
     type: "website",
-    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
@@ -84,22 +84,38 @@ const websiteSchema = {
   url: SITE_URL,
 };
 
-export default function RootLayout({
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export default async function LocaleLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }>) {
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+  // Enable static rendering for this locale.
+  setRequestLocale(locale);
+
   // Plausible is cookieless and GDPR-friendly; we only inject the script when
   // a domain is configured, so dev environments stay silent.
   const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
 
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+    <html lang={locale} className={`${inter.variable} ${jetbrainsMono.variable}`}>
       <body className="font-[family-name:var(--font-inter)] antialiased" suppressHydrationWarning>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify([organizationSchema, websiteSchema]),
+            __html: JSON.stringify([
+              { ...organizationSchema, inLanguage: locale },
+              { ...websiteSchema, inLanguage: locale },
+            ]),
           }}
         />
         {plausibleDomain && (
@@ -110,13 +126,15 @@ export default function RootLayout({
             strategy="afterInteractive"
           />
         )}
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-blueprint-blue focus:text-white focus:px-4 focus:py-2 focus:font-[family-name:var(--font-jetbrains)] focus:text-[12px] focus:uppercase focus:tracking-[2px]"
-        >
-          Skip to content
-        </a>
-        {children}
+        <NextIntlClientProvider>
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-blueprint-blue focus:text-white focus:px-4 focus:py-2 focus:font-[family-name:var(--font-jetbrains)] focus:text-[12px] focus:uppercase focus:tracking-[2px]"
+          >
+            Skip to content
+          </a>
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );
