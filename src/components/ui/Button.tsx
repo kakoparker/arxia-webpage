@@ -1,4 +1,5 @@
 import type { ComponentPropsWithoutRef } from "react";
+import { Link } from "@/i18n/navigation";
 
 type ButtonVariant = "primary" | "ghost" | "text";
 
@@ -31,6 +32,17 @@ export function Button({
   const cls = `${base} ${variants[variant]} ${className}`;
 
   if (href) {
+    // Internal routes (incl. "/#hash") go through the locale-aware Link so
+    // the active locale prefix is preserved. Pure in-page hashes ("#contact")
+    // and external/mailto links stay as plain anchors.
+    const isInternal = href.startsWith("/");
+    if (isInternal) {
+      return (
+        <Link href={href} className={cls} suppressHydrationWarning>
+          {children}
+        </Link>
+      );
+    }
     return (
       <a href={href} className={cls} suppressHydrationWarning>
         {children}

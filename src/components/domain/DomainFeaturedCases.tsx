@@ -1,6 +1,7 @@
 "use client";
 
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Card } from "@/components/ui/Card";
@@ -22,6 +23,7 @@ export function DomainFeaturedCases({
   domain,
   featuredCases,
 }: DomainFeaturedCasesProps) {
+  const t = useTranslations("DomainFeaturedCases");
   const ref = useScrollAnimation();
 
   // Resolve featured slugs to project objects; fall back to domain projects
@@ -42,9 +44,9 @@ export function DomainFeaturedCases({
           className="animate-on-scroll mb-16"
         >
           <SectionHeader
-            annotation="Track Record"
-            heading="Featured cases"
-            body="A selection of projects that define how we work in this domain."
+            annotation={t("annotation")}
+            heading={t("heading")}
+            body={t("body")}
           />
         </div>
 
@@ -96,7 +98,7 @@ export function DomainFeaturedCases({
 
         <div className="text-center">
           <Link href={`/portfolio?v=${vertical}&d=${domain}`}>
-            <Button variant="primary">View all projects →</Button>
+            <Button variant="primary">{t("viewAll")}</Button>
           </Link>
         </div>
       </div>

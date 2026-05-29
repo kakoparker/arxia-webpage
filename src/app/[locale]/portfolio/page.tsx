@@ -1,12 +1,23 @@
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PortfolioPageClient } from "./PortfolioPageClient";
 
-export const metadata: Metadata = {
-  title: "Portfolio",
-  description:
-    "43 projects across 8 domains of expertise. Two decades of digital transformation, interoperability, and capacity building across 20+ countries.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Portfolio" });
+  return { title: t("metaTitle"), description: t("metaDescription") };
+}
 
-export default function PortfolioPage() {
+export default async function PortfolioPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   return <PortfolioPageClient />;
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { SectionContainer } from "@/components/ui/SectionContainer";
@@ -11,6 +12,7 @@ import { portfolioDomains } from "@/data/portfolio-domains";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export function PortfolioPageClient() {
+  const t = useTranslations("Portfolio");
   const heroRef = useScrollAnimation();
 
   // Group projects by domain
@@ -45,7 +47,7 @@ export function PortfolioPageClient() {
                 lineHeight: "1.2",
               }}
             >
-              // Portfolio
+              {t("heroAnnotation")}
             </p>
             <h1
               className="text-white mb-4"
@@ -57,7 +59,7 @@ export function PortfolioPageClient() {
                 letterSpacing: "-1px",
               }}
             >
-              Our Portfolio
+              {t("heading")}
             </h1>
             <div className="h-[3px] w-12 bg-accent-red mb-6" />
             <p
@@ -69,9 +71,7 @@ export function PortfolioPageClient() {
                 maxWidth: "var(--content-narrow)",
               }}
             >
-              43 projects across 8 domains of expertise. Two decades of digital
-              transformation, interoperability, and capacity building across 20+
-              countries.
+              {t("heroBody")}
             </p>
           </div>
 
@@ -82,9 +82,9 @@ export function PortfolioPageClient() {
             className="animate-on-scroll flex gap-12 flex-wrap"
           >
             {[
-              { value: "43", label: "Projects" },
-              { value: "20+", label: "Countries" },
-              { value: "8", label: "Domains" },
+              { value: "43", label: t("statProjects") },
+              { value: "20+", label: t("statCountries") },
+              { value: "8", label: t("statDomains") },
             ].map((stat) => (
               <div key={stat.label}>
                 <p

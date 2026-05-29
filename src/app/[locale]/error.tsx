@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect } from "react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { SectionContainer } from "@/components/ui/SectionContainer";
@@ -12,6 +13,7 @@ interface ErrorPageProps {
 }
 
 export default function GlobalError({ error, reset }: ErrorPageProps) {
+  const t = useTranslations("Errors");
   useEffect(() => {
     // Surface the error in the browser console so engineers can inspect it
     // in dev. In production, replace this with a proper telemetry sink.
@@ -33,7 +35,7 @@ export default function GlobalError({ error, reset }: ErrorPageProps) {
                 lineHeight: "1.2",
               }}
             >
-              Error · 500
+              {t("label500")}
             </p>
 
             <h1
@@ -46,7 +48,7 @@ export default function GlobalError({ error, reset }: ErrorPageProps) {
                 maxWidth: "var(--content-narrow)",
               }}
             >
-              Something didn't compile cleanly.
+              {t("heading500")}
             </h1>
 
             <div className="h-[3px] w-12 bg-accent-red mb-6" />
@@ -60,8 +62,7 @@ export default function GlobalError({ error, reset }: ErrorPageProps) {
                 maxWidth: "var(--content-narrow)",
               }}
             >
-              An unexpected error stopped this page from rendering. Reload the
-              page, or head back to a known surface while we look at it.
+              {t("body500")}
             </p>
 
             {error.digest && (
@@ -89,7 +90,7 @@ export default function GlobalError({ error, reset }: ErrorPageProps) {
                   letterSpacing: "0.3px",
                 }}
               >
-                Try again
+                {t("retry")}
               </button>
               <Link
                 href="/"
@@ -101,7 +102,7 @@ export default function GlobalError({ error, reset }: ErrorPageProps) {
                   letterSpacing: "0.3px",
                 }}
               >
-                Back to home
+                {t("backHome")}
               </Link>
             </div>
           </div>

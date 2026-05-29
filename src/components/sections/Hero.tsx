@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
 import {
   BlueprintGridSVG,
@@ -11,6 +12,7 @@ import { useMousePosition } from "@/hooks/useMousePosition";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export function Hero() {
+  const t = useTranslations("Hero");
   const sectionRef = useRef<HTMLElement>(null);
   const scrollGridRef = useRef<BlueprintGridSVGHandle>(null);
   const revealGridRef = useRef<BlueprintGridSVGHandle>(null);
@@ -98,8 +100,8 @@ export function Hero() {
             fontSize: "clamp(36px, 5vw, 72px)",
           }}
         >
-          <span className="block">Technology</span>
-          <span className="block">{" "}to transform nations</span>
+          <span className="block">{t("title1")}</span>
+          <span className="block">{" "}{t("title2")}</span>
         </h1>
 
         <div
@@ -119,8 +121,7 @@ export function Hero() {
             maxWidth: "640px",
           }}
         >
-          Empowering governments, industries and ecosystems to build their
-          digital future
+          {t("subtitle")}
         </p>
 
         <div data-animate data-animate-index="3" className="animate-on-scroll mt-8">
@@ -129,7 +130,7 @@ export function Hero() {
             href="#contact"
             className="!px-5 !py-1.5 !min-h-0 !text-[13px] !bg-accent-red hover:!bg-[#c8161d]"
           >
-            Contact Us
+            {t("cta")}
           </Button>
         </div>
       </div>

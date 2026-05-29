@@ -1,1 +1,233 @@
-{}
+{
+  "Common": {
+    "skipToContent": "Skip to content"
+  },
+  "Nav": {
+    "mainNavigation": "Main navigation",
+    "mobileNavigation": "Mobile navigation",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "govtech": "Govtech",
+    "industries": "Industries",
+    "portfolio": "Portfolio",
+    "news": "News",
+    "contact": "Contact"
+  },
+  "LocaleSwitcher": {
+    "label": "Language",
+    "en": "EN",
+    "es": "ES",
+    "fr": "FR"
+  },
+  "Hero": {
+    "title1": "Technology",
+    "title2": "to transform nations",
+    "subtitle": "Empowering governments, industries and ecosystems to build their digital future",
+    "cta": "Contact Us"
+  },
+  "Introduction": {
+    "annotation": "Who We Are",
+    "paragraph": "Arxia is a Digital Public Infrastructure and Digital Transformation company. Our team of expert consultants and engineers have developed digital projects all over the world, in partnership with international organizations and donors. Our goal is to transform the lives of people through impactful technology and capacity building.",
+    "govtechLabel": "GOVTECH",
+    "govtechTitle": "Arxia Govtech",
+    "govtechTagline": "Digital public infrastructure for governments and international organizations",
+    "govtechCta": "Explore Govtech",
+    "industriesLabel": "INDUSTRIES",
+    "industriesTitle": "Arxia Industries",
+    "industriesTagline": "Enterprise transformation for mining, finance, retail, universities, and beyond",
+    "industriesCta": "Explore Industries"
+  },
+  "VerticalInMotion": {
+    "verticalLabel": "The {name} vertical",
+    "explore": "Explore"
+  },
+  "Portfolio": {
+    "annotation": "Selected Work",
+    "heading": "Our Portfolio",
+    "body": "Selected projects that define what we do.",
+    "viewFull": "View Full Portfolio →",
+    "metaTitle": "Portfolio",
+    "metaDescription": "43 projects across 8 domains of expertise. Two decades of digital transformation, interoperability, and capacity building across 20+ countries.",
+    "heroAnnotation": "// Portfolio",
+    "heroBody": "43 projects across 8 domains of expertise. Two decades of digital transformation, interoperability, and capacity building across 20+ countries.",
+    "statProjects": "Projects",
+    "statCountries": "Countries",
+    "statDomains": "Domains"
+  },
+  "News": {
+    "annotation": "News",
+    "heading": "Latest News",
+    "readMore": "Read More →",
+    "all": "All News →",
+    "indexHeading": "All News",
+    "indexBody": "Stories, case studies and updates from Arxia and the partners we work with around the world.",
+    "metaTitle": "News",
+    "metaDescription": "Latest news, case studies, and updates from Arxia — digital transformation, Digital Public Infrastructure, and Agentic AI in action."
+  },
+  "GlobalPresence": {
+    "annotation": "Reach",
+    "heading": "Our Global Presence",
+    "headquarters": "Headquarters",
+    "offices": "Offices",
+    "statOrganizations": "Organizations",
+    "statCountries": "Countries",
+    "statYears": "Years",
+    "regions": {
+      "Europe": "Europe",
+      "Latin America": "Latin America",
+      "West Africa": "West Africa",
+      "East Africa": "East Africa",
+      "Southeast Asia": "Southeast Asia"
+    },
+    "countries": {
+      "RO": "Romania",
+      "DE": "Germany",
+      "CH": "Switzerland",
+      "AT": "Austria",
+      "UA": "Ukraine",
+      "CL": "Chile",
+      "CO": "Colombia",
+      "PE": "Peru",
+      "SV": "El Salvador",
+      "TN": "Tunisia",
+      "SN": "Senegal",
+      "GH": "Ghana",
+      "NG": "Nigeria",
+      "CF": "Central African Republic",
+      "SS": "South Sudan",
+      "UG": "Uganda",
+      "RW": "Rwanda",
+      "BI": "Burundi",
+      "ZM": "Zambia",
+      "KH": "Cambodia"
+    }
+  },
+  "ContactForm": {
+    "connect": "Connect",
+    "heading": "Let's build the future together.",
+    "body": "Whether you're modernizing public services, building digital infrastructure, or strengthening local tech ecosystems — we're ready to partner with you.",
+    "ariaLabel": "Contact form",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "email": "Email",
+    "emailPlaceholder": "your@email.com",
+    "comment": "Comment",
+    "commentPlaceholder": "How can we help?",
+    "send": "Send Message",
+    "sending": "Sending…",
+    "successTitle": "Thank you for reaching out.",
+    "successBody": "We'll get back to you shortly.",
+    "errorGeneric": "Something went wrong. Please try again.",
+    "errorNetwork": "Couldn't reach the server. Please try again."
+  },
+  "Footer": {
+    "tagline": "Digital transformation and Digital Public Infrastructure for governments and strategic industries worldwide.",
+    "company": "Company",
+    "services": "Services",
+    "contact": "Contact",
+    "aboutUs": "About Us",
+    "portfolio": "Portfolio",
+    "news": "News",
+    "govtech": "Govtech",
+    "industries": "Industries",
+    "data": "Data",
+    "process": "Process",
+    "intelligence": "Intelligence",
+    "getInTouch": "Get in touch via the contact form",
+    "headquarters": "Headquarters",
+    "offices": "Offices",
+    "connect": "Connect",
+    "roleCompany": "Company",
+    "roleCeo": "CEO",
+    "roleHeadIntl": "Head of International Business",
+    "roleBizDevAfrica": "Business Development, Africa",
+    "rights": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "Rail": {
+    "pageSections": "Page sections",
+    "jumpTo": "Jump to {label}",
+    "about": "About",
+    "govtech": "Govtech",
+    "industries": "Industries",
+    "presence": "Presence",
+    "portfolio": "Portfolio",
+    "news": "News",
+    "contact": "Contact",
+    "cases": "Cases",
+    "related": "Related"
+  },
+  "Domain": {
+    "breadcrumb": "Breadcrumb",
+    "home": "Home",
+    "domainsCrumb": "Domains",
+    "railCases": "Cases",
+    "railRelated": "Related",
+    "railContact": "Contact",
+    "heroTitle": "{title} for {audience}",
+    "audienceGovernment": "GOVERNMENT",
+    "audienceIndustries": "INDUSTRIES",
+    "keepExploring": "Keep exploring",
+    "otherDomains": "The other two {vertical} domains",
+    "explore": "Explore {name}",
+    "categoryName": {
+      "Consultancy": "Consultancy",
+      "Services": "Services",
+      "Products": "Products",
+      "Trainings": "Trainings"
+    },
+    "categoryAnnotation": {
+      "Consultancy": "Strategy & Advisory",
+      "Services": "Delivery & Implementation",
+      "Trainings": "Capacity Building",
+      "Products": "Platforms & Products"
+    }
+  },
+  "DomainCTA": {
+    "annotation": "Get Started",
+    "heading": "Ready to discuss {title}?",
+    "body": "Let's explore how we can help you achieve your goals. Our team is ready to listen, advise, and build alongside you.",
+    "contact": "Contact Us",
+    "viewPortfolio": "View Portfolio"
+  },
+  "DomainFeaturedCases": {
+    "annotation": "Track Record",
+    "heading": "Featured cases",
+    "body": "A selection of projects that define how we work in this domain.",
+    "viewAll": "View all projects →"
+  },
+  "PortfolioFilter": {
+    "ariaLabel": "Portfolio filter",
+    "verticalAll": "All",
+    "verticalGovtech": "Govtech",
+    "verticalIndustries": "Industries",
+    "domainAll": "All domains",
+    "domainData": "Data",
+    "domainProcess": "Process",
+    "domainIntelligence": "Intelligence"
+  },
+  "Errors": {
+    "label500": "Error · 500",
+    "heading500": "Something didn't compile cleanly.",
+    "body500": "An unexpected error stopped this page from rendering. Reload the page, or head back to a known surface while we look at it.",
+    "retry": "Try again",
+    "backHome": "Back to home",
+    "label404": "Error · 404",
+    "heading404": "This page is off the blueprint.",
+    "body404": "The URL you followed doesn't lead anywhere on this site. It may have moved as we restructured our domains of expertise, or the link may simply be wrong.",
+    "exploreGovtech": "Explore Govtech",
+    "exploreIndustries": "Explore Industries",
+    "notFoundMetaTitle": "Page not found",
+    "notFoundMetaDescription": "The page you're looking for doesn't exist or has moved."
+  },
+  "Meta": {
+    "homeTitle": "Arxia — Technology to transform nations",
+    "homeDescription": "Arxia is a digital transformation and Digital Public Infrastructure company. We empower governments, industries, and ecosystems to build their digital future.",
+    "homeOgDescription": "We empower governments, industries, and ecosystems to build their digital future.",
+    "govtechTitle": "Arxia Govtech — Digital Public Infrastructure",
+    "govtechDescription": "Digital public infrastructure for governments and international organizations. Data interoperability, service design, e-procurement, e-invoicing, and agentic AI for the public sector.",
+    "industriesTitle": "Arxia Industries — Enterprise Transformation",
+    "industriesDescription": "Enterprise transformation for mining, finance, retail, universities, and beyond. Data governance, process modernization, and AI at enterprise scale."
+  }
+}

@@ -1,12 +1,23 @@
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { GovtechPageClient } from "./GovtechPageClient";
 
-export const metadata: Metadata = {
-  title: "Arxia Govtech — Digital Public Infrastructure",
-  description:
-    "Digital public infrastructure for governments and international organizations. Data interoperability, service design, e-procurement, e-invoicing, and agentic AI for the public sector.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Meta" });
+  return { title: t("govtechTitle"), description: t("govtechDescription") };
+}
 
-export default function GovtechPage() {
+export default async function GovtechPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   return <GovtechPageClient />;
 }

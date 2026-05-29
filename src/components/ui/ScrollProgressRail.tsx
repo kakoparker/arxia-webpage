@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 
 export interface RailSection {
   id: string;
@@ -30,6 +31,7 @@ export function ScrollProgressRail({
   navOffset = 72,
   showAfter = 300,
 }: ScrollProgressRailProps) {
+  const t = useTranslations("Rail");
   const [activeId, setActiveId] = useState<string>(sections[0]?.id ?? "");
   const [visible, setVisible] = useState(false);
   const rafRef = useRef<number | null>(null);
@@ -88,7 +90,7 @@ export function ScrollProgressRail({
 
   return (
     <nav
-      aria-label="Page sections"
+      aria-label={t("pageSections")}
       className={`hidden lg:flex fixed right-6 top-1/2 -translate-y-1/2 z-40 flex-col gap-5 transition-opacity duration-300 ${
         visible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
@@ -101,7 +103,7 @@ export function ScrollProgressRail({
             type="button"
             onClick={() => jumpTo(s.id)}
             className="group relative flex items-center justify-end w-4 h-4 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-red focus-visible:outline-offset-4"
-            aria-label={`Jump to ${s.label}`}
+            aria-label={t("jumpTo", { label: s.label })}
             aria-current={isActive ? "true" : undefined}
             suppressHydrationWarning
           >

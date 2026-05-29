@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Compass, Wrench, GraduationCap, Package } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import type { ServiceCategory } from "@/data/domain-pages";
@@ -14,13 +15,6 @@ const categoryIcons: Record<ServiceCategory["name"], LucideIcon> = {
   Products: Package,
 };
 
-const categoryAnnotation: Record<ServiceCategory["name"], string> = {
-  Consultancy: "Strategy & Advisory",
-  Services: "Delivery & Implementation",
-  Trainings: "Capacity Building",
-  Products: "Platforms & Products",
-};
-
 interface DomainCategorySectionProps {
   category: ServiceCategory;
   mode: "light" | "ultra-light" | "dark";
@@ -30,9 +24,12 @@ export function DomainCategorySection({
   category,
   mode,
 }: DomainCategorySectionProps) {
+  const t = useTranslations("Domain");
   const ref = useScrollAnimation();
   const Icon = categoryIcons[category.name];
-  const annotation = categoryAnnotation[category.name];
+  // category.name stays the stable English key; display strings come from messages.
+  const annotation = t(`categoryAnnotation.${category.name}`);
+  const categoryTitle = t(`categoryName.${category.name}`);
 
   // Tone tokens that swap when the section is dark.
   const isDark = mode === "dark";
@@ -82,7 +79,7 @@ export function DomainCategorySection({
               letterSpacing: "-0.5px",
             }}
           >
-            {category.name}
+            {categoryTitle}
           </h2>
           <div className="h-[3px] w-12 bg-accent-red mb-5" />
           <p

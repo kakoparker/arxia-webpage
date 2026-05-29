@@ -1,4 +1,5 @@
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Tag } from "@/components/ui/Tag";
 import { Button } from "@/components/ui/Button";
@@ -10,6 +11,7 @@ import { PortfolioScrollReveal } from "./PortfolioAnimations";
  * on lg, 2 on md, 1 on mobile). Six featured projects from portfolio.ts.
  */
 export function Portfolio() {
+  const t = useTranslations("Portfolio");
   return (
     <section
       className="blueprint-grid-light relative"
@@ -31,9 +33,9 @@ export function Portfolio() {
           className="animate-on-scroll mb-16"
         >
           <SectionHeader
-            annotation="Selected Work"
-            heading="Our Portfolio"
-            body="Selected projects that define what we do."
+            annotation={t("annotation")}
+            heading={t("heading")}
+            body={t("body")}
           />
         </div>
 
@@ -97,7 +99,7 @@ export function Portfolio() {
 
         <div className="text-center">
           <Link href="/portfolio">
-            <Button variant="primary">View Full Portfolio →</Button>
+            <Button variant="primary">{t("viewFull")}</Button>
           </Link>
         </div>
       </PortfolioScrollReveal>

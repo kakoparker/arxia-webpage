@@ -1,12 +1,26 @@
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { IndustriesPageClient } from "./IndustriesPageClient";
 
-export const metadata: Metadata = {
-  title: "Arxia Industries — Enterprise Transformation",
-  description:
-    "Enterprise transformation for mining, finance, retail, universities, and beyond. Data governance, process modernization, and AI at enterprise scale.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Meta" });
+  return {
+    title: t("industriesTitle"),
+    description: t("industriesDescription"),
+  };
+}
 
-export default function IndustriesPage() {
+export default async function IndustriesPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   return <IndustriesPageClient />;
 }

@@ -1,6 +1,7 @@
 "use client";
 
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import {
   Building2,
   Network,
@@ -32,11 +33,6 @@ import { verticalsBySlug, type VerticalSlug, type DomainSlug } from "@/data/doma
 // Canonical category order for every domain page. Sections without items are
 // skipped at render time; the rail is filtered to match.
 const CATEGORY_ORDER = ["Consultancy", "Services", "Products", "Trainings"] as const;
-const tailRailSections = [
-  { id: "featured", label: "Cases" },
-  { id: "keep-exploring", label: "Related" },
-  { id: "contact", label: "Contact" },
-];
 
 const iconMap: Record<string, LucideIcon> = {
   Building2,
@@ -66,6 +62,7 @@ interface DomainPageViewProps {
  * domain-pages.ts by matrix.
  */
 export function DomainPageView({ vertical, domain }: DomainPageViewProps) {
+  const t = useTranslations("Domain");
   const page = getDomainPageByMatrix(vertical, domain);
   if (!page) return null;
 
@@ -89,9 +86,11 @@ export function DomainPageView({ vertical, domain }: DomainPageViewProps) {
   const railSections = [
     ...orderedCategories.map((c) => ({
       id: c.name.toLowerCase(),
-      label: c.name,
+      label: t(`categoryName.${c.name}`),
     })),
-    ...tailRailSections,
+    { id: "featured", label: t("railCases") },
+    { id: "keep-exploring", label: t("railRelated") },
+    { id: "contact", label: t("railContact") },
   ];
 
   return (
@@ -100,9 +99,13 @@ export function DomainPageView({ vertical, domain }: DomainPageViewProps) {
       <ScrollProgressRail sections={railSections} />
       <main>
         <DomainHero
-          title={`${page.title.toUpperCase()} for ${
-            vertical === "govtech" ? "GOVERNMENT" : "INDUSTRIES"
-          }`}
+          title={t("heroTitle", {
+            title: page.title.toUpperCase(),
+            audience:
+              vertical === "govtech"
+                ? t("audienceGovernment")
+                : t("audienceIndustries"),
+          })}
           description={page.description}
           icon={Icon}
           parentVerticalName={page.parentVertical}
@@ -134,7 +137,7 @@ export function DomainPageView({ vertical, domain }: DomainPageViewProps) {
             <p
               className="font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2.5px] text-accent-red"
             >
-              Keep exploring
+              {t("keepExploring")}
             </p>
             <h2
               className="text-blueprint-blue font-bold mt-2"
@@ -144,7 +147,7 @@ export function DomainPageView({ vertical, domain }: DomainPageViewProps) {
                 letterSpacing: "-0.3px",
               }}
             >
-              The other two {verticalData.shortName} domains
+              {t("otherDomains", { vertical: verticalData.shortName })}
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -192,7 +195,7 @@ export function DomainPageView({ vertical, domain }: DomainPageViewProps) {
                   <span
                     className="inline-flex items-center gap-2 mt-5 font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2px] text-accent-red/85 group-hover:text-accent-red transition-colors"
                   >
-                    Explore {d.name}
+                    {t("explore", { name: d.name })}
                     <span
                       aria-hidden
                       className="transition-transform group-hover:translate-x-1"

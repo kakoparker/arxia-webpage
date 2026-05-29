@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { SectionContainer } from "@/components/ui/SectionContainer";
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default function NotFound() {
+  const t = useTranslations("Errors");
   return (
     <>
       <Navbar />
@@ -26,7 +28,7 @@ export default function NotFound() {
                 lineHeight: "1.2",
               }}
             >
-              Error · 404
+              {t("label404")}
             </p>
 
             <h1
@@ -39,7 +41,7 @@ export default function NotFound() {
                 maxWidth: "var(--content-narrow)",
               }}
             >
-              This page is off the blueprint.
+              {t("heading404")}
             </h1>
 
             <div className="h-[3px] w-12 bg-accent-red mb-6" />
@@ -53,9 +55,7 @@ export default function NotFound() {
                 maxWidth: "var(--content-narrow)",
               }}
             >
-              The URL you followed doesn't lead anywhere on this site. It may
-              have moved as we restructured our domains of expertise, or the
-              link may simply be wrong.
+              {t("body404")}
             </p>
 
             <div className="flex flex-wrap gap-3">
@@ -69,7 +69,7 @@ export default function NotFound() {
                   letterSpacing: "0.3px",
                 }}
               >
-                Back to home
+                {t("backHome")}
               </Link>
               <Link
                 href="/govtech"
@@ -81,7 +81,7 @@ export default function NotFound() {
                   letterSpacing: "0.3px",
                 }}
               >
-                Explore Govtech
+                {t("exploreGovtech")}
               </Link>
               <Link
                 href="/industries"
@@ -93,7 +93,7 @@ export default function NotFound() {
                   letterSpacing: "0.3px",
                 }}
               >
-                Explore Industries
+                {t("exploreIndustries")}
               </Link>
             </div>
           </div>

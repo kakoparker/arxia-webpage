@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { useGSAP } from "@gsap/react";
 import { useTextScramble } from "@/hooks/useTextScramble";
 import { gsap, ScrollTrigger } from "@/hooks/useGsapScrollTrigger";
@@ -69,6 +70,7 @@ function Chapter({
   const [activeIndex, setActiveIndex] = useState(0);
   const pinRef = useRef<HTMLDivElement>(null);
   const numCards = vertical.domains.length;
+  const t = useTranslations("VerticalInMotion");
 
   // Synchronously kill any pinned ScrollTriggers in this section before
   // React reconciles a tree swap — the same fix applied to Hero. Without
@@ -178,7 +180,7 @@ function Chapter({
           dark ? "text-accent-red/85" : "text-accent-red"
         }`}
       >
-        The {vertical.shortName} vertical
+        {t("verticalLabel", { name: vertical.shortName })}
       </p>
       <h2
         className={`font-bold ${textPrimary} mb-5`}
@@ -357,6 +359,7 @@ function DomainCard({
   dark: boolean;
   state: "pending" | "active" | "past";
 }) {
+  const t = useTranslations("VerticalInMotion");
   const Icon = domain.icon;
 
   const cardBg = dark
@@ -439,7 +442,7 @@ function DomainCard({
         aria-hidden
         className="absolute bottom-6 right-6 lg:bottom-8 lg:right-8 inline-flex items-center gap-1.5 bg-accent-red text-white font-[family-name:var(--font-jetbrains)] text-[10px] uppercase tracking-[1.5px] px-3 py-1.5 group-hover:bg-[#c8161d] group-hover:translate-x-0.5 transition-all duration-200"
       >
-        Explore
+        {t("explore")}
         <span aria-hidden>→</span>
       </span>
     </Link>
