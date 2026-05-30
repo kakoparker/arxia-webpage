@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -8,7 +8,7 @@ import { Card } from "@/components/ui/Card";
 import { Tag } from "@/components/ui/Tag";
 import { Button } from "@/components/ui/Button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { portfolioProjects, projectsByDomain } from "@/data/portfolio";
+import { getProjects, projectsByDomain } from "@/data/portfolio";
 import type { FeaturedCase } from "@/data/domain-pages";
 import type { VerticalSlug, DomainSlug } from "@/data/domains";
 
@@ -24,15 +24,17 @@ export function DomainFeaturedCases({
   featuredCases,
 }: DomainFeaturedCasesProps) {
   const t = useTranslations("DomainFeaturedCases");
+  const locale = useLocale();
   const ref = useScrollAnimation();
+  const localizedProjects = getProjects(locale);
 
   // Resolve featured slugs to project objects; fall back to domain projects
   // if no explicit featured list (shouldn't happen with current data).
   const resolved = featuredCases
-    .map((f) => portfolioProjects.find((p) => p.slug === f.projectSlug))
+    .map((f) => localizedProjects.find((p) => p.slug === f.projectSlug))
     .filter(Boolean);
 
-  const display = resolved.length > 0 ? resolved : projectsByDomain(vertical, domain);
+  const display = resolved.length > 0 ? resolved : projectsByDomain(vertical, domain, locale);
   if (display.length === 0) return null;
 
   return (

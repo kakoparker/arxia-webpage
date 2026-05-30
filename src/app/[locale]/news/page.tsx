@@ -8,7 +8,7 @@ import { SectionContainer } from "@/components/ui/SectionContainer";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Card } from "@/components/ui/Card";
 import { Tag } from "@/components/ui/Tag";
-import { newsArticles } from "@/data/news";
+import { getNewsArticles } from "@/data/news";
 
 export async function generateMetadata({
   params,
@@ -28,6 +28,7 @@ export default async function NewsIndexPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("News");
+  const newsArticles = getNewsArticles(locale);
   return (
     <>
       <Navbar />

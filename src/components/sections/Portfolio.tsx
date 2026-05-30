@@ -1,9 +1,9 @@
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Tag } from "@/components/ui/Tag";
 import { Button } from "@/components/ui/Button";
-import { featuredProjects } from "@/data/portfolio";
+import { getFeaturedProjects } from "@/data/portfolio";
 import { PortfolioScrollReveal } from "./PortfolioAnimations";
 
 /**
@@ -12,6 +12,8 @@ import { PortfolioScrollReveal } from "./PortfolioAnimations";
  */
 export function Portfolio() {
   const t = useTranslations("Portfolio");
+  const locale = useLocale();
+  const featuredProjects = getFeaturedProjects(locale);
   return (
     <section
       className="blueprint-grid-light relative"

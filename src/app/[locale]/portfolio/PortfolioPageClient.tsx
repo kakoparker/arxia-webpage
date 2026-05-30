@@ -1,23 +1,26 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { PortfolioSideNav } from "@/components/portfolio/PortfolioSideNav";
 import { PortfolioMobileNav } from "@/components/portfolio/PortfolioMobileNav";
 import { PortfolioSection } from "@/components/portfolio/PortfolioSection";
-import { portfolioProjects } from "@/data/portfolio";
-import { portfolioDomains } from "@/data/portfolio-domains";
+import { getProjects, type PortfolioProject } from "@/data/portfolio";
+import { getPortfolioDomains } from "@/data/portfolio-domains";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export function PortfolioPageClient() {
   const t = useTranslations("Portfolio");
+  const locale = useLocale();
   const heroRef = useScrollAnimation();
+  const localizedProjects = getProjects(locale);
+  const portfolioDomains = getPortfolioDomains(locale);
 
   // Group projects by domain
-  const projectsByDomain: Record<string, typeof portfolioProjects> = {};
-  for (const project of portfolioProjects) {
+  const projectsByDomain: Record<string, PortfolioProject[]> = {};
+  for (const project of localizedProjects) {
     if (!projectsByDomain[project.category]) {
       projectsByDomain[project.category] = [];
     }

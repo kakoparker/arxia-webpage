@@ -1,16 +1,18 @@
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Card } from "@/components/ui/Card";
 import { Tag } from "@/components/ui/Tag";
 import { Button } from "@/components/ui/Button";
-import { newsArticles } from "@/data/news";
+import { getNewsArticles } from "@/data/news";
 import { NewsScrollReveal } from "./NewsAnimations";
 
 export function News() {
   const t = useTranslations("News");
+  const locale = useLocale();
+  const newsArticles = getNewsArticles(locale);
   return (
     <SectionContainer mode="ultra-light" id="news">
       <NewsScrollReveal>
