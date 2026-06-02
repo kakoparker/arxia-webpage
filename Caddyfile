@@ -1,0 +1,14 @@
+# Caddy auto-provisions and renews TLS certificates from Let's Encrypt for these
+# hostnames. The only prerequisite is that www.arxia.com and arxia.com both
+# resolve (DNS A/AAAA) to this server and ports 80 + 443 are open.
+
+www.arxia.com {
+	encode zstd gzip
+	reverse_proxy web:3000
+}
+
+# Canonical host is www; send the apex there (matches the hardcoded canonical
+# URL in sitemap.ts / robots.ts / layout.tsx).
+arxia.com {
+	redir https://www.arxia.com{uri} permanent
+}

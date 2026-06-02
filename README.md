@@ -56,6 +56,11 @@ Server-only variables (no `NEXT_PUBLIC_` prefix) are never exposed to the client
 
 ## Deployment
 
+> **Production (self-hosted + auto-deploy):** see **[DEPLOYMENT.md](./DEPLOYMENT.md)**.
+> The repo ships a `Dockerfile`, `docker-compose.yml`, `Caddyfile`, and a GitHub
+> Actions pipeline (`.github/workflows/deploy.yml`) that auto-deploys every push to
+> `main` to the Arxia server. The section below is the generic manual recipe.
+
 The site is a standard Next.js 16 app. The production build emits a runnable Node server.
 
 ```bash

@@ -1,0 +1,75 @@
+name: Deploy
+
+# Continuous deployment to the self-hosted Arxia server.
+# Every push to `main` builds a production Docker image; if it builds (which
+# includes the TypeScript check — the build gate), the image is published to
+# GHCR and the server pulls + restarts. Content changes go live in ~1–2 min.
+#
+# DORMANT until configured: the job is gated on the `DEPLOY_ENABLED` repo
+# variable. It does nothing until an engineer sets the secrets/variables below
+# and flips DEPLOY_ENABLED to "true" (see DEPLOYMENT.md). Until then, pushes to
+# main are validated by the build step in CI on pull requests.
+#
+# Required to activate (Settings → Secrets and variables → Actions):
+#   Variables: DEPLOY_ENABLED=true, optional PLAUSIBLE_DOMAIN=arxia.com
+#   Secrets:   SSH_HOST, SSH_USER, SSH_KEY  (private key with access to the server)
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    if: ${{ vars.DEPLOY_ENABLED == 'true' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    env:
+      IMAGE: ghcr.io/${{ github.repository }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # Builds the production image. `next build` runs inside — if it fails,
+      # nothing is published and the server is left untouched (build gate).
+      - name: Build and push image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ env.IMAGE }}:latest
+            ${{ env.IMAGE }}:${{ github.sha }}
+          build-args: |
+            NEXT_PUBLIC_PLAUSIBLE_DOMAIN=${{ vars.PLAUSIBLE_DOMAIN }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      # Pull the freshly published image on the server and restart. Keeps the
+      # previous image around so a rollback is just re-tagging (see DEPLOYMENT.md).
+      - name: Deploy on server over SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /opt/arxia-webpage
+            docker compose pull web
+            docker compose up -d
+            docker image prune -f
