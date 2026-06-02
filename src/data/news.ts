@@ -19,6 +19,84 @@ export interface NewsArticle {
 
 export const newsArticles: NewsArticle[] = [
   {
+    slug: "arxia-govtech-internationalization-ukraine-kyiv",
+    date: "May 24, 2026",
+    isoDate: "2026-05-24",
+    title:
+      "Building bridges in Kyiv: Arxia and Ukraine's Govtech community on the internationalization of public technology",
+    excerpt:
+      "Internationalizing Govtech isn't about exporting products — it's about building cooperation between countries. Arxia joined Ukraine's Govtech community in Kyiv to share its global-expansion journey and a conviction: the best public technology travels through partnerships, not transactions.",
+    metaDescription:
+      "Arxia joined the Global Government Technology Centre Kyiv and the GovTech Alliance of Ukraine at the Govtech Meet-up to discuss the internationalization of Govtech services, multi-stakeholder cooperation, and supporting Ukrainian innovators in taking their solutions to the world.",
+    tags: ["Govtech", "Internationalization", "Event"],
+    coverImage:
+      "/images/news/arxia-govtech-internationalization-ukraine-kyiv/cover.jpg",
+    coverAlt:
+      "Daniel Homorodean and Carlos Parker of Arxia at the World Economic Forum's Global Government Technology Centre in Kyiv.",
+    body: [
+      {
+        type: "paragraph",
+        text:
+          "When people talk about taking Govtech across borders, the conversation usually starts and ends with products. Arxia brought a different message to Ukraine's Govtech community.",
+      },
+      {
+        type: "heading",
+        text: "A Govtech Meet-up in Kyiv",
+      },
+      {
+        type: "paragraph",
+        text:
+          "Arxia's Daniel Homorodean and Carlos Parker met with Ukraine's Govtech community at the Govtech Meet-up, convened together with the Global Government Technology Centre Kyiv and the GovTech Alliance of Ukraine. The gathering brought experts, government representatives, innovators, and companies into the same room to advance public-sector technology.",
+      },
+      {
+        type: "heading",
+        text: "Sharing the journey, and the lessons learned",
+      },
+      {
+        type: "paragraph",
+        text:
+          "Arxia used the session to share its own story of global expansion — the experience of internationalizing Govtech services across very different countries and contexts, and the lessons that came with it. After more than two decades in international markets, those lessons are less about technology than about how cooperation is built and sustained.",
+      },
+      {
+        type: "heading",
+        text: "Internationalization is more than exporting products",
+      },
+      {
+        type: "paragraph",
+        text:
+          "The core message was simple. When we talk about the internationalization of Govtech, we are not only talking about exporting products. We are talking about building cooperation structures between countries — connecting experts, governments, innovators, and companies so that solutions take root rather than simply land.",
+      },
+      {
+        type: "heading",
+        text: "Why multi-stakeholder governance matters",
+      },
+      {
+        type: "paragraph",
+        text:
+          "That is also why lasting impact depends on multi-stakeholder governance. Sustainable relationships between countries are not built by any single actor; they require governments, innovators, experts, and companies sharing responsibility for the outcome. It is slower and more demanding than a sale — and it is the only approach that holds.",
+      },
+      {
+        type: "heading",
+        text: "Ukraine has a story to tell",
+      },
+      {
+        type: "paragraph",
+        text:
+          "Ukraine has a remarkable story to tell, with incredible companies and courageous leaders. Arxia's aim is to help carry that story into the world — supporting Ukrainian innovators as they bring their expert knowledge and solutions to new markets, alongside the partners already doing this work on the ground.",
+      },
+      {
+        type: "paragraph",
+        text:
+          "For Carlos Parker, this has become a personal mission in Ukraine. The goal is easy to state and harder to do: build the bridges that let public technology — and the people behind it — move between countries. Let's build those bridges.",
+      },
+      {
+        type: "cta",
+        text: "Explore Arxia's work in Digital Government →",
+        href: "/govtech",
+      },
+    ],
+  },
+  {
     slug: "arxia-supports-fawe-uganda-ai-acceleration",
     date: "April 30, 2026",
     isoDate: "2026-04-30",

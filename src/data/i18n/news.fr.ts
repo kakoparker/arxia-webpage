@@ -2,6 +2,45 @@
 import type { NewsArticleOverlay } from "./news.es";
 
 export const newsFr: Record<string, NewsArticleOverlay> = {
+  "arxia-govtech-internationalization-ukraine-kyiv": {
+    title:
+      "Construire des ponts à Kyiv : Arxia et la communauté Govtech ukrainienne face à l'internationalisation de la technologie publique",
+    excerpt:
+      "Internationaliser le Govtech ne consiste pas à exporter des produits, mais à construire une coopération entre les pays. Arxia a rencontré la communauté Govtech ukrainienne à Kyiv pour partager son parcours d'expansion mondiale et une conviction : la meilleure technologie publique voyage par les partenariats, non par les transactions.",
+    metaDescription:
+      "Arxia a rejoint le Global Government Technology Centre Kyiv et la GovTech Alliance of Ukraine lors du Govtech Meet-up pour évoquer l'internationalisation des services Govtech, la coopération multipartite et le soutien aux innovateurs ukrainiens pour porter leurs solutions dans le monde.",
+    coverAlt:
+      "Daniel Homorodean et Carlos Parker, d'Arxia, au Global Government Technology Centre du Forum économique mondial à Kyiv.",
+    body: [
+      {
+        text: "Quand on parle de porter le Govtech au-delà des frontières, la conversation commence et s'arrête souvent aux produits. Arxia a apporté un message différent à la communauté Govtech ukrainienne.",
+      },
+      { text: "Un Govtech Meet-up à Kyiv" },
+      {
+        text: "Daniel Homorodean et Carlos Parker, d'Arxia, ont rencontré la communauté Govtech ukrainienne lors du Govtech Meet-up, organisé avec le Global Government Technology Centre Kyiv et la GovTech Alliance of Ukraine. La rencontre a réuni experts, représentants gouvernementaux, innovateurs et entreprises pour faire progresser la technologie du secteur public.",
+      },
+      { text: "Partager le parcours et les enseignements" },
+      {
+        text: "Arxia a profité de la session pour partager sa propre histoire d'expansion mondiale : l'expérience de l'internationalisation des services Govtech dans des pays et des contextes très différents, et les enseignements qui en ont découlé. Après plus de deux décennies sur les marchés internationaux, ces enseignements relèvent moins de la technologie que de la manière dont la coopération se construit et se maintient.",
+      },
+      { text: "L'internationalisation, c'est plus qu'exporter des produits" },
+      {
+        text: "Le message central était simple. Quand nous parlons de l'internationalisation du Govtech, nous ne parlons pas seulement d'exporter des produits. Nous parlons de construire des structures de coopération entre les pays — en reliant experts, gouvernements, innovateurs et entreprises pour que les solutions prennent racine au lieu de simplement se poser.",
+      },
+      { text: "Pourquoi la gouvernance multipartite est essentielle" },
+      {
+        text: "C'est aussi pourquoi un impact durable repose sur une gouvernance multipartite. Les relations durables entre les pays ne sont pas l'œuvre d'un seul acteur ; elles exigent que gouvernements, innovateurs, experts et entreprises partagent la responsabilité du résultat. C'est plus lent et plus exigeant qu'une vente — et c'est la seule approche qui tienne.",
+      },
+      { text: "L'Ukraine a une histoire à raconter" },
+      {
+        text: "L'Ukraine a une histoire remarquable à raconter, avec des entreprises incroyables et des dirigeants courageux. L'ambition d'Arxia est d'aider à porter cette histoire dans le monde, en accompagnant les innovateurs ukrainiens pour qu'ils amènent leur savoir-faire et leurs solutions vers de nouveaux marchés, aux côtés des partenaires déjà engagés sur le terrain.",
+      },
+      {
+        text: "Pour Carlos Parker, c'est devenu une mission personnelle en Ukraine. L'objectif est simple à énoncer et plus difficile à réaliser : construire les ponts qui permettent à la technologie publique — et aux personnes qui la portent — de circuler entre les pays. Construisons ces ponts.",
+      },
+      { text: "Découvrir le travail d'Arxia en matière de Gouvernement numérique →" },
+    ],
+  },
   "arxia-supports-fawe-uganda-ai-acceleration": {
     title:
       "Arxia accompagne FAWE Ouganda dans l'adoption de l'IA agentique via le Programme d'Accélération IA",
