@@ -1,7 +1,8 @@
+// `key` maps to the `Nav` message namespace; `label` is the English fallback.
 export const navLinks = [
-  { label: "Govtech", href: "/govtech" },
-  { label: "Industries", href: "/industries" },
-  { label: "Portfolio", href: "/portfolio" },
-  { label: "News", href: "/#news" },
-  { label: "Contact", href: "/#contact" },
-];
+  { key: "govtech", label: "Govtech", href: "/govtech" },
+  { key: "industries", label: "Industries", href: "/industries" },
+  { key: "portfolio", label: "Portfolio", href: "/portfolio" },
+  { key: "news", label: "News", href: "/#news" },
+  { key: "contact", label: "Contact", href: "/#contact" },
+] as const;

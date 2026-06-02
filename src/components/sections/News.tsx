@@ -1,14 +1,18 @@
 import Image from "next/image";
-import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Card } from "@/components/ui/Card";
 import { Tag } from "@/components/ui/Tag";
 import { Button } from "@/components/ui/Button";
-import { newsArticles } from "@/data/news";
+import { getNewsArticles } from "@/data/news";
 import { NewsScrollReveal } from "./NewsAnimations";
 
 export function News() {
+  const t = useTranslations("News");
+  const locale = useLocale();
+  const newsArticles = getNewsArticles(locale);
   return (
     <SectionContainer mode="ultra-light" id="news">
       <NewsScrollReveal>
@@ -17,7 +21,7 @@ export function News() {
           data-animate-index="0"
           className="animate-on-scroll mb-16"
         >
-          <SectionHeader annotation="News" heading="Latest News" />
+          <SectionHeader annotation={t("annotation")} heading={t("heading")} />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
@@ -51,7 +55,7 @@ export function News() {
                       {article.excerpt}
                     </p>
                     <span className="inline-flex items-center font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2px] text-accent-red/85 group-hover:text-accent-red transition-colors duration-200">
-                      Read More →
+                      {t("readMore")}
                     </span>
                   </div>
                 </Card>
@@ -62,7 +66,7 @@ export function News() {
 
         <div className="text-center">
           <Button variant="primary" href="/news">
-            All News →
+            {t("all")}
           </Button>
         </div>
       </NewsScrollReveal>

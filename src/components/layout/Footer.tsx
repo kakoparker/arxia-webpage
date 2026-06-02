@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { MapPin } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 // lucide-react 1.x dropped brand icons, so the LinkedIn mark is inline.
 // Uses currentColor so it inherits the footer's gray→white hover transition.
@@ -16,61 +18,47 @@ function LinkedInIcon({ className }: { className?: string }) {
   );
 }
 
-const footerLinks = {
-  company: [
-    { label: "About Us", href: "/#intro" },
-    { label: "Portfolio", href: "/portfolio" },
-    { label: "News", href: "/news" },
-  ],
-  services: [
-    {
-      vertical: "Govtech",
-      links: [
-        { label: "Data", href: "/govtech/data" },
-        { label: "Process", href: "/govtech/process" },
-        { label: "Intelligence", href: "/govtech/intelligence" },
-      ],
-    },
-    {
-      vertical: "Industries",
-      links: [
-        { label: "Data", href: "/industries/data" },
-        { label: "Process", href: "/industries/process" },
-        { label: "Intelligence", href: "/industries/intelligence" },
-      ],
-    },
-  ],
-};
+// `labelKey` → Footer message namespace; href is structural.
+const companyLinks = [
+  { labelKey: "aboutUs", href: "/#intro" },
+  { labelKey: "portfolio", href: "/portfolio" },
+  { labelKey: "news", href: "/news" },
+] as const;
 
+const serviceGroups = [
+  {
+    verticalKey: "govtech",
+    links: [
+      { labelKey: "data", href: "/govtech/data" },
+      { labelKey: "process", href: "/govtech/process" },
+      { labelKey: "intelligence", href: "/govtech/intelligence" },
+    ],
+  },
+  {
+    verticalKey: "industries",
+    links: [
+      { labelKey: "data", href: "/industries/data" },
+      { labelKey: "process", href: "/industries/process" },
+      { labelKey: "intelligence", href: "/industries/intelligence" },
+    ],
+  },
+] as const;
+
+// Place names are proper nouns — not translated.
 const offices = {
   headquarters: "Cluj-Napoca, Romania",
   others: ["Santiago, Chile", "Kampala, Uganda"],
 };
 
 const linkedinLinks = [
-  {
-    label: "Arxia",
-    role: "Company",
-    href: "https://www.linkedin.com/company/arxia",
-  },
-  {
-    label: "Daniel Homorodean",
-    role: "CEO",
-    href: "https://www.linkedin.com/in/danielhomorodean/",
-  },
-  {
-    label: "Carlos Parker",
-    role: "Head of International Business",
-    href: "https://www.linkedin.com/in/carlosparker/",
-  },
-  {
-    label: "Grace Labong",
-    role: "Business Development, Africa",
-    href: "https://www.linkedin.com/in/grace-labong-21536b63/",
-  },
-];
+  { name: "Arxia", roleKey: "roleCompany", href: "https://www.linkedin.com/company/arxia" },
+  { name: "Daniel Homorodean", roleKey: "roleCeo", href: "https://www.linkedin.com/in/danielhomorodean/" },
+  { name: "Carlos Parker", roleKey: "roleHeadIntl", href: "https://www.linkedin.com/in/carlosparker/" },
+  { name: "Grace Labong", roleKey: "roleBizDevAfrica", href: "https://www.linkedin.com/in/grace-labong-21536b63/" },
+] as const;
 
 export function Footer() {
+  const t = useTranslations("Footer");
   return (
     <footer
       role="contentinfo"
@@ -88,25 +76,24 @@ export function Footer() {
               className="h-8 w-auto mb-6"
             />
             <p className="text-gray-medium text-[var(--text-small)] leading-[1.7] max-w-[280px]">
-              Digital transformation and Digital Public Infrastructure for
-              governments and strategic industries worldwide.
+              {t("tagline")}
             </p>
           </div>
 
           {/* Company */}
           <div>
             <h3 className="font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2.5px] text-accent-red/85 mb-6">
-              Company
+              {t("company")}
             </h3>
             <ul className="space-y-3">
-              {footerLinks.company.map((link) => (
-                <li key={link.label}>
-                  <a
+              {companyLinks.map((link) => (
+                <li key={link.labelKey}>
+                  <Link
                     href={link.href}
                     className="text-gray-medium text-[var(--text-small)] hover:text-white transition-colors duration-200"
                   >
-                    {link.label}
-                  </a>
+                    {t(link.labelKey)}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -115,11 +102,11 @@ export function Footer() {
           {/* Services */}
           <div>
             <h3 className="font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2.5px] text-accent-red/85 mb-6">
-              Services
+              {t("services")}
             </h3>
             <div className="space-y-5">
-              {footerLinks.services.map((group) => (
-                <div key={group.vertical}>
+              {serviceGroups.map((group) => (
+                <div key={group.verticalKey}>
                   <p
                     className="text-white/40 mb-2"
                     style={{
@@ -129,17 +116,17 @@ export function Footer() {
                       textTransform: "uppercase",
                     }}
                   >
-                    {group.vertical}
+                    {t(group.verticalKey)}
                   </p>
                   <ul className="space-y-2">
                     {group.links.map((link) => (
                       <li key={link.href}>
-                        <a
+                        <Link
                           href={link.href}
                           className="text-gray-medium text-[var(--text-small)] hover:text-white transition-colors duration-200"
                         >
-                          {link.label}
-                        </a>
+                          {t(link.labelKey)}
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -151,16 +138,16 @@ export function Footer() {
           {/* Contact */}
           <div>
             <h3 className="font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2.5px] text-accent-red/85 mb-6">
-              Contact
+              {t("contact")}
             </h3>
 
-            <a
+            <Link
               href="/#contact"
               className="inline-flex items-center gap-2 text-gray-medium text-[var(--text-small)] hover:text-white transition-colors duration-200"
             >
-              Get in touch via the contact form
+              {t("getInTouch")}
               <span aria-hidden>→</span>
-            </a>
+            </Link>
 
             {/* Locations */}
             <div className="mt-6 space-y-4">
@@ -176,7 +163,7 @@ export function Footer() {
                       textTransform: "uppercase",
                     }}
                   >
-                    Headquarters
+                    {t("headquarters")}
                   </p>
                   <p>{offices.headquarters}</p>
                 </div>
@@ -193,7 +180,7 @@ export function Footer() {
                       textTransform: "uppercase",
                     }}
                   >
-                    Offices
+                    {t("offices")}
                   </p>
                   {offices.others.map((city) => (
                     <p key={city}>{city}</p>
@@ -212,28 +199,31 @@ export function Footer() {
                 textTransform: "uppercase",
               }}
             >
-              Connect
+              {t("connect")}
             </p>
             <ul className="space-y-3">
-              {linkedinLinks.map((person) => (
-                <li key={person.href}>
-                  <a
-                    href={person.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${person.label} — ${person.role} on LinkedIn`}
-                    className="group flex items-start gap-3 text-gray-medium hover:text-white transition-colors duration-200"
-                  >
-                    <LinkedInIcon className="mt-0.5 flex-shrink-0 h-4 w-4" />
-                    <span className="text-[var(--text-small)] leading-tight">
-                      {person.label}
-                      <span className="block text-white/40 group-hover:text-gray-medium transition-colors duration-200 text-[var(--text-caption)]">
-                        {person.role}
+              {linkedinLinks.map((person) => {
+                const role = t(person.roleKey);
+                return (
+                  <li key={person.href}>
+                    <a
+                      href={person.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${person.name} — ${role} · LinkedIn`}
+                      className="group flex items-start gap-3 text-gray-medium hover:text-white transition-colors duration-200"
+                    >
+                      <LinkedInIcon className="mt-0.5 flex-shrink-0 h-4 w-4" />
+                      <span className="text-[var(--text-small)] leading-tight">
+                        {person.name}
+                        <span className="block text-white/40 group-hover:text-gray-medium transition-colors duration-200 text-[var(--text-caption)]">
+                          {role}
+                        </span>
                       </span>
-                    </span>
-                  </a>
-                </li>
-              ))}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>
@@ -241,21 +231,21 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-gray-medium/60 text-[var(--text-caption)]">
-            &copy; {new Date().getFullYear()} Arxia. All rights reserved.
+            &copy; {new Date().getFullYear()} Arxia. {t("rights")}
           </p>
           <div className="flex gap-6">
-            <a
+            <Link
               href="/privacy"
               className="text-gray-medium/60 text-[var(--text-caption)] hover:text-gray-medium transition-colors duration-200"
             >
-              Privacy Policy
-            </a>
-            <a
+              {t("privacy")}
+            </Link>
+            <Link
               href="/terms"
               className="text-gray-medium/60 text-[var(--text-caption)] hover:text-gray-medium transition-colors duration-200"
             >
-              Terms of Service
-            </a>
+              {t("terms")}
+            </Link>
           </div>
         </div>
       </div>

@@ -622,17 +622,60 @@ export const portfolioProjects: PortfolioProject[] = [
 
 export const featuredProjects = portfolioProjects.filter((p) => p.featured);
 
-export function getProject(slug: string): PortfolioProject | undefined {
-  return portfolioProjects.find((p) => p.slug === slug);
+// ─────────────────────────────────────────────────────────────────────────────
+// Localization — overlay translated text. English is the structural source;
+// es/fr overlays carry title / description / categoryLabel keyed by stable
+// project slug. Missing entries fall back to English.
+// ─────────────────────────────────────────────────────────────────────────────
+import { portfolioEs, type PortfolioOverlay } from "./i18n/portfolio.es";
+import { portfolioFr } from "./i18n/portfolio.fr";
+
+const PORTFOLIO_OVERLAYS: Record<string, Record<string, PortfolioOverlay>> = {
+  es: portfolioEs,
+  fr: portfolioFr,
+};
+
+function localizeProject(p: PortfolioProject, locale: string): PortfolioProject {
+  if (locale === "en") return p;
+  const ov = PORTFOLIO_OVERLAYS[locale]?.[p.slug];
+  if (!ov) return p;
+  return {
+    ...p,
+    title: ov.title ?? p.title,
+    description: ov.description ?? p.description,
+    categoryLabel: ov.categoryLabel ?? p.categoryLabel,
+  };
 }
 
-export function projectsByVertical(v: VerticalSlug): PortfolioProject[] {
-  return portfolioProjects.filter((p) => p.vertical === v);
+export function getProjects(locale: string = "en"): PortfolioProject[] {
+  return locale === "en"
+    ? portfolioProjects
+    : portfolioProjects.map((p) => localizeProject(p, locale));
+}
+
+export function getFeaturedProjects(locale: string = "en"): PortfolioProject[] {
+  return getProjects(locale).filter((p) => p.featured);
+}
+
+export function getProject(
+  slug: string,
+  locale: string = "en"
+): PortfolioProject | undefined {
+  const p = portfolioProjects.find((p) => p.slug === slug);
+  return p ? localizeProject(p, locale) : undefined;
+}
+
+export function projectsByVertical(
+  v: VerticalSlug,
+  locale: string = "en"
+): PortfolioProject[] {
+  return getProjects(locale).filter((p) => p.vertical === v);
 }
 
 export function projectsByDomain(
   v: VerticalSlug,
-  d: DomainSlug
+  d: DomainSlug,
+  locale: string = "en"
 ): PortfolioProject[] {
-  return portfolioProjects.filter((p) => p.vertical === v && p.domain === d);
+  return getProjects(locale).filter((p) => p.vertical === v && p.domain === d);
 }

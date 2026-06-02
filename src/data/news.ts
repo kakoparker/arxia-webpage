@@ -95,6 +95,50 @@ export const newsArticles: NewsArticle[] = [
   },
 ];
 
-export function getNewsArticle(slug: string): NewsArticle | undefined {
-  return newsArticles.find((a) => a.slug === slug);
+// ─────────────────────────────────────────────────────────────────────────────
+// Localization — overlay translated text by stable slug. Body blocks are
+// positional (same order as the English source); missing entries fall back.
+// ─────────────────────────────────────────────────────────────────────────────
+import { newsEs, type NewsArticleOverlay } from "./i18n/news.es";
+import { newsFr } from "./i18n/news.fr";
+
+const NEWS_OVERLAYS: Record<string, Record<string, NewsArticleOverlay>> = {
+  es: newsEs,
+  fr: newsFr,
+};
+
+function localizeArticle(a: NewsArticle, locale: string): NewsArticle {
+  if (locale === "en") return a;
+  const ov = NEWS_OVERLAYS[locale]?.[a.slug];
+  if (!ov) return a;
+  return {
+    ...a,
+    title: ov.title ?? a.title,
+    excerpt: ov.excerpt ?? a.excerpt,
+    metaDescription: ov.metaDescription ?? a.metaDescription,
+    coverAlt: ov.coverAlt ?? a.coverAlt,
+    body: a.body.map((block, i) => {
+      const bo = ov.body?.[i];
+      if (!bo) return block;
+      if (block.type === "image") {
+        return { ...block, alt: bo.alt ?? block.alt, caption: bo.caption ?? block.caption };
+      }
+      // heading | paragraph | cta — they all carry `text`
+      return { ...block, text: bo.text ?? (block as { text: string }).text };
+    }),
+  };
+}
+
+export function getNewsArticles(locale: string = "en"): NewsArticle[] {
+  return locale === "en"
+    ? newsArticles
+    : newsArticles.map((a) => localizeArticle(a, locale));
+}
+
+export function getNewsArticle(
+  slug: string,
+  locale: string = "en"
+): NewsArticle | undefined {
+  const a = newsArticles.find((a) => a.slug === slug);
+  return a ? localizeArticle(a, locale) : undefined;
 }

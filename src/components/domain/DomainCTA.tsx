@@ -1,6 +1,7 @@
 "use client";
 
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
@@ -11,6 +12,7 @@ interface DomainCTAProps {
 }
 
 export function DomainCTA({ domainTitle }: DomainCTAProps) {
+  const t = useTranslations("DomainCTA");
   const ref = useScrollAnimation();
 
   return (
@@ -22,9 +24,9 @@ export function DomainCTA({ domainTitle }: DomainCTAProps) {
           className="animate-on-scroll text-center"
         >
           <SectionHeader
-            annotation="Get Started"
-            heading={`Ready to discuss ${domainTitle}?`}
-            body="Let's explore how we can help you achieve your goals. Our team is ready to listen, advise, and build alongside you."
+            annotation={t("annotation")}
+            heading={t("heading", { title: domainTitle })}
+            body={t("body")}
             centered
             dark
           />
@@ -36,14 +38,14 @@ export function DomainCTA({ domainTitle }: DomainCTAProps) {
           className="animate-on-scroll flex flex-col sm:flex-row items-center justify-center gap-4 mt-10"
         >
           <Button variant="primary" href="/#contact">
-            Contact Us
+            {t("contact")}
           </Button>
-          <a
+          <Link
             href="/portfolio"
             className="inline-flex items-center justify-center font-[family-name:var(--font-inter)] font-semibold text-[15px] tracking-[0.3px] px-9 py-3.5 min-h-12 rounded-none border border-white/30 text-white bg-transparent hover:bg-white/5 transition-all duration-200"
           >
-            View Portfolio
-          </a>
+            {t("viewPortfolio")}
+          </Link>
         </div>
       </div>
     </SectionContainer>

@@ -1,59 +1,26 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Globe } from "@/components/ui/Globe";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useOdometer } from "@/hooks/useOdometer";
 
-const HQ = { code: "RO", label: "Romania" };
+// `region` strings + country `code`s are STABLE KEYS into the GlobalPresence
+// message namespace (regions.* and countries.*). They are never displayed raw.
+const HQ_CODE = "RO";
 
-const REGIONS: Array<{ region: string; countries: Array<{ code: string; label: string }> }> = [
-  {
-    region: "Europe",
-    countries: [
-      { code: "DE", label: "Germany" },
-      { code: "CH", label: "Switzerland" },
-      { code: "AT", label: "Austria" },
-      { code: "UA", label: "Ukraine" },
-    ],
-  },
-  {
-    region: "Latin America",
-    countries: [
-      { code: "CL", label: "Chile" },
-      { code: "CO", label: "Colombia" },
-      { code: "PE", label: "Peru" },
-      { code: "SV", label: "El Salvador" },
-    ],
-  },
-  {
-    region: "West Africa",
-    countries: [
-      { code: "TN", label: "Tunisia" },
-      { code: "SN", label: "Senegal" },
-      { code: "GH", label: "Ghana" },
-      { code: "NG", label: "Nigeria" },
-    ],
-  },
-  {
-    region: "East Africa",
-    countries: [
-      { code: "CF", label: "Central African Republic" },
-      { code: "SS", label: "South Sudan" },
-      { code: "UG", label: "Uganda" },
-      { code: "RW", label: "Rwanda" },
-      { code: "BI", label: "Burundi" },
-      { code: "ZM", label: "Zambia" },
-    ],
-  },
-  {
-    region: "Southeast Asia",
-    countries: [{ code: "KH", label: "Cambodia" }],
-  },
+const REGIONS: Array<{ region: string; codes: string[] }> = [
+  { region: "Europe", codes: ["DE", "CH", "AT", "UA"] },
+  { region: "Latin America", codes: ["CL", "CO", "PE", "SV"] },
+  { region: "West Africa", codes: ["TN", "SN", "GH", "NG"] },
+  { region: "East Africa", codes: ["CF", "SS", "UG", "RW", "BI", "ZM"] },
+  { region: "Southeast Asia", codes: ["KH"] },
 ];
 
 export function GlobalPresence() {
+  const t = useTranslations("GlobalPresence");
   const ref = useScrollAnimation();
 
   const orgStat = useOdometer({ target: 100, suffix: "+", duration: 1600 });
@@ -65,8 +32,8 @@ export function GlobalPresence() {
       <div ref={ref}>
         <div data-animate data-animate-index="0" className="animate-on-scroll mb-16">
           <SectionHeader
-            annotation="Reach"
-            heading="Our Global Presence"
+            annotation={t("annotation")}
+            heading={t("heading")}
             centered
             dark
           />
@@ -86,13 +53,13 @@ export function GlobalPresence() {
                   letterSpacing: "2.5px",
                 }}
               >
-                Headquarters
+                {t("headquarters")}
               </p>
               <p
                 className="text-white font-semibold"
                 style={{ fontFamily: "var(--font-primary)", fontSize: "22px" }}
               >
-                {HQ.label}
+                {t(`countries.${HQ_CODE}`)}
               </p>
             </div>
 
@@ -108,13 +75,13 @@ export function GlobalPresence() {
                       letterSpacing: "2px",
                     }}
                   >
-                    {r.region}
+                    {t(`regions.${r.region}`)}
                   </p>
                   <div className="h-[2px] w-8 bg-accent-red mb-3" />
                   <ul className="space-y-1">
-                    {r.countries.map((c) => (
+                    {r.codes.map((code) => (
                       <li
-                        key={c.code}
+                        key={code}
                         className="text-white"
                         style={{
                           fontFamily: "var(--font-primary)",
@@ -122,7 +89,7 @@ export function GlobalPresence() {
                           lineHeight: 1.5,
                         }}
                       >
-                        {c.label}
+                        {t(`countries.${code}`)}
                       </li>
                     ))}
                   </ul>
@@ -154,7 +121,7 @@ export function GlobalPresence() {
               className="text-gray-medium uppercase"
               style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "2px" }}
             >
-              Organizations
+              {t("statOrganizations")}
             </div>
           </div>
           <div className="text-left" ref={countryStat.ref}>
@@ -168,7 +135,7 @@ export function GlobalPresence() {
               className="text-gray-medium uppercase"
               style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "2px" }}
             >
-              Countries
+              {t("statCountries")}
             </div>
           </div>
           <div className="text-left" ref={yearsStat.ref}>
@@ -182,7 +149,7 @@ export function GlobalPresence() {
               className="text-gray-medium uppercase"
               style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "2px" }}
             >
-              Years
+              {t("statYears")}
             </div>
           </div>
         </div>

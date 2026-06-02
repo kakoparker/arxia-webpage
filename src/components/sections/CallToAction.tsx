@@ -3,6 +3,7 @@
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { ParticleButton } from "@/components/ui/ParticleButton";
 import { ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useState, type FormEvent } from "react";
 
 type SubmitState =
@@ -12,6 +13,7 @@ type SubmitState =
   | { status: "success" };
 
 export function CallToAction() {
+  const t = useTranslations("ContactForm");
   const [state, setState] = useState<SubmitState>({ status: "idle" });
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -45,12 +47,12 @@ export function CallToAction() {
       }
       setState({
         status: "error",
-        message: json.error ?? "Something went wrong. Please try again.",
+        message: json.error ?? t("errorGeneric"),
       });
     } catch {
       setState({
         status: "error",
-        message: "Couldn't reach the server. Please try again.",
+        message: t("errorNetwork"),
       });
     }
   };
@@ -72,16 +74,16 @@ export function CallToAction() {
               style={{ maxWidth: "480px" }}
             >
               <p className="font-[family-name:var(--font-inter)] text-white font-semibold text-[15px]">
-                Thank you for reaching out.
+                {t("successTitle")}
               </p>
               <p className="font-[family-name:var(--font-inter)] text-gray-medium text-[14px] mt-2">
-                We&apos;ll get back to you shortly.
+                {t("successBody")}
               </p>
             </div>
           ) : (
             <form
               onSubmit={handleSubmit}
-              aria-label="Contact form"
+              aria-label={t("ariaLabel")}
               className="space-y-4"
               style={{ maxWidth: "480px" }}
               noValidate
@@ -120,7 +122,7 @@ export function CallToAction() {
                     color: "var(--gray-medium)",
                   }}
                 >
-                  Name
+                  {t("name")}
                 </label>
                 <input
                   id="contact-name"
@@ -131,7 +133,7 @@ export function CallToAction() {
                   aria-required="true"
                   suppressHydrationWarning
                   className="w-full bg-transparent border border-gray-medium/30 text-white px-4 py-3 text-[15px] font-[family-name:var(--font-inter)] placeholder:text-gray-medium/50 focus:outline-none focus:border-white transition-colors duration-200 rounded-none"
-                  placeholder="Your name"
+                  placeholder={t("namePlaceholder")}
                 />
               </div>
 
@@ -147,7 +149,7 @@ export function CallToAction() {
                     color: "var(--gray-medium)",
                   }}
                 >
-                  Email
+                  {t("email")}
                 </label>
                 <input
                   id="contact-email"
@@ -158,7 +160,7 @@ export function CallToAction() {
                   aria-required="true"
                   suppressHydrationWarning
                   className="w-full bg-transparent border border-gray-medium/30 text-white px-4 py-3 text-[15px] font-[family-name:var(--font-inter)] placeholder:text-gray-medium/50 focus:outline-none focus:border-white transition-colors duration-200 rounded-none"
-                  placeholder="your@email.com"
+                  placeholder={t("emailPlaceholder")}
                 />
               </div>
 
@@ -174,7 +176,7 @@ export function CallToAction() {
                     color: "var(--gray-medium)",
                   }}
                 >
-                  Comment
+                  {t("comment")}
                 </label>
                 <textarea
                   id="contact-comment"
@@ -184,7 +186,7 @@ export function CallToAction() {
                   suppressHydrationWarning
                   rows={4}
                   className="w-full bg-transparent border border-gray-medium/30 text-white px-4 py-3 text-[15px] font-[family-name:var(--font-inter)] placeholder:text-gray-medium/50 focus:outline-none focus:border-white transition-colors duration-200 rounded-none resize-none"
-                  placeholder="How can we help?"
+                  placeholder={t("commentPlaceholder")}
                 />
               </div>
 
@@ -203,7 +205,7 @@ export function CallToAction() {
                 aria-busy={pending}
                 className="inline-flex items-center justify-center font-[family-name:var(--font-inter)] font-semibold text-[15px] tracking-[0.3px] px-9 py-3.5 min-h-12 rounded-none transition-all duration-200 cursor-pointer bg-white text-blueprint-blue hover:bg-gray-lightest hover:-translate-y-px focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
               >
-                {pending ? "Sending…" : "Send Message"}
+                {pending ? t("sending") : t("send")}
                 {!pending && <ArrowRight className="ml-2 h-4 w-4" />}
               </ParticleButton>
             </form>
@@ -221,7 +223,7 @@ export function CallToAction() {
               lineHeight: "1.2",
             }}
           >
-            Connect
+            {t("connect")}
           </p>
           <h2
             className="font-bold mb-4 text-white"
@@ -232,7 +234,7 @@ export function CallToAction() {
               letterSpacing: "-0.5px",
             }}
           >
-            Let&apos;s build the future together.
+            {t("heading")}
           </h2>
           <div className="h-[3px] w-12 bg-accent-red mb-6" />
           <p
@@ -243,9 +245,7 @@ export function CallToAction() {
               maxWidth: "480px",
             }}
           >
-            Whether you&apos;re modernizing public services, building digital
-            infrastructure, or strengthening local tech ecosystems — we&apos;re
-            ready to partner with you.
+            {t("body")}
           </p>
         </div>
       </div>

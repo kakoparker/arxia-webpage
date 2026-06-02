@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
@@ -25,31 +26,41 @@ const CallToAction = dynamic(
   () => import("@/components/sections/CallToAction").then((m) => m.CallToAction)
 );
 
-export const metadata: Metadata = {
-  title: "Arxia — Technology to transform nations",
-  description:
-    "Arxia is a digital transformation and Digital Public Infrastructure company. We empower governments, industries, and ecosystems to build their digital future.",
-  alternates: { canonical: "/" },
-  openGraph: {
-    title: "Arxia — Technology to transform nations",
-    description:
-      "We empower governments, industries, and ecosystems to build their digital future.",
-    url: "/",
-    type: "website",
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Meta" });
+  return {
+    title: t("homeTitle"),
+    description: t("homeDescription"),
+    openGraph: {
+      title: t("homeTitle"),
+      description: t("homeOgDescription"),
+      type: "website",
+    },
+  };
+}
 
-const homeRailSections = [
-  { id: "intro", label: "About" },
-  { id: "govtech", label: "Govtech" },
-  { id: "industries", label: "Industries" },
-  { id: "presence", label: "Presence" },
-  { id: "portfolio", label: "Portfolio" },
-  { id: "news", label: "News" },
-  { id: "contact", label: "Contact" },
-];
-
-export default function Home() {
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations("Rail");
+  const homeRailSections = [
+    { id: "intro", label: t("about") },
+    { id: "govtech", label: t("govtech") },
+    { id: "industries", label: t("industries") },
+    { id: "presence", label: t("presence") },
+    { id: "portfolio", label: t("portfolio") },
+    { id: "news", label: t("news") },
+    { id: "contact", label: t("contact") },
+  ];
   return (
     <>
       <HomeScrollManager />

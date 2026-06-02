@@ -1,13 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { useGSAP } from "@gsap/react";
 import { gsap, ScrollTrigger } from "@/hooks/useGsapScrollTrigger";
 
 gsap.registerPlugin(useGSAP);
 
 export function Introduction() {
+  const t = useTranslations("Introduction");
   const sectionRef = useRef<HTMLElement>(null);
   const pinWrapperRef = useRef<HTMLDivElement>(null);
 
@@ -108,7 +110,7 @@ export function Introduction() {
               color: "var(--accent-red)",
             }}
           >
-            Who We Are
+            {t("annotation")}
           </span>
           <div className="h-[3px] w-12 bg-accent-red mt-4 mb-6" />
           <p
@@ -119,11 +121,7 @@ export function Introduction() {
               color: "var(--gray-medium)",
             }}
           >
-            Arxia is a Digital Public Infrastructure and Digital Transformation
-            company. Our team of expert consultants and engineers have developed
-            digital projects all over the world, in partnership with international
-            organizations and donors. Our goal is to transform the lives of people
-            through impactful technology and capacity building.
+            {t("paragraph")}
           </p>
         </div>
       </section>
@@ -151,7 +149,7 @@ export function Introduction() {
           <div className="blueprint-grid-blue relative">
             <div className="relative h-full flex flex-col justify-center items-start px-10 py-14 lg:px-16 lg:py-20 max-w-[560px]">
               <p className="font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2.5px] text-accent-red/85 mb-4">
-                GOVTECH
+                {t("govtechLabel")}
               </p>
               <h2
                 className="font-bold mb-4 text-white"
@@ -162,7 +160,7 @@ export function Introduction() {
                   letterSpacing: "-1px",
                 }}
               >
-                Arxia Govtech
+                {t("govtechTitle")}
               </h2>
               <div className="bg-accent-red mb-5 h-[3px] w-12" />
               <p
@@ -173,14 +171,13 @@ export function Introduction() {
                   lineHeight: 1.6,
                 }}
               >
-                Digital public infrastructure for governments and international
-                organizations
+                {t("govtechTagline")}
               </p>
               <Link
                 href="/govtech"
                 className="pointer-events-auto inline-flex items-center gap-3 px-5 py-2.5 font-[family-name:var(--font-inter)] text-[13px] font-semibold tracking-[0.3px] border border-white/60 text-white hover:bg-white hover:text-blueprint-blue focus-visible:bg-white focus-visible:text-blueprint-blue focus-visible:outline-none transition-colors duration-200"
               >
-                Explore Govtech
+                {t("govtechCta")}
                 <span aria-hidden>→</span>
               </Link>
             </div>
@@ -190,7 +187,7 @@ export function Introduction() {
           <div className="blueprint-grid-light relative">
             <div className="relative h-full flex flex-col justify-center items-start px-10 py-14 lg:px-16 lg:py-20 max-w-[560px]">
               <p className="font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2.5px] text-accent-red/85 mb-4">
-                INDUSTRIES
+                {t("industriesLabel")}
               </p>
               <h2
                 className="font-bold mb-4 text-blueprint-blue"
@@ -201,7 +198,7 @@ export function Introduction() {
                   letterSpacing: "-1px",
                 }}
               >
-                Arxia Industries
+                {t("industriesTitle")}
               </h2>
               <div className="bg-accent-red mb-5 h-[3px] w-12" />
               <p
@@ -212,14 +209,13 @@ export function Introduction() {
                   lineHeight: 1.6,
                 }}
               >
-                Enterprise transformation for mining, finance, retail,
-                universities, and beyond
+                {t("industriesTagline")}
               </p>
               <Link
                 href="/industries"
                 className="pointer-events-auto inline-flex items-center gap-3 px-5 py-2.5 font-[family-name:var(--font-inter)] text-[13px] font-semibold tracking-[0.3px] border border-blueprint-blue bg-blueprint-blue text-white hover:bg-blueprint-dark hover:border-blueprint-dark focus-visible:bg-blueprint-dark focus-visible:border-blueprint-dark focus-visible:outline-none transition-colors duration-200"
               >
-                Explore Industries
+                {t("industriesCta")}
                 <span aria-hidden>→</span>
               </Link>
             </div>
@@ -268,7 +264,7 @@ export function Introduction() {
                 color: "var(--accent-red)",
               }}
             >
-              Who We Are
+              {t("annotation")}
             </span>
             <div className="h-[3px] w-12 bg-accent-red mt-6 mb-8" />
             <p
@@ -279,11 +275,7 @@ export function Introduction() {
                 color: "var(--gray-light)",
               }}
             >
-              Arxia is a Digital Public Infrastructure and Digital Transformation
-              company. Our team of expert consultants and engineers have developed
-              digital projects all over the world, in partnership with international
-              organizations and donors. Our goal is to transform the lives of people
-              through impactful technology and capacity building.
+              {t("paragraph")}
             </p>
           </div>
         </div>

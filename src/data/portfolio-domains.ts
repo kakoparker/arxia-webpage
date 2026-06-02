@@ -63,3 +63,33 @@ export const portfolioDomains: PortfolioDomain[] = [
     order: 8,
   },
 ];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Localization — overlay label + description by stable slug. English fallback.
+// ─────────────────────────────────────────────────────────────────────────────
+import {
+  portfolioDomainsEs,
+  type PortfolioDomainOverlay,
+} from "./i18n/portfolio-domains.es";
+import { portfolioDomainsFr } from "./i18n/portfolio-domains.fr";
+
+const PORTFOLIO_DOMAIN_OVERLAYS: Record<
+  string,
+  Record<string, PortfolioDomainOverlay>
+> = {
+  es: portfolioDomainsEs,
+  fr: portfolioDomainsFr,
+};
+
+export function getPortfolioDomains(locale: string = "en"): PortfolioDomain[] {
+  if (locale === "en") return portfolioDomains;
+  return portfolioDomains.map((d) => {
+    const ov = PORTFOLIO_DOMAIN_OVERLAYS[locale]?.[d.slug];
+    if (!ov) return d;
+    return {
+      ...d,
+      label: ov.label ?? d.label,
+      description: ov.description ?? d.description,
+    };
+  });
+}

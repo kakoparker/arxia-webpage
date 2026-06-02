@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
+import { setRequestLocale, getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { SectionContainer } from "@/components/ui/SectionContainer";
@@ -9,7 +10,7 @@ import { Tag } from "@/components/ui/Tag";
 import { newsArticles, getNewsArticle } from "@/data/news";
 
 interface PageProps {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }
 
 export function generateStaticParams() {
@@ -19,8 +20,8 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const article = getNewsArticle(slug);
+  const { locale, slug } = await params;
+  const article = getNewsArticle(slug, locale);
   if (!article) return { title: "Not Found" };
 
   return {
@@ -37,9 +38,11 @@ export async function generateMetadata({
 }
 
 export default async function NewsArticlePage({ params }: PageProps) {
-  const { slug } = await params;
-  const article = getNewsArticle(slug);
+  const { locale, slug } = await params;
+  setRequestLocale(locale);
+  const article = getNewsArticle(slug, locale);
   if (!article) notFound();
+  const t = await getTranslations("News");
 
   return (
     <>
@@ -51,7 +54,7 @@ export default async function NewsArticlePage({ params }: PageProps) {
             href="/news"
             className="inline-flex items-center font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2px] text-gray-dark hover:text-blueprint-blue transition-colors duration-200 mb-10"
           >
-            ← All News
+            {t("backToAll")}
           </Link>
 
           <div className="flex items-center gap-3 mb-6 flex-wrap">

@@ -837,15 +837,69 @@ export const domainPages: DomainPageData[] = [
   },
 ];
 
-export function getDomainPage(slug: string): DomainPageData | undefined {
-  return domainPages.find((d) => d.slug === slug);
+// ─────────────────────────────────────────────────────────────────────────────
+// Localization — overlay translated text onto the English source of truth.
+// English keeps all structure (slugs, images, featuredCases, iconName, category
+// identity/order); es/fr overlay display text by stable slug. Missing entries
+// fall back to English.
+// ─────────────────────────────────────────────────────────────────────────────
+import { domainPagesEs, type DomainPageOverlay } from "./i18n/domain-pages.es";
+import { domainPagesFr } from "./i18n/domain-pages.fr";
+
+const PAGE_OVERLAYS: Record<string, Record<string, DomainPageOverlay>> = {
+  es: domainPagesEs,
+  fr: domainPagesFr,
+};
+
+function localizeDomainPage(
+  page: DomainPageData,
+  overlay: DomainPageOverlay | undefined
+): DomainPageData {
+  if (!overlay) return page;
+  return {
+    ...page,
+    title: overlay.title ?? page.title,
+    tagline: overlay.tagline ?? page.tagline,
+    description: overlay.description ?? page.description,
+    metaTitle: overlay.metaTitle ?? page.metaTitle,
+    metaDescription: overlay.metaDescription ?? page.metaDescription,
+    categories: page.categories.map((c) => {
+      const co = overlay.categories?.[c.name];
+      if (!co) return c;
+      return {
+        ...c,
+        tagline: co.tagline ?? c.tagline,
+        items: c.items.map((it) => {
+          const io = co.items?.[it.slug];
+          if (!io) return it;
+          return {
+            ...it,
+            title: io.title ?? it.title,
+            description: io.description ?? it.description,
+          };
+        }),
+      };
+    }),
+  };
+}
+
+export function getDomainPage(
+  slug: string,
+  locale: string = "en"
+): DomainPageData | undefined {
+  const page = domainPages.find((d) => d.slug === slug);
+  if (!page) return undefined;
+  return localizeDomainPage(page, PAGE_OVERLAYS[locale]?.[page.slug]);
 }
 
 export function getDomainPageByMatrix(
   vertical: VerticalSlug,
-  domain: DomainSlug
+  domain: DomainSlug,
+  locale: string = "en"
 ): DomainPageData | undefined {
-  return domainPages.find(
+  const page = domainPages.find(
     (d) => d.vertical === vertical && d.domain === domain
   );
+  if (!page) return undefined;
+  return localizeDomainPage(page, PAGE_OVERLAYS[locale]?.[page.slug]);
 }

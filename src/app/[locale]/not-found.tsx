@@ -1,23 +1,18 @@
-"use client";
-
-import { useEffect } from "react";
-import Link from "next/link";
+import type { Metadata } from "next";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 
-interface ErrorPageProps {
-  error: Error & { digest?: string };
-  reset: () => void;
-}
+export const metadata: Metadata = {
+  title: "Page not found",
+  description: "The page you're looking for doesn't exist or has moved.",
+  robots: { index: false, follow: true },
+};
 
-export default function GlobalError({ error, reset }: ErrorPageProps) {
-  useEffect(() => {
-    // Surface the error in the browser console so engineers can inspect it
-    // in dev. In production, replace this with a proper telemetry sink.
-    console.error(error);
-  }, [error]);
-
+export default function NotFound() {
+  const t = useTranslations("Errors");
   return (
     <>
       <Navbar />
@@ -33,7 +28,7 @@ export default function GlobalError({ error, reset }: ErrorPageProps) {
                 lineHeight: "1.2",
               }}
             >
-              Error · 500
+              {t("label404")}
             </p>
 
             <h1
@@ -46,13 +41,13 @@ export default function GlobalError({ error, reset }: ErrorPageProps) {
                 maxWidth: "var(--content-narrow)",
               }}
             >
-              Something didn't compile cleanly.
+              {t("heading404")}
             </h1>
 
             <div className="h-[3px] w-12 bg-accent-red mb-6" />
 
             <p
-              className="text-gray-medium font-normal mb-4"
+              className="text-gray-medium font-normal mb-10"
               style={{
                 fontFamily: "var(--font-primary)",
                 fontSize: "18px",
@@ -60,27 +55,12 @@ export default function GlobalError({ error, reset }: ErrorPageProps) {
                 maxWidth: "var(--content-narrow)",
               }}
             >
-              An unexpected error stopped this page from rendering. Reload the
-              page, or head back to a known surface while we look at it.
+              {t("body404")}
             </p>
 
-            {error.digest && (
-              <p
-                className="text-gray-medium/60 mb-10"
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "12px",
-                  letterSpacing: "1px",
-                }}
-              >
-                Ref: {error.digest}
-              </p>
-            )}
-
-            <div className="flex flex-wrap gap-3 mt-6">
-              <button
-                type="button"
-                onClick={() => reset()}
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="/"
                 className="inline-flex items-center justify-center bg-white text-blueprint-blue hover:bg-gray-light transition-colors duration-200 px-9 py-3.5 min-h-[48px]"
                 style={{
                   fontFamily: "var(--font-primary)",
@@ -89,10 +69,10 @@ export default function GlobalError({ error, reset }: ErrorPageProps) {
                   letterSpacing: "0.3px",
                 }}
               >
-                Try again
-              </button>
+                {t("backHome")}
+              </Link>
               <Link
-                href="/"
+                href="/govtech"
                 className="inline-flex items-center justify-center border border-white/30 text-white hover:bg-white/5 transition-colors duration-200 px-9 py-3.5 min-h-[48px]"
                 style={{
                   fontFamily: "var(--font-primary)",
@@ -101,7 +81,19 @@ export default function GlobalError({ error, reset }: ErrorPageProps) {
                   letterSpacing: "0.3px",
                 }}
               >
-                Back to home
+                {t("exploreGovtech")}
+              </Link>
+              <Link
+                href="/industries"
+                className="inline-flex items-center justify-center border border-white/30 text-white hover:bg-white/5 transition-colors duration-200 px-9 py-3.5 min-h-[48px]"
+                style={{
+                  fontFamily: "var(--font-primary)",
+                  fontSize: "15px",
+                  fontWeight: 600,
+                  letterSpacing: "0.3px",
+                }}
+              >
+                {t("exploreIndustries")}
               </Link>
             </div>
           </div>

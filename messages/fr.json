@@ -1,0 +1,234 @@
+{
+  "Common": {
+    "skipToContent": "Aller au contenu"
+  },
+  "Nav": {
+    "mainNavigation": "Navigation principale",
+    "mobileNavigation": "Navigation mobile",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "govtech": "Govtech",
+    "industries": "Industries",
+    "portfolio": "Portfolio",
+    "news": "Actualités",
+    "contact": "Contact"
+  },
+  "LocaleSwitcher": {
+    "label": "Langue",
+    "en": "EN",
+    "es": "ES",
+    "fr": "FR"
+  },
+  "Hero": {
+    "title1": "La technologie",
+    "title2": "qui transforme les nations",
+    "subtitle": "Donner aux gouvernements, aux industries et aux écosystèmes les moyens de bâtir leur avenir numérique",
+    "cta": "Contactez-nous"
+  },
+  "Introduction": {
+    "annotation": "Qui sommes-nous",
+    "paragraph": "Arxia est une entreprise d'Infrastructure Publique Numérique et de Transformation Numérique. Notre équipe de consultants et d'ingénieurs experts a mené des projets numériques partout dans le monde, en partenariat avec des organisations internationales et des bailleurs de fonds. Notre objectif : transformer la vie des personnes grâce à une technologie à fort impact et au renforcement des capacités.",
+    "govtechLabel": "GOVTECH",
+    "govtechTitle": "Arxia Govtech",
+    "govtechTagline": "Infrastructure publique numérique pour les gouvernements et les organisations internationales",
+    "govtechCta": "Découvrir Govtech",
+    "industriesLabel": "INDUSTRIES",
+    "industriesTitle": "Arxia Industries",
+    "industriesTagline": "Transformation des entreprises pour les mines, la finance, le commerce, les universités et au-delà",
+    "industriesCta": "Découvrir Industries"
+  },
+  "VerticalInMotion": {
+    "verticalLabel": "La verticale {name}",
+    "explore": "Découvrir"
+  },
+  "Portfolio": {
+    "annotation": "Travaux sélectionnés",
+    "heading": "Notre Portfolio",
+    "body": "Une sélection de projets qui définissent notre travail.",
+    "viewFull": "Voir tout le portfolio →",
+    "metaTitle": "Portfolio",
+    "metaDescription": "43 projets dans 8 domaines d'expertise. Deux décennies de transformation numérique, d'interopérabilité et de renforcement des capacités dans plus de 20 pays.",
+    "heroAnnotation": "// Portfolio",
+    "heroBody": "43 projets dans 8 domaines d'expertise. Deux décennies de transformation numérique, d'interopérabilité et de renforcement des capacités dans plus de 20 pays.",
+    "statProjects": "Projets",
+    "statCountries": "Pays",
+    "statDomains": "Domaines"
+  },
+  "News": {
+    "annotation": "Actualités",
+    "heading": "Dernières actualités",
+    "readMore": "Lire la suite →",
+    "all": "Toutes les actualités →",
+    "backToAll": "← Toutes les actualités",
+    "indexHeading": "Toutes les actualités",
+    "indexBody": "Récits, études de cas et nouveautés d'Arxia et des partenaires avec qui nous travaillons partout dans le monde.",
+    "metaTitle": "Actualités",
+    "metaDescription": "Dernières actualités, études de cas et nouveautés d'Arxia : transformation numérique, Infrastructure Publique Numérique et IA agentique en action."
+  },
+  "GlobalPresence": {
+    "annotation": "Portée",
+    "heading": "Notre présence mondiale",
+    "headquarters": "Siège social",
+    "offices": "Bureaux",
+    "statOrganizations": "Organisations",
+    "statCountries": "Pays",
+    "statYears": "Années",
+    "regions": {
+      "Europe": "Europe",
+      "Latin America": "Amérique latine",
+      "West Africa": "Afrique de l'Ouest",
+      "East Africa": "Afrique de l'Est",
+      "Southeast Asia": "Asie du Sud-Est"
+    },
+    "countries": {
+      "RO": "Roumanie",
+      "DE": "Allemagne",
+      "CH": "Suisse",
+      "AT": "Autriche",
+      "UA": "Ukraine",
+      "CL": "Chili",
+      "CO": "Colombie",
+      "PE": "Pérou",
+      "SV": "Salvador",
+      "TN": "Tunisie",
+      "SN": "Sénégal",
+      "GH": "Ghana",
+      "NG": "Nigéria",
+      "CF": "République centrafricaine",
+      "SS": "Soudan du Sud",
+      "UG": "Ouganda",
+      "RW": "Rwanda",
+      "BI": "Burundi",
+      "ZM": "Zambie",
+      "KH": "Cambodge"
+    }
+  },
+  "ContactForm": {
+    "connect": "Connectons-nous",
+    "heading": "Bâtissons l'avenir ensemble.",
+    "body": "Que vous modernisiez des services publics, construisiez une infrastructure numérique ou renforciez des écosystèmes technologiques locaux, nous sommes prêts à vous accompagner.",
+    "ariaLabel": "Formulaire de contact",
+    "name": "Nom",
+    "namePlaceholder": "Votre nom",
+    "email": "E-mail",
+    "emailPlaceholder": "vous@email.com",
+    "comment": "Message",
+    "commentPlaceholder": "Comment pouvons-nous vous aider ?",
+    "send": "Envoyer le message",
+    "sending": "Envoi…",
+    "successTitle": "Merci de nous avoir contactés.",
+    "successBody": "Nous vous répondrons sous peu.",
+    "errorGeneric": "Une erreur s'est produite. Veuillez réessayer.",
+    "errorNetwork": "Impossible de joindre le serveur. Veuillez réessayer."
+  },
+  "Footer": {
+    "tagline": "Transformation numérique et Infrastructure Publique Numérique pour les gouvernements et les industries stratégiques dans le monde entier.",
+    "company": "Entreprise",
+    "services": "Services",
+    "contact": "Contact",
+    "aboutUs": "À propos",
+    "portfolio": "Portfolio",
+    "news": "Actualités",
+    "govtech": "Govtech",
+    "industries": "Industries",
+    "data": "Données",
+    "process": "Processus",
+    "intelligence": "Intelligence",
+    "getInTouch": "Contactez-nous via le formulaire",
+    "headquarters": "Siège social",
+    "offices": "Bureaux",
+    "connect": "Suivez-nous",
+    "roleCompany": "Entreprise",
+    "roleCeo": "PDG",
+    "roleHeadIntl": "Directeur du développement international",
+    "roleBizDevAfrica": "Développement commercial, Afrique",
+    "rights": "Tous droits réservés.",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation"
+  },
+  "Rail": {
+    "pageSections": "Sections de la page",
+    "jumpTo": "Aller à {label}",
+    "about": "À propos",
+    "govtech": "Govtech",
+    "industries": "Industries",
+    "presence": "Présence",
+    "portfolio": "Portfolio",
+    "news": "Actualités",
+    "contact": "Contact",
+    "cases": "Cas",
+    "related": "Connexe"
+  },
+  "Domain": {
+    "breadcrumb": "Fil d'Ariane",
+    "home": "Accueil",
+    "domainsCrumb": "Domaines",
+    "railCases": "Cas",
+    "railRelated": "Connexe",
+    "railContact": "Contact",
+    "heroTitle": "{title} pour {audience}",
+    "audienceGovernment": "LE SECTEUR PUBLIC",
+    "audienceIndustries": "L'INDUSTRIE",
+    "keepExploring": "Continuer l'exploration",
+    "otherDomains": "Les deux autres domaines {vertical}",
+    "explore": "Découvrir {name}",
+    "categoryName": {
+      "Consultancy": "Conseil",
+      "Services": "Services",
+      "Products": "Produits",
+      "Trainings": "Formations"
+    },
+    "categoryAnnotation": {
+      "Consultancy": "Stratégie et conseil",
+      "Services": "Livraison et mise en œuvre",
+      "Trainings": "Renforcement des capacités",
+      "Products": "Plateformes et produits"
+    }
+  },
+  "DomainCTA": {
+    "annotation": "Commençons",
+    "heading": "Envie d'échanger sur {title} ?",
+    "body": "Explorons ensemble comment vous aider à atteindre vos objectifs. Notre équipe est prête à écouter, conseiller et construire à vos côtés.",
+    "contact": "Contactez-nous",
+    "viewPortfolio": "Voir le portfolio"
+  },
+  "DomainFeaturedCases": {
+    "annotation": "Références",
+    "heading": "Cas marquants",
+    "body": "Une sélection de projets qui illustrent notre façon de travailler dans ce domaine.",
+    "viewAll": "Voir tous les projets →"
+  },
+  "PortfolioFilter": {
+    "ariaLabel": "Filtre du portfolio",
+    "verticalAll": "Tous",
+    "verticalGovtech": "Govtech",
+    "verticalIndustries": "Industries",
+    "domainAll": "Tous les domaines",
+    "domainData": "Données",
+    "domainProcess": "Processus",
+    "domainIntelligence": "Intelligence"
+  },
+  "Errors": {
+    "label500": "Erreur · 500",
+    "heading500": "La compilation a échoué quelque part.",
+    "body500": "Une erreur inattendue a empêché l'affichage de cette page. Rechargez la page ou revenez à un point connu pendant que nous l'examinons.",
+    "retry": "Réessayer",
+    "backHome": "Retour à l'accueil",
+    "label404": "Erreur · 404",
+    "heading404": "Cette page n'est pas sur le plan.",
+    "body404": "L'URL que vous avez suivie ne mène nulle part sur ce site. Elle a peut-être changé lors de la réorganisation de nos domaines d'expertise, ou le lien est tout simplement erroné.",
+    "exploreGovtech": "Découvrir Govtech",
+    "exploreIndustries": "Découvrir Industries",
+    "notFoundMetaTitle": "Page introuvable",
+    "notFoundMetaDescription": "La page que vous recherchez n'existe pas ou a été déplacée."
+  },
+  "Meta": {
+    "homeTitle": "Arxia — La technologie qui transforme les nations",
+    "homeDescription": "Arxia est une entreprise de transformation numérique et d'Infrastructure Publique Numérique. Nous donnons aux gouvernements, aux industries et aux écosystèmes les moyens de bâtir leur avenir numérique.",
+    "homeOgDescription": "Nous donnons aux gouvernements, aux industries et aux écosystèmes les moyens de bâtir leur avenir numérique.",
+    "govtechTitle": "Arxia Govtech — Infrastructure Publique Numérique",
+    "govtechDescription": "Infrastructure publique numérique pour les gouvernements et les organisations internationales. Interopérabilité des données, conception de services, e-procurement, facturation électronique et IA agentique pour le secteur public.",
+    "industriesTitle": "Arxia Industries — Transformation des Entreprises",
+    "industriesDescription": "Transformation des entreprises pour les mines, la finance, le commerce, les universités et au-delà. Gouvernance des données, modernisation des processus et IA à l'échelle de l'entreprise."
+  }
+}

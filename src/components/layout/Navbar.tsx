@@ -2,13 +2,15 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Menu, X } from "lucide-react";
+import { Link, usePathname } from "@/i18n/navigation";
 import { navLinks } from "@/data/navigation";
+import { LocaleSwitcher } from "./LocaleSwitcher";
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const t = useTranslations("Nav");
   const pathname = usePathname();
   const buttonRef = useRef<HTMLButtonElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -55,7 +57,7 @@ export function Navbar() {
     <nav
       className="fixed top-0 left-0 right-0 z-50 h-14 bg-blueprint-dark/92 backdrop-blur-[12px] flex items-center px-[var(--margin-page)] max-sm:px-6"
       role="navigation"
-      aria-label="Main navigation"
+      aria-label={t("mainNavigation")}
     >
       <div className="mx-auto max-w-[var(--content-max)] w-full flex items-center justify-between">
         {/* Logo */}
@@ -73,27 +75,20 @@ export function Navbar() {
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-7">
           {navLinks.map((link) => {
-            const isRoute = link.href.startsWith("/");
-            const isActive = isRoute && pathname === link.href;
+            const isActive = pathname === link.href;
             const className = `font-[family-name:var(--font-jetbrains)] text-[10px] uppercase tracking-[2px] transition-colors duration-200 ${
               isActive
                 ? "text-white border-b border-accent-red pb-0.5"
                 : "text-gray-medium hover:text-white"
             }`;
-
-            if (isRoute) {
-              return (
-                <Link key={link.href} href={link.href} className={className}>
-                  {link.label}
-                </Link>
-              );
-            }
             return (
-              <a key={link.href} href={link.href} className={className}>
-                {link.label}
-              </a>
+              <Link key={link.href} href={link.href} className={className}>
+                {t(link.key)}
+              </Link>
             );
           })}
+          <span aria-hidden className="h-3 w-px bg-gray-medium/30" />
+          <LocaleSwitcher />
         </div>
 
         {/* Mobile hamburger */}
@@ -104,7 +99,7 @@ export function Navbar() {
           onClick={() => setMenuOpen(!menuOpen)}
           aria-expanded={menuOpen}
           aria-controls="mobile-nav"
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-label={menuOpen ? t("closeMenu") : t("openMenu")}
         >
           {menuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -117,37 +112,20 @@ export function Navbar() {
           id="mobile-nav"
           role="dialog"
           aria-modal="true"
-          aria-label="Mobile navigation"
+          aria-label={t("mobileNavigation")}
           className="fixed inset-0 top-14 bg-blueprint-dark/98 backdrop-blur-[12px] md:hidden flex flex-col items-center justify-center gap-8 z-40"
         >
-          {navLinks.map((link) => {
-            const isRoute = link.href.startsWith("/");
-            const className =
-              "font-[family-name:var(--font-jetbrains)] text-sm uppercase tracking-[2px] text-gray-medium hover:text-white focus-visible:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-red focus-visible:outline-offset-4 transition-colors duration-200";
-
-            if (isRoute) {
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={className}
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              );
-            }
-            return (
-              <a
-                key={link.href}
-                href={link.href}
-                className={className}
-                onClick={() => setMenuOpen(false)}
-              >
-                {link.label}
-              </a>
-            );
-          })}
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="font-[family-name:var(--font-jetbrains)] text-sm uppercase tracking-[2px] text-gray-medium hover:text-white focus-visible:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-red focus-visible:outline-offset-4 transition-colors duration-200"
+              onClick={() => setMenuOpen(false)}
+            >
+              {t(link.key)}
+            </Link>
+          ))}
+          <LocaleSwitcher className="mt-2 text-sm" />
         </div>
       )}
     </nav>

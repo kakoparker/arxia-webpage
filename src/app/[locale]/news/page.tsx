@@ -1,21 +1,34 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Card } from "@/components/ui/Card";
 import { Tag } from "@/components/ui/Tag";
-import { newsArticles } from "@/data/news";
+import { getNewsArticles } from "@/data/news";
 
-export const metadata: Metadata = {
-  title: "News",
-  description:
-    "Latest news, case studies, and updates from Arxia — digital transformation, Digital Public Infrastructure, and Agentic AI in action.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "News" });
+  return { title: t("metaTitle"), description: t("metaDescription") };
+}
 
-export default function NewsIndexPage() {
+export default async function NewsIndexPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations("News");
+  const newsArticles = getNewsArticles(locale);
   return (
     <>
       <Navbar />
@@ -23,9 +36,9 @@ export default function NewsIndexPage() {
       <SectionContainer mode="ultra-light">
         <div className="mb-16">
           <SectionHeader
-            annotation="News"
-            heading="All News"
-            body="Stories, case studies and updates from Arxia and the partners we work with around the world."
+            annotation={t("annotation")}
+            heading={t("indexHeading")}
+            body={t("indexBody")}
           />
         </div>
 
@@ -55,7 +68,7 @@ export default function NewsIndexPage() {
                     {article.excerpt}
                   </p>
                   <span className="inline-flex items-center font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2px] text-accent-red/85 group-hover:text-accent-red transition-colors duration-200">
-                    Read More →
+                    {t("readMore")}
                   </span>
                 </div>
               </Card>

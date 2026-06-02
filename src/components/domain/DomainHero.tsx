@@ -1,7 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
@@ -13,6 +14,7 @@ interface DomainHeroProps {
 }
 
 export function DomainHero({ title, description, icon: Icon, parentVerticalName }: DomainHeroProps) {
+  const t = useTranslations("Domain");
   const ref = useScrollAnimation();
 
   return (
@@ -23,7 +25,7 @@ export function DomainHero({ title, description, icon: Icon, parentVerticalName 
           data-animate
           data-animate-index="0"
           className="animate-on-scroll mb-8"
-          aria-label="Breadcrumb"
+          aria-label={t("breadcrumb")}
         >
           <ol className="flex items-center gap-2">
             <li>
@@ -37,7 +39,7 @@ export function DomainHero({ title, description, icon: Icon, parentVerticalName 
                   textTransform: "uppercase",
                 }}
               >
-                Home
+                {t("home")}
               </Link>
             </li>
             <li
@@ -57,7 +59,7 @@ export function DomainHero({ title, description, icon: Icon, parentVerticalName 
                   textTransform: "uppercase",
                 }}
               >
-                Domains
+                {t("domainsCrumb")}
               </Link>
             </li>
             {parentVerticalName && (

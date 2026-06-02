@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import type { VerticalSlug, DomainSlug } from "@/data/domains";
 
 export interface FilterValue {
@@ -17,17 +18,17 @@ interface PortfolioFilterProps {
   dark?: boolean;
 }
 
-const verticalOptions: { key: VerticalSlug | "all"; label: string }[] = [
-  { key: "all", label: "All" },
-  { key: "govtech", label: "Govtech" },
-  { key: "industries", label: "Industries" },
+const verticalOptions: { key: VerticalSlug | "all"; labelKey: string }[] = [
+  { key: "all", labelKey: "verticalAll" },
+  { key: "govtech", labelKey: "verticalGovtech" },
+  { key: "industries", labelKey: "verticalIndustries" },
 ];
 
-const domainOptions: { key: DomainSlug | "all"; label: string }[] = [
-  { key: "all", label: "All domains" },
-  { key: "data", label: "Data" },
-  { key: "process", label: "Process" },
-  { key: "intelligence", label: "Intelligence" },
+const domainOptions: { key: DomainSlug | "all"; labelKey: string }[] = [
+  { key: "all", labelKey: "domainAll" },
+  { key: "data", labelKey: "domainData" },
+  { key: "process", labelKey: "domainProcess" },
+  { key: "intelligence", labelKey: "domainIntelligence" },
 ];
 
 export function PortfolioFilter({
@@ -36,6 +37,7 @@ export function PortfolioFilter({
   counts,
   dark = false,
 }: PortfolioFilterProps) {
+  const t = useTranslations("PortfolioFilter");
   const chipBase =
     "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-none border font-[family-name:var(--font-jetbrains)] text-[10px] uppercase tracking-[1.5px] cursor-pointer transition-colors duration-200";
   const inactive = dark
@@ -48,7 +50,7 @@ export function PortfolioFilter({
   return (
     <div
       role="toolbar"
-      aria-label="Portfolio filter"
+      aria-label={t("ariaLabel")}
       className="flex flex-col gap-3"
     >
       <div className="flex flex-wrap gap-2">
@@ -63,7 +65,7 @@ export function PortfolioFilter({
               onClick={() => onChange({ ...value, vertical: opt.key })}
               className={`${chipBase} ${isActive ? active : inactive}`}
             >
-              {opt.label}
+              {t(opt.labelKey)}
               {typeof count === "number" && (
                 <span className={dark ? "text-white/50" : "text-gray-medium"}>
                   {count}
@@ -85,7 +87,7 @@ export function PortfolioFilter({
               onClick={() => onChange({ ...value, domain: opt.key })}
               className={`${chipBase} ${isActive ? active : inactive}`}
             >
-              {opt.label}
+              {t(opt.labelKey)}
               {typeof count === "number" && (
                 <span className={dark ? "text-white/50" : "text-gray-medium"}>
                   {count}
