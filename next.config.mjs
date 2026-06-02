@@ -4,10 +4,6 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Emit a self-contained Node server under .next/standalone for Docker / the
-  // self-hosted Arxia deploy. Bundles only the files the server actually needs,
-  // so the production image stays small. See DEPLOYMENT.md.
-  output: "standalone",
   images: {
     // WebP only — AVIF's denoiser strips the subtle blueprint-grid texture
     // baked into our canonical paper surfaces, breaking the brand standard.

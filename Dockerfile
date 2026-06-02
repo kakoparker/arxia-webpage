@@ -1,23 +1,25 @@
 # syntax=docker/dockerfile:1
 # ─────────────────────────────────────────────────────────────────────────────
-# Production image for the Arxia webpage (Next.js 16, standalone output).
-# Multi-stage: deps → builder → runner. Final image runs `node server.js`.
-# See DEPLOYMENT.md for the full self-hosted deploy story.
+# Production image for the Arxia webpage (Next.js 16).
+# Multi-stage: deps → builder → runner. The runner serves with `next start`
+# (the same command as `npm run start`), which is the battle-tested Next.js
+# server. (We deliberately do NOT use `output: "standalone"` — it triggers a
+# next-intl redirect loop on the default-locale, unprefixed English routes.)
+# See DEPLOYMENT.md.
 # ─────────────────────────────────────────────────────────────────────────────
 
 FROM node:20-alpine AS base
-# libc compat for any native deps (e.g. sharp used by next/image optimization)
+# libc compat for native deps (e.g. sharp, used by next/image optimization)
 RUN apk add --no-cache libc6-compat
+WORKDIR /app
 
 # ── deps: clean install from the lockfile ───────────────────────────────────
 FROM base AS deps
-WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
 
 # ── builder: compile the Next.js app ────────────────────────────────────────
 FROM base AS builder
-WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
@@ -31,24 +33,22 @@ ENV NEXT_TELEMETRY_DISABLED=1
 # the image never gets published. This is the build gate.
 RUN npm run build
 
-# ── runner: minimal runtime ─────────────────────────────────────────────────
+# ── runner: serve the built app with `next start` ───────────────────────────
 FROM base AS runner
-WORKDIR /app
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
-
-RUN addgroup -g 1001 -S nodejs && adduser -S nextjs -u 1001
-
-# Standalone output bundles the server + only the node_modules it needs.
-COPY --from=builder /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-
-USER nextjs
-EXPOSE 3000
 ENV PORT=3000
 ENV HOSTNAME=0.0.0.0
 
+RUN addgroup -g 1001 -S nodejs && adduser -S nextjs -u 1001
+
+# Copy the whole built app (node_modules, .next, public, config). This is exactly
+# what `npm run start` serves locally — the runtime we verify before shipping.
+COPY --from=builder --chown=nextjs:nodejs /app ./
+
+USER nextjs
+EXPOSE 3000
+
 # Server-only secrets (RESEND_API_KEY, RESEND_FROM, CONTACT_RECIPIENTS) are
 # injected at runtime via the container's env_file — never baked into the image.
-CMD ["node", "server.js"]
+CMD ["npm", "run", "start"]
