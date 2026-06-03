@@ -14,9 +14,8 @@ export function LogoCarousel() {
         // render height down as a logo gets wider — square emblems grow to
         // ~56px, while wide wordmarks (Audi, Falabella, RISA) stay ~40px.
         const aspect = logo.width / logo.height;
-        const h = Math.round(
-          Math.min(56, Math.max(40, 56 * Math.sqrt(1.2 / aspect)))
-        );
+        const base = Math.min(56, Math.max(40, 56 * Math.sqrt(1.2 / aspect)));
+        const h = Math.round(base * (logo.scale ?? 1));
         return (
           <div key={`${logo.alt}-${i}`} className="flex-shrink-0">
             <Image
