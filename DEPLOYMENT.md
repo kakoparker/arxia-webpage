@@ -138,7 +138,7 @@ restored version.
 | Image won't pull | Is the GHCR package public, or did you `docker login ghcr.io`? |
 | Build fails in Actions | Open the failing run — it's a real `next build`/type error; fix on a branch, the gate did its job. |
 
-> Note: while `DEPLOY_ENABLED` is on, both `ci.yml` and `deploy.yml` build on a
-> `main` push (a small redundancy). The deploy is gated by `deploy.yml`'s own
-> image build, so this is safe; trim `ci.yml`'s `push` trigger later if you want
-> to save the minutes.
+> Note: every push to `main` builds the Docker image in Actions (validating the
+> Dockerfile + running `next build`). The image is only pushed to GHCR and
+> deployed when `DEPLOY_ENABLED` is `true`, so the build is always exercised but
+> nothing reaches production until you turn it on.
