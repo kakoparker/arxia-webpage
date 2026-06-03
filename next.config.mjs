@@ -4,6 +4,8 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Don't advertise the framework/version in responses.
+  poweredByHeader: false,
   images: {
     // WebP only — AVIF's denoiser strips the subtle blueprint-grid texture
     // baked into our canonical paper surfaces, breaking the brand standard.
@@ -19,6 +21,26 @@ const nextConfig = {
   productionBrowserSourceMaps: false,
   turbopack: {
     root: process.cwd(),
+  },
+  async headers() {
+    // Safe, non-breaking hardening applied to every response. (A full
+    // Content-Security-Policy is intentionally NOT set here — it needs dedicated
+    // testing against GSAP, Plausible, and Google Fonts; tracked as a follow-up.
+    // HSTS is added at the Caddy/TLS layer in production — see Caddyfile.)
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          {
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=(), browsing-topics=()",
+          },
+        ],
+      },
+    ];
   },
   async redirects() {
     // Canonical URLs are /govtech/[data|process|intelligence] and

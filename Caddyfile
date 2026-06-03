@@ -4,6 +4,9 @@
 
 www.arxia.com {
 	encode zstd gzip
+	# Tell browsers to stick to HTTPS for a year. (No includeSubDomains/preload,
+	# so this only affects www.arxia.com — safe for other arxia.com subdomains.)
+	header Strict-Transport-Security "max-age=31536000"
 	reverse_proxy web:3000
 }
 
