@@ -15,7 +15,7 @@ export function LogoCarousel() {
             alt={logo.alt}
             width={logo.width}
             height={logo.height}
-            className="h-10 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+            className="h-10 w-auto max-w-[200px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
             loading="lazy"
           />
         </div>
