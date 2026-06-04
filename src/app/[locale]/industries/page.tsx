@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { alternatesFor } from "@/i18n/metadata";
 import { IndustriesPageClient } from "./IndustriesPageClient";
 
 export async function generateMetadata({
@@ -12,6 +13,7 @@ export async function generateMetadata({
   return {
     title: t("industriesTitle"),
     description: t("industriesDescription"),
+    alternates: alternatesFor(locale, "/industries"),
   };
 }
 

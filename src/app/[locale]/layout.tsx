@@ -125,6 +125,12 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={`${inter.variable} ${jetbrainsMono.variable}`}>
       <body className="font-[family-name:var(--font-inter)] antialiased" suppressHydrationWarning>
+        {/* Scroll-reveal elements start hidden (opacity:0) and are revealed by
+            JS. Without JS they'd never appear, so force them visible — keeps the
+            page fully readable with JavaScript disabled. */}
+        <noscript>
+          <style>{`.animate-on-scroll{opacity:1!important;transform:none!important}.accent-line-animate{width:48px!important}`}</style>
+        </noscript>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

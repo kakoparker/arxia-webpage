@@ -223,12 +223,12 @@
     "notFoundMetaDescription": "The page you're looking for doesn't exist or has moved."
   },
   "Meta": {
-    "homeTitle": "Arxia — Technology to transform nations",
+    "homeTitle": "Digital Transformation & Digital Public Infrastructure — Arxia",
     "homeDescription": "Arxia is a digital transformation and Digital Public Infrastructure company. We empower governments, industries, and ecosystems to build their digital future.",
     "homeOgDescription": "We empower governments, industries, and ecosystems to build their digital future.",
-    "govtechTitle": "Arxia Govtech — Digital Public Infrastructure",
+    "govtechTitle": "Govtech — Digital Public Infrastructure",
     "govtechDescription": "Digital public infrastructure for governments and international organizations. Data interoperability, service design, e-procurement, e-invoicing, and agentic AI for the public sector.",
-    "industriesTitle": "Arxia Industries — Enterprise Transformation",
+    "industriesTitle": "Industries — Enterprise Transformation",
     "industriesDescription": "Enterprise transformation for mining, finance, retail, universities, and beyond. Data governance, process modernization, and AI at enterprise scale."
   }
 }

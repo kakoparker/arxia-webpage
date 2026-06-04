@@ -13,7 +13,7 @@ export function GovtechPageClient() {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main" tabIndex={-1} className="outline-none">
         <VerticalHero vertical={vertical} />
         <div id="domains">
           <VerticalInMotion verticalSlug="govtech" tone="ultra-light" />

@@ -223,12 +223,12 @@
     "notFoundMetaDescription": "La página que buscas no existe o se ha movido."
   },
   "Meta": {
-    "homeTitle": "Arxia — Tecnología que transforma naciones",
+    "homeTitle": "Transformación Digital e Infraestructura Pública Digital — Arxia",
     "homeDescription": "Arxia es una empresa de transformación digital e Infraestructura Pública Digital. Impulsamos a gobiernos, industrias y ecosistemas para construir su futuro digital.",
     "homeOgDescription": "Impulsamos a gobiernos, industrias y ecosistemas para construir su futuro digital.",
-    "govtechTitle": "Arxia Govtech — Infraestructura Pública Digital",
+    "govtechTitle": "Govtech — Infraestructura Pública Digital",
     "govtechDescription": "Infraestructura pública digital para gobiernos y organizaciones internacionales. Interoperabilidad de datos, diseño de servicios, e-procurement, facturación electrónica e IA agéntica para el sector público.",
-    "industriesTitle": "Arxia Industries — Transformación Empresarial",
+    "industriesTitle": "Industries — Transformación Empresarial",
     "industriesDescription": "Transformación empresarial para minería, finanzas, retail, universidades y más. Gobernanza de datos, modernización de procesos e IA a escala empresarial."
   }
 }

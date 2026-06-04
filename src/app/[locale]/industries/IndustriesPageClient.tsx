@@ -13,7 +13,7 @@ export function IndustriesPageClient() {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main" tabIndex={-1} className="outline-none">
         <VerticalHero vertical={vertical} />
         <div id="domains">
           <VerticalInMotion verticalSlug="industries" tone="dark" />

@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
+import { alternatesFor } from "@/i18n/metadata";
 import { DomainPageView } from "@/components/domain/DomainPageView";
 import { getDomainPageByMatrix } from "@/data/domain-pages";
 import type { DomainSlug } from "@/data/domains";
@@ -24,6 +25,7 @@ export async function generateMetadata({
   return {
     title: page.metaTitle,
     description: page.metaDescription,
+    alternates: alternatesFor(locale, `/industries/${domain}`),
   };
 }
 

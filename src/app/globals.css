@@ -368,6 +368,16 @@ html {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+  /* Scroll-reveal elements start at opacity:0 and rely on JS to add `.visible`.
+     Reduced-motion users must still SEE the content, so force the resolved
+     (visible) state instead of the pre-animation one. */
+  .animate-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .accent-line-animate {
+    width: 48px !important;
+  }
 }
 
 /* ============================================

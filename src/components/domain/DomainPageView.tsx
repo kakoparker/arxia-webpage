@@ -29,6 +29,7 @@ import { SectionContainer } from "@/components/ui/SectionContainer";
 import { ScrollProgressRail } from "@/components/ui/ScrollProgressRail";
 import { getDomainPageByMatrix } from "@/data/domain-pages";
 import { getVertical, type VerticalSlug, type DomainSlug } from "@/data/domains";
+import { localizedUrl } from "@/i18n/metadata";
 
 // Canonical category order for every domain page. Sections without items are
 // skipped at render time; the rail is filtered to match.
@@ -94,11 +95,35 @@ export function DomainPageView({ vertical, domain }: DomainPageViewProps) {
     { id: "contact", label: t("railContact") },
   ];
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Arxia", item: localizedUrl(locale, "/") },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: page.parentVertical,
+        item: localizedUrl(locale, `/${vertical}`),
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: page.title,
+        item: localizedUrl(locale, `/${vertical}/${domain}`),
+      },
+    ],
+  };
+
   return (
     <>
       <Navbar />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <ScrollProgressRail sections={railSections} />
-      <main>
+      <main id="main" tabIndex={-1} className="outline-none">
         <DomainHero
           title={t("heroTitle", {
             title: page.title.toUpperCase(),

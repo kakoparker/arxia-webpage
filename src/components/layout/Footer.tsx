@@ -230,19 +230,19 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-gray-medium/60 text-[var(--text-caption)]">
+          <p className="text-gray-medium text-[var(--text-caption)]">
             &copy; {new Date().getFullYear()} Arxia. {t("rights")}
           </p>
           <div className="flex gap-6">
             <Link
               href="/privacy"
-              className="text-gray-medium/60 text-[var(--text-caption)] hover:text-gray-medium transition-colors duration-200"
+              className="text-gray-medium text-[var(--text-caption)] hover:text-white transition-colors duration-200"
             >
               {t("privacy")}
             </Link>
             <Link
               href="/terms"
-              className="text-gray-medium/60 text-[var(--text-caption)] hover:text-gray-medium transition-colors duration-200"
+              className="text-gray-medium text-[var(--text-caption)] hover:text-white transition-colors duration-200"
             >
               {t("terms")}
             </Link>

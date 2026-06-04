@@ -10,7 +10,7 @@ export default function SandboxMotion() {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main" tabIndex={-1} className="outline-none">
         <div style={{ paddingTop: "100px" }} className="blueprint-grid-ultra-light">
           <div className="mx-auto px-6 py-12" style={{ maxWidth: "var(--content-max)" }}>
             <p className="font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2.5px] text-accent-red">

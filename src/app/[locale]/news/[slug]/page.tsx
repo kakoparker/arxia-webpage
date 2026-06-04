@@ -8,6 +8,7 @@ import { Footer } from "@/components/layout/Footer";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { Tag } from "@/components/ui/Tag";
 import { newsArticles, getNewsArticle } from "@/data/news";
+import { alternatesFor, localizedUrl, SITE_URL } from "@/i18n/metadata";
 
 interface PageProps {
   params: Promise<{ locale: string; slug: string }>;
@@ -27,11 +28,13 @@ export async function generateMetadata({
   return {
     title: article.title,
     description: article.metaDescription,
+    alternates: alternatesFor(locale, `/news/${slug}`),
     openGraph: {
       title: article.title,
       description: article.metaDescription,
       type: "article",
       publishedTime: article.isoDate,
+      url: localizedUrl(locale, `/news/${slug}`),
       images: [{ url: article.coverImage, alt: article.coverAlt }],
     },
   };
@@ -44,9 +47,46 @@ export default async function NewsArticlePage({ params }: PageProps) {
   if (!article) notFound();
   const t = await getTranslations("News");
 
+  const articleUrl = localizedUrl(locale, `/news/${slug}`);
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: article.title,
+    description: article.metaDescription,
+    image: [`${SITE_URL}${article.coverImage}`],
+    datePublished: article.isoDate,
+    dateModified: article.isoDate,
+    inLanguage: locale,
+    author: { "@type": "Organization", name: "Arxia", url: SITE_URL },
+    publisher: {
+      "@type": "Organization",
+      name: "Arxia",
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/logos/brand/arxia-logo-color.png`,
+      },
+    },
+    mainEntityOfPage: { "@type": "WebPage", "@id": articleUrl },
+  };
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Arxia", item: localizedUrl(locale, "/") },
+      { "@type": "ListItem", position: 2, name: t("metaTitle"), item: localizedUrl(locale, "/news") },
+      { "@type": "ListItem", position: 3, name: article.title, item: articleUrl },
+    ],
+  };
+
   return (
     <>
       <Navbar />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([articleSchema, breadcrumbSchema]),
+        }}
+      />
       <main id="main">
       <SectionContainer mode="light">
         <article className="mx-auto" style={{ maxWidth: "780px" }}>

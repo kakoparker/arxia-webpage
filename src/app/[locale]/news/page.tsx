@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { alternatesFor } from "@/i18n/metadata";
 import { Link } from "@/i18n/navigation";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -17,7 +18,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "News" });
-  return { title: t("metaTitle"), description: t("metaDescription") };
+  return {
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+    alternates: alternatesFor(locale, "/news"),
+  };
 }
 
 export default async function NewsIndexPage({
@@ -36,6 +41,7 @@ export default async function NewsIndexPage({
       <SectionContainer mode="ultra-light">
         <div className="mb-16">
           <SectionHeader
+            as="h1"
             annotation={t("annotation")}
             heading={t("indexHeading")}
             body={t("indexBody")}

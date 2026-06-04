@@ -4,6 +4,12 @@ interface SectionHeaderProps {
   body?: string;
   centered?: boolean;
   dark?: boolean;
+  /**
+   * Heading element to render. Defaults to "h2". Pass "h1" where this is the
+   * page's primary heading (e.g. the News index) so the document keeps a
+   * single, correct h1.
+   */
+  as?: "h1" | "h2" | "h3";
 }
 
 export function SectionHeader({
@@ -12,13 +18,14 @@ export function SectionHeader({
   body,
   centered = false,
   dark = false,
+  as: Heading = "h2",
 }: SectionHeaderProps) {
   return (
     <div className={centered ? "text-center" : ""}>
       <p
         className={`
           font-normal uppercase mb-4
-          ${dark ? "text-accent-red/85" : "text-gray-medium"}
+          ${dark ? "text-accent-red/85" : "text-gray-dark"}
         `}
         style={{
           fontFamily: "var(--font-mono)",
@@ -29,7 +36,7 @@ export function SectionHeader({
       >
         {annotation}
       </p>
-      <h2
+      <Heading
         className={`
           font-bold mb-4
           ${dark ? "text-white" : "text-blueprint-blue"}
@@ -42,7 +49,7 @@ export function SectionHeader({
         }}
       >
         {heading}
-      </h2>
+      </Heading>
       <div
         className={`
           h-[3px] w-12 bg-accent-red mb-6
