@@ -8,46 +8,52 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-const PLACEHOLDER = "[TODO: legal copy — to be supplied by counsel before launch]";
-
 export default function TermsPage() {
   return (
     <LegalPage
       annotation="Legal"
       title="Terms of Service"
-      lastUpdated="2026-05-12"
-      intro="These Terms govern your use of arxia.com. The final text will be reviewed by counsel before public launch."
+      lastUpdated="2026-06-30"
+      intro="These Terms govern your access to and use of arxia.com. By using the site you agree to them."
       sections={[
         {
           heading: "1. Acceptance",
-          body: `By accessing or using arxia.com you agree to these Terms. If you do not agree, do not use the site. ${PLACEHOLDER}`,
+          body: `By accessing or using arxia.com you agree to these Terms. If you do not agree, please do not use the site.`,
         },
         {
           heading: "2. Use of the Site",
-          body: `You may view and use the site for informational purposes and to contact us. You may not interfere with the site's operation, attempt unauthorized access, scrape at scale, or use the site to send unlawful content. ${PLACEHOLDER}`,
+          body: `arxia.com is an informational marketing website. You may view its content and use the contact form to reach us. You may not interfere with the site's operation or security, attempt unauthorized access, scrape or harvest data at scale, or use the site to transmit unlawful, infringing, or abusive content.`,
         },
         {
           heading: "3. Intellectual Property",
-          body: `The Arxia name, logo, content, and visual identity are owned by Arxia. Third-party logos are the property of their respective owners and used for identification purposes only. ${PLACEHOLDER}`,
+          body: `The Arxia name, logo, text, illustrations, and visual identity are owned by Arxia and protected by applicable intellectual-property laws. You may not reproduce or reuse them without our prior written permission. Third-party names and logos shown on the site are the property of their respective owners and are used for identification purposes only.`,
         },
         {
-          heading: "4. No Warranty",
-          body: `The site is provided "as is" without warranties of any kind, express or implied. Arxia makes no warranty that the site will be uninterrupted or error-free. ${PLACEHOLDER}`,
+          heading: "4. Contact Submissions",
+          body: `Information you send through the contact form is handled as described in our Privacy Policy. Do not submit confidential or sensitive information through the form. We are under no obligation to act on unsolicited proposals or ideas submitted through the site.`,
         },
         {
-          heading: "5. Limitation of Liability",
-          body: `To the maximum extent permitted by law, Arxia shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the site. ${PLACEHOLDER}`,
+          heading: "5. External Links",
+          body: `The site may link to third-party websites we do not control. We are not responsible for the content, availability, or practices of those sites, and linking to them does not imply endorsement.`,
         },
         {
-          heading: "6. Governing Law",
-          body: `These Terms are governed by the laws of [TODO: jurisdiction], without regard to conflict-of-laws principles. ${PLACEHOLDER}`,
+          heading: "6. No Warranty",
+          body: `The site and its content are provided "as is" and "as available", without warranties of any kind, whether express or implied. We do not warrant that the site will be uninterrupted, error-free, or free of harmful components, and content may be updated or changed at any time without notice.`,
         },
         {
-          heading: "7. Changes",
-          body: `We may update these Terms from time to time. Material changes will be reflected in the "Last updated" date above.`,
+          heading: "7. Limitation of Liability",
+          body: `To the maximum extent permitted by law, Arxia shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or for any loss of data, profits, or goodwill, arising from or related to your use of (or inability to use) the site. Nothing in these Terms excludes liability that cannot be excluded under applicable law.`,
         },
         {
-          heading: "8. Contact",
+          heading: "8. Governing Law",
+          body: `These Terms are governed by the laws of Romania, without regard to conflict-of-laws principles. The courts of Romania shall have jurisdiction over any dispute, without prejudice to any mandatory consumer-protection rights available to you under the law of your country of residence.`,
+        },
+        {
+          heading: "9. Changes",
+          body: `We may update these Terms from time to time. Material changes will be reflected in the "Last updated" date above. Your continued use of the site after a change constitutes acceptance of the revised Terms.`,
+        },
+        {
+          heading: "10. Contact",
           body: `Questions about these Terms: carlos.parker@arxia.com.`,
         },
       ]}

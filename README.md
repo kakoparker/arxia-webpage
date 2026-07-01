@@ -54,56 +54,70 @@ All variables are documented in [.env.example](./.env.example). Summary:
 
 Server-only variables (no `NEXT_PUBLIC_` prefix) are never exposed to the client.
 
-## Deployment
+## Deployment (Vercel)
 
-> **Production (self-hosted + auto-deploy):** see **[DEPLOYMENT.md](./DEPLOYMENT.md)**.
-> The repo ships a `Dockerfile`, `docker-compose.yml`, `Caddyfile`, and a GitHub
-> Actions pipeline (`.github/workflows/deploy.yml`) that auto-deploys every push to
-> `main` to the Arxia server. The section below is the generic manual recipe.
+The site is a standard Next.js 16 App Router app and deploys to **Vercel with zero
+configuration** — no `vercel.json`, no `Dockerfile`. Vercel detects Next.js, runs
+`next build`, and serves the App Router automatically: static pages on the CDN,
+`/api/contact` and the locale middleware as serverless/edge functions.
 
-The site is a standard Next.js 16 app. The production build emits a runnable Node server.
+### One-time setup
 
-```bash
-npm ci                  # clean install from lockfile
-npm run build           # → .next/
-npm run start           # serves on $PORT (default 3000)
-```
+1. **Import the repo** into Vercel (New Project → import `kakoparker/arxia-webpage`).
+   Framework preset **Next.js**; build/output/install commands are auto-detected —
+   leave them at the defaults.
+2. **Set environment variables** (Project → Settings → Environment Variables) for the
+   **Production** (and Preview) environments — see the table above:
 
-Notes for whoever runs this in prod:
+   | Variable | Value |
+   | --- | --- |
+   | `RESEND_API_KEY` | Resend API key (create at resend.com) |
+   | `RESEND_FROM` | `Arxia <contact@arxia.com>` |
+   | `CONTACT_RECIPIENTS` | *(optional)* comma-separated override; defaults to the two Arxia inboxes |
+   | `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | `arxia.com` *(omit to skip analytics)* |
 
-- **Node 20+** is required. The `engines` field in `package.json` declares this.
-- **`/api/contact`** is a Node-runtime route (uses the Resend SDK). It must run on a Node server, not a pure-static host. The rest of the site is statically generated at build time.
-- Static assets are emitted under `.next/static/` and image files under `public/`. Put `public/` and `.next/` behind your reverse proxy / CDN as you would any Next.js app.
-- The build produces 25 routes — see the build output for the static / SSG / dynamic breakdown.
-- The contact form, OG image generation, and 404 handling all work without any third-party config; they degrade gracefully if env vars are missing.
+   `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` is read at **build time** — redeploy after changing
+   it. The `RESEND_*` values are read at request time.
+3. **Add the domain** `www.arxia.com` (with `arxia.com` redirecting to `www`) under
+   Project → Settings → Domains and point DNS at Vercel per its instructions. TLS is
+   issued automatically.
 
-If your deploy target prefers a minimized bundle, you can opt into Next's standalone output by adding `output: "standalone"` to [`next.config.mjs`](./next.config.mjs). Not enabled by default because it changes the on-disk layout in ways some platforms don't expect.
+Every push to `main` triggers a production deploy; every PR gets a preview URL. A
+failing `next build` blocks the deploy, and the repo's
+[CI workflow](./.github/workflows/ci.yml) runs the same `build + typecheck` gate on
+pushes and PRs.
 
-### Domain & DNS
+### Email & analytics DNS
 
-When you point `arxia.com` at the server:
+1. Verify `arxia.com` in Resend and add the SPF / DKIM / DMARC records it provides to
+   DNS, so `RESEND_FROM` can send from an `@arxia.com` address.
+2. Register `arxia.com` in Plausible and set `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` to match.
 
-1. Verify the domain in Resend (or whichever email provider) and copy the SPF / DKIM / DMARC records into DNS.
-2. Register the domain in Plausible (or your analytics tool) and set `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` to match.
-3. The canonical site URL `https://www.arxia.com` is hardcoded in [`sitemap.ts`](./src/app/sitemap.ts), [`robots.ts`](./src/app/robots.ts), and [`layout.tsx`](./src/app/layout.tsx) — update those if the canonical changes.
+> The canonical site URL `https://www.arxia.com` is hardcoded in
+> [`sitemap.ts`](./src/app/sitemap.ts), [`robots.ts`](./src/app/robots.ts), and
+> [`layout.tsx`](./src/app/[locale]/layout.tsx) — update those three if the canonical
+> domain ever changes.
 
 ## Project structure
 
 ```
 src/
   app/
+    [locale]/             # Locale-scoped app tree (en at root; /es, /fr prefixed)
+      govtech/[domain]/   # /govtech/{data,process,intelligence}
+      industries/[domain]/# /industries/{data,process,intelligence}
+      news/               # News index + per-article routes
+      portfolio/
+      privacy/  terms/    # Legal pages (GDPR-aware copy — see note below)
+      layout.tsx          # Locale layout (Inter + JetBrains Mono, OG, Plausible)
+      error.tsx           # Branded 500
+      not-found.tsx       # Branded 404
     api/contact/          # Resend-backed contact form endpoint
-    govtech/[domain]/     # /govtech/{data,process,intelligence}
-    industries/[domain]/  # /industries/{data,process,intelligence}
-    news/                 # News index + per-article routes
-    portfolio/
-    privacy/  terms/      # Legal page shells (placeholder copy)
-    sandbox/              # Internal visual experiments — noindex via robots
-    error.tsx             # Branded 500
-    not-found.tsx         # Branded 404
-    layout.tsx            # Root layout (Inter + JetBrains Mono, OG, Plausible)
     opengraph-image.tsx   # Default OG image (1200×630, on-brand)
+    manifest.ts           # PWA web manifest
     robots.ts  sitemap.ts # Static SEO routes
+  i18n/                   # next-intl routing, request config, nav helpers
+  middleware.ts           # Locale middleware
   components/
     layout/               # Navbar, Footer, LegalPage shell
     sections/             # Hero, Introduction, VerticalInMotion, ...
@@ -145,7 +159,7 @@ two surface modes, and the WebP-only delivery caveat — is documented in
 | `/industries/{data,process,intelligence}` | Domain pages (Industries)                       |
 | `/portfolio`                        | Project portfolio with filters                        |
 | `/news` · `/news/[slug]`            | News index + articles                                 |
-| `/privacy` · `/terms`               | Legal pages (placeholder copy — legal review pending) |
+| `/privacy` · `/terms`               | Legal pages (GDPR-aware copy; recommend counsel review) |
 | `/api/contact`                      | POST endpoint for the contact form                    |
 | `/sitemap.xml` · `/robots.txt`      | Generated from `src/app/sitemap.ts` & `robots.ts`     |
 | `/opengraph-image`                  | Default social-share image (1200×630, on-brand)       |
@@ -159,11 +173,11 @@ two surface modes, and the WebP-only delivery caveat — is documented in
 
 ## Pre-launch checklist
 
-Items that should land before public launch (none block this repo from being deployed; they're operational):
+Operational items to complete on the hosting/DNS side (none block the code from deploying):
 
-- [ ] Legal review of `/privacy` and `/terms` — current copy contains `[TODO]` markers for counsel.
+- [ ] Counsel review of `/privacy` and `/terms` — copy is complete and GDPR-aware, but confirm the legal entity (Arxia S.R.L.), registered address, and governing law before relying on it.
 - [ ] Resend domain verification for `arxia.com` + DNS records (SPF, DKIM, DMARC).
-- [ ] `RESEND_API_KEY` + `RESEND_FROM` provisioned on the production environment.
-- [ ] Plausible domain registered + `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` set.
-- [ ] Footer social icons: confirm or remove the Twitter/Email placeholders; confirm `Careers` strategy.
+- [ ] `RESEND_API_KEY` + `RESEND_FROM` set in Vercel → Project → Settings → Environment Variables.
+- [ ] Plausible domain registered + `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` set in Vercel.
+- [ ] `www.arxia.com` added under Vercel → Domains with DNS pointed at Vercel.
 - [ ] Confirm the canonical URL in the SEO metadata files matches the final domain.
