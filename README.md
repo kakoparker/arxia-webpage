@@ -90,7 +90,8 @@ pushes and PRs.
 ### Email & analytics DNS
 
 1. Verify `arxia.com` in Resend and add the SPF / DKIM / DMARC records it provides to
-   DNS, so `RESEND_FROM` can send from an `@arxia.com` address.
+   DNS, so `RESEND_FROM` can send from an `@arxia.com` address. Step-by-step records and
+   gotchas: **[`docs/DNS-SETUP.md`](./docs/DNS-SETUP.md)**.
 2. Register `arxia.com` in Plausible and set `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` to match.
 
 > The canonical site URL `https://www.arxia.com` is hardcoded in
