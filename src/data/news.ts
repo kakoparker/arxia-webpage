@@ -92,7 +92,7 @@ export const newsArticles: NewsArticle[] = [
       {
         type: "cta",
         text: "Explore Arxia's work in Digital Government →",
-        href: "/govtech",
+        href: "/process",
       },
     ],
   },

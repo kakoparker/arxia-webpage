@@ -1,44 +1,44 @@
-import type { VerticalSlug, DomainSlug } from "./domains";
+import type { DomainSlug } from "./domains";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Portfolio — 43 projects, tagged to the new 2×3 matrix.
+// Portfolio — 43 projects, tagged by domain of expertise.
 //
-// MIGRATION (Phase 1): every project now carries a stable `slug`, a `vertical`
-// (`govtech | industries`) and a `domain` (`data | process | intelligence`).
-// The legacy `category` / `categoryLabel` fields are kept for backcompat with
-// /portfolio and the home Portfolio section until Phase 6 retires them.
+// Every project carries a stable `slug` and a `domain`
+// (`data | process | intelligence`). The legacy `category` / `categoryLabel`
+// fields are kept for backcompat with /portfolio and the home Portfolio
+// section, which still group by the older, finer-grained category list.
 //
-// Distribution after retag:
-//   govtech/data          →  8
-//   govtech/process       → 16
-//   govtech/intelligence  →  2
-//   industries/data       →  2   ← content gap, flag for expansion
-//   industries/process    →  5
-//   industries/intelligence → 10
+// The `vertical` tag (govtech | industries) was dropped when the Industries
+// vertical was retired. All 43 projects were retained: the private-sector work
+// still evidences the same Data / Process / Intelligence capability that the
+// government offer is built on.
+//
+// Distribution by domain:
+//   data          → 10
+//   process       → 21
+//   intelligence  → 12
 // ─────────────────────────────────────────────────────────────────────────────
 
 export interface PortfolioProject {
   slug: string;
   title: string;
-  vertical: VerticalSlug;
   domain: DomainSlug;
   description: string;
   client: string;
   country: string;
   year: string;
   featured?: boolean;
-  /** @deprecated use `vertical` + `domain`. Kept for legacy /portfolio grouping. */
+  /** @deprecated use `domain`. Kept for legacy /portfolio grouping. */
   category: string;
   /** @deprecated */
   categoryLabel: string;
 }
 
 export const portfolioProjects: PortfolioProject[] = [
-  // ── Govtech · Process (Digital Government, 7) ───────────────────────
+  // ── Process (Digital Government, 7) ───────────────────────
   {
     slug: "senegal-goin-digital",
     title: "Digital Transformation of Senegal – Goin' Digital",
-    vertical: "govtech",
     domain: "process",
     description:
       "Consultancy for the digital transformation of the Government of Senegal, enabling adoption of the GovStack framework aligned with the national strategy New Deal Technologique.",
@@ -52,7 +52,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "ethiopia-input-output",
     title: "Input-Output Coefficient Digital Platform – Ethiopia",
-    vertical: "govtech",
     domain: "process",
     description:
       "Consultancy and implementation of Input-Output Coefficient mechanism as digital platform using the Workflow Building Block under the GovStack framework.",
@@ -65,7 +64,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "govstack-adoption-africa",
     title: "GovStack Adoption Training – Multi-Country (Africa)",
-    vertical: "govtech",
     domain: "process",
     description:
       "Training for the adoption of GovStack to governments in five African countries.",
@@ -78,7 +76,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "senegal-bpmn-senum",
     title: "BPMN Process Modeling & Coaching – SENUM Senegal",
-    vertical: "govtech",
     domain: "process",
     description:
       "Business process modeling, public service redesign and implementation coaching focused on BPMN 2.0 and pilot implementation using Camunda 7 BPM.",
@@ -91,7 +88,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "rwanda-web-accessibility",
     title: "Web Accessibility Standardization – Rwanda",
-    vertical: "govtech",
     domain: "process",
     description:
       "Large-scale web accessibility standardization with 5 certified WCAG experts auditing and fixing accessibility across the government's website portfolio.",
@@ -104,7 +100,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "rwanda-workflow-platform",
     title: "Workflow Platform Selection – Government of Rwanda",
-    vertical: "govtech",
     domain: "process",
     description:
       "Identification, benchmarking and selection of process workflow platform for G2G processes digitalization.",
@@ -117,7 +112,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "romania-egov-strategy",
     title: "e-Government Strategy of Romania (EGOV)",
-    vertical: "govtech",
     domain: "process",
     description:
       "Consultancy for Romania's e-Government strategy, including policy review, process redesign for 36 \"Life Events\", and capacity building for 16 central public institutions.",
@@ -128,11 +122,10 @@ export const portfolioProjects: PortfolioProject[] = [
     categoryLabel: "Digital Government",
   },
 
-  // ── Govtech · Data (Interoperability + Data Governance, 8) ──────────
+  // ── Data (Interoperability + Data Governance, 8) ──────────
   {
     slug: "cambodia-dpi",
     title: "Digital Social Protection Platform Architecture – Cambodia",
-    vertical: "govtech",
     domain: "data",
     description:
       "Consultancy for the Digital Social Protection Platform Architecture of Cambodia and Pub/Sub Implementation integrating X-Road, following GovStack architecture approach.",
@@ -146,7 +139,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "icglr-regional-data-sharing",
     title: "Regional Data Sharing Platform Architecture – ICGLR",
-    vertical: "govtech",
     domain: "data",
     description:
       "Developed the technical architecture and requirements specification for the regional data sharing platform to be used by 12 member states of ICGLR.",
@@ -159,7 +151,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "rwanda-mining-standard",
     title: "Mining & Minerals Data Sharing Standard – Rwanda",
-    vertical: "govtech",
     domain: "data",
     description:
       "Development of the Rwanda mining and minerals sharing standard, technical interoperability model for RMB systems (GIMCS, DMTS), and audit of current systems.",
@@ -172,7 +163,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "rwanda-risa-icglr",
     title: "Software Architecture for RISA & ICGLR – Rwanda",
-    vertical: "govtech",
     domain: "data",
     description:
       "Acceleration of GovStack adoption in Rwanda with emphasis on Workflow Building Block and Consent Building Block.",
@@ -185,7 +175,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "romania-ukrainian-interop",
     title: "Interoperability Framework for Ukrainian Refugees Support – Romania",
-    vertical: "govtech",
     domain: "data",
     description:
       "National inter-institutional interoperability framework and digitalization of service delivery for Ukrainian refugees in Romania.",
@@ -198,7 +187,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "rwanda-integration-coaching",
     title: "Software Integration Architecture Coaching – RISA Rwanda",
-    vertical: "govtech",
     domain: "data",
     description:
       "Coaching in Software Integration Architecture for RISA technical personnel. Delivered with Evolve Ltd.",
@@ -211,7 +199,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "icglr-data-sharing-policy",
     title: "Data Sharing Policy & Technical Standard – ICGLR",
-    vertical: "govtech",
     domain: "data",
     description:
       "Development of data sharing policy, technical standard, semantic data model and technical transposition for ICGLR and 12 member countries.",
@@ -224,7 +211,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "rwanda-consent-governance",
     title: "Consent Governance & Personal Data Protection – Rwanda",
-    vertical: "govtech",
     domain: "data",
     description:
       "Development of Consent Governance & Personal Data Protection Agreements prototype based on GovStack Consent Building Block.",
@@ -235,11 +221,10 @@ export const portfolioProjects: PortfolioProject[] = [
     categoryLabel: "Data Governance",
   },
 
-  // ── Govtech · Process (Public Procurement, 3) ───────────────────────
+  // ── Process (Public Procurement, 3) ───────────────────────
   {
     slug: "uganda-ppda",
     title: "PPDA Digital Transformation Strategy – Uganda",
-    vertical: "govtech",
     domain: "process",
     description:
       "Support for Uganda's Public Procurement and Disposal Authority to plan its digital transformation strategy implementation.",
@@ -252,7 +237,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "romania-public-procurement",
     title: "Digital Public Procurement System – Romania",
-    vertical: "govtech",
     domain: "process",
     description:
       "Process redesign and implementation of digital public procurement system for planning, execution and audit.",
@@ -265,7 +249,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "romania-eprocurement-platform",
     title: "E-Procurement Web Platform – Romania",
-    vertical: "govtech",
     domain: "process",
     description:
       "Web platform for public institutions providing workflows for the entire procurement lifecycle. Implemented by over 100 public institutions.",
@@ -277,11 +260,10 @@ export const portfolioProjects: PortfolioProject[] = [
     categoryLabel: "Public Procurement",
   },
 
-  // ── Govtech · Process (Web Development, 5) ──────────────────────────
+  // ── Process (Web Development, 5) ──────────────────────────
   {
     slug: "icglr-websites",
     title: "ICGLR Websites Reimplementation & Training",
-    vertical: "govtech",
     domain: "process",
     description:
       "Reimplementation of ICGLR websites and training of content managers.",
@@ -294,7 +276,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "somalia-websites",
     title: "Government of Somalia Websites – Training & Development",
-    vertical: "govtech",
     domain: "process",
     description:
       "Training and development support for the websites of the Government of Somalia. Arxia subcontracted by TYPO3 GmbH.",
@@ -307,7 +288,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "risa-cms-govstack",
     title: "GovStack CMS Building Block – RISA Rwanda Websites",
-    vertical: "govtech",
     domain: "process",
     description:
       "Consultancy, training, implementation support and guidelines for RISA Rwanda websites using GovStack CMS Building Block approach. Includes TYPO3 CMS upgrade, new UX/UI and Web Accessibility guidelines.",
@@ -320,7 +300,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "rwanda-typo3-coaching",
     title: "TYPO3 Development Coaching – Government of Rwanda",
-    vertical: "govtech",
     domain: "process",
     description:
       "Coaching in TYPO3 development for the websites of the government of Rwanda. Delivered with Evolve Ltd.",
@@ -333,7 +312,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "rwanda-government-portals",
     title: "Government Web Portals & Digital Infrastructure – Rwanda",
-    vertical: "govtech",
     domain: "process",
     description:
       "Design and deployment of government websites, digital service portals and technology infrastructure. Developed the multi-tenant architecture holding over 350 government websites.",
@@ -345,11 +323,10 @@ export const portfolioProjects: PortfolioProject[] = [
     categoryLabel: "Web Development",
   },
 
-  // ── Industries · Process (Web Development, 4) ───────────────────────
+  // ── Process (Web Development, 4) ───────────────────────
   {
     slug: "nanotec-portal",
     title: "Nanotec Portal & Intranet Support",
-    vertical: "industries",
     domain: "process",
     description:
       "Continuous evolution support for Nanotec's portal and intranets on TYPO3 CMS technology.",
@@ -362,7 +339,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "philips-speech-portal",
     title: "Philips Speech Portal & Intranet Support",
-    vertical: "industries",
     domain: "process",
     description:
       "Continuous evolution support for the Philips Speech division portal and intranets on TYPO3 CMS technology.",
@@ -375,7 +351,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "stockli-websites",
     title: "Müllex & Stöckli Websites – Switzerland",
-    vertical: "industries",
     domain: "process",
     description:
       "Presentation websites and e-catalogues for the Stöckli Group.",
@@ -388,7 +363,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "audi-planner",
     title: "AUDI Showroom & Garage Interactive Planner",
-    vertical: "industries",
     domain: "process",
     description:
       "Web platform for interactive 2D and 3D planning of showrooms and garage areas, built on PlanningWiz technology (an Arxia spinoff).",
@@ -399,11 +373,10 @@ export const portfolioProjects: PortfolioProject[] = [
     categoryLabel: "Web Development",
   },
 
-  // ── Govtech · Intelligence (2) ──────────────────────────────────────
+  // ── Intelligence (2) ──────────────────────────────────────
   {
     slug: "mbaza-chatbot",
     title: "Mbaza Chatbot – AI/NLP Virtual Assistant – Rwanda",
-    vertical: "govtech",
     domain: "intelligence",
     description:
       "Implementation of a multi-channel AI NLP-based virtual assistant for government communication with the citizens, including those who are not literate. Channels: Web, Mobile app, USSD, Voice call in local language.",
@@ -417,7 +390,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "digital-maturity-tool",
     title: "Digital Maturity Assessment Tool",
-    vertical: "govtech",
     domain: "intelligence",
     description:
       "Implementation of an AI-based digital maturity assessment and strategy development tool for public administration institutions, rolled out in Norway and in Romania targeting city halls.",
@@ -428,11 +400,10 @@ export const portfolioProjects: PortfolioProject[] = [
     categoryLabel: "Artificial Intelligence",
   },
 
-  // ── Industries · Intelligence (10) ──────────────────────────────────
+  // ── Intelligence (10) ──────────────────────────────────
   {
     slug: "bpo-chile-automation",
     title: "BPO Back Office Automation",
-    vertical: "industries",
     domain: "intelligence",
     description:
       "We developed an AI Agent that automated 90% of the processes of Telecom BPOs in Chile, reducing 90% of their backoffice processes for client verification and assessment.",
@@ -445,7 +416,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "ozmo-ai-acceleration",
     title: "AI Acceleration Program + AI Workshop for Software Company",
-    vertical: "industries",
     domain: "intelligence",
     description:
       "Conducted 3-month AI Acceleration program for Software company transforming their Marketing, Administration and Sales departments.",
@@ -458,7 +428,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "sigse-ai-acceleration",
     title: "AI Acceleration Program + AI Workshop for Consultancy Company",
-    vertical: "industries",
     domain: "intelligence",
     description:
       "Conducted 3-month AI Acceleration program transforming their marketing, bid management and operations departments.",
@@ -471,7 +440,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "bancom-ai-workshop",
     title: "AI Workshop and Roadmap for Executives and Board Members",
-    vertical: "industries",
     domain: "intelligence",
     description:
       "AI Workshop IGNITE program for the executives and department leads. As well as a separate one for the board members.",
@@ -484,7 +452,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "itstudio-ai-acceleration",
     title: "AI Acceleration Program + Workshop",
-    vertical: "industries",
     domain: "intelligence",
     description:
       "Accelerated marketing, bid management and operations departments in a 90-day program.",
@@ -497,7 +464,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "altlegal-ai-agent",
     title: "AI Agent for Legal Support Consultancy and Implementation",
-    vertical: "industries",
     domain: "intelligence",
     description:
       "Consultancy and implementation support of solution oriented assessing tenders around Chilean regulation using Generative AI for evaluation.",
@@ -510,7 +476,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "lima-ai-workshop",
     title: "AI Workshop and Roadmap",
-    vertical: "industries",
     domain: "intelligence",
     description:
       "AI Workshop for opportunity discovery and roadmapping of potential implementations of AI solutions in more than 10 departments of the university.",
@@ -523,7 +488,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "chiletec-ai-training",
     title: "Training for IT Companies: Building AI Agents for Day-to-Day Work",
-    vertical: "industries",
     domain: "intelligence",
     description:
       "Short training program for development of AI Agents for day-to-day work.",
@@ -536,7 +500,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "falabella-ai",
     title: "Workshop and Consultancy for Implementation of AI Solution",
-    vertical: "industries",
     domain: "intelligence",
     description:
       "Consultancy and workshop training for implementation of AI solutions for the largest retail chain on their corporate office in Perú.",
@@ -549,7 +512,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "grant-prep-automation",
     title: "Automation of Grant Preparation for Consultancy Company",
-    vertical: "industries",
     domain: "intelligence",
     description:
       "Implementation of an AI-based grant proposition development workflow and of a financial reporting tool for grant-funded projects.",
@@ -560,11 +522,10 @@ export const portfolioProjects: PortfolioProject[] = [
     categoryLabel: "Artificial Intelligence",
   },
 
-  // ── Govtech · Process (Electronic Invoicing, 1) ─────────────────────
+  // ── Process (Electronic Invoicing, 1) ─────────────────────
   {
     slug: "car-einvoicing",
     title: "Electronic Invoicing & Transaction Reporting – Central African Republic",
-    vertical: "govtech",
     domain: "process",
     description:
       "Consultancy and implementation for electronic invoicing and commercial transaction reporting.",
@@ -576,11 +537,10 @@ export const portfolioProjects: PortfolioProject[] = [
     categoryLabel: "Electronic Invoicing",
   },
 
-  // ── Industries · Data (Mining & Minerals, 2) ────────────────────────
+  // ── Data (Mining & Minerals, 2) ────────────────────────
   {
     slug: "zambia-mining-data",
     title: "Digital Maturity Assessment – Mining & Minerals – Zambia",
-    vertical: "industries",
     domain: "data",
     description:
       "Assessment of digital maturity and data management in mining and minerals domains in preparation of the National Minerals Database implementation.",
@@ -593,7 +553,6 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "burundi-mining-data",
     title: "Digital Maturity Assessment – Mining & Minerals – Burundi",
-    vertical: "industries",
     domain: "data",
     description:
       "Assessment of digital maturity and data management in mining and minerals in Burundi for the ICGLR Regional Minerals Database.",
@@ -604,11 +563,10 @@ export const portfolioProjects: PortfolioProject[] = [
     categoryLabel: "Data Governance",
   },
 
-  // ── Industries · Process (Business Strategy, 1) ─────────────────────
+  // ── Process (Business Strategy, 1) ─────────────────────
   {
     slug: "uganda-it-bpo-strategy",
     title: "IT & BPO Export Value Proposition – Uganda",
-    vertical: "industries",
     domain: "process",
     description:
       "Support for redevelopment of the export value proposition of Uganda's IT & BPO sectors and assessment of export maturity level. Financed by UKTP.",
@@ -665,17 +623,9 @@ export function getProject(
   return p ? localizeProject(p, locale) : undefined;
 }
 
-export function projectsByVertical(
-  v: VerticalSlug,
-  locale: string = "en"
-): PortfolioProject[] {
-  return getProjects(locale).filter((p) => p.vertical === v);
-}
-
 export function projectsByDomain(
-  v: VerticalSlug,
   d: DomainSlug,
   locale: string = "en"
 ): PortfolioProject[] {
-  return getProjects(locale).filter((p) => p.vertical === v && p.domain === d);
+  return getProjects(locale).filter((p) => p.domain === d);
 }

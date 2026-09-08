@@ -9,15 +9,14 @@ import { gsap, ScrollTrigger } from "@/hooks/useGsapScrollTrigger";
 
 gsap.registerPlugin(useGSAP);
 import {
-  getVertical,
-  type VerticalSlug,
+  getExpertise,
   type ExpertiseDomain,
-  type ArxiaVertical,
+  type ArxiaExpertise,
 } from "@/data/domains";
 
 /**
- * Chapter for one vertical — pinned full-viewport layout where:
- *   • Section opener (vertical name + tagline) stays static
+ * The three domains of expertise — pinned full-viewport layout where:
+ *   • Section opener (heading + positioning line) stays static
  *   • Sticky-left domain panel updates as user scrolls
  *   • Right card area swaps cards with fade/slide
  *   • Snap forces clean per-card landings — one scroll input ≈ one transition
@@ -28,35 +27,33 @@ import {
  * Mobile (< lg) and prefers-reduced-motion users get the static stacked
  * fallback (opener + 3 cards stacked, no pin, no swap).
  */
-interface VerticalInMotionProps {
-  verticalSlug: VerticalSlug;
+interface DomainsInMotionProps {
   tone?: "dark" | "ultra-light";
-  idSuffix?: string;
+  /** Section anchor id. Defaults to `expertise` (linked from nav + breadcrumbs). */
+  sectionId?: string;
 }
 
-export function VerticalInMotion({
-  verticalSlug,
+export function DomainsInMotion({
   tone = "dark",
-  idSuffix,
-}: VerticalInMotionProps) {
+  sectionId = "expertise",
+}: DomainsInMotionProps) {
   const locale = useLocale();
-  const vertical = getVertical(verticalSlug, locale);
-  const sectionId = `${verticalSlug}${idSuffix ? `-${idSuffix}` : ""}`;
+  const expertise = getExpertise(locale);
   const dark = tone === "dark";
 
   return (
     <section id={sectionId}>
-      <Chapter vertical={vertical} dark={dark} sectionId={sectionId} />
+      <Chapter expertise={expertise} dark={dark} sectionId={sectionId} />
     </section>
   );
 }
 
 function Chapter({
-  vertical,
+  expertise,
   dark,
   sectionId,
 }: {
-  vertical: ArxiaVertical;
+  expertise: ArxiaExpertise;
   dark: boolean;
   sectionId: string;
 }) {
@@ -70,8 +67,8 @@ function Chapter({
   const [reducedMotion, setReducedMotion] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const pinRef = useRef<HTMLDivElement>(null);
-  const numCards = vertical.domains.length;
-  const t = useTranslations("VerticalInMotion");
+  const numCards = expertise.domains.length;
+  const t = useTranslations("DomainsInMotion");
 
   // Synchronously kill any pinned ScrollTriggers in this section before
   // React reconciles a tree swap — the same fix applied to Hero. Without
@@ -162,7 +159,7 @@ function Chapter({
   );
 
   const { displayText: activeDomainName } = useTextScramble({
-    texts: vertical.domains.map((d) => d.name),
+    texts: expertise.domains.map((d) => d.name),
     activeIndex,
     scrambleDuration: 350,
     holdDuration: 99999,
@@ -181,7 +178,7 @@ function Chapter({
           dark ? "text-accent-red/85" : "text-accent-red"
         }`}
       >
-        {t("verticalLabel", { name: vertical.shortName })}
+        {t("annotation")}
       </p>
       <h2
         className={`font-bold ${textPrimary} mb-5`}
@@ -192,10 +189,9 @@ function Chapter({
             : "clamp(40px, 6vw, 64px)",
           lineHeight: 1.02,
           letterSpacing: "-1.5px",
-          whiteSpace: "nowrap",
         }}
       >
-        {vertical.name}
+        {t("heading")}
       </h2>
       <div className="h-[3px] w-16 bg-accent-red mb-5" />
       <p
@@ -207,7 +203,7 @@ function Chapter({
           maxWidth: "560px",
         }}
       >
-        {vertical.tagline}
+        {expertise.tagline}
       </p>
     </header>
   );
@@ -227,12 +223,11 @@ function Chapter({
         <div className="mx-auto" style={{ maxWidth: "var(--content-max)" }}>
           {opener}
           <div className="flex flex-col gap-6">
-            {vertical.domains.map((d, i) => (
+            {expertise.domains.map((d, i) => (
               <DomainCard
                 key={d.slug}
                 domain={d}
                 index={i}
-                verticalSlug={vertical.slug}
                 dark={dark}
                 state="active"
               />
@@ -272,7 +267,10 @@ function Chapter({
                       dark ? "text-accent-red/85" : "text-accent-red"
                     } mb-4`}
                   >
-                    {`Domain ${String(activeIndex + 1).padStart(2, "0")} / 0${numCards}`}
+                    {t("domainCounter", {
+                      n: String(activeIndex + 1).padStart(2, "0"),
+                      total: `0${numCards}`,
+                    })}
                   </p>
                   <h3
                     className={`font-bold ${textPrimary} mb-3`}
@@ -295,10 +293,10 @@ function Chapter({
                       minHeight: "3em",
                     }}
                   >
-                    {vertical.domains[activeIndex]?.tagline}
+                    {expertise.domains[activeIndex]?.tagline}
                   </p>
                   <div className="flex gap-1.5">
-                    {vertical.domains.map((d, i) => (
+                    {expertise.domains.map((d, i) => (
                       <span
                         key={d.slug}
                         className={`h-[3px] transition-all duration-300 ${
@@ -317,7 +315,7 @@ function Chapter({
                   read as a "tilt" against the snap motion). Tighter
                   duration so the swap settles within snap's window. */}
               <div className="relative" style={{ minHeight: "440px" }}>
-                {vertical.domains.map((d, i) => {
+                {expertise.domains.map((d, i) => {
                   const isActive = i === activeIndex;
                   return (
                     <div
@@ -332,7 +330,6 @@ function Chapter({
                       <DomainCard
                         domain={d}
                         index={i}
-                        verticalSlug={vertical.slug}
                         dark={dark}
                         state="active"
                       />
@@ -350,17 +347,15 @@ function Chapter({
 function DomainCard({
   domain,
   index,
-  verticalSlug,
   dark,
   state,
 }: {
   domain: ExpertiseDomain;
   index: number;
-  verticalSlug: VerticalSlug;
   dark: boolean;
   state: "pending" | "active" | "past";
 }) {
-  const t = useTranslations("VerticalInMotion");
+  const t = useTranslations("DomainsInMotion");
   const Icon = domain.icon;
 
   const cardBg = dark
@@ -376,7 +371,7 @@ function DomainCard({
 
   return (
     <Link
-      href={`/${verticalSlug}/${domain.slug}`}
+      href={`/${domain.slug}`}
       className={`relative block group border px-8 pt-8 pb-20 lg:px-10 lg:pt-10 lg:pb-24 transition-all duration-500 ${cardBg}`}
     >
       <div className="flex items-center justify-between mb-6">

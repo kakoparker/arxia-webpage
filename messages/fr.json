@@ -7,8 +7,9 @@
     "mobileNavigation": "Navigation mobile",
     "openMenu": "Ouvrir le menu",
     "closeMenu": "Fermer le menu",
-    "govtech": "Govtech",
-    "industries": "Industries",
+    "data": "Données",
+    "process": "Processus",
+    "intelligence": "Intelligence",
     "portfolio": "Portfolio",
     "news": "Actualités",
     "contact": "Contact"
@@ -22,24 +23,19 @@
   "Hero": {
     "title1": "La technologie",
     "title2": "qui transforme les nations",
-    "subtitle": "Donner aux gouvernements, aux industries et aux écosystèmes les moyens de bâtir leur avenir numérique",
+    "subtitle": "Donner aux gouvernements et à leurs écosystèmes les moyens de bâtir leur avenir numérique",
     "cta": "Contactez-nous"
   },
   "Introduction": {
     "annotation": "Qui sommes-nous",
     "paragraph": "Arxia est une entreprise d'Infrastructure Publique Numérique et de Transformation Numérique. Notre équipe de consultants et d'ingénieurs experts a mené des projets numériques partout dans le monde, en partenariat avec des organisations internationales et des bailleurs de fonds. Notre objectif : transformer la vie des personnes grâce à une technologie à fort impact et au renforcement des capacités.",
-    "govtechLabel": "GOVTECH",
-    "govtechTitle": "Arxia Govtech",
-    "govtechTagline": "Infrastructure publique numérique pour les gouvernements et les organisations internationales",
-    "govtechCta": "Découvrir Govtech",
-    "industriesLabel": "INDUSTRIES",
-    "industriesTitle": "Arxia Industries",
-    "industriesTagline": "Transformation des entreprises pour les mines, la finance, le commerce, les universités et au-delà",
-    "industriesCta": "Découvrir Industries"
+    "exploreCta": "Découvrir {name}"
   },
-  "VerticalInMotion": {
-    "verticalLabel": "La verticale {name}",
-    "explore": "Découvrir"
+  "DomainsInMotion": {
+    "annotation": "Ce Que Nous Faisons",
+    "heading": "Domaines d'Expertise",
+    "explore": "Découvrir",
+    "domainCounter": "Domaine {n} / {total}"
   },
   "Portfolio": {
     "annotation": "Travaux sélectionnés",
@@ -122,15 +118,13 @@
     "errorNetwork": "Impossible de joindre le serveur. Veuillez réessayer."
   },
   "Footer": {
-    "tagline": "Transformation numérique et Infrastructure Publique Numérique pour les gouvernements et les industries stratégiques dans le monde entier.",
+    "tagline": "Transformation numérique et Infrastructure Publique Numérique pour les gouvernements dans le monde entier.",
     "company": "Entreprise",
     "services": "Services",
     "contact": "Contact",
     "aboutUs": "À propos",
     "portfolio": "Portfolio",
     "news": "Actualités",
-    "govtech": "Govtech",
-    "industries": "Industries",
     "data": "Données",
     "process": "Processus",
     "intelligence": "Intelligence",
@@ -150,8 +144,7 @@
     "pageSections": "Sections de la page",
     "jumpTo": "Aller à {label}",
     "about": "À propos",
-    "govtech": "Govtech",
-    "industries": "Industries",
+    "expertise": "Domaines",
     "presence": "Présence",
     "portfolio": "Portfolio",
     "news": "Actualités",
@@ -168,9 +161,8 @@
     "railContact": "Contact",
     "heroTitle": "{title} pour {audience}",
     "audienceGovernment": "LE SECTEUR PUBLIC",
-    "audienceIndustries": "L'INDUSTRIE",
     "keepExploring": "Continuer l'exploration",
-    "otherDomains": "Les deux autres domaines {vertical}",
+    "otherDomains": "Les deux autres domaines d'expertise",
     "explore": "Découvrir {name}",
     "categoryName": {
       "Consultancy": "Conseil",
@@ -198,16 +190,6 @@
     "body": "Une sélection de projets qui illustrent notre façon de travailler dans ce domaine.",
     "viewAll": "Voir tous les projets →"
   },
-  "PortfolioFilter": {
-    "ariaLabel": "Filtre du portfolio",
-    "verticalAll": "Tous",
-    "verticalGovtech": "Govtech",
-    "verticalIndustries": "Industries",
-    "domainAll": "Tous les domaines",
-    "domainData": "Données",
-    "domainProcess": "Processus",
-    "domainIntelligence": "Intelligence"
-  },
   "Errors": {
     "label500": "Erreur · 500",
     "heading500": "La compilation a échoué quelque part.",
@@ -217,18 +199,14 @@
     "label404": "Erreur · 404",
     "heading404": "Cette page n'est pas sur le plan.",
     "body404": "L'URL que vous avez suivie ne mène nulle part sur ce site. Elle a peut-être changé lors de la réorganisation de nos domaines d'expertise, ou le lien est tout simplement erroné.",
-    "exploreGovtech": "Découvrir Govtech",
-    "exploreIndustries": "Découvrir Industries",
     "notFoundMetaTitle": "Page introuvable",
-    "notFoundMetaDescription": "La page que vous recherchez n'existe pas ou a été déplacée."
+    "notFoundMetaDescription": "La page que vous recherchez n'existe pas ou a été déplacée.",
+    "exploreExpertise": "Découvrir notre expertise",
+    "explorePortfolio": "Voir le portfolio"
   },
   "Meta": {
     "homeTitle": "Transformation Numérique et Infrastructure Publique Numérique — Arxia",
-    "homeDescription": "Arxia est une entreprise de transformation numérique et d'Infrastructure Publique Numérique. Nous donnons aux gouvernements, aux industries et aux écosystèmes les moyens de bâtir leur avenir numérique.",
-    "homeOgDescription": "Nous donnons aux gouvernements, aux industries et aux écosystèmes les moyens de bâtir leur avenir numérique.",
-    "govtechTitle": "Govtech — Infrastructure Publique Numérique",
-    "govtechDescription": "Infrastructure publique numérique pour les gouvernements et les organisations internationales. Interopérabilité des données, conception de services, e-procurement, facturation électronique et IA agentique pour le secteur public.",
-    "industriesTitle": "Industries — Transformation des Entreprises",
-    "industriesDescription": "Transformation des entreprises pour les mines, la finance, le commerce, les universités et au-delà. Gouvernance des données, modernisation des processus et IA à l'échelle de l'entreprise."
+    "homeDescription": "Arxia est une entreprise de transformation numérique et d'Infrastructure Publique Numérique. Nous donnons aux gouvernements et à leurs écosystèmes les moyens de bâtir leur avenir numérique.",
+    "homeOgDescription": "Nous donnons aux gouvernements et à leurs écosystèmes les moyens de bâtir leur avenir numérique."
   }
 }

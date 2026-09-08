@@ -10,16 +10,14 @@ import { Button } from "@/components/ui/Button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { getProjects, projectsByDomain } from "@/data/portfolio";
 import type { FeaturedCase } from "@/data/domain-pages";
-import type { VerticalSlug, DomainSlug } from "@/data/domains";
+import type { DomainSlug } from "@/data/domains";
 
 interface DomainFeaturedCasesProps {
-  vertical: VerticalSlug;
   domain: DomainSlug;
   featuredCases: FeaturedCase[];
 }
 
 export function DomainFeaturedCases({
-  vertical,
   domain,
   featuredCases,
 }: DomainFeaturedCasesProps) {
@@ -34,7 +32,7 @@ export function DomainFeaturedCases({
     .map((f) => localizedProjects.find((p) => p.slug === f.projectSlug))
     .filter(Boolean);
 
-  const display = resolved.length > 0 ? resolved : projectsByDomain(vertical, domain, locale);
+  const display = resolved.length > 0 ? resolved : projectsByDomain(domain, locale);
   if (display.length === 0) return null;
 
   return (
@@ -99,7 +97,7 @@ export function DomainFeaturedCases({
         </div>
 
         <div className="text-center">
-          <Link href={`/portfolio?v=${vertical}&d=${domain}`}>
+          <Link href="/portfolio">
             <Button variant="primary">{t("viewAll")}</Button>
           </Link>
         </div>

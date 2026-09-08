@@ -1,18 +1,22 @@
-import type { VerticalSlug, DomainSlug } from "./domains";
+import type { DomainSlug } from "./domains";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Domain pages — 2 × 3 matrix (expanded content pass).
+// Domain pages — one per domain of expertise (Data · Process · Intelligence).
 //
 // Each page: Hero → Consultancy section → Services section → Products section
 // → Featured cases → Related domains → CTA.
 //
 // Every ServiceItem carries a stable `slug`, a required `description`, and
 // (for products only) optional metadata. The slug drives the future
-// per-offering landing route at /${vertical}/${domain}/${slug} — those routes
-// don't exist yet, the "Learn more" links are placeholder targets.
+// per-offering landing route at /${domain}/${slug} — those routes don't exist
+// yet, the "Learn more" links are placeholder targets.
+//
+// NOTE: illustration folders under /public/images/services are still named
+// `govtech-*` from the two-vertical era. The names are inert (paths are literal
+// strings below); left as-is to avoid churning ~120 image files.
 // ─────────────────────────────────────────────────────────────────────────────
 
-export type DomainPageSlug = `${VerticalSlug}-${DomainSlug}`;
+export type DomainPageSlug = DomainSlug;
 
 export interface ServiceItem {
   slug: string;
@@ -38,7 +42,6 @@ export interface FeaturedCase {
 
 export interface DomainPageData {
   slug: DomainPageSlug;
-  vertical: VerticalSlug;
   domain: DomainSlug;
   title: string;
   tagline: string;
@@ -46,7 +49,6 @@ export interface DomainPageData {
   description: string;
   metaTitle: string;
   metaDescription: string;
-  parentVertical: string;
   categories: ServiceCategory[];
   featuredCases: FeaturedCase[];
 }
@@ -54,20 +56,18 @@ export interface DomainPageData {
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const domainPages: DomainPageData[] = [
-  // ═══ GOVTECH · DATA ═════════════════════════════════════════════════
+  // ═══ DATA ═════════════════════════════════════════════════
   {
-    slug: "govtech-data",
-    vertical: "govtech",
+    slug: "data",
     domain: "data",
     title: "Data",
     tagline: "The connective tissue of the state",
     iconName: "Database",
     description:
       "We architect the data layer of digital public infrastructure — interoperability, governance, and exchange frameworks that let institutions share information securely across departments, borders, and building blocks.",
-    metaTitle: "Govtech · Data — Interoperability & Data Governance",
+    metaTitle: "Data — Interoperability & Data Governance",
     metaDescription:
       "Data interoperability, governance, semantic standards, and cross-border data exchange systems for the public sector. Built on GovStack, X-Road, and open frameworks.",
-    parentVertical: "Arxia Govtech",
     categories: [
       {
         name: "Consultancy",
@@ -171,20 +171,18 @@ export const domainPages: DomainPageData[] = [
     ],
   },
 
-  // ═══ GOVTECH · PROCESS ══════════════════════════════════════════════
+  // ═══ PROCESS ══════════════════════════════════════════════
   {
-    slug: "govtech-process",
-    vertical: "govtech",
+    slug: "process",
     domain: "process",
     title: "Process",
     tagline: "Public services, redesigned",
     iconName: "Workflow",
     description:
       "BPMN-driven service design, end-to-end procurement and invoicing, and standardized government portals — modernizing how the state delivers value to citizens.",
-    metaTitle: "Govtech · Process — Service Design, e-Procurement & Portals",
+    metaTitle: "Process — Service Design, e-Procurement & Portals",
     metaDescription:
       "e-Government strategy, BPMN process design, e-procurement, e-invoicing, and standardized government portals. 20+ years across 20+ countries.",
-    parentVertical: "Arxia Govtech",
     categories: [
       {
         name: "Consultancy",
@@ -331,20 +329,18 @@ export const domainPages: DomainPageData[] = [
     ],
   },
 
-  // ═══ GOVTECH · INTELLIGENCE ═════════════════════════════════════════
+  // ═══ INTELLIGENCE ═════════════════════════════════════════
   {
-    slug: "govtech-intelligence",
-    vertical: "govtech",
+    slug: "intelligence",
     domain: "intelligence",
     title: "Intelligence",
     tagline: "The agentic state",
     iconName: "Brain",
     description:
       "AI agents, intelligent automation, and AI-powered platforms that make the public sector proactive — from citizen-facing assistants to inter-institutional workflows.",
-    metaTitle: "Govtech · Intelligence — Agentic State & Public-Sector AI",
+    metaTitle: "Intelligence — Agentic State & Public-Sector AI",
     metaDescription:
       "AI agents, automated workflows, digital maturity tooling, and AI adoption programs for governments and international organizations.",
-    parentVertical: "Arxia Govtech",
     categories: [
       {
         name: "Consultancy",
@@ -461,380 +457,6 @@ export const domainPages: DomainPageData[] = [
       { projectSlug: "digital-maturity-tool" },
     ],
   },
-
-  // ═══ INDUSTRIES · DATA ══════════════════════════════════════════════
-  {
-    slug: "industries-data",
-    vertical: "industries",
-    domain: "data",
-    title: "Data",
-    tagline: "Enterprise data, governed and interoperable",
-    iconName: "Database",
-    description:
-      "Data governance, quality, compliance, and integration frameworks that turn fragmented enterprise data into a durable competitive asset.",
-    metaTitle: "Industries · Data — Enterprise Data Governance",
-    metaDescription:
-      "Enterprise data governance, master data management, GDPR compliance, data quality, and industry-specific data-sharing standards for regulated sectors.",
-    parentVertical: "Arxia Industries",
-    categories: [
-      {
-        name: "Consultancy",
-        tagline: "Strategy, policy, and standards for enterprise data.",
-        items: [
-          {
-            slug: "data-governance-strategy",
-            title: "Data governance strategies",
-            description:
-              "Enterprise data governance frameworks — policies, roles, stewardship responsibilities, and decision rights — tailored to your industry and regulatory environment.",
-            image: "/images/services/industries-data/data-governance-strategy-illustration.webp",
-          },
-          {
-            slug: "interoperability-standardization-strategy",
-            title: "Data interoperability and standardization strategy",
-            description:
-              "Strategy for cross-system data exchange — canonical data models, semantic standards, API contracts, and the governance bodies needed to keep them coherent as your landscape evolves.",
-            image: "/images/services/industries-data/interoperability-standardization-strategy-illustration.webp",
-          },
-          {
-            slug: "industry-standards",
-            title: "Industry data-sharing standards",
-            description:
-              "Sector-specific data-sharing frameworks — mining traceability, financial disclosures, logistics interoperability — translated into concrete technical standards.",
-            image: "/images/services/industries-data/industry-standards-illustration.webp",
-          },
-        ],
-      },
-      {
-        name: "Services",
-        tagline: "Implementation and integration for enterprise data.",
-        items: [
-          {
-            slug: "governance-platform",
-            title: "Data governance platform implementation",
-            description:
-              "Deployment of data governance platforms — policies codified, workflows configured, integrations to source systems delivered.",
-            image: "/images/services/industries-data/governance-platform-illustration.webp",
-          },
-          {
-            slug: "interoperability-standardization-implementation",
-            title: "Data interoperability and standardization implementation",
-            description:
-              "Putting the standards into production — canonical schemas, registries, transformation pipelines, validation services, and the integration patterns that make cross-system exchange routine instead of bespoke.",
-            image: "/images/services/industries-data/interoperability-standardization-implementation-illustration.webp",
-          },
-          {
-            slug: "catalog-lineage",
-            title: "Data catalog and lineage tooling",
-            description:
-              "Enterprise data catalogs and lineage tooling that actually get adopted — because we set them up around your data, not a demo dataset.",
-            image: "/images/services/industries-data/catalog-lineage-illustration.webp",
-          },
-          {
-            slug: "pipelines",
-            title: "Data integration and pipeline development",
-            description:
-              "Production-grade data pipelines — batch and streaming — engineered for analytics, operations, and AI readiness.",
-            image: "/images/services/industries-data/pipelines-illustration.webp",
-          },
-        ],
-      },
-    ],
-    featuredCases: [
-      { projectSlug: "zambia-mining-data" },
-      { projectSlug: "burundi-mining-data" },
-      { projectSlug: "rwanda-mining-standard", note: "Industry data sharing standard, delivered in partnership with Rwanda Mining Board." },
-    ],
-  },
-
-  // ═══ INDUSTRIES · PROCESS ═══════════════════════════════════════════
-  {
-    slug: "industries-process",
-    vertical: "industries",
-    domain: "process",
-    title: "Process",
-    tagline: "Enterprise operations, reengineered",
-    iconName: "Workflow",
-    description:
-      "Process digitalization, workflow automation, and system modernization — delivering measurable efficiency gains across complex enterprise landscapes.",
-    metaTitle: "Industries · Process — Enterprise Transformation",
-    metaDescription:
-      "Digital transformation strategy, process reengineering, system modernization, enterprise portals, and internationalization for industry.",
-    parentVertical: "Arxia Industries",
-    categories: [
-      {
-        name: "Consultancy",
-        tagline: "Strategy, audit, and change for enterprise operations.",
-        items: [
-          {
-            slug: "transformation-roadmap",
-            title: "Digital transformation strategy and roadmapping",
-            description:
-              "Executive-level transformation roadmaps covering process, technology, and change management — written for your board, not for a consultancy template.",
-            image: "/images/services/industries-process/transformation-roadmap-illustration.webp",
-          },
-          {
-            slug: "process-audit",
-            title: "Process audit and optimization (BPMN)",
-            description:
-              "End-to-end process audits with BPMN 2.0 notation, stakeholder walkthroughs, and prioritized optimization opportunities tied to measurable KPIs.",
-            image: "/images/services/industries-process/process-audit-illustration.webp",
-          },
-          {
-            slug: "tech-assessment",
-            title: "Technology stack assessment",
-            description:
-              "Independent stack assessments — licensing, fit, technical debt, and migration options — with a recommendation your engineering leaders can defend.",
-            image: "/images/services/industries-process/tech-assessment-illustration.webp",
-          },
-          {
-            slug: "change-management",
-            title: "Change management advisory",
-            description:
-              "Change playbooks for large process rollouts — communication, training, incentives — so adoption doesn't collapse three months after go-live.",
-            image: "/images/services/industries-process/change-management-illustration.webp",
-          },
-          {
-            slug: "export-strategy",
-            title: "Export and internationalization strategy",
-            description:
-              "Market-positioning, value-proposition, and trade-readiness work for IT and services exporters — from value proposition to trade-fair preparation.",
-            image: "/images/services/industries-process/export-strategy-illustration.webp",
-          },
-          {
-            slug: "portal-ia",
-            title: "Corporate portal information architecture",
-            description:
-              "Enterprise portal IA — taxonomies, governance, content lifecycles — so your intranet actually serves employees instead of hiding from them.",
-            image: "/images/services/industries-process/portal-ia-illustration.webp",
-          },
-        ],
-      },
-      {
-        name: "Services",
-        tagline: "Delivery across enterprise systems, portals, and workflows.",
-        items: [
-          {
-            slug: "process-digitalization",
-            title: "Enterprise process digitalization",
-            description:
-              "End-to-end digitalization of core enterprise processes — engineered as products, not one-off projects, with clear operational ownership.",
-            image: "/images/services/industries-process/process-digitalization-illustration.webp",
-          },
-          {
-            slug: "system-modernization",
-            title: "System integration and modernization",
-            description:
-              "Integration architecture, legacy system migration, and progressive modernization — with zero-downtime patterns where the business demands it.",
-            image: "/images/services/industries-process/system-modernization-illustration.webp",
-          },
-          {
-            slug: "custom-platforms",
-            title: "Custom platform development",
-            description:
-              "Custom enterprise platform development for use cases where off-the-shelf doesn't fit — built on open stacks you can own long-term.",
-            image: "/images/services/industries-process/custom-platforms-illustration.webp",
-          },
-          {
-            slug: "workflow-automation",
-            title: "Workflow automation (Camunda, Flowable)",
-            description:
-              "BPMN-driven workflow automation on Camunda and Flowable — designed to survive organizational change, not hard-coded into one department's habits.",
-            image: "/images/services/industries-process/workflow-automation-illustration.webp",
-          },
-          {
-            slug: "corporate-portals",
-            title: "Corporate portals and intranets (TYPO3, Drupal)",
-            description:
-              "Enterprise content platforms — multi-site, multi-brand, accessible — with editorial governance and lifecycle that scales across subsidiaries.",
-            image: "/images/services/industries-process/corporate-portals-illustration.webp",
-          },
-          {
-            slug: "value-proposition",
-            title: "Industry value-proposition and export enablement",
-            description:
-              "Value-proposition design for IT and services exporters, plus the trade-fair and pipeline-building support to turn it into real deals.",
-            image: "/images/services/industries-process/value-proposition-illustration.webp",
-          },
-        ],
-      },
-      {
-        name: "Products",
-        tagline: "Platforms for enterprise operations.",
-        items: [
-          {
-            slug: "processplayer-enterprise",
-            title: "ProcessPlayer",
-            description:
-              "Private-sector variant of our procurement platform for B2B tender management, framework agreements, and supplier coordination. Same engine as the public edition, configured for corporate workflows.",
-            image: "/images/services/industries-process/processplayer-enterprise-illustration.webp",
-          },
-          {
-            slug: "efactura",
-            title: "eFactura",
-            description:
-              "End-to-end electronic invoicing platform that validates incoming and outgoing e-invoices, converts them between the formats your trading partners need, and handles transmission from seller to buyer alongside the reporting obligations to fiscal authorities. On the buyer side, it receives and processes invoices automatically and interfaces with your existing ERP and accounting systems instead of replacing them.\n\nBeyond compliance, eFactura closes the loop from invoice to cash: an OpenBanking interface enables direct payment from the same workflow, and a factoring service interface turns approved receivables into working capital — all from a single platform.",
-            image: "/images/services/industries-process/efactura-illustration.webp",
-          },
-        ],
-      },
-    ],
-    featuredCases: [
-      { projectSlug: "audi-planner" },
-      { projectSlug: "nanotec-portal" },
-      { projectSlug: "philips-speech-portal" },
-      { projectSlug: "uganda-it-bpo-strategy" },
-    ],
-  },
-
-  // ═══ INDUSTRIES · INTELLIGENCE ══════════════════════════════════════
-  {
-    slug: "industries-intelligence",
-    vertical: "industries",
-    domain: "intelligence",
-    title: "Intelligence",
-    tagline: "AI at enterprise scale",
-    iconName: "Brain",
-    description:
-      "AI agents, acceleration programs, and governance frameworks that help enterprises adopt AI responsibly and at scale — with measurable ROI.",
-    metaTitle: "Industries · Intelligence — Enterprise AI",
-    metaDescription:
-      "Enterprise AI strategy, governance, agents, automation, and acceleration programs for mining, finance, retail, universities, and beyond.",
-    parentVertical: "Arxia Industries",
-    categories: [
-      {
-        name: "Consultancy",
-        tagline: "Strategy, governance, and advisory for enterprise AI.",
-        items: [
-          {
-            slug: "ai-strategy",
-            title: "AI strategy and roadmapping",
-            description:
-              "AI strategy work that starts from your operating model — not a generic maturity curve. Outputs a prioritized portfolio of use cases with owners and deadlines.",
-            image: "/images/services/industries-intelligence/ai-strategy-illustration.webp",
-          },
-          {
-            slug: "ai-governance",
-            title: "AI governance (ISO, EU AI Act)",
-            description:
-              "AI governance frameworks aligned with ISO, EU AI Act, and your internal risk frameworks. Written to survive your first regulatory audit.",
-            image: "/images/services/industries-intelligence/ai-governance-illustration.webp",
-          },
-          {
-            slug: "ai-readiness",
-            title: "AI readiness assessment",
-            description:
-              "Honest diagnostic of where you are — data, talent, infrastructure, governance — and what to fix first to absorb AI at scale.",
-            image: "/images/services/industries-intelligence/ai-readiness-illustration.webp",
-          },
-          {
-            slug: "use-case-prioritization",
-            title: "Use-case identification and prioritization",
-            description:
-              "Structured opportunity discovery across your business units, scored on impact and feasibility — so your AI budget doesn't fund 20 pilots that never ship.",
-            image: "/images/services/industries-intelligence/use-case-prioritization-illustration.webp",
-          },
-          {
-            slug: "board-advisory",
-            title: "Board-level AI advisory",
-            description:
-              "Briefings, strategy sessions, and ongoing advisory for boards and executive committees navigating AI governance and investment decisions.",
-            image: "/images/services/industries-intelligence/board-advisory-illustration.webp",
-          },
-        ],
-      },
-      {
-        name: "Services",
-        tagline: "Building, deploying, and training around enterprise AI.",
-        items: [
-          {
-            slug: "ai-agents-enterprise",
-            title: "AI agent development and deployment",
-            description:
-              "Custom AI agents for back-office, legal, retail, and BPO operations — built to live alongside your existing systems, not replace them overnight.",
-            image: "/images/services/industries-intelligence/ai-agents-enterprise-illustration.webp",
-          },
-          {
-            slug: "intelligent-automation",
-            title: "Intelligent process automation",
-            description:
-              "AI-augmented process automation that handles the messy, unstructured work classical RPA can't — document flows, exception handling, judgement calls.",
-            image: "/images/services/industries-intelligence/intelligent-automation-illustration.webp",
-          },
-          {
-            slug: "chatbots-crm",
-            title: "AI-powered chatbots and CRM",
-            description:
-              "Customer-facing AI assistants integrated with your CRM and knowledge base — not demo chatbots, but production systems handling real ticket volume.",
-            image: "/images/services/industries-intelligence/chatbots-crm-illustration.webp",
-          },
-          {
-            slug: "ai-model-integration",
-            title: "Custom AI model integration",
-            description:
-              "Integration of custom and third-party AI models into your enterprise stack — with the observability, cost controls, and fallbacks production requires.",
-            image: "/images/services/industries-intelligence/ai-model-integration-illustration.webp",
-          },
-          {
-            slug: "sovereign-ai-workflows",
-            title: "Sovereign AI Workflows",
-            description:
-              "Secured, open-source AI workflow engine for enterprise operations — deployable inside your security perimeter with full data residency.",
-            image: "/images/services/industries-intelligence/sovereign-ai-workflows-illustration.webp",
-          },
-          {
-            slug: "ai-ignite",
-            title: "AI IGNITE Workshop",
-            description:
-              "Discovery workshop to identify first AI acceleration opportunities inside your organization — delivered in days, not months. Outputs a 90-day plan.",
-            image: "/images/services/industries-intelligence/ai-ignite-illustration.webp",
-          },
-          {
-            slug: "ai-acceleration",
-            title: "AI Acceleration Program",
-            description:
-              "12-week structured program for AI adoption across marketing, operations, and administration — with measurable outcomes and real shipped tools at the end.",
-            image: "/images/services/industries-intelligence/ai-acceleration-illustration.webp",
-          },
-          {
-            slug: "exec-ai-literacy",
-            title: "Executive and board-level AI literacy programs",
-            description:
-              "Structured literacy programs for senior leadership and boards — so the people making AI investment decisions actually understand what they're approving.",
-            image: "/images/services/industries-intelligence/exec-ai-literacy-illustration.webp",
-          },
-        ],
-      },
-      {
-        name: "Products",
-        tagline: "Platforms and agents for enterprise AI.",
-        items: [
-          {
-            slug: "governance-ai-enterprise",
-            title: "GovernanceAI",
-            description:
-              "AI governance platform aligned with ISO, EU AI Act, and internal risk frameworks — model registry, risk assessments, audit trails, and board reporting.",
-            image: "/images/services/industries-intelligence/governance-ai-enterprise-illustration.webp",
-          },
-          {
-            slug: "ai-agents-vertical",
-            title: "Arxia AI Agents — Vertical Packs",
-            description:
-              "Prebuilt agent packages tuned for retail, finance, and legal workflows. Deployable in weeks, configurable to your data.",
-            image: "/images/services/industries-intelligence/ai-agents-vertical-illustration.webp",
-            isRoadmap: true,
-          },
-        ],
-      },
-    ],
-    featuredCases: [
-      { projectSlug: "falabella-ai" },
-      { projectSlug: "bpo-chile-automation" },
-      { projectSlug: "bancom-ai-workshop" },
-      { projectSlug: "ozmo-ai-acceleration" },
-      { projectSlug: "lima-ai-workshop" },
-      { projectSlug: "altlegal-ai-agent" },
-    ],
-  },
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -883,23 +505,12 @@ function localizeDomainPage(
   };
 }
 
+/** One domain page by domain slug, localized. */
 export function getDomainPage(
   slug: string,
   locale: string = "en"
 ): DomainPageData | undefined {
   const page = domainPages.find((d) => d.slug === slug);
-  if (!page) return undefined;
-  return localizeDomainPage(page, PAGE_OVERLAYS[locale]?.[page.slug]);
-}
-
-export function getDomainPageByMatrix(
-  vertical: VerticalSlug,
-  domain: DomainSlug,
-  locale: string = "en"
-): DomainPageData | undefined {
-  const page = domainPages.find(
-    (d) => d.vertical === vertical && d.domain === domain
-  );
   if (!page) return undefined;
   return localizeDomainPage(page, PAGE_OVERLAYS[locale]?.[page.slug]);
 }

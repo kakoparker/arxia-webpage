@@ -13,8 +13,8 @@ import { HomeScrollManager } from "@/components/util/HomeScrollManager";
 // Below-the-fold sections — code-split for faster TTI. ssr:true keeps
 // the markup in the server-rendered HTML for SEO/crawlers; only the
 // JS bundles for these sections are deferred client-side.
-const VerticalInMotion = dynamic(
-  () => import("@/components/sections/VerticalInMotion").then((m) => m.VerticalInMotion)
+const DomainsInMotion = dynamic(
+  () => import("@/components/sections/DomainsInMotion").then((m) => m.DomainsInMotion)
 );
 const GlobalPresence = dynamic(
   () => import("@/components/sections/GlobalPresence").then((m) => m.GlobalPresence)
@@ -56,8 +56,7 @@ export default async function Home({
   const t = await getTranslations("Rail");
   const homeRailSections = [
     { id: "intro", label: t("about") },
-    { id: "govtech", label: t("govtech") },
-    { id: "industries", label: t("industries") },
+    { id: "expertise", label: t("expertise") },
     { id: "presence", label: t("presence") },
     { id: "portfolio", label: t("portfolio") },
     { id: "news", label: t("news") },
@@ -76,18 +75,17 @@ export default async function Home({
         <LogoCarousel />
 
         {/* 3 — Who we are. Pinned section: read intro → curtains close →
-            curtains part to reveal the Govtech | Industries split. The Fork
-            visual lives inside this section's reveal layer, so unpinning
-            transitions straight into the verticals below. */}
+            curtains part to reveal the three domains of expertise. The reveal
+            lives inside this section's own layer, so unpinning transitions
+            straight into the domain chapter below. */}
         <Introduction />
 
-        {/* 4 — Verticals: NOT outer-snap targets. Each one already pins
+        {/* 4 — Domains of expertise: NOT an outer-snap target. It already pins
             internally (one scroll = one card). Adding an outer CSS snap on
             top of the pin causes the two systems to fight at the boundary
             (page sticks when you reverse direction). The pin itself gives
             the structured per-step scroll the user is after. */}
-        <VerticalInMotion verticalSlug="govtech" tone="ultra-light" />
-        <VerticalInMotion verticalSlug="industries" tone="dark" />
+        <DomainsInMotion tone="ultra-light" />
 
         {/* From here on: each non-pinned section is a snap target. */}
 

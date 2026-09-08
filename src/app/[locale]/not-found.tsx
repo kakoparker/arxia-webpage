@@ -72,7 +72,7 @@ export default function NotFound() {
                 {t("backHome")}
               </Link>
               <Link
-                href="/govtech"
+                href="/#expertise"
                 className="inline-flex items-center justify-center border border-white/30 text-white hover:bg-white/5 transition-colors duration-200 px-9 py-3.5 min-h-[48px]"
                 style={{
                   fontFamily: "var(--font-primary)",
@@ -81,10 +81,10 @@ export default function NotFound() {
                   letterSpacing: "0.3px",
                 }}
               >
-                {t("exploreGovtech")}
+                {t("exploreExpertise")}
               </Link>
               <Link
-                href="/industries"
+                href="/portfolio"
                 className="inline-flex items-center justify-center border border-white/30 text-white hover:bg-white/5 transition-colors duration-200 px-9 py-3.5 min-h-[48px]"
                 style={{
                   fontFamily: "var(--font-primary)",
@@ -93,7 +93,7 @@ export default function NotFound() {
                   letterSpacing: "0.3px",
                 }}
               >
-                {t("exploreIndustries")}
+                {t("explorePortfolio")}
               </Link>
             </div>
           </div>

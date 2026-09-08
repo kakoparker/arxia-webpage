@@ -105,8 +105,9 @@ pushes and PRs.
 src/
   app/
     [locale]/             # Locale-scoped app tree (en at root; /es, /fr prefixed)
-      govtech/[domain]/   # /govtech/{data,process,intelligence}
-      industries/[domain]/# /industries/{data,process,intelligence}
+      data/               # /data          ─┐ the three domains of
+      process/            # /process       ─┤ expertise, top-level
+      intelligence/       # /intelligence  ─┘ routes
       news/               # News index + per-article routes
       portfolio/
       privacy/  terms/    # Legal pages (GDPR-aware copy — see note below)
@@ -154,11 +155,8 @@ two surface modes, and the WebP-only delivery caveat — is documented in
 | Path                                | What                                                  |
 | ----------------------------------- | ----------------------------------------------------- |
 | `/`                                 | Home                                                  |
-| `/govtech`                          | Govtech vertical landing                              |
-| `/govtech/{data,process,intelligence}` | Domain pages (Govtech)                             |
-| `/industries`                       | Industries vertical landing                           |
-| `/industries/{data,process,intelligence}` | Domain pages (Industries)                       |
-| `/portfolio`                        | Project portfolio with filters                        |
+| `/data` · `/process` · `/intelligence` | The three domains of expertise                     |
+| `/portfolio`                        | Project portfolio                                     |
 | `/news` · `/news/[slug]`            | News index + articles                                 |
 | `/privacy` · `/terms`               | Legal pages (GDPR-aware copy; recommend counsel review) |
 | `/api/contact`                      | POST endpoint for the contact form                    |
@@ -167,7 +165,7 @@ two surface modes, and the WebP-only delivery caveat — is documented in
 
 ## Editing content
 
-- **Domain page content** lives in [`src/data/domain-pages.ts`](./src/data/domain-pages.ts). Each of the six domain pages is one entry; categories (Consultancy / Services / Trainings / Products) and items are typed.
+- **Domain page content** lives in [`src/data/domain-pages.ts`](./src/data/domain-pages.ts). Each of the three domain pages is one entry; categories (Consultancy / Services / Trainings / Products) and items are typed.
 - **News articles** live in [`src/data/news.ts`](./src/data/news.ts) with cover images under `public/images/news/<slug>/`.
 - **Portfolio cases** live in [`src/data/portfolio.ts`](./src/data/portfolio.ts).
 - **Client logos** for the homepage carousel live in [`src/data/clients.ts`](./src/data/clients.ts) and assets under `public/logos/clients/`.

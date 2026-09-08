@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Arxia — Digital Transformation & Digital Public Infrastructure",
     short_name: "Arxia",
     description:
-      "Digital transformation and Digital Public Infrastructure for governments, industries, and ecosystems.",
+      "Digital transformation and Digital Public Infrastructure for governments and their ecosystems.",
     start_url: "/",
     display: "standalone",
     background_color: "#0D1520",

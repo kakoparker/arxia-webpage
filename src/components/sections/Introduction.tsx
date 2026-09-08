@@ -1,15 +1,17 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useGSAP } from "@gsap/react";
 import { gsap, ScrollTrigger } from "@/hooks/useGsapScrollTrigger";
+import { getDomains } from "@/data/domains";
 
 gsap.registerPlugin(useGSAP);
 
 export function Introduction() {
   const t = useTranslations("Introduction");
+  const domains = getDomains(useLocale());
   const sectionRef = useRef<HTMLElement>(null);
   const pinWrapperRef = useRef<HTMLDivElement>(null);
 
@@ -44,7 +46,7 @@ export function Introduction() {
 
   // Doors START closed (covering the whole viewport, with the intro paragraph
   // on top of them). On scroll: paragraph fades, then the doors slide apart
-  // left/right to reveal the Govtech | Industries split underneath. Same
+  // left/right to reveal the three domains of expertise underneath. Same
   // mechanic as the original Hero curtain reveal.
   useGSAP(
     () => {
@@ -137,93 +139,69 @@ export function Introduction() {
         className="relative min-h-screen overflow-hidden"
         style={{ background: "var(--blueprint-dark)" }}
       >
-        {/* z-10: Govtech | Industries split — sits underneath the doors,
+        {/* z-10: the three domains of expertise — sits underneath the doors,
             revealed when they slide apart. `pointer-events-none` lets the
-            doors (z-30) absorb early clicks; the two CTA links opt back
-            into pointer events via `pointer-events-auto`. We do NOT
-            aria-hide this block — the CTAs are real nav. */}
-        <div
-          className="absolute inset-0 z-10 grid grid-cols-1 lg:grid-cols-2 pointer-events-none"
-        >
-          {/* Left — Govtech (dark) */}
-          <div className="blueprint-grid-blue relative">
-            <div className="relative h-full flex flex-col justify-center items-start px-10 py-14 lg:px-16 lg:py-20 max-w-[560px]">
-              <p className="font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2.5px] text-accent-red/85 mb-4">
-                {t("govtechLabel")}
-              </p>
-              <h2
-                className="font-bold mb-4 text-white"
-                style={{
-                  fontFamily: "var(--font-primary)",
-                  fontSize: "clamp(32px, 4vw, 52px)",
-                  lineHeight: 1.05,
-                  letterSpacing: "-1px",
-                }}
-              >
-                {t("govtechTitle")}
-              </h2>
-              <div className="bg-accent-red mb-5 h-[3px] w-12" />
-              <p
-                className="text-gray-medium mb-8"
-                style={{
-                  fontFamily: "var(--font-primary)",
-                  fontSize: "17px",
-                  lineHeight: 1.6,
-                }}
-              >
-                {t("govtechTagline")}
-              </p>
-              <Link
-                href="/govtech"
-                className="pointer-events-auto inline-flex items-center gap-3 px-5 py-2.5 font-[family-name:var(--font-inter)] text-[13px] font-semibold tracking-[0.3px] border border-white/60 text-white hover:bg-white hover:text-blueprint-blue focus-visible:bg-white focus-visible:text-blueprint-blue focus-visible:outline-none transition-colors duration-200"
-              >
-                {t("govtechCta")}
-                <span aria-hidden>→</span>
-              </Link>
-            </div>
-          </div>
+            doors (z-30) absorb early clicks; each CTA link opts back into
+            pointer events via `pointer-events-auto`. We do NOT aria-hide this
+            block — the CTAs are real nav.
 
-          {/* Right — Industries (light) */}
-          <div className="blueprint-grid-light relative">
-            <div className="relative h-full flex flex-col justify-center items-start px-10 py-14 lg:px-16 lg:py-20 max-w-[560px]">
-              <p className="font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2.5px] text-accent-red/85 mb-4">
-                {t("industriesLabel")}
-              </p>
-              <h2
-                className="font-bold mb-4 text-blueprint-blue"
-                style={{
-                  fontFamily: "var(--font-primary)",
-                  fontSize: "clamp(32px, 4vw, 52px)",
-                  lineHeight: 1.05,
-                  letterSpacing: "-1px",
-                }}
+            All three panels share the Blueprint Blue surface, a step lighter
+            than the Blueprint Dark doors, so parting them reads as a lift.
+            Hairline dividers keep the three-way split legible. */}
+        <div className="absolute inset-0 z-10 grid grid-cols-1 lg:grid-cols-3 pointer-events-none">
+          {domains.map((domain, i) => {
+            const Icon = domain.icon;
+            return (
+              <div
+                key={domain.slug}
+                className={`blueprint-grid-blue relative flex flex-col justify-center px-10 py-12 lg:px-12 lg:py-20 ${
+                  i > 0 ? "lg:border-l lg:border-white/[0.10]" : ""
+                }`}
               >
-                {t("industriesTitle")}
-              </h2>
-              <div className="bg-accent-red mb-5 h-[3px] w-12" />
-              <p
-                className="text-gray-dark mb-8"
-                style={{
-                  fontFamily: "var(--font-primary)",
-                  fontSize: "17px",
-                  lineHeight: 1.6,
-                }}
-              >
-                {t("industriesTagline")}
-              </p>
-              <Link
-                href="/industries"
-                className="pointer-events-auto inline-flex items-center gap-3 px-5 py-2.5 font-[family-name:var(--font-inter)] text-[13px] font-semibold tracking-[0.3px] border border-blueprint-blue bg-blueprint-blue text-white hover:bg-blueprint-dark hover:border-blueprint-dark focus-visible:bg-blueprint-dark focus-visible:border-blueprint-dark focus-visible:outline-none transition-colors duration-200"
-              >
-                {t("industriesCta")}
-                <span aria-hidden>→</span>
-              </Link>
-            </div>
-          </div>
+                <p className="font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2.5px] text-accent-red/85 mb-6">
+                  {`0${i + 1} / 0${domains.length}`}
+                </p>
+
+                <div className="inline-flex items-center justify-center w-11 h-11 border border-white/20 mb-6">
+                  <Icon size={22} strokeWidth={1.5} className="text-white" />
+                </div>
+
+                <h2
+                  className="font-bold mb-4 text-white"
+                  style={{
+                    fontFamily: "var(--font-primary)",
+                    fontSize: "clamp(26px, 2.4vw, 38px)",
+                    lineHeight: 1.05,
+                    letterSpacing: "-1px",
+                  }}
+                >
+                  {domain.name}
+                </h2>
+                <div className="bg-accent-red mb-5 h-[3px] w-12" />
+                <p
+                  className="text-gray-medium mb-8"
+                  style={{
+                    fontFamily: "var(--font-primary)",
+                    fontSize: "16px",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {domain.tagline}
+                </p>
+                <Link
+                  href={`/${domain.slug}`}
+                  className="pointer-events-auto self-start inline-flex items-center gap-3 px-5 py-2.5 font-[family-name:var(--font-inter)] text-[13px] font-semibold tracking-[0.3px] border border-white/60 text-white hover:bg-white hover:text-blueprint-blue focus-visible:bg-white focus-visible:text-blueprint-blue focus-visible:outline-none transition-colors duration-200"
+                >
+                  {t("exploreCta", { name: domain.name })}
+                  <span aria-hidden>→</span>
+                </Link>
+              </div>
+            );
+          })}
         </div>
 
         {/* z-30: Doors — start fully closed (covering the split). They slide
-            apart on scroll to reveal the Govtech | Industries split. Solid
+            apart on scroll to reveal the three domains. Solid
             blueprint-dark on both sides; no animated grid (the surface stays
             calm so the intro copy is the only point of focus). */}
         <div

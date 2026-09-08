@@ -88,8 +88,8 @@ export default async function OpengraphImage() {
               lineHeight: 1.4,
             }}
           >
-            Digital transformation and Digital Public Infrastructure for governments,
-            industries, and ecosystems.
+            Digital transformation and Digital Public Infrastructure for governments
+            and their ecosystems.
           </div>
         </div>
 

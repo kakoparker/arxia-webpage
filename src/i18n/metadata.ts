@@ -22,7 +22,7 @@ export function localizedUrl(locale: string, path: string): string {
  * is the correct signal for an i18n site and mirrors the sitemap's alternates.
  *
  * Usage in a page's generateMetadata:
- *   alternates: alternatesFor(locale, "/govtech")
+ *   alternates: alternatesFor(locale, "/process")
  */
 export function alternatesFor(
   locale: string,

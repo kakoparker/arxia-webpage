@@ -25,23 +25,11 @@ const companyLinks = [
   { labelKey: "news", href: "/news" },
 ] as const;
 
-const serviceGroups = [
-  {
-    verticalKey: "govtech",
-    links: [
-      { labelKey: "data", href: "/govtech/data" },
-      { labelKey: "process", href: "/govtech/process" },
-      { labelKey: "intelligence", href: "/govtech/intelligence" },
-    ],
-  },
-  {
-    verticalKey: "industries",
-    links: [
-      { labelKey: "data", href: "/industries/data" },
-      { labelKey: "process", href: "/industries/process" },
-      { labelKey: "intelligence", href: "/industries/intelligence" },
-    ],
-  },
+// The three domains of expertise, now top-level routes.
+const serviceLinks = [
+  { labelKey: "data", href: "/data" },
+  { labelKey: "process", href: "/process" },
+  { labelKey: "intelligence", href: "/intelligence" },
 ] as const;
 
 // Place names are proper nouns — not translated.
@@ -104,35 +92,18 @@ export function Footer() {
             <h3 className="font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2.5px] text-accent-red/85 mb-6">
               {t("services")}
             </h3>
-            <div className="space-y-5">
-              {serviceGroups.map((group) => (
-                <div key={group.verticalKey}>
-                  <p
-                    className="text-white/40 mb-2"
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "9px",
-                      letterSpacing: "1.5px",
-                      textTransform: "uppercase",
-                    }}
+            <ul className="space-y-2">
+              {serviceLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-gray-medium text-[var(--text-small)] hover:text-white transition-colors duration-200"
                   >
-                    {t(group.verticalKey)}
-                  </p>
-                  <ul className="space-y-2">
-                    {group.links.map((link) => (
-                      <li key={link.href}>
-                        <Link
-                          href={link.href}
-                          className="text-gray-medium text-[var(--text-small)] hover:text-white transition-colors duration-200"
-                        >
-                          {t(link.labelKey)}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                    {t(link.labelKey)}
+                  </Link>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
 
           {/* Contact */}

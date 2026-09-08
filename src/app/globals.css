@@ -107,7 +107,7 @@ body {
    SCROLL SNAP — section-by-section after the verticals
    ============================================
    `proximity` so it kicks in lazily (only when the user is already
-   close to a target). The verticals (govtech / industries) intentionally
+   close to a target). The domain chapter intentionally
    carry no `.snap-section` — their internal GSAP pin+snap drives per-card
    landings and we don't want browser CSS snap competing there.
 */
@@ -227,7 +227,7 @@ html {
 }
 
 /* Variant keyed to --blueprint-blue (#162036) rather than --blueprint-dark.
-   Used by the Govtech fork panel — same grid treatment as the dark variant
+   Used by the domain reveal panels — same grid treatment as the dark variant
    but on the firm's primary brand blue. */
 .blueprint-grid-blue {
   background-color: var(--blueprint-blue);

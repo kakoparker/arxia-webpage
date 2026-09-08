@@ -3,9 +3,9 @@ import { defineRouting } from "next-intl/routing";
 /**
  * Locale routing config (next-intl).
  *
- * - `en` is the default and is served WITHOUT a prefix (e.g. `/govtech`), so
+ * - `en` is the default and is served WITHOUT a prefix (e.g. `/process`), so
  *   every existing English URL keeps working unchanged.
- * - `es` / `fr` are prefixed (`/es/govtech`, `/fr/govtech`).
+ * - `es` / `fr` are prefixed (`/es/process`, `/fr/process`).
  *
  * `localePrefix: "as-needed"` is what produces that asymmetry.
  */

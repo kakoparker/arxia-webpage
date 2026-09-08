@@ -10,10 +10,9 @@ interface DomainHeroProps {
   title: string;
   description: string;
   icon: LucideIcon;
-  parentVerticalName?: string;
 }
 
-export function DomainHero({ title, description, icon: Icon, parentVerticalName }: DomainHeroProps) {
+export function DomainHero({ title, description, icon: Icon }: DomainHeroProps) {
   const t = useTranslations("Domain");
   const ref = useScrollAnimation();
 
@@ -62,27 +61,6 @@ export function DomainHero({ title, description, icon: Icon, parentVerticalName 
                 {t("domainsCrumb")}
               </Link>
             </li>
-            {parentVerticalName && (
-              <>
-                <li
-                  className="text-gray-medium/40"
-                  style={{ fontFamily: "var(--font-mono)", fontSize: "10px" }}
-                >
-                  /
-                </li>
-                <li
-                  className="text-gray-medium"
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "10px",
-                    letterSpacing: "2px",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  {parentVerticalName}
-                </li>
-              </>
-            )}
             <li
               className="text-gray-medium/40"
               style={{ fontFamily: "var(--font-mono)", fontSize: "10px" }}

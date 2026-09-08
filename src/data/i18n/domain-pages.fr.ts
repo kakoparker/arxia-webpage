@@ -2,13 +2,13 @@
 import type { DomainPageOverlay } from "./domain-pages.es";
 
 export const domainPagesFr: Record<string, DomainPageOverlay> = {
-  // ── GOVTECH · DONNÉES ────────────────────────────────────────────
-  "govtech-data": {
+  // ── DONNÉES ────────────────────────────────────────────
+  "data": {
     title: "Données",
     tagline: "Le tissu conjonctif de l'État",
     description:
       "Nous concevons la couche de données de l'infrastructure publique numérique : interopérabilité, gouvernance et cadres d'échange qui permettent aux institutions de partager l'information de manière sécurisée entre directions, frontières et building blocks.",
-    metaTitle: "Govtech · Données — Interopérabilité et Gouvernance des Données",
+    metaTitle: "Données — Interopérabilité et Gouvernance des Données",
     metaDescription:
       "Interopérabilité des données, gouvernance, standards sémantiques et systèmes d'échange transfrontalier pour le secteur public. Construit sur GovStack, X-Road et des cadres ouverts.",
     categories: {
@@ -86,13 +86,13 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
     },
   },
 
-  // ── GOVTECH · PROCESSUS ───────────────────────────────────────────
-  "govtech-process": {
+  // ── PROCESSUS ───────────────────────────────────────────
+  "process": {
     title: "Processus",
     tagline: "Les services publics, repensés",
     description:
       "Conception de services pilotée par BPMN, commande publique et facturation de bout en bout, et portails gouvernementaux standardisés : modernisation de la façon dont l'État crée de la valeur pour les citoyens.",
-    metaTitle: "Govtech · Processus — Conception de Services, e-Procurement et Portails",
+    metaTitle: "Processus — Conception de Services, e-Procurement et Portails",
     metaDescription:
       "Stratégie d'e-gouvernement, conception de processus BPMN, commande publique électronique, facturation électronique et portails gouvernementaux standardisés. Plus de 20 ans dans plus de 20 pays.",
     categories: {
@@ -199,13 +199,13 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
     },
   },
 
-  // ── GOVTECH · INTELLIGENCE ────────────────────────────────────────
-  "govtech-intelligence": {
+  // ── INTELLIGENCE ────────────────────────────────────────
+  "intelligence": {
     title: "Intelligence",
     tagline: "L'État agentique",
     description:
       "Agents d'IA, automatisation intelligente et plateformes augmentées par l'IA qui rendent le secteur public proactif : des assistants destinés aux citoyens aux flux de travail interinstitutionnels.",
-    metaTitle: "Govtech · Intelligence — État Agentique et IA du Secteur Public",
+    metaTitle: "Intelligence — État Agentique et IA du Secteur Public",
     metaDescription:
       "Agents d'IA, flux de travail automatisés, outils de maturité numérique et programmes d'adoption de l'IA pour les gouvernements et les organisations internationales.",
     categories: {
@@ -286,265 +286,6 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
             title: "Holonn — Plateforme de matchmaking et de communauté pour écosystèmes",
             description:
               "Holonn permet aux organisations d'appui aux entreprises et aux écosystèmes (clusters, hubs, associations, accélérateurs) d'agréger les offres de leurs membres grâce à l'IA, en créant des places de marché interactives qui mettent en relation entreprises, investisseurs, clients et partenaires.",
-          },
-        },
-      },
-    },
-  },
-
-  // ── INDUSTRIES · DONNÉES ──────────────────────────────────────────
-  "industries-data": {
-    title: "Données",
-    tagline: "Des données d'entreprise, gouvernées et interopérables",
-    description:
-      "Cadres de gouvernance, de qualité, de conformité et d'intégration des données qui transforment des données d'entreprise fragmentées en un actif concurrentiel durable.",
-    metaTitle: "Industries · Données — Gouvernance des Données d'Entreprise",
-    metaDescription:
-      "Gouvernance des données d'entreprise, gestion des données de référence, conformité RGPD, qualité des données et standards sectoriels d'échange de données pour les secteurs réglementés.",
-    categories: {
-      Consultancy: {
-        tagline: "Stratégie, politiques et standards pour les données d'entreprise.",
-        items: {
-          "data-governance-strategy": {
-            title: "Stratégies de gouvernance des données",
-            description:
-              "Cadres de gouvernance des données en entreprise (politiques, rôles, responsabilités d'intendance et droits de décision) adaptés à votre secteur et à votre environnement réglementaire.",
-          },
-          "interoperability-standardization-strategy": {
-            title: "Stratégie d'interopérabilité et de standardisation des données",
-            description:
-              "Stratégie d'échange de données entre systèmes : modèles canoniques, standards sémantiques, contrats d'API et instances de gouvernance nécessaires pour les garder cohérents au fil de l'évolution de votre paysage.",
-          },
-          "industry-standards": {
-            title: "Standards sectoriels d'échange de données",
-            description:
-              "Cadres d'échange de données propres au secteur (traçabilité minière, déclarations financières, interopérabilité logistique) traduits en standards techniques concrets.",
-          },
-        },
-      },
-      Services: {
-        tagline: "Mise en œuvre et intégration pour les données d'entreprise.",
-        items: {
-          "governance-platform": {
-            title: "Mise en œuvre de plateformes de gouvernance des données",
-            description:
-              "Déploiement de plateformes de gouvernance des données : politiques codifiées, flux de travail configurés, intégrations aux systèmes sources livrées.",
-          },
-          "interoperability-standardization-implementation": {
-            title: "Mise en œuvre de l'interopérabilité et de la standardisation des données",
-            description:
-              "Mise en production des standards : schémas canoniques, registres, pipelines de transformation, services de validation et patterns d'intégration qui rendent les échanges entre systèmes routiniers plutôt que sur mesure.",
-          },
-          "catalog-lineage": {
-            title: "Outils de catalogue de données et de lignage",
-            description:
-              "Catalogues d'entreprise et outils de lignage qui sont réellement adoptés, parce que nous les paramétrons autour de vos données, pas d'un jeu de démonstration.",
-          },
-          pipelines: {
-            title: "Intégration de données et développement de pipelines",
-            description:
-              "Pipelines de données de niveau production (batch et streaming) conçus pour l'analytique, les opérations et la préparation à l'IA.",
-          },
-        },
-      },
-    },
-  },
-
-  // ── INDUSTRIES · PROCESSUS ────────────────────────────────────────
-  "industries-process": {
-    title: "Processus",
-    tagline: "Les opérations de l'entreprise, réinventées",
-    description:
-      "Numérisation des processus, automatisation des flux de travail et modernisation des systèmes qui génèrent des gains d'efficacité mesurables dans des environnements d'entreprise complexes.",
-    metaTitle: "Industries · Processus — Transformation des Entreprises",
-    metaDescription:
-      "Stratégie de transformation numérique, réingénierie des processus, modernisation des systèmes, portails d'entreprise et internationalisation pour l'industrie.",
-    categories: {
-      Consultancy: {
-        tagline: "Stratégie, audit et conduite du changement pour les opérations de l'entreprise.",
-        items: {
-          "transformation-roadmap": {
-            title: "Stratégie et feuille de route de transformation numérique",
-            description:
-              "Feuilles de route au niveau direction qui couvrent processus, technologie et conduite du changement, rédigées pour votre conseil d'administration, pas pour un modèle de cabinet.",
-          },
-          "process-audit": {
-            title: "Audit et optimisation des processus (BPMN)",
-            description:
-              "Audits de processus de bout en bout avec notation BPMN 2.0, ateliers avec parties prenantes et opportunités d'optimisation priorisées, liées à des KPI mesurables.",
-          },
-          "tech-assessment": {
-            title: "Évaluation du stack technologique",
-            description:
-              "Évaluations indépendantes du stack (licences, adéquation, dette technique et options de migration) avec une recommandation que vos responsables de l'ingénierie peuvent défendre.",
-          },
-          "change-management": {
-            title: "Conseil en conduite du changement",
-            description:
-              "Playbooks de conduite du changement pour de grands déploiements de processus (communication, formation, incitatifs) afin que l'adoption ne s'effondre pas trois mois après le go-live.",
-          },
-          "export-strategy": {
-            title: "Stratégie d'exportation et d'internationalisation",
-            description:
-              "Travail de positionnement de marché, de proposition de valeur et de préparation commerciale pour les exportateurs de TI et de services, de la proposition de valeur à la préparation aux salons internationaux.",
-          },
-          "portal-ia": {
-            title: "Architecture de l'information des portails d'entreprise",
-            description:
-              "Architecture de l'information pour les portails d'entreprise (taxonomies, gouvernance, cycles de vie des contenus) afin que votre intranet serve réellement vos collaborateurs plutôt que de se cacher d'eux.",
-          },
-        },
-      },
-      Services: {
-        tagline: "Livraison à travers les systèmes d'entreprise, les portails et les flux de travail.",
-        items: {
-          "process-digitalization": {
-            title: "Numérisation des processus d'entreprise",
-            description:
-              "Numérisation de bout en bout des processus métier centraux, conçue comme des produits et non comme des projets ponctuels, avec une appropriation opérationnelle claire.",
-          },
-          "system-modernization": {
-            title: "Intégration et modernisation des systèmes",
-            description:
-              "Architecture d'intégration, migration des systèmes hérités et modernisation progressive, avec des patterns sans interruption lorsque le métier l'exige.",
-          },
-          "custom-platforms": {
-            title: "Développement de plateformes sur mesure",
-            description:
-              "Développement de plateformes d'entreprise sur mesure pour les cas d'usage où le standard ne convient pas, construit sur des stacks ouverts que vous pouvez maîtriser à long terme.",
-          },
-          "workflow-automation": {
-            title: "Automatisation des flux de travail (Camunda, Flowable)",
-            description:
-              "Automatisation des flux de travail pilotée par BPMN sur Camunda et Flowable, conçue pour survivre aux changements d'organisation et ne pas se figer dans les habitudes d'un seul département.",
-          },
-          "corporate-portals": {
-            title: "Portails d'entreprise et intranets (TYPO3, Drupal)",
-            description:
-              "Plateformes de contenu d'entreprise (multi-sites, multi-marques, accessibles) avec une gouvernance éditoriale et un cycle de vie qui s'étendent aux filiales.",
-          },
-          "value-proposition": {
-            title: "Proposition de valeur industrielle et habilitation à l'export",
-            description:
-              "Conception de proposition de valeur pour les exportateurs de TI et de services, plus l'accompagnement aux salons et la construction du pipeline pour la transformer en affaires concrètes.",
-          },
-        },
-      },
-      Products: {
-        tagline: "Des plateformes pour les opérations de l'entreprise.",
-        items: {
-          "processplayer-enterprise": {
-            title: "ProcessPlayer",
-            description:
-              "Variante secteur privé de notre plateforme de commande, pour la gestion des appels d'offres B2B, les accords-cadres et la coordination avec les fournisseurs. Même moteur que l'édition publique, configurée pour des flux de travail d'entreprise.",
-          },
-          efactura: {
-            title: "eFactura",
-            description:
-              "Plateforme intégrale de facturation électronique qui valide les e-factures entrantes et sortantes, les convertit dans les formats requis par vos partenaires commerciaux et gère la transmission du vendeur à l'acheteur, en parallèle des obligations de déclaration auprès des autorités fiscales. Côté acheteur, elle reçoit et traite les factures automatiquement et s'interface à vos systèmes ERP et comptables existants au lieu de les remplacer.\n\nAu-delà de la conformité, eFactura boucle la chaîne de la facture à l'encaissement : une interface OpenBanking permet le paiement direct depuis le même flux, et une interface de factoring transforme les créances approuvées en fonds de roulement, le tout depuis une seule plateforme.",
-          },
-        },
-      },
-    },
-  },
-
-  // ── INDUSTRIES · INTELLIGENCE ─────────────────────────────────────
-  "industries-intelligence": {
-    title: "Intelligence",
-    tagline: "L'IA à l'échelle de l'entreprise",
-    description:
-      "Agents d'IA, programmes d'accélération et cadres de gouvernance qui aident les entreprises à adopter l'IA de manière responsable et à grande échelle, avec un ROI mesurable.",
-    metaTitle: "Industries · Intelligence — IA d'Entreprise",
-    metaDescription:
-      "Stratégie, gouvernance, agents, automatisation et programmes d'accélération de l'IA d'entreprise pour les mines, la finance, le commerce, les universités et au-delà.",
-    categories: {
-      Consultancy: {
-        tagline: "Stratégie, gouvernance et conseil pour l'IA d'entreprise.",
-        items: {
-          "ai-strategy": {
-            title: "Stratégie et feuille de route IA",
-            description:
-              "Un travail de stratégie IA qui part de votre modèle d'exploitation, pas d'une courbe de maturité générique. Produit un portefeuille priorisé de cas d'usage avec responsables et échéances.",
-          },
-          "ai-governance": {
-            title: "Gouvernance de l'IA (ISO, Règlement IA de l'UE)",
-            description:
-              "Cadres de gouvernance de l'IA alignés sur l'ISO, le Règlement IA de l'UE et vos cadres internes de risque. Rédigés pour passer votre premier audit réglementaire.",
-          },
-          "ai-readiness": {
-            title: "Évaluation de la maturité IA",
-            description:
-              "Diagnostic honnête de votre situation (données, talents, infrastructure, gouvernance) et de ce qu'il faut corriger en premier pour absorber l'IA à grande échelle.",
-          },
-          "use-case-prioritization": {
-            title: "Identification et priorisation des cas d'usage",
-            description:
-              "Découverte structurée des opportunités dans vos unités opérationnelles, notées sur l'impact et la faisabilité, pour que votre budget IA ne finance pas 20 pilotes qui n'arrivent jamais en production.",
-          },
-          "board-advisory": {
-            title: "Conseil IA au niveau du conseil d'administration",
-            description:
-              "Briefings, sessions de stratégie et conseil continu pour les conseils d'administration et comités exécutifs qui pilotent les décisions de gouvernance et d'investissement en IA.",
-          },
-        },
-      },
-      Services: {
-        tagline: "Conception, déploiement et formation autour de l'IA d'entreprise.",
-        items: {
-          "ai-agents-enterprise": {
-            title: "Développement et déploiement d'agents d'IA",
-            description:
-              "Agents d'IA sur mesure pour le back-office, le juridique, le commerce et les opérations BPO, conçus pour coexister avec vos systèmes existants et non pour les remplacer du jour au lendemain.",
-          },
-          "intelligent-automation": {
-            title: "Automatisation intelligente des processus",
-            description:
-              "Automatisation des processus augmentée par l'IA qui prend en charge le travail désordonné et non structuré que la RPA classique ne sait pas traiter : flux documentaires, gestion des exceptions, décisions de jugement.",
-          },
-          "chatbots-crm": {
-            title: "Chatbots et CRM augmentés par l'IA",
-            description:
-              "Assistants d'IA destinés aux clients, intégrés à votre CRM et à votre base de connaissances : pas des chatbots de démo, mais des systèmes en production qui traitent un volume réel de tickets.",
-          },
-          "ai-model-integration": {
-            title: "Intégration de modèles d'IA sur mesure",
-            description:
-              "Intégration de modèles d'IA propriétaires et tiers dans votre stack d'entreprise, avec l'observabilité, le contrôle des coûts et les solutions de repli qu'exige la production.",
-          },
-          "sovereign-ai-workflows": {
-            title: "Sovereign AI Workflows",
-            description:
-              "Moteur sécurisé et open source de flux de travail IA pour les opérations d'entreprise, déployable à l'intérieur de votre périmètre de sécurité avec une pleine résidence des données.",
-          },
-          "ai-ignite": {
-            title: "Atelier AI IGNITE",
-            description:
-              "Atelier de découverte pour identifier les premières opportunités d'accélération par l'IA au sein de votre organisation, livré en jours et non en mois. Produit un plan à 90 jours.",
-          },
-          "ai-acceleration": {
-            title: "Programme d'Accélération IA",
-            description:
-              "Programme structuré de 12 semaines pour l'adoption de l'IA dans le marketing, les opérations et l'administration, avec des résultats mesurables et de vrais outils livrés à la fin.",
-          },
-          "exec-ai-literacy": {
-            title: "Programmes de culture IA pour dirigeants et conseils d'administration",
-            description:
-              "Programmes structurés de culture IA pour la direction et les conseils d'administration, afin que celles et ceux qui prennent les décisions d'investissement en IA comprennent réellement ce qu'ils approuvent.",
-          },
-        },
-      },
-      Products: {
-        tagline: "Des plateformes et des agents pour l'IA d'entreprise.",
-        items: {
-          "governance-ai-enterprise": {
-            title: "GovernanceAI",
-            description:
-              "Plateforme de gouvernance de l'IA alignée sur l'ISO, le Règlement IA de l'UE et les cadres internes de risque : registre de modèles, évaluations de risques, traces d'audit et reporting au conseil d'administration.",
-          },
-          "ai-agents-vertical": {
-            title: "Arxia AI Agents — Packs verticaux",
-            description:
-              "Paquets d'agents préconstruits, calibrés pour les flux de travail du commerce, de la finance et du juridique. Déployables en semaines, configurables sur vos données.",
           },
         },
       },

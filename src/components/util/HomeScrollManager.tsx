@@ -7,8 +7,8 @@ import { ScrollTrigger } from "@/hooks/useGsapScrollTrigger";
  * Home-only scroll/ScrollTrigger lifecycle manager.
  *
  * The homepage is a cinematic scroll-driven experience: `Introduction` and
- * the two `VerticalInMotion` chapters create GSAP ScrollTrigger PINS, which
- * inject tall pin-spacers into the layout. Those spacers only exist after the
+ * the `DomainsInMotion` chapter each create GSAP ScrollTrigger PINS,
+ * which inject tall pin-spacers into the layout. Those spacers only exist after the
  * sections mount — and several are `next/dynamic` imports, so they appear a
  * tick *after* first paint.
  *
@@ -24,7 +24,7 @@ import { ScrollTrigger } from "@/hooks/useGsapScrollTrigger";
  *   3. On (re)entry: refresh ScrollTrigger so all pin-spacers are built and
  *      the document reaches its true full height, THEN scroll to the saved
  *      position, THEN ScrollTrigger.update() so the pinned/scrubbed timelines
- *      (doors, vertical cards) re-sync to that exact position.
+ *      (doors, domain cards) re-sync to that exact position.
  *   4. First visit of the session (nothing saved) → start at the top/hero.
  *
  * On unmount, native `scrollRestoration` is restored so every other route

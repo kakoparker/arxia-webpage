@@ -27,8 +27,8 @@ import { DomainFeaturedCases } from "@/components/domain/DomainFeaturedCases";
 import { DomainCTA } from "@/components/domain/DomainCTA";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { ScrollProgressRail } from "@/components/ui/ScrollProgressRail";
-import { getDomainPageByMatrix } from "@/data/domain-pages";
-import { getVertical, type VerticalSlug, type DomainSlug } from "@/data/domains";
+import { getDomainPage } from "@/data/domain-pages";
+import { getDomains, type DomainSlug } from "@/data/domains";
 import { localizedUrl } from "@/i18n/metadata";
 
 // Canonical category order for every domain page. Sections without items are
@@ -53,24 +53,21 @@ const iconMap: Record<string, LucideIcon> = {
 };
 
 interface DomainPageViewProps {
-  vertical: VerticalSlug;
   domain: DomainSlug;
 }
 
 /**
  * Shared client component rendering a full domain landing page.
- * Used by /govtech/[domain] and /industries/[domain]. Reads from
- * domain-pages.ts by matrix.
+ * Used by /data, /process and /intelligence. Reads from domain-pages.ts.
  */
-export function DomainPageView({ vertical, domain }: DomainPageViewProps) {
+export function DomainPageView({ domain }: DomainPageViewProps) {
   const t = useTranslations("Domain");
   const locale = useLocale();
-  const page = getDomainPageByMatrix(vertical, domain, locale);
+  const page = getDomainPage(domain, locale);
   if (!page) return null;
 
-  const verticalData = getVertical(vertical, locale);
   const Icon = iconMap[page.iconName] ?? Database;
-  const siblings = verticalData.domains.filter((d) => d.slug !== domain);
+  const siblings = getDomains(locale).filter((d) => d.slug !== domain);
 
   // Sort + filter the page's categories into canonical order. Roadmap items
   // are dropped entirely (no "Coming soon" cards in v1); any category whose
@@ -103,14 +100,8 @@ export function DomainPageView({ vertical, domain }: DomainPageViewProps) {
       {
         "@type": "ListItem",
         position: 2,
-        name: page.parentVertical,
-        item: localizedUrl(locale, `/${vertical}`),
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
         name: page.title,
-        item: localizedUrl(locale, `/${vertical}/${domain}`),
+        item: localizedUrl(locale, `/${domain}`),
       },
     ],
   };
@@ -127,14 +118,10 @@ export function DomainPageView({ vertical, domain }: DomainPageViewProps) {
         <DomainHero
           title={t("heroTitle", {
             title: page.title.toUpperCase(),
-            audience:
-              vertical === "govtech"
-                ? t("audienceGovernment")
-                : t("audienceIndustries"),
+            audience: t("audienceGovernment"),
           })}
           description={page.description}
           icon={Icon}
-          parentVerticalName={page.parentVertical}
         />
 
         {orderedCategories.map((category, i) => {
@@ -151,13 +138,12 @@ export function DomainPageView({ vertical, domain }: DomainPageViewProps) {
 
         <div id="featured">
           <DomainFeaturedCases
-            vertical={vertical}
             domain={domain}
             featuredCases={page.featuredCases}
           />
         </div>
 
-        {/* Related: the other two domains in this vertical */}
+        {/* Related: the other two domains of expertise */}
         <SectionContainer mode="light" id="keep-exploring">
           <div className="mb-10">
             <p
@@ -173,7 +159,7 @@ export function DomainPageView({ vertical, domain }: DomainPageViewProps) {
                 letterSpacing: "-0.3px",
               }}
             >
-              {t("otherDomains", { vertical: verticalData.shortName })}
+              {t("otherDomains")}
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -182,7 +168,7 @@ export function DomainPageView({ vertical, domain }: DomainPageViewProps) {
               return (
                 <Link
                   key={d.slug}
-                  href={`/${vertical}/${d.slug}`}
+                  href={`/${d.slug}`}
                   className="group block border border-gray-light bg-white p-8 hover:border-accent-red/40 hover:shadow-[var(--shadow-card-hover)] transition-all"
                 >
                   <div className="inline-flex items-center justify-center w-10 h-10 border border-gray-light mb-5">
@@ -195,7 +181,7 @@ export function DomainPageView({ vertical, domain }: DomainPageViewProps) {
                   <p
                     className="font-[family-name:var(--font-jetbrains)] text-[10px] uppercase tracking-[2px] text-accent-red/85 mb-2"
                   >
-                    {verticalData.shortName} · {d.name}
+                    {d.name}
                   </p>
                   <h3
                     className="text-blueprint-blue font-semibold mb-2"

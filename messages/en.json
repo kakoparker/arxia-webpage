@@ -7,8 +7,9 @@
     "mobileNavigation": "Mobile navigation",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
-    "govtech": "Govtech",
-    "industries": "Industries",
+    "data": "Data",
+    "process": "Process",
+    "intelligence": "Intelligence",
     "portfolio": "Portfolio",
     "news": "News",
     "contact": "Contact"
@@ -22,24 +23,19 @@
   "Hero": {
     "title1": "Technology",
     "title2": "to transform nations",
-    "subtitle": "Empowering governments, industries and ecosystems to build their digital future",
+    "subtitle": "Empowering governments and their ecosystems to build their digital future",
     "cta": "Contact Us"
   },
   "Introduction": {
     "annotation": "Who We Are",
     "paragraph": "Arxia is a Digital Public Infrastructure and Digital Transformation company. Our team of expert consultants and engineers have developed digital projects all over the world, in partnership with international organizations and donors. Our goal is to transform the lives of people through impactful technology and capacity building.",
-    "govtechLabel": "GOVTECH",
-    "govtechTitle": "Arxia Govtech",
-    "govtechTagline": "Digital public infrastructure for governments and international organizations",
-    "govtechCta": "Explore Govtech",
-    "industriesLabel": "INDUSTRIES",
-    "industriesTitle": "Arxia Industries",
-    "industriesTagline": "Enterprise transformation for mining, finance, retail, universities, and beyond",
-    "industriesCta": "Explore Industries"
+    "exploreCta": "Explore {name}"
   },
-  "VerticalInMotion": {
-    "verticalLabel": "The {name} vertical",
-    "explore": "Explore"
+  "DomainsInMotion": {
+    "annotation": "What We Do",
+    "heading": "Domains of Expertise",
+    "explore": "Explore",
+    "domainCounter": "Domain {n} / {total}"
   },
   "Portfolio": {
     "annotation": "Selected Work",
@@ -122,15 +118,13 @@
     "errorNetwork": "Couldn't reach the server. Please try again."
   },
   "Footer": {
-    "tagline": "Digital transformation and Digital Public Infrastructure for governments and strategic industries worldwide.",
+    "tagline": "Digital transformation and Digital Public Infrastructure for governments worldwide.",
     "company": "Company",
     "services": "Services",
     "contact": "Contact",
     "aboutUs": "About Us",
     "portfolio": "Portfolio",
     "news": "News",
-    "govtech": "Govtech",
-    "industries": "Industries",
     "data": "Data",
     "process": "Process",
     "intelligence": "Intelligence",
@@ -150,8 +144,7 @@
     "pageSections": "Page sections",
     "jumpTo": "Jump to {label}",
     "about": "About",
-    "govtech": "Govtech",
-    "industries": "Industries",
+    "expertise": "Expertise",
     "presence": "Presence",
     "portfolio": "Portfolio",
     "news": "News",
@@ -168,9 +161,8 @@
     "railContact": "Contact",
     "heroTitle": "{title} for {audience}",
     "audienceGovernment": "GOVERNMENT",
-    "audienceIndustries": "INDUSTRIES",
     "keepExploring": "Keep exploring",
-    "otherDomains": "The other two {vertical} domains",
+    "otherDomains": "The other two domains of expertise",
     "explore": "Explore {name}",
     "categoryName": {
       "Consultancy": "Consultancy",
@@ -198,16 +190,6 @@
     "body": "A selection of projects that define how we work in this domain.",
     "viewAll": "View all projects →"
   },
-  "PortfolioFilter": {
-    "ariaLabel": "Portfolio filter",
-    "verticalAll": "All",
-    "verticalGovtech": "Govtech",
-    "verticalIndustries": "Industries",
-    "domainAll": "All domains",
-    "domainData": "Data",
-    "domainProcess": "Process",
-    "domainIntelligence": "Intelligence"
-  },
   "Errors": {
     "label500": "Error · 500",
     "heading500": "Something didn't compile cleanly.",
@@ -217,18 +199,14 @@
     "label404": "Error · 404",
     "heading404": "This page is off the blueprint.",
     "body404": "The URL you followed doesn't lead anywhere on this site. It may have moved as we restructured our domains of expertise, or the link may simply be wrong.",
-    "exploreGovtech": "Explore Govtech",
-    "exploreIndustries": "Explore Industries",
     "notFoundMetaTitle": "Page not found",
-    "notFoundMetaDescription": "The page you're looking for doesn't exist or has moved."
+    "notFoundMetaDescription": "The page you're looking for doesn't exist or has moved.",
+    "exploreExpertise": "Explore our expertise",
+    "explorePortfolio": "View portfolio"
   },
   "Meta": {
     "homeTitle": "Digital Transformation & Digital Public Infrastructure — Arxia",
-    "homeDescription": "Arxia is a digital transformation and Digital Public Infrastructure company. We empower governments, industries, and ecosystems to build their digital future.",
-    "homeOgDescription": "We empower governments, industries, and ecosystems to build their digital future.",
-    "govtechTitle": "Govtech — Digital Public Infrastructure",
-    "govtechDescription": "Digital public infrastructure for governments and international organizations. Data interoperability, service design, e-procurement, e-invoicing, and agentic AI for the public sector.",
-    "industriesTitle": "Industries — Enterprise Transformation",
-    "industriesDescription": "Enterprise transformation for mining, finance, retail, universities, and beyond. Data governance, process modernization, and AI at enterprise scale."
+    "homeDescription": "Arxia is a digital transformation and Digital Public Infrastructure company. We empower governments and their ecosystems to build their digital future.",
+    "homeOgDescription": "We empower governments and their ecosystems to build their digital future."
   }
 }

@@ -31,8 +31,8 @@ the site _says_, you almost always edit `src/data/*` — not a component.
 
 ```
 src/data/
-  domain-pages.ts      ← THE big one: all 6 /{govtech,industries}/{domain} pages
-  domains.ts           ← the 2×3 vertical × domain matrix (cards, icons, blurbs)
+  domain-pages.ts      ← THE big one: the three /{data,process,intelligence} pages
+  domains.ts           ← the three domains of expertise (cards, icons, blurbs)
   portfolio.ts         ← portfolio case studies
   portfolio-domains.ts ← portfolio filter taxonomy
   news.ts              ← news articles (body is structured blocks, not raw HTML)
@@ -45,12 +45,13 @@ it. Keep that boundary — don't inline marketing copy into components.
 
 ## Routing
 
-App Router, file-based. The two domain verticals share one dynamic segment each:
+App Router, file-based. Each domain of expertise is its own top-level route:
 
 ```
 src/app/
-  govtech/[domain]/page.tsx       → /govtech/{data,process,intelligence}
-  industries/[domain]/page.tsx    → /industries/{data,process,intelligence}
+  data/page.tsx                   → /data
+  process/page.tsx                → /process
+  intelligence/page.tsx           → /intelligence
   news/[slug]/page.tsx            → /news/<article-slug>
   api/contact/route.ts            → POST /api/contact (Node runtime)
   sitemap.ts robots.ts            → /sitemap.xml /robots.txt

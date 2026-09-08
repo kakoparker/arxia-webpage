@@ -18,7 +18,7 @@ Slow-scrolling horizontal carousel of client logos. Placeholders — to be popul
 
 ### 3. Introduction
 - **Headline:** Who We Are
-- **Body:** Arxia is a digital transformation and Digital Public Infrastructure company with more than 20 years in the international market. We develop and integrate solutions that transform countries, governments, and strategic industries — while empowering local ecosystems through capacity building, consultancy, and co-building the building blocks of their digital independence.
+- **Body:** Arxia is a digital transformation and Digital Public Infrastructure company with more than 20 years in the international market. We develop and integrate solutions that transform countries, governments, and the ecosystems around them — while empowering local ecosystems through capacity building, consultancy, and co-building the building blocks of their digital independence.
 
 ### 4. Our Domains of Expertise
 
@@ -328,4 +328,33 @@ Before any section is done, verify:
 ---
 
 ## Status
-- **Current phase:** Design and technical specification approved. Next step: implementation.
+
+- **Current phase:** Built and live. Next.js 16 App Router, internationalized
+  (en at the root, `/es` and `/fr` prefixed), deployed on Vercel from `main`.
+
+### Current information architecture (authoritative)
+
+Arxia is focused entirely on **Digital Public Infrastructure and the digital
+transformation of government**. The site is organized around **three domains of
+expertise**, which sit at the top level:
+
+| Route | Domain | Covers |
+|-------|--------|--------|
+| `/data` | **Data** | Interoperability, data governance, data exchange infrastructure |
+| `/process` | **Process** | e-Government strategy, service design, e-procurement, e-invoicing, portals, capacity building |
+| `/intelligence` | **Intelligence** | Agentic state, AI for public services, AI acceleration, AI governance |
+
+Homepage flow: Hero → client carousel → Introduction (pinned; curtains part to
+reveal the three domains) → domains-in-motion chapter → global presence →
+portfolio → news → contact.
+
+**History — do not reintroduce:** the site previously ran a two-vertical model
+(*Arxia Govtech* | *Arxia Industries*) crossed with the three domains, a 2×3
+matrix at `/{govtech,industries}/{data,process,intelligence}`. The Industries
+vertical was retired and the Govtech wrapper collapsed when the company
+refocused on government; all those URLs now 301 to the top-level domain routes
+(see `next.config.mjs`). The "Main Page Structure" and "Our Domains of
+Expertise" sections above are the **original 2025 design spec** and describe a
+still-earlier seven-domain model — they are kept for historical reference and
+no longer reflect the built site. The design-token and component sections below
+them ARE still current and authoritative.

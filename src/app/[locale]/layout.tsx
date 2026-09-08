@@ -24,7 +24,7 @@ const SITE_URL = "https://www.arxia.com";
 const SITE_NAME = "Arxia";
 const SITE_TITLE = "Arxia — Digital Transformation & Digital Public Infrastructure";
 const SITE_DESCRIPTION =
-  "Arxia is a digital transformation and Digital Public Infrastructure company with more than 20 years in the international market. We develop and integrate solutions that transform countries, governments, and strategic industries.";
+  "Arxia is a digital transformation and Digital Public Infrastructure company with more than 20 years in the international market. We develop and integrate solutions that transform countries, governments, and the ecosystems around them.";
 
 const OG_LOCALE: Record<string, string> = {
   en: "en_US",
@@ -50,7 +50,7 @@ export async function generateMetadata({
     openGraph: {
       title: SITE_TITLE,
       description:
-        "We develop and integrate solutions that transform countries, governments, and strategic industries.",
+        "We develop and integrate solutions that transform countries, governments, and the ecosystems around them.",
       url: SITE_URL,
       siteName: SITE_NAME,
       type: "website",
@@ -61,7 +61,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: SITE_TITLE,
       description:
-        "We develop and integrate solutions that transform countries, governments, and strategic industries.",
+        "We develop and integrate solutions that transform countries, governments, and the ecosystems around them.",
     },
     robots: {
       index: true,
