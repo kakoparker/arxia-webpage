@@ -167,10 +167,8 @@
     "railCases": "Cas",
     "railRelated": "Connexe",
     "railContact": "Contact",
-    "heroTitle": "{title} pour {audience}",
-    "audienceGovernment": "LE SECTEUR PUBLIC",
     "keepExploring": "Continuer l'exploration",
-    "otherDomains": "Les deux autres domaines d'expertise",
+    "otherDomains": "Domaines liés",
     "explore": "Découvrir {name}",
     "categoryName": {
       "Consultancy": "Conseil",

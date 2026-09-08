@@ -167,10 +167,8 @@
     "railCases": "Cases",
     "railRelated": "Related",
     "railContact": "Contact",
-    "heroTitle": "{title} for {audience}",
-    "audienceGovernment": "GOVERNMENT",
     "keepExploring": "Keep exploring",
-    "otherDomains": "The other two domains of expertise",
+    "otherDomains": "Related domains",
     "explore": "Explore {name}",
     "categoryName": {
       "Consultancy": "Consultancy",

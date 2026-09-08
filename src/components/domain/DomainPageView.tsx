@@ -2,23 +2,6 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import {
-  Building2,
-  Network,
-  Brain,
-  ShoppingCart,
-  FileText,
-  Globe,
-  Sprout,
-  Landmark,
-  Workflow,
-  Bot,
-  Sparkles,
-  Globe2,
-  GraduationCap,
-  Database,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { DomainHero } from "@/components/domain/DomainHero";
@@ -28,37 +11,24 @@ import { DomainCTA } from "@/components/domain/DomainCTA";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { ScrollProgressRail } from "@/components/ui/ScrollProgressRail";
 import { getDomainPage } from "@/data/domain-pages";
-import { getDomains, type DomainSlug } from "@/data/domains";
+import {
+  getExpertiseDomain,
+  type ExpertiseDomainSlug,
+} from "@/data/expertise-domains";
 import { localizedUrl } from "@/i18n/metadata";
 
 // Canonical category order for every domain page. Sections without items are
 // skipped at render time; the rail is filtered to match.
 const CATEGORY_ORDER = ["Consultancy", "Services", "Products", "Trainings"] as const;
 
-const iconMap: Record<string, LucideIcon> = {
-  Building2,
-  Network,
-  Brain,
-  ShoppingCart,
-  FileText,
-  Globe,
-  Sprout,
-  Landmark,
-  Workflow,
-  Bot,
-  Sparkles,
-  Globe2,
-  GraduationCap,
-  Database,
-};
-
 interface DomainPageViewProps {
-  domain: DomainSlug;
+  domain: ExpertiseDomainSlug;
 }
 
 /**
  * Shared client component rendering a full domain landing page.
- * Used by /data, /process and /intelligence. Reads from domain-pages.ts.
+ * One per domain of expertise (/data-governance, /e-procurement, …); reads
+ * identity + content from domain-pages.ts.
  */
 export function DomainPageView({ domain }: DomainPageViewProps) {
   const t = useTranslations("Domain");
@@ -66,8 +36,12 @@ export function DomainPageView({ domain }: DomainPageViewProps) {
   const page = getDomainPage(domain, locale);
   if (!page) return null;
 
-  const Icon = iconMap[page.iconName] ?? Database;
-  const siblings = getDomains(locale).filter((d) => d.slug !== domain);
+  const Icon = page.icon;
+  // Curated next steps rather than "every other domain" — with eight of them,
+  // listing the other seven would be a dump, not a recommendation.
+  const related = page.relatedSlugs
+    .map((slug) => getExpertiseDomain(slug, locale))
+    .filter((d): d is NonNullable<typeof d> => Boolean(d));
 
   // Sort + filter the page's categories into canonical order. Roadmap items
   // are dropped entirely (no "Coming soon" cards in v1); any category whose
@@ -100,7 +74,7 @@ export function DomainPageView({ domain }: DomainPageViewProps) {
       {
         "@type": "ListItem",
         position: 2,
-        name: page.title,
+        name: page.name,
         item: localizedUrl(locale, `/${domain}`),
       },
     ],
@@ -116,10 +90,7 @@ export function DomainPageView({ domain }: DomainPageViewProps) {
       <ScrollProgressRail sections={railSections} />
       <main id="main" tabIndex={-1} className="outline-none">
         <DomainHero
-          title={t("heroTitle", {
-            title: page.title.toUpperCase(),
-            audience: t("audienceGovernment"),
-          })}
+          title={page.name}
           description={page.description}
           icon={Icon}
         />
@@ -137,13 +108,10 @@ export function DomainPageView({ domain }: DomainPageViewProps) {
         })}
 
         <div id="featured">
-          <DomainFeaturedCases
-            domain={domain}
-            featuredCases={page.featuredCases}
-          />
+          <DomainFeaturedCases featuredCases={page.featuredCases} />
         </div>
 
-        {/* Related: the other two domains of expertise */}
+        {/* Related: curated sibling domains */}
         <SectionContainer mode="light" id="keep-exploring">
           <div className="mb-10">
             <p
@@ -162,8 +130,8 @@ export function DomainPageView({ domain }: DomainPageViewProps) {
               {t("otherDomains")}
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {siblings.map((d) => {
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {related.map((d) => {
               const SibIcon = d.icon;
               return (
                 <Link
@@ -181,18 +149,18 @@ export function DomainPageView({ domain }: DomainPageViewProps) {
                   <p
                     className="font-[family-name:var(--font-jetbrains)] text-[10px] uppercase tracking-[2px] text-accent-red/85 mb-2"
                   >
-                    {d.name}
+                    {d.order}
                   </p>
                   <h3
                     className="text-blueprint-blue font-semibold mb-2"
                     style={{
                       fontFamily: "var(--font-primary)",
-                      fontSize: "20px",
-                      lineHeight: 1.2,
+                      fontSize: "18px",
+                      lineHeight: 1.25,
                       letterSpacing: "-0.3px",
                     }}
                   >
-                    {d.tagline}
+                    {d.name}
                   </h3>
                   <p
                     className="text-gray-dark"
@@ -221,7 +189,7 @@ export function DomainPageView({ domain }: DomainPageViewProps) {
           </div>
         </SectionContainer>
 
-        <DomainCTA domainTitle={page.title} />
+        <DomainCTA domainTitle={page.name} />
       </main>
       <Footer />
     </>

@@ -1,4 +1,3 @@
-import type { DomainSlug } from "./domains";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Portfolio — 43 projects, tagged by domain of expertise.
@@ -19,10 +18,18 @@ import type { DomainSlug } from "./domains";
 //   intelligence  → 12
 // ─────────────────────────────────────────────────────────────────────────────
 
+/**
+ * Coarse capability tag kept from the earlier three-division IA. The site now
+ * presents eight domains of expertise; these tags are only used to slice the
+ * portfolio internally and are independent of the `category` grouping that
+ * /portfolio renders. Retagging to the eight domains is a separate pass.
+ */
+export type PortfolioCapability = "data" | "process" | "intelligence";
+
 export interface PortfolioProject {
   slug: string;
   title: string;
-  domain: DomainSlug;
+  domain: PortfolioCapability;
   description: string;
   client: string;
   country: string;
@@ -624,7 +631,7 @@ export function getProject(
 }
 
 export function projectsByDomain(
-  d: DomainSlug,
+  d: PortfolioCapability,
   locale: string = "en"
 ): PortfolioProject[] {
   return getProjects(locale).filter((p) => p.domain === d);

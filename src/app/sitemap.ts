@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { newsArticles } from "@/data/news";
+import { domainPageSlugs } from "@/data/domain-pages";
 
 const SITE_URL = "https://www.arxia.com";
 
@@ -35,12 +36,11 @@ function entry(
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  const domains = ["data", "process", "intelligence"] as const;
 
   return [
     ...entry("", "weekly", 1, now),
-    // The three domains of expertise are top-level routes.
-    ...domains.flatMap((d) => entry(`/${d}`, "monthly", 0.9, now)),
+    // The eight domains of expertise are top-level routes.
+    ...domainPageSlugs.flatMap((d) => entry(`/${d}`, "monthly", 0.9, now)),
     ...entry("/portfolio", "weekly", 0.8, now),
     ...entry("/news", "weekly", 0.7, now),
     ...newsArticles.flatMap((a) => entry(`/news/${a.slug}`, "monthly", 0.6, now)),

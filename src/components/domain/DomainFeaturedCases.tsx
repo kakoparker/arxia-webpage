@@ -8,17 +8,14 @@ import { Card } from "@/components/ui/Card";
 import { Tag } from "@/components/ui/Tag";
 import { Button } from "@/components/ui/Button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { getProjects, projectsByDomain } from "@/data/portfolio";
+import { getProjects } from "@/data/portfolio";
 import type { FeaturedCase } from "@/data/domain-pages";
-import type { DomainSlug } from "@/data/domains";
 
 interface DomainFeaturedCasesProps {
-  domain: DomainSlug;
   featuredCases: FeaturedCase[];
 }
 
 export function DomainFeaturedCases({
-  domain,
   featuredCases,
 }: DomainFeaturedCasesProps) {
   const t = useTranslations("DomainFeaturedCases");
@@ -26,13 +23,11 @@ export function DomainFeaturedCases({
   const ref = useScrollAnimation();
   const localizedProjects = getProjects(locale);
 
-  // Resolve featured slugs to project objects; fall back to domain projects
-  // if no explicit featured list (shouldn't happen with current data).
-  const resolved = featuredCases
+  // Each page names its own cases; a slug that no longer exists is skipped
+  // rather than rendering an empty card.
+  const display = featuredCases
     .map((f) => localizedProjects.find((p) => p.slug === f.projectSlug))
-    .filter(Boolean);
-
-  const display = resolved.length > 0 ? resolved : projectsByDomain(domain, locale);
+    .filter((p): p is NonNullable<typeof p> => Boolean(p));
   if (display.length === 0) return null;
 
   return (
@@ -53,13 +48,13 @@ export function DomainFeaturedCases({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {display.slice(0, 6).map((project, i) => (
             <div
-              key={project!.slug}
+              key={project.slug}
               data-animate
               data-animate-index={i + 1}
               className="animate-on-scroll"
             >
               <Card className="h-full flex flex-col">
-                <Tag>{project!.categoryLabel}</Tag>
+                <Tag>{project.categoryLabel}</Tag>
                 <h3
                   className="text-blueprint-blue font-semibold mt-3 mb-2"
                   style={{
@@ -68,7 +63,7 @@ export function DomainFeaturedCases({
                     lineHeight: "1.3",
                   }}
                 >
-                  {project!.title}
+                  {project.title}
                 </h3>
                 <p
                   className="text-gray-dark flex-1"
@@ -78,7 +73,7 @@ export function DomainFeaturedCases({
                     lineHeight: "1.6",
                   }}
                 >
-                  {project!.description}
+                  {project.description}
                 </p>
                 <p
                   className="mt-3 text-gray-medium"
@@ -88,8 +83,8 @@ export function DomainFeaturedCases({
                     letterSpacing: "1px",
                   }}
                 >
-                  {project!.client} · {project!.country}
-                  {project!.year ? ` · ${project!.year}` : ""}
+                  {project.client} · {project.country}
+                  {project.year ? ` · ${project.year}` : ""}
                 </p>
               </Card>
             </div>

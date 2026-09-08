@@ -1,13 +1,9 @@
 // Spanish text overlay for src/data/domain-pages.ts.
-// Keyed by page slug → { page-level fields, categories[name].tagline,
-// categories[name].items[itemSlug] }. Anything omitted falls back to English.
+// Keyed by page slug -> categories[name].{tagline, items[itemSlug]}.
+// Anything omitted falls back to English. Page identity (name, description)
+// is translated upstream in ./expertise-domains.es.ts.
 
 export interface DomainPageOverlay {
-  title?: string;
-  tagline?: string;
-  description?: string;
-  metaTitle?: string;
-  metaDescription?: string;
   categories?: Record<
     string,
     {
@@ -18,28 +14,68 @@ export interface DomainPageOverlay {
 }
 
 export const domainPagesEs: Record<string, DomainPageOverlay> = {
-  // ── DATOS ──────────────────────────────────────────────
-  "data": {
-    title: "Datos",
-    tagline: "El tejido conectivo del Estado",
-    description:
-      "Diseñamos la capa de datos de la infraestructura pública digital: interoperabilidad, gobernanza y marcos de intercambio que permiten a las instituciones compartir información de forma segura entre áreas, fronteras y building blocks.",
-    metaTitle: "Datos — Interoperabilidad y Gobernanza de Datos",
-    metaDescription:
-      "Interoperabilidad de datos, gobernanza, estándares semánticos y sistemas de intercambio transfronterizo para el sector público. Construido sobre GovStack, X-Road y marcos abiertos.",
+  "digital-transformation": {
     categories: {
       Consultancy: {
-        tagline: "Estrategia, políticas y arquitectura para la capa de datos del Estado.",
+        tagline:
+          "Estrategia, politicas y hojas de ruta para la transformacion integral del Estado.",
+        items: {
+          "egov-strategy": {
+            title: "Estrategias y hojas de ruta de e-gobierno",
+            description:
+              "Estrategias nacionales de digitalización traducidas en hojas de ruta accionables: secuenciación, presupuesto, gobernanza y titularidad institucional para que la estrategia no se quede en el cajón.",
+          },
+          "bpmn-process-design": {
+            title: "Diseño y optimización de procesos (BPMN 2.0)",
+            description:
+              "Modelado de procesos con BPMN 2.0 para servicios públicos, con notación formal, validaciones con grupos de interés y pilotos ejecutables sobre los principales motores de flujos de trabajo.",
+          },
+        },
+      },
+      Services: {
+        tagline:
+          "Construccion y despliegue de los building blocks.",
+        items: {
+          "egov-development": {
+            title: "Desarrollo de sistemas de e-gobierno",
+            description:
+              "Desarrollo a medida de plataformas gubernamentales: desde registros y sistemas de gestión de expedientes hasta portales de servicios para la ciudadanía, sobre stacks abiertos e interoperables.",
+          },
+          "govstack-adoption": {
+            title: "Programas de adopción de GovStack",
+            description:
+              "Adopción de GovStack a nivel país: alineación arquitectónica, selección de building blocks, pilotos y preparación institucional.",
+          },
+        },
+      },
+      Trainings: {
+        tagline:
+          "Fortalecimiento de capacidades para equipos publicos y ecosistemas locales.",
+        items: {
+          "bpmn-coaching": {
+            title: "Taller: Acompañamiento en implementación de BPMN",
+            description:
+              "Acompañamiento práctico sobre Camunda, Flowable y motores de flujos de trabajo similares. Se entrega dentro de tu equipo, para que la capacidad permanezca cuando nos vamos.",
+          },
+          "ecosystem-capacity": {
+            title: "Internacionalización del ecosistema y propuesta de valor",
+            description:
+              "Programas que preparan a los ecosistemas tecnológicos locales para realizar trabajo de DPI por sí mismos y competir internacionalmente: desde formación de formadores hasta preparación para la exportación.",
+          },
+        },
+      },
+    },
+  },
+  "interoperability": {
+    categories: {
+      Consultancy: {
+        tagline:
+          "Marcos, estandares y arquitectura para el intercambio nacional de datos.",
         items: {
           "interoperability-strategy": {
             title: "Estrategia de interoperabilidad de datos",
             description:
               "Hojas de ruta de interoperabilidad nacional y transfronteriza basadas en GovStack, X-Road y patrones Pub/Sub. Traducimos las prioridades políticas en un plan técnico por etapas que varios ministerios pueden ejecutar en paralelo.",
-          },
-          "data-governance": {
-            title: "Gobernanza de datos",
-            description:
-              "Políticas, roles, reglas de responsabilidad y arreglos institucionales para un intercambio confiable de datos públicos. Se entrega como un marco formal que tu consejo de ministros o agencia digital puede adoptar y hacer cumplir.",
           },
           "national-registry-design": {
             title: "Diseño de registros nacionales",
@@ -49,7 +85,8 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
         },
       },
       Services: {
-        tagline: "Entrega, implementación y habilitación técnica.",
+        tagline:
+          "Entrega, implementacion y habilitacion tecnica.",
         items: {
           "national-registries-api-gateway": {
             title: "Implementación de registros nacionales y API gateway",
@@ -71,10 +108,16 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
             description:
               "Integración práctica de sistemas del sector público (aplicaciones ministeriales, bases de datos heredadas y APIs modernas) conectados a través de la capa nacional de intercambio de datos, con traspaso operativo completo.",
           },
+          "inter-institutional-workflows": {
+            title: "Flujos de trabajo interinstitucionales automatizados",
+            description:
+              "Flujos de trabajo asistidos por IA que enrutan solicitudes, documentos y decisiones entre múltiples organismos, comprimiendo semanas de coordinación en días.",
+          },
         },
       },
       Products: {
-        tagline: "Plataformas que desarrollamos y hacemos evolucionar.",
+        tagline:
+          "Plataformas propias que evolucionamos.",
         items: {
           "arxia-data-exchange": {
             title: "Arxia Data Exchange Platform",
@@ -85,13 +128,8 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
       },
       Trainings: {
         tagline:
-          "Desarrollo de capacidades para responsables de políticas, equipos jurídicos y personal técnico del sector público.",
+          "Fortalecimiento de capacidades para responsables de politicas y equipos tecnicos del sector publico.",
         items: {
-          "training-data-governance": {
-            title: "Taller: Gobernanza de datos para instituciones públicas",
-            description:
-              "Taller estructurado para liderazgo ministerial, equipos jurídicos y personal de agencias digitales. Aborda marcos de gobernanza, roles de responsabilidad, regímenes de consentimiento y cómo integrar las reglas de protección de datos en la práctica institucional diaria.",
-          },
           "training-interop-strategies": {
             title: "Taller: Estrategias de interoperabilidad para instituciones públicas",
             description:
@@ -101,45 +139,106 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
       },
     },
   },
-
-  // ── PROCESOS ────────────────────────────────────────────
-  "process": {
-    title: "Procesos",
-    tagline: "Servicios públicos, rediseñados",
-    description:
-      "Diseño de servicios basado en BPMN, contratación y facturación de extremo a extremo, y portales gubernamentales estandarizados: modernizando la forma en que el Estado entrega valor a la ciudadanía.",
-    metaTitle: "Procesos — Diseño de Servicios, e-Procurement y Portales",
-    metaDescription:
-      "Estrategia de e-gobierno, diseño de procesos BPMN, contratación pública electrónica, facturación electrónica y portales gubernamentales estandarizados. Más de 20 años en más de 20 países.",
+  "data-governance": {
     categories: {
       Consultancy: {
-        tagline: "Estrategia y rediseño de procesos institucionales y de cara a la ciudadanía.",
+        tagline:
+          "Marcos de gobernanza, regimenes de consentimiento y diagnosticos de madurez.",
         items: {
-          "egov-strategy": {
-            title: "Estrategias y hojas de ruta de e-gobierno",
+          "data-governance": {
+            title: "Gobernanza de datos",
             description:
-              "Estrategias nacionales de digitalización traducidas en hojas de ruta accionables: secuenciación, presupuesto, gobernanza y titularidad institucional para que la estrategia no se quede en el cajón.",
+              "Políticas, roles, reglas de responsabilidad y arreglos institucionales para un intercambio confiable de datos públicos. Se entrega como un marco formal que tu consejo de ministros o agencia digital puede adoptar y hacer cumplir.",
           },
-          "life-events-redesign": {
-            title: "Rediseño de eventos de vida y servicios a la ciudadanía",
+          "digital-maturity": {
+            title: "Evaluaciones de madurez digital",
             description:
-              "Rediseñamos cómo la ciudadanía vive los momentos clave con el Estado (nacimiento, registro de empresa, jubilación) reconstruyendo los servicios que los sustentan de extremo a extremo.",
+              "Diagnósticos estructurados que jerarquizan la madurez digital de tu institución y producen un plan de inversión defendible, no solo un informe.",
           },
-          "bpmn-process-design": {
-            title: "Diseño y optimización de procesos (BPMN 2.0)",
+        },
+      },
+      Trainings: {
+        tagline:
+          "Fortalecimiento de capacidades para responsables de politicas, equipos legales y personal institucional.",
+        items: {
+          "training-data-governance": {
+            title: "Taller: Gobernanza de datos para instituciones públicas",
             description:
-              "Modelado de procesos con BPMN 2.0 para servicios públicos, con notación formal, validaciones con grupos de interés y pilotos ejecutables sobre los principales motores de flujos de trabajo.",
+              "Taller estructurado para liderazgo ministerial, equipos jurídicos y personal de agencias digitales. Aborda marcos de gobernanza, roles de responsabilidad, regímenes de consentimiento y cómo integrar las reglas de protección de datos en la práctica institucional diaria.",
           },
+        },
+      },
+    },
+  },
+  "e-procurement": {
+    categories: {
+      Consultancy: {
+        tagline:
+          "Estrategia, estandares y alineacion regulatoria para la compra publica.",
+        items: {
           "eprocurement-strategy": {
             title: "Estrategia de contratación pública electrónica, estándares y alineación normativa",
             description:
               "Trabajo de estrategia nacional de contratación: desde la alineación regulatoria y la adopción de estándares hasta el diseño de la gestión del cambio para las autoridades de contratación.",
           },
+        },
+      },
+      Services: {
+        tagline:
+          "Entrega de plataformas de extremo a extremo.",
+        items: {
+          "eproc-implementation": {
+            title: "Implementación integral de plataformas de contratación pública electrónica",
+            description:
+              "Despliegue completo de sistemas de contratación pública (planificación, licitación, evaluación, adjudicación y gestión de contratos) con integración a los sistemas financieros y de auditoría.",
+          },
+        },
+      },
+      Products: {
+        tagline:
+          "Plataformas propias que evolucionamos.",
+        items: {
+          "processplayer": {
+            title: "ProcessPlayer",
+            description:
+              "Plataforma de contratación pública de ciclo completo: planificación, ejecución, acuerdos marco y gestión de contratos. Más de 50 organizaciones, más de 30.000 referencias, en SaaS y on-premise.",
+          },
+        },
+      },
+    },
+  },
+  "e-invoicing": {
+    categories: {
+      Consultancy: {
+        tagline:
+          "Estrategia y asesoria en cumplimiento tributario.",
+        items: {
           "einvoicing-advisory": {
             title: "Estrategia de facturación electrónica y asesoría de cumplimiento tributario",
             description:
               "Estrategias de facturación electrónica que se mantienen en cumplimiento con la legislación tributaria local y se alinean con los estándares regionales e internacionales de reporte emergentes.",
           },
+        },
+      },
+      Services: {
+        tagline:
+          "Infraestructura de facturacion y reporte de transacciones.",
+        items: {
+          "einvoicing-infrastructure": {
+            title: "Infraestructura de facturación electrónica y reporte de transacciones",
+            description:
+              "Despliegue de columnas nacionales de facturación electrónica: desde las pasarelas de la autoridad tributaria hasta el onboarding del contribuyente y el monitoreo del cumplimiento.",
+          },
+        },
+      },
+    },
+  },
+  "web-portals": {
+    categories: {
+      Consultancy: {
+        tagline:
+          "Estandarizacion, arquitectura de informacion y estrategia multi-tenant.",
+        items: {
           "portal-standardization": {
             title: "Estandarización de portales web y arquitectura multiinquilino",
             description:
@@ -148,23 +247,9 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
         },
       },
       Services: {
-        tagline: "Implementación, integración y entrega de plataformas.",
+        tagline:
+          "Entrega de portales a escala institucional y nacional.",
         items: {
-          "egov-development": {
-            title: "Desarrollo de sistemas de e-gobierno",
-            description:
-              "Desarrollo a medida de plataformas gubernamentales: desde registros y sistemas de gestión de expedientes hasta portales de servicios para la ciudadanía, sobre stacks abiertos e interoperables.",
-          },
-          "eproc-implementation": {
-            title: "Implementación integral de plataformas de contratación pública electrónica",
-            description:
-              "Despliegue completo de sistemas de contratación pública (planificación, licitación, evaluación, adjudicación y gestión de contratos) con integración a los sistemas financieros y de auditoría.",
-          },
-          "einvoicing-infrastructure": {
-            title: "Infraestructura de facturación electrónica y reporte de transacciones",
-            description:
-              "Despliegue de columnas nacionales de facturación electrónica: desde las pasarelas de la autoridad tributaria hasta el onboarding del contribuyente y el monitoreo del cumplimiento.",
-          },
           "government-portals": {
             title: "Portales web gubernamentales estandarizados",
             description:
@@ -173,13 +258,9 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
         },
       },
       Products: {
-        tagline: "Plataformas que desarrollamos y hacemos evolucionar.",
+        tagline:
+          "Plataformas propias que evolucionamos.",
         items: {
-          processplayer: {
-            title: "ProcessPlayer",
-            description:
-              "Plataforma de contratación pública de ciclo completo: planificación, ejecución, acuerdos marco y gestión de contratos. Más de 50 organizaciones, más de 30.000 referencias, en SaaS y on-premise.",
-          },
           "arxia-portal-framework": {
             title: "Portales gubernamentales estandarizados",
             description:
@@ -188,45 +269,23 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
         },
       },
       Trainings: {
-        tagline: "Desarrollo de capacidades para equipos técnicos del sector público y ecosistemas locales.",
+        tagline:
+          "Capacitacion tecnica para los equipos que operaran los portales.",
         items: {
-          "bpmn-coaching": {
-            title: "Taller: Acompañamiento en implementación de BPMN",
-            description:
-              "Acompañamiento práctico sobre Camunda, Flowable y motores de flujos de trabajo similares. Se entrega dentro de tu equipo, para que la capacidad permanezca cuando nos vamos.",
-          },
           "training-typo3": {
             title: "Formación técnica en TYPO3 para el sector público en Portales Gubernamentales Estandarizados",
             description:
               "Formación práctica en TYPO3 para equipos técnicos internos del gobierno: instalación, configuración multiinquilino, modelado de contenidos, accesibilidad (WCAG) y mantenimiento a largo plazo del stack que sostiene los Portales Gubernamentales Estandarizados.",
           },
-          "ecosystem-capacity": {
-            title: "Internacionalización del ecosistema y propuesta de valor",
-            description:
-              "Programas que preparan a los ecosistemas tecnológicos locales para realizar trabajo de DPI por sí mismos y competir internacionalmente: desde formación de formadores hasta preparación para la exportación.",
-          },
-          "govstack-adoption": {
-            title: "Programas de adopción de GovStack",
-            description:
-              "Adopción de GovStack a nivel país: alineación arquitectónica, selección de building blocks, pilotos y preparación institucional.",
-          },
         },
       },
     },
   },
-
-  // ── INTELIGENCIA ────────────────────────────────────────
-  "intelligence": {
-    title: "Inteligencia",
-    tagline: "El Estado agéntico",
-    description:
-      "Agentes de IA, automatización inteligente y plataformas potenciadas por IA que vuelven proactivo al sector público: desde asistentes para la ciudadanía hasta flujos de trabajo interinstitucionales.",
-    metaTitle: "Inteligencia — Estado Agéntico e IA en el Sector Público",
-    metaDescription:
-      "Agentes de IA, flujos de trabajo automatizados, herramientas de madurez digital y programas de adopción de IA para gobiernos y organizaciones internacionales.",
+  "agentic-state": {
     categories: {
       Consultancy: {
-        tagline: "IA responsable para el sector público, de la estrategia a la gobernanza.",
+        tagline:
+          "IA responsable en el sector publico, de la estrategia a la gobernanza.",
         items: {
           "ai-readiness-gov": {
             title: "Evaluaciones de preparación para la IA en el gobierno",
@@ -243,11 +302,6 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
             description:
               "Marcos de gobernanza de IA alineados con ISO, la Ley de IA de la UE y las reglas nacionales emergentes, adaptados a ministerios, agencias y organizaciones internacionales.",
           },
-          "digital-maturity": {
-            title: "Evaluaciones de madurez digital",
-            description:
-              "Diagnósticos estructurados que jerarquizan la madurez digital de tu institución y producen un plan de inversión defendible, no solo un informe.",
-          },
           "responsible-ai-policy": {
             title: "Política de IA responsable y asesoría en contratación",
             description:
@@ -256,33 +310,41 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
         },
       },
       Services: {
-        tagline: "Construcción y despliegue de IA para el sector público.",
+        tagline:
+          "Construccion y despliegue de IA en el sector publico.",
         items: {
           "ai-agents-public-services": {
             title: "Agentes de IA para servicios públicos",
             description:
               "Asistentes virtuales multicanal en web, móvil, USSD y voz, incluidos canales de baja alfabetización en idiomas locales, que manejan el volumen real de la ciudadanía, no solo demos.",
           },
-          "inter-institutional-workflows": {
-            title: "Flujos de trabajo interinstitucionales automatizados",
-            description:
-              "Flujos de trabajo asistidos por IA que enrutan solicitudes, documentos y decisiones entre múltiples organismos, comprimiendo semanas de coordinación en días.",
-          },
-          "document-processing": {
-            title: "Procesamiento documental con IA",
-            description:
-              "Extracción, clasificación y resumen del backlog documental en el que la mayoría de las instituciones públicas se ahogan: desde permisos hasta solicitudes de subvención.",
-          },
-          "low-code-eservices": {
-            title: "Plataformas low-code de servicios electrónicos",
-            description:
-              "Plataformas que permiten a tus propios equipos lanzar nuevos servicios públicos y agentes de IA en días, no en trimestres, con gobernanza y trazabilidad integradas.",
-          },
           "ai-acceleration-gov": {
             title: "Programa de Aceleración de IA para el Gobierno",
             description:
               "Programa estructurado de adopción de 12 semanas para organizaciones del sector público. Lleva a tu equipo de la estrategia a casos de uso de IA en funcionamiento dentro de un solo trimestre.",
           },
+        },
+      },
+      Products: {
+        tagline:
+          "Plataformas propias que evolucionamos.",
+        items: {
+          "holonn": {
+            title: "Holonn — Plataforma de matchmaking e IA para ecosistemas",
+            description:
+              "Holonn permite a organizaciones de apoyo empresarial y ecosistemas (clústeres, hubs, asociaciones y aceleradoras) agregar la oferta de sus miembros con IA, creando marketplaces interactivos que conectan empresas con inversionistas, clientes y socios.",
+          },
+          "ai-governance-platform-gov": {
+            title: "Plataforma de Gobernanza de IA para Gobiernos",
+            description:
+              "¿Tu organización avanza hacia implementaciones de IA y un Estado agéntico? Entonces necesitas una gobernanza sólida. Nuestra plataforma monitoriza cumplimiento, vulnerabilidades de seguridad y evaluación de riesgos de cada sistema de IA en uso dentro de tu organización.",
+          },
+        },
+      },
+      Trainings: {
+        tagline:
+          "Desarrollo de capacidades de IA dentro de la institucion.",
+        items: {
           "ai-ignite-gov": {
             title: "Taller AI IGNITE para el sector público",
             description:
@@ -290,18 +352,34 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
           },
         },
       },
-      Products: {
-        tagline: "Plataformas que desarrollamos y hacemos evolucionar.",
+    },
+  },
+  "e-services": {
+    categories: {
+      Consultancy: {
+        tagline:
+          "Rediseno de servicios en torno a trayectorias ciudadanas reales.",
         items: {
-          "ai-governance-platform-gov": {
-            title: "Plataforma de Gobernanza de IA para Gobiernos",
+          "life-events-redesign": {
+            title: "Rediseño de eventos de vida y servicios a la ciudadanía",
             description:
-              "¿Tu organización avanza hacia implementaciones de IA y un Estado agéntico? Entonces necesitas una gobernanza sólida. Nuestra plataforma monitoriza cumplimiento, vulnerabilidades de seguridad y evaluación de riesgos de cada sistema de IA en uso dentro de tu organización.",
+              "Rediseñamos cómo la ciudadanía vive los momentos clave con el Estado (nacimiento, registro de empresa, jubilación) reconstruyendo los servicios que los sustentan de extremo a extremo.",
           },
-          holonn: {
-            title: "Holonn — Plataforma de matchmaking e IA para ecosistemas",
+        },
+      },
+      Services: {
+        tagline:
+          "Entrega de servicios con low-code y asistida por IA.",
+        items: {
+          "low-code-eservices": {
+            title: "Plataformas low-code de servicios electrónicos",
             description:
-              "Holonn permite a organizaciones de apoyo empresarial y ecosistemas (clústeres, hubs, asociaciones y aceleradoras) agregar la oferta de sus miembros con IA, creando marketplaces interactivos que conectan empresas con inversionistas, clientes y socios.",
+              "Plataformas que permiten a tus propios equipos lanzar nuevos servicios públicos y agentes de IA en días, no en trimestres, con gobernanza y trazabilidad integradas.",
+          },
+          "document-processing": {
+            title: "Procesamiento documental con IA",
+            description:
+              "Extracción, clasificación y resumen del backlog documental en el que la mayoría de las instituciones públicas se ahogan: desde permisos hasta solicitudes de subvención.",
           },
         },
       },

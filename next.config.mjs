@@ -43,73 +43,82 @@ const nextConfig = {
     ];
   },
   async redirects() {
-    // Canonical URLs are the three top-level domains of expertise:
-    // /data, /process and /intelligence (plus /es and /fr prefixes).
+    // Canonical URLs are the eight domains of expertise, at the top level:
+    //   /digital-transformation  /interoperability  /data-governance
+    //   /e-procurement  /e-invoicing  /web-portals  /agentic-state
+    //   /e-services
+    // (plus /es and /fr prefixes).
     //
-    // Two generations of URLs 301 into them:
-    //   1. The 2×3 matrix era — /govtech/* and /industries/*. The Industries
-    //      vertical was retired and the Govtech wrapper collapsed when the
-    //      company refocused entirely on DPI and digital government.
-    //   2. The /domains/* era, including the matrix slugs that briefly
+    // Three retired generations of URLs 301 into them:
+    //   1. The two-vertical era — /govtech/* and /industries/*.
+    //   2. The three-division era — /data, /process, /intelligence. Each goes
+    //      to the domain that carried the bulk of its content.
+    //   3. The /domains/* era, including the matrix slugs that briefly
     //      rendered there.
-    // Every rule points at its FINAL target so nothing chains through a
-    // second hop.
-    const DOMAINS = ["data", "process", "intelligence"];
+    // Every rule points at its FINAL target so nothing chains.
     const LOCALE = ":locale(es|fr)";
 
-    // Retired vertical routes. The vertical landing pages have no successor
-    // (the whole company is now that vertical), so they go to the homepage.
-    const verticalRoutes = ["govtech", "industries"].flatMap((vertical) => [
-      { source: `/${vertical}`, destination: "/", permanent: true },
+    /** Same rule for the unprefixed (en) path and the /es · /fr prefixes. */
+    const both = (from, to) => [
+      { source: from, destination: to, permanent: true },
       {
-        source: `/${LOCALE}/${vertical}`,
-        destination: "/:locale",
+        source: `/${LOCALE}${from}`,
+        destination: `/:locale${to === "/" ? "" : to}`,
         permanent: true,
       },
-      ...DOMAINS.flatMap((domain) => [
-        {
-          source: `/${vertical}/${domain}`,
-          destination: `/${domain}`,
-          permanent: true,
-        },
-        {
-          source: `/${LOCALE}/${vertical}/${domain}`,
-          destination: `/:locale/${domain}`,
-          permanent: true,
-        },
-      ]),
+    ];
+
+    // The three divisions → the domain that inherited most of their content.
+    const divisions = {
+      "/data": "/interoperability",
+      "/process": "/digital-transformation",
+      "/intelligence": "/agentic-state",
+    };
+
+    // Retired vertical landing pages have no successor (the whole company is
+    // now that vertical), so they go home; their domain children map across.
+    const verticalRoutes = ["govtech", "industries"].flatMap((v) => [
+      ...both(`/${v}`, "/"),
+      ...Object.entries(divisions).flatMap(([division, target]) =>
+        both(`/${v}${division}`, target),
+      ),
     ]);
+
+    const divisionRoutes = Object.entries(divisions).flatMap(([from, to]) =>
+      both(from, to),
+    );
 
     // Legacy /domains/* slugs. English-only: these URLs predate i18n.
     const legacyDomainSlugs = {
       // Three-vertical scheme
-      "digital-transformation": "/process",
-      "agentic-state": "/intelligence",
-      "government-portals": "/process",
-      "ai-ecosystems": "/intelligence",
-      interoperability: "/data",
-      "e-procurement": "/process",
-      "e-invoicing": "/process",
-      "e-government": "/process",
-      "web-portals": "/process",
-      ai: "/intelligence",
-      "ecosystem-building": "/process",
-      "capacity-building": "/process",
-      internationalization: "/process",
-      "corporate-transformation": "/process",
-      "corporate-ai": "/intelligence",
-      "corporate-data": "/data",
+      "digital-transformation": "/digital-transformation",
+      "agentic-state": "/agentic-state",
+      "government-portals": "/web-portals",
+      "ai-ecosystems": "/agentic-state",
+      interoperability: "/interoperability",
+      "e-procurement": "/e-procurement",
+      "e-invoicing": "/e-invoicing",
+      "e-government": "/digital-transformation",
+      "web-portals": "/web-portals",
+      ai: "/agentic-state",
+      "ecosystem-building": "/digital-transformation",
+      "capacity-building": "/digital-transformation",
+      internationalization: "/digital-transformation",
+      "corporate-transformation": "/digital-transformation",
+      "corporate-ai": "/agentic-state",
+      "corporate-data": "/data-governance",
       // Matrix slugs that briefly rendered under /domains/*
-      "govtech-data": "/data",
-      "govtech-process": "/process",
-      "govtech-intelligence": "/intelligence",
-      "industries-data": "/data",
-      "industries-process": "/process",
-      "industries-intelligence": "/intelligence",
+      "govtech-data": "/interoperability",
+      "govtech-process": "/digital-transformation",
+      "govtech-intelligence": "/agentic-state",
+      "industries-data": "/data-governance",
+      "industries-process": "/digital-transformation",
+      "industries-intelligence": "/agentic-state",
     };
 
     return [
       ...verticalRoutes,
+      ...divisionRoutes,
       ...Object.entries(legacyDomainSlugs).map(([from, to]) => ({
         source: `/domains/${from}`,
         destination: to,
