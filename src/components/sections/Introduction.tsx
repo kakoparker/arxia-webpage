@@ -1,17 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useGSAP } from "@gsap/react";
 import { gsap, ScrollTrigger } from "@/hooks/useGsapScrollTrigger";
-import { getDomains } from "@/data/domains";
 
 gsap.registerPlugin(useGSAP);
 
 export function Introduction() {
   const t = useTranslations("Introduction");
-  const domains = getDomains(useLocale());
   const sectionRef = useRef<HTMLElement>(null);
   const pinWrapperRef = useRef<HTMLDivElement>(null);
 
@@ -46,7 +44,7 @@ export function Introduction() {
 
   // Doors START closed (covering the whole viewport, with the intro paragraph
   // on top of them). On scroll: paragraph fades, then the doors slide apart
-  // left/right to reveal the three domains of expertise underneath. Same
+  // left/right to reveal the statement plate underneath. Same
   // mechanic as the original Hero curtain reveal.
   useGSAP(
     () => {
@@ -139,69 +137,61 @@ export function Introduction() {
         className="relative min-h-screen overflow-hidden"
         style={{ background: "var(--blueprint-dark)" }}
       >
-        {/* z-10: the three domains of expertise — sits underneath the doors,
-            revealed when they slide apart. `pointer-events-none` lets the
-            doors (z-30) absorb early clicks; each CTA link opts back into
-            pointer events via `pointer-events-auto`. We do NOT aria-hide this
-            block — the CTAs are real nav.
+        {/* z-10: the master framing — sits underneath the doors, revealed
+            when they slide apart. `pointer-events-none` lets the doors (z-30)
+            absorb early clicks; the CTA opts back in via
+            `pointer-events-auto`. We do NOT aria-hide this block — the CTA is
+            real nav.
 
-            All three panels share the Blueprint Blue surface, a step lighter
-            than the Blueprint Dark doors, so parting them reads as a lift.
-            Hairline dividers keep the three-way split legible. */}
-        <div className="absolute inset-0 z-10 grid grid-cols-1 lg:grid-cols-3 pointer-events-none">
-          {domains.map((domain, i) => {
-            const Icon = domain.icon;
-            return (
-              <div
-                key={domain.slug}
-                className={`blueprint-grid-blue relative flex flex-col justify-center px-10 py-12 lg:px-12 lg:py-20 ${
-                  i > 0 ? "lg:border-l lg:border-white/[0.10]" : ""
-                }`}
-              >
-                <p className="font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2.5px] text-accent-red/85 mb-6">
-                  {`0${i + 1} / 0${domains.length}`}
-                </p>
-
-                <div className="inline-flex items-center justify-center w-11 h-11 border border-white/20 mb-6">
-                  <Icon size={22} strokeWidth={1.5} className="text-white" />
-                </div>
-
-                <h2
-                  className="font-bold mb-4 text-white"
-                  style={{
-                    fontFamily: "var(--font-primary)",
-                    fontSize: "clamp(26px, 2.4vw, 38px)",
-                    lineHeight: 1.05,
-                    letterSpacing: "-1px",
-                  }}
-                >
-                  {domain.name}
-                </h2>
-                <div className="bg-accent-red mb-5 h-[3px] w-12" />
-                <p
-                  className="text-gray-medium mb-8"
-                  style={{
-                    fontFamily: "var(--font-primary)",
-                    fontSize: "16px",
-                    lineHeight: 1.6,
-                  }}
-                >
-                  {domain.tagline}
-                </p>
-                <Link
-                  href={`/${domain.slug}`}
-                  className="pointer-events-auto self-start inline-flex items-center gap-3 px-5 py-2.5 font-[family-name:var(--font-inter)] text-[13px] font-semibold tracking-[0.3px] border border-white/60 text-white hover:bg-white hover:text-blueprint-blue focus-visible:bg-white focus-visible:text-blueprint-blue focus-visible:outline-none transition-colors duration-200"
-                >
-                  {t("exploreCta", { name: domain.name })}
-                  <span aria-hidden>→</span>
-                </Link>
-              </div>
-            );
-          })}
+            One statement plate rather than a set of panels: the doors part on
+            the single idea the eight domains hang from, and the scroll then
+            carries you into the domain plate below. Blueprint Blue is a step
+            lighter than the Blueprint Dark doors, so parting them reads as a
+            lift. */}
+        <div className="absolute inset-0 z-10 blueprint-grid-blue flex items-center pointer-events-none">
+          <div
+            className="mx-auto w-full px-[var(--margin-page)]"
+            style={{ maxWidth: "var(--content-max)" }}
+          >
+            <p className="font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2.5px] text-accent-red/85 mb-6">
+              {t("statementLabel")}
+            </p>
+            <h2
+              className="font-bold text-white"
+              style={{
+                fontFamily: "var(--font-primary)",
+                fontSize: "clamp(34px, 5vw, 68px)",
+                lineHeight: 1.02,
+                letterSpacing: "-1.8px",
+                maxWidth: "18ch",
+              }}
+            >
+              {t("statementTitle")}
+            </h2>
+            <div className="bg-accent-red mt-7 mb-7 h-[3px] w-12" />
+            <p
+              className="text-gray-light"
+              style={{
+                fontFamily: "var(--font-primary)",
+                fontSize: "clamp(16px, 1.3vw, 19px)",
+                lineHeight: 1.75,
+                maxWidth: "62ch",
+              }}
+            >
+              {t("statementBody")}
+            </p>
+            <Link
+              href="/#expertise"
+              className="pointer-events-auto mt-10 inline-flex items-center gap-3 border border-white/60 px-6 py-3 font-[family-name:var(--font-inter)] text-[13px] font-semibold tracking-[0.3px] text-white transition-colors duration-200 hover:bg-white hover:text-blueprint-blue focus-visible:bg-white focus-visible:text-blueprint-blue focus-visible:outline-none"
+            >
+              {t("statementCta")}
+              <span aria-hidden>→</span>
+            </Link>
+          </div>
         </div>
 
         {/* z-30: Doors — start fully closed (covering the split). They slide
-            apart on scroll to reveal the three domains. Solid
+            apart on scroll to reveal the statement plate. Solid
             blueprint-dark on both sides; no animated grid (the surface stays
             calm so the intro copy is the only point of focus). */}
         <div

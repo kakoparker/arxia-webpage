@@ -1,12 +1,10 @@
 // `key` maps to the `Nav` message namespace; `label` is the English fallback.
 //
-// The three domains of expertise sit at the top level of the site. They
-// replaced the `Govtech` / `Industries` vertical links when the Industries
-// vertical was retired and the audience layer stopped branching.
+// The eight domains of expertise are too many for a top bar, so the nav
+// carries a single `Domains` entry pointing at the homepage plate. Each
+// domain's own page is reached from there (and from the footer).
 export const navLinks = [
-  { key: "data", label: "Data", href: "/data" },
-  { key: "process", label: "Process", href: "/process" },
-  { key: "intelligence", label: "Intelligence", href: "/intelligence" },
+  { key: "domains", label: "Domains", href: "/#expertise" },
   { key: "portfolio", label: "Portfolio", href: "/portfolio" },
   { key: "news", label: "News", href: "/#news" },
   { key: "contact", label: "Contact", href: "/#contact" },

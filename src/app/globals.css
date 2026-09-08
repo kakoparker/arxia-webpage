@@ -288,6 +288,135 @@ html {
 }
 
 /* ============================================
+   DOMAIN PLATE (the eight domains of expertise)
+   Motion layers on top of .animate-on-scroll, which supplies the
+   fade-and-rise and the `.visible` flag. Everything here keys off
+   `.visible` so the reduced-motion overrides at the bottom of this
+   file resolve it all to the finished state.
+   ============================================ */
+
+/* 1 — Construction set-out lines: sweep from the plate's origin corner. */
+.domain-setout-h,
+.domain-setout-v {
+  transform-origin: left top;
+  transition: transform 900ms var(--ease-default);
+}
+.domain-setout-h {
+  transform: scaleX(0);
+}
+.domain-setout-v {
+  transform: scaleY(0);
+  transition-delay: 120ms;
+}
+.domain-plate-setout.visible .domain-setout-h {
+  transform: scaleX(1);
+}
+.domain-plate-setout.visible .domain-setout-v {
+  transform: scaleY(1);
+}
+
+/* 2 — Plate registration marks draw outward from each plate's corner. */
+.domain-plate-corner {
+  opacity: 0;
+  transition: opacity 400ms var(--ease-default),
+              transform 400ms var(--ease-default),
+              border-color var(--duration-normal) var(--ease-default);
+}
+.domain-plate-corner--tl {
+  transform: translate(4px, 4px);
+}
+.domain-plate-corner--br {
+  transform: translate(-4px, -4px);
+}
+.animate-on-scroll.visible .domain-plate-corner {
+  opacity: 1;
+  transform: translate(0, 0);
+  transition-delay: 260ms;
+}
+.domain-plate:hover .domain-plate-corner,
+.domain-plate:focus-visible .domain-plate-corner {
+  border-color: color-mix(in srgb, var(--accent-red) 55%, transparent);
+}
+
+/* 3 — Left accent rule: grows from the top on hover/focus. */
+.domain-plate-accent {
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform var(--duration-normal) var(--ease-default);
+}
+.domain-plate:hover .domain-plate-accent,
+.domain-plate:focus-visible .domain-plate-accent {
+  transform: scaleY(1);
+}
+
+/* 4 — "Explore" cue: rests hidden, slides in with the plate's hover. */
+.domain-plate-cue {
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity var(--duration-normal) var(--ease-default),
+              transform var(--duration-normal) var(--ease-default);
+}
+.domain-plate:hover .domain-plate-cue,
+.domain-plate:focus-visible .domain-plate-cue {
+  opacity: 1;
+  transform: translateX(0);
+}
+.domain-plate-cue-arrow {
+  transition: transform var(--duration-normal) var(--ease-default);
+}
+.domain-plate:hover .domain-plate-cue-arrow,
+.domain-plate:focus-visible .domain-plate-cue-arrow {
+  transform: translateX(4px);
+}
+
+/* 5 — Anchor-plate schematic: spokes draw out from the core, then the
+       satellites land. Dash lengths and per-node delays are set inline
+       from the precomputed geometry. */
+.domain-schematic-spoke {
+  transition: stroke-dashoffset 620ms var(--ease-default);
+}
+.animate-on-scroll.visible .domain-schematic-spoke {
+  stroke-dashoffset: 0 !important;
+}
+.domain-schematic-node {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scale(0.4);
+  transition: opacity 320ms var(--ease-default),
+              transform 320ms var(--ease-default);
+}
+.animate-on-scroll.visible .domain-schematic-node {
+  opacity: 1;
+  transform: scale(1);
+}
+.domain-schematic-core {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scale(0.5);
+  transition: opacity 420ms var(--ease-default),
+              transform 420ms var(--ease-default);
+  transition-delay: 320ms;
+}
+.animate-on-scroll.visible .domain-schematic-core {
+  opacity: 1;
+  transform: scale(1);
+  animation: domain-core-pulse 3.2s var(--ease-default) 1.8s infinite;
+}
+@keyframes domain-core-pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.14); }
+}
+.domain-plate--anchor:hover .domain-schematic,
+.domain-plate--anchor:focus-visible .domain-schematic {
+  opacity: 1;
+}
+.domain-schematic {
+  transition: opacity var(--duration-normal) var(--ease-default);
+}
+
+/* ============================================
    HERO GRID BACKGROUND
    Mobile: full blueprint grid (CSS fallback)
    Desktop: plain bg color (SVG grid takes over)
@@ -377,6 +506,24 @@ html {
   }
   .accent-line-animate {
     width: 48px !important;
+  }
+  /* Domain plate: land every motion layer on its resolved state. */
+  .domain-setout-h,
+  .domain-setout-v {
+    transform: none !important;
+  }
+  .domain-plate-corner {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .domain-schematic-spoke {
+    stroke-dashoffset: 0 !important;
+  }
+  .domain-schematic-node,
+  .domain-schematic-core {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
   }
 }
 

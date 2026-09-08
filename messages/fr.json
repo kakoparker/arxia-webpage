@@ -7,9 +7,7 @@
     "mobileNavigation": "Navigation mobile",
     "openMenu": "Ouvrir le menu",
     "closeMenu": "Fermer le menu",
-    "data": "Données",
-    "process": "Processus",
-    "intelligence": "Intelligence",
+    "domains": "Domaines",
     "portfolio": "Portfolio",
     "news": "Actualités",
     "contact": "Contact"
@@ -29,13 +27,18 @@
   "Introduction": {
     "annotation": "Qui sommes-nous",
     "paragraph": "Arxia est une entreprise d'Infrastructure Publique Numérique et de Transformation Numérique. Notre équipe de consultants et d'ingénieurs experts a mené des projets numériques partout dans le monde, en partenariat avec des organisations internationales et des bailleurs de fonds. Notre objectif : transformer la vie des personnes grâce à une technologie à fort impact et au renforcement des capacités.",
-    "exploreCta": "Découvrir {name}"
+    "statementLabel": "LE CŒUR",
+    "statementTitle": "Interopérabilité full-stack.",
+    "statementBody": "Du cadre national à l'échange de données en production. Nous intervenons sur toutes les couches qui comptent — stratégie, gouvernance, normes, sémantique et les plateformes elles-mêmes — pour que les pièces d'un État numérique s'assemblent vraiment.",
+    "statementCta": "Découvrir nos domaines"
   },
-  "DomainsInMotion": {
-    "annotation": "Ce Que Nous Faisons",
-    "heading": "Domaines d'Expertise",
+  "Domains": {
+    "annotation": "DOMAINES D'EXPERTISE",
+    "heading": "Huit domaines. Une architecture.",
+    "body": "Nous couvrons toute la chaîne du gouvernement numérique. Chaque domaine se tient seul, et leur combinaison démultiplie les effets. L'interopérabilité est notre expertise la plus profonde.",
+    "coreLabel": "CŒUR",
     "explore": "Découvrir",
-    "domainCounter": "Domaine {n} / {total}"
+    "figCaption": "fig. 01 — les huit domaines, articulés par l'interopérabilité"
   },
   "Portfolio": {
     "annotation": "Travaux sélectionnés",
@@ -125,9 +128,6 @@
     "aboutUs": "À propos",
     "portfolio": "Portfolio",
     "news": "Actualités",
-    "data": "Données",
-    "process": "Processus",
-    "intelligence": "Intelligence",
     "getInTouch": "Contactez-nous via le formulaire",
     "headquarters": "Siège social",
     "offices": "Bureaux",
@@ -138,7 +138,15 @@
     "roleBizDevAfrica": "Développement commercial, Afrique",
     "rights": "Tous droits réservés.",
     "privacy": "Politique de confidentialité",
-    "terms": "Conditions d'utilisation"
+    "terms": "Conditions d'utilisation",
+    "digitalTransformation": "Transformation numérique et DPI",
+    "interoperability": "Interopérabilité full-stack",
+    "dataGovernance": "Gouvernance des données",
+    "eProcurement": "e-Procurement",
+    "eInvoicing": "e-Invoicing",
+    "webPortals": "Portails web gouvernementaux",
+    "agenticState": "État agentique",
+    "eServices": "e-Services"
   },
   "Rail": {
     "pageSections": "Sections de la page",

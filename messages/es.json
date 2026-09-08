@@ -7,9 +7,7 @@
     "mobileNavigation": "Navegación móvil",
     "openMenu": "Abrir menú",
     "closeMenu": "Cerrar menú",
-    "data": "Datos",
-    "process": "Procesos",
-    "intelligence": "Inteligencia",
+    "domains": "Áreas",
     "portfolio": "Portafolio",
     "news": "Noticias",
     "contact": "Contacto"
@@ -29,13 +27,18 @@
   "Introduction": {
     "annotation": "Quiénes somos",
     "paragraph": "Arxia es una empresa de Infraestructura Pública Digital y Transformación Digital. Nuestro equipo de consultores e ingenieros expertos ha desarrollado proyectos digitales en todo el mundo, en colaboración con organizaciones internacionales y donantes. Nuestro objetivo es transformar la vida de las personas mediante tecnología de impacto y el desarrollo de capacidades.",
-    "exploreCta": "Explorar {name}"
+    "statementLabel": "EL NÚCLEO",
+    "statementTitle": "Interoperabilidad full-stack.",
+    "statementBody": "Del marco nacional al intercambio de datos en producción. Trabajamos en todas las capas que importan —estrategia, gobernanza, estándares, semántica y las propias plataformas— para que las piezas de un Estado digital encajen de verdad.",
+    "statementCta": "Explorar nuestras áreas"
   },
-  "DomainsInMotion": {
-    "annotation": "Qué Hacemos",
-    "heading": "Áreas de Expertise",
+  "Domains": {
+    "annotation": "ÁREAS DE EXPERTISE",
+    "heading": "Ocho áreas. Una arquitectura.",
+    "body": "Trabajamos en todo el stack del gobierno digital. Cada área se sostiene por sí sola, y juntas se potencian. La interoperabilidad es donde reside nuestra mayor expertise.",
+    "coreLabel": "NÚCLEO",
     "explore": "Explorar",
-    "domainCounter": "Área {n} / {total}"
+    "figCaption": "fig. 01 — las ocho áreas, articuladas por la interoperabilidad"
   },
   "Portfolio": {
     "annotation": "Trabajo seleccionado",
@@ -125,9 +128,6 @@
     "aboutUs": "Quiénes somos",
     "portfolio": "Portafolio",
     "news": "Noticias",
-    "data": "Datos",
-    "process": "Procesos",
-    "intelligence": "Inteligencia",
     "getInTouch": "Escríbenos a través del formulario de contacto",
     "headquarters": "Sede central",
     "offices": "Oficinas",
@@ -138,7 +138,15 @@
     "roleBizDevAfrica": "Desarrollo de Negocio, África",
     "rights": "Todos los derechos reservados.",
     "privacy": "Política de Privacidad",
-    "terms": "Términos del Servicio"
+    "terms": "Términos del Servicio",
+    "digitalTransformation": "Transformación digital y DPI",
+    "interoperability": "Interoperabilidad full-stack",
+    "dataGovernance": "Gobernanza de datos",
+    "eProcurement": "e-Procurement",
+    "eInvoicing": "e-Invoicing",
+    "webPortals": "Portales web de gobierno",
+    "agenticState": "Estado agéntico",
+    "eServices": "e-Services"
   },
   "Rail": {
     "pageSections": "Secciones de la página",

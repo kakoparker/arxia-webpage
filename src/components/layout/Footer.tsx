@@ -25,11 +25,17 @@ const companyLinks = [
   { labelKey: "news", href: "/news" },
 ] as const;
 
-// The three domains of expertise, now top-level routes.
+// The eight domains of expertise. The footer is where the full set is
+// enumerated — the top bar only carries a single "Domains" entry.
 const serviceLinks = [
-  { labelKey: "data", href: "/data" },
-  { labelKey: "process", href: "/process" },
-  { labelKey: "intelligence", href: "/intelligence" },
+  { labelKey: "digitalTransformation", href: "/digital-transformation" },
+  { labelKey: "interoperability", href: "/interoperability" },
+  { labelKey: "dataGovernance", href: "/data-governance" },
+  { labelKey: "eProcurement", href: "/e-procurement" },
+  { labelKey: "eInvoicing", href: "/e-invoicing" },
+  { labelKey: "webPortals", href: "/web-portals" },
+  { labelKey: "agenticState", href: "/agentic-state" },
+  { labelKey: "eServices", href: "/e-services" },
 ] as const;
 
 // Place names are proper nouns — not translated.
