@@ -335,26 +335,61 @@ Before any section is done, verify:
 ### Current information architecture (authoritative)
 
 Arxia is focused entirely on **Digital Public Infrastructure and the digital
-transformation of government**. The site is organized around **three domains of
-expertise**, which sit at the top level:
+transformation of government**. The site is organized around **eight domains of
+expertise**, each with its own top-level page. **Interoperability is the core** —
+the practice the other seven route through — and is treated as such visually and
+in the content, not as a peer in a list.
 
-| Route | Domain | Covers |
-|-------|--------|--------|
-| `/data` | **Data** | Interoperability, data governance, data exchange infrastructure |
-| `/process` | **Process** | e-Government strategy, service design, e-procurement, e-invoicing, portals, capacity building |
-| `/intelligence` | **Intelligence** | Agentic state, AI for public services, AI acceleration, AI governance |
+| # | Route | Domain |
+|---|-------|--------|
+| 01 | `/digital-transformation` | Digital transformation & DPI |
+| 02 | `/interoperability` | **Full-stack interoperability** (core) |
+| 03 | `/data-governance` | Data governance |
+| 04 | `/e-procurement` | e-Procurement |
+| 05 | `/e-invoicing` | e-Invoicing |
+| 06 | `/web-portals` | Government web portals |
+| 07 | `/agentic-state` | Agentic state |
+| 08 | `/e-services` | e-Services |
 
-Homepage flow: Hero → client carousel → Introduction (pinned; curtains part to
-reveal the three domains) → domains-in-motion chapter → global presence →
-portfolio → news → contact.
+**Homepage flow:** Hero → client carousel → Introduction (pinned; curtains part
+to reveal the "Full-stack interoperability." statement plate) → `#expertise`
+domain plate (a 4×3 drafting grid; interoperability holds the centre as a 2×2
+anchor with a self-drawing node schematic) → global presence → portfolio → news
+→ contact.
 
-**History — do not reintroduce:** the site previously ran a two-vertical model
-(*Arxia Govtech* | *Arxia Industries*) crossed with the three domains, a 2×3
-matrix at `/{govtech,industries}/{data,process,intelligence}`. The Industries
-vertical was retired and the Govtech wrapper collapsed when the company
-refocused on government; all those URLs now 301 to the top-level domain routes
-(see `next.config.mjs`). The "Main Page Structure" and "Our Domains of
-Expertise" sections above are the **original 2025 design spec** and describe a
-still-earlier seven-domain model — they are kept for historical reference and
-no longer reflect the built site. The design-token and component sections below
-them ARE still current and authoritative.
+**Data model.** `src/data/expertise-domains.ts` is the single source of truth for
+domain identity (slug, plate number, name, description, icon, core flag) and is
+localized via `src/data/i18n/expertise-domains.{es,fr}.ts`.
+`src/data/domain-pages.ts` holds only what each page adds — the offer catalogue,
+featured cases, and curated `relatedSlugs`. `getDomainPage()` merges the two.
+Never duplicate name/description into domain-pages.
+
+**Page structure** (all eight share it, via `DomainPageView`): hero + breadcrumb
+→ offer categories (Consultancy / Services / Products / Trainings) → featured
+cases → related domains (a curated three) → CTA.
+
+**Nav** carries a single `Domains` entry to `/#expertise`; the footer enumerates
+all eight.
+
+**History — do not reintroduce.** Two earlier models were retired:
+1. A two-vertical brand split (*Arxia Govtech* | *Arxia Industries*) crossed
+   with three domains — a 2×3 matrix at
+   `/{govtech,industries}/{data,process,intelligence}`. Industries went when the
+   company refocused on government.
+2. A three-division model (Data · Process · Intelligence) at `/data`,
+   `/process`, `/intelligence`, which grouped today's domains one level up and
+   buried the individual offers.
+All of those URLs 301 to the current domain routes — see `next.config.mjs`,
+which documents all three generations. There is also a still-earlier
+seven-domain spec described in the "Main Page Structure" and "Our Domains of
+Expertise" sections above: those are the **original 2025 design spec**, kept for
+historical reference, and no longer reflect the built site. The design-token and
+component sections between them ARE current and authoritative.
+
+**Known content gaps.** Four domain pages are thin because the offers written
+for the old three-division pages didn't cover them evenly: `e-invoicing` (2
+offers), `data-governance`, `e-procurement` and `e-services` (3 each). They
+render correctly but want more per-offer content. `src/data/portfolio.ts` also
+still carries the coarse `data | process | intelligence` capability tag
+(`PortfolioCapability`); retagging the 43 projects to the eight domains is a
+pending pass.

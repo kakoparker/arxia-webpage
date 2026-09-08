@@ -31,8 +31,8 @@ the site _says_, you almost always edit `src/data/*` — not a component.
 
 ```
 src/data/
-  domain-pages.ts      ← THE big one: the three /{data,process,intelligence} pages
-  domains.ts           ← the three domains of expertise (cards, icons, blurbs)
+  expertise-domains.ts ← the eight domains: identity (name, blurb, icon, core flag)
+  domain-pages.ts      ← THE big one: each domain page's offers, cases, relations
   portfolio.ts         ← portfolio case studies
   portfolio-domains.ts ← portfolio filter taxonomy
   news.ts              ← news articles (body is structured blocks, not raw HTML)
@@ -49,9 +49,7 @@ App Router, file-based. Each domain of expertise is its own top-level route:
 
 ```
 src/app/
-  data/page.tsx                   → /data
-  process/page.tsx                → /process
-  intelligence/page.tsx           → /intelligence
+  interoperability/page.tsx       → /interoperability   (+ 7 sibling domains)
   news/[slug]/page.tsx            → /news/<article-slug>
   api/contact/route.ts            → POST /api/contact (Node runtime)
   sitemap.ts robots.ts            → /sitemap.xml /robots.txt
@@ -66,9 +64,15 @@ enough to produce a new static route — no routing code to touch.
 ## Common tasks
 
 ### Edit copy on a domain page
-Open `src/data/domain-pages.ts`. Each of the six pages is one object: hero text,
-SEO metadata, and `categories[]` (Consultancy / Services / Trainings / Products),
-each with `items[]`. Item shape: `{ slug, title, description, image?, isRoadmap? }`.
+Open `src/data/domain-pages.ts`. Each of the eight pages is one object holding
+`categories[]` (Consultancy / Services / Trainings / Products), each with
+`items[]`, plus `featuredCases[]` and `relatedSlugs[]`. Item shape:
+`{ slug, title, description, image?, isRoadmap? }`.
+
+The page's own name, blurb, icon and SEO title/description are NOT here — they
+come from `src/data/expertise-domains.ts` (the single source of truth for domain
+identity) and are merged in by `getDomainPage()`. Edit them there.
+
 Section background mode (light/dark) is decided by category order — see
 `src/components/domain/DomainPageView.tsx`.
 
