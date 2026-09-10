@@ -24,14 +24,6 @@
     "subtitle": "Donner aux gouvernements et à leurs écosystèmes les moyens de bâtir leur avenir numérique",
     "cta": "Contactez-nous"
   },
-  "Introduction": {
-    "annotation": "Qui sommes-nous",
-    "paragraph": "Arxia est une entreprise d'Infrastructure Publique Numérique et de Transformation Numérique. Notre équipe de consultants et d'ingénieurs experts a mené des projets numériques partout dans le monde, en partenariat avec des organisations internationales et des bailleurs de fonds. Notre objectif : transformer la vie des personnes grâce à une technologie à fort impact et au renforcement des capacités.",
-    "statementLabel": "LE CŒUR",
-    "statementTitle": "Interopérabilité full-stack.",
-    "statementBody": "Du cadre national à l'échange de données en production. Nous intervenons sur toutes les couches qui comptent — stratégie, gouvernance, normes, sémantique et les plateformes elles-mêmes — pour que les pièces d'un État numérique s'assemblent vraiment.",
-    "statementCta": "Découvrir nos domaines"
-  },
   "Domains": {
     "annotation": "DOMAINES D'EXPERTISE",
     "heading": "Huit domaines. Une architecture.",
@@ -125,7 +117,6 @@
     "company": "Entreprise",
     "services": "Services",
     "contact": "Contact",
-    "aboutUs": "À propos",
     "portfolio": "Portfolio",
     "news": "Actualités",
     "getInTouch": "Contactez-nous via le formulaire",
@@ -151,7 +142,6 @@
   "Rail": {
     "pageSections": "Sections de la page",
     "jumpTo": "Aller à {label}",
-    "about": "À propos",
     "expertise": "Domaines",
     "presence": "Présence",
     "portfolio": "Portfolio",

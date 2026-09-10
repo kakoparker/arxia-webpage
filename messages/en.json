@@ -24,14 +24,6 @@
     "subtitle": "Empowering governments and their ecosystems to build their digital future",
     "cta": "Contact Us"
   },
-  "Introduction": {
-    "annotation": "Who We Are",
-    "paragraph": "Arxia is a Digital Public Infrastructure and Digital Transformation company. Our team of expert consultants and engineers have developed digital projects all over the world, in partnership with international organizations and donors. Our goal is to transform the lives of people through impactful technology and capacity building.",
-    "statementLabel": "THE CORE",
-    "statementTitle": "Full-stack interoperability.",
-    "statementBody": "From national framework to live data exchange. We work across every layer that matters — strategy, governance, standards, semantics and the platforms themselves — so the pieces of a digital state actually fit together.",
-    "statementCta": "Explore our domains"
-  },
   "Domains": {
     "annotation": "DOMAINS OF EXPERTISE",
     "heading": "Eight domains. One architecture.",
@@ -125,7 +117,6 @@
     "company": "Company",
     "services": "Services",
     "contact": "Contact",
-    "aboutUs": "About Us",
     "portfolio": "Portfolio",
     "news": "News",
     "getInTouch": "Get in touch via the contact form",
@@ -151,7 +142,6 @@
   "Rail": {
     "pageSections": "Page sections",
     "jumpTo": "Jump to {label}",
-    "about": "About",
     "expertise": "Expertise",
     "presence": "Presence",
     "portfolio": "Portfolio",

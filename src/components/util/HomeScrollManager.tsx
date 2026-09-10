@@ -4,31 +4,23 @@ import { useEffect } from "react";
 import { ScrollTrigger } from "@/hooks/useGsapScrollTrigger";
 
 /**
- * Home-only scroll/ScrollTrigger lifecycle manager.
+ * Home-only scroll-position memory.
  *
- * The homepage is a cinematic scroll-driven experience: `Introduction` and
- * the `DomainsInMotion` chapter each create GSAP ScrollTrigger PINS,
- * which inject tall pin-spacers into the layout. Those spacers only exist after the
- * sections mount — and several are `next/dynamic` imports, so they appear a
- * tick *after* first paint.
- *
- * Why default scroll restoration breaks here: the App Router (or the browser)
- * restores the previous scroll position immediately on a back-navigation,
- * while the page is still short (pins not built yet). ScrollTrigger then
- * initialises against a mismeasured layout and the scrubbed timelines settle
- * at the wrong progress — blank grid band.
- *
- * What this does instead — proper restore that lands you back where you were:
- *   1. Take manual control of scroll restoration on the home route.
- *   2. Continuously remember the homepage scroll position (per tab session).
- *   3. On (re)entry: refresh ScrollTrigger so all pin-spacers are built and
- *      the document reaches its true full height, THEN scroll to the saved
- *      position, THEN ScrollTrigger.update() so the pinned/scrubbed timelines
- *      (doors, domain cards) re-sync to that exact position.
- *   4. First visit of the session (nothing saved) → start at the top/hero.
+ * Takes manual control of scroll restoration on the home route so that:
+ *   1. Returning to the homepage in the same tab session lands you back where
+ *      you were, after a ScrollTrigger.refresh() so the page has reached its
+ *      true full height (the logo carousel and world map both build
+ *      GSAP timelines that can change layout height).
+ *   2. The first visit of a session always starts at the top, on the hero,
+ *      rather than wherever the browser felt like restoring to.
  *
  * On unmount, native `scrollRestoration` is restored so every other route
  * keeps normal per-page scroll memory.
+ *
+ * NOTE: this originally existed to work around GSAP pin-spacers injected by a
+ * pinned Introduction section. That section is gone and the homepage no longer
+ * pins anything, so the refresh() call is now belt-and-braces rather than
+ * load-bearing — the scroll memory itself is still the point.
  */
 const STORAGE_KEY = "arxia:home:scrollY";
 

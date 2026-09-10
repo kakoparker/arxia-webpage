@@ -6,7 +6,6 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
 import { LogoCarousel } from "@/components/sections/LogoCarousel";
-import { Introduction } from "@/components/sections/Introduction";
 import { ScrollProgressRail } from "@/components/ui/ScrollProgressRail";
 import { HomeScrollManager } from "@/components/util/HomeScrollManager";
 
@@ -55,7 +54,6 @@ export default async function Home({
   setRequestLocale(locale);
   const t = await getTranslations("Rail");
   const homeRailSections = [
-    { id: "intro", label: t("about") },
     { id: "expertise", label: t("expertise") },
     { id: "presence", label: t("presence") },
     { id: "portfolio", label: t("portfolio") },
@@ -74,35 +72,30 @@ export default async function Home({
         {/* 2 — Clients */}
         <LogoCarousel />
 
-        {/* 3 — Who we are. Pinned section: read intro → curtains close →
-            curtains part to reveal the domains. The reveal lives inside this
-            section's own layer, so unpinning transitions straight into the
-            domain plate below. */}
-        <Introduction />
-
-        {/* 4 — The eight domains, plotted as a blueprint plate. */}
+        {/* 3 — The eight domains, plotted as a blueprint plate. Straight off
+            the client carousel: the domains ARE the pitch, so nothing stands
+            between the hero and them. Ultra-light keeps the surface
+            alternation honest against the carousel's white band. */}
         <div className="snap-section">
-          <DomainsGrid tone="light" />
+          <DomainsGrid tone="ultra-light" />
         </div>
 
-        {/* From here on: each non-pinned section is a snap target. */}
-
-        {/* 5 — Global presence */}
+        {/* 4 — Global presence */}
         <div className="snap-section">
           <GlobalPresence />
         </div>
 
-        {/* 6 — Portfolio */}
+        {/* 5 — Portfolio */}
         <div className="snap-section">
           <Portfolio />
         </div>
 
-        {/* 7 — Latest news */}
+        {/* 6 — Latest news */}
         <div className="snap-section">
           <News />
         </div>
 
-        {/* 8 — Contact form */}
+        {/* 7 — Contact form */}
         <div className="snap-section">
           <CallToAction />
         </div>

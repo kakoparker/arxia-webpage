@@ -20,7 +20,6 @@ function LinkedInIcon({ className }: { className?: string }) {
 
 // `labelKey` → Footer message namespace; href is structural.
 const companyLinks = [
-  { labelKey: "aboutUs", href: "/#intro" },
   { labelKey: "portfolio", href: "/portfolio" },
   { labelKey: "news", href: "/news" },
 ] as const;
