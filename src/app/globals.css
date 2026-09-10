@@ -489,7 +489,82 @@ html {
 
 /* ============================================
    PORTFOLIO CARD
+   Rests white, flips to Blueprint Blue on hover / keyboard focus. Every
+   colour in the card lives here, resting state included, so the inversion
+   is defined once rather than branched in the component. background-color
+   transitions smoothly (background-IMAGE does not), which is why the hover
+   surface is flat Blueprint Blue rather than the blueprint-grid-blue class.
    ============================================ */
+.pf-card {
+  background-color: var(--white);
+  border-color: var(--gray-light);
+  transition:
+    background-color var(--duration-normal) var(--ease-default),
+    border-color var(--duration-normal) var(--ease-default),
+    box-shadow var(--duration-normal) var(--ease-default),
+    transform var(--duration-normal) var(--ease-default);
+}
+.pf-card:hover,
+.pf-card:focus-visible {
+  background-color: var(--blueprint-blue);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px rgba(13, 21, 32, 0.28);
+}
+
+/* Text roles. gray-medium is only 3.0:1 on white, so the resting metadata
+   uses gray-dark; on the blue surface gray-medium is comfortably legible. */
+.pf-title {
+  color: var(--blueprint-blue);
+}
+.pf-body {
+  color: var(--gray-dark);
+}
+.pf-meta {
+  color: var(--gray-dark);
+}
+.pf-strong {
+  color: var(--blueprint-blue);
+}
+.pf-title,
+.pf-body,
+.pf-meta,
+.pf-strong {
+  transition: color var(--duration-normal) var(--ease-default);
+}
+
+.pf-card:hover .pf-title,
+.pf-card:focus-visible .pf-title,
+.pf-card:hover .pf-strong,
+.pf-card:focus-visible .pf-strong {
+  color: var(--white);
+}
+.pf-card:hover .pf-body,
+.pf-card:focus-visible .pf-body {
+  color: var(--gray-light);
+}
+.pf-card:hover .pf-meta,
+.pf-card:focus-visible .pf-meta {
+  color: var(--gray-medium);
+}
+
+/* Hairlines invert with the surface. */
+.pf-rule {
+  border-color: var(--gray-light);
+  transition: border-color var(--duration-normal) var(--ease-default);
+}
+.pf-leader {
+  border-color: rgba(160, 174, 192, 0.35);
+  transition: border-color var(--duration-normal) var(--ease-default);
+}
+.pf-card:hover .pf-rule,
+.pf-card:focus-visible .pf-rule {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+.pf-card:hover .pf-leader,
+.pf-card:focus-visible .pf-leader {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
 .pf-card-accent {
   transform: scaleY(0);
   transform-origin: top;
@@ -629,8 +704,15 @@ html {
   .domain-plate-line {
     opacity: 1 !important;
   }
+  .pf-card,
   .pf-card-accent,
-  .pf-card-dot {
+  .pf-card-dot,
+  .pf-title,
+  .pf-body,
+  .pf-meta,
+  .pf-strong,
+  .pf-rule,
+  .pf-leader {
     transition: none !important;
   }
 }

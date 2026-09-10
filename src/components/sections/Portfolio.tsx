@@ -13,12 +13,12 @@ import { PortfolioScrollReveal } from "./PortfolioAnimations";
  * one-screen section on a ~760px viewport once the header and the CTA are
  * accounted for, and one dense row reads better than two crowded ones.
  *
- * The first card takes the Blueprint Blue surface and the rest stay white.
- * Four identical white tiles read as a table; one dark plate gives the row a
- * focal point and reuses the anchor-and-satellites language already
- * established in the domains section. Red stays where the brand allows it —
- * the accent tick, the connection dot and the hover rule — never a fill, a
- * border, or type at this size.
+ * The cards rest white and flip to Blueprint Blue on hover or keyboard focus,
+ * so the colour reads as "this one is active" rather than decoration. Every
+ * colour in the card — including the resting state — is set in globals.css
+ * under `.pf-card`, so the inversion is defined once instead of being
+ * conditionally branched here. Red stays where the brand allows it: the accent
+ * tick, the connection dot and the hover rule. Never a fill, a border, or type.
  */
 export function Portfolio() {
   const t = useTranslations("Portfolio");
@@ -62,7 +62,7 @@ export function Portfolio() {
               data-animate-index={i + 1}
               className="animate-on-scroll"
             >
-              <ProjectCard project={project} index={i} lead={i === 0} />
+              <ProjectCard project={project} index={i} />
             </article>
           ))}
         </div>
@@ -78,7 +78,7 @@ export function Portfolio() {
 }
 
 /**
- * One case. `lead` swaps to the Blueprint Blue surface.
+ * One case.
  *
  * Note the clamp/grow split below: `line-clamp` sets `display:-webkit-box`, so
  * putting `flex-1` on the same element makes it grow past the clamp and render
@@ -87,23 +87,10 @@ export function Portfolio() {
 function ProjectCard({
   project,
   index,
-  lead,
 }: {
   project: PortfolioProject;
   index: number;
-  lead: boolean;
 }) {
-  const surface = lead
-    ? "blueprint-grid-blue border-white/[0.14] hover:border-white/30"
-    : "bg-white border-gray-light hover:border-gray-medium/60";
-  const titleColor = lead ? "text-white" : "text-blueprint-blue";
-  const bodyColor = lead ? "text-gray-light" : "text-gray-dark";
-  // gray-medium is 3.0:1 on white — large text only, so mono metadata on the
-  // white cards uses gray-dark (5.9:1). Only the dark plate can afford it.
-  const metaColor = lead ? "text-gray-medium" : "text-gray-dark";
-  const rule = lead ? "border-white/15" : "border-gray-light";
-  const leader = lead ? "border-white/20" : "border-gray-medium/35";
-
   const clamp = (lines: number) => ({
     display: "-webkit-box" as const,
     WebkitLineClamp: lines,
@@ -114,13 +101,7 @@ function ProjectCard({
   return (
     <Link
       href="/portfolio"
-      className={[
-        "pf-card group relative flex h-full flex-col overflow-hidden border p-5",
-        "transition-[border-color,box-shadow,transform] duration-300",
-        "hover:-translate-y-0.5 hover:shadow-[var(--shadow-card-hover)]",
-        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-red focus-visible:outline-offset-2",
-        surface,
-      ].join(" ")}
+      className="pf-card group relative flex h-full flex-col overflow-hidden border p-5 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-red focus-visible:outline-offset-2"
     >
       {/* Hover rule, drawn top-down. An approved red use; never the border. */}
       <span
@@ -131,11 +112,11 @@ function ProjectCard({
       {/* Plate header: index, leader line, connection dot. */}
       <div aria-hidden className="mb-4 flex items-center gap-2.5">
         <span
-          className={`font-[family-name:var(--font-jetbrains)] text-[10px] tracking-[2px] ${metaColor}`}
+          className="pf-meta font-[family-name:var(--font-jetbrains)] text-[10px] tracking-[2px]"
         >
           {String(index + 1).padStart(2, "0")}
         </span>
-        <span className={`h-px flex-1 border-t border-dashed ${leader}`} />
+        <span className="pf-leader h-px flex-1 border-t border-dashed" />
         <span className="pf-card-dot h-[5px] w-[5px] shrink-0 bg-accent-red" />
       </div>
 
@@ -143,7 +124,7 @@ function ProjectCard({
           element on the row. Not red type: at 9px it would fail AA. */}
       <div aria-hidden className="mb-2 h-[2px] w-4 bg-accent-red" />
       <p
-        className={`mb-2.5 uppercase ${metaColor}`}
+        className="pf-meta mb-2.5 uppercase"
         style={{
           fontFamily: "var(--font-mono)",
           fontSize: "9px",
@@ -155,7 +136,7 @@ function ProjectCard({
       </p>
 
       <h3
-        className={`font-semibold ${titleColor}`}
+        className="pf-title font-semibold"
         style={{
           fontFamily: "var(--font-primary)",
           fontSize: "16px",
@@ -169,7 +150,7 @@ function ProjectCard({
 
       <div className="mt-2 flex-1">
         <p
-          className={bodyColor}
+          className="pf-body"
           style={{
             fontFamily: "var(--font-primary)",
             fontSize: "13px",
@@ -181,9 +162,9 @@ function ProjectCard({
         </p>
       </div>
 
-      <div className={`mt-4 border-t pt-3 ${rule}`}>
+      <div className="pf-rule mt-4 border-t pt-3">
         <p
-          className={metaColor}
+          className="pf-meta"
           style={{
             fontFamily: "var(--font-mono)",
             fontSize: "10px",
@@ -194,7 +175,7 @@ function ProjectCard({
           {project.client}
         </p>
         <p
-          className={`mt-1 uppercase ${lead ? "text-white" : "text-blueprint-blue"}`}
+          className="pf-strong mt-1 uppercase"
           style={{
             fontFamily: "var(--font-mono)",
             fontSize: "10px",
