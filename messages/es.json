@@ -25,12 +25,11 @@
     "cta": "Contáctanos"
   },
   "Domains": {
-    "annotation": "ÁREAS DE EXPERTISE",
-    "heading": "Ocho áreas. Una arquitectura.",
-    "body": "Trabajamos en todo el stack del gobierno digital. Cada área se sostiene por sí sola, y juntas se potencian. La interoperabilidad es donde reside nuestra mayor expertise.",
+    "annotation": "INFRAESTRUCTURA PÚBLICA DIGITAL Y TRANSFORMACIÓN DIGITAL",
+    "heading": "Siete áreas. Una arquitectura.",
+    "body": "La infraestructura pública digital no es un servicio que se compra: es el resultado de estas siete prácticas. La interoperabilidad es el núcleo que articula las otras seis.",
     "coreLabel": "NÚCLEO",
-    "explore": "Explorar",
-    "figCaption": "fig. 01 — las ocho áreas, articuladas por la interoperabilidad"
+    "explore": "Explorar"
   },
   "Portfolio": {
     "annotation": "Trabajo seleccionado",
@@ -130,7 +129,6 @@
     "rights": "Todos los derechos reservados.",
     "privacy": "Política de Privacidad",
     "terms": "Términos del Servicio",
-    "digitalTransformation": "Transformación digital y DPI",
     "interoperability": "Interoperabilidad full-stack",
     "dataGovernance": "Gobernanza de datos",
     "eProcurement": "e-Procurement",

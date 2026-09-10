@@ -9,11 +9,6 @@ export interface ExpertiseDomainOverlay {
 }
 
 export const expertiseDomainsEs: Record<string, ExpertiseDomainOverlay> = {
-  "digital-transformation": {
-    name: "Transformación digital y DPI",
-    description:
-      "Construimos los building blocks digitales del Estado moderno: desde la estrategia, las políticas y los estándares hasta la implementación técnica.",
-  },
   interoperability: {
     name: "Interoperabilidad full-stack",
     description:

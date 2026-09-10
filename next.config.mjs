@@ -71,9 +71,14 @@ const nextConfig = {
     // The three divisions → the domain that inherited most of their content.
     const divisions = {
       "/data": "/interoperability",
-      "/process": "/digital-transformation",
+      "/process": "/e-services",
       "/intelligence": "/agentic-state",
     };
+
+    // `digital-transformation` was briefly modelled as a domain. It is the
+    // umbrella over all seven, not one of them, so it has no page of its own —
+    // the homepage plate carries the framing.
+    const umbrella = [...both("/digital-transformation", "/#expertise")];
 
     // Retired vertical landing pages have no successor (the whole company is
     // now that vertical), so they go home; their domain children map across.
@@ -91,34 +96,35 @@ const nextConfig = {
     // Legacy /domains/* slugs. English-only: these URLs predate i18n.
     const legacyDomainSlugs = {
       // Three-vertical scheme
-      "digital-transformation": "/digital-transformation",
+      "digital-transformation": "/#expertise",
       "agentic-state": "/agentic-state",
       "government-portals": "/web-portals",
       "ai-ecosystems": "/agentic-state",
       interoperability: "/interoperability",
       "e-procurement": "/e-procurement",
       "e-invoicing": "/e-invoicing",
-      "e-government": "/digital-transformation",
+      "e-government": "/e-services",
       "web-portals": "/web-portals",
       ai: "/agentic-state",
-      "ecosystem-building": "/digital-transformation",
-      "capacity-building": "/digital-transformation",
-      internationalization: "/digital-transformation",
-      "corporate-transformation": "/digital-transformation",
+      "ecosystem-building": "/e-services",
+      "capacity-building": "/e-services",
+      internationalization: "/e-services",
+      "corporate-transformation": "/e-services",
       "corporate-ai": "/agentic-state",
       "corporate-data": "/data-governance",
       // Matrix slugs that briefly rendered under /domains/*
       "govtech-data": "/interoperability",
-      "govtech-process": "/digital-transformation",
+      "govtech-process": "/e-services",
       "govtech-intelligence": "/agentic-state",
       "industries-data": "/data-governance",
-      "industries-process": "/digital-transformation",
+      "industries-process": "/e-services",
       "industries-intelligence": "/agentic-state",
     };
 
     return [
       ...verticalRoutes,
       ...divisionRoutes,
+      ...umbrella,
       ...Object.entries(legacyDomainSlugs).map(([from, to]) => ({
         source: `/domains/${from}`,
         destination: to,

@@ -67,83 +67,6 @@ export interface DomainPage extends DomainPageContent {
 }
 
 export const domainPages: DomainPageContent[] = [
-  // === DIGITAL TRANSFORMATION ===
-  {
-    slug: "digital-transformation",
-    categories: [
-      {
-        name: "Consultancy",
-        tagline:
-          "Strategy, policy, and roadmaps for whole-of-government transformation.",
-        items: [
-          {
-            slug: "egov-strategy",
-            title: "e-Government strategies and roadmaps",
-            description:
-              "National digitalization strategies translated into actionable roadmaps — sequencing, budget, governance, and institutional ownership so the strategy doesn't sit on a shelf.",
-            image: "/images/services/govtech-process/egov-strategy-illustration-v2.webp",
-          },
-          {
-            slug: "bpmn-process-design",
-            title: "Process design and optimization (BPMN 2.0)",
-            description:
-              "BPMN 2.0 process modeling for public services — with formal notation, stakeholder walkthroughs, and executable pilots on leading workflow engines.",
-            image: "/images/services/govtech-process/bpmn-process-design-illustration-v2.webp",
-          },
-        ],
-      },
-      {
-        name: "Services",
-        tagline:
-          "Building and rolling out the building blocks.",
-        items: [
-          {
-            slug: "egov-development",
-            title: "e-Government system development",
-            description:
-              "Custom government platform development — from registries and case-management systems to citizen-facing service portals, built on open, interoperable stacks.",
-            image: "/images/services/govtech-process/egov-development-illustration-v2.webp",
-          },
-          {
-            slug: "govstack-adoption",
-            title: "GovStack adoption programs",
-            description:
-              "Country-level GovStack adoption — architecture alignment, building-block selection, pilots, and institutional readiness.",
-            image: "/images/services/govtech-process/govstack-adoption-illustration-v2.webp",
-          },
-        ],
-      },
-      {
-        name: "Trainings",
-        tagline:
-          "Capacity building for public-sector teams and local ecosystems.",
-        items: [
-          {
-            slug: "bpmn-coaching",
-            title: "Workshop: BPMN implementation coaching",
-            description:
-              "Hands-on coaching on Camunda, Flowable, and similar workflow engines. Delivered inside your team, so the capability remains after we leave.",
-            image: "/images/services/govtech-process/bpmn-coaching-illustration-v2.webp",
-          },
-          {
-            slug: "ecosystem-capacity",
-            title: "Ecosystem Internationalization and Value Proposition",
-            description:
-              "Programs that equip local tech ecosystems to deliver DPI work themselves and compete internationally — from train-the-trainer to export readiness.",
-            image: "/images/services/govtech-process/ecosystem-capacity-illustration-v2.webp",
-          },
-        ],
-      },
-    ],
-    featuredCases: [
-      { projectSlug: "senegal-goin-digital" },
-      { projectSlug: "romania-egov-strategy" },
-      { projectSlug: "govstack-adoption-africa" },
-      { projectSlug: "senegal-bpmn-senum" },
-    ],
-    relatedSlugs: ["interoperability", "e-services", "agentic-state"],
-  },
-
   // === INTEROPERABILITY ===
   {
     slug: "interoperability",
@@ -209,6 +132,13 @@ export const domainPages: DomainPageContent[] = [
               "AI-assisted workflows that route requests, documents, and decisions across multiple agencies — compressing weeks of coordination into days.",
             image: "/images/services/govtech-intelligence/inter-institutional-workflows-illustration.webp",
           },
+          {
+            slug: "govstack-adoption",
+            title: "GovStack adoption programs",
+            description:
+              "Country-level GovStack adoption — architecture alignment, building-block selection, pilots, and institutional readiness.",
+            image: "/images/services/govtech-process/govstack-adoption-illustration-v2.webp",
+          },
         ],
       },
       {
@@ -248,7 +178,7 @@ export const domainPages: DomainPageContent[] = [
       { projectSlug: "rwanda-integration-coaching" },
       { projectSlug: "icglr-data-sharing-policy" },
     ],
-    relatedSlugs: ["data-governance", "digital-transformation", "e-services"],
+    relatedSlugs: ["data-governance", "e-services", "web-portals"],
   },
 
   // === DATA GOVERNANCE ===
@@ -298,7 +228,7 @@ export const domainPages: DomainPageContent[] = [
       { projectSlug: "burundi-mining-data" },
       { projectSlug: "digital-maturity-tool" },
     ],
-    relatedSlugs: ["interoperability", "agentic-state", "digital-transformation"],
+    relatedSlugs: ["interoperability", "agentic-state", "e-procurement"],
   },
 
   // === E PROCUREMENT ===
@@ -353,7 +283,7 @@ export const domainPages: DomainPageContent[] = [
       { projectSlug: "romania-eprocurement-platform" },
       { projectSlug: "uganda-ppda" },
     ],
-    relatedSlugs: ["e-invoicing", "interoperability", "digital-transformation"],
+    relatedSlugs: ["e-invoicing", "interoperability", "web-portals"],
   },
 
   // === E INVOICING ===
@@ -464,7 +394,7 @@ export const domainPages: DomainPageContent[] = [
       { projectSlug: "rwanda-typo3-coaching" },
       { projectSlug: "rwanda-web-accessibility" },
     ],
-    relatedSlugs: ["e-services", "digital-transformation", "interoperability"],
+    relatedSlugs: ["e-services", "interoperability", "agentic-state"],
   },
 
   // === AGENTIC STATE ===
@@ -584,11 +514,25 @@ export const domainPages: DomainPageContent[] = [
           "Service redesign around real citizen journeys.",
         items: [
           {
+            slug: "egov-strategy",
+            title: "e-Government strategies and roadmaps",
+            description:
+              "National digitalization strategies translated into actionable roadmaps — sequencing, budget, governance, and institutional ownership so the strategy doesn't sit on a shelf.",
+            image: "/images/services/govtech-process/egov-strategy-illustration-v2.webp",
+          },
+          {
             slug: "life-events-redesign",
             title: "Life-events and citizen-service redesign",
             description:
               "We redesign how citizens experience government moments — birth, business registration, retirement — by rebuilding the services behind them end-to-end.",
             image: "/images/services/govtech-process/life-events-redesign-illustration-v2.webp",
+          },
+          {
+            slug: "bpmn-process-design",
+            title: "Process design and optimization (BPMN 2.0)",
+            description:
+              "BPMN 2.0 process modeling for public services — with formal notation, stakeholder walkthroughs, and executable pilots on leading workflow engines.",
+            image: "/images/services/govtech-process/bpmn-process-design-illustration-v2.webp",
           },
         ],
       },
@@ -611,16 +555,46 @@ export const domainPages: DomainPageContent[] = [
               "Extraction, classification, and summarization of the document backlogs that most public institutions are drowning in — from permits to grant applications.",
             image: "/images/services/govtech-intelligence/document-processing-illustration.webp",
           },
+          {
+            slug: "egov-development",
+            title: "e-Government system development",
+            description:
+              "Custom government platform development — from registries and case-management systems to citizen-facing service portals, built on open, interoperable stacks.",
+            image: "/images/services/govtech-process/egov-development-illustration-v2.webp",
+          },
+        ],
+      },
+      {
+        name: "Trainings",
+        tagline:
+          "Capacity building for the teams who design and run the services.",
+        items: [
+          {
+            slug: "bpmn-coaching",
+            title: "Workshop: BPMN implementation coaching",
+            description:
+              "Hands-on coaching on Camunda, Flowable, and similar workflow engines. Delivered inside your team, so the capability remains after we leave.",
+            image: "/images/services/govtech-process/bpmn-coaching-illustration-v2.webp",
+          },
+          {
+            slug: "ecosystem-capacity",
+            title: "Ecosystem Internationalization and Value Proposition",
+            description:
+              "Programs that equip local tech ecosystems to deliver DPI work themselves and compete internationally — from train-the-trainer to export readiness.",
+            image: "/images/services/govtech-process/ecosystem-capacity-illustration-v2.webp",
+          },
         ],
       },
     ],
     featuredCases: [
+      { projectSlug: "senegal-goin-digital" },
+      { projectSlug: "romania-egov-strategy" },
+      { projectSlug: "senegal-bpmn-senum" },
       { projectSlug: "rwanda-workflow-platform" },
       { projectSlug: "ethiopia-input-output" },
-      { projectSlug: "grant-prep-automation" },
-      { projectSlug: "bpo-chile-automation" },
+      { projectSlug: "govstack-adoption-africa" },
     ],
-    relatedSlugs: ["web-portals", "agentic-state", "digital-transformation"],
+    relatedSlugs: ["web-portals", "agentic-state", "interoperability"],
   },
 
 ];

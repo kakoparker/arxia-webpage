@@ -25,12 +25,11 @@
     "cta": "Contact Us"
   },
   "Domains": {
-    "annotation": "DOMAINS OF EXPERTISE",
-    "heading": "Eight domains. One architecture.",
-    "body": "We work across the full stack of digital government. Each domain stands on its own, and they compound when combined. Interoperability is where our deepest expertise lies.",
+    "annotation": "DIGITAL PUBLIC INFRASTRUCTURE & DIGITAL TRANSFORMATION",
+    "heading": "Seven domains. One architecture.",
+    "body": "Digital public infrastructure isn't a service you buy — it's what these seven practices add up to. Interoperability is the core the other six route through.",
     "coreLabel": "CORE",
-    "explore": "Explore",
-    "figCaption": "fig. 01 — the eight domains, routed through interoperability"
+    "explore": "Explore"
   },
   "Portfolio": {
     "annotation": "Selected Work",
@@ -130,7 +129,6 @@
     "rights": "All rights reserved.",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
-    "digitalTransformation": "Digital transformation & DPI",
     "interoperability": "Full-stack interoperability",
     "dataGovernance": "Data governance",
     "eProcurement": "e-Procurement",

@@ -5,11 +5,6 @@
 import type { ExpertiseDomainOverlay } from "./expertise-domains.es";
 
 export const expertiseDomainsFr: Record<string, ExpertiseDomainOverlay> = {
-  "digital-transformation": {
-    name: "Transformation numérique et DPI",
-    description:
-      "Nous construisons les building blocks numériques de l'État moderne : de la stratégie, des politiques et des normes jusqu'à la mise en œuvre technique.",
-  },
   interoperability: {
     name: "Interopérabilité full-stack",
     description:

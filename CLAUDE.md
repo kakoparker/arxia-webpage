@@ -335,61 +335,105 @@ Before any section is done, verify:
 ### Current information architecture (authoritative)
 
 Arxia is focused entirely on **Digital Public Infrastructure and the digital
-transformation of government**. The site is organized around **eight domains of
-expertise**, each with its own top-level page. **Interoperability is the core** —
-the practice the other seven route through — and is treated as such visually and
-in the content, not as a peer in a list.
+transformation of government**. The site is organized around **seven domains of
+expertise**, each with its own top-level page.
+
+**"Digital Public Infrastructure & Digital Transformation" is the UMBRELLA, not
+a domain.** It is what the seven add up to — never a plate, never a page, never
+a footer link. It lives in the `#expertise` section annotation
+(`Domains.annotation`). It was briefly modelled as domain 01; that was wrong,
+which is why the numbering starts at interoperability. `/digital-transformation`
+301s to `/#expertise`.
+
+**Interoperability is the core** — the practice the other six route through —
+and is treated as such visually and in the content, not as a peer.
 
 | # | Route | Domain |
 |---|-------|--------|
-| 01 | `/digital-transformation` | Digital transformation & DPI |
-| 02 | `/interoperability` | **Full-stack interoperability** (core) |
-| 03 | `/data-governance` | Data governance |
-| 04 | `/e-procurement` | e-Procurement |
-| 05 | `/e-invoicing` | e-Invoicing |
-| 06 | `/web-portals` | Government web portals |
-| 07 | `/agentic-state` | Agentic state |
-| 08 | `/e-services` | e-Services |
+| 01 | `/interoperability` | **Full-stack interoperability** (core) |
+| 02 | `/data-governance` | Data governance |
+| 03 | `/e-procurement` | e-Procurement |
+| 04 | `/e-invoicing` | e-Invoicing |
+| 05 | `/web-portals` | Government web portals |
+| 06 | `/agentic-state` | Agentic state |
+| 07 | `/e-services` | e-Services |
 
-**Homepage flow:** Hero → client carousel → Introduction (pinned; curtains part
-to reveal the "Full-stack interoperability." statement plate) → `#expertise`
-domain plate (a 4×3 drafting grid; interoperability holds the centre as a 2×2
-anchor with a self-drawing node schematic) → global presence → portfolio → news
-→ contact.
+**Homepage flow:** Hero → client carousel → `#expertise` domain plate → global
+presence → portfolio → news → contact. There is deliberately **nothing between
+the hero and the domains** — no "who we are" interlude. (A pinned Introduction
+section used to sit there and was removed; the homepage now carries no company
+intro copy at all.)
 
-**Data model.** `src/data/expertise-domains.ts` is the single source of truth for
-domain identity (slug, plate number, name, description, icon, core flag) and is
+### One-screen section rhythm (supersedes the 100–120px rule above)
+
+Every content section should land on **a single screen at 100% zoom**. This
+replaces the 100–120px section padding in the spec above, which produced
+1.2–1.6-screen sections that forced a scroll mid-section.
+
+- `SectionContainer` takes `fitScreen`: `min-h-svh`, content vertically
+  centred, padding `clamp(64px, 8vh, 88px)` top / `clamp(48px, 7vh, 80px)`
+  bottom. `svh` so mobile browser chrome can't push content out of view;
+  `min-height` so short viewports grow instead of clipping.
+- Internal rhythm inside a fitScreen section: header margin `mb-6`–`mb-10`
+  (not `mb-16`), grid gaps `gap-4`–`gap-5` (not `gap-6`), card padding
+  `p-5`–`p-6` (not `p-7`).
+- Teaser copy is **clamped**, not shortened at the source: portfolio blurbs
+  `line-clamp-2`, news excerpts `line-clamp-3`. The full text still lives on
+  the destination page.
+- Measured at 1440×900 the homepage is ~7.1 screens: hero 1.00, carousel strip
+  0.19, expertise 1.00, presence 1.01, portfolio 1.03, news 1.00, contact 1.00.
+  Re-measure after any section change.
+- `Portfolio.tsx` predates `SectionContainer` and reproduces the fitScreen
+  rhythm inline — keep the two in step.
+- Mobile is exempt in practice: seven stacked plates cannot fit a phone screen,
+  and `min-height` correctly lets the section grow rather than clip.
+
+**Domain plate design** (`DomainsGrid.tsx`): a 5×2 drafting grid. The anchor
+(interoperability) holds the left two columns as a 2×2 Blueprint Blue plate
+with a six-spoke node schematic — one spoke per surrounding domain. The six
+white satellites carry **number, icon and name only**; their descriptions live
+on their own pages, so the plate stays scannable rather than becoming six
+paragraphs. Motion is three layers (construction set-out sweep → plates
+materialise with registration marks → schematic draws itself, then the core
+pulses), all keyed off `.visible` so `prefers-reduced-motion` is honoured by
+the existing rules in globals.css.
+
+**Data model.** `src/data/expertise-domains.ts` is the single source of truth
+for domain identity (slug, plate number, name, description, icon, core flag),
 localized via `src/data/i18n/expertise-domains.{es,fr}.ts`.
-`src/data/domain-pages.ts` holds only what each page adds — the offer catalogue,
-featured cases, and curated `relatedSlugs`. `getDomainPage()` merges the two.
-Never duplicate name/description into domain-pages.
+`src/data/domain-pages.ts` holds only what each page adds — the offer
+catalogue, featured cases, and curated `relatedSlugs`. `getDomainPage()` merges
+the two. Never duplicate name/description into domain-pages.
 
-**Page structure** (all eight share it, via `DomainPageView`): hero + breadcrumb
-→ offer categories (Consultancy / Services / Products / Trainings) → featured
-cases → related domains (a curated three) → CTA.
+**Page structure** (all seven share it, via `DomainPageView`): hero +
+breadcrumb → offer categories (Consultancy / Services / Products / Trainings)
+→ featured cases → related domains (a curated three) → CTA.
 
-**Nav** carries a single `Domains` entry to `/#expertise`; the footer enumerates
-all eight.
+**Nav** carries a single `Domains` entry to `/#expertise`; the footer
+enumerates all seven.
 
-**History — do not reintroduce.** Two earlier models were retired:
+**History — do not reintroduce.** Three earlier models were retired:
 1. A two-vertical brand split (*Arxia Govtech* | *Arxia Industries*) crossed
    with three domains — a 2×3 matrix at
-   `/{govtech,industries}/{data,process,intelligence}`. Industries went when the
-   company refocused on government.
+   `/{govtech,industries}/{data,process,intelligence}`.
 2. A three-division model (Data · Process · Intelligence) at `/data`,
-   `/process`, `/intelligence`, which grouped today's domains one level up and
-   buried the individual offers.
+   `/process`, `/intelligence`, which buried the individual offers.
+3. An eight-domain set that wrongly included the DPI/Digital-Transformation
+   umbrella as domain 01.
 All of those URLs 301 to the current domain routes — see `next.config.mjs`,
-which documents all three generations. There is also a still-earlier
-seven-domain spec described in the "Main Page Structure" and "Our Domains of
-Expertise" sections above: those are the **original 2025 design spec**, kept for
-historical reference, and no longer reflect the built site. The design-token and
-component sections between them ARE current and authoritative.
+which documents every generation. The "Main Page Structure" and "Our Domains of
+Expertise" sections at the top of this file are the **original 2025 design
+spec** describing a still-earlier seven-domain model; they are kept for
+historical reference and no longer reflect the built site. The design-token and
+component sections between them ARE current, except where this section
+supersedes them.
 
-**Known content gaps.** Four domain pages are thin because the offers written
-for the old three-division pages didn't cover them evenly: `e-invoicing` (2
-offers), `data-governance`, `e-procurement` and `e-services` (3 each). They
-render correctly but want more per-offer content. `src/data/portfolio.ts` also
-still carries the coarse `data | process | intelligence` capability tag
-(`PortfolioCapability`); retagging the 43 projects to the eight domains is a
-pending pass.
+**Known content gaps.** Offer counts per domain: interoperability 10,
+agentic-state 9, e-services 8, web-portals 4, data-governance 3,
+e-procurement 3, e-invoicing 2. The last three are thin and want more per-offer
+content. `ecosystem-capacity` ("Ecosystem Internationalization and Value
+Proposition") currently sits under e-services Trainings and is the one offer
+without a natural home now that ecosystem building is not a domain — worth a
+decision. `src/data/portfolio.ts` also still carries the coarse
+`data | process | intelligence` capability tag (`PortfolioCapability`);
+retagging the 43 projects to the seven domains is a pending pass.

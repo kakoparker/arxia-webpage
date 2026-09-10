@@ -105,14 +105,13 @@ pushes and PRs.
 src/
   app/
     [locale]/             # Locale-scoped app tree (en at root; /es, /fr prefixed)
-      digital-transformation/  ─┐
-      interoperability/         │ the eight domains of
-      data-governance/          │ expertise — one
-      e-procurement/            ├ top-level route each
-      e-invoicing/              │ (see CLAUDE.md for
-      web-portals/              │ the full table)
-      agentic-state/            │
-      e-services/              ─┘
+      interoperability/   ─┐ the seven domains of
+      data-governance/     │ expertise — one
+      e-procurement/       │ top-level route each
+      e-invoicing/         ├ (see CLAUDE.md for
+      web-portals/         │ the full table)
+      agentic-state/       │
+      e-services/         ─┘
       news/               # News index + per-article routes
       portfolio/
       privacy/  terms/    # Legal pages (GDPR-aware copy — see note below)
@@ -132,7 +131,7 @@ src/
     ui/                   # SectionContainer, Button, CornerMarks, ...
   data/                   # Content is data, not JSX — see docs/ARCHITECTURE.md
     domain-pages.ts       # Source of truth for the 6 domain landing pages
-    expertise-domains.ts  # The eight domains: identity (name, blurb, icon, core)
+    expertise-domains.ts  # The seven domains: identity (name, blurb, icon, core)
     portfolio.ts          # Portfolio cases
     portfolio-domains.ts  # Portfolio filter taxonomy
     news.ts               # News articles (structured blocks, not raw HTML)
@@ -160,7 +159,7 @@ two surface modes, and the WebP-only delivery caveat — is documented in
 | Path                                | What                                                  |
 | ----------------------------------- | ----------------------------------------------------- |
 | `/`                                 | Home                                                  |
-| `/interoperability` + 7 more        | The eight domains of expertise (see CLAUDE.md)         |
+| `/interoperability` + 7 more        | The seven domains of expertise (see CLAUDE.md)         |
 | `/portfolio`                        | Project portfolio                                     |
 | `/news` · `/news/[slug]`            | News index + articles                                 |
 | `/privacy` · `/terms`               | Legal pages (GDPR-aware copy; recommend counsel review) |
@@ -170,7 +169,7 @@ two surface modes, and the WebP-only delivery caveat — is documented in
 
 ## Editing content
 
-- **Domain page content** lives in [`src/data/domain-pages.ts`](./src/data/domain-pages.ts). Each of the eight domain pages is one entry; identity (name, description, icon) lives in [`src/data/expertise-domains.ts`](./src/data/expertise-domains.ts); categories (Consultancy / Services / Trainings / Products) and items are typed.
+- **Domain page content** lives in [`src/data/domain-pages.ts`](./src/data/domain-pages.ts). Each of the seven domain pages is one entry; identity (name, description, icon) lives in [`src/data/expertise-domains.ts`](./src/data/expertise-domains.ts); categories (Consultancy / Services / Trainings / Products) and items are typed.
 - **News articles** live in [`src/data/news.ts`](./src/data/news.ts) with cover images under `public/images/news/<slug>/`.
 - **Portfolio cases** live in [`src/data/portfolio.ts`](./src/data/portfolio.ts).
 - **Client logos** for the homepage carousel live in [`src/data/clients.ts`](./src/data/clients.ts) and assets under `public/logos/clients/`.

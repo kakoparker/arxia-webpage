@@ -25,12 +25,11 @@
     "cta": "Contactez-nous"
   },
   "Domains": {
-    "annotation": "DOMAINES D'EXPERTISE",
-    "heading": "Huit domaines. Une architecture.",
-    "body": "Nous couvrons toute la chaîne du gouvernement numérique. Chaque domaine se tient seul, et leur combinaison démultiplie les effets. L'interopérabilité est notre expertise la plus profonde.",
+    "annotation": "INFRASTRUCTURE PUBLIQUE NUMÉRIQUE ET TRANSFORMATION NUMÉRIQUE",
+    "heading": "Sept domaines. Une architecture.",
+    "body": "L'infrastructure publique numérique n'est pas un service que l'on achète : c'est ce que ces sept pratiques produisent ensemble. L'interopérabilité est le cœur qui relie les six autres.",
     "coreLabel": "CŒUR",
-    "explore": "Découvrir",
-    "figCaption": "fig. 01 — les huit domaines, articulés par l'interopérabilité"
+    "explore": "Découvrir"
   },
   "Portfolio": {
     "annotation": "Travaux sélectionnés",
@@ -130,7 +129,6 @@
     "rights": "Tous droits réservés.",
     "privacy": "Politique de confidentialité",
     "terms": "Conditions d'utilisation",
-    "digitalTransformation": "Transformation numérique et DPI",
     "interoperability": "Interopérabilité full-stack",
     "dataGovernance": "Gouvernance des données",
     "eProcurement": "e-Procurement",

@@ -1,5 +1,4 @@
 import {
-  LayoutGrid,
   Network,
   Lock,
   ClipboardCheck,
@@ -11,24 +10,24 @@ import {
 import type { LucideIcon } from "lucide-react";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// THE EIGHT DOMAINS
+// THE SEVEN DOMAINS
 //
-// Arxia's domains of expertise, each presented in its own right and each
-// getting its own landing page at /<slug>. Interoperability is the core: the
-// practice the other seven are built on and routed through, so it carries the
-// `core` flag and is rendered as the anchor plate of the homepage grid.
+// Arxia's domains of expertise, each presented in its own right and each with
+// its own landing page at /<slug>. Interoperability is the core: the practice
+// the other six are built on and routed through, so it carries the `core` flag
+// and is rendered as the anchor plate of the homepage grid.
 //
-// This replaces the earlier three-division model (Data · Process ·
-// Intelligence), which grouped these domains one level up and buried the
-// individual offers. The richer per-offer content in `domain-pages.ts` is
-// still keyed to the old three and will be redistributed across these eight
-// as each domain page is built.
+// NOT a domain: "Digital Public Infrastructure & Digital Transformation" is
+// the UMBRELLA over all seven — it is what this whole catalogue adds up to,
+// not one service sitting beside the others. It belongs in the section framing
+// (see the `Domains` message namespace), never as a plate. It was briefly
+// modelled as domain 01; that was wrong and is why the numbering starts again
+// at interoperability.
 //
 // `order` is the plotted reading order of the grid, not a ranking.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export type ExpertiseDomainSlug =
-  | "digital-transformation"
   | "interoperability"
   | "data-governance"
   | "e-procurement"
@@ -50,16 +49,8 @@ export interface ExpertiseDomainEntry {
 
 export const expertiseDomainEntries: ExpertiseDomainEntry[] = [
   {
-    slug: "digital-transformation",
-    order: "01",
-    name: "Digital transformation & DPI",
-    description:
-      "We build the digital building blocks of the modern state — from strategy, policies and standards to technical implementation.",
-    icon: LayoutGrid,
-  },
-  {
     slug: "interoperability",
-    order: "02",
+    order: "01",
     name: "Full-stack interoperability",
     description:
       "More than just the technical layer — we support every layer that matters: governance, standards, policies and, of course, data-exchange platform implementation.",
@@ -68,7 +59,7 @@ export const expertiseDomainEntries: ExpertiseDomainEntry[] = [
   },
   {
     slug: "data-governance",
-    order: "03",
+    order: "02",
     name: "Data governance",
     description:
       "Governance frameworks, consent management, data protection, semantic models and digital-maturity assessments.",
@@ -76,7 +67,7 @@ export const expertiseDomainEntries: ExpertiseDomainEntry[] = [
   },
   {
     slug: "e-procurement",
-    order: "04",
+    order: "03",
     name: "e-Procurement",
     description:
       "End-to-end procurement digitalization across the full lifecycle, with complete traceability and auditability.",
@@ -84,7 +75,7 @@ export const expertiseDomainEntries: ExpertiseDomainEntry[] = [
   },
   {
     slug: "e-invoicing",
-    order: "05",
+    order: "04",
     name: "e-Invoicing",
     description:
       "Electronic invoicing, transaction reporting and tax-compliance systems, including cross-border standards.",
@@ -92,7 +83,7 @@ export const expertiseDomainEntries: ExpertiseDomainEntry[] = [
   },
   {
     slug: "web-portals",
-    order: "06",
+    order: "05",
     name: "Government web portals",
     description:
       "Standardized citizen and institutional portals that follow a strategy and global standards.",
@@ -100,7 +91,7 @@ export const expertiseDomainEntries: ExpertiseDomainEntry[] = [
   },
   {
     slug: "agentic-state",
-    order: "07",
+    order: "06",
     name: "Agentic state",
     description:
       "More than just AI chatbots — we support the strategy, policies and data layers that enable AI in government, securely and ethically.",
@@ -108,7 +99,7 @@ export const expertiseDomainEntries: ExpertiseDomainEntry[] = [
   },
   {
     slug: "e-services",
-    order: "08",
+    order: "07",
     name: "e-Services",
     description:
       "We design, optimize and implement e-services leveraging AI and low-code solutions, so you see results in record time.",
@@ -134,7 +125,7 @@ const OVERLAYS: Record<string, Record<string, ExpertiseDomainOverlay>> = {
   fr: expertiseDomainsFr,
 };
 
-/** The eight domains, localized, in plotted order. */
+/** The seven domains, localized, in plotted order. */
 export function getExpertiseDomains(
   locale: string = "en"
 ): ExpertiseDomainEntry[] {

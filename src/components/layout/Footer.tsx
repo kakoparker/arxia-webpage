@@ -24,10 +24,9 @@ const companyLinks = [
   { labelKey: "news", href: "/news" },
 ] as const;
 
-// The eight domains of expertise. The footer is where the full set is
+// The seven domains of expertise. The footer is where the full set is
 // enumerated — the top bar only carries a single "Domains" entry.
 const serviceLinks = [
-  { labelKey: "digitalTransformation", href: "/digital-transformation" },
   { labelKey: "interoperability", href: "/interoperability" },
   { labelKey: "dataGovernance", href: "/data-governance" },
   { labelKey: "eProcurement", href: "/e-procurement" },

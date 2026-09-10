@@ -31,7 +31,7 @@ the site _says_, you almost always edit `src/data/*` — not a component.
 
 ```
 src/data/
-  expertise-domains.ts ← the eight domains: identity (name, blurb, icon, core flag)
+  expertise-domains.ts ← the seven domains: identity (name, blurb, icon, core flag)
   domain-pages.ts      ← THE big one: each domain page's offers, cases, relations
   portfolio.ts         ← portfolio case studies
   portfolio-domains.ts ← portfolio filter taxonomy
@@ -64,7 +64,7 @@ enough to produce a new static route — no routing code to touch.
 ## Common tasks
 
 ### Edit copy on a domain page
-Open `src/data/domain-pages.ts`. Each of the eight pages is one object holding
+Open `src/data/domain-pages.ts`. Each of the seven pages is one object holding
 `categories[]` (Consultancy / Services / Trainings / Products), each with
 `items[]`, plus `featuredCases[]` and `relatedSlugs[]`. Item shape:
 `{ slug, title, description, image?, isRoadmap? }`.

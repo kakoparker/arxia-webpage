@@ -14,58 +14,6 @@ export interface DomainPageOverlay {
 }
 
 export const domainPagesEs: Record<string, DomainPageOverlay> = {
-  "digital-transformation": {
-    categories: {
-      Consultancy: {
-        tagline:
-          "Estrategia, politicas y hojas de ruta para la transformacion integral del Estado.",
-        items: {
-          "egov-strategy": {
-            title: "Estrategias y hojas de ruta de e-gobierno",
-            description:
-              "Estrategias nacionales de digitalización traducidas en hojas de ruta accionables: secuenciación, presupuesto, gobernanza y titularidad institucional para que la estrategia no se quede en el cajón.",
-          },
-          "bpmn-process-design": {
-            title: "Diseño y optimización de procesos (BPMN 2.0)",
-            description:
-              "Modelado de procesos con BPMN 2.0 para servicios públicos, con notación formal, validaciones con grupos de interés y pilotos ejecutables sobre los principales motores de flujos de trabajo.",
-          },
-        },
-      },
-      Services: {
-        tagline:
-          "Construccion y despliegue de los building blocks.",
-        items: {
-          "egov-development": {
-            title: "Desarrollo de sistemas de e-gobierno",
-            description:
-              "Desarrollo a medida de plataformas gubernamentales: desde registros y sistemas de gestión de expedientes hasta portales de servicios para la ciudadanía, sobre stacks abiertos e interoperables.",
-          },
-          "govstack-adoption": {
-            title: "Programas de adopción de GovStack",
-            description:
-              "Adopción de GovStack a nivel país: alineación arquitectónica, selección de building blocks, pilotos y preparación institucional.",
-          },
-        },
-      },
-      Trainings: {
-        tagline:
-          "Fortalecimiento de capacidades para equipos publicos y ecosistemas locales.",
-        items: {
-          "bpmn-coaching": {
-            title: "Taller: Acompañamiento en implementación de BPMN",
-            description:
-              "Acompañamiento práctico sobre Camunda, Flowable y motores de flujos de trabajo similares. Se entrega dentro de tu equipo, para que la capacidad permanezca cuando nos vamos.",
-          },
-          "ecosystem-capacity": {
-            title: "Internacionalización del ecosistema y propuesta de valor",
-            description:
-              "Programas que preparan a los ecosistemas tecnológicos locales para realizar trabajo de DPI por sí mismos y competir internacionalmente: desde formación de formadores hasta preparación para la exportación.",
-          },
-        },
-      },
-    },
-  },
   "interoperability": {
     categories: {
       Consultancy: {
@@ -112,6 +60,11 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
             title: "Flujos de trabajo interinstitucionales automatizados",
             description:
               "Flujos de trabajo asistidos por IA que enrutan solicitudes, documentos y decisiones entre múltiples organismos, comprimiendo semanas de coordinación en días.",
+          },
+          "govstack-adoption": {
+            title: "Programas de adopción de GovStack",
+            description:
+              "Adopción de GovStack a nivel país: alineación arquitectónica, selección de building blocks, pilotos y preparación institucional.",
           },
         },
       },
@@ -329,15 +282,15 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
         tagline:
           "Plataformas propias que evolucionamos.",
         items: {
-          "holonn": {
-            title: "Holonn — Plataforma de matchmaking e IA para ecosistemas",
-            description:
-              "Holonn permite a organizaciones de apoyo empresarial y ecosistemas (clústeres, hubs, asociaciones y aceleradoras) agregar la oferta de sus miembros con IA, creando marketplaces interactivos que conectan empresas con inversionistas, clientes y socios.",
-          },
           "ai-governance-platform-gov": {
             title: "Plataforma de Gobernanza de IA para Gobiernos",
             description:
               "¿Tu organización avanza hacia implementaciones de IA y un Estado agéntico? Entonces necesitas una gobernanza sólida. Nuestra plataforma monitoriza cumplimiento, vulnerabilidades de seguridad y evaluación de riesgos de cada sistema de IA en uso dentro de tu organización.",
+          },
+          "holonn": {
+            title: "Holonn — Plataforma de matchmaking e IA para ecosistemas",
+            description:
+              "Holonn permite a organizaciones de apoyo empresarial y ecosistemas (clústeres, hubs, asociaciones y aceleradoras) agregar la oferta de sus miembros con IA, creando marketplaces interactivos que conectan empresas con inversionistas, clientes y socios.",
           },
         },
       },
@@ -360,10 +313,20 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
         tagline:
           "Rediseno de servicios en torno a trayectorias ciudadanas reales.",
         items: {
+          "egov-strategy": {
+            title: "Estrategias y hojas de ruta de e-gobierno",
+            description:
+              "Estrategias nacionales de digitalización traducidas en hojas de ruta accionables: secuenciación, presupuesto, gobernanza y titularidad institucional para que la estrategia no se quede en el cajón.",
+          },
           "life-events-redesign": {
             title: "Rediseño de eventos de vida y servicios a la ciudadanía",
             description:
               "Rediseñamos cómo la ciudadanía vive los momentos clave con el Estado (nacimiento, registro de empresa, jubilación) reconstruyendo los servicios que los sustentan de extremo a extremo.",
+          },
+          "bpmn-process-design": {
+            title: "Diseño y optimización de procesos (BPMN 2.0)",
+            description:
+              "Modelado de procesos con BPMN 2.0 para servicios públicos, con notación formal, validaciones con grupos de interés y pilotos ejecutables sobre los principales motores de flujos de trabajo.",
           },
         },
       },
@@ -380,6 +343,27 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
             title: "Procesamiento documental con IA",
             description:
               "Extracción, clasificación y resumen del backlog documental en el que la mayoría de las instituciones públicas se ahogan: desde permisos hasta solicitudes de subvención.",
+          },
+          "egov-development": {
+            title: "Desarrollo de sistemas de e-gobierno",
+            description:
+              "Desarrollo a medida de plataformas gubernamentales: desde registros y sistemas de gestión de expedientes hasta portales de servicios para la ciudadanía, sobre stacks abiertos e interoperables.",
+          },
+        },
+      },
+      Trainings: {
+        tagline:
+          "Fortalecimiento de capacidades para los equipos que disenan y operan los servicios.",
+        items: {
+          "bpmn-coaching": {
+            title: "Taller: Acompañamiento en implementación de BPMN",
+            description:
+              "Acompañamiento práctico sobre Camunda, Flowable y motores de flujos de trabajo similares. Se entrega dentro de tu equipo, para que la capacidad permanezca cuando nos vamos.",
+          },
+          "ecosystem-capacity": {
+            title: "Internacionalización del ecosistema y propuesta de valor",
+            description:
+              "Programas que preparan a los ecosistemas tecnológicos locales para realizar trabajo de DPI por sí mismos y competir internacionalmente: desde formación de formadores hasta preparación para la exportación.",
           },
         },
       },

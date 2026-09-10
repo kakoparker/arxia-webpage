@@ -28,9 +28,9 @@ export function GlobalPresence() {
   const yearsStat = useOdometer({ target: 25, suffix: "+", duration: 1200 });
 
   return (
-    <SectionContainer mode="dark" id="presence" showCornerMarks>
+    <SectionContainer mode="dark" id="presence" showCornerMarks fitScreen>
       <div ref={ref}>
-        <div data-animate data-animate-index="0" className="animate-on-scroll mb-16">
+        <div data-animate data-animate-index="0" className="animate-on-scroll mb-8 lg:mb-10">
           <SectionHeader
             annotation={t("annotation")}
             heading={t("heading")}
@@ -40,11 +40,11 @@ export function GlobalPresence() {
         </div>
 
         {/* Two columns: countries on left, globe on right */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-8 lg:mb-10">
           {/* Left — country list grouped by region */}
           <div data-animate data-animate-index="1" className="animate-on-scroll">
             {/* HQ callout */}
-            <div className="mb-8 pb-6 border-b border-white/10">
+            <div className="mb-6 pb-4 border-b border-white/10">
               <p
                 className="text-accent-red uppercase mb-2"
                 style={{
@@ -57,14 +57,14 @@ export function GlobalPresence() {
               </p>
               <p
                 className="text-white font-semibold"
-                style={{ fontFamily: "var(--font-primary)", fontSize: "22px" }}
+                style={{ fontFamily: "var(--font-primary)", fontSize: "20px" }}
               >
                 {t(`countries.${HQ_CODE}`)}
               </p>
             </div>
 
             {/* Regions — 2-column dense grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5">
               {REGIONS.map((r) => (
                 <div key={r.region}>
                   <p
@@ -77,7 +77,7 @@ export function GlobalPresence() {
                   >
                     {t(`regions.${r.region}`)}
                   </p>
-                  <div className="h-[2px] w-8 bg-accent-red mb-3" />
+                  <div className="h-[2px] w-8 bg-accent-red mb-2" />
                   <ul className="space-y-1">
                     {r.codes.map((code) => (
                       <li
@@ -109,11 +109,11 @@ export function GlobalPresence() {
         </div>
 
         {/* Odometer stats bar — left-aligned */}
-        <div className="flex gap-16 mt-12 max-sm:flex-col max-sm:gap-6">
+        <div className="flex gap-12 lg:gap-16 max-sm:flex-col max-sm:gap-5">
           <div className="text-left" ref={orgStat.ref}>
             <div
               className="text-white font-bold tracking-[-1px]"
-              style={{ fontFamily: "var(--font-primary)", fontSize: "48px" }}
+              style={{ fontFamily: "var(--font-primary)", fontSize: "clamp(32px, 3.4vw, 42px)" }}
             >
               {orgStat.displayValue}
             </div>
@@ -127,7 +127,7 @@ export function GlobalPresence() {
           <div className="text-left" ref={countryStat.ref}>
             <div
               className="text-white font-bold tracking-[-1px]"
-              style={{ fontFamily: "var(--font-primary)", fontSize: "48px" }}
+              style={{ fontFamily: "var(--font-primary)", fontSize: "clamp(32px, 3.4vw, 42px)" }}
             >
               {countryStat.displayValue}
             </div>
@@ -141,7 +141,7 @@ export function GlobalPresence() {
           <div className="text-left" ref={yearsStat.ref}>
             <div
               className="text-white font-bold tracking-[-1px]"
-              style={{ fontFamily: "var(--font-primary)", fontSize: "48px" }}
+              style={{ fontFamily: "var(--font-primary)", fontSize: "clamp(32px, 3.4vw, 42px)" }}
             >
               {yearsStat.displayValue}
             </div>

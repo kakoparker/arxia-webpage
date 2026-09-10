@@ -62,7 +62,7 @@ export function CallToAction() {
   const errorMessage = state.status === "error" ? state.message : null;
 
   return (
-    <SectionContainer mode="dark" showCornerMarks id="contact">
+    <SectionContainer mode="dark" showCornerMarks id="contact" fitScreen>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         {/* Left — form (or success state) */}
         <div>
