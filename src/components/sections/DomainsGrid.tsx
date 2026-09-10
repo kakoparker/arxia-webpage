@@ -29,9 +29,10 @@ import {
  *   1. Two construction lines sweep across the plate as it enters.
  *   2. Plates materialise in plotted order — registration marks draw, then
  *      the shared fade-and-rise, staggered.
- *   3. Inside the anchor, a node schematic draws itself: six spokes extend
- *      from the red core to six satellites — one per domain around it — then
- *      the core pulses.
+ *   3. Inside the anchor, an exploded isometric stack assembles bottom-up,
+ *      then a dashed red spine drops through all three plates and the nodes
+ *      land where it pierces each one. "Full-stack" is a stack, so the figure
+ *      is a stack.
  * The schematic's geometry is computed at module scope from a fixed viewBox,
  * so it never measures the DOM and cannot drift on resize.
  */
@@ -50,18 +51,39 @@ const LG_PLACEMENT: Record<ExpertiseDomainSlug, string> = {
 };
 
 // ─── Anchor-plate schematic geometry ─────────────────────────────────────────
-// One red core, six satellites on an ellipse — one node per surrounding
-// domain. Six divides the circle evenly, so the figure reads as a structure
-// rather than a scatter. Spoke lengths are precomputed so each can draw itself
-// via stroke-dashoffset.
-const SCHEM = { w: 240, h: 150, cx: 120, cy: 75, rx: 92, ry: 54 };
+// An exploded isometric stack: three plates on one axis, threaded by a dashed
+// red spine with a node where it pierces each plate. "Full-stack" is a stack,
+// so the figure is a stack — a radial hub said "hub", which is the wrong idea.
+// The three plates read as the layers the copy names: governance, standards,
+// and the exchange platform itself.
+//
+// Fixed viewBox, so nothing measures the DOM and nothing drifts on resize.
+const ISO = {
+  w: 260,
+  h: 196,
+  cx: 172,
+  rx: 66, // half-width of a plate's diamond
+  ry: 22, // half-depth
+  t: 8, // plate thickness
+  ys: [38, 100, 162], // plate centres, top to bottom
+};
 
-const SPOKES = Array.from({ length: 6 }, (_, i) => {
-  const angle = (-90 + i * 60) * (Math.PI / 180);
-  const x = SCHEM.cx + SCHEM.rx * Math.cos(angle);
-  const y = SCHEM.cy + SCHEM.ry * Math.sin(angle);
-  return { x, y, length: Math.hypot(x - SCHEM.cx, y - SCHEM.cy) };
-});
+/** Diamond top face + the two visible side faces of one isometric plate. */
+function plateFaces(cy: number) {
+  const { cx, rx, ry, t } = ISO;
+  return {
+    top: `${cx},${cy - ry} ${cx + rx},${cy} ${cx},${cy + ry} ${cx - rx},${cy}`,
+    left: `${cx - rx},${cy} ${cx},${cy + ry} ${cx},${cy + ry + t} ${cx - rx},${cy + t}`,
+    right: `${cx + rx},${cy} ${cx},${cy + ry} ${cx},${cy + ry + t} ${cx + rx},${cy + t}`,
+  };
+}
+
+const PLATES = ISO.ys.map((cy, i) => ({
+  cy,
+  faces: plateFaces(cy),
+  // L03 at the top, counting down — matches drafting convention.
+  label: `L0${ISO.ys.length - i}`,
+}));
 
 export function DomainsGrid({
   tone = "ultra-light",
@@ -292,59 +314,123 @@ function AnchorPlate({
 }
 
 /**
- * The anchor's node schematic: six spokes from a red core, one per
- * surrounding domain. Decorative — the plate's prose already says it.
+ * The anchor's figure: an exploded isometric stack, threaded by a red spine.
+ * Decorative — the plate's prose already names the layers.
  */
 function Schematic() {
+  const { cx, ys } = ISO;
+  const spineTop = ys[0];
+  const spineBottom = ys[ys.length - 1];
+
   return (
-    <div className="pointer-events-none mt-6 flex flex-1 items-center justify-center">
+    <div className="pointer-events-none mt-5 flex flex-1 items-center justify-center">
       <svg
         aria-hidden
-        viewBox={`0 0 ${SCHEM.w} ${SCHEM.h}`}
-        className="domain-schematic h-auto w-full max-w-[240px] opacity-90"
+        viewBox={`0 0 ${ISO.w} ${ISO.h}`}
+        className="domain-schematic h-auto w-full max-w-[250px]"
       >
-        {SPOKES.map((s, i) => (
+        {/* Dimension bracket, drafting-style, spanning the whole stack. */}
+        <g className="domain-iso-dim" stroke="rgba(255,255,255,0.3)" strokeWidth={1}>
+          <line x1={30} y1={spineTop - 22} x2={30} y2={spineBottom + 30} vectorEffect="non-scaling-stroke" />
+          <line x1={25} y1={spineTop - 22} x2={35} y2={spineTop - 22} vectorEffect="non-scaling-stroke" />
+          <line x1={25} y1={spineBottom + 30} x2={35} y2={spineBottom + 30} vectorEffect="non-scaling-stroke" />
+        </g>
+        <text
+          className="domain-iso-dim"
+          x={22}
+          y={(spineTop + spineBottom) / 2}
+          transform={`rotate(-90 22 ${(spineTop + spineBottom) / 2})`}
+          textAnchor="middle"
+          fill="rgba(255,255,255,0.45)"
+          style={{
+            fontFamily: "var(--font-mono)",
+            fontSize: "8px",
+            letterSpacing: "2px",
+          }}
+        >
+          FULL-STACK
+        </text>
+
+        {/* The spine, behind the plates: dashed, revealed top-down. */}
+        <g className="domain-iso-spine">
           <line
-            key={`spoke-${i}`}
-            x1={SCHEM.cx}
-            y1={SCHEM.cy}
-            x2={s.x}
-            y2={s.y}
-            stroke="rgba(255,255,255,0.28)"
+            x1={cx}
+            y1={spineTop}
+            x2={cx}
+            y2={spineBottom}
+            stroke="var(--accent-red)"
             strokeWidth={1}
+            strokeDasharray="4 3"
             vectorEffect="non-scaling-stroke"
-            className="domain-schematic-spoke"
-            style={{
-              strokeDasharray: s.length,
-              strokeDashoffset: s.length,
-              transitionDelay: `${480 + i * 90}ms`,
-            }}
           />
-        ))}
+        </g>
 
-        {SPOKES.map((s, i) => (
+        {/* Plates, bottom-up so upper plates overlap lower ones correctly. */}
+        {[...PLATES].reverse().map((plate, i) => {
+          // Reverse the index back so stagger runs bottom plate first.
+          const step = PLATES.length - 1 - i;
+          return (
+            <g
+              key={plate.label}
+              className="domain-iso-plate"
+              style={{ transitionDelay: `${260 + step * 130}ms` }}
+            >
+              <polygon points={plate.faces.left} fill="rgba(255,255,255,0.03)" />
+              <polygon points={plate.faces.right} fill="rgba(255,255,255,0.06)" />
+              <polygon
+                points={plate.faces.top}
+                fill="rgba(255,255,255,0.05)"
+                stroke="rgba(255,255,255,0.42)"
+                strokeWidth={1}
+                vectorEffect="non-scaling-stroke"
+              />
+              <line
+                x1={ISO.cx - ISO.rx}
+                y1={plate.cy}
+                x2={ISO.cx}
+                y2={plate.cy + ISO.ry}
+                stroke="rgba(255,255,255,0.42)"
+                strokeWidth={1}
+                vectorEffect="non-scaling-stroke"
+              />
+              <line
+                x1={ISO.cx + ISO.rx}
+                y1={plate.cy}
+                x2={ISO.cx}
+                y2={plate.cy + ISO.ry}
+                stroke="rgba(255,255,255,0.42)"
+                strokeWidth={1}
+                vectorEffect="non-scaling-stroke"
+              />
+              <text
+                x={ISO.cx - ISO.rx - 14}
+                y={plate.cy + 3}
+                textAnchor="end"
+                fill="rgba(255,255,255,0.5)"
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "9px",
+                  letterSpacing: "1.5px",
+                }}
+              >
+                {plate.label}
+              </text>
+            </g>
+          );
+        })}
+
+        {/* Nodes where the spine pierces each plate. The only red fills. */}
+        {PLATES.map((plate, i) => (
           <circle
-            key={`node-${i}`}
-            cx={s.x}
-            cy={s.y}
-            r={4}
-            fill="var(--blueprint-blue)"
-            stroke="rgba(255,255,255,0.55)"
-            strokeWidth={1}
-            vectorEffect="non-scaling-stroke"
-            className="domain-schematic-node"
-            style={{ transitionDelay: `${840 + i * 90}ms` }}
+            key={`node-${plate.label}`}
+            className="domain-iso-node"
+            cx={cx}
+            cy={plate.cy}
+            r={4.5}
+            fill="var(--accent-red)"
+            style={{ transitionDelay: `${760 + i * 130}ms` }}
           />
         ))}
-
-        {/* The core. Only red element in the schematic — it carries the point. */}
-        <circle
-          cx={SCHEM.cx}
-          cy={SCHEM.cy}
-          r={7}
-          fill="var(--accent-red)"
-          className="domain-schematic-core"
-        />
       </svg>
     </div>
   );

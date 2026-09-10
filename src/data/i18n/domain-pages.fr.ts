@@ -129,7 +129,7 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
       },
       Services: {
         tagline:
-          "Livraison de plateformes de bout en bout.",
+          "Livraison complète de plateformes.",
         items: {
           "eproc-implementation": {
             title: "Mise en œuvre intégrale de plateformes de commande publique électronique",
@@ -279,7 +279,7 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
               "Votre organisation s'oriente vers des déploiements d'IA et un État agentique ? Vous avez besoin d'une gouvernance solide. Notre plateforme surveille la conformité, les vulnérabilités de sécurité et l'évaluation des risques pour chaque système d'IA utilisé dans votre organisation.",
           },
           "holonn": {
-            title: "Holonn — Plateforme de matchmaking et de communauté pour écosystèmes",
+            title: "Holonn: Plateforme de matchmaking et de communauté pour écosystèmes",
             description:
               "Holonn permet aux organisations d'appui aux entreprises et aux écosystèmes (clusters, hubs, associations, accélérateurs) d'agréger les offres de leurs membres grâce à l'IA, en créant des places de marché interactives qui mettent en relation entreprises, investisseurs, clients et partenaires.",
           },

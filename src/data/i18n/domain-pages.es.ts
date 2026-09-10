@@ -138,7 +138,7 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
       },
       Services: {
         tagline:
-          "Entrega de plataformas de extremo a extremo.",
+          "Entrega completa de plataformas.",
         items: {
           "eproc-implementation": {
             title: "Implementación integral de plataformas de contratación pública electrónica",
@@ -288,7 +288,7 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
               "¿Tu organización avanza hacia implementaciones de IA y un Estado agéntico? Entonces necesitas una gobernanza sólida. Nuestra plataforma monitoriza cumplimiento, vulnerabilidades de seguridad y evaluación de riesgos de cada sistema de IA en uso dentro de tu organización.",
           },
           "holonn": {
-            title: "Holonn — Plataforma de matchmaking e IA para ecosistemas",
+            title: "Holonn: Plataforma de matchmaking e IA para ecosistemas",
             description:
               "Holonn permite a organizaciones de apoyo empresarial y ecosistemas (clústeres, hubs, asociaciones y aceleradoras) agregar la oferta de sus miembros con IA, creando marketplaces interactivos que conectan empresas con inversionistas, clientes y socios.",
           },
@@ -316,7 +316,7 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
           "egov-strategy": {
             title: "Estrategias y hojas de ruta de e-gobierno",
             description:
-              "Estrategias nacionales de digitalización traducidas en hojas de ruta accionables: secuenciación, presupuesto, gobernanza y titularidad institucional para que la estrategia no se quede en el cajón.",
+              "Estrategias nacionales de digitalización traducidas en hojas de ruta ejecutables: secuenciación, presupuesto, gobernanza y titularidad institucional para que la estrategia no se quede en el cajón.",
           },
           "life-events-redesign": {
             title: "Rediseño de eventos de vida y servicios a la ciudadanía",

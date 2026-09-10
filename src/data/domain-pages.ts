@@ -87,7 +87,7 @@ export const domainPages: DomainPageContent[] = [
             slug: "national-registry-design",
             title: "National Registry Design",
             description:
-              "Architecture and design of authoritative national registries — population, business, land, vehicle — including data model, identifier strategy, governance rules, and integration points with the wider data-exchange backbone.",
+              "Architecture and design of authoritative national registries (population, business, land, vehicle), including data model, identifier strategy, governance rules, and integration points with the wider data-exchange backbone.",
             image: "/images/services/govtech-data/national-registry-design-illustration.webp",
           },
         ],
@@ -101,7 +101,7 @@ export const domainPages: DomainPageContent[] = [
             slug: "national-registries-api-gateway",
             title: "National Registries system and API gateway implementation",
             description:
-              "End-to-end delivery of a country's national registries and data-exchange backbone, with X-Road / Pub-Sub messaging and API gateway built in. From reference architecture to certificate authority, central server, and first-mile ministry integrations — built on proven open stacks so the state never sits on a vendor-locked core.",
+              "Complete delivery of a country's national registries and data-exchange backbone, with X-Road / Pub-Sub messaging and API gateway built in. From reference architecture to certificate authority, central server, and first-mile ministry integrations, all built on proven open stacks so the state never sits on a vendor-locked core.",
             image: "/images/services/govtech-data/national-registries-api-gateway-illustration.webp",
           },
           {
@@ -122,21 +122,21 @@ export const domainPages: DomainPageContent[] = [
             slug: "software-integration",
             title: "Software integration",
             description:
-              "Hands-on integration of public-sector systems — line-ministry applications, legacy databases, and modern APIs — connected through the national data-exchange layer with full operator handover.",
+              "Hands-on integration of public-sector systems (line-ministry applications, legacy databases, modern APIs), connected through the national data-exchange layer with full operator handover.",
             image: "/images/services/govtech-data/software-integration-illustration.webp",
           },
           {
             slug: "inter-institutional-workflows",
             title: "Automated inter-institutional workflows",
             description:
-              "AI-assisted workflows that route requests, documents, and decisions across multiple agencies — compressing weeks of coordination into days.",
+              "AI-assisted workflows that route requests, documents, and decisions across multiple agencies, compressing weeks of coordination into days.",
             image: "/images/services/govtech-intelligence/inter-institutional-workflows-illustration.webp",
           },
           {
             slug: "govstack-adoption",
             title: "GovStack adoption programs",
             description:
-              "Country-level GovStack adoption — architecture alignment, building-block selection, pilots, and institutional readiness.",
+              "Country-level GovStack adoption: architecture alignment, building-block selection, pilots, and institutional readiness.",
             image: "/images/services/govtech-process/govstack-adoption-illustration-v2.webp",
           },
         ],
@@ -244,7 +244,7 @@ export const domainPages: DomainPageContent[] = [
             slug: "eprocurement-strategy",
             title: "e-Procurement strategy, standards and regulatory alignment",
             description:
-              "National procurement strategy work — from regulatory alignment and standards adoption to change-management design for procurement authorities.",
+              "National procurement strategy work, from regulatory alignment and standards adoption to change-management design for procurement authorities.",
             image: "/images/services/govtech-process/eprocurement-strategy-illustration-v2.webp",
           },
         ],
@@ -252,13 +252,13 @@ export const domainPages: DomainPageContent[] = [
       {
         name: "Services",
         tagline:
-          "End-to-end platform delivery.",
+          "Platform delivery, start to finish.",
         items: [
           {
             slug: "eproc-implementation",
-            title: "End-to-end e-procurement platform implementation",
+            title: "Full e-procurement platform implementation",
             description:
-              "Full rollout of public procurement systems — planning, tender, evaluation, award, and contract management — with integration into financial and audit systems.",
+              "Full rollout of public procurement systems (planning, tender, evaluation, award, contract management), with integration into financial and audit systems.",
             image: "/images/services/govtech-process/eproc-implementation-illustration-v2.webp",
           },
         ],
@@ -272,7 +272,7 @@ export const domainPages: DomainPageContent[] = [
             slug: "processplayer",
             title: "ProcessPlayer",
             description:
-              "Full-lifecycle public procurement platform — planning, execution, framework agreements, and contract management. 50+ organizations, 30,000+ references, SaaS and on-premise.",
+              "Public procurement platform covering planning, execution, framework agreements, and contract management. 50+ organizations, 30,000+ references, SaaS and on-premise.",
             image: "/images/services/govtech-process/processplayer-illustration-v2.webp",
           },
         ],
@@ -313,7 +313,7 @@ export const domainPages: DomainPageContent[] = [
             slug: "einvoicing-infrastructure",
             title: "Electronic invoicing and transaction-reporting infrastructure",
             description:
-              "Deployment of national e-invoicing backbones — from tax authority gateways to taxpayer onboarding and compliance monitoring.",
+              "Deployment of national e-invoicing backbones, from tax authority gateways to taxpayer onboarding and compliance monitoring.",
             image: "/images/services/govtech-process/einvoicing-infrastructure-illustration-v2.webp",
           },
         ],
@@ -352,7 +352,7 @@ export const domainPages: DomainPageContent[] = [
             slug: "government-portals",
             title: "Standardized government web portals",
             description:
-              "Government portals on TYPO3 and Drupal — multi-tenant, accessible, secure, and ready to scale from a single ministry to hundreds of institutions.",
+              "Government portals on TYPO3 and Drupal: multi-tenant, accessible, secure, and ready to scale from a single ministry to hundreds of institutions.",
             image: "/images/services/govtech-process/government-portals-illustration-v2.webp",
           },
         ],
@@ -380,7 +380,7 @@ export const domainPages: DomainPageContent[] = [
             slug: "training-typo3",
             title: "TYPO3 Technical Training for the Public Sector for Standardized Government Portals",
             description:
-              "Hands-on TYPO3 training for in-house government technical teams — installation, multi-tenant configuration, content modelling, accessibility (WCAG), and long-term maintenance of the portal stack that powers Standardized Government Portals.",
+              "Hands-on TYPO3 training for in-house government technical teams: installation, multi-tenant configuration, content modelling, accessibility (WCAG), and long-term maintenance of the portal stack that powers Standardized Government Portals.",
             image: "/images/services/govtech-process/training-typo3-illustration-v2.webp",
           },
         ],
@@ -410,28 +410,28 @@ export const domainPages: DomainPageContent[] = [
             slug: "ai-readiness-gov",
             title: "AI readiness assessments for government",
             description:
-              "Diagnostic assessments of where your institution stands on data, skills, infrastructure, and legal readiness — and what to fix first to absorb AI responsibly.",
+              "Diagnostic assessments of where your institution stands on data, skills, infrastructure, and legal readiness, and what to fix first to absorb AI responsibly.",
             image: "/images/services/govtech-intelligence/ai-readiness-gov-illustration.webp",
           },
           {
             slug: "agentic-state-strategy",
             title: "Agentic State strategy and architecture",
             description:
-              "Strategy and reference architectures for a public sector where AI agents handle citizen requests and inter-institutional coordination — not a chatbot bolted on, but a redesigned state.",
+              "Strategy and reference architectures for a public sector where AI agents handle citizen requests and inter-institutional coordination. The process gets redesigned, not wrapped in a chatbot.",
             image: "/images/services/govtech-intelligence/agentic-state-strategy-illustration.webp",
           },
           {
             slug: "public-ai-governance",
             title: "AI governance frameworks for public sector",
             description:
-              "AI governance frameworks aligned with ISO, EU AI Act, and emerging national rules — adapted for ministries, agencies, and international organizations.",
+              "AI governance frameworks aligned with ISO, EU AI Act, and emerging national rules, adapted for ministries, agencies, and international organizations.",
             image: "/images/services/govtech-intelligence/public-ai-governance-illustration.webp",
           },
           {
             slug: "responsible-ai-policy",
             title: "Responsible AI policy and procurement advisory",
             description:
-              "Advisory on AI procurement policies, standard contract clauses, and transparency requirements — so your next AI tender starts from a stronger position.",
+              "Advisory on AI procurement policies, standard contract clauses, and transparency requirements, so your next AI tender starts from a stronger position.",
             image: "/images/services/govtech-intelligence/responsible-ai-policy-illustration.webp",
           },
         ],
@@ -445,7 +445,7 @@ export const domainPages: DomainPageContent[] = [
             slug: "ai-agents-public-services",
             title: "AI agents for public services",
             description:
-              "Multi-channel virtual assistants across web, mobile, USSD, and voice — including low-literacy channels in local languages — that handle real citizen volume, not just demos.",
+              "Multi-channel virtual assistants across web, mobile, USSD, and voice (including low-literacy channels in local languages) that handle real citizen volume, not just demos.",
             image: "/images/services/govtech-intelligence/ai-agents-public-services-illustration.webp",
           },
           {
@@ -471,9 +471,9 @@ export const domainPages: DomainPageContent[] = [
           },
           {
             slug: "holonn",
-            title: "Holonn — AI matchmaking and community platform for ecosystems",
+            title: "Holonn: AI matchmaking and community platform for ecosystems",
             description:
-              "Holonn lets business-support organizations and ecosystems — clusters, hubs, associations, and accelerators — aggregate their members' offerings using AI, creating interactive marketplaces that match companies with investors, clients, and partners.",
+              "Holonn lets business-support organizations and ecosystems (clusters, hubs, associations, accelerators) aggregate their members' offerings using AI, creating interactive marketplaces that match companies with investors, clients, and partners.",
             image: "/images/services/govtech-intelligence/holonn-illustration.webp",
           },
         ],
@@ -487,7 +487,7 @@ export const domainPages: DomainPageContent[] = [
             slug: "ai-ignite-gov",
             title: "AI IGNITE Workshop for Public Sector",
             description:
-              "Discovery workshop to identify first AI opportunities in your operations — with prioritized shortlist, effort estimates, and a 90-day plan.",
+              "Discovery workshop to identify first AI opportunities in your operations, with a prioritized shortlist, effort estimates, and a 90-day plan.",
             image: "/images/services/govtech-intelligence/ai-ignite-gov-illustration.webp",
           },
         ],
@@ -517,21 +517,21 @@ export const domainPages: DomainPageContent[] = [
             slug: "egov-strategy",
             title: "e-Government strategies and roadmaps",
             description:
-              "National digitalization strategies translated into actionable roadmaps — sequencing, budget, governance, and institutional ownership so the strategy doesn't sit on a shelf.",
+              "National digitalization strategies translated into roadmaps you can execute: sequencing, budget, governance, and institutional ownership, so the strategy doesn't sit on a shelf.",
             image: "/images/services/govtech-process/egov-strategy-illustration-v2.webp",
           },
           {
             slug: "life-events-redesign",
             title: "Life-events and citizen-service redesign",
             description:
-              "We redesign how citizens experience government moments — birth, business registration, retirement — by rebuilding the services behind them end-to-end.",
+              "We redesign how citizens experience government moments (birth, business registration, retirement) by rebuilding the services behind them.",
             image: "/images/services/govtech-process/life-events-redesign-illustration-v2.webp",
           },
           {
             slug: "bpmn-process-design",
             title: "Process design and optimization (BPMN 2.0)",
             description:
-              "BPMN 2.0 process modeling for public services — with formal notation, stakeholder walkthroughs, and executable pilots on leading workflow engines.",
+              "BPMN 2.0 process modeling for public services, with formal notation, stakeholder walkthroughs, and executable pilots on leading workflow engines.",
             image: "/images/services/govtech-process/bpmn-process-design-illustration-v2.webp",
           },
         ],
@@ -545,21 +545,21 @@ export const domainPages: DomainPageContent[] = [
             slug: "low-code-eservices",
             title: "Low-code e-service platforms",
             description:
-              "Platforms that let your own teams launch new government services and AI agents in days, not quarters — with governance and auditability built in.",
+              "Platforms that let your own teams launch new government services and AI agents in days rather than quarters, with governance and auditability built in.",
             image: "/images/services/govtech-intelligence/low-code-eservices-illustration.webp",
           },
           {
             slug: "document-processing",
             title: "AI-powered document processing",
             description:
-              "Extraction, classification, and summarization of the document backlogs that most public institutions are drowning in — from permits to grant applications.",
+              "Extraction, classification, and summarization of the document backlogs that most public institutions are drowning in, from permits to grant applications.",
             image: "/images/services/govtech-intelligence/document-processing-illustration.webp",
           },
           {
             slug: "egov-development",
             title: "e-Government system development",
             description:
-              "Custom government platform development — from registries and case-management systems to citizen-facing service portals, built on open, interoperable stacks.",
+              "Custom government platform development, from registries and case-management systems to citizen-facing service portals, built on open, interoperable stacks.",
             image: "/images/services/govtech-process/egov-development-illustration-v2.webp",
           },
         ],
@@ -580,7 +580,7 @@ export const domainPages: DomainPageContent[] = [
             slug: "ecosystem-capacity",
             title: "Ecosystem Internationalization and Value Proposition",
             description:
-              "Programs that equip local tech ecosystems to deliver DPI work themselves and compete internationally — from train-the-trainer to export readiness.",
+              "Programs that equip local tech ecosystems to deliver DPI work themselves and compete internationally, from train-the-trainer to export readiness.",
             image: "/images/services/govtech-process/ecosystem-capacity-illustration-v2.webp",
           },
         ],

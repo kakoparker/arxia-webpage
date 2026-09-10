@@ -8,17 +8,17 @@ export const expertiseDomainsFr: Record<string, ExpertiseDomainOverlay> = {
   interoperability: {
     name: "Interopérabilité full-stack",
     description:
-      "Bien plus que la couche technique : nous accompagnons toutes les couches qui comptent — gouvernance, normes, politiques et, bien sûr, la mise en œuvre de la plateforme d'échange de données.",
+      "Gouvernance, normes, politiques et la plateforme d'échange de données elle-même. La couche technique est la partie facile ; nous couvrons aussi le reste.",
   },
   "data-governance": {
     name: "Gouvernance des données",
     description:
-      "Cadres de gouvernance, gestion du consentement, protection des données, modèles sémantiques et évaluations de maturité numérique.",
+      "Les règles qui déterminent qui peut utiliser quelles données, et à quel titre : cadres de gouvernance, régimes de consentement, protection des données, modèles sémantiques et évaluations de maturité.",
   },
   "e-procurement": {
     name: "e-Procurement",
     description:
-      "Numérisation de bout en bout de la commande publique sur l'ensemble du cycle de vie, avec une traçabilité et une auditabilité complètes.",
+      "Commande publique numérisée de la publication de l'appel d'offres à la gestion du contrat, chaque étape traçable et auditable.",
   },
   "e-invoicing": {
     name: "e-Invoicing",
@@ -28,16 +28,16 @@ export const expertiseDomainsFr: Record<string, ExpertiseDomainOverlay> = {
   "web-portals": {
     name: "Portails web gouvernementaux",
     description:
-      "Portails citoyens et institutionnels standardisés, alignés sur une stratégie et sur les normes mondiales.",
+      "Portails citoyens et institutionnels bâtis sur une norme unique, pour que chaque ministère offre le même niveau de service.",
   },
   "agentic-state": {
     name: "État agentique",
     description:
-      "Bien plus que des chatbots IA : nous accompagnons la stratégie, les politiques et les couches de données qui rendent l'IA possible dans l'administration, de manière sûre et éthique.",
+      "Les chatbots en sont la partie visible. Nous construisons les couches de stratégie, de politiques et de données qui rendent l'IA sûre à exploiter dans l'administration.",
   },
   "e-services": {
     name: "e-Services",
     description:
-      "Nous concevons, optimisons et mettons en œuvre des e-services avec l'IA et des solutions low-code, pour des résultats en temps record.",
+      "Nous repensons et construisons des e-services avec l'IA et des outils low-code, pour que la livraison se compte en semaines plutôt qu'en cycles budgétaires.",
   },
 };

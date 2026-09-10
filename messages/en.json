@@ -21,13 +21,13 @@
   "Hero": {
     "title1": "Technology",
     "title2": "to transform nations",
-    "subtitle": "Empowering governments and their ecosystems to build their digital future",
+    "subtitle": "Digital public infrastructure for governments, built to be owned and run locally",
     "cta": "Contact Us"
   },
   "Domains": {
     "annotation": "DIGITAL PUBLIC INFRASTRUCTURE & DIGITAL TRANSFORMATION",
     "heading": "Seven domains. One architecture.",
-    "body": "Digital public infrastructure isn't a service you buy — it's what these seven practices add up to. Interoperability is the core the other six route through.",
+    "body": "Digital public infrastructure is what these seven practices add up to. Interoperability is the core the other six route through.",
     "coreLabel": "CORE",
     "explore": "Explore"
   },
@@ -37,9 +37,9 @@
     "body": "Selected projects that define what we do.",
     "viewFull": "View Full Portfolio →",
     "metaTitle": "Portfolio",
-    "metaDescription": "43 projects across 8 domains of expertise. Two decades of digital transformation, interoperability, and capacity building across 20+ countries.",
+    "metaDescription": "43 projects in 20+ countries. Two decades of digital government work, from national interoperability frameworks to procurement platforms.",
     "heroAnnotation": "// Portfolio",
-    "heroBody": "43 projects across 8 domains of expertise. Two decades of digital transformation, interoperability, and capacity building across 20+ countries.",
+    "heroBody": "43 projects in 20+ countries. Two decades of digital government work, from national interoperability frameworks to procurement platforms.",
     "statProjects": "Projects",
     "statCountries": "Countries",
     "statDomains": "Domains"
@@ -53,7 +53,7 @@
     "indexHeading": "All News",
     "indexBody": "Stories, case studies and updates from Arxia and the partners we work with around the world.",
     "metaTitle": "News",
-    "metaDescription": "Latest news, case studies, and updates from Arxia — digital transformation, Digital Public Infrastructure, and Agentic AI in action."
+    "metaDescription": "Latest news, case studies, and updates from Arxia: digital transformation, Digital Public Infrastructure, and Agentic AI in action."
   },
   "GlobalPresence": {
     "annotation": "Reach",
@@ -95,8 +95,8 @@
   },
   "ContactForm": {
     "connect": "Connect",
-    "heading": "Let's build the future together.",
-    "body": "Whether you're modernizing public services, building digital infrastructure, or strengthening local tech ecosystems — we're ready to partner with you.",
+    "heading": "Tell us what you're building.",
+    "body": "We work with governments, international organizations, and the donors who fund them. Send us the problem and we'll tell you straight whether we're the right partner for it.",
     "ariaLabel": "Contact form",
     "name": "Name",
     "namePlaceholder": "Your name",
@@ -174,14 +174,14 @@
   "DomainCTA": {
     "annotation": "Get Started",
     "heading": "Ready to discuss {title}?",
-    "body": "Let's explore how we can help you achieve your goals. Our team is ready to listen, advise, and build alongside you.",
+    "body": "Send us the specifics. We'll come back with what the work involves, who would do it, and what it would take.",
     "contact": "Contact Us",
     "viewPortfolio": "View Portfolio"
   },
   "DomainFeaturedCases": {
     "annotation": "Track Record",
     "heading": "Featured cases",
-    "body": "A selection of projects that define how we work in this domain.",
+    "body": "Projects where this work has already shipped.",
     "viewAll": "View all projects →"
   },
   "Errors": {
@@ -200,7 +200,7 @@
   },
   "Meta": {
     "homeTitle": "Digital Transformation & Digital Public Infrastructure — Arxia",
-    "homeDescription": "Arxia is a digital transformation and Digital Public Infrastructure company. We empower governments and their ecosystems to build their digital future.",
-    "homeOgDescription": "We empower governments and their ecosystems to build their digital future."
+    "homeDescription": "Arxia is a digital transformation and Digital Public Infrastructure company. We build the systems governments run on, then hand them over.",
+    "homeOgDescription": "We build the digital public infrastructure governments run on, then hand it over."
   }
 }

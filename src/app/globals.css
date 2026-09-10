@@ -369,51 +369,62 @@ html {
   transform: translateX(4px);
 }
 
-/* 5 — Anchor-plate schematic: spokes draw out from the core, then the
-       satellites land. Dash lengths and per-node delays are set inline
-       from the precomputed geometry. */
-.domain-schematic-spoke {
-  transition: stroke-dashoffset 620ms var(--ease-default);
+/* 5 — Anchor-plate figure: the exploded isometric stack.
+       Builds bottom-up (the way you'd assemble it), then the spine drops
+       through it, then the nodes land where it pierces each plate.
+       Per-element delays are set inline from the fixed geometry. */
+.domain-iso-dim {
+  opacity: 0;
+  transition: opacity 500ms var(--ease-default);
+  transition-delay: 700ms;
 }
-.animate-on-scroll.visible .domain-schematic-spoke {
-  stroke-dashoffset: 0 !important;
+.animate-on-scroll.visible .domain-iso-dim {
+  opacity: 1;
 }
-.domain-schematic-node {
+
+.domain-iso-plate {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 460ms var(--ease-default),
+              transform 460ms var(--ease-default);
+}
+.animate-on-scroll.visible .domain-iso-plate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* The spine drops from the top plate to the bottom one. scaleY keeps the
+   dash pattern intact, which a stroke-dashoffset draw would consume. */
+.domain-iso-spine {
+  transform-box: fill-box;
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: transform 620ms var(--ease-default);
+  transition-delay: 640ms;
+}
+.animate-on-scroll.visible .domain-iso-spine {
+  transform: scaleY(1);
+}
+
+.domain-iso-node {
   opacity: 0;
   transform-box: fill-box;
   transform-origin: center;
   transform: scale(0.4);
-  transition: opacity 320ms var(--ease-default),
-              transform 320ms var(--ease-default);
+  transition: opacity 300ms var(--ease-default),
+              transform 300ms var(--ease-default);
 }
-.animate-on-scroll.visible .domain-schematic-node {
+.animate-on-scroll.visible .domain-iso-node {
   opacity: 1;
   transform: scale(1);
 }
-.domain-schematic-core {
-  opacity: 0;
-  transform-box: fill-box;
-  transform-origin: center;
-  transform: scale(0.5);
-  transition: opacity 420ms var(--ease-default),
-              transform 420ms var(--ease-default);
-  transition-delay: 320ms;
-}
-.animate-on-scroll.visible .domain-schematic-core {
-  opacity: 1;
-  transform: scale(1);
-  animation: domain-core-pulse 3.2s var(--ease-default) 1.8s infinite;
-}
-@keyframes domain-core-pulse {
-  0%, 100% { transform: scale(1); }
-  50%      { transform: scale(1.14); }
+
+.domain-schematic {
+  transition: opacity var(--duration-normal) var(--ease-default);
 }
 .domain-plate--anchor:hover .domain-schematic,
 .domain-plate--anchor:focus-visible .domain-schematic {
   opacity: 1;
-}
-.domain-schematic {
-  transition: opacity var(--duration-normal) var(--ease-default);
 }
 
 /* ============================================
@@ -516,14 +527,15 @@ html {
     opacity: 1 !important;
     transform: none !important;
   }
-  .domain-schematic-spoke {
-    stroke-dashoffset: 0 !important;
-  }
-  .domain-schematic-node,
-  .domain-schematic-core {
+  .domain-iso-dim,
+  .domain-iso-plate,
+  .domain-iso-node {
     opacity: 1 !important;
     transform: none !important;
     animation: none !important;
+  }
+  .domain-iso-spine {
+    transform: none !important;
   }
 }
 

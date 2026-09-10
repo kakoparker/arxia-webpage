@@ -21,13 +21,13 @@
   "Hero": {
     "title1": "Tecnología",
     "title2": "que transforma naciones",
-    "subtitle": "Impulsamos a los gobiernos y sus ecosistemas para construir su futuro digital",
+    "subtitle": "Infraestructura pública digital para gobiernos, construida para que la operen y la posean localmente",
     "cta": "Contáctanos"
   },
   "Domains": {
     "annotation": "INFRAESTRUCTURA PÚBLICA DIGITAL Y TRANSFORMACIÓN DIGITAL",
     "heading": "Siete áreas. Una arquitectura.",
-    "body": "La infraestructura pública digital no es un servicio que se compra: es el resultado de estas siete prácticas. La interoperabilidad es el núcleo que articula las otras seis.",
+    "body": "La infraestructura pública digital es el resultado de estas siete prácticas. La interoperabilidad es el núcleo que articula las otras seis.",
     "coreLabel": "NÚCLEO",
     "explore": "Explorar"
   },
@@ -37,9 +37,9 @@
     "body": "Proyectos seleccionados que definen lo que hacemos.",
     "viewFull": "Ver portafolio completo →",
     "metaTitle": "Portafolio",
-    "metaDescription": "43 proyectos en 8 áreas de especialización. Dos décadas de transformación digital, interoperabilidad y desarrollo de capacidades en más de 20 países.",
+    "metaDescription": "43 proyectos en más de 20 países. Dos décadas de trabajo en gobierno digital, desde marcos nacionales de interoperabilidad hasta plataformas de contratación.",
     "heroAnnotation": "// Portafolio",
-    "heroBody": "43 proyectos en 8 áreas de especialización. Dos décadas de transformación digital, interoperabilidad y desarrollo de capacidades en más de 20 países.",
+    "heroBody": "43 proyectos en más de 20 países. Dos décadas de trabajo en gobierno digital, desde marcos nacionales de interoperabilidad hasta plataformas de contratación.",
     "statProjects": "Proyectos",
     "statCountries": "Países",
     "statDomains": "Áreas"
@@ -95,8 +95,8 @@
   },
   "ContactForm": {
     "connect": "Conectemos",
-    "heading": "Construyamos juntos el futuro.",
-    "body": "Ya sea que estés modernizando servicios públicos, construyendo infraestructura digital o fortaleciendo ecosistemas tecnológicos locales, estamos listos para acompañarte.",
+    "heading": "Cuéntenos qué está construyendo.",
+    "body": "Trabajamos con gobiernos, organizaciones internacionales y los donantes que los financian. Cuéntenos el problema y le diremos con franqueza si somos el socio adecuado.",
     "ariaLabel": "Formulario de contacto",
     "name": "Nombre",
     "namePlaceholder": "Tu nombre",
@@ -174,14 +174,14 @@
   "DomainCTA": {
     "annotation": "Empecemos",
     "heading": "¿Hablamos de {title}?",
-    "body": "Exploremos cómo podemos ayudarte a alcanzar tus objetivos. Nuestro equipo está listo para escuchar, asesorar y construir junto a ti.",
+    "body": "Cuéntenos los detalles. Le responderemos con lo que implica el trabajo, quién lo haría y qué requeriría.",
     "contact": "Contáctanos",
     "viewPortfolio": "Ver Portafolio"
   },
   "DomainFeaturedCases": {
     "annotation": "Trayectoria",
     "heading": "Casos destacados",
-    "body": "Una selección de proyectos que definen cómo trabajamos en esta área.",
+    "body": "Proyectos en los que este trabajo ya está en producción.",
     "viewAll": "Ver todos los proyectos →"
   },
   "Errors": {
@@ -200,7 +200,7 @@
   },
   "Meta": {
     "homeTitle": "Transformación Digital e Infraestructura Pública Digital — Arxia",
-    "homeDescription": "Arxia es una empresa de transformación digital e Infraestructura Pública Digital. Impulsamos a los gobiernos y sus ecosistemas para construir su futuro digital.",
-    "homeOgDescription": "Impulsamos a los gobiernos y sus ecosistemas para construir su futuro digital."
+    "homeDescription": "Arxia es una empresa de transformación digital e Infraestructura Pública Digital. Construimos los sistemas sobre los que operan los gobiernos y luego se los entregamos.",
+    "homeOgDescription": "Construimos la infraestructura pública digital sobre la que operan los gobiernos y luego se la entregamos."
   }
 }

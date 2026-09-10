@@ -12,17 +12,17 @@ export const expertiseDomainsEs: Record<string, ExpertiseDomainOverlay> = {
   interoperability: {
     name: "Interoperabilidad full-stack",
     description:
-      "Más que la capa técnica: acompañamos todas las capas que importan — gobernanza, estándares, políticas y, por supuesto, la implementación de la plataforma de intercambio de datos.",
+      "Gobernanza, estándares, políticas y la propia plataforma de intercambio de datos. La capa técnica es la parte fácil; también cubrimos el resto.",
   },
   "data-governance": {
     name: "Gobernanza de datos",
     description:
-      "Marcos de gobernanza, gestión del consentimiento, protección de datos, modelos semánticos y evaluaciones de madurez digital.",
+      "Las reglas que definen quién puede usar qué datos y con qué fundamento: marcos de gobernanza, regímenes de consentimiento, protección de datos, modelos semánticos y evaluaciones de madurez.",
   },
   "e-procurement": {
     name: "e-Procurement",
     description:
-      "Digitalización integral de la contratación pública a lo largo de todo el ciclo de vida, con trazabilidad y auditabilidad completas.",
+      "Contratación pública digitalizada desde la publicación de la licitación hasta la gestión del contrato, con cada paso trazable y auditable.",
   },
   "e-invoicing": {
     name: "e-Invoicing",
@@ -32,16 +32,16 @@ export const expertiseDomainsEs: Record<string, ExpertiseDomainOverlay> = {
   "web-portals": {
     name: "Portales web de gobierno",
     description:
-      "Portales ciudadanos e institucionales estandarizados, alineados con una estrategia y con estándares globales.",
+      "Portales ciudadanos e institucionales construidos sobre un mismo estándar, para que cada ministerio ofrezca el mismo nivel de servicio.",
   },
   "agentic-state": {
     name: "Estado agéntico",
     description:
-      "Más que chatbots de IA: acompañamos la estrategia, las políticas y las capas de datos que habilitan la IA en el gobierno, de forma segura y ética.",
+      "Los chatbots son la parte visible. Construimos las capas de estrategia, políticas y datos que hacen que la IA en el gobierno sea segura de operar.",
   },
   "e-services": {
     name: "e-Services",
     description:
-      "Diseñamos, optimizamos e implementamos servicios electrónicos con IA y soluciones low-code, para que vea resultados en tiempo récord.",
+      "Rediseñamos y construimos servicios electrónicos con IA y herramientas low-code, para que la entrega se mida en semanas y no en ciclos presupuestarios.",
   },
 };

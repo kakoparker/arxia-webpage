@@ -53,7 +53,7 @@ export const expertiseDomainEntries: ExpertiseDomainEntry[] = [
     order: "01",
     name: "Full-stack interoperability",
     description:
-      "More than just the technical layer — we support every layer that matters: governance, standards, policies and, of course, data-exchange platform implementation.",
+      "Governance, standards, policy and the data-exchange platform itself. The technical layer is the easy part; we cover the rest too.",
     icon: Network,
     core: true,
   },
@@ -62,7 +62,7 @@ export const expertiseDomainEntries: ExpertiseDomainEntry[] = [
     order: "02",
     name: "Data governance",
     description:
-      "Governance frameworks, consent management, data protection, semantic models and digital-maturity assessments.",
+      "The rules that decide who may use which data, and on what basis: governance frameworks, consent regimes, data protection, semantic models and maturity assessments.",
     icon: Lock,
   },
   {
@@ -70,7 +70,7 @@ export const expertiseDomainEntries: ExpertiseDomainEntry[] = [
     order: "03",
     name: "e-Procurement",
     description:
-      "End-to-end procurement digitalization across the full lifecycle, with complete traceability and auditability.",
+      "Procurement digitalized from tender publication through contract management, with every step traceable and auditable.",
     icon: ClipboardCheck,
   },
   {
@@ -86,7 +86,7 @@ export const expertiseDomainEntries: ExpertiseDomainEntry[] = [
     order: "05",
     name: "Government web portals",
     description:
-      "Standardized citizen and institutional portals that follow a strategy and global standards.",
+      "Citizen and institutional portals built on one standard, so every ministry ships the same quality of service.",
     icon: Globe,
   },
   {
@@ -94,7 +94,7 @@ export const expertiseDomainEntries: ExpertiseDomainEntry[] = [
     order: "06",
     name: "Agentic state",
     description:
-      "More than just AI chatbots — we support the strategy, policies and data layers that enable AI in government, securely and ethically.",
+      "Chatbots are the visible part. We build the strategy, policy and data layers underneath that make AI in government safe to run.",
     icon: Bot,
   },
   {
@@ -102,7 +102,7 @@ export const expertiseDomainEntries: ExpertiseDomainEntry[] = [
     order: "07",
     name: "e-Services",
     description:
-      "We design, optimize and implement e-services leveraging AI and low-code solutions, so you see results in record time.",
+      "We redesign and build e-services using AI and low-code tooling, so delivery is measured in weeks rather than budget cycles.",
     icon: Blocks,
   },
 ];
