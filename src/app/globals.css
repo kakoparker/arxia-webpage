@@ -488,6 +488,27 @@ html {
 }
 
 /* ============================================
+   PORTFOLIO CARD
+   ============================================ */
+.pf-card-accent {
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform var(--duration-normal) var(--ease-default);
+}
+.pf-card:hover .pf-card-accent,
+.pf-card:focus-visible .pf-card-accent {
+  transform: scaleY(1);
+}
+
+.pf-card-dot {
+  transition: transform var(--duration-normal) var(--ease-default);
+}
+.pf-card:hover .pf-card-dot,
+.pf-card:focus-visible .pf-card-dot {
+  transform: scale(1.5);
+}
+
+/* ============================================
    HERO GRID BACKGROUND
    Mobile: full blueprint grid (CSS fallback)
    Desktop: plain bg color (SVG grid takes over)
@@ -607,6 +628,10 @@ html {
   }
   .domain-plate-line {
     opacity: 1 !important;
+  }
+  .pf-card-accent,
+  .pf-card-dot {
+    transition: none !important;
   }
 }
 

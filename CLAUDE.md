@@ -384,8 +384,12 @@ replaces the 100–120px section padding in the spec above.
 - Internal rhythm inside a fitScreen section: header margin `mb-6`–`mb-8`,
   grid gaps `gap-4`–`gap-5`, card padding `p-5`–`p-6`.
 - Teaser copy is **clamped**, not shortened at the source: portfolio blurbs
-  `line-clamp-2`, news excerpts `line-clamp-2`. The full text lives on the
-  destination page.
+  clamp to 2 lines, news excerpts to 2. The full text lives on the destination
+  page.
+- **Never put `line-clamp` and `flex-1` on the same element.** The clamp sets
+  `display:-webkit-box`; `flex-1` then grows the box past the clamp, so extra
+  lines render and get cut as ragged half-lines. Clamp the text, grow a
+  wrapper around it. This shipped as a visible bug on the portfolio cards.
 - **Composition beats trimming.** `#presence` overflowed because it stacked
   header / [countries | globe] / stats — a 500px globe plus ~220px of chrome.
   Moving the header and stats INTO the left column, beside the globe, fixed it
