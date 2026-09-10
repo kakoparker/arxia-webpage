@@ -349,6 +349,46 @@ html {
   transform: scaleY(1);
 }
 
+/* 3b — Satellite hover reveal. Two fr rows trade places: the spacer above
+       the name collapses while the row below it opens, which drags the name
+       to the top of the plate and gives the one-phrase description the middle.
+       Interpolating `grid-template-rows` is what makes this work without
+       hard-coding a travel distance; browsers that can't interpolate fr units
+       snap between the two states instead, which is still correct. */
+.domain-plate-reveal {
+  display: grid;
+  grid-template-rows: 1fr auto 0fr;
+  min-height: 0;
+  transition: grid-template-rows 380ms var(--ease-default);
+}
+.domain-plate:hover .domain-plate-reveal,
+.domain-plate:focus-visible .domain-plate-reveal {
+  grid-template-rows: 0fr auto 1fr;
+}
+
+/* Collapsed, not hidden: screen readers still reach the line. */
+.domain-plate-line {
+  overflow: hidden;
+  min-height: 0;
+  opacity: 0;
+  transition: opacity 240ms var(--ease-default);
+}
+.domain-plate:hover .domain-plate-line,
+.domain-plate:focus-visible .domain-plate-line {
+  opacity: 1;
+  transition-delay: 140ms;
+}
+
+/* Touch devices never hover, so the line is simply open there. */
+@media (hover: none) {
+  .domain-plate-reveal {
+    grid-template-rows: 0fr auto 1fr;
+  }
+  .domain-plate-line {
+    opacity: 1;
+  }
+}
+
 /* 4 — "Explore" cue: rests hidden, slides in with the plate's hover. */
 .domain-plate-cue {
   opacity: 0;
@@ -384,9 +424,11 @@ html {
 
 .domain-iso-plate {
   opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 460ms var(--ease-default),
-              transform 460ms var(--ease-default);
+  transform: translateY(-26px);
+  /* Slight overshoot so each plate settles onto the stack rather than
+     sliding to a stop. */
+  transition: opacity 520ms var(--ease-default),
+              transform 560ms cubic-bezier(0.34, 1.36, 0.64, 1);
 }
 .animate-on-scroll.visible .domain-iso-plate {
   opacity: 1;
@@ -417,6 +459,24 @@ html {
 .animate-on-scroll.visible .domain-iso-node {
   opacity: 1;
   transform: scale(1);
+}
+
+/* Once the stack is assembled, a packet runs down the spine on a loop. The
+   data-flow dot is an established red-accent use in the design system, and it
+   keeps the figure alive without asking for attention. */
+.domain-iso-packet {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.animate-on-scroll.visible .domain-iso-packet {
+  animation: domain-iso-flow 3.8s var(--ease-default) 1.5s infinite;
+}
+@keyframes domain-iso-flow {
+  0%        { transform: translateY(0);     opacity: 0; }
+  12%       { opacity: 1; }
+  88%       { opacity: 1; }
+  100%      { transform: translateY(124px); opacity: 0; }
 }
 
 .domain-schematic {
@@ -536,6 +596,17 @@ html {
   }
   .domain-iso-spine {
     transform: none !important;
+  }
+  .domain-iso-packet {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+  /* The hover reveal resolves open, so the description is never unreachable. */
+  .domain-plate-reveal {
+    transition: none !important;
+  }
+  .domain-plate-line {
+    opacity: 1 !important;
   }
 }
 

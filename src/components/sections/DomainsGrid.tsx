@@ -19,9 +19,10 @@ import {
  *
  * Composition — a 5×2 drafting grid. Interoperability holds the left two
  * columns as a 2×2 anchor (Blueprint Blue, against white satellites) because
- * it is the practice the other six route through. The six satellites carry
- * number, icon and name only — their descriptions live on their own pages, so
- * the plate stays readable at a glance instead of becoming six paragraphs.
+ * it is the practice the other six route through. The six satellites show
+ * number, icon and name at rest, so the plate reads at a glance instead of
+ * becoming six paragraphs; hovering one pulls its name up and opens a
+ * one-phrase description underneath.
  *
  * Motion — three layers, all driven by the shared IntersectionObserver
  * (`useScrollAnimation` adds `.visible`), so `prefers-reduced-motion` is
@@ -180,8 +181,19 @@ export function DomainsGrid({
 type Translate = ReturnType<typeof useTranslations<"Domains">>;
 
 /**
- * One of the six satellites. Number, icon, name — nothing else. The name is
- * the click target's whole promise; the detail is one click away.
+ * One of the six satellites.
+ *
+ * At rest: plate number and icon at the top, name sitting at the bottom.
+ * On hover or keyboard focus the name is pulled to the top and a one-phrase
+ * description opens in the space it vacates, with "Explore" staying pinned to
+ * the bottom. The movement is a `grid-template-rows` transition between
+ * `1fr auto 0fr` and `0fr auto 1fr`, so the distance is whatever the plate's
+ * height happens to be — nothing is hard-coded, and it holds at every
+ * breakpoint. Where a browser can't interpolate fr rows it snaps instead of
+ * sliding, which still works.
+ *
+ * The description stays in the DOM at all times (collapsed, not hidden), so
+ * screen readers reach it regardless of hover.
  */
 function SatellitePlate({
   domain,
@@ -196,7 +208,7 @@ function SatellitePlate({
     <Link
       href={`/${domain.slug}`}
       className="
-        domain-plate group relative flex h-full min-h-[132px] flex-col
+        domain-plate group relative flex h-full min-h-[150px] flex-col
         border border-gray-light bg-white
         px-5 pt-5 pb-12
         transition-[border-color,box-shadow,transform] duration-300
@@ -225,17 +237,35 @@ function SatellitePlate({
         />
       </div>
 
-      <h3
-        className="mt-auto pt-6 font-semibold text-blueprint-blue"
-        style={{
-          fontFamily: "var(--font-primary)",
-          fontSize: "17px",
-          lineHeight: 1.25,
-          letterSpacing: "-0.3px",
-        }}
-      >
-        {domain.name}
-      </h3>
+      <div className="domain-plate-reveal flex-1">
+        {/* Spacer row: holds the name down at rest, collapses on hover. */}
+        <span aria-hidden />
+
+        <h3
+          className="font-semibold text-blueprint-blue"
+          style={{
+            fontFamily: "var(--font-primary)",
+            fontSize: "17px",
+            lineHeight: 1.25,
+            letterSpacing: "-0.3px",
+          }}
+        >
+          {domain.name}
+        </h3>
+
+        <div className="domain-plate-line">
+          <p
+            className="pt-2.5 text-gray-dark"
+            style={{
+              fontFamily: "var(--font-primary)",
+              fontSize: "13px",
+              lineHeight: 1.5,
+            }}
+          >
+            {domain.oneLine}
+          </p>
+        </div>
+      </div>
 
       <ExploreCue label={t("explore")} />
     </Link>
@@ -418,6 +448,15 @@ function Schematic() {
             </g>
           );
         })}
+
+        {/* Packet travelling the spine, once the stack has assembled. */}
+        <circle
+          className="domain-iso-packet"
+          cx={cx}
+          cy={spineTop}
+          r={2.5}
+          fill="var(--accent-red)"
+        />
 
         {/* Nodes where the spine pierces each plate. The only red fills. */}
         {PLATES.map((plate, i) => (
