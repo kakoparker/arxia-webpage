@@ -29,24 +29,35 @@ export function GlobalPresence() {
 
   return (
     <SectionContainer mode="dark" id="presence" showCornerMarks fitScreen>
-      <div ref={ref}>
-        <div data-animate data-animate-index="0" className="animate-on-scroll mb-8 lg:mb-10">
-          <SectionHeader
-            annotation={t("annotation")}
-            heading={t("heading")}
-            centered
-            dark
-          />
-        </div>
+      <div
+        ref={ref}
+        className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12"
+      >
+        {/* Left column carries everything textual, stacked.
+            This is what makes the section fit one screen: the heading and the
+            stats sit BESIDE the globe instead of adding their height on top of
+            it. Previously the section stacked header / [countries | globe] /
+            stats, so a 500px globe plus ~220px of chrome overflowed anything
+            shorter than about 950px. Left-anchored is also the documented
+            default for section headers. */}
+        <div>
+          <div data-animate data-animate-index="0" className="animate-on-scroll">
+            <SectionHeader
+              annotation={t("annotation")}
+              heading={t("heading")}
+              dark
+            />
+          </div>
 
-        {/* Two columns: countries on left, globe on right */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-8 lg:mb-10">
-          {/* Left — country list grouped by region */}
-          <div data-animate data-animate-index="1" className="animate-on-scroll">
-            {/* HQ callout */}
-            <div className="mb-6 pb-4 border-b border-white/10">
+          <div
+            data-animate
+            data-animate-index="1"
+            className="animate-on-scroll"
+          >
+            {/* Headquarters */}
+            <div className="mb-5 border-b border-white/10 pb-4">
               <p
-                className="text-accent-red uppercase mb-2"
+                className="mb-2 uppercase text-accent-red"
                 style={{
                   fontFamily: "var(--font-mono)",
                   fontSize: "11px",
@@ -56,19 +67,21 @@ export function GlobalPresence() {
                 {t("headquarters")}
               </p>
               <p
-                className="text-white font-semibold"
+                className="font-semibold text-white"
                 style={{ fontFamily: "var(--font-primary)", fontSize: "20px" }}
               >
                 {t(`countries.${HQ_CODE}`)}
               </p>
             </div>
 
-            {/* Regions — 2-column dense grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5">
+            {/* Regions. Three columns on desktop, which lands the five groups
+                in two rows instead of three — the single biggest saving in
+                this column. */}
+            <div className="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2 lg:grid-cols-3">
               {REGIONS.map((r) => (
                 <div key={r.region}>
                   <p
-                    className="text-gray-medium uppercase mb-2"
+                    className="mb-1.5 uppercase text-gray-medium"
                     style={{
                       fontFamily: "var(--font-mono)",
                       fontSize: "10px",
@@ -77,8 +90,8 @@ export function GlobalPresence() {
                   >
                     {t(`regions.${r.region}`)}
                   </p>
-                  <div className="h-[2px] w-8 bg-accent-red mb-2" />
-                  <ul className="space-y-1">
+                  <div className="mb-2 h-[2px] w-8 bg-accent-red" />
+                  <ul>
                     {r.codes.map((code) => (
                       <li
                         key={code}
@@ -98,62 +111,61 @@ export function GlobalPresence() {
             </div>
           </div>
 
-          {/* Right — Globe */}
+          {/* Odometer stats */}
           <div
             data-animate
             data-animate-index="2"
-            className="animate-on-scroll flex items-center justify-center"
+            className="animate-on-scroll mt-6 flex gap-8 lg:gap-12 max-sm:flex-col max-sm:gap-4"
           >
-            <Globe />
+            <Stat odometer={orgStat} label={t("statOrganizations")} />
+            <Stat odometer={countryStat} label={t("statCountries")} />
+            <Stat odometer={yearsStat} label={t("statYears")} />
           </div>
         </div>
 
-        {/* Odometer stats bar — left-aligned */}
-        <div className="flex gap-12 lg:gap-16 max-sm:flex-col max-sm:gap-5">
-          <div className="text-left" ref={orgStat.ref}>
-            <div
-              className="text-white font-bold tracking-[-1px]"
-              style={{ fontFamily: "var(--font-primary)", fontSize: "clamp(32px, 3.4vw, 42px)" }}
-            >
-              {orgStat.displayValue}
-            </div>
-            <div
-              className="text-gray-medium uppercase"
-              style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "2px" }}
-            >
-              {t("statOrganizations")}
-            </div>
-          </div>
-          <div className="text-left" ref={countryStat.ref}>
-            <div
-              className="text-white font-bold tracking-[-1px]"
-              style={{ fontFamily: "var(--font-primary)", fontSize: "clamp(32px, 3.4vw, 42px)" }}
-            >
-              {countryStat.displayValue}
-            </div>
-            <div
-              className="text-gray-medium uppercase"
-              style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "2px" }}
-            >
-              {t("statCountries")}
-            </div>
-          </div>
-          <div className="text-left" ref={yearsStat.ref}>
-            <div
-              className="text-white font-bold tracking-[-1px]"
-              style={{ fontFamily: "var(--font-primary)", fontSize: "clamp(32px, 3.4vw, 42px)" }}
-            >
-              {yearsStat.displayValue}
-            </div>
-            <div
-              className="text-gray-medium uppercase"
-              style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "2px" }}
-            >
-              {t("statYears")}
-            </div>
-          </div>
+        {/* Right column: the globe, capped against viewport height so it can
+            never be the reason the section overflows. */}
+        <div
+          data-animate
+          data-animate-index="3"
+          className="animate-on-scroll flex items-center justify-center"
+        >
+          <Globe />
         </div>
       </div>
     </SectionContainer>
+  );
+}
+
+/** One odometer figure with its mono label. */
+function Stat({
+  odometer,
+  label,
+}: {
+  odometer: ReturnType<typeof useOdometer>;
+  label: string;
+}) {
+  return (
+    <div className="text-left" ref={odometer.ref}>
+      <div
+        className="font-bold tracking-[-1px] text-white"
+        style={{
+          fontFamily: "var(--font-primary)",
+          fontSize: "clamp(28px, 3vw, 38px)",
+        }}
+      >
+        {odometer.displayValue}
+      </div>
+      <div
+        className="uppercase text-gray-medium"
+        style={{
+          fontFamily: "var(--font-mono)",
+          fontSize: "10px",
+          letterSpacing: "2px",
+        }}
+      >
+        {label}
+      </div>
+    </div>
   );
 }

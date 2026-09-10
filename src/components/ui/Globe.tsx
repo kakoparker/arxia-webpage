@@ -117,7 +117,10 @@ export function Globe({ className, markers = DEFAULT_MARKERS }: GlobeProps) {
   return (
     <div
       className={cn(
-        "mx-auto aspect-square w-full max-w-[500px]",
+        // Capped against viewport height as well as width: the globe is
+        // square, so an uncapped 500px is 500px of vertical cost and was
+        // pushing its section past one screen on shorter displays.
+        "mx-auto aspect-square w-full max-w-[min(460px,44vh)]",
         className,
       )}
     >

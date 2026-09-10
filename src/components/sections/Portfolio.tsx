@@ -7,8 +7,12 @@ import { getFeaturedProjects } from "@/data/portfolio";
 import { PortfolioScrollReveal } from "./PortfolioAnimations";
 
 /**
- * Homepage portfolio strip — section header + responsive card grid (3 cols
- * on lg, 2 on md, 1 on mobile). Six featured projects from portfolio.ts.
+ * Homepage portfolio strip: section header + a single row of four featured
+ * projects, with the full set one click away at /portfolio.
+ *
+ * Four-in-a-row rather than six in two rows. Two rows of cards cannot fit a
+ * one-screen section on a ~760px viewport once the header and the CTA are
+ * accounted for, and one dense row reads better than two crowded ones.
  */
 export function Portfolio() {
   const t = useTranslations("Portfolio");
@@ -23,8 +27,8 @@ export function Portfolio() {
         paddingRight: "max(10%, 24px)",
         // Matches SectionContainer's fitScreen rhythm — this section predates
         // that component and still rolls its own container.
-        paddingTop: "clamp(64px, 8vh, 88px)",
-        paddingBottom: "clamp(48px, 7vh, 80px)",
+        paddingTop: "clamp(40px, 7vh, 80px)",
+        paddingBottom: "clamp(32px, 6vh, 72px)",
       }}
     >
       <PortfolioScrollReveal
@@ -43,8 +47,8 @@ export function Portfolio() {
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
-          {featuredProjects.map((project, i) => (
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 mb-8">
+          {featuredProjects.slice(0, 4).map((project, i) => (
             <article
               key={project.slug}
               data-animate

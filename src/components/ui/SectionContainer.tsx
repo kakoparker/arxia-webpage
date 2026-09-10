@@ -49,10 +49,11 @@ export function SectionContainer({
         .filter(Boolean)
         .join(" ")}
       style={{
-        // Compact rhythm: enough air to breathe at 900px tall, without
-        // spending a third of the screen on padding.
-        paddingTop: fitScreen ? "clamp(64px, 8vh, 88px)" : "100px",
-        paddingBottom: fitScreen ? "clamp(48px, 7vh, 80px)" : "100px",
+        // Compact rhythm, proportional to the viewport: the vh term governs
+        // normal screens, while the low floors stop a short laptop viewport
+        // (~700px) from spending a sixth of the screen on padding.
+        paddingTop: fitScreen ? "clamp(40px, 7vh, 80px)" : "100px",
+        paddingBottom: fitScreen ? "clamp(32px, 6vh, 72px)" : "100px",
         paddingLeft: "max(10%, 24px)",
         paddingRight: "max(10%, 24px)",
       }}

@@ -152,7 +152,7 @@ export function DomainsGrid({
               grid grid-cols-1 gap-4
               sm:grid-cols-2
               lg:grid-cols-5 lg:grid-rows-2 lg:gap-5
-              lg:min-h-[clamp(400px,56vh,600px)]
+              lg:min-h-[clamp(360px,52vh,560px)]
             "
           >
             {domains.map((domain, i) => (
@@ -357,7 +357,10 @@ function Schematic() {
       <svg
         aria-hidden
         viewBox={`0 0 ${ISO.w} ${ISO.h}`}
-        className="domain-schematic h-auto w-full max-w-[250px]"
+        // Capped against viewport height too: the figure is the anchor plate's
+        // tallest element, so on a short screen it decides whether the whole
+        // section fits.
+        className="domain-schematic h-auto w-full max-w-[min(250px,27vh)]"
       >
         {/* Dimension bracket, drafting-style, spanning the whole stack. */}
         <g className="domain-iso-dim" stroke="rgba(255,255,255,0.3)" strokeWidth={1}>

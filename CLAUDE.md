@@ -366,27 +366,41 @@ intro copy at all.)
 
 ### One-screen section rhythm (supersedes the 100–120px rule above)
 
-Every content section should land on **a single screen at 100% zoom**. This
-replaces the 100–120px section padding in the spec above, which produced
-1.2–1.6-screen sections that forced a scroll mid-section.
+Every content section lands on **a single screen at 100% zoom**, and must keep
+doing so on a short laptop viewport (~700px), not just on a 900px one. This
+replaces the 100–120px section padding in the spec above.
 
 - `SectionContainer` takes `fitScreen`: `min-h-svh`, content vertically
-  centred, padding `clamp(64px, 8vh, 88px)` top / `clamp(48px, 7vh, 80px)`
-  bottom. `svh` so mobile browser chrome can't push content out of view;
-  `min-height` so short viewports grow instead of clipping.
-- Internal rhythm inside a fitScreen section: header margin `mb-6`–`mb-10`
-  (not `mb-16`), grid gaps `gap-4`–`gap-5` (not `gap-6`), card padding
-  `p-5`–`p-6` (not `p-7`).
+  centred, padding `clamp(40px, 7vh, 80px)` top / `clamp(32px, 6vh, 72px)`
+  bottom. The vh term governs normal screens; the low floors stop a short
+  viewport from spending a sixth of the screen on padding. `svh` so mobile
+  browser chrome can't push content out of view; `min-height` so short
+  viewports grow rather than clip.
+- **Anything with a fixed aspect ratio must also be capped against `vh`**, or
+  it decides on its own whether the section fits. This is the rule that gets
+  forgotten: the globe (`min(460px,44vh)`), the anchor figure
+  (`min(250px,27vh)`) and the news cover (`max-h-[20vh]`) are all capped this
+  way. A width-driven `aspect-square` is pure vertical cost on a short screen.
+- Internal rhythm inside a fitScreen section: header margin `mb-6`–`mb-8`,
+  grid gaps `gap-4`–`gap-5`, card padding `p-5`–`p-6`.
 - Teaser copy is **clamped**, not shortened at the source: portfolio blurbs
-  `line-clamp-2`, news excerpts `line-clamp-3`. The full text still lives on
-  the destination page.
-- Measured at 1440×900 the homepage is ~7.1 screens: hero 1.00, carousel strip
-  0.19, expertise 1.00, presence 1.01, portfolio 1.03, news 1.00, contact 1.00.
-  Re-measure after any section change.
+  `line-clamp-2`, news excerpts `line-clamp-2`. The full text lives on the
+  destination page.
+- **Composition beats trimming.** `#presence` overflowed because it stacked
+  header / [countries | globe] / stats — a 500px globe plus ~220px of chrome.
+  Moving the header and stats INTO the left column, beside the globe, fixed it
+  outright. Prefer that move over shaving pixels.
+- One row of cards, not two: `#portfolio` shows four featured projects in a
+  single row. Two rows cannot fit a one-screen section at ~760px once the
+  header and CTA are counted.
 - `Portfolio.tsx` predates `SectionContainer` and reproduces the fitScreen
-  rhythm inline — keep the two in step.
-- Mobile is exempt in practice: seven stacked plates cannot fit a phone screen,
-  and `min-height` correctly lets the section grow rather than clip.
+  padding inline — **keep the two in step.**
+
+Measured, every section at 1.00 screens: 1920×1080, 1920×900, 1536×864,
+1536×760, 1280×1024. At the extreme 1536×700, `#expertise` is 1.01 and the
+rest are 1.00. Mobile is exempt by design — seven stacked plates cannot fit a
+phone screen, and `min-height` correctly lets the section grow. Re-measure
+after any section change; the useful probe is section height ÷ `innerHeight`.
 
 **Domain plate design** (`DomainsGrid.tsx`): a 5×2 drafting grid. The anchor
 (interoperability) holds the left two columns as a 2×2 Blueprint Blue plate
