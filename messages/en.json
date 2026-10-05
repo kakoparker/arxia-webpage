@@ -21,7 +21,11 @@
   "Hero": {
     "title1": "Technology",
     "title2": "to transform nations",
-    "subtitle": "Digital public infrastructure for governments, built to be owned and run locally",
+    "labels": {
+      "transformation": "Digital Transformation",
+      "dpi": "Digital Public Infrastructure",
+      "interoperability": "Interoperability"
+    },
     "cta": "Contact Us"
   },
   "Domains": {

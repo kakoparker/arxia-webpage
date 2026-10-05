@@ -21,7 +21,11 @@
   "Hero": {
     "title1": "La technologie",
     "title2": "qui transforme les nations",
-    "subtitle": "Infrastructure publique numérique pour les gouvernements, conçue pour être détenue et exploitée localement",
+    "labels": {
+      "transformation": "Transformation Numérique",
+      "dpi": "Infrastructure Publique Numérique",
+      "interoperability": "Interopérabilité"
+    },
     "cta": "Contactez-nous"
   },
   "Domains": {

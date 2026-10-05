@@ -11,6 +11,9 @@ import { useAnimationFrame } from "@/hooks/useAnimationFrame";
 import { useMousePosition } from "@/hooks/useMousePosition";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
+/** Hero plates, in order. Keys map to the `Hero.labels` message namespace. */
+const HERO_LABELS = ["transformation", "dpi", "interoperability"] as const;
+
 export function Hero() {
   const t = useTranslations("Hero");
   const sectionRef = useRef<HTMLElement>(null);
@@ -110,19 +113,29 @@ export function Hero() {
           className="animate-on-scroll h-[3px] w-12 bg-accent-red mt-8 mb-6"
         />
 
-        <p
+        {/* What Arxia does, as three plates rather than a sentence. Mono,
+            uppercase and sharp-cornered: the brand's tag treatment, sized up
+            for the hero and inverted for the dark surface. */}
+        <ul
           data-animate
           data-animate-index="2"
-          className="animate-on-scroll text-gray-light font-normal text-center mx-auto"
-          style={{
-            fontFamily: "var(--font-primary)",
-            fontSize: "clamp(16px, 1.8vw, 20px)",
-            lineHeight: "1.7",
-            maxWidth: "640px",
-          }}
+          className="animate-on-scroll flex flex-wrap items-center justify-center gap-2 sm:gap-2.5"
         >
-          {t("subtitle")}
-        </p>
+          {HERO_LABELS.map((key) => (
+            <li
+              key={key}
+              className="border border-white/[0.18] px-3 py-2 text-[10px] text-gray-light sm:px-3.5 sm:text-[11px]"
+              style={{
+                fontFamily: "var(--font-mono)",
+                letterSpacing: "2px",
+                lineHeight: 1,
+                textTransform: "uppercase",
+              }}
+            >
+              {t(`labels.${key}`)}
+            </li>
+          ))}
+        </ul>
 
         <div data-animate data-animate-index="3" className="animate-on-scroll mt-8">
           <Button

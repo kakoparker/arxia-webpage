@@ -21,7 +21,11 @@
   "Hero": {
     "title1": "Tecnología",
     "title2": "que transforma naciones",
-    "subtitle": "Infraestructura pública digital para gobiernos, construida para que la operen y la posean localmente",
+    "labels": {
+      "transformation": "Transformación Digital",
+      "dpi": "Infraestructura Pública Digital",
+      "interoperability": "Interoperabilidad"
+    },
     "cta": "Contáctanos"
   },
   "Domains": {
