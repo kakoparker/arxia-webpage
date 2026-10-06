@@ -1,5 +1,5 @@
 // Spanish text overlay for src/data/portfolio.ts. Keyed by project slug.
-// Carries title + localized categoryLabel + description for all 43 projects.
+// Carries title + localized categoryLabel + description for all 44 projects.
 // Missing keys fall back to the English source in portfolio.ts.
 
 export interface PortfolioOverlay {
@@ -204,6 +204,12 @@ export const portfolioEs: Record<string, PortfolioOverlay> = {
     title: "Programa de Aceleración de IA + Taller de IA para Empresa de Software",
     description:
       "Realización de un programa de Aceleración de IA de 3 meses para una empresa de software, transformando sus departamentos de Marketing, Administración y Ventas.",
+    categoryLabel: C.ai,
+  },
+  "fawe-uganda-ai-acceleration": {
+    title: "Programa de Aceleración de IA – FAWE Uganda",
+    description:
+      "Taller AI Ignite y Programa de Aceleración de IA que ponen una IA agéntica práctica y responsable en manos de una organización sin ánimo de lucro que impulsa la educación de las niñas.",
     categoryLabel: C.ai,
   },
   "sigse-ai-acceleration": {

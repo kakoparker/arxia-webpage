@@ -1,6 +1,6 @@
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Portfolio — 43 projects, tagged by domain of expertise.
+// Portfolio — 44 projects, tagged by domain of expertise.
 //
 // Every project carries a stable `slug` and a `domain`
 // (`data | process | intelligence`). The legacy `category` / `categoryLabel`
@@ -15,7 +15,7 @@
 // Distribution by domain:
 //   data          → 10
 //   process       → 21
-//   intelligence  → 12
+//   intelligence  → 13
 // ─────────────────────────────────────────────────────────────────────────────
 
 /**
@@ -442,6 +442,18 @@ export const portfolioProjects: PortfolioProject[] = [
     client: "SIGSE",
     country: "Angola",
     year: "2024",
+    category: "artificial-intelligence",
+    categoryLabel: "Artificial Intelligence",
+  },
+  {
+    slug: "fawe-uganda-ai-acceleration",
+    title: "AI Acceleration Program – FAWE Uganda",
+    domain: "intelligence",
+    description:
+      "AI Ignite Workshop and AI Acceleration Program putting practical, responsible Agentic AI into the hands of a non-profit team advancing girls' education.",
+    client: "FAWE Uganda (Forum for African Women Educationalists)",
+    country: "Uganda",
+    year: "2026",
     category: "artificial-intelligence",
     categoryLabel: "Artificial Intelligence",
   },

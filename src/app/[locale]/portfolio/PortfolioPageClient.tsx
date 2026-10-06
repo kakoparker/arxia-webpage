@@ -123,7 +123,7 @@ export function PortfolioPageClient() {
               className="animate-on-scroll flex gap-12 flex-wrap lg:col-span-4 lg:justify-end"
             >
               {[
-                { value: "43", label: t("statProjects") },
+                { value: "44", label: t("statProjects") },
                 { value: "20+", label: t("statCountries") },
                 { value: "8", label: t("statDomains") },
               ].map((stat) => (
