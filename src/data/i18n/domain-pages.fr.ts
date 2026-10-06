@@ -6,73 +6,97 @@ import type { DomainPageOverlay } from "./domain-pages.es";
 
 export const domainPagesFr: Record<string, DomainPageOverlay> = {
   "interoperability": {
+    layers: {
+      L03: {
+        name: "Stratégie et gouvernance",
+        dimension: "Organisationnelle · Juridique",
+        promise:
+          "Décider comment devenir interopérable avant d'écrire la moindre ligne de code.",
+        scope: "Cadres · audits de maturité · politique de partage des données · feuilles de route",
+        items: {
+          "interoperability-frameworks": {
+            title: "Cadres nationaux et sectoriels d'interopérabilité",
+            description:
+              "L'architecture de référence, les principes et les règles qui alignent toutes les institutions d'un pays ou d'un secteur.",
+          },
+          "interoperability-maturity": {
+            title: "Évaluation et audit de maturité en interopérabilité",
+            description:
+              "Un diagnostic de préparation sur les personnes, les politiques, les données et les systèmes, pour savoir quoi construire en premier.",
+          },
+          "data-sharing-policy": {
+            title: "Politique de partage des données et gouvernance multipartite",
+            description:
+              "Des accords juridiques et organisationnels, règles de consentement comprises, qui permettent aux institutions et aux pays de partager des données en confiance.",
+          },
+          "adoption-roadmaps": {
+            title: "Feuilles de route d'adoption et méthodologie de maintenance",
+            description:
+              "Des plans par étapes que les ministères mènent en parallèle, adoption de GovStack comprise, et la gouvernance qui fait vivre les standards.",
+          },
+        },
+      },
+      L02: {
+        name: "Standards et sémantique",
+        dimension: "Sémantique",
+        promise: "Que les données aient le même sens partout où elles circulent.",
+        scope: "Standards de données · modèles sémantiques · validateurs · registres",
+        items: {
+          "semantic-standards": {
+            title: "Modèles sémantiques de données et standards",
+            description:
+              "Des modèles partagés et des standards de données, de la couche conceptuelle jusqu'aux transpositions techniques.",
+          },
+          "conformance-tooling": {
+            title: "Validateurs techniques et outils de conformité",
+            description:
+              "Des règles vérifiables par machine, pour que les données soient correctes par construction et non par inspection.",
+          },
+          "registry-standardization": {
+            title: "Standardisation des registres",
+            description:
+              "Des registres de référence (population, entreprises, foncier) alignés sur une même structure, une stratégie d'identifiants et un vocabulaire.",
+          },
+          "standard-localization": {
+            title: "Localisation et maintenance des standards",
+            description:
+              "Des standards internationaux adaptés au contexte national, puis gouvernés pour rester à jour.",
+          },
+        },
+      },
+      L01: {
+        name: "Échange et intégration",
+        dimension: "Technique",
+        promise: "Faire circuler les données, en sécurité et en production.",
+        scope: "Architecture · API · X-Road · plateformes d'échange",
+        items: {
+          "interoperability-architecture": {
+            title: "Conception d'architecture d'interopérabilité",
+            description:
+              "Le plan technique qui relie registres, services et institutions de bout en bout.",
+          },
+          "api-development": {
+            title: "Développement et intégration d'API",
+            description:
+              "Des API fondées sur des standards derrière une passerelle gouvernée, avec les systèmes ministériels et existants intégrés à travers elles.",
+          },
+          "xroad-integration": {
+            title: "Déploiement et intégration de X-Road",
+            description:
+              "Des institutions raccordées aux réseaux nationaux sécurisés d'échange de données (X-Road, Pub/Sub), sur des stacks ouvertes sans cœur verrouillé.",
+          },
+          "regional-exchange-platforms": {
+            title: "Plateformes d'échange régionales et systèmes de systèmes",
+            description:
+              "Des plateformes multi-institutions et multi-pays qui collectent, valident et partagent des données à grande échelle, sur une infrastructure souveraine.",
+          },
+        },
+      },
+    },
     categories: {
-      Consultancy: {
-        tagline:
-          "Cadres, normes et architecture pour l'echange national de donnees.",
-        items: {
-          "interoperability-strategy": {
-            title: "Stratégie d'interopérabilité des données",
-            description:
-              "Feuilles de route d'interopérabilité nationales et transfrontalières fondées sur GovStack, X-Road et des modèles Pub/Sub. Nous traduisons les priorités politiques en un plan technique par étapes que plusieurs ministères peuvent exécuter en parallèle.",
-          },
-          "national-registry-design": {
-            title: "Conception de registres nationaux",
-            description:
-              "Architecture et conception des registres nationaux faisant foi (population, entreprises, foncier, véhicules) : modèle de données, stratégie d'identifiants, règles de gouvernance et points d'intégration avec la dorsale d'échange de données.",
-          },
-        },
-      },
-      Services: {
-        tagline:
-          "Livraison, mise en oeuvre et accompagnement technique.",
-        items: {
-          "national-registries-api-gateway": {
-            title: "Mise en œuvre de registres nationaux et de l'API gateway",
-            description:
-              "Livraison de bout en bout des registres nationaux et de la dorsale d'échange de données du pays, avec une messagerie X-Road / Pub-Sub et une API gateway intégrées. De l'architecture de référence à l'autorité de certification, le serveur central et les premières intégrations ministérielles, sur des stacks ouverts éprouvés, afin que l'État ne dépende jamais d'un cœur captif.",
-          },
-          "api-gateway": {
-            title: "Conception d'API gateway et de registre d'APIs",
-            description:
-              "API gateway de niveau gouvernemental avec contrôle d'accès, quotas et observabilité, ainsi qu'un registre public d'APIs pour que les institutions partenaires puissent découvrir et consommer les données de manière responsable.",
-          },
-          "regional-platform": {
-            title: "Architecture de plateforme régionale d'échange de données",
-            description:
-              "Conception de plateformes multinationales pour des organisations régionales (par exemple la CIRGL) où plus de 10 États membres doivent partager des données sous des règles techniques et de gouvernance communes.",
-          },
-          "software-integration": {
-            title: "Intégration logicielle",
-            description:
-              "Intégration concrète des systèmes du secteur public (applications ministérielles, bases de données héritées et APIs modernes) reliés via la couche nationale d'échange de données, avec une remise opérationnelle complète.",
-          },
-          "inter-institutional-workflows": {
-            title: "Flux de travail interinstitutionnels automatisés",
-            description:
-              "Flux de travail assistés par IA qui acheminent les demandes, documents et décisions entre plusieurs organismes, en comprimant des semaines de coordination en jours.",
-          },
-          "govstack-adoption": {
-            title: "Programmes d'adoption de GovStack",
-            description:
-              "Adoption de GovStack à l'échelle d'un pays : alignement architectural, choix des building blocks, pilotes et préparation institutionnelle.",
-          },
-        },
-      },
-      Products: {
-        tagline:
-          "Des plateformes que nous possedons et faisons evoluer.",
-        items: {
-          "arxia-data-exchange": {
-            title: "Arxia Data Exchange Platform",
-            description:
-              "Partage de données sécurisé et fondé sur des standards entre les institutions gouvernementales et au-delà des frontières. Préconfigurée pour les building blocks GovStack et déployable sur une infrastructure souveraine.",
-          },
-        },
-      },
       Trainings: {
         tagline:
-          "Renforcement des capacites des decideurs et des equipes techniques du secteur public.",
+          "Renforcement des capacités des décideurs et des équipes techniques du secteur public.",
         items: {
           "training-interop-strategies": {
             title: "Atelier : Stratégies d'interopérabilité pour les institutions publiques",
@@ -266,6 +290,11 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
             title: "Programme d'Accélération IA pour le Gouvernement",
             description:
               "Programme d'adoption structuré de 12 semaines pour les organisations du secteur public. Fait passer votre équipe de la stratégie à des cas d'usage IA en fonctionnement en un seul trimestre.",
+          },
+          "inter-institutional-workflows": {
+            title: "Flux de travail interinstitutionnels automatisés",
+            description:
+              "Flux de travail assistés par IA qui acheminent les demandes, documents et décisions entre plusieurs organismes, en comprimant des semaines de coordination en jours.",
           },
         },
       },

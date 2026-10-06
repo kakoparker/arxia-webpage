@@ -423,9 +423,42 @@ localized via `src/data/i18n/expertise-domains.{es,fr}.ts`.
 catalogue, featured cases, and curated `relatedSlugs`. `getDomainPage()` merges
 the two. Never duplicate name/description into domain-pages.
 
-**Page structure** (all seven share it, via `DomainPageView`): hero +
-breadcrumb → offer categories (Consultancy / Services / Products / Trainings)
-→ featured cases → related domains (a curated three) → CTA.
+**Page structure.** Six domains share `DomainPageView`: hero + breadcrumb →
+offer categories (Consultancy / Services / Products / Trainings) → key cases →
+related domains (a curated three) → CTA.
+
+**Key cases (every domain page).** `DomainFeaturedCases` shows the first
+**three** of the page's curated `featuredCases`, as the homepage portfolio
+plates (`src/components/portfolio/ProjectCard.tsx`), plus a "See more" that
+opens `/portfolio?domain=<portfolioCategory>#projects`. Each domain-pages entry
+names its `portfolioCategory` (e.g. e-procurement → `public-procurement`).
+`/portfolio` reads `?domain=` after mount and narrows to that category (filter
+bar + "show all"; the side/mobile navs switch the filter while one is set). It
+is read client-side on purpose: the static HTML keeps every category for
+crawlers and no-JS readers. Order `featuredCases` by weight — only three show.
+
+**`/interoperability` has its own view** (`src/components/domain/interop/`),
+because its pitch is the layer model, not a list of offer kinds: hero with the
+labelled stack → why full-stack (the "seams" argument + EIF-aligned stack) →
+L03 Strategy & Governance → L02 Standards & Semantics → L01 Exchange &
+Integration → how we engage (Assess / Design / Build / Sustain, with the
+layers each phase touches) → key cases → related → CTA. Every content section is `fitScreen`. Each layer section is header (with
+a "you are here" stack marker) over figure | four offer cards. Its offers live
+in the opt-in `layers` field of its `domain-pages.ts` entry (four per layer,
+matching the 2026 capability brochure); the strategies workshop stays in
+`categories` (Trainings) and is shown under Sustain. Shared pieces (breadcrumb, related, JSON-LD, CTA, rail) come from
+`DomainShared.tsx`/`DomainCTA.tsx`, so neither view forks the other. The
+L01–L03 isometric stack is one component, `src/components/figures/IsoStack.tsx`,
+used by the homepage anchor plate, this hero and the per-layer markers.
+
+Brochure claims deliberately **not** on the page, because no portfolio record
+backs them yet: the CEN / European Commission "seat" and the EU eInvoicing /
+eProcurement standards work (CEN/ASRO), a Senegal national/health
+interoperability framework (2026), Health as an interoperability sector, the
+"Regional Minerals DataVault" name (the portfolio has the 12-state platform's
+architecture and requirements, not a live system), the Romania public-private
+services platform, and "the only partner" superlative. Add the portfolio
+record first, then the claim.
 
 **Nav** carries a single `Domains` entry to `/#expertise`; the footer
 enumerates all seven.
@@ -446,8 +479,9 @@ historical reference and no longer reflect the built site. The design-token and
 component sections between them ARE current, except where this section
 supersedes them.
 
-**Known content gaps.** Offer counts per domain: interoperability 10,
-agentic-state 9, e-services 8, web-portals 4, data-governance 3,
+**Known content gaps.** Offer counts per domain: interoperability 13 (12 layer
+offers + the workshop), agentic-state 10 (gained inter-institutional-workflows
+from interoperability), e-services 8, web-portals 4, data-governance 3,
 e-procurement 3, e-invoicing 2. The last three are thin and want more per-offer
 content. `ecosystem-capacity` ("Ecosystem Internationalization and Value
 Proposition") currently sits under e-services Trainings and is the one offer

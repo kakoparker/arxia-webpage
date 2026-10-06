@@ -46,7 +46,9 @@
     "heroBody": "43 proyectos en más de 20 países. Dos décadas de trabajo en gobierno digital, desde marcos nacionales de interoperabilidad hasta plataformas de contratación.",
     "statProjects": "Proyectos",
     "statCountries": "Países",
-    "statDomains": "Áreas"
+    "statDomains": "Áreas",
+    "filterLabel": "Filtrado por",
+    "showAll": "Ver todos los proyectos"
   },
   "News": {
     "annotation": "Noticias",
@@ -186,7 +188,69 @@
     "annotation": "Trayectoria",
     "heading": "Casos destacados",
     "body": "Proyectos en los que este trabajo ya está en producción.",
-    "viewAll": "Ver todos los proyectos →"
+    "seeMore": "Ver más proyectos →"
+  },
+  "Interop": {
+    "lede": "Del marco nacional al intercambio de datos en producción: un solo socio, todo el stack.",
+    "stackNav": "Las tres capas del stack",
+    "figCaption": "Fig. 00 · El stack de interoperabilidad · alineado con el EIF",
+    "approach": {
+      "annotation": "El enfoque",
+      "heading": "Por qué full-stack.",
+      "lead": "La interoperabilidad solo funciona de extremo a extremo.",
+      "seams": "La mayoría de los programas contratan políticas, estándares y tecnología por separado, y las costuras se notan.",
+      "close": "Arxia las cierra: las tres, entregadas como una sola capacidad, de la estrategia nacional al intercambio de datos en producción.",
+      "fullStack": "Full stack"
+    },
+    "layer": {
+      "position": "Capa {n} de 3"
+    },
+    "fig": {
+      "framework": "Marco",
+      "policy": "Política",
+      "governance": "Gobernanza",
+      "roadmap": "Hoja de ruta",
+      "maturity": "Madurez",
+      "sharedModel": "Modelo compartido",
+      "social": "Social",
+      "minerals": "Minería",
+      "procurement": "Compras",
+      "tax": "Impuestos",
+      "migration": "Migración",
+      "registries": "Registros",
+      "backbone": "Red segura · X-Road",
+      "ministry": "Ministerio",
+      "registry": "Registro",
+      "agency": "Agencia",
+      "regional": "Regional"
+    },
+    "engage": {
+      "annotation": "Cómo trabajamos",
+      "heading": "En todo el ciclo de vida, o en una sola capa.",
+      "body": "Trabaja con Arxia de principio a fin, o súmanos en la capa donde necesitas profundidad. El camino es el mismo en ambos casos.",
+      "assessTitle": "Evaluar",
+      "assessBody": "Auditorías de madurez y diagnósticos de la situación actual: qué existe, qué falta y qué va primero.",
+      "designTitle": "Diseñar",
+      "designBody": "Marcos, política de intercambio de datos, estándares semánticos y arquitectura técnica.",
+      "buildTitle": "Construir",
+      "buildBody": "APIs, integración con X-Road, registros y plataformas de intercambio, en producción.",
+      "sustainTitle": "Sostener",
+      "sustainBody": "Gobernanza, metodología de mantenimiento y transferencia de capacidades, para que el país sea dueño de su sistema.",
+      "layersLabel": "Capas",
+      "sectors": "Sectores que conocemos",
+      "sectorSocial": "Protección social",
+      "sectorFinance": "Finanzas públicas y compras",
+      "sectorMinerals": "Industrias extractivas y minería",
+      "sectorMigration": "Migración y servicios sociales",
+      "capacity": "Fortalecimiento de capacidades"
+    },
+    "rail": {
+      "approach": "Enfoque",
+      "governance": "Gobernanza",
+      "semantics": "Semántica",
+      "exchange": "Intercambio",
+      "engage": "Cómo trabajamos"
+    }
   },
   "Errors": {
     "label500": "Error · 500",

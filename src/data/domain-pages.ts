@@ -43,6 +43,28 @@ export interface ServiceCategory {
   items: ServiceItem[];
 }
 
+/** A layer of the interoperability stack, numbered top-down as drawn. */
+export type StackLayerId = "L03" | "L02" | "L01";
+
+/**
+ * One layer of the interoperability stack, with the offers delivered at it.
+ * Interoperability only: its page is organised by layer instead of by
+ * ServiceCategory, because the layer model is the pitch.
+ */
+export interface StackLayer {
+  id: StackLayerId;
+  /** In-page section id, e.g. "governance". */
+  anchor: string;
+  name: string;
+  /** The European Interoperability Framework dimension it covers. */
+  dimension: string;
+  /** One line: what this layer settles. */
+  promise: string;
+  /** Mono keyword strip summarising the layer's offers. */
+  scope: string;
+  items: ServiceItem[];
+}
+
 export interface FeaturedCase {
   projectSlug: string;
   note?: string;
@@ -52,7 +74,14 @@ export interface FeaturedCase {
 export interface DomainPageContent {
   slug: ExpertiseDomainSlug;
   categories: ServiceCategory[];
+  /** Opt-in: the offer catalogue by stack layer. Interoperability only. */
+  layers?: StackLayer[];
   featuredCases: FeaturedCase[];
+  /**
+   * The /portfolio category this domain's work is filed under. The cases
+   * section's "see more" opens /portfolio?domain=<this>, pre-filtered.
+   */
+  portfolioCategory: string;
   /** Sibling domains offered as the next step. Curated, not "all the others". */
   relatedSlugs: ExpertiseDomainSlug[];
 }
@@ -68,93 +97,131 @@ export interface DomainPage extends DomainPageContent {
 
 export const domainPages: DomainPageContent[] = [
   // === INTEROPERABILITY ===
+  // Organised by stack layer, not by kind of work: the layer model IS the
+  // pitch. Reconciled with the 2026 capability brochure (twelve offers, four
+  // per layer). Of the ten earlier offers: interoperability-strategy and
+  // govstack-adoption merged into adoption-roadmaps; national-registry-design
+  // became registry-standardization; national-registries-api-gateway became
+  // xroad-integration; api-gateway and software-integration merged into
+  // api-development; regional-platform and the arxia-data-exchange product
+  // merged into regional-exchange-platforms; inter-institutional-workflows
+  // (AI-routed casework, not interoperability) moved to agentic-state; the
+  // strategies workshop stays, surfaced under the Sustain step.
   {
     slug: "interoperability",
-    categories: [
+    layers: [
       {
-        name: "Consultancy",
-        tagline:
-          "Frameworks, standards, and architecture for national data exchange.",
+        id: "L03",
+        anchor: "governance",
+        name: "Strategy & Governance",
+        dimension: "Organizational · Legal",
+        promise:
+          "Decide how to become interoperable before a line of code is written.",
+        scope: "Frameworks · maturity audits · data-sharing policy · adoption roadmaps",
         items: [
           {
-            slug: "interoperability-strategy",
-            title: "Data interoperability strategy",
+            slug: "interoperability-frameworks",
+            title: "National and sectoral interoperability frameworks",
             description:
-              "National and cross-border interoperability roadmaps built on GovStack, X-Road, and Pub/Sub patterns. We translate political priorities into a staged technical plan that multiple ministries can execute in parallel.",
-            image: "/images/services/govtech-data/interoperability-strategy-illustration.webp",
+              "The reference architecture, principles and rules that align every institution in a country or a sector.",
           },
           {
-            slug: "national-registry-design",
-            title: "National Registry Design",
+            slug: "interoperability-maturity",
+            title: "Interoperability maturity assessment and audit",
             description:
-              "Architecture and design of authoritative national registries (population, business, land, vehicle), including data model, identifier strategy, governance rules, and integration points with the wider data-exchange backbone.",
-            image: "/images/services/govtech-data/national-registry-design-illustration.webp",
+              "Readiness diagnosed across people, policy, data and systems, so you know what to build first.",
+          },
+          {
+            slug: "data-sharing-policy",
+            title: "Data-sharing policy and multi-party governance",
+            description:
+              "Legal and organizational agreements, consent rules included, that let institutions and countries share data with trust.",
+          },
+          {
+            slug: "adoption-roadmaps",
+            title: "Adoption roadmaps and maintenance methodology",
+            description:
+              "Staged plans ministries can run in parallel, GovStack adoption included, and the governance that keeps standards alive.",
+            image: "/images/services/govtech-data/interoperability-strategy-illustration.webp",
           },
         ],
       },
       {
-        name: "Services",
-        tagline:
-          "Delivery, implementation, and technical enablement.",
+        id: "L02",
+        anchor: "semantics",
+        name: "Standards & Semantics",
+        dimension: "Semantic",
+        promise: "Make data mean the same thing everywhere it travels.",
+        scope: "Data standards · semantic models · validators · registries",
         items: [
           {
-            slug: "national-registries-api-gateway",
-            title: "National Registries system and API gateway implementation",
+            slug: "semantic-standards",
+            title: "Semantic data models and standards",
             description:
-              "Complete delivery of a country's national registries and data-exchange backbone, with X-Road / Pub-Sub messaging and API gateway built in. From reference architecture to certificate authority, central server, and first-mile ministry integrations, all built on proven open stacks so the state never sits on a vendor-locked core.",
-            image: "/images/services/govtech-data/national-registries-api-gateway-illustration.webp",
+              "Shared models and data standards, from the conceptual layer down to technical transpositions.",
           },
           {
-            slug: "api-gateway",
-            title: "API gateway and registry design",
+            slug: "conformance-tooling",
+            title: "Technical validators and conformance tooling",
             description:
-              "Government-grade API gateway with access control, quota, observability, plus a public API registry so partner institutions can discover and consume data responsibly.",
+              "Machine-enforceable rules, so data is correct by construction rather than by inspection.",
+          },
+          {
+            slug: "registry-standardization",
+            title: "Registry standardization",
+            description:
+              "Authoritative registries (population, business, land) aligned to one structure, identifier strategy and vocabulary.",
+            image: "/images/services/govtech-data/national-registry-design-illustration.webp",
+          },
+          {
+            slug: "standard-localization",
+            title: "Standard localization and maintenance",
+            description:
+              "International standards adapted to national context, then governed so they stay current.",
+          },
+        ],
+      },
+      {
+        id: "L01",
+        anchor: "exchange",
+        name: "Exchange & Integration",
+        dimension: "Technical",
+        promise: "Make the data flow, securely and in production.",
+        scope: "Architecture · APIs · X-Road · exchange platforms",
+        items: [
+          {
+            slug: "interoperability-architecture",
+            title: "Interoperability architecture design",
+            description:
+              "The technical blueprint that connects registries, services and institutions end to end.",
+          },
+          {
+            slug: "api-development",
+            title: "API development and integration",
+            description:
+              "Standards-based APIs behind a governed gateway, with ministry and legacy systems integrated through them.",
             image: "/images/services/govtech-data/api-gateway-illustration.webp",
           },
           {
-            slug: "regional-platform",
-            title: "Regional data-sharing platform architecture",
+            slug: "xroad-integration",
+            title: "X-Road deployment and integration",
             description:
-              "Multi-country platform design for regional bodies (e.g. ICGLR) where 10+ member states must share data under shared governance and technical rules.",
+              "Institutions onboarded onto national secure data-exchange backbones (X-Road, Pub/Sub), on open stacks with no locked-in core.",
+            image: "/images/services/govtech-data/national-registries-api-gateway-illustration.webp",
+          },
+          {
+            slug: "regional-exchange-platforms",
+            title: "Regional exchange platforms and systems of systems",
+            description:
+              "Multi-institution, multi-country platforms that collect, validate and share data at scale, on sovereign infrastructure.",
             image: "/images/services/govtech-data/regional-platform-illustration.webp",
           },
-          {
-            slug: "software-integration",
-            title: "Software integration",
-            description:
-              "Hands-on integration of public-sector systems (line-ministry applications, legacy databases, modern APIs), connected through the national data-exchange layer with full operator handover.",
-            image: "/images/services/govtech-data/software-integration-illustration.webp",
-          },
-          {
-            slug: "inter-institutional-workflows",
-            title: "Automated inter-institutional workflows",
-            description:
-              "AI-assisted workflows that route requests, documents, and decisions across multiple agencies, compressing weeks of coordination into days.",
-            image: "/images/services/govtech-intelligence/inter-institutional-workflows-illustration.webp",
-          },
-          {
-            slug: "govstack-adoption",
-            title: "GovStack adoption programs",
-            description:
-              "Country-level GovStack adoption: architecture alignment, building-block selection, pilots, and institutional readiness.",
-            image: "/images/services/govtech-process/govstack-adoption-illustration-v2.webp",
-          },
         ],
       },
-      {
-        name: "Products",
-        tagline:
-          "Platforms we own and evolve.",
-        items: [
-          {
-            slug: "arxia-data-exchange",
-            title: "Arxia Data Exchange Platform",
-            description:
-              "Standards-based, secure data sharing between government institutions and across borders. Preconfigured for GovStack building blocks, deployable on sovereign infrastructure.",
-            image: "/images/services/govtech-data/arxia-data-exchange-illustration.webp",
-          },
-        ],
-      },
+    ],
+    // Capacity building cuts across the stack, so it is not a layer offer;
+    // the page shows it under the Sustain step of the engagement model.
+    categories: [
       {
         name: "Trainings",
         tagline:
@@ -170,14 +237,16 @@ export const domainPages: DomainPageContent[] = [
         ],
       },
     ],
+    // The first three are the ones the page shows; order them by weight.
     featuredCases: [
       { projectSlug: "cambodia-dpi" },
-      { projectSlug: "icglr-regional-data-sharing" },
-      { projectSlug: "rwanda-risa-icglr" },
-      { projectSlug: "romania-ukrainian-interop" },
-      { projectSlug: "rwanda-integration-coaching" },
       { projectSlug: "icglr-data-sharing-policy" },
+      { projectSlug: "romania-ukrainian-interop" },
+      { projectSlug: "icglr-regional-data-sharing" },
+      { projectSlug: "rwanda-mining-standard" },
+      { projectSlug: "rwanda-consent-governance" },
     ],
+    portfolioCategory: "interoperability",
     relatedSlugs: ["data-governance", "e-services", "web-portals"],
   },
 
@@ -228,6 +297,7 @@ export const domainPages: DomainPageContent[] = [
       { projectSlug: "burundi-mining-data" },
       { projectSlug: "digital-maturity-tool" },
     ],
+    portfolioCategory: "data-governance",
     relatedSlugs: ["interoperability", "agentic-state", "e-procurement"],
   },
 
@@ -283,6 +353,7 @@ export const domainPages: DomainPageContent[] = [
       { projectSlug: "romania-eprocurement-platform" },
       { projectSlug: "uganda-ppda" },
     ],
+    portfolioCategory: "public-procurement",
     relatedSlugs: ["e-invoicing", "interoperability", "web-portals"],
   },
 
@@ -322,6 +393,7 @@ export const domainPages: DomainPageContent[] = [
     featuredCases: [
       { projectSlug: "car-einvoicing" },
     ],
+    portfolioCategory: "electronic-invoicing",
     relatedSlugs: ["e-procurement", "interoperability", "data-governance"],
   },
 
@@ -394,6 +466,7 @@ export const domainPages: DomainPageContent[] = [
       { projectSlug: "rwanda-typo3-coaching" },
       { projectSlug: "rwanda-web-accessibility" },
     ],
+    portfolioCategory: "web-development",
     relatedSlugs: ["e-services", "interoperability", "agentic-state"],
   },
 
@@ -455,6 +528,13 @@ export const domainPages: DomainPageContent[] = [
               "Structured 12-week adoption program for public-sector organizations. Moves your team from strategy to working AI use cases inside a single quarter.",
             image: "/images/services/govtech-intelligence/ai-acceleration-gov-illustration.webp",
           },
+          {
+            slug: "inter-institutional-workflows",
+            title: "Automated inter-institutional workflows",
+            description:
+              "AI-assisted workflows that route requests, documents, and decisions across multiple agencies, compressing weeks of coordination into days.",
+            image: "/images/services/govtech-intelligence/inter-institutional-workflows-illustration.webp",
+          },
         ],
       },
       {
@@ -501,6 +581,7 @@ export const domainPages: DomainPageContent[] = [
       { projectSlug: "ozmo-ai-acceleration" },
       { projectSlug: "chiletec-ai-training" },
     ],
+    portfolioCategory: "artificial-intelligence",
     relatedSlugs: ["e-services", "data-governance", "interoperability"],
   },
 
@@ -594,6 +675,7 @@ export const domainPages: DomainPageContent[] = [
       { projectSlug: "ethiopia-input-output" },
       { projectSlug: "govstack-adoption-africa" },
     ],
+    portfolioCategory: "digital-government",
     relatedSlugs: ["web-portals", "agentic-state", "interoperability"],
   },
 
@@ -629,6 +711,26 @@ function localizeContent(
         tagline: co.tagline ?? c.tagline,
         items: c.items.map((it) => {
           const io = co.items?.[it.slug];
+          if (!io) return it;
+          return {
+            ...it,
+            title: io.title ?? it.title,
+            description: io.description ?? it.description,
+          };
+        }),
+      };
+    }),
+    layers: page.layers?.map((l) => {
+      const lo = overlay.layers?.[l.id];
+      if (!lo) return l;
+      return {
+        ...l,
+        name: lo.name ?? l.name,
+        dimension: lo.dimension ?? l.dimension,
+        promise: lo.promise ?? l.promise,
+        scope: lo.scope ?? l.scope,
+        items: l.items.map((it) => {
+          const io = lo.items?.[it.slug];
           if (!io) return it;
           return {
             ...it,

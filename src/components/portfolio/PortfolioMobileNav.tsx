@@ -5,9 +5,15 @@ import type { PortfolioDomain } from "@/data/portfolio-domains";
 
 interface PortfolioMobileNavProps {
   domains: PortfolioDomain[];
+  /**
+   * Set while the page is filtered to one category: the nav then switches the
+   * filter instead of scrolling, and shows this slug as active.
+   */
+  filter?: string | null;
+  onSelect?: (slug: string) => void;
 }
 
-export function PortfolioMobileNav({ domains }: PortfolioMobileNavProps) {
+export function PortfolioMobileNav({ domains, filter, onSelect }: PortfolioMobileNavProps) {
   const [activeSlug, setActiveSlug] = useState(domains[0]?.slug ?? "");
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -45,6 +51,10 @@ export function PortfolioMobileNav({ domains }: PortfolioMobileNavProps) {
   }, [activeSlug]);
 
   function handleClick(slug: string) {
+    if (filter && onSelect) {
+      onSelect(slug);
+      return;
+    }
     const el = document.getElementById(slug);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
@@ -63,7 +73,7 @@ export function PortfolioMobileNav({ domains }: PortfolioMobileNavProps) {
       >
         <style>{`.portfolio-mobile-nav::-webkit-scrollbar { display: none; }`}</style>
         {domains.map((domain) => {
-          const isActive = activeSlug === domain.slug;
+          const isActive = (filter ?? activeSlug) === domain.slug;
           return (
             <button
               key={domain.slug}

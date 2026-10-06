@@ -127,9 +127,11 @@ export default async function LocaleLayout({
       <body className="font-[family-name:var(--font-inter)] antialiased" suppressHydrationWarning>
         {/* Scroll-reveal elements start hidden (opacity:0) and are revealed by
             JS. Without JS they'd never appear, so force them visible — keeps the
-            page fully readable with JavaScript disabled. */}
+            page fully readable with JavaScript disabled. The stack figures'
+            parts (.domain-iso-*, .interop-fig-*) wait on the same `.visible`
+            flag, so they are resolved here too. */}
         <noscript>
-          <style>{`.animate-on-scroll{opacity:1!important;transform:none!important}.accent-line-animate{width:48px!important}`}</style>
+          <style>{`.animate-on-scroll{opacity:1!important;transform:none!important}.accent-line-animate{width:48px!important}.domain-iso-dim,.domain-iso-plate,.domain-iso-node,.domain-iso-spine,.interop-fig-fade,.interop-fig-rise{opacity:1!important;transform:none!important}`}</style>
         </noscript>
         <script
           type="application/ld+json"

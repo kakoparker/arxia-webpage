@@ -76,6 +76,16 @@ identity) and are merged in by `getDomainPage()`. Edit them there.
 Section background mode (light/dark) is decided by category order — see
 `src/components/domain/DomainPageView.tsx`.
 
+Every entry also names its `portfolioCategory`; the cases section shows the
+first three `featuredCases` and links to `/portfolio?domain=<category>#projects`.
+
+Interoperability is the exception: its entry carries `layers[]` (L03 / L02 /
+L01, four offers each), rendered by `src/components/domain/interop/InteroperabilityPageView.tsx`.
+Section chrome for that page (approach copy, engagement steps, figure labels)
+lives in the `Interop` namespace of `messages/*.json`; offer text is
+overlaid per locale in `src/data/i18n/domain-pages.{es,fr}.ts` like any other
+domain.
+
 ### Add an illustration to a card
 Generate it through the image pipeline, drop the `*-illustration.webp` under
 `public/images/services/<vertical>-<domain>/`, and set the item's `image:` field
@@ -112,7 +122,9 @@ src/components/
   layout/    Navbar, Footer, LegalPage shell
   sections/  Home/vertical sections (Hero, Introduction, VerticalInMotion, …)
   domain/    Domain-page building blocks (DomainPageView, DomainCategorySection,
-             DomainCTA) — the renderer for src/data/domain-pages.ts
+             DomainCTA, DomainShared) — the renderer for src/data/domain-pages.ts;
+             interop/ holds the /interoperability view
+  figures/   IsoStack — the L01–L03 stack, shared by the homepage and /interoperability
   portfolio/ Portfolio grid + filters
   ui/        Primitives: SectionContainer, Button, CornerMarks, …
 ```

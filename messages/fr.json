@@ -46,7 +46,9 @@
     "heroBody": "43 projets dans plus de 20 pays. Deux décennies de travail sur le gouvernement numérique, des cadres nationaux d'interopérabilité aux plateformes de commande publique.",
     "statProjects": "Projets",
     "statCountries": "Pays",
-    "statDomains": "Domaines"
+    "statDomains": "Domaines",
+    "filterLabel": "Filtré par",
+    "showAll": "Voir tous les projets"
   },
   "News": {
     "annotation": "Actualités",
@@ -186,7 +188,69 @@
     "annotation": "Références",
     "heading": "Cas marquants",
     "body": "Des projets où ce travail est déjà en production.",
-    "viewAll": "Voir tous les projets →"
+    "seeMore": "Voir plus de projets →"
+  },
+  "Interop": {
+    "lede": "Du cadre national à l'échange de données en production : un seul partenaire, de bout en bout.",
+    "stackNav": "Les trois couches de l'interopérabilité",
+    "figCaption": "Fig. 00 · Les couches de l'interopérabilité · alignées sur l'EIF",
+    "approach": {
+      "annotation": "L'approche",
+      "heading": "Pourquoi le full-stack.",
+      "lead": "L'interopérabilité ne fonctionne que de bout en bout.",
+      "seams": "La plupart des programmes achètent séparément politiques, standards et technologie, et les jointures se voient.",
+      "close": "Arxia les referme : les trois, livrées comme une seule capacité, de la stratégie nationale à l'échange de données en production.",
+      "fullStack": "Full stack"
+    },
+    "layer": {
+      "position": "Couche {n} sur 3"
+    },
+    "fig": {
+      "framework": "Cadre",
+      "policy": "Politique",
+      "governance": "Gouvernance",
+      "roadmap": "Feuille de route",
+      "maturity": "Maturité",
+      "sharedModel": "Modèle partagé",
+      "social": "Social",
+      "minerals": "Mines",
+      "procurement": "Achats",
+      "tax": "Fiscalité",
+      "migration": "Migration",
+      "registries": "Registres",
+      "backbone": "Réseau sécurisé · X-Road",
+      "ministry": "Ministère",
+      "registry": "Registre",
+      "agency": "Agence",
+      "regional": "Régional"
+    },
+    "engage": {
+      "annotation": "Notre démarche",
+      "heading": "Sur tout le cycle de vie, ou sur une seule couche.",
+      "body": "Confiez à Arxia l'ensemble du parcours, ou faites appel à nous pour la couche où il vous faut de la profondeur. Le chemin est le même dans les deux cas.",
+      "assessTitle": "Évaluer",
+      "assessBody": "Audits de maturité et diagnostics de l'existant : ce qui existe, ce qui manque, ce qui passe en premier.",
+      "designTitle": "Concevoir",
+      "designBody": "Cadres, politique de partage des données, standards sémantiques et architecture technique.",
+      "buildTitle": "Construire",
+      "buildBody": "API, intégration X-Road, registres et plateformes d'échange, en production.",
+      "sustainTitle": "Pérenniser",
+      "sustainBody": "Gouvernance, méthodologie de maintenance et transfert de compétences, pour que le pays s'approprie le système.",
+      "layersLabel": "Couches",
+      "sectors": "Secteurs que nous connaissons",
+      "sectorSocial": "Protection sociale",
+      "sectorFinance": "Finances et achats publics",
+      "sectorMinerals": "Industries extractives et mines",
+      "sectorMigration": "Migration et services sociaux",
+      "capacity": "Renforcement des capacités"
+    },
+    "rail": {
+      "approach": "Approche",
+      "governance": "Gouvernance",
+      "semantics": "Sémantique",
+      "exchange": "Échange",
+      "engage": "Démarche"
+    }
   },
   "Errors": {
     "label500": "Erreur · 500",

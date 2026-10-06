@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { alternatesFor } from "@/i18n/metadata";
-import { DomainPageView } from "@/components/domain/DomainPageView";
+import { InteroperabilityPageView } from "@/components/domain/interop/InteroperabilityPageView";
 import { getDomainPage } from "@/data/domain-pages";
 
 const DOMAIN = "interoperability" as const;
@@ -30,5 +30,6 @@ export default async function InteroperabilityDomainPage({
   const { locale } = await params;
   if (!getDomainPage(DOMAIN, locale)) notFound();
   setRequestLocale(locale);
-  return <DomainPageView domain={DOMAIN} />;
+  // The core domain: its own view, organised around the stack layers.
+  return <InteroperabilityPageView />;
 }

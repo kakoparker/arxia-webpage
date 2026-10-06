@@ -488,6 +488,85 @@ html {
 }
 
 /* ============================================
+   INTEROPERABILITY PAGE (/interoperability)
+   The stack figure above, reused as the hero and as each layer's marker,
+   plus the per-layer drafting figures. Same contract: entrance states key
+   off `.animate-on-scroll.visible`, so the reduced-motion block below and
+   the <noscript> rule in the layout resolve them to the finished state.
+   ============================================ */
+
+/* Hero figure: the stack's height is derived from the column width, so the
+   layer labels beside it always keep ~230px however narrow the column gets.
+   Also capped against vh (it is the hero's tallest element) and at 300px.
+   0.754 = the figure's 196/260 aspect. Below sm the labels are hidden and
+   the stack simply centres. */
+.interop-hero-fig {
+  container-type: inline-size;
+}
+.interop-stack {
+  height: max(150px, min(300px, 38vh, calc((100cqw - 230px) * 0.754)));
+}
+@media (max-width: 639px) {
+  .interop-stack {
+    height: min(200px, 30vh);
+  }
+}
+
+/* Hero: a layer label lights its plate. :has() is progressive — without it
+   the labels still work as links, the plate just doesn't answer back. */
+.iso-plate-top {
+  transition: fill var(--duration-normal) var(--ease-default),
+              stroke var(--duration-normal) var(--ease-default);
+}
+.interop-stack:has([data-layer="L03"]:hover, [data-layer="L03"]:focus-visible) .domain-iso-plate[data-layer="L03"] .iso-plate-top,
+.interop-stack:has([data-layer="L02"]:hover, [data-layer="L02"]:focus-visible) .domain-iso-plate[data-layer="L02"] .iso-plate-top,
+.interop-stack:has([data-layer="L01"]:hover, [data-layer="L01"]:focus-visible) .domain-iso-plate[data-layer="L01"] .iso-plate-top {
+  fill: rgba(255, 255, 255, 0.18);
+  stroke: rgba(255, 255, 255, 0.9);
+}
+.interop-stack-leader {
+  transition: background-color var(--duration-normal) var(--ease-default);
+}
+.interop-stack-link:hover .interop-stack-leader,
+.interop-stack-link:focus-visible .interop-stack-leader {
+  background-color: var(--accent-red);
+}
+
+/* Layer figures: line work fades in, boxes rise into place after the
+   central element (hub, backbone or pyramid) has landed. */
+.interop-fig-fade {
+  opacity: 0;
+  transition: opacity 500ms var(--ease-default);
+}
+.interop-fig-rise {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 420ms var(--ease-default),
+              transform 420ms var(--ease-default);
+}
+.animate-on-scroll.visible .interop-fig-fade,
+.animate-on-scroll.visible .interop-fig-rise {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* L01 figure: a packet runs the backbone, ministry to regional platform. */
+.interop-bus-packet {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.animate-on-scroll.visible .interop-bus-packet {
+  animation: interop-bus-flow 4.2s var(--ease-default) 1.6s infinite;
+}
+@keyframes interop-bus-flow {
+  0%   { transform: translateX(0);     opacity: 0; }
+  12%  { opacity: 1; }
+  88%  { opacity: 1; }
+  100% { transform: translateX(220px); opacity: 0; }
+}
+
+/* ============================================
    PORTFOLIO CARD
    Rests white, flips to Blueprint Blue on hover / keyboard focus. Every
    colour in the card lives here, resting state included, so the inversion
@@ -693,9 +772,15 @@ html {
   .domain-iso-spine {
     transform: none !important;
   }
-  .domain-iso-packet {
+  .domain-iso-packet,
+  .interop-bus-packet {
     animation: none !important;
     opacity: 0 !important;
+  }
+  .interop-fig-fade,
+  .interop-fig-rise {
+    opacity: 1 !important;
+    transform: none !important;
   }
   /* The hover reveal resolves open, so the description is never unreachable. */
   .domain-plate-reveal {

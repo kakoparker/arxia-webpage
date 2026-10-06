@@ -1,10 +1,9 @@
 "use client";
 
 import type { LucideIcon } from "lucide-react";
-import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { DomainBreadcrumb } from "@/components/domain/DomainShared";
 
 interface DomainHeroProps {
   title: string;
@@ -13,73 +12,12 @@ interface DomainHeroProps {
 }
 
 export function DomainHero({ title, description, icon: Icon }: DomainHeroProps) {
-  const t = useTranslations("Domain");
   const ref = useScrollAnimation();
 
   return (
     <SectionContainer mode="dark" showCornerMarks className="!pt-28 !pb-16 lg:!pt-32 lg:!pb-20">
       <div ref={ref}>
-        {/* Breadcrumb */}
-        <nav
-          data-animate
-          data-animate-index="0"
-          className="animate-on-scroll mb-8"
-          aria-label={t("breadcrumb")}
-        >
-          <ol className="flex items-center gap-2">
-            <li>
-              <Link
-                href="/"
-                className="text-gray-medium hover:text-white transition-colors duration-200"
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "10px",
-                  letterSpacing: "2px",
-                  textTransform: "uppercase",
-                }}
-              >
-                {t("home")}
-              </Link>
-            </li>
-            <li
-              className="text-gray-medium/40"
-              style={{ fontFamily: "var(--font-mono)", fontSize: "10px" }}
-            >
-              /
-            </li>
-            <li>
-              <Link
-                href="/#expertise"
-                className="text-gray-medium hover:text-white transition-colors duration-200"
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "10px",
-                  letterSpacing: "2px",
-                  textTransform: "uppercase",
-                }}
-              >
-                {t("domainsCrumb")}
-              </Link>
-            </li>
-            <li
-              className="text-gray-medium/40"
-              style={{ fontFamily: "var(--font-mono)", fontSize: "10px" }}
-            >
-              /
-            </li>
-            <li
-              className="text-accent-red/85"
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: "10px",
-                letterSpacing: "2px",
-                textTransform: "uppercase",
-              }}
-            >
-              {title}
-            </li>
-          </ol>
-        </nav>
+        <DomainBreadcrumb title={title} />
 
         {/* Icon */}
         <div

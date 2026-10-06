@@ -6,9 +6,20 @@ import type { PortfolioDomain } from "@/data/portfolio-domains";
 interface PortfolioSideNavProps {
   domains: PortfolioDomain[];
   projectCounts: Record<string, number>;
+  /**
+   * Set while the page is filtered to one category: the nav then switches the
+   * filter instead of scrolling, and shows this slug as active.
+   */
+  filter?: string | null;
+  onSelect?: (slug: string) => void;
 }
 
-export function PortfolioSideNav({ domains, projectCounts }: PortfolioSideNavProps) {
+export function PortfolioSideNav({
+  domains,
+  projectCounts,
+  filter,
+  onSelect,
+}: PortfolioSideNavProps) {
   const [activeSlug, setActiveSlug] = useState(domains[0]?.slug ?? "");
 
   useEffect(() => {
@@ -36,6 +47,10 @@ export function PortfolioSideNav({ domains, projectCounts }: PortfolioSideNavPro
   }, [domains]);
 
   function handleClick(slug: string) {
+    if (filter && onSelect) {
+      onSelect(slug);
+      return;
+    }
     const el = document.getElementById(slug);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
@@ -59,7 +74,7 @@ export function PortfolioSideNav({ domains, projectCounts }: PortfolioSideNavPro
         Domains
       </p>
       {domains.map((domain) => {
-        const isActive = activeSlug === domain.slug;
+        const isActive = (filter ?? activeSlug) === domain.slug;
         return (
           <button
             key={domain.slug}

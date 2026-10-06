@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -32,6 +33,32 @@ export function PortfolioPageClient() {
   for (const domain of portfolioDomains) {
     projectCounts[domain.slug] = projectsByDomain[domain.slug]?.length ?? 0;
   }
+
+  // Category filter, from ?domain=<slug> (the domain pages link here that
+  // way). Read after mount rather than via useSearchParams so the page stays
+  // statically rendered with every category: crawlers and no-JS readers get
+  // the full portfolio, and the filter is a client-side narrowing of it.
+  // Landing on the list (not the hero) is done by the link's #projects hash,
+  // which both full loads and client-side navigation honour.
+  const [filter, setFilter] = useState<string | null>(null);
+
+  useEffect(() => {
+    const requested = new URLSearchParams(window.location.search).get("domain");
+    if (!requested || !projectCounts[requested]) return;
+    setFilter(requested);
+    // Run once, on arrival.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  function applyFilter(slug: string | null) {
+    setFilter(slug);
+    const url = new URL(window.location.href);
+    if (slug) url.searchParams.set("domain", slug);
+    else url.searchParams.delete("domain");
+    window.history.replaceState(null, "", url);
+  }
+
+  const filtered = filter ? portfolioDomains.find((d) => d.slug === filter) : undefined;
 
   return (
     <>
@@ -116,22 +143,50 @@ export function PortfolioPageClient() {
       </SectionContainer>
 
       {/* Mobile Navigation */}
-      <PortfolioMobileNav domains={portfolioDomains} />
+      <PortfolioMobileNav
+        domains={portfolioDomains}
+        filter={filter}
+        onSelect={applyFilter}
+      />
 
       {/* Main Content */}
       <SectionContainer mode="light">
-        <div className="flex gap-8">
+        <div id="projects" className="flex gap-8">
           {/* Desktop Side Nav */}
           <PortfolioSideNav
             domains={portfolioDomains}
             projectCounts={projectCounts}
+            filter={filter}
+            onSelect={applyFilter}
           />
 
           {/* Domain Sections */}
           <div className="flex-1 min-w-0">
+            {filtered && (
+              <div className="mb-10 flex flex-wrap items-center justify-between gap-4 border border-gray-light bg-gray-lightest px-5 py-4">
+                <p
+                  className="text-gray-dark"
+                  style={{ fontFamily: "var(--font-primary)", fontSize: "14px" }}
+                >
+                  <span className="mr-2 font-[family-name:var(--font-jetbrains)] text-[10px] uppercase tracking-[2px]">
+                    {t("filterLabel")}
+                  </span>
+                  <span className="font-semibold text-blueprint-blue">{filtered.label}</span>{" "}
+                  ({projectCounts[filtered.slug]})
+                </p>
+                <button
+                  type="button"
+                  onClick={() => applyFilter(null)}
+                  className="font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2px] text-blueprint-blue underline-offset-4 hover:underline"
+                >
+                  {t("showAll")} →
+                </button>
+              </div>
+            )}
             {portfolioDomains.map((domain, index) => {
               const projects = projectsByDomain[domain.slug] ?? [];
               if (projects.length === 0) return null;
+              if (filter && domain.slug !== filter) return null;
               return (
                 <PortfolioSection
                   key={domain.slug}

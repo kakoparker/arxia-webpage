@@ -46,7 +46,9 @@
     "heroBody": "43 projects in 20+ countries. Two decades of digital government work, from national interoperability frameworks to procurement platforms.",
     "statProjects": "Projects",
     "statCountries": "Countries",
-    "statDomains": "Domains"
+    "statDomains": "Domains",
+    "filterLabel": "Filtered by",
+    "showAll": "Show all projects"
   },
   "News": {
     "annotation": "News",
@@ -186,7 +188,69 @@
     "annotation": "Track Record",
     "heading": "Featured cases",
     "body": "Projects where this work has already shipped.",
-    "viewAll": "View all projects →"
+    "seeMore": "See more projects →"
+  },
+  "Interop": {
+    "lede": "From national framework to live data exchange: one partner, the full stack.",
+    "stackNav": "The three layers of the stack",
+    "figCaption": "Fig. 00 · The interoperability stack · EIF-aligned",
+    "approach": {
+      "annotation": "The approach",
+      "heading": "Why full-stack.",
+      "lead": "Interoperability only works end to end.",
+      "seams": "Most programs buy policy, standards and technology separately, and the seams show.",
+      "close": "Arxia closes them: all three, delivered as one capability, from national strategy to live data exchange.",
+      "fullStack": "Full stack"
+    },
+    "layer": {
+      "position": "Layer {n} of 3"
+    },
+    "fig": {
+      "framework": "Framework",
+      "policy": "Policy",
+      "governance": "Governance",
+      "roadmap": "Roadmap",
+      "maturity": "Maturity",
+      "sharedModel": "Shared model",
+      "social": "Social",
+      "minerals": "Minerals",
+      "procurement": "Procurement",
+      "tax": "Tax",
+      "migration": "Migration",
+      "registries": "Registries",
+      "backbone": "Secure backbone · X-Road",
+      "ministry": "Ministry",
+      "registry": "Registry",
+      "agency": "Agency",
+      "regional": "Regional"
+    },
+    "engage": {
+      "annotation": "How we engage",
+      "heading": "Across the lifecycle, or at any single layer.",
+      "body": "Engage Arxia end to end, or bring us in for the layer where you need depth. The path is the same either way.",
+      "assessTitle": "Assess",
+      "assessBody": "Maturity audits and current-state diagnostics: what exists, what is missing, what comes first.",
+      "designTitle": "Design",
+      "designBody": "Frameworks, data-sharing policy, semantic standards and technical architecture.",
+      "buildTitle": "Build",
+      "buildBody": "APIs, X-Road integration, registries and exchange platforms, in production.",
+      "sustainTitle": "Sustain",
+      "sustainBody": "Governance, maintenance methodology and capacity transfer, so the nation owns it.",
+      "layersLabel": "Layers",
+      "sectors": "Sectors we know",
+      "sectorSocial": "Social protection",
+      "sectorFinance": "Public finance and procurement",
+      "sectorMinerals": "Extractives and minerals",
+      "sectorMigration": "Migration and social services",
+      "capacity": "Capacity building"
+    },
+    "rail": {
+      "approach": "Approach",
+      "governance": "Governance",
+      "semantics": "Semantics",
+      "exchange": "Exchange",
+      "engage": "Engage"
+    }
   },
   "Errors": {
     "label500": "Error · 500",

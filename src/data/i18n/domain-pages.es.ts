@@ -1,87 +1,128 @@
 // Spanish text overlay for src/data/domain-pages.ts.
-// Keyed by page slug -> categories[name].{tagline, items[itemSlug]}.
+// Keyed by page slug -> categories[name].{tagline, items[itemSlug]};
+// interoperability also carries layers[id].
 // Anything omitted falls back to English. Page identity (name, description)
 // is translated upstream in ./expertise-domains.es.ts.
+
+type OfferOverlay = Record<string, { title?: string; description?: string }>;
+type LayerId = "L03" | "L02" | "L01";
 
 export interface DomainPageOverlay {
   categories?: Record<
     string,
     {
       tagline?: string;
-      items?: Record<string, { title?: string; description?: string }>;
+      items?: OfferOverlay;
     }
+  >;
+  /** Interoperability only: its stack layers, keyed by layer id. */
+  layers?: Partial<
+    Record<
+      LayerId,
+      {
+        name?: string;
+        dimension?: string;
+        promise?: string;
+        scope?: string;
+        items?: OfferOverlay;
+      }
+    >
   >;
 }
 
 export const domainPagesEs: Record<string, DomainPageOverlay> = {
   "interoperability": {
+    layers: {
+      L03: {
+        name: "Estrategia y gobernanza",
+        dimension: "Organizativa · Jurídica",
+        promise:
+          "Decidir cómo volverse interoperable antes de escribir una sola línea de código.",
+        scope: "Marcos · auditorías de madurez · política de intercambio de datos · hojas de ruta",
+        items: {
+          "interoperability-frameworks": {
+            title: "Marcos nacionales y sectoriales de interoperabilidad",
+            description:
+              "La arquitectura de referencia, los principios y las reglas que alinean a todas las instituciones de un país o de un sector.",
+          },
+          "interoperability-maturity": {
+            title: "Evaluación y auditoría de madurez en interoperabilidad",
+            description:
+              "Diagnóstico de preparación en personas, políticas, datos y sistemas, para saber qué construir primero.",
+          },
+          "data-sharing-policy": {
+            title: "Política de intercambio de datos y gobernanza multiparte",
+            description:
+              "Acuerdos jurídicos y organizativos, reglas de consentimiento incluidas, que permiten a instituciones y países compartir datos con confianza.",
+          },
+          "adoption-roadmaps": {
+            title: "Hojas de ruta de adopción y metodología de mantenimiento",
+            description:
+              "Planes por etapas que los ministerios pueden ejecutar en paralelo, adopción de GovStack incluida, y la gobernanza que mantiene vivos los estándares.",
+          },
+        },
+      },
+      L02: {
+        name: "Estándares y semántica",
+        dimension: "Semántica",
+        promise: "Que los datos signifiquen lo mismo dondequiera que circulen.",
+        scope: "Estándares de datos · modelos semánticos · validadores · registros",
+        items: {
+          "semantic-standards": {
+            title: "Modelos semánticos de datos y estándares",
+            description:
+              "Modelos compartidos y estándares de datos, desde la capa conceptual hasta las transposiciones técnicas.",
+          },
+          "conformance-tooling": {
+            title: "Validadores técnicos y herramientas de conformidad",
+            description:
+              "Reglas verificables por máquina, para que los datos sean correctos por construcción y no por inspección.",
+          },
+          "registry-standardization": {
+            title: "Estandarización de registros",
+            description:
+              "Registros autoritativos (población, empresas, tierras) alineados con una misma estructura, estrategia de identificadores y vocabulario.",
+          },
+          "standard-localization": {
+            title: "Localización y mantenimiento de estándares",
+            description:
+              "Estándares internacionales adaptados al contexto nacional y gobernados para que sigan vigentes.",
+          },
+        },
+      },
+      L01: {
+        name: "Intercambio e integración",
+        dimension: "Técnica",
+        promise: "Que los datos fluyan, de forma segura y en producción.",
+        scope: "Arquitectura · APIs · X-Road · plataformas de intercambio",
+        items: {
+          "interoperability-architecture": {
+            title: "Diseño de arquitectura de interoperabilidad",
+            description:
+              "El plano técnico que conecta registros, servicios e instituciones de extremo a extremo.",
+          },
+          "api-development": {
+            title: "Desarrollo e integración de APIs",
+            description:
+              "APIs basadas en estándares detrás de un gateway gobernado, con los sistemas ministeriales y heredados integrados a través de ellas.",
+          },
+          "xroad-integration": {
+            title: "Despliegue e integración de X-Road",
+            description:
+              "Instituciones incorporadas a redes nacionales seguras de intercambio de datos (X-Road, Pub/Sub), sobre stacks abiertos y sin núcleo cautivo.",
+          },
+          "regional-exchange-platforms": {
+            title: "Plataformas regionales de intercambio y sistemas de sistemas",
+            description:
+              "Plataformas multiinstitucionales y multinacionales que recopilan, validan y comparten datos a escala, sobre infraestructura soberana.",
+          },
+        },
+      },
+    },
     categories: {
-      Consultancy: {
-        tagline:
-          "Marcos, estandares y arquitectura para el intercambio nacional de datos.",
-        items: {
-          "interoperability-strategy": {
-            title: "Estrategia de interoperabilidad de datos",
-            description:
-              "Hojas de ruta de interoperabilidad nacional y transfronteriza basadas en GovStack, X-Road y patrones Pub/Sub. Traducimos las prioridades políticas en un plan técnico por etapas que varios ministerios pueden ejecutar en paralelo.",
-          },
-          "national-registry-design": {
-            title: "Diseño de registros nacionales",
-            description:
-              "Arquitectura y diseño de registros nacionales autoritativos (población, empresas, tierras, vehículos): modelo de datos, estrategia de identificadores, reglas de gobernanza y puntos de integración con la red de intercambio de datos.",
-          },
-        },
-      },
-      Services: {
-        tagline:
-          "Entrega, implementacion y habilitacion tecnica.",
-        items: {
-          "national-registries-api-gateway": {
-            title: "Implementación de registros nacionales y API gateway",
-            description:
-              "Entrega de extremo a extremo de los registros nacionales y de la red de intercambio de datos del país, con mensajería X-Road / Pub-Sub y API gateway integrados. Desde la arquitectura de referencia hasta la autoridad de certificación, el servidor central y las primeras integraciones ministeriales, sobre stacks abiertos probados para que el Estado nunca dependa de un núcleo cerrado.",
-          },
-          "api-gateway": {
-            title: "Diseño de API gateway y registro de APIs",
-            description:
-              "API gateway de nivel gubernamental con control de acceso, cuotas y observabilidad, más un registro público de APIs para que las instituciones aliadas descubran y consuman datos de forma responsable.",
-          },
-          "regional-platform": {
-            title: "Arquitectura de plataforma regional de intercambio de datos",
-            description:
-              "Diseño de plataformas multinacionales para organismos regionales (por ejemplo, la CIRGL) donde más de 10 Estados miembros deben compartir datos bajo reglas técnicas y de gobernanza comunes.",
-          },
-          "software-integration": {
-            title: "Integración de software",
-            description:
-              "Integración práctica de sistemas del sector público (aplicaciones ministeriales, bases de datos heredadas y APIs modernas) conectados a través de la capa nacional de intercambio de datos, con traspaso operativo completo.",
-          },
-          "inter-institutional-workflows": {
-            title: "Flujos de trabajo interinstitucionales automatizados",
-            description:
-              "Flujos de trabajo asistidos por IA que enrutan solicitudes, documentos y decisiones entre múltiples organismos, comprimiendo semanas de coordinación en días.",
-          },
-          "govstack-adoption": {
-            title: "Programas de adopción de GovStack",
-            description:
-              "Adopción de GovStack a nivel país: alineación arquitectónica, selección de building blocks, pilotos y preparación institucional.",
-          },
-        },
-      },
-      Products: {
-        tagline:
-          "Plataformas propias que evolucionamos.",
-        items: {
-          "arxia-data-exchange": {
-            title: "Arxia Data Exchange Platform",
-            description:
-              "Intercambio seguro de datos basado en estándares entre instituciones gubernamentales y a través de fronteras. Preconfigurada para los building blocks de GovStack y desplegable sobre infraestructura soberana.",
-          },
-        },
-      },
       Trainings: {
         tagline:
-          "Fortalecimiento de capacidades para responsables de politicas y equipos tecnicos del sector publico.",
+          "Fortalecimiento de capacidades para responsables de políticas y equipos técnicos del sector público.",
         items: {
           "training-interop-strategies": {
             title: "Taller: Estrategias de interoperabilidad para instituciones públicas",
@@ -275,6 +316,11 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
             title: "Programa de Aceleración de IA para el Gobierno",
             description:
               "Programa estructurado de adopción de 12 semanas para organizaciones del sector público. Lleva a tu equipo de la estrategia a casos de uso de IA en funcionamiento dentro de un solo trimestre.",
+          },
+          "inter-institutional-workflows": {
+            title: "Flujos de trabajo interinstitucionales automatizados",
+            description:
+              "Flujos de trabajo asistidos por IA que enrutan solicitudes, documentos y decisiones entre múltiples organismos, comprimiendo semanas de coordinación en días.",
           },
         },
       },
