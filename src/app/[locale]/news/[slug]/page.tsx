@@ -7,7 +7,8 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { Tag } from "@/components/ui/Tag";
-import { newsArticles, getNewsArticle } from "@/data/news";
+import { NewsCover } from "@/components/news/NewsCover";
+import { newsSlugs, getNewsArticle, type ArticleListItem } from "@/data/news";
 import { alternatesFor, localizedUrl, SITE_URL } from "@/i18n/metadata";
 
 interface PageProps {
@@ -15,7 +16,14 @@ interface PageProps {
 }
 
 export function generateStaticParams() {
-  return newsArticles.map((a) => ({ slug: a.slug }));
+  return newsSlugs.map((slug) => ({ slug }));
+}
+
+/** "Data first." + text → space; "Governance and control" + text → colon; ", and…" → no gap. */
+function leadSeparator(item: ArticleListItem): string {
+  if (/[.!?:]$/.test(item.lead ?? "")) return " ";
+  if (/^[,;.]/.test(item.text)) return "";
+  return ": ";
 }
 
 export async function generateMetadata({
@@ -118,16 +126,23 @@ export default async function NewsArticlePage({ params }: PageProps) {
 
           <div className="h-[3px] w-12 bg-accent-red mb-10" />
 
-          <div className="relative w-full aspect-[16/9] mb-12 bg-gray-lightest overflow-hidden">
-            <Image
-              src={article.coverImage}
-              alt={article.coverAlt}
-              fill
-              sizes="(max-width: 1024px) 100vw, 780px"
-              priority
-              className="object-cover"
-            />
-          </div>
+          <figure className="mb-12">
+            <div className="relative w-full aspect-[16/9] bg-gray-lightest overflow-hidden">
+              <NewsCover
+                article={article}
+                sizes="(max-width: 1024px) 100vw, 780px"
+                priority
+              />
+            </div>
+            {article.coverCredit && (
+              <figcaption
+                className="mt-2 text-right text-gray-dark"
+                style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "0.5px" }}
+              >
+                {article.coverCredit}
+              </figcaption>
+            )}
+          </figure>
 
           <div className="flex flex-col gap-6">
             {article.body.map((block, i) => {
@@ -165,15 +180,31 @@ export default async function NewsArticlePage({ params }: PageProps) {
               if (block.type === "image") {
                 return (
                   <figure key={i} className="my-6">
-                    <div className="relative w-full aspect-[16/10] bg-gray-lightest overflow-hidden">
-                      <Image
-                        src={block.src}
-                        alt={block.alt}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 780px"
-                        className="object-cover"
-                      />
-                    </div>
+                    {block.width && block.height ? (
+                      // Natural aspect ratio: portrait photos and flyers are never cropped.
+                      <div className="flex justify-center bg-gray-lightest">
+                        <Image
+                          src={block.src}
+                          alt={block.alt}
+                          width={block.width}
+                          height={block.height}
+                          sizes="(max-width: 1024px) 100vw, 780px"
+                          className="h-auto w-full"
+                          // Cap height at 640px by capping width at the matching ratio.
+                          style={{ maxWidth: `${Math.round((640 * block.width) / block.height)}px` }}
+                        />
+                      </div>
+                    ) : (
+                      <div className="relative w-full aspect-[16/10] bg-gray-lightest overflow-hidden">
+                        <Image
+                          src={block.src}
+                          alt={block.alt}
+                          fill
+                          sizes="(max-width: 1024px) 100vw, 780px"
+                          className="object-cover"
+                        />
+                      </div>
+                    )}
                     {block.caption && (
                       <figcaption
                         className="mt-3 text-gray-dark"
@@ -189,19 +220,64 @@ export default async function NewsArticlePage({ params }: PageProps) {
                   </figure>
                 );
               }
-              if (block.type === "cta") {
+              if (block.type === "list") {
+                const ListTag = block.ordered ? "ol" : "ul";
                 return (
+                  <ListTag
+                    key={i}
+                    className={`flex flex-col gap-3 text-body-text ${
+                      block.ordered
+                        ? "list-decimal pl-6 marker:text-accent-red marker:font-semibold"
+                        : "list-none"
+                    }`}
+                    style={{
+                      fontFamily: "var(--font-primary)",
+                      fontSize: "17px",
+                      lineHeight: "1.75",
+                    }}
+                  >
+                    {block.items.map((item, j) => (
+                      <li
+                        key={j}
+                        className={
+                          block.ordered
+                            ? "pl-1"
+                            : "relative pl-6 before:absolute before:left-0 before:top-[0.75em] before:h-1.5 before:w-1.5 before:bg-accent-red"
+                        }
+                      >
+                        {item.lead && (
+                          <strong className="font-semibold text-blueprint-blue">
+                            {item.lead}
+                          </strong>
+                        )}
+                        {item.lead ? leadSeparator(item) : null}
+                        {item.text}
+                      </li>
+                    ))}
+                  </ListTag>
+                );
+              }
+              if (block.type === "cta") {
+                const ctaClass =
+                  "inline-flex items-center self-start mt-4 bg-blueprint-blue text-white font-semibold px-9 py-3.5 min-h-12 hover:bg-blueprint-dark hover:-translate-y-px transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blueprint-blue";
+                const ctaStyle = {
+                  fontFamily: "var(--font-primary)",
+                  fontSize: "15px",
+                  letterSpacing: "0.3px",
+                };
+                // Internal routes stay in the reader's locale and tab.
+                return block.href.startsWith("/") ? (
+                  <Link key={i} href={block.href} className={ctaClass} style={ctaStyle}>
+                    {block.text}
+                  </Link>
+                ) : (
                   <a
                     key={i}
                     href={block.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center self-start mt-4 bg-blueprint-blue text-white font-semibold px-9 py-3.5 min-h-12 hover:bg-blueprint-dark hover:-translate-y-px transition-all duration-200"
-                    style={{
-                      fontFamily: "var(--font-primary)",
-                      fontSize: "15px",
-                      letterSpacing: "0.3px",
-                    }}
+                    className={ctaClass}
+                    style={ctaStyle}
                   >
                     {block.text}
                   </a>

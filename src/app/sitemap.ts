@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { newsArticles } from "@/data/news";
+import { newsSlugs } from "@/data/news";
 import { domainPageSlugs } from "@/data/domain-pages";
 
 const SITE_URL = "https://www.arxia.com";
@@ -43,7 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...domainPageSlugs.flatMap((d) => entry(`/${d}`, "monthly", 0.9, now)),
     ...entry("/portfolio", "weekly", 0.8, now),
     ...entry("/news", "weekly", 0.7, now),
-    ...newsArticles.flatMap((a) => entry(`/news/${a.slug}`, "monthly", 0.6, now)),
+    ...newsSlugs.flatMap((slug) => entry(`/news/${slug}`, "monthly", 0.6, now)),
     // Legal pages: English only (placeholder copy, not localized).
     ...entry("/privacy", "yearly", 0.3, now, false),
     ...entry("/terms", "yearly", 0.3, now, false),

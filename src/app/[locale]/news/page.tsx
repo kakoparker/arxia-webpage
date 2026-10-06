@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { alternatesFor } from "@/i18n/metadata";
 import { Link } from "@/i18n/navigation";
@@ -9,6 +8,7 @@ import { SectionContainer } from "@/components/ui/SectionContainer";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Card } from "@/components/ui/Card";
 import { Tag } from "@/components/ui/Tag";
+import { NewsCover } from "@/components/news/NewsCover";
 import { getNewsArticles } from "@/data/news";
 
 export async function generateMetadata({
@@ -57,12 +57,10 @@ export default async function NewsIndexPage({
             >
               <Card className="h-full flex flex-col p-0 overflow-hidden">
                 <div className="relative w-full aspect-[16/10] bg-gray-lightest overflow-hidden">
-                  <Image
-                    src={article.coverImage}
-                    alt={article.coverAlt}
-                    fill
+                  <NewsCover
+                    article={article}
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                    zoomOnHover
                   />
                 </div>
                 <div className="flex flex-col flex-1 p-6 md:p-7">
