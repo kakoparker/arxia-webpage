@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { SectionContainer } from "@/components/ui/SectionContainer";
@@ -6,13 +5,15 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Card } from "@/components/ui/Card";
 import { Tag } from "@/components/ui/Tag";
 import { Button } from "@/components/ui/Button";
-import { getNewsArticles } from "@/data/news";
+import { NewsCover } from "@/components/news/NewsCover";
+import { getLatestNews } from "@/data/news";
 import { NewsScrollReveal } from "./NewsAnimations";
 
 export function News() {
   const t = useTranslations("News");
   const locale = useLocale();
-  const newsArticles = getNewsArticles(locale);
+  // The three most recent stories; the rest live on /news ("See more").
+  const newsArticles = getLatestNews(locale, 3);
   return (
     <SectionContainer mode="ultra-light" id="news" fitScreen>
       <NewsScrollReveal>
@@ -38,12 +39,10 @@ export function News() {
               >
                 <Card className="h-full flex flex-col p-0 overflow-hidden">
                   <div className="relative w-full aspect-[2/1] max-h-[20vh] bg-gray-lightest overflow-hidden">
-                    <Image
-                      src={article.coverImage}
-                      alt={article.coverAlt}
-                      fill
+                    <NewsCover
+                      article={article}
                       sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                      zoomOnHover
                     />
                   </div>
                   <div className="flex flex-col flex-1 p-5">
