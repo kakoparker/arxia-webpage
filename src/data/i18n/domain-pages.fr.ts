@@ -9,7 +9,7 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
     categories: {
       Consultancy: {
         tagline:
-          "Cadres, normes et architecture pour l'echange national de donnees.",
+          "Cadres, normes et architecture pour l'échange national de données.",
         items: {
           "interoperability-strategy": {
             title: "Stratégie d'interopérabilité des données",
@@ -25,7 +25,7 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
       },
       Services: {
         tagline:
-          "Livraison, mise en oeuvre et accompagnement technique.",
+          "Livraison, mise en œuvre et accompagnement technique.",
         items: {
           "national-registries-api-gateway": {
             title: "Mise en œuvre de registres nationaux et de l'API gateway",
@@ -61,7 +61,7 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
       },
       Products: {
         tagline:
-          "Des plateformes que nous possedons et faisons evoluer.",
+          "Des plateformes que nous possédons et faisons évoluer.",
         items: {
           "arxia-data-exchange": {
             title: "Arxia Data Exchange Platform",
@@ -72,7 +72,7 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
       },
       Trainings: {
         tagline:
-          "Renforcement des capacites des decideurs et des equipes techniques du secteur public.",
+          "Renforcement des capacités des décideurs et des équipes techniques du secteur public.",
         items: {
           "training-interop-strategies": {
             title: "Atelier : Stratégies d'interopérabilité pour les institutions publiques",
@@ -87,7 +87,7 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
     categories: {
       Consultancy: {
         tagline:
-          "Cadres de gouvernance, regimes de consentement et diagnostics de maturite.",
+          "Cadres de gouvernance, régimes de consentement et diagnostics de maturité.",
         items: {
           "data-governance": {
             title: "Gouvernance des données",
@@ -103,7 +103,7 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
       },
       Trainings: {
         tagline:
-          "Renforcement des capacites des decideurs, des equipes juridiques et du personnel institutionnel.",
+          "Renforcement des capacités des décideurs, des équipes juridiques et du personnel institutionnel.",
         items: {
           "training-data-governance": {
             title: "Atelier : Gouvernance des données pour les institutions publiques",
@@ -118,7 +118,7 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
     categories: {
       Consultancy: {
         tagline:
-          "Strategie, normes et alignement reglementaire pour l'achat public.",
+          "Stratégie, normes et alignement réglementaire pour l'achat public.",
         items: {
           "eprocurement-strategy": {
             title: "Stratégie de commande publique électronique, standards et alignement réglementaire",
@@ -140,7 +140,7 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
       },
       Products: {
         tagline:
-          "Des plateformes que nous possedons et faisons evoluer.",
+          "Des plateformes que nous possédons et faisons évoluer.",
         items: {
           "processplayer": {
             title: "ProcessPlayer",
@@ -155,7 +155,7 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
     categories: {
       Consultancy: {
         tagline:
-          "Strategie et conseil en conformite fiscale.",
+          "Stratégie et conseil en conformité fiscale.",
         items: {
           "einvoicing-advisory": {
             title: "Stratégie de facturation électronique et conseil en conformité fiscale",
@@ -166,7 +166,7 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
       },
       Services: {
         tagline:
-          "Infrastructure de facturation et de declaration des transactions.",
+          "Infrastructure de facturation et de déclaration des transactions.",
         items: {
           "einvoicing-infrastructure": {
             title: "Infrastructure de facturation électronique et de déclaration des transactions",
@@ -181,7 +181,7 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
     categories: {
       Consultancy: {
         tagline:
-          "Standardisation, architecture de l'information et strategie multi-tenant.",
+          "Standardisation, architecture de l'information et stratégie multi-tenant.",
         items: {
           "portal-standardization": {
             title: "Standardisation des portails web et architecture multi-locataires",
@@ -192,7 +192,7 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
       },
       Services: {
         tagline:
-          "Livraison de portails a l'echelle institutionnelle et nationale.",
+          "Livraison de portails à l'échelle institutionnelle et nationale.",
         items: {
           "government-portals": {
             title: "Portails web gouvernementaux standardisés",
@@ -203,7 +203,7 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
       },
       Products: {
         tagline:
-          "Des plateformes que nous possedons et faisons evoluer.",
+          "Des plateformes que nous possédons et faisons évoluer.",
         items: {
           "arxia-portal-framework": {
             title: "Portails gouvernementaux standardisés",
@@ -214,7 +214,7 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
       },
       Trainings: {
         tagline:
-          "Formation technique pour les equipes qui exploiteront les portails.",
+          "Formation technique pour les équipes qui exploiteront les portails.",
         items: {
           "training-typo3": {
             title: "Formation technique TYPO3 pour le secteur public sur les Portails Gouvernementaux Standardisés",
@@ -229,7 +229,7 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
     categories: {
       Consultancy: {
         tagline:
-          "IA responsable dans le secteur public, de la strategie a la gouvernance.",
+          "IA responsable dans le secteur public, de la stratégie à la gouvernance.",
         items: {
           "ai-readiness-gov": {
             title: "Évaluations de la maturité IA des gouvernements",
@@ -255,7 +255,7 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
       },
       Services: {
         tagline:
-          "Construction et deploiement de l'IA dans le secteur public.",
+          "Construction et déploiement de l'IA dans le secteur public.",
         items: {
           "ai-agents-public-services": {
             title: "Agents d'IA pour les services publics",
@@ -271,7 +271,7 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
       },
       Products: {
         tagline:
-          "Des plateformes que nous possedons et faisons evoluer.",
+          "Des plateformes que nous possédons et faisons évoluer.",
         items: {
           "ai-governance-platform-gov": {
             title: "Plateforme de Gouvernance de l'IA pour les Gouvernements",
@@ -287,7 +287,7 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
       },
       Trainings: {
         tagline:
-          "Developper la capacite IA au sein de l'institution.",
+          "Développer la capacité IA au sein de l'institution.",
         items: {
           "ai-ignite-gov": {
             title: "Atelier AI IGNITE pour le secteur public",
@@ -302,7 +302,7 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
     categories: {
       Consultancy: {
         tagline:
-          "Refonte des services autour de parcours citoyens reels.",
+          "Refonte des services autour de parcours citoyens réels.",
         items: {
           "egov-strategy": {
             title: "Stratégies et feuilles de route d'e-gouvernement",
@@ -323,7 +323,7 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
       },
       Services: {
         tagline:
-          "Livraison de services en low-code et assistee par l'IA.",
+          "Livraison de services en low-code et assistée par l'IA.",
         items: {
           "low-code-eservices": {
             title: "Plateformes low-code de services électroniques",
@@ -344,7 +344,7 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
       },
       Trainings: {
         tagline:
-          "Renforcement des capacites des equipes qui concoivent et exploitent les services.",
+          "Renforcement des capacités des équipes qui conçoivent et exploitent les services.",
         items: {
           "bpmn-coaching": {
             title: "Atelier : Coaching à la mise en œuvre BPMN",

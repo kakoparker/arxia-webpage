@@ -18,7 +18,7 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
     categories: {
       Consultancy: {
         tagline:
-          "Marcos, estandares y arquitectura para el intercambio nacional de datos.",
+          "Marcos, estándares y arquitectura para el intercambio nacional de datos.",
         items: {
           "interoperability-strategy": {
             title: "Estrategia de interoperabilidad de datos",
@@ -34,7 +34,7 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
       },
       Services: {
         tagline:
-          "Entrega, implementacion y habilitacion tecnica.",
+          "Entrega, implementación y habilitación técnica.",
         items: {
           "national-registries-api-gateway": {
             title: "Implementación de registros nacionales y API gateway",
@@ -81,7 +81,7 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
       },
       Trainings: {
         tagline:
-          "Fortalecimiento de capacidades para responsables de politicas y equipos tecnicos del sector publico.",
+          "Fortalecimiento de capacidades para responsables de políticas y equipos técnicos del sector público.",
         items: {
           "training-interop-strategies": {
             title: "Taller: Estrategias de interoperabilidad para instituciones públicas",
@@ -96,7 +96,7 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
     categories: {
       Consultancy: {
         tagline:
-          "Marcos de gobernanza, regimenes de consentimiento y diagnosticos de madurez.",
+          "Marcos de gobernanza, regímenes de consentimiento y diagnósticos de madurez.",
         items: {
           "data-governance": {
             title: "Gobernanza de datos",
@@ -112,7 +112,7 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
       },
       Trainings: {
         tagline:
-          "Fortalecimiento de capacidades para responsables de politicas, equipos legales y personal institucional.",
+          "Fortalecimiento de capacidades para responsables de políticas, equipos legales y personal institucional.",
         items: {
           "training-data-governance": {
             title: "Taller: Gobernanza de datos para instituciones públicas",
@@ -127,7 +127,7 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
     categories: {
       Consultancy: {
         tagline:
-          "Estrategia, estandares y alineacion regulatoria para la compra publica.",
+          "Estrategia, estándares y alineación regulatoria para la compra pública.",
         items: {
           "eprocurement-strategy": {
             title: "Estrategia de contratación pública electrónica, estándares y alineación normativa",
@@ -164,7 +164,7 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
     categories: {
       Consultancy: {
         tagline:
-          "Estrategia y asesoria en cumplimiento tributario.",
+          "Estrategia y asesoría en cumplimiento tributario.",
         items: {
           "einvoicing-advisory": {
             title: "Estrategia de facturación electrónica y asesoría de cumplimiento tributario",
@@ -175,7 +175,7 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
       },
       Services: {
         tagline:
-          "Infraestructura de facturacion y reporte de transacciones.",
+          "Infraestructura de facturación y reporte de transacciones.",
         items: {
           "einvoicing-infrastructure": {
             title: "Infraestructura de facturación electrónica y reporte de transacciones",
@@ -190,7 +190,7 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
     categories: {
       Consultancy: {
         tagline:
-          "Estandarizacion, arquitectura de informacion y estrategia multi-tenant.",
+          "Estandarización, arquitectura de información y estrategia multi-tenant.",
         items: {
           "portal-standardization": {
             title: "Estandarización de portales web y arquitectura multiinquilino",
@@ -223,7 +223,7 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
       },
       Trainings: {
         tagline:
-          "Capacitacion tecnica para los equipos que operaran los portales.",
+          "Capacitación técnica para los equipos que operarán los portales.",
         items: {
           "training-typo3": {
             title: "Formación técnica en TYPO3 para el sector público en Portales Gubernamentales Estandarizados",
@@ -238,7 +238,7 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
     categories: {
       Consultancy: {
         tagline:
-          "IA responsable en el sector publico, de la estrategia a la gobernanza.",
+          "IA responsable en el sector público, de la estrategia a la gobernanza.",
         items: {
           "ai-readiness-gov": {
             title: "Evaluaciones de preparación para la IA en el gobierno",
@@ -264,7 +264,7 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
       },
       Services: {
         tagline:
-          "Construccion y despliegue de IA en el sector publico.",
+          "Construcción y despliegue de IA en el sector público.",
         items: {
           "ai-agents-public-services": {
             title: "Agentes de IA para servicios públicos",
@@ -296,7 +296,7 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
       },
       Trainings: {
         tagline:
-          "Desarrollo de capacidades de IA dentro de la institucion.",
+          "Desarrollo de capacidades de IA dentro de la institución.",
         items: {
           "ai-ignite-gov": {
             title: "Taller AI IGNITE para el sector público",
@@ -311,7 +311,7 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
     categories: {
       Consultancy: {
         tagline:
-          "Rediseno de servicios en torno a trayectorias ciudadanas reales.",
+          "Rediseño de servicios en torno a trayectorias ciudadanas reales.",
         items: {
           "egov-strategy": {
             title: "Estrategias y hojas de ruta de e-gobierno",
@@ -353,7 +353,7 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
       },
       Trainings: {
         tagline:
-          "Fortalecimiento de capacidades para los equipos que disenan y operan los servicios.",
+          "Fortalecimiento de capacidades para los equipos que diseñan y operan los servicios.",
         items: {
           "bpmn-coaching": {
             title: "Taller: Acompañamiento en implementación de BPMN",
