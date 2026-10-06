@@ -48,7 +48,39 @@
     "statCountries": "Countries",
     "statDomains": "Domains",
     "filterLabel": "Filtered by",
-    "showAll": "Show all projects"
+    "showAll": "Show all projects",
+    "featuredAnnotation": "Featured projects",
+    "featuredHeading": "Our work, in depth",
+    "featuredBody": "The cases we open up end to end: the problem, how we solved it, and what changed.",
+    "caseStudy": "Case study",
+    "readCaseStudy": "Read the case study",
+    "video": "Video",
+    "featuredCase": "Featured case study",
+    "watchVideo": "Watch the video"
+  },
+  "CaseStudy": {
+    "breadcrumb": "Breadcrumb",
+    "home": "Home",
+    "portfolio": "Portfolio",
+    "annotation": "Case study",
+    "client": "Client",
+    "country": "Country",
+    "year": "Year",
+    "practice": "Practice",
+    "sec": "Sec.",
+    "fig": "Fig.",
+    "step": "Step",
+    "outcome": "Outcome",
+    "metricsLabel": "Key figures",
+    "playVideo": "Play video: {title}",
+    "videoLabel": "Video · {duration}",
+    "videoNote": "Plays from YouTube",
+    "watchOnYoutube": "Watch on YouTube",
+    "relatedAnnotation": "More from the portfolio",
+    "relatedHeading": "Related projects",
+    "contact": "Contact us",
+    "backToPortfolio": "Back to the portfolio",
+    "playTheVideo": "Play the video"
   },
   "News": {
     "annotation": "News",
@@ -74,7 +106,8 @@
       "Latin America": "Latin America",
       "West Africa": "West Africa",
       "East Africa": "East Africa",
-      "Southeast Asia": "Southeast Asia"
+      "Southeast Asia": "Southeast Asia",
+      "Southern Africa": "Southern Africa"
     },
     "countries": {
       "RO": "Romania",
@@ -96,7 +129,15 @@
       "RW": "Rwanda",
       "BI": "Burundi",
       "ZM": "Zambia",
-      "KH": "Cambodia"
+      "KH": "Cambodia",
+      "NO": "Norway",
+      "CI": "Côte d’Ivoire",
+      "ET": "Ethiopia",
+      "KE": "Kenya",
+      "SO": "Somalia",
+      "DJ": "Djibouti",
+      "AO": "Angola",
+      "BW": "Botswana"
     }
   },
   "ContactForm": {

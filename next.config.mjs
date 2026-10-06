@@ -11,6 +11,12 @@ const nextConfig = {
     // baked into our canonical paper surfaces, breaking the brand standard.
     // WebP encodes at higher fidelity for the same target quality.
     formats: ["image/webp"],
+    // Case-study video posters. Fetched and re-served by the image optimizer,
+    // so the visitor's browser makes no request to YouTube until they press
+    // play. Scoped to the thumbnail path only.
+    remotePatterns: [
+      { protocol: "https", hostname: "i.ytimg.com", pathname: "/vi/**" },
+    ],
     // SVGs in /public/logos/clients are vendored, statically known files
     // (Wikimedia Commons sources). CSP blocks any script execution at the
     // browser layer; this only enables next/image to optimize them.

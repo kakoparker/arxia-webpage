@@ -48,7 +48,39 @@
     "statCountries": "Países",
     "statDomains": "Áreas",
     "filterLabel": "Filtrado por",
-    "showAll": "Ver todos los proyectos"
+    "showAll": "Ver todos los proyectos",
+    "featuredAnnotation": "Proyectos destacados",
+    "featuredHeading": "Nuestro trabajo, en profundidad",
+    "featuredBody": "Los casos que contamos de principio a fin: el problema, cómo lo resolvimos y qué cambió.",
+    "caseStudy": "Caso de estudio",
+    "readCaseStudy": "Leer el caso de estudio",
+    "video": "Vídeo",
+    "featuredCase": "Caso de estudio destacado",
+    "watchVideo": "Ver el vídeo"
+  },
+  "CaseStudy": {
+    "breadcrumb": "Ruta de navegación",
+    "home": "Inicio",
+    "portfolio": "Portafolio",
+    "annotation": "Caso de estudio",
+    "client": "Cliente",
+    "country": "País",
+    "year": "Año",
+    "practice": "Práctica",
+    "sec": "Sec.",
+    "fig": "Fig.",
+    "step": "Paso",
+    "outcome": "Resultado",
+    "metricsLabel": "Cifras clave",
+    "playVideo": "Reproducir vídeo: {title}",
+    "videoLabel": "Vídeo · {duration}",
+    "videoNote": "Se reproduce desde YouTube",
+    "watchOnYoutube": "Ver en YouTube",
+    "relatedAnnotation": "Más del portafolio",
+    "relatedHeading": "Proyectos relacionados",
+    "contact": "Contáctenos",
+    "backToPortfolio": "Volver al portafolio",
+    "playTheVideo": "Ver el vídeo"
   },
   "News": {
     "annotation": "Noticias",
@@ -74,7 +106,8 @@
       "Latin America": "América Latina",
       "West Africa": "África Occidental",
       "East Africa": "África Oriental",
-      "Southeast Asia": "Sudeste Asiático"
+      "Southeast Asia": "Sudeste Asiático",
+      "Southern Africa": "África Austral"
     },
     "countries": {
       "RO": "Rumanía",
@@ -96,7 +129,15 @@
       "RW": "Ruanda",
       "BI": "Burundi",
       "ZM": "Zambia",
-      "KH": "Camboya"
+      "KH": "Camboya",
+      "NO": "Noruega",
+      "CI": "Costa de Marfil",
+      "ET": "Etiopía",
+      "KE": "Kenia",
+      "SO": "Somalia",
+      "DJ": "Yibuti",
+      "AO": "Angola",
+      "BW": "Botsuana"
     }
   },
   "ContactForm": {

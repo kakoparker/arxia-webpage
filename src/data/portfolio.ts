@@ -188,6 +188,7 @@ export const portfolioProjects: PortfolioProject[] = [
     client: "World Bank / Chancellery of the Prime Minister of Romania",
     country: "Romania",
     year: "2023",
+    featured: true,
     category: "interoperability",
     categoryLabel: "Interoperability and Standardization",
   },
@@ -594,6 +595,7 @@ export const featuredProjects = portfolioProjects.filter((p) => p.featured);
 // ─────────────────────────────────────────────────────────────────────────────
 import { portfolioEs, type PortfolioOverlay } from "./i18n/portfolio.es";
 import { portfolioFr } from "./i18n/portfolio.fr";
+import { hasCaseStudy } from "./case-studies";
 
 const PORTFOLIO_OVERLAYS: Record<string, Record<string, PortfolioOverlay>> = {
   es: portfolioEs,
@@ -618,8 +620,16 @@ export function getProjects(locale: string = "en"): PortfolioProject[] {
     : portfolioProjects.map((p) => localizeProject(p, locale));
 }
 
+/**
+ * Featured projects, case studies first: a project with a full case study page
+ * is the strongest proof we have, so it leads every featured row.
+ */
 export function getFeaturedProjects(locale: string = "en"): PortfolioProject[] {
-  return getProjects(locale).filter((p) => p.featured);
+  const featured = getProjects(locale).filter((p) => p.featured);
+  return [
+    ...featured.filter((p) => hasCaseStudy(p.slug)),
+    ...featured.filter((p) => !hasCaseStudy(p.slug)),
+  ];
 }
 
 export function getProject(

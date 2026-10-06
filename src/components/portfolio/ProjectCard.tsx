@@ -1,5 +1,7 @@
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import type { PortfolioProject } from "@/data/portfolio";
+import { caseStudyHref, hasCaseStudy } from "@/data/case-studies";
 
 /**
  * One portfolio case, as a plate: rests white, flips to Blueprint Blue on
@@ -9,6 +11,9 @@ import type { PortfolioProject } from "@/data/portfolio";
  * Note the clamp/grow split below: `line-clamp` sets `display:-webkit-box`, so
  * putting `flex-1` on the same element makes it grow past the clamp and render
  * ragged half-lines. The clamp lives on the text; the growth on a wrapper.
+ *
+ * A project with a case study always leads to its case study page, whatever
+ * `href` the caller passes, and says so in the plate header.
  */
 export function ProjectCard({
   project,
@@ -20,6 +25,8 @@ export function ProjectCard({
   /** Where the card leads. Domain pages point it at their filtered portfolio. */
   href?: string;
 }) {
+  const t = useTranslations("Portfolio");
+  const isCaseStudy = hasCaseStudy(project.slug);
   const clamp = (lines: number) => ({
     display: "-webkit-box" as const,
     WebkitLineClamp: lines,
@@ -29,7 +36,7 @@ export function ProjectCard({
 
   return (
     <Link
-      href={href}
+      href={isCaseStudy ? caseStudyHref(project.slug) : href}
       className="pf-card group relative flex h-full flex-col overflow-hidden border p-5 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-red focus-visible:outline-offset-2"
     >
       {/* Hover rule, drawn top-down. An approved red use; never the border. */}
@@ -38,15 +45,22 @@ export function ProjectCard({
         className="pf-card-accent absolute inset-y-0 left-0 w-[3px] bg-accent-red"
       />
 
-      {/* Plate header: index, leader line, connection dot. */}
-      <div aria-hidden className="mb-4 flex items-center gap-2.5">
+      {/* Plate header: index, leader line, connection dot. Decorative, except
+          the "Case study" mark, which screen readers should hear. */}
+      <div className="mb-4 flex items-center gap-2.5">
         <span
+          aria-hidden
           className="pf-meta font-[family-name:var(--font-jetbrains)] text-[10px] tracking-[2px]"
         >
           {String(index + 1).padStart(2, "0")}
         </span>
-        <span className="pf-leader h-px flex-1 border-t border-dashed" />
-        <span className="pf-card-dot h-[5px] w-[5px] shrink-0 bg-accent-red" />
+        <span aria-hidden className="pf-leader h-px flex-1 border-t border-dashed" />
+        {isCaseStudy && (
+          <span className="pf-strong font-[family-name:var(--font-jetbrains)] text-[9px] uppercase tracking-[1.5px]">
+            {t("caseStudy")}
+          </span>
+        )}
+        <span aria-hidden className="pf-card-dot h-[5px] w-[5px] shrink-0 bg-accent-red" />
       </div>
 
       {/* Domain, under a short accent tick. The gray pill was the flattest

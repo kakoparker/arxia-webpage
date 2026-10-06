@@ -48,7 +48,39 @@
     "statCountries": "Pays",
     "statDomains": "Domaines",
     "filterLabel": "Filtré par",
-    "showAll": "Voir tous les projets"
+    "showAll": "Voir tous les projets",
+    "featuredAnnotation": "Projets phares",
+    "featuredHeading": "Notre travail, en profondeur",
+    "featuredBody": "Les cas que nous détaillons de bout en bout : le problème, notre réponse et ce qui a changé.",
+    "caseStudy": "Étude de cas",
+    "readCaseStudy": "Lire l’étude de cas",
+    "video": "Vidéo",
+    "featuredCase": "Étude de cas phare",
+    "watchVideo": "Voir la vidéo"
+  },
+  "CaseStudy": {
+    "breadcrumb": "Fil d’Ariane",
+    "home": "Accueil",
+    "portfolio": "Portfolio",
+    "annotation": "Étude de cas",
+    "client": "Client",
+    "country": "Pays",
+    "year": "Année",
+    "practice": "Pratique",
+    "sec": "Sec.",
+    "fig": "Fig.",
+    "step": "Étape",
+    "outcome": "Résultat",
+    "metricsLabel": "Chiffres clés",
+    "playVideo": "Lire la vidéo : {title}",
+    "videoLabel": "Vidéo · {duration}",
+    "videoNote": "Lecture depuis YouTube",
+    "watchOnYoutube": "Voir sur YouTube",
+    "relatedAnnotation": "Plus du portfolio",
+    "relatedHeading": "Projets associés",
+    "contact": "Nous contacter",
+    "backToPortfolio": "Retour au portfolio",
+    "playTheVideo": "Lire la vidéo"
   },
   "News": {
     "annotation": "Actualités",
@@ -74,7 +106,8 @@
       "Latin America": "Amérique latine",
       "West Africa": "Afrique de l'Ouest",
       "East Africa": "Afrique de l'Est",
-      "Southeast Asia": "Asie du Sud-Est"
+      "Southeast Asia": "Asie du Sud-Est",
+      "Southern Africa": "Afrique australe"
     },
     "countries": {
       "RO": "Roumanie",
@@ -96,7 +129,15 @@
       "RW": "Rwanda",
       "BI": "Burundi",
       "ZM": "Zambie",
-      "KH": "Cambodge"
+      "KH": "Cambodge",
+      "NO": "Norvège",
+      "CI": "Côte d’Ivoire",
+      "ET": "Éthiopie",
+      "KE": "Kenya",
+      "SO": "Somalie",
+      "DJ": "Djibouti",
+      "AO": "Angola",
+      "BW": "Botswana"
     }
   },
   "ContactForm": {
