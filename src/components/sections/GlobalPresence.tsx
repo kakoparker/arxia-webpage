@@ -11,7 +11,8 @@ import { useOdometer } from "@/hooks/useOdometer";
 // message namespace (regions.* and countries.*). They are never displayed raw.
 const HQ_CODE = "RO";
 
-// Every country here is backed by a project in the portfolio or the CRM.
+// Every country here is backed by a completed project in the portfolio.
+// Ongoing work does not add a country until it is delivered.
 type Region = { region: string; codes: string[] };
 
 // Laid out as grid cells so the list stays two rows tall on desktop (the
@@ -26,14 +27,14 @@ const CELLS: Array<{ regions: Region[]; wide?: boolean }> = [
       { region: "Southeast Asia", codes: ["KH"] },
     ],
   },
-  { regions: [{ region: "West Africa", codes: ["TN", "SN", "CI", "GH", "NG"] }] },
+  { regions: [{ region: "West Africa", codes: ["TN", "SN", "GH", "NG"] }] },
   {
     wide: true,
     regions: [
       { region: "East Africa", codes: ["ET", "KE", "SO", "DJ", "SS", "UG", "RW", "BI", "CF"] },
     ],
   },
-  { regions: [{ region: "Southern Africa", codes: ["AO", "BW", "ZM"] }] },
+  { regions: [{ region: "Southern Africa", codes: ["AO", "ZM"] }] },
 ];
 
 export function GlobalPresence() {

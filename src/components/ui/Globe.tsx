@@ -31,13 +31,11 @@ const DEFAULT_MARKERS: Array<{ location: [number, number]; size: number }> = [
   { location: [-15.3875, 28.3228], size: 0.07 },   // Zambia
   { location: [11.5564, 104.9282], size: 0.07 },   // Cambodia
   { location: [59.9139, 10.7522], size: 0.07 },    // Norway
-  { location: [5.36, -4.0083], size: 0.07 },       // Côte d'Ivoire
   { location: [9.03, 38.74], size: 0.07 },         // Ethiopia
   { location: [-1.2921, 36.8219], size: 0.07 },    // Kenya
   { location: [2.0469, 45.3182], size: 0.07 },     // Somalia
   { location: [11.588, 43.145], size: 0.07 },      // Djibouti
   { location: [-8.839, 13.2894], size: 0.07 },     // Angola
-  { location: [-24.6282, 25.9231], size: 0.07 },   // Botswana
 ];
 
 export function Globe({ className, markers = DEFAULT_MARKERS }: GlobeProps) {
