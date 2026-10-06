@@ -154,7 +154,25 @@
     "successTitle": "Gracias por escribirnos.",
     "successBody": "Te responderemos en breve.",
     "errorGeneric": "Algo salió mal. Inténtalo de nuevo.",
-    "errorNetwork": "No se pudo conectar con el servidor. Inténtalo de nuevo."
+    "errorNetwork": "No se pudo conectar con el servidor. Inténtalo de nuevo.",
+    "formTitle": "Nueva consulta",
+    "stepsLabel": "Qué pasa después",
+    "steps": [
+      {
+        "title": "Cuéntenos el problema",
+        "text": "Bastan unas líneas: la institución, el reto, los plazos."
+      },
+      {
+        "title": "Lo revisamos",
+        "text": "Su mensaje llega directamente a nuestro equipo directivo, no a una cola de tickets."
+      },
+      {
+        "title": "Una respuesta franca",
+        "text": "Le decimos con claridad si somos el socio adecuado."
+      }
+    ],
+    "privacyNote": "Sin listas de correo. Sus datos solo se usan para responderle.",
+    "successNext": "Enviar otro mensaje"
   },
   "Footer": {
     "tagline": "Transformación digital e Infraestructura Pública Digital para gobiernos en todo el mundo.",

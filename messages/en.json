@@ -154,7 +154,25 @@
     "successTitle": "Thank you for reaching out.",
     "successBody": "We'll get back to you shortly.",
     "errorGeneric": "Something went wrong. Please try again.",
-    "errorNetwork": "Couldn't reach the server. Please try again."
+    "errorNetwork": "Couldn't reach the server. Please try again.",
+    "formTitle": "New enquiry",
+    "stepsLabel": "What happens next",
+    "steps": [
+      {
+        "title": "Send us the problem",
+        "text": "A few lines are enough: the institution, the challenge, the timeline."
+      },
+      {
+        "title": "We review it",
+        "text": "Your message goes straight to our leadership team, not a ticket queue."
+      },
+      {
+        "title": "A straight answer",
+        "text": "We tell you plainly whether we are the right partner for it."
+      }
+    ],
+    "privacyNote": "No mailing lists. Your details are only used to reply to you.",
+    "successNext": "Send another message"
   },
   "Footer": {
     "tagline": "Digital transformation and Digital Public Infrastructure for governments worldwide.",

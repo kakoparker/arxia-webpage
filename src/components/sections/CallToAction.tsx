@@ -2,7 +2,7 @@
 
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { ParticleButton } from "@/components/ui/ParticleButton";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState, type FormEvent } from "react";
 
@@ -12,9 +12,27 @@ type SubmitState =
   | { status: "error"; message: string }
   | { status: "success" };
 
+const mono = "font-[family-name:var(--font-jetbrains)] uppercase";
+
+/** Dark-surface field: filled, not just outlined, so the inputs read as
+ *  inputs against the grid. Focus brightens the border and lifts the fill. */
+const fieldClass =
+  "peer w-full rounded-none border border-white/15 bg-white/[0.04] px-4 py-3 font-[family-name:var(--font-inter)] text-[15px] text-white placeholder:text-gray-medium/60 transition-colors duration-200 hover:border-white/30 focus:border-white focus:bg-white/[0.07] focus:outline-none";
+
+/**
+ * Homepage contact section.
+ *
+ * Reading order is pitch first, form second: the claim and "what happens
+ * next" on the left, the form on the right as a framed panel — a plate with a
+ * standing red rule, a mono header strip and corner ticks, lit by a soft
+ * Blueprint glow so it is the brightest object on the dark grid. The submit
+ * is the site's red action button. The API contract (name, email, comment,
+ * honeypot) is unchanged.
+ */
 export function CallToAction() {
   const t = useTranslations("ContactForm");
   const [state, setState] = useState<SubmitState>({ status: "idle" });
+  const steps = t.raw("steps") as { title: string; text: string }[];
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -61,192 +79,234 @@ export function CallToAction() {
   const pending = state.status === "pending";
   const errorMessage = state.status === "error" ? state.message : null;
 
+  const fields = [
+    { id: "name", type: "text", autoComplete: "name" },
+    { id: "email", type: "email", autoComplete: "email" },
+  ] as const;
+
   return (
     <SectionContainer mode="dark" showCornerMarks id="contact" fitScreen>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        {/* Left — form (or success state) */}
-        <div>
-          {submitted ? (
-            <div
-              className="border border-accent-red/30 p-6"
-              role="status"
-              aria-live="polite"
-              style={{ maxWidth: "480px" }}
-            >
-              <p className="font-[family-name:var(--font-inter)] text-white font-semibold text-[15px]">
-                {t("successTitle")}
-              </p>
-              <p className="font-[family-name:var(--font-inter)] text-gray-medium text-[14px] mt-2">
-                {t("successBody")}
-              </p>
-            </div>
-          ) : (
-            <form
-              onSubmit={handleSubmit}
-              aria-label={t("ariaLabel")}
-              className="space-y-4"
-              style={{ maxWidth: "480px" }}
-              noValidate
-            >
-              {/* Honeypot — visually hidden, autofill-suppressed. Bots fill it;
-                  the API drops the submission silently when it's non-empty. */}
-              <div
-                aria-hidden="true"
-                style={{
-                  position: "absolute",
-                  left: "-9999px",
-                  width: "1px",
-                  height: "1px",
-                  overflow: "hidden",
-                }}
-              >
-                <label htmlFor="contact-website">Website</label>
-                <input
-                  id="contact-website"
-                  name="website"
-                  type="text"
-                  tabIndex={-1}
-                  autoComplete="off"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="contact-name"
-                  className="block mb-1.5 uppercase"
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "11px",
-                    letterSpacing: "2.5px",
-                    lineHeight: "1.2",
-                    color: "var(--gray-medium)",
-                  }}
-                >
-                  {t("name")}
-                </label>
-                <input
-                  id="contact-name"
-                  name="name"
-                  type="text"
-                  autoComplete="name"
-                  required
-                  aria-required="true"
-                  suppressHydrationWarning
-                  className="w-full bg-transparent border border-gray-medium/30 text-white px-4 py-3 text-[15px] font-[family-name:var(--font-inter)] placeholder:text-gray-medium/50 focus:outline-none focus:border-white transition-colors duration-200 rounded-none"
-                  placeholder={t("namePlaceholder")}
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="contact-email"
-                  className="block mb-1.5 uppercase"
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "11px",
-                    letterSpacing: "2.5px",
-                    lineHeight: "1.2",
-                    color: "var(--gray-medium)",
-                  }}
-                >
-                  {t("email")}
-                </label>
-                <input
-                  id="contact-email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  aria-required="true"
-                  suppressHydrationWarning
-                  className="w-full bg-transparent border border-gray-medium/30 text-white px-4 py-3 text-[15px] font-[family-name:var(--font-inter)] placeholder:text-gray-medium/50 focus:outline-none focus:border-white transition-colors duration-200 rounded-none"
-                  placeholder={t("emailPlaceholder")}
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="contact-comment"
-                  className="block mb-1.5 uppercase"
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "11px",
-                    letterSpacing: "2.5px",
-                    lineHeight: "1.2",
-                    color: "var(--gray-medium)",
-                  }}
-                >
-                  {t("comment")}
-                </label>
-                <textarea
-                  id="contact-comment"
-                  name="comment"
-                  required
-                  aria-required="true"
-                  suppressHydrationWarning
-                  rows={4}
-                  className="w-full bg-transparent border border-gray-medium/30 text-white px-4 py-3 text-[15px] font-[family-name:var(--font-inter)] placeholder:text-gray-medium/50 focus:outline-none focus:border-white transition-colors duration-200 rounded-none resize-none"
-                  placeholder={t("commentPlaceholder")}
-                />
-              </div>
-
-              {errorMessage && (
-                <p
-                  role="alert"
-                  className="font-[family-name:var(--font-inter)] text-accent-red text-[14px]"
-                >
-                  {errorMessage}
-                </p>
-              )}
-
-              <ParticleButton
-                type="submit"
-                disabled={pending}
-                aria-busy={pending}
-                className="inline-flex items-center justify-center font-[family-name:var(--font-inter)] font-semibold text-[15px] tracking-[0.3px] px-9 py-3.5 min-h-12 rounded-none transition-all duration-200 cursor-pointer bg-white text-blueprint-blue hover:bg-gray-lightest hover:-translate-y-px focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
-              >
-                {pending ? t("sending") : t("send")}
-                {!pending && <ArrowRight className="ml-2 h-4 w-4" />}
-              </ParticleButton>
-            </form>
-          )}
-        </div>
-
-        {/* Right — static phrase */}
-        <div>
-          <p
-            className="font-normal uppercase mb-4 text-accent-red/85"
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: "11px",
-              letterSpacing: "2.5px",
-              lineHeight: "1.2",
-            }}
-          >
+      <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
+        {/* ── Left: the pitch and what happens next ─────────────────────── */}
+        <div className="lg:col-span-6">
+          <p className={`${mono} mb-4 text-[11px] leading-[1.2] tracking-[2.5px] text-accent-red/85`}>
             {t("connect")}
           </p>
           <h2
-            className="font-bold mb-4 text-white"
+            className="text-white"
             style={{
               fontFamily: "var(--font-primary)",
-              fontSize: "clamp(28px, 3.2vw, 40px)",
-              lineHeight: "1.15",
-              letterSpacing: "-0.5px",
+              fontWeight: 700,
+              fontSize: "clamp(34px, 4.2vw, 58px)",
+              lineHeight: 1.05,
+              letterSpacing: "-1.5px",
             }}
           >
             {t("heading")}
           </h2>
-          <div className="h-[3px] w-12 bg-accent-red mb-6" />
+          <div className="mt-6 h-[3px] w-12 bg-accent-red" />
           <p
-            className="font-[family-name:var(--font-inter)] text-gray-light"
+            className="mt-6 text-gray-light"
             style={{
-              fontSize: "18px",
-              lineHeight: "1.7",
-              maxWidth: "480px",
+              fontFamily: "var(--font-primary)",
+              fontSize: "clamp(16px, 1.3vw, 18px)",
+              lineHeight: 1.7,
+              maxWidth: "520px",
             }}
           >
             {t("body")}
           </p>
+
+          {/* What happens next: three numbered stations on a rail. */}
+          <div className="mt-10" style={{ maxWidth: "520px" }}>
+            <p className={`${mono} mb-5 text-[10px] tracking-[2px] text-gray-medium`}>
+              {t("stepsLabel")}
+            </p>
+            <ol className="relative">
+              {/* The rail behind the numbers. */}
+              <span aria-hidden className="absolute bottom-4 left-[15px] top-4 w-px bg-white/15" />
+              {steps.map((step, i) => (
+                <li key={step.title} className="relative flex gap-5 pb-5 last:pb-0">
+                  <span
+                    aria-hidden
+                    className={`${mono} relative z-10 flex h-8 w-8 shrink-0 items-center justify-center border text-[10px] tracking-[1px] ${
+                      i === steps.length - 1
+                        ? "border-accent-red bg-accent-red text-white"
+                        : "border-white/25 bg-blueprint-dark text-white"
+                    }`}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div className="pt-1">
+                    <p
+                      className="font-semibold text-white"
+                      style={{ fontFamily: "var(--font-primary)", fontSize: "15px", lineHeight: 1.3 }}
+                    >
+                      {step.title}
+                    </p>
+                    <p
+                      className="mt-1 text-gray-medium"
+                      style={{ fontFamily: "var(--font-primary)", fontSize: "14px", lineHeight: 1.55 }}
+                    >
+                      {step.text}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+
+        {/* ── Right: the form, as a lit panel ──────────────────────────── */}
+        <div className="relative lg:col-span-6">
+          {/* Soft Blueprint glow so the panel lifts off the grid. */}
+          <div
+            aria-hidden
+            // Kept inside the column horizontally so it can never cause a
+            // sideways scroll on phones.
+            className="pointer-events-none absolute inset-x-0 -inset-y-10 opacity-90"
+            style={{
+              background:
+                "radial-gradient(60% 55% at 55% 45%, rgba(46, 72, 128, 0.45), transparent 70%)",
+            }}
+          />
+
+          <div className="relative border border-white/15 bg-[#111b2b]/90 shadow-[0_30px_80px_rgba(0,0,0,0.45)] backdrop-blur-sm">
+            {/* Standing red rule + corner ticks: a drawn plate, not a box. */}
+            <span aria-hidden className="absolute inset-x-0 top-0 h-[3px] bg-accent-red" />
+            <span aria-hidden className="absolute -bottom-2 -left-2 h-4 w-4 border-b border-l border-white/30" />
+            <span aria-hidden className="absolute -bottom-2 -right-2 h-4 w-4 border-b border-r border-white/30" />
+
+            {/* Header strip */}
+            <div className="flex items-center gap-3 border-b border-white/10 px-6 py-4 sm:px-8">
+              <span aria-hidden className="h-[6px] w-[6px] bg-accent-red" />
+              <p className={`${mono} text-[10px] tracking-[2px] text-white`}>{t("formTitle")}</p>
+              <span aria-hidden className="h-px flex-1 border-t border-dashed border-white/15" />
+              <p aria-hidden className={`${mono} text-[10px] tracking-[2px] text-gray-medium`}>
+                arxia.global
+              </p>
+            </div>
+
+            <div className="px-6 py-6 sm:px-8 sm:py-7">
+              {submitted ? (
+                <div role="status" aria-live="polite" className="py-6">
+                  <span className="flex h-12 w-12 items-center justify-center bg-accent-red text-white">
+                    <Check aria-hidden size={22} strokeWidth={2} />
+                  </span>
+                  <p
+                    className="mt-5 font-semibold text-white"
+                    style={{ fontFamily: "var(--font-primary)", fontSize: "22px", lineHeight: 1.25 }}
+                  >
+                    {t("successTitle")}
+                  </p>
+                  <p className="mt-2 text-gray-medium" style={{ fontFamily: "var(--font-primary)", fontSize: "15px" }}>
+                    {t("successBody")}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => setState({ status: "idle" })}
+                    className={`${mono} mt-6 text-[11px] tracking-[2px] text-white/80 underline-offset-4 transition-colors hover:text-white hover:underline`}
+                  >
+                    {t("successNext")} →
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} aria-label={t("ariaLabel")} className="space-y-5" noValidate>
+                  {/* Honeypot — visually hidden, autofill-suppressed. Bots fill it;
+                      the API drops the submission silently when it's non-empty. */}
+                  <div
+                    aria-hidden="true"
+                    style={{
+                      position: "absolute",
+                      left: "-9999px",
+                      width: "1px",
+                      height: "1px",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <label htmlFor="contact-website">Website</label>
+                    <input id="contact-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+                  </div>
+
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    {fields.map((f, i) => (
+                      <div key={f.id}>
+                        <label
+                          htmlFor={`contact-${f.id}`}
+                          className={`${mono} mb-2 flex items-center gap-2 text-[10px] tracking-[2px] text-gray-light`}
+                        >
+                          <span aria-hidden className="text-gray-medium">
+                            {String(i + 1).padStart(2, "0")}
+                          </span>
+                          {t(f.id)}
+                        </label>
+                        <input
+                          id={`contact-${f.id}`}
+                          name={f.id}
+                          type={f.type}
+                          autoComplete={f.autoComplete}
+                          required
+                          aria-required="true"
+                          suppressHydrationWarning
+                          className={fieldClass}
+                          placeholder={t(`${f.id}Placeholder`)}
+                        />
+                      </div>
+                    ))}
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="contact-comment"
+                      className={`${mono} mb-2 flex items-center gap-2 text-[10px] tracking-[2px] text-gray-light`}
+                    >
+                      <span aria-hidden className="text-gray-medium">03</span>
+                      {t("comment")}
+                    </label>
+                    <textarea
+                      id="contact-comment"
+                      name="comment"
+                      required
+                      aria-required="true"
+                      suppressHydrationWarning
+                      rows={5}
+                      className={`${fieldClass} resize-none`}
+                      placeholder={t("commentPlaceholder")}
+                    />
+                  </div>
+
+                  {errorMessage && (
+                    <p
+                      role="alert"
+                      className="border-l-2 border-accent-red bg-accent-red/10 px-4 py-2.5 font-[family-name:var(--font-inter)] text-[14px] text-white"
+                    >
+                      {errorMessage}
+                    </p>
+                  )}
+
+                  <div className="flex flex-col gap-4 pt-1 sm:flex-row sm:items-center sm:justify-between">
+                    <ParticleButton
+                      type="submit"
+                      disabled={pending}
+                      aria-busy={pending}
+                      className="group inline-flex min-h-12 cursor-pointer items-center justify-center gap-3 rounded-none bg-accent-red px-8 py-3.5 font-[family-name:var(--font-inter)] text-[14px] font-semibold uppercase tracking-[1.5px] text-white shadow-[0_8px_28px_rgba(237,28,36,0.3)] transition-all duration-200 hover:-translate-y-px hover:bg-[#C8101A] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
+                    >
+                      {pending ? t("sending") : t("send")}
+                      {!pending && (
+                        <ArrowRight aria-hidden className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+                      )}
+                    </ParticleButton>
+                    <p
+                      className="text-gray-medium sm:max-w-[220px] sm:text-right"
+                      style={{ fontFamily: "var(--font-primary)", fontSize: "12px", lineHeight: 1.5 }}
+                    >
+                      {t("privacyNote")}
+                    </p>
+                  </div>
+                </form>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </SectionContainer>
