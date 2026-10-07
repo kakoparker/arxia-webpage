@@ -32,7 +32,6 @@
   "Domains": {
     "annotation": "INFRAESTRUCTURA PÚBLICA DIGITAL Y TRANSFORMACIÓN DIGITAL",
     "heading": "Los bloques de su independencia digital",
-    "body": "La infraestructura pública digital es el resultado de estas siete prácticas. La interoperabilidad es el núcleo que articula las otras seis.",
     "coreLabel": "NÚCLEO",
     "explore": "Explorar",
     "intro": "Arxia es una empresa de transformación digital e Infraestructura Pública Digital que trabaja con gobiernos desde {founded} en más de {countries} países."
@@ -146,7 +145,7 @@
   "ContactForm": {
     "connect": "Conectemos",
     "heading": "Cuéntenos qué está construyendo.",
-    "body": "Trabajamos con gobiernos, organizaciones internacionales y los donantes que los financian. Cuéntenos el problema y le diremos con franqueza si somos el socio adecuado.",
+    "body": "Trabajamos con gobiernos, organizaciones internacionales, donantes y socios internacionales. Cuéntenos el problema y le diremos con franqueza si somos el socio adecuado.",
     "ariaLabel": "Formulario de contacto",
     "name": "Nombre",
     "namePlaceholder": "Su nombre",
@@ -161,21 +160,6 @@
     "errorGeneric": "Algo salió mal. Inténtelo de nuevo.",
     "errorNetwork": "No se pudo conectar con el servidor. Inténtelo de nuevo.",
     "formTitle": "Nueva consulta",
-    "stepsLabel": "Qué pasa después",
-    "steps": [
-      {
-        "title": "Cuéntenos el problema",
-        "text": "Bastan unas líneas: la institución, el reto, los plazos."
-      },
-      {
-        "title": "Lo revisamos",
-        "text": "Su mensaje llega directamente a nuestro equipo directivo, no a una cola de tickets."
-      },
-      {
-        "title": "Una respuesta franca",
-        "text": "Le decimos con claridad si somos el socio adecuado."
-      }
-    ],
     "privacyNote": "Sin listas de correo. Sus datos solo se usan para responderle.",
     "successNext": "Enviar otro mensaje",
     "errorName": "Escriba su nombre.",

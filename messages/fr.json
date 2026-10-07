@@ -32,7 +32,6 @@
   "Domains": {
     "annotation": "INFRASTRUCTURE PUBLIQUE NUMÉRIQUE ET TRANSFORMATION NUMÉRIQUE",
     "heading": "Les briques de votre indépendance numérique",
-    "body": "L'infrastructure publique numérique est ce que ces sept pratiques produisent ensemble. L'interopérabilité est le cœur qui relie les six autres.",
     "coreLabel": "CŒUR",
     "explore": "Découvrir",
     "intro": "Arxia est une entreprise de transformation numérique et d'Infrastructure Publique Numérique qui travaille avec les gouvernements depuis {founded}, dans plus de {countries} pays."
@@ -146,7 +145,7 @@
   "ContactForm": {
     "connect": "Connectons-nous",
     "heading": "Dites-nous ce que vous construisez.",
-    "body": "Nous travaillons avec les gouvernements, les organisations internationales et les bailleurs qui les financent. Exposez-nous le problème et nous vous dirons franchement si nous sommes le bon partenaire.",
+    "body": "Nous travaillons avec les gouvernements, les organisations internationales, les bailleurs de fonds et les partenaires internationaux. Exposez-nous le problème et nous vous dirons franchement si nous sommes le bon partenaire.",
     "ariaLabel": "Formulaire de contact",
     "name": "Nom",
     "namePlaceholder": "Votre nom",
@@ -161,21 +160,6 @@
     "errorGeneric": "Une erreur s'est produite. Veuillez réessayer.",
     "errorNetwork": "Impossible de joindre le serveur. Veuillez réessayer.",
     "formTitle": "Nouvelle demande",
-    "stepsLabel": "Et ensuite",
-    "steps": [
-      {
-        "title": "Exposez-nous le problème",
-        "text": "Quelques lignes suffisent : l’institution, le défi, le calendrier."
-      },
-      {
-        "title": "Nous l’examinons",
-        "text": "Votre message arrive directement à notre équipe de direction, pas dans une file de tickets."
-      },
-      {
-        "title": "Une réponse franche",
-        "text": "Nous vous disons clairement si nous sommes le bon partenaire."
-      }
-    ],
     "privacyNote": "Aucune liste de diffusion. Vos coordonnées servent uniquement à vous répondre.",
     "successNext": "Envoyer un autre message",
     "errorName": "Veuillez indiquer votre nom.",

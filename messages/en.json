@@ -32,7 +32,6 @@
   "Domains": {
     "annotation": "DIGITAL PUBLIC INFRASTRUCTURE & DIGITAL TRANSFORMATION",
     "heading": "The building blocks of your digital independence",
-    "body": "Digital public infrastructure is what these seven practices add up to. Interoperability is the core the other six route through.",
     "coreLabel": "CORE",
     "explore": "Explore",
     "intro": "Arxia is a digital transformation and Digital Public Infrastructure company, working with governments since {founded} in more than {countries} countries."
@@ -146,7 +145,7 @@
   "ContactForm": {
     "connect": "Connect",
     "heading": "Tell us what you're building.",
-    "body": "We work with governments, international organizations, and the donors who fund them. Send us the problem and we'll tell you straight whether we're the right partner for it.",
+    "body": "We work with governments, international organizations, donors and international partners. Send us the problem and we'll tell you straight whether we're the right partner for it.",
     "ariaLabel": "Contact form",
     "name": "Name",
     "namePlaceholder": "Your name",
@@ -161,21 +160,6 @@
     "errorGeneric": "Something went wrong. Please try again.",
     "errorNetwork": "Couldn't reach the server. Please try again.",
     "formTitle": "New enquiry",
-    "stepsLabel": "What happens next",
-    "steps": [
-      {
-        "title": "Send us the problem",
-        "text": "A few lines are enough: the institution, the challenge, the timeline."
-      },
-      {
-        "title": "We review it",
-        "text": "Your message goes straight to our leadership team, not a ticket queue."
-      },
-      {
-        "title": "A straight answer",
-        "text": "We tell you plainly whether we are the right partner for it."
-      }
-    ],
     "privacyNote": "No mailing lists. Your details are only used to reply to you.",
     "successNext": "Send another message",
     "errorName": "Please enter your name.",
