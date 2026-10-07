@@ -1,5 +1,4 @@
 import { useLocale, useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
 import { getFeaturedProjects } from "@/data/portfolio";
@@ -91,9 +90,9 @@ export function Portfolio() {
         </div>
 
         <div className="text-center">
-          <Link href="/portfolio">
-            <Button variant="primary">{t("viewFull")}</Button>
-          </Link>
+          <Button variant="primary" href="/portfolio">
+            {t("viewFull")}
+          </Button>
         </div>
       </PortfolioScrollReveal>
     </section>

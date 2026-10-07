@@ -49,7 +49,7 @@ export function WorkflowFigure({
           {figLabel} {"//"} {solution.figCaption}
         </span>
         <span className={`${monoLabel} text-blueprint-blue`}>
-          {solution.figFrom} <span className="text-accent-red">→</span> {solution.figTo}
+          {solution.figFrom} <span aria-hidden className="text-accent-red">→</span> {solution.figTo}
         </span>
       </figcaption>
 
@@ -61,7 +61,7 @@ export function WorkflowFigure({
               <span
                 className={`flex h-9 w-9 shrink-0 items-center justify-center border font-[family-name:var(--font-jetbrains)] text-[11px] ${
                   i === last
-                    ? "border-accent-red bg-accent-red text-white"
+                    ? "border-accent-red bg-white text-accent-red-deep"
                     : "border-blueprint-blue bg-white text-blueprint-blue"
                 }`}
               >

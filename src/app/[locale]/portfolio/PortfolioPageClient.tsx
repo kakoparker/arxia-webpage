@@ -82,7 +82,7 @@ export function PortfolioPageClient() {
           <div className="grid items-end gap-8 lg:grid-cols-12">
             <div data-animate data-animate-index="0" className="animate-on-scroll lg:col-span-8">
               <p
-                className="text-accent-red/85 uppercase mb-4"
+                className="text-accent-red-bright uppercase mb-4"
                 style={{
                   fontFamily: "var(--font-mono)",
                   fontSize: "11px",

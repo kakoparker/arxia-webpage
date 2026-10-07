@@ -76,7 +76,7 @@ export function GlobalPresence() {
             {/* Headquarters */}
             <div className="mb-5 border-b border-white/10 pb-4">
               <p
-                className="mb-2 uppercase text-accent-red"
+                className="mb-2 uppercase text-accent-red-bright"
                 style={{
                   fontFamily: "var(--font-mono)",
                   fontSize: "11px",

@@ -8,6 +8,12 @@
   --blueprint-blue: #162036;
   --blueprint-dark: #0D1520;
   --accent-red: #ED1C24;
+  /* Text-safe reds. Brand red is a graphic mark (lines, dots, stripes); as
+     small text it fails WCAG AA (4.18:1 on blueprint-dark, 4.0:1 on white).
+     bright: red text on dark  — 5.53:1 on #0D1520, 4.89:1 on #162036.
+     deep:   red text on light — 5.85:1 on #FFFFFF, 5.58:1 on #F7FAFC. */
+  --accent-red-bright: #F2585D;
+  --accent-red-deep: #C8161D;
   --gray-dark: #4A5568;
   --gray-medium: #A0AEC0;
   --gray-light: #E2E8F0;
@@ -68,6 +74,8 @@
   --color-blueprint-blue: #162036;
   --color-blueprint-dark: #0D1520;
   --color-accent-red: #ED1C24;
+  --color-accent-red-bright: #F2585D;
+  --color-accent-red-deep: #C8161D;
   --color-gray-dark: #4A5568;
   --color-gray-medium: #A0AEC0;
   --color-gray-light: #E2E8F0;
@@ -260,6 +268,27 @@ html {
       transparent 1px,
       transparent var(--grid-major)
     );
+}
+
+/* ============================================
+   HERO ENTRANCE
+   Above-the-fold content must not wait on JS or an IntersectionObserver:
+   a pure CSS entrance plays at first paint, runs without JS, and resolves
+   to its end state under prefers-reduced-motion (fill-mode both).
+   ============================================ */
+.hero-enter {
+  animation: hero-enter var(--duration-entrance) var(--ease-default) both;
+}
+
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* ============================================

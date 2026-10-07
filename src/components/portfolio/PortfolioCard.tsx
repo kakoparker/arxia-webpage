@@ -38,7 +38,7 @@ export function PortfolioCard({ project }: PortfolioCardProps) {
       <p className="font-[family-name:var(--font-inter)] text-[12px] leading-[1.6] text-gray-dark flex-1">
         {project.description}
       </p>
-      <p className="mt-3 text-gray-medium" style={{ fontSize: "11px" }}>
+      <p className="mt-3 text-gray-dark" style={{ fontSize: "11px" }}>
         {project.client}
       </p>
       {isCaseStudy && (

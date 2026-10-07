@@ -75,7 +75,7 @@ export function Footer() {
 
           {/* Company */}
           <div>
-            <h3 className="font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2.5px] text-accent-red/85 mb-6">
+            <h3 className="font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2.5px] text-accent-red-bright mb-6">
               {t("company")}
             </h3>
             <ul className="space-y-3">
@@ -94,7 +94,7 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2.5px] text-accent-red/85 mb-6">
+            <h3 className="font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2.5px] text-accent-red-bright mb-6">
               {t("services")}
             </h3>
             <ul className="space-y-2">
@@ -113,7 +113,7 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2.5px] text-accent-red/85 mb-6">
+            <h3 className="font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2.5px] text-accent-red-bright mb-6">
               {t("contact")}
             </h3>
 
@@ -141,7 +141,7 @@ export function Footer() {
                 <MapPin size={16} strokeWidth={1.5} className="mt-0.5 flex-shrink-0" />
                 <div>
                   <p
-                    className="text-white/40 mb-1"
+                    className="text-gray-medium/80 mb-1"
                     style={{
                       fontFamily: "var(--font-mono)",
                       fontSize: "9px",
@@ -158,7 +158,7 @@ export function Footer() {
                 <MapPin size={16} strokeWidth={1.5} className="mt-0.5 flex-shrink-0" />
                 <div>
                   <p
-                    className="text-white/40 mb-1"
+                    className="text-gray-medium/80 mb-1"
                     style={{
                       fontFamily: "var(--font-mono)",
                       fontSize: "9px",
@@ -177,7 +177,7 @@ export function Footer() {
 
             {/* LinkedIn */}
             <p
-              className="text-white/40 mt-6 mb-3"
+              className="text-gray-medium/80 mt-6 mb-3"
               style={{
                 fontFamily: "var(--font-mono)",
                 fontSize: "9px",
@@ -202,7 +202,7 @@ export function Footer() {
                       <LinkedInIcon className="mt-0.5 flex-shrink-0 h-4 w-4" />
                       <span className="text-[var(--text-small)] leading-tight">
                         {person.name}
-                        <span className="block text-white/40 group-hover:text-gray-medium transition-colors duration-200 text-[var(--text-caption)]">
+                        <span className="block text-gray-medium/80 group-hover:text-white transition-colors duration-200 text-[var(--text-caption)]">
                           {role}
                         </span>
                       </span>

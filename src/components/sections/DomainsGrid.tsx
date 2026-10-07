@@ -70,7 +70,7 @@ export function DomainsGrid({
           data-animate-index="0"
           className="animate-on-scroll max-w-[760px]"
         >
-          <p className="font-[family-name:var(--font-jetbrains)] text-[10px] uppercase leading-[1.5] tracking-[2.2px] text-accent-red sm:text-[11px] sm:tracking-[2.5px]">
+          <p className="font-[family-name:var(--font-jetbrains)] text-[10px] uppercase leading-[1.5] tracking-[2.2px] text-accent-red-deep sm:text-[11px] sm:tracking-[2.5px]">
             {t("annotation")}
           </p>
           <h2
@@ -191,7 +191,7 @@ function SatellitePlate({
       <div className="flex items-start justify-between gap-3">
         <span
           aria-hidden
-          className="font-[family-name:var(--font-jetbrains)] text-[10px] tracking-[2px] text-gray-medium"
+          className="font-[family-name:var(--font-jetbrains)] text-[10px] tracking-[2px] text-gray-dark"
         >
           {domain.order}
         </span>
@@ -268,7 +268,7 @@ function AnchorPlate({
       <PlateCorners dark />
 
       <div className="flex items-start justify-between gap-4">
-        <span className="font-[family-name:var(--font-jetbrains)] text-[10px] uppercase tracking-[2px] text-accent-red sm:text-[11px]">
+        <span className="font-[family-name:var(--font-jetbrains)] text-[10px] uppercase tracking-[2px] text-accent-red-bright sm:text-[11px]">
           {domain.order} · {t("coreLabel")}
         </span>
         <Icon
@@ -332,7 +332,7 @@ function ExploreCue({ label, dark = false }: { label: string; dark?: boolean }) 
       className={`
         domain-plate-cue absolute bottom-5 left-5 inline-flex items-center gap-2
         font-[family-name:var(--font-jetbrains)] text-[10px] uppercase tracking-[1.5px]
-        ${dark ? "lg:left-8 text-white" : "text-accent-red"}
+        ${dark ? "lg:left-8 text-white" : "text-accent-red-deep"}
       `}
     >
       {label}

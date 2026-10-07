@@ -31,7 +31,7 @@ export function LegalPage({
               English text is Spanish/French (screen readers, search). */}
           <article lang="en" className="max-w-[var(--content-narrow)] mx-auto">
             <p
-              className="text-accent-red uppercase mb-4"
+              className="text-accent-red-deep uppercase mb-4"
               style={{
                 fontFamily: "var(--font-mono)",
                 fontSize: "11px",
@@ -54,7 +54,7 @@ export function LegalPage({
             </h1>
             <div className="h-[3px] w-12 bg-accent-red mb-6" />
             <p
-              className="text-gray-medium mb-10"
+              className="text-gray-dark mb-10"
               style={{
                 fontFamily: "var(--font-mono)",
                 fontSize: "12px",

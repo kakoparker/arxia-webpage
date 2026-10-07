@@ -102,13 +102,13 @@ export function CaseStudyVideo({ video, title, playLabel, durationLabel, note, c
               className="object-cover transition-opacity duration-300 group-hover:opacity-80"
               priority
             />
-            {/* Play control: a red, square-cornered button that says what it
-                does. Red is the one loud thing on the poster on purpose. */}
+            {/* Play control: a white, square-cornered button that says what it
+                does; the red play glyph is the signature mark. */}
             <span
               aria-hidden
-              className="cs-play-cta absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center gap-3 whitespace-nowrap bg-accent-red px-5 py-3.5 text-white shadow-[0_8px_28px_rgba(237,28,36,0.35)] transition-all duration-300 group-hover:scale-105 group-hover:bg-[#C8101A]"
+              className="cs-play-cta absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center gap-3 whitespace-nowrap bg-white px-5 py-3.5 text-blueprint-dark shadow-[0_8px_28px_rgba(13,21,32,0.35)] transition-all duration-300 group-hover:scale-105 group-hover:bg-gray-light"
             >
-              <Play size={16} strokeWidth={1.5} className="fill-white" />
+              <Play size={16} strokeWidth={1.5} className="fill-accent-red text-accent-red" />
               <span className="font-[family-name:var(--font-inter)] text-[13px] font-semibold uppercase tracking-[1.5px]">
                 {cta}
               </span>

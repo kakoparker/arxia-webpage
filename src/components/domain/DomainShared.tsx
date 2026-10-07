@@ -62,7 +62,7 @@ export function DomainBreadcrumb({ title }: { title: string }) {
         >
           /
         </li>
-        <li className="text-accent-red/85" style={crumbStyle}>
+        <li className="text-accent-red-bright" style={crumbStyle}>
           {title}
         </li>
       </ol>
@@ -130,7 +130,7 @@ export function DomainRelated({
     <SectionContainer mode={mode} id="keep-exploring">
       <div className="mb-10">
         <p
-          className="font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2.5px] text-accent-red"
+          className="font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2.5px] text-accent-red-deep"
         >
           {t("keepExploring")}
         </p>
@@ -162,7 +162,7 @@ export function DomainRelated({
                 />
               </div>
               <p
-                className="font-[family-name:var(--font-jetbrains)] text-[10px] uppercase tracking-[2px] text-accent-red/85 mb-2"
+                className="font-[family-name:var(--font-jetbrains)] text-[10px] uppercase tracking-[2px] text-accent-red-deep mb-2"
               >
                 {d.order}
               </p>
@@ -188,7 +188,7 @@ export function DomainRelated({
                 {d.description}
               </p>
               <span
-                className="inline-flex items-center gap-2 mt-5 font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2px] text-accent-red/85 group-hover:text-accent-red transition-colors"
+                className="inline-flex items-center gap-2 mt-5 font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2px] text-accent-red-deep group-hover:text-blueprint-blue transition-colors"
               >
                 {t("explore", { name: d.name })}
                 <span

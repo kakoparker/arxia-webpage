@@ -25,7 +25,7 @@ export function SectionHeader({
       <p
         className={`
           font-normal uppercase mb-4
-          ${dark ? "text-accent-red/85" : "text-gray-dark"}
+          ${dark ? "text-accent-red-bright" : "text-gray-dark"}
         `}
         style={{
           fontFamily: "var(--font-mono)",

@@ -52,8 +52,8 @@ export function FeaturedCaseCard({
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 40vw, 260px"
               className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
             />
-            <span className="absolute bottom-3 left-3 flex items-center gap-2 bg-accent-red px-3 py-2 text-white shadow-[0_6px_20px_rgba(237,28,36,0.35)]">
-              <Play aria-hidden size={12} strokeWidth={1.5} className="fill-white" />
+            <span className="absolute bottom-3 left-3 flex items-center gap-2 bg-blueprint-dark/90 px-3 py-2 text-white">
+              <Play aria-hidden size={12} strokeWidth={1.5} className="fill-accent-red text-accent-red" />
               <span className="font-[family-name:var(--font-jetbrains)] text-[9px] uppercase tracking-[1.5px]">
                 {t("watchVideo")} · {formatDuration(video.durationSeconds)}
               </span>

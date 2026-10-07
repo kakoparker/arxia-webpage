@@ -36,7 +36,7 @@ export function DomainCategorySection({
   const tone = {
     iconBorder: isDark ? "border-white/20" : "border-gray-light",
     iconColor: isDark ? "text-white" : "text-blueprint-blue",
-    annotation: isDark ? "text-accent-red/85" : "text-accent-red",
+    annotation: isDark ? "text-accent-red-bright" : "text-accent-red-deep",
     heading: isDark ? "text-white" : "text-blueprint-blue",
     tagline: isDark ? "text-gray-light" : "text-gray-dark",
     cardBg: isDark ? "bg-blueprint-blue" : "bg-white",

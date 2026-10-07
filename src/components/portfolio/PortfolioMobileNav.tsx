@@ -84,7 +84,7 @@ export function PortfolioMobileNav({ domains, filter, onSelect }: PortfolioMobil
                 ${
                   isActive
                     ? "border-b-2 border-b-accent-red text-blueprint-blue font-semibold"
-                    : "text-gray-medium hover:text-blueprint-blue"
+                    : "text-gray-dark hover:text-blueprint-blue"
                 }
               `}
               style={{ fontFamily: "var(--font-mono)" }}

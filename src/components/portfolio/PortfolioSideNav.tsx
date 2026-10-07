@@ -63,7 +63,7 @@ export function PortfolioSideNav({
       style={{ position: "sticky", top: "80px", alignSelf: "flex-start" }}
     >
       <p
-        className="text-gray-medium uppercase mb-4"
+        className="text-gray-dark uppercase mb-4"
         style={{
           fontFamily: "var(--font-mono)",
           fontSize: "9px",
@@ -84,12 +84,12 @@ export function PortfolioSideNav({
               ${
                 isActive
                   ? "border-l-[3px] border-l-accent-red pl-3 font-semibold text-blueprint-blue"
-                  : "pl-[15px] text-gray-medium hover:text-blueprint-blue"
+                  : "pl-[15px] text-gray-dark hover:text-blueprint-blue"
               }
             `}
           >
             {domain.label}{" "}
-            <span className="font-normal text-gray-medium">
+            <span className="font-normal text-gray-dark">
               ({projectCounts[domain.slug] ?? 0})
             </span>
           </button>

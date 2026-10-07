@@ -227,7 +227,7 @@ export default async function NewsArticlePage({ params }: PageProps) {
                     key={i}
                     className={`flex flex-col gap-3 text-body-text ${
                       block.ordered
-                        ? "list-decimal pl-6 marker:text-accent-red marker:font-semibold"
+                        ? "list-decimal pl-6 marker:text-accent-red-deep marker:font-semibold"
                         : "list-none"
                     }`}
                     style={{

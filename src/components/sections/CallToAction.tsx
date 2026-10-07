@@ -26,7 +26,8 @@ const fieldClass =
  * next" on the left, the form on the right as a framed panel — a plate with a
  * standing red rule, a mono header strip and corner ticks, lit by a soft
  * Blueprint glow so it is the brightest object on the dark grid. The submit
- * is the site's red action button. The API contract (name, email, comment,
+ * is the site's primary action button (white on dark; red stays a mark,
+ * never a fill). The API contract (name, email, comment,
  * honeypot) is unchanged.
  */
 export function CallToAction() {
@@ -89,7 +90,7 @@ export function CallToAction() {
       <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
         {/* ── Left: the pitch and what happens next ─────────────────────── */}
         <div className="lg:col-span-6">
-          <p className={`${mono} mb-4 text-[11px] leading-[1.2] tracking-[2.5px] text-accent-red/85`}>
+          <p className={`${mono} mb-4 text-[11px] leading-[1.2] tracking-[2.5px] text-accent-red-bright`}>
             {t("connect")}
           </p>
           <h2
@@ -131,7 +132,7 @@ export function CallToAction() {
                     aria-hidden
                     className={`${mono} relative z-10 flex h-8 w-8 shrink-0 items-center justify-center border text-[10px] tracking-[1px] ${
                       i === steps.length - 1
-                        ? "border-accent-red bg-accent-red text-white"
+                        ? "border-accent-red bg-blueprint-dark text-white"
                         : "border-white/25 bg-blueprint-dark text-white"
                     }`}
                   >
@@ -190,7 +191,7 @@ export function CallToAction() {
             <div className="px-6 py-6 sm:px-8 sm:py-7">
               {submitted ? (
                 <div role="status" aria-live="polite" className="py-6">
-                  <span className="flex h-12 w-12 items-center justify-center bg-accent-red text-white">
+                  <span className="flex h-12 w-12 items-center justify-center border border-accent-red text-accent-red-bright">
                     <Check aria-hidden size={22} strokeWidth={2} />
                   </span>
                   <p
@@ -289,7 +290,7 @@ export function CallToAction() {
                       type="submit"
                       disabled={pending}
                       aria-busy={pending}
-                      className="group inline-flex min-h-12 cursor-pointer items-center justify-center gap-3 rounded-none bg-accent-red px-8 py-3.5 font-[family-name:var(--font-inter)] text-[14px] font-semibold uppercase tracking-[1.5px] text-white shadow-[0_8px_28px_rgba(237,28,36,0.3)] transition-all duration-200 hover:-translate-y-px hover:bg-[#C8101A] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
+                      className="group inline-flex min-h-12 cursor-pointer items-center justify-center gap-3 rounded-none bg-white px-8 py-3.5 font-[family-name:var(--font-inter)] text-[14px] font-semibold uppercase tracking-[1.5px] text-blueprint-dark transition-all duration-200 hover:-translate-y-px hover:bg-gray-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
                     >
                       {pending ? t("sending") : t("send")}
                       {!pending && (

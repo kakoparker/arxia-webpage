@@ -109,9 +109,9 @@ export function ScrollProgressRail({
           >
             {/* Label — slides in on hover or when active */}
             <span
-              className={`absolute right-full mr-3 whitespace-nowrap font-[family-name:var(--font-jetbrains)] text-[10px] uppercase tracking-[2px] transition-all duration-200 pointer-events-none ${
+              className={`absolute right-full mr-3 whitespace-nowrap bg-blueprint-dark/90 px-1.5 py-0.5 font-[family-name:var(--font-jetbrains)] text-[10px] uppercase tracking-[2px] transition-all duration-200 pointer-events-none ${
                 isActive
-                  ? "opacity-100 translate-x-0 text-accent-red"
+                  ? "opacity-100 translate-x-0 text-accent-red-bright"
                   : "opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 text-gray-medium"
               }`}
             >

@@ -24,7 +24,7 @@ export function PortfolioSection({ domain, projects, index }: PortfolioSectionPr
     >
       <div data-animate data-animate-index="0" className="animate-on-scroll mb-8">
         <p
-          className="text-gray-medium uppercase mb-4"
+          className="text-gray-dark uppercase mb-4"
           style={{
             fontFamily: "var(--font-mono)",
             fontSize: "11px",
