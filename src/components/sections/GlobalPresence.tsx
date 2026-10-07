@@ -6,6 +6,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Globe } from "@/components/ui/Globe";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useOdometer } from "@/hooks/useOdometer";
+import { company, yearsActive } from "@/data/company";
 
 // `region` strings + country `code`s are STABLE KEYS into the GlobalPresence
 // message namespace (regions.* and countries.*). They are never displayed raw.
@@ -27,11 +28,11 @@ const CELLS: Array<{ regions: Region[]; wide?: boolean }> = [
       { region: "Southeast Asia", codes: ["KH"] },
     ],
   },
-  { regions: [{ region: "West Africa", codes: ["TN", "SN", "GH", "NG"] }] },
+  { regions: [{ region: "North & West Africa", codes: ["TN", "SN", "GH", "NG"] }] },
   {
     wide: true,
     regions: [
-      { region: "East Africa", codes: ["ET", "KE", "SO", "DJ", "SS", "UG", "RW", "BI", "CF"] },
+      { region: "East & Central Africa", codes: ["ET", "KE", "SO", "DJ", "SS", "UG", "RW", "BI", "CF"] },
     ],
   },
   { regions: [{ region: "Southern Africa", codes: ["AO", "ZM"] }] },
@@ -41,9 +42,9 @@ export function GlobalPresence() {
   const t = useTranslations("GlobalPresence");
   const ref = useScrollAnimation();
 
-  const orgStat = useOdometer({ target: 100, suffix: "+", duration: 1600 });
-  const countryStat = useOdometer({ target: 20, suffix: "+", duration: 1400 });
-  const yearsStat = useOdometer({ target: 25, suffix: "+", duration: 1200 });
+  const orgStat = useOdometer({ target: company.figures.organizations, suffix: "+", duration: 1600 });
+  const countryStat = useOdometer({ target: company.figures.countries, suffix: "+", duration: 1400 });
+  const yearsStat = useOdometer({ target: yearsActive(), duration: 1200 });
 
   return (
     <SectionContainer mode="dark" id="presence" showCornerMarks fitScreen>

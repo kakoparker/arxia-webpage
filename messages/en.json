@@ -41,9 +41,9 @@
     "body": "Selected projects that define what we do.",
     "viewFull": "View Full Portfolio →",
     "metaTitle": "Portfolio",
-    "metaDescription": "44 projects in 20+ countries. Two decades of digital government work, from national interoperability frameworks to procurement platforms.",
+    "metaDescription": "{projects} projects in {countries}+ countries. Digital government work since {founded}, from national interoperability frameworks to procurement platforms.",
     "heroAnnotation": "// Portfolio",
-    "heroBody": "44 projects in 20+ countries. Two decades of digital government work, from national interoperability frameworks to procurement platforms.",
+    "heroBody": "{projects} projects in {countries}+ countries. Digital government work since {founded}, from national interoperability frameworks to procurement platforms.",
     "statProjects": "Projects",
     "statCountries": "Countries",
     "statDomains": "Domains",
@@ -104,8 +104,8 @@
     "regions": {
       "Europe": "Europe",
       "Latin America": "Latin America",
-      "West Africa": "West Africa",
-      "East Africa": "East Africa",
+      "North & West Africa": "North & West Africa",
+      "East & Central Africa": "East & Central Africa",
       "Southeast Asia": "Southeast Asia",
       "Southern Africa": "Southern Africa"
     },

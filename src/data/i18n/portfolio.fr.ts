@@ -119,7 +119,7 @@ export const portfolioFr: Record<string, PortfolioOverlay> = {
   "romania-eprocurement-platform": {
     title: "Plateforme web d'e-procurement – Roumanie",
     description:
-      "Plateforme web pour les institutions publiques offrant des workflows couvrant l'ensemble du cycle de vie de la commande. Déployée par plus de 100 institutions publiques.",
+      "Plateforme web pour les institutions publiques offrant des workflows couvrant l'ensemble du cycle de vie de la commande. Utilisée par plus de 50 organisations publiques.",
     categoryLabel: C.publicProcurement,
   },
   "icglr-websites": {

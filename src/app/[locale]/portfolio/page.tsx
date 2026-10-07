@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { alternatesFor } from "@/i18n/metadata";
 import { PortfolioPageClient } from "./PortfolioPageClient";
+import { portfolioCopyValues } from "@/data/company";
+import { portfolioProjects } from "@/data/portfolio";
 
 export async function generateMetadata({
   params,
@@ -12,7 +14,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "Portfolio" });
   return {
     title: t("metaTitle"),
-    description: t("metaDescription"),
+    description: t("metaDescription", portfolioCopyValues(portfolioProjects.length)),
     alternates: alternatesFor(locale, "/portfolio"),
   };
 }

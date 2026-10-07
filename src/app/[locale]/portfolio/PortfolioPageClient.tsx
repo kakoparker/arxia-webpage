@@ -13,6 +13,8 @@ import { getCaseStudies } from "@/data/case-studies";
 import { FeaturedProjectCard } from "@/components/portfolio/FeaturedProjectCard";
 import { getPortfolioDomains } from "@/data/portfolio-domains";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { company, portfolioCopyValues } from "@/data/company";
+import { expertiseDomainEntries } from "@/data/expertise-domains";
 
 export function PortfolioPageClient() {
   const t = useTranslations("Portfolio");
@@ -112,7 +114,7 @@ export function PortfolioPageClient() {
                   maxWidth: "var(--content-narrow)",
                 }}
               >
-                {t("heroBody")}
+                {t("heroBody", portfolioCopyValues(localizedProjects.length))}
               </p>
             </div>
 
@@ -123,9 +125,9 @@ export function PortfolioPageClient() {
               className="animate-on-scroll flex gap-12 flex-wrap lg:col-span-4 lg:justify-end"
             >
               {[
-                { value: "44", label: t("statProjects") },
-                { value: "20+", label: t("statCountries") },
-                { value: "8", label: t("statDomains") },
+                { value: String(localizedProjects.length), label: t("statProjects") },
+                { value: `${company.figures.countries}+`, label: t("statCountries") },
+                { value: String(expertiseDomainEntries.length), label: t("statDomains") },
               ].map((stat) => (
                 <div key={stat.label}>
                   <p

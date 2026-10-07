@@ -259,7 +259,7 @@ export const portfolioProjects: PortfolioProject[] = [
     title: "E-Procurement Web Platform – Romania",
     domain: "process",
     description:
-      "Web platform for public institutions providing workflows for the entire procurement lifecycle. Implemented by over 100 public institutions.",
+      "Web platform for public institutions providing workflows for the entire procurement lifecycle. Used by 50+ public organizations.",
     client: "Arxia (own product)",
     country: "Romania",
     year: "2016",

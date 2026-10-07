@@ -41,9 +41,9 @@
     "body": "Proyectos seleccionados que definen lo que hacemos.",
     "viewFull": "Ver portafolio completo →",
     "metaTitle": "Portafolio",
-    "metaDescription": "44 proyectos en más de 20 países. Dos décadas de trabajo en gobierno digital, desde marcos nacionales de interoperabilidad hasta plataformas de contratación.",
+    "metaDescription": "{projects} proyectos en más de {countries} países. Gobierno digital desde {founded}: de marcos nacionales de interoperabilidad a plataformas de contratación pública.",
     "heroAnnotation": "// Portafolio",
-    "heroBody": "44 proyectos en más de 20 países. Dos décadas de trabajo en gobierno digital, desde marcos nacionales de interoperabilidad hasta plataformas de contratación.",
+    "heroBody": "{projects} proyectos en más de {countries} países. Gobierno digital desde {founded}: de marcos nacionales de interoperabilidad a plataformas de contratación pública.",
     "statProjects": "Proyectos",
     "statCountries": "Países",
     "statDomains": "Áreas",
@@ -104,8 +104,8 @@
     "regions": {
       "Europe": "Europa",
       "Latin America": "América Latina",
-      "West Africa": "África Occidental",
-      "East Africa": "África Oriental",
+      "North & West Africa": "África del Norte y Occidental",
+      "East & Central Africa": "África Oriental y Central",
       "Southeast Asia": "Sudeste Asiático",
       "Southern Africa": "África Austral"
     },
