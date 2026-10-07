@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/layout/LegalPage";
-import { SITE_HOST } from "@/i18n/metadata";
+import { localizedUrl, pageMetadata, SITE_HOST } from "@/i18n/metadata";
 import { company } from "@/data/company";
 
+// Legal copy is English-only: es/fr URLs canonicalize to the English page
+// and carry no hreflang cluster.
 export const metadata: Metadata = {
-  title: "Terms of Service",
-  description: `Terms of service for the ${SITE_HOST} website.`,
-  alternates: { canonical: "/terms" },
-  robots: { index: true, follow: true },
+  ...pageMetadata({
+    locale: "en",
+    path: "/terms",
+    title: "Terms of Service",
+    description: `Terms of service for the ${SITE_HOST} website.`,
+  }),
+  alternates: { canonical: localizedUrl("en", "/terms") },
 };
 
 export default function TermsPage() {

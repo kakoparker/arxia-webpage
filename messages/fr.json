@@ -57,7 +57,8 @@
     "readCaseStudy": "Lire l’étude de cas",
     "video": "Vidéo",
     "featuredCase": "Étude de cas phare",
-    "watchVideo": "Voir la vidéo"
+    "watchVideo": "Voir la vidéo",
+    "seoTitle": "Projets de gouvernement numérique"
   },
   "CaseStudy": {
     "breadcrumb": "Fil d’Ariane",
@@ -92,7 +93,8 @@
     "indexHeading": "Toutes les actualités",
     "indexBody": "Récits, études de cas et nouveautés d'Arxia et des partenaires avec qui nous travaillons partout dans le monde.",
     "metaTitle": "Actualités",
-    "metaDescription": "Dernières actualités, études de cas et nouveautés d'Arxia : transformation numérique, Infrastructure Publique Numérique et IA agentique en action."
+    "metaDescription": "Dernières actualités, études de cas et nouveautés d'Arxia : transformation numérique, Infrastructure Publique Numérique et IA agentique en action.",
+    "seoTitle": "Actualités de l'infrastructure publique numérique"
   },
   "GlobalPresence": {
     "annotation": "Portée",
@@ -344,5 +346,14 @@
     "label": "Clients et partenaires",
     "pause": "Mettre en pause l'animation des logos",
     "play": "Relancer l'animation des logos"
+  },
+  "DomainSeoTitle": {
+    "interoperability": "Interopérabilité et X-Road pour l'État",
+    "data-governance": "Gouvernance des données du secteur public",
+    "e-procurement": "Marchés publics électroniques",
+    "e-invoicing": "Facturation électronique pour l'État",
+    "web-portals": "Portails web gouvernementaux",
+    "agentic-state": "État agentique : l'IA au service de l'État",
+    "e-services": "Services publics numériques"
   }
 }

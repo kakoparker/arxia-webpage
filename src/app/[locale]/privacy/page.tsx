@@ -1,14 +1,18 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/layout/LegalPage";
-import { SITE_HOST } from "@/i18n/metadata";
+import { localizedUrl, pageMetadata, SITE_HOST } from "@/i18n/metadata";
 import { company, registeredOfficeLine } from "@/data/company";
 
+// Legal copy is English-only: es/fr URLs canonicalize to the English page
+// and carry no hreflang cluster.
 export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description:
-    `How Arxia collects, uses, and protects personal data on ${SITE_HOST}.`,
-  alternates: { canonical: "/privacy" },
-  robots: { index: true, follow: true },
+  ...pageMetadata({
+    locale: "en",
+    path: "/privacy",
+    title: "Privacy Policy",
+    description: `How Arxia collects, uses, and protects personal data on ${SITE_HOST}.`,
+  }),
+  alternates: { canonical: localizedUrl("en", "/privacy") },
 };
 
 export default function PrivacyPage() {

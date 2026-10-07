@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { setRequestLocale } from "next-intl/server";
-import { alternatesFor } from "@/i18n/metadata";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { pageMetadata } from "@/i18n/metadata";
 import { DomainPageView } from "@/components/domain/DomainPageView";
 import { getDomainPage } from "@/data/domain-pages";
 
@@ -15,11 +15,13 @@ export async function generateMetadata({
   const { locale } = await params;
   const page = getDomainPage(DOMAIN, locale);
   if (!page) return { title: "Not found" };
-  return {
-    title: page.name,
+  const t = await getTranslations({ locale, namespace: "DomainSeoTitle" });
+  return pageMetadata({
+    locale,
+    path: `/${DOMAIN}`,
+    title: t(DOMAIN),
     description: page.description,
-    alternates: alternatesFor(locale, `/${DOMAIN}`),
-  };
+  });
 }
 
 export default async function DataGovernanceDomainPage({

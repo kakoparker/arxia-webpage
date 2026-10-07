@@ -57,7 +57,8 @@
     "readCaseStudy": "Read the case study",
     "video": "Video",
     "featuredCase": "Featured case study",
-    "watchVideo": "Watch the video"
+    "watchVideo": "Watch the video",
+    "seoTitle": "Digital Government Project Portfolio"
   },
   "CaseStudy": {
     "breadcrumb": "Breadcrumb",
@@ -92,7 +93,8 @@
     "indexHeading": "All News",
     "indexBody": "Stories, case studies and updates from Arxia and the partners we work with around the world.",
     "metaTitle": "News",
-    "metaDescription": "Latest news, case studies, and updates from Arxia: digital transformation, Digital Public Infrastructure, and Agentic AI in action."
+    "metaDescription": "Latest news, case studies, and updates from Arxia: digital transformation, Digital Public Infrastructure, and Agentic AI in action.",
+    "seoTitle": "News on Digital Public Infrastructure"
   },
   "GlobalPresence": {
     "annotation": "Reach",
@@ -344,5 +346,14 @@
     "label": "Clients and partners",
     "pause": "Pause logo animation",
     "play": "Play logo animation"
+  },
+  "DomainSeoTitle": {
+    "interoperability": "Interoperability & X-Road for Governments",
+    "data-governance": "Data Governance for the Public Sector",
+    "e-procurement": "e-Procurement Systems for Governments",
+    "e-invoicing": "e-Invoicing for Governments & Tax Authorities",
+    "web-portals": "Government Web Portals",
+    "agentic-state": "Agentic State: AI for Government",
+    "e-services": "Digital Public Services (e-Services)"
   }
 }

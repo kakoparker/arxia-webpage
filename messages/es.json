@@ -57,7 +57,8 @@
     "readCaseStudy": "Leer el caso de estudio",
     "video": "Vídeo",
     "featuredCase": "Caso de estudio destacado",
-    "watchVideo": "Ver el vídeo"
+    "watchVideo": "Ver el vídeo",
+    "seoTitle": "Portafolio de proyectos de gobierno digital"
   },
   "CaseStudy": {
     "breadcrumb": "Ruta de navegación",
@@ -92,7 +93,8 @@
     "indexHeading": "Todas las noticias",
     "indexBody": "Historias, casos de éxito y novedades de Arxia y de los socios con quienes trabajamos en todo el mundo.",
     "metaTitle": "Noticias",
-    "metaDescription": "Últimas noticias, casos de éxito y novedades de Arxia: transformación digital, Infraestructura Pública Digital e IA agéntica en acción."
+    "metaDescription": "Últimas noticias, casos de éxito y novedades de Arxia: transformación digital, Infraestructura Pública Digital e IA agéntica en acción.",
+    "seoTitle": "Noticias de infraestructura pública digital"
   },
   "GlobalPresence": {
     "annotation": "Alcance",
@@ -344,5 +346,14 @@
     "label": "Clientes y socios",
     "pause": "Pausar la animación de logotipos",
     "play": "Reanudar la animación de logotipos"
+  },
+  "DomainSeoTitle": {
+    "interoperability": "Interoperabilidad y X-Road para gobiernos",
+    "data-governance": "Gobernanza de datos para el sector público",
+    "e-procurement": "Contratación pública electrónica",
+    "e-invoicing": "Facturación electrónica para gobiernos",
+    "web-portals": "Portales web gubernamentales",
+    "agentic-state": "Estado agéntico: IA para el gobierno",
+    "e-services": "Servicios públicos digitales"
   }
 }

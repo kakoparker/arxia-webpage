@@ -24,7 +24,7 @@ import {
   videoPoster,
 } from "@/data/case-studies";
 import { getProject, getProjects } from "@/data/portfolio";
-import { alternatesFor, localizedUrl, SITE_URL } from "@/i18n/metadata";
+import { localizedUrl, pageMetadata, SITE_URL } from "@/i18n/metadata";
 
 interface PageProps {
   params: Promise<{ locale: string; slug: string }>;
@@ -42,18 +42,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const cs = getCaseStudy(slug, locale);
   if (!cs) return { title: "Not Found" };
   const path = `/portfolio/${slug}`;
-  return {
+  return pageMetadata({
+    locale,
+    path,
     title: cs.content.title,
     description: cs.content.metaDescription,
-    alternates: alternatesFor(locale, path),
-    openGraph: {
-      title: cs.content.title,
-      description: cs.content.metaDescription,
-      type: "article",
-      publishedTime: cs.publishedAt,
-      url: localizedUrl(locale, path),
-    },
-  };
+    type: "article",
+    publishedTime: cs.publishedAt,
+    ...(cs.video ? { image: { url: videoPoster(cs.video), alt: cs.content.title } } : {}),
+  });
 }
 
 /** Body copy, light background. */

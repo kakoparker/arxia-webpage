@@ -52,7 +52,6 @@ export async function generateMetadata({
       title: SITE_TITLE,
       description:
         "We develop and integrate solutions that transform countries, governments, and the ecosystems around them.",
-      url: SITE_URL,
       siteName: SITE_NAME,
       type: "website",
       locale: ogLocale,
