@@ -27,8 +27,8 @@ TLS certificates are issued automatically once the records resolve.
 
 ## 2. Contact-form email (Resend)
 
-The form sends **from** `contact@arxia.com` **to** `carlos.parker@arxia.com` and
-`daniel.homorodean@arxia.com`. You do **not** need to create a `contact@arxia.com`
+The form sends **from** `contact@arxia.com` **to** the inboxes listed in the
+`CONTACT_RECIPIENTS` environment variable (set in Vercel, not in this repo). You do **not** need to create a `contact@arxia.com`
 mailbox — Resend only needs the *domain* verified; the From address is just a label.
 
 ### Steps
@@ -42,12 +42,13 @@ mailbox — Resend only needs the *domain* verified; the From address is just a 
    | 1 | **MX** | `send.arxia.com` | `feedback-smtp.<region>.amazonses.com` (priority **10**) | `<region>` (e.g. `us-east-1`) is shown in Resend. Handles bounces. |
    | 2 | **TXT** (SPF) | `send.arxia.com` | `v=spf1 include:amazonses.com ~all` | |
    | 3 | **TXT** (DKIM) | `resend._domainkey.arxia.com` | `p=…` (long key from Resend — paste verbatim) | The one value you must copy exactly. |
-   | 4 | **TXT** (DMARC) | `_dmarc.arxia.com` | `v=DMARC1; p=none; rua=mailto:carlos.parker@arxia.com` | Recommended. Start `p=none`, tighten later. |
+   | 4 | **TXT** (DMARC) | `_dmarc.arxia.com` | `v=DMARC1; p=none; rua=mailto:<reports inbox>` | Recommended. Start `p=none`, tighten later. |
 
 3. Click **Verify** in Resend (propagation: minutes to a few hours).
 4. In **Vercel → Settings → Environment Variables**, set:
    - `RESEND_API_KEY` — from Resend
    - `RESEND_FROM` — `Arxia <contact@arxia.com>`
+   - `CONTACT_RECIPIENTS` — the receiving inboxes, comma-separated
    Then redeploy.
 5. Submit the live form once and confirm it lands in **both** inboxes.
 
