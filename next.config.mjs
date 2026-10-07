@@ -39,15 +39,17 @@ const nextConfig = {
     // bootstrap scripts still need 'unsafe-inline'. The policy still pins
     // scripts, frames, images and connections to known origins and blocks
     // framing, plugins, <base> hijacking and off-site form posts.
-    // vercel.live is the Vercel preview toolbar (preview deployments only).
+    // vercel.live (+ its Pusher socket) is the Vercel preview toolbar, so it
+    // is only allowed on preview deployments, never in production.
+    const toolbar = process.env.VERCEL_ENV === "preview";
     const csp = [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' https://plausible.io https://vercel.live",
+      `script-src 'self' 'unsafe-inline' https://plausible.io${toolbar ? " https://vercel.live" : ""}`,
       "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' data: blob: https://i.ytimg.com https://vercel.live https://vercel.com",
+      `img-src 'self' data: blob: https://i.ytimg.com${toolbar ? " https://vercel.live https://vercel.com" : ""}`,
       "font-src 'self' data:",
-      "connect-src 'self' https://plausible.io https://vercel.live wss://ws-us3.pusher.com",
-      "frame-src https://www.youtube-nocookie.com https://vercel.live",
+      `connect-src 'self' https://plausible.io${toolbar ? " https://vercel.live wss://ws-us3.pusher.com" : ""}`,
+      `frame-src https://www.youtube-nocookie.com${toolbar ? " https://vercel.live" : ""}`,
       "media-src 'self'",
       "object-src 'none'",
       "base-uri 'self'",
@@ -63,6 +65,9 @@ const nextConfig = {
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "X-Frame-Options", value: "SAMEORIGIN" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          // Own browsing-context group: no cross-origin window can hold a
+          // reference to ours (tabnabbing, XS-Leaks, Spectre-class reads).
+          { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
           {
             key: "Permissions-Policy",
             value: "camera=(), microphone=(), geolocation=(), browsing-topics=()",
