@@ -153,6 +153,28 @@ const nextConfig = {
       "industries-intelligence": "/agentic-state",
     };
 
+    // 4. The TYPO3-era site that still lives on www.arxia.com (*.html pages,
+    //    indexed and ranking). These take effect as soon as arxia.com points
+    //    at this deployment, or the old host forwards paths here, so 20+
+    //    years of links land on the closest current page instead of a 404.
+    //    Anything else ending in .html falls back to the homepage.
+    const typo3Legacy = {
+      "/index.php": "/",
+      "/home.html": "/",
+      "/about-us.html": "/",
+      "/services.html": "/#expertise",
+      "/products.html": "/#expertise",
+      "/products/processplayer-public-procurement.html": "/e-procurement",
+      "/clients.html": "/portfolio",
+      "/technologies.html": "/web-portals",
+      "/public-sector.html": "/e-services",
+      "/smart-city.html": "/e-services",
+      "/services/devops-services.html": "/web-portals",
+      "/community-sharings.html": "/news",
+      "/contact-general-information.html": "/#contact",
+      "/international-consultancy/contact.html": "/#contact",
+    };
+
     return [
       ...verticalRoutes,
       ...divisionRoutes,
@@ -162,6 +184,12 @@ const nextConfig = {
         destination: to,
         permanent: true,
       })),
+      ...Object.entries(typo3Legacy).map(([from, to]) => ({
+        source: from,
+        destination: to,
+        permanent: true,
+      })),
+      { source: "/:path(.*)\\.html", destination: "/", permanent: true },
     ];
   },
 };
