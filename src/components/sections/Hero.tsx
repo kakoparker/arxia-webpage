@@ -14,11 +14,7 @@ import { company } from "@/data/company";
 /** Hero plates, in order. Keys map to the `Hero.labels` message namespace. */
 const HERO_LABELS = ["transformation", "dpi", "interoperability"] as const;
 
-/**
- * `projectCount` comes from the server page so the portfolio dataset never
- * ships in this client bundle just to be counted.
- */
-export function Hero({ projectCount }: { projectCount: number }) {
+export function Hero() {
   const t = useTranslations("Hero");
   const sectionRef = useRef<HTMLElement>(null);
   const scrollGridRef = useRef<BlueprintGridSVGHandle>(null);
@@ -149,11 +145,7 @@ export function Hero({ projectCount }: { projectCount: number }) {
             textTransform: "uppercase",
           }}
         >
-          {t("proof", {
-            founded: company.foundingYear,
-            projects: projectCount,
-            countries: company.figures.countries,
-          })}
+          {t("proof", { founded: company.foundingYear })}
         </p>
 
         <div className="hero-enter mt-8" style={{ animationDelay: "360ms" }}>

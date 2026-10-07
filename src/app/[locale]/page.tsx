@@ -5,7 +5,6 @@ import { pageMetadata } from "@/i18n/metadata";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
-import { portfolioProjects } from "@/data/portfolio";
 import { LogoCarousel } from "@/components/sections/LogoCarousel";
 import { ScrollProgressRail } from "@/components/ui/ScrollProgressRail";
 import { HomeScrollManager } from "@/components/util/HomeScrollManager";
@@ -71,7 +70,7 @@ export default async function Home({
       <ScrollProgressRail sections={homeRailSections} />
       <main id="main" tabIndex={-1} className="outline-none">
         {/* 1 — Hero */}
-        <Hero projectCount={portfolioProjects.length} />
+        <Hero />
 
         {/* 2 — Clients */}
         <LogoCarousel />
