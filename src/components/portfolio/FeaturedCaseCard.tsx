@@ -33,6 +33,7 @@ export function FeaturedCaseCard({
   return (
     <Link
       href={caseStudyHref(caseStudy.slug)}
+      aria-label={caseStudy.content.title}
       className="group relative grid h-full overflow-hidden border border-gray-light bg-white transition-all duration-300 hover:-translate-y-0.5 hover:border-blueprint-blue hover:shadow-card-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-red sm:grid-cols-[minmax(0,40%)_1fr]"
     >
       {/* Standing red rule: this plate is always "lit". */}

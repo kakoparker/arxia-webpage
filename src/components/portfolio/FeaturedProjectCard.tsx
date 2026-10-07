@@ -28,6 +28,7 @@ export function FeaturedProjectCard({
   return (
     <Link
       href={caseStudyHref(caseStudy.slug)}
+      aria-label={caseStudy.content.title}
       className="group relative grid h-full overflow-hidden border border-white/15 bg-white/[0.02] transition-colors duration-300 hover:border-white/40 hover:bg-white/[0.04] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:grid-cols-[minmax(0,200px)_1fr] lg:grid-cols-[minmax(0,240px)_1fr]"
     >
       <span

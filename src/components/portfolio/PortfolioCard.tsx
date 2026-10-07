@@ -53,6 +53,7 @@ export function PortfolioCard({ project }: PortfolioCardProps) {
   return (
     <Link
       href={caseStudyHref(project.slug)}
+      aria-label={project.title}
       className="block h-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blueprint-blue"
     >
       {card}

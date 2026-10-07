@@ -37,6 +37,7 @@ export function ProjectCard({
   return (
     <Link
       href={isCaseStudy ? caseStudyHref(project.slug) : href}
+      aria-label={project.title}
       className="pf-card group relative flex h-full flex-col overflow-hidden border p-5 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-red focus-visible:outline-offset-2"
     >
       {/* Hover rule, drawn top-down. An approved red use; never the border. */}

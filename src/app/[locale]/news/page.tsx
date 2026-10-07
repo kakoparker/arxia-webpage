@@ -54,6 +54,7 @@ export default async function NewsIndexPage({
             <Link
               key={article.slug}
               href={`/news/${article.slug}`}
+              aria-label={article.title}
               className="block h-full group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blueprint-blue"
             >
               <Card className="h-full flex flex-col p-0 overflow-hidden">
