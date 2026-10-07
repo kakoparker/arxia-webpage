@@ -95,7 +95,8 @@
     "indexBody": "Récits, études de cas et nouveautés d'Arxia et des partenaires avec qui nous travaillons partout dans le monde.",
     "metaTitle": "Actualités",
     "metaDescription": "Dernières actualités, études de cas et nouveautés d'Arxia : transformation numérique, Infrastructure Publique Numérique et IA agentique en action.",
-    "seoTitle": "Actualités de l'infrastructure publique numérique"
+    "seoTitle": "Actualités de l'infrastructure publique numérique",
+    "byline": "Par {name}"
   },
   "GlobalPresence": {
     "annotation": "Portée",

@@ -1,3 +1,4 @@
+import { company } from "@/data/company";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
@@ -50,6 +51,7 @@ export default async function NewsArticlePage({ params }: PageProps) {
   const article = getNewsArticle(slug, locale);
   if (!article) notFound();
   const t = await getTranslations("News");
+  const tFooter = await getTranslations("Footer");
 
   const articleUrl = localizedUrl(locale, `/news/${slug}`);
   const articleSchema = {
@@ -61,15 +63,14 @@ export default async function NewsArticlePage({ params }: PageProps) {
     datePublished: article.isoDate,
     dateModified: article.isoDate,
     inLanguage: locale,
-    author: { "@type": "Organization", name: "Arxia", url: SITE_URL },
-    publisher: {
-      "@type": "Organization",
-      name: "Arxia",
-      logo: {
-        "@type": "ImageObject",
-        url: `${SITE_URL}/logos/brand/arxia-logo-color.png`,
-      },
+    author: {
+      "@type": "Person",
+      name: company.newsAuthor.name,
+      jobTitle: company.newsAuthor.jobTitle,
+      sameAs: company.newsAuthor.sameAs,
+      worksFor: { "@id": `${SITE_URL}/#organization` },
     },
+    publisher: { "@id": `${SITE_URL}/#organization` },
     mainEntityOfPage: { "@type": "WebPage", "@id": articleUrl },
   };
   const breadcrumbSchema = {
@@ -120,7 +121,19 @@ export default async function NewsArticlePage({ params }: PageProps) {
             {article.title}
           </h1>
 
-          <div className="h-[3px] w-12 bg-accent-red mb-10" />
+          <div className="h-[3px] w-12 bg-accent-red mb-6" />
+
+          <p
+            className="mb-10 text-gray-dark"
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: "12px",
+              letterSpacing: "1.5px",
+              textTransform: "uppercase",
+            }}
+          >
+            {t("byline", { name: company.newsAuthor.name })} · {tFooter("roleHeadIntl")}
+          </p>
 
           <figure className="mb-12">
             <div className="relative w-full aspect-[16/9] bg-gray-lightest overflow-hidden">

@@ -95,7 +95,8 @@
     "indexBody": "Stories, case studies and updates from Arxia and the partners we work with around the world.",
     "metaTitle": "News",
     "metaDescription": "Latest news, case studies, and updates from Arxia: digital transformation, Digital Public Infrastructure, and Agentic AI in action.",
-    "seoTitle": "News on Digital Public Infrastructure"
+    "seoTitle": "News on Digital Public Infrastructure",
+    "byline": "By {name}"
   },
   "GlobalPresence": {
     "annotation": "Reach",

@@ -46,6 +46,12 @@ export const company = {
     jobTitle: "CEO",
     sameAs: "https://www.linkedin.com/in/danielhomorodean/",
   },
+  /** Author of record for every news article. */
+  newsAuthor: {
+    name: "Carlos Parker",
+    jobTitle: "Head of International Business",
+    sameAs: "https://www.linkedin.com/in/carlosparker/",
+  },
   sameAs: ["https://www.linkedin.com/company/arxia/"],
   /** Headline figures that are not derivable from site data. */
   figures: {

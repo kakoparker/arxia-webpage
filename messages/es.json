@@ -95,7 +95,8 @@
     "indexBody": "Historias, casos de éxito y novedades de Arxia y de los socios con quienes trabajamos en todo el mundo.",
     "metaTitle": "Noticias",
     "metaDescription": "Últimas noticias, casos de éxito y novedades de Arxia: transformación digital, Infraestructura Pública Digital e IA agéntica en acción.",
-    "seoTitle": "Noticias de infraestructura pública digital"
+    "seoTitle": "Noticias de infraestructura pública digital",
+    "byline": "Por {name}"
   },
   "GlobalPresence": {
     "annotation": "Alcance",
