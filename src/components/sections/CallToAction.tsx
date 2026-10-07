@@ -107,7 +107,12 @@ export function CallToAction() {
         form.reset();
         return;
       }
-      const key = (json.code && SERVER_ERRORS[json.code]) || "errorGeneric";
+      // A 429 can come from the Vercel Firewall rate-limit rule (its own JSON
+      // shape, no `code`) as well as from the route itself.
+      const key =
+        r.status === 429
+          ? "errorRateLimited"
+          : (json.code && SERVER_ERRORS[json.code]) || "errorGeneric";
       if (json.code === "name" || json.code === "email" || json.code === "comment") {
         setFieldErrors({ [json.code]: t(key) });
         form.querySelector<HTMLElement>(`#contact-${json.code}`)?.focus();
