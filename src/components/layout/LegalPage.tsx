@@ -10,6 +10,7 @@ interface LegalSection {
 interface LegalPageProps {
   annotation: string;
   title: string;
+  /** ISO date (YYYY-MM-DD). */
   lastUpdated: string;
   intro: string;
   sections: LegalSection[];
@@ -62,7 +63,15 @@ export function LegalPage({
                 textTransform: "uppercase",
               }}
             >
-              Last updated · {lastUpdated}
+              Last updated ·{" "}
+              <time dateTime={lastUpdated}>
+                {new Intl.DateTimeFormat("en-US", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                  timeZone: "UTC",
+                }).format(new Date(`${lastUpdated}T00:00:00Z`))}
+              </time>
             </p>
             <p
               className="mb-12"

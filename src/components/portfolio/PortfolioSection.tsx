@@ -32,7 +32,7 @@ export function PortfolioSection({ domain, projects, index }: PortfolioSectionPr
             lineHeight: "1.2",
           }}
         >
-          // {sectionNumber}
+          {sectionNumber}
         </p>
         <h2
           className="font-bold text-blueprint-blue mb-4"
