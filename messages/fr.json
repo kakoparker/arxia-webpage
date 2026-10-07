@@ -34,7 +34,8 @@
     "heading": "Les briques de votre indépendance numérique",
     "body": "L'infrastructure publique numérique est ce que ces sept pratiques produisent ensemble. L'interopérabilité est le cœur qui relie les six autres.",
     "coreLabel": "CŒUR",
-    "explore": "Découvrir"
+    "explore": "Découvrir",
+    "intro": "Arxia est une entreprise de transformation numérique et d'Infrastructure Publique Numérique qui travaille avec les gouvernements depuis {founded}, dans plus de {countries} pays."
   },
   "Portfolio": {
     "annotation": "Travaux sélectionnés",

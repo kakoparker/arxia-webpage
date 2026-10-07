@@ -1,5 +1,6 @@
 "use client";
 
+import { company } from "@/data/company";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { SectionContainer } from "@/components/ui/SectionContainer";
@@ -94,6 +95,8 @@ export function DomainsGrid({
               maxWidth: "62ch",
             }}
           >
+            {/* Entity definition first: who Arxia is, in one verifiable line. */}
+            {t("intro", { founded: company.foundingYear, countries: company.figures.countries })}{" "}
             {t("body")}
           </p>
         </div>

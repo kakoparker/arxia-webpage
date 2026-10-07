@@ -93,7 +93,7 @@ export default async function NewsArticlePage({ params }: PageProps) {
       />
       <main id="main">
       <SectionContainer mode="light">
-        <article className="mx-auto" style={{ maxWidth: "780px" }}>
+        <article className="mx-auto" style={{ maxWidth: "var(--content-narrow)" }}>
           <Link
             href="/news"
             className="inline-flex items-center font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2px] text-gray-dark hover:text-blueprint-blue transition-colors duration-200 mb-10"
@@ -126,7 +126,7 @@ export default async function NewsArticlePage({ params }: PageProps) {
             <div className="relative w-full aspect-[16/9] bg-gray-lightest overflow-hidden">
               <NewsCover
                 article={article}
-                sizes="(max-width: 1024px) 100vw, 780px"
+                sizes="(max-width: 1024px) 100vw, 720px"
                 priority
               />
             </div>
@@ -184,7 +184,7 @@ export default async function NewsArticlePage({ params }: PageProps) {
                           alt={block.alt}
                           width={block.width}
                           height={block.height}
-                          sizes="(max-width: 1024px) 100vw, 780px"
+                          sizes="(max-width: 1024px) 100vw, 720px"
                           className="h-auto w-full"
                           // Cap height at 640px by capping width at the matching ratio.
                           style={{ maxWidth: `${Math.round((640 * block.width) / block.height)}px` }}
@@ -196,7 +196,7 @@ export default async function NewsArticlePage({ params }: PageProps) {
                           src={block.src}
                           alt={block.alt}
                           fill
-                          sizes="(max-width: 1024px) 100vw, 780px"
+                          sizes="(max-width: 1024px) 100vw, 720px"
                           className="object-cover"
                         />
                       </div>

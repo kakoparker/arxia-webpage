@@ -91,7 +91,7 @@ export function ScrollProgressRail({
   return (
     <nav
       aria-label={t("pageSections")}
-      className={`hidden lg:flex fixed right-6 top-1/2 -translate-y-1/2 z-40 flex-col gap-5 transition-opacity duration-300 ${
+      className={`hidden xl:flex fixed right-6 top-1/2 -translate-y-1/2 z-40 flex-col gap-5 transition-opacity duration-300 ${
         visible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
     >
