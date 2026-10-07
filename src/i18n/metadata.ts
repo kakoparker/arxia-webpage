@@ -1,6 +1,16 @@
 import type { Metadata } from "next";
 
-export const SITE_URL = "https://www.arxia.com";
+/**
+ * Canonical origin for every absolute URL the site emits (canonical, hreflang,
+ * sitemap, robots, JSON-LD, OG). Single source of truth: moving the site to
+ * another domain is a matter of setting NEXT_PUBLIC_SITE_URL in Vercel.
+ */
+export const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.arxia.global"
+).replace(/\/+$/, "");
+
+/** Bare host for display copy, e.g. "www.arxia.global". */
+export const SITE_HOST = new URL(SITE_URL).host;
 
 /**
  * Build a localized absolute URL for a logical path.
