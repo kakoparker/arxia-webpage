@@ -173,7 +173,14 @@
       }
     ],
     "privacyNote": "No mailing lists. Your details are only used to reply to you.",
-    "successNext": "Send another message"
+    "successNext": "Send another message",
+    "errorName": "Please enter your name.",
+    "errorEmail": "Please enter a valid email address.",
+    "errorComment": "Please write a short message.",
+    "errorRateLimited": "Too many messages in a short time. Please try again in a few minutes.",
+    "errorUnavailable": "The form is temporarily unavailable. Please email us at info@arxia.com.",
+    "honeypotLabel": "Leave this field empty",
+    "topicPrefill": "About: {topic}\n\n"
   },
   "Footer": {
     "emailLabel": "Email",

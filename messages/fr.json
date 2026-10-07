@@ -173,7 +173,14 @@
       }
     ],
     "privacyNote": "Aucune liste de diffusion. Vos coordonnées servent uniquement à vous répondre.",
-    "successNext": "Envoyer un autre message"
+    "successNext": "Envoyer un autre message",
+    "errorName": "Veuillez indiquer votre nom.",
+    "errorEmail": "Veuillez indiquer une adresse e-mail valide.",
+    "errorComment": "Veuillez écrire un court message.",
+    "errorRateLimited": "Trop de messages en peu de temps. Veuillez réessayer dans quelques minutes.",
+    "errorUnavailable": "Le formulaire est temporairement indisponible. Écrivez-nous à info@arxia.com.",
+    "honeypotLabel": "Laissez ce champ vide",
+    "topicPrefill": "Objet : {topic}\n\n"
   },
   "Footer": {
     "emailLabel": "E-mail",

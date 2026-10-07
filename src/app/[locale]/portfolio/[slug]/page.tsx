@@ -513,7 +513,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
                 {c.cta.body}
               </p>
               <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-                <Button variant="primary" dark href="/#contact">
+                <Button variant="primary" dark href={`/?topic=${encodeURIComponent(project.title)}#contact`}>
                   {t("contact")}
                 </Button>
                 <Link

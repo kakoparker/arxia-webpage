@@ -37,7 +37,7 @@ export function DomainCTA({ domainTitle }: DomainCTAProps) {
           data-animate-index="1"
           className="animate-on-scroll flex flex-col sm:flex-row items-center justify-center gap-4 mt-10"
         >
-          <Button variant="primary" dark href="/#contact">
+          <Button variant="primary" dark href={`/?topic=${encodeURIComponent(domainTitle)}#contact`}>
             {t("contact")}
           </Button>
           <Link

@@ -4,7 +4,7 @@ import { SectionContainer } from "@/components/ui/SectionContainer";
 import { ParticleButton } from "@/components/ui/ParticleButton";
 import { ArrowRight, Check } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 
 type SubmitState =
   | { status: "idle" }
@@ -12,12 +12,31 @@ type SubmitState =
   | { status: "error"; message: string }
   | { status: "success" };
 
+type FieldId = "name" | "email" | "comment";
+type FieldErrors = Partial<Record<FieldId, string>>;
+
+/** Server error codes (see /api/contact) → ContactForm message keys. */
+const SERVER_ERRORS: Record<string, string> = {
+  name: "errorName",
+  email: "errorEmail",
+  comment: "errorComment",
+  rate_limited: "errorRateLimited",
+  unavailable: "errorUnavailable",
+  send_failed: "errorGeneric",
+  invalid_request: "errorGeneric",
+};
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+/** Must match HONEYPOT_FIELD in /api/contact. */
+const HONEYPOT_FIELD = "hp_extra";
+
 const mono = "font-[family-name:var(--font-jetbrains)] uppercase";
 
 /** Dark-surface field: filled, not just outlined, so the inputs read as
  *  inputs against the grid. Focus brightens the border and lifts the fill. */
 const fieldClass =
-  "peer w-full rounded-none border border-white/15 bg-white/[0.04] px-4 py-3 font-[family-name:var(--font-inter)] text-[15px] text-white placeholder:text-gray-medium/60 transition-colors duration-200 hover:border-white/30 focus:border-white focus:bg-white/[0.07] focus:outline-none";
+  "peer w-full rounded-none border border-white/15 bg-white/[0.04] px-4 py-3 font-[family-name:var(--font-inter)] text-[15px] text-white placeholder:text-gray-medium/80 transition-colors duration-200 hover:border-white/30 focus:border-white focus:bg-white/[0.07] focus:outline-none aria-[invalid=true]:border-accent-red-bright";
 
 /**
  * Homepage contact section.
@@ -33,20 +52,46 @@ const fieldClass =
 export function CallToAction() {
   const t = useTranslations("ContactForm");
   const [state, setState] = useState<SubmitState>({ status: "idle" });
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
+  const commentRef = useRef<HTMLTextAreaElement>(null);
   const steps = t.raw("steps") as { title: string; text: string }[];
+
+  // Arriving from a domain page ("/?topic=…#contact"): seed the message with
+  // the topic so the enquiry keeps its context. Only fills an empty field.
+  useEffect(() => {
+    const topic = new URLSearchParams(window.location.search).get("topic")?.trim().slice(0, 80);
+    const el = commentRef.current;
+    if (topic && el && !el.value) el.value = t("topicPrefill", { topic });
+  }, [t]);
+
+  const validate = (p: Record<FieldId, string>): FieldErrors => {
+    const errors: FieldErrors = {};
+    if (!p.name) errors.name = t("errorName");
+    if (!p.email || !EMAIL_RE.test(p.email)) errors.email = t("errorEmail");
+    if (!p.comment) errors.comment = t("errorComment");
+    return errors;
+  };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
-    // Honeypot — bots fill every input; real users never see this field.
-    const honeypot = (data.get("website") ?? "").toString();
     const payload = {
       name: (data.get("name") ?? "").toString().trim(),
       email: (data.get("email") ?? "").toString().trim(),
       comment: (data.get("comment") ?? "").toString().trim(),
-      website: honeypot,
+      // Honeypot — bots fill every input; real users never see this field.
+      [HONEYPOT_FIELD]: (data.get(HONEYPOT_FIELD) ?? "").toString(),
     };
+
+    const errors = validate(payload);
+    setFieldErrors(errors);
+    const firstInvalid = (Object.keys(errors) as FieldId[])[0];
+    if (firstInvalid) {
+      setState({ status: "idle" });
+      form.querySelector<HTMLElement>(`#contact-${firstInvalid}`)?.focus();
+      return;
+    }
 
     setState({ status: "pending" });
     try {
@@ -57,17 +102,21 @@ export function CallToAction() {
       });
       const json = (await r.json().catch(() => ({}))) as {
         ok?: boolean;
-        error?: string;
+        code?: string;
       };
       if (r.ok && json.ok) {
         setState({ status: "success" });
         form.reset();
         return;
       }
-      setState({
-        status: "error",
-        message: json.error ?? t("errorGeneric"),
-      });
+      const key = (json.code && SERVER_ERRORS[json.code]) || "errorGeneric";
+      if (json.code === "name" || json.code === "email" || json.code === "comment") {
+        setFieldErrors({ [json.code]: t(key) });
+        form.querySelector<HTMLElement>(`#contact-${json.code}`)?.focus();
+        setState({ status: "idle" });
+        return;
+      }
+      setState({ status: "error", message: t(key) });
     } catch {
       setState({
         status: "error",
@@ -225,8 +274,17 @@ export function CallToAction() {
                       overflow: "hidden",
                     }}
                   >
-                    <label htmlFor="contact-website">Website</label>
-                    <input id="contact-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+                    {/* Meaningless name + explicit instruction, so neither
+                        browser autofill nor an assistive agent filling the form
+                        for a real person trips it and loses the enquiry. */}
+                    <label htmlFor={`contact-${HONEYPOT_FIELD}`}>{t("honeypotLabel")}</label>
+                    <input
+                      id={`contact-${HONEYPOT_FIELD}`}
+                      name={HONEYPOT_FIELD}
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
                   </div>
 
                   <div className="grid gap-5 sm:grid-cols-2">
@@ -248,10 +306,16 @@ export function CallToAction() {
                           autoComplete={f.autoComplete}
                           required
                           aria-required="true"
+                          aria-invalid={fieldErrors[f.id] ? true : undefined}
+                          aria-describedby={fieldErrors[f.id] ? `contact-${f.id}-error` : undefined}
+                          onInput={() =>
+                            fieldErrors[f.id] && setFieldErrors((e) => ({ ...e, [f.id]: undefined }))
+                          }
                           suppressHydrationWarning
                           className={fieldClass}
                           placeholder={t(`${f.id}Placeholder`)}
                         />
+                        <FieldError id={`contact-${f.id}-error`} message={fieldErrors[f.id]} />
                       </div>
                     ))}
                   </div>
@@ -265,15 +329,22 @@ export function CallToAction() {
                       {t("comment")}
                     </label>
                     <textarea
+                      ref={commentRef}
                       id="contact-comment"
                       name="comment"
                       required
                       aria-required="true"
+                      aria-invalid={fieldErrors.comment ? true : undefined}
+                      aria-describedby={fieldErrors.comment ? "contact-comment-error" : undefined}
+                      onInput={() =>
+                        fieldErrors.comment && setFieldErrors((e) => ({ ...e, comment: undefined }))
+                      }
                       suppressHydrationWarning
                       rows={5}
                       className={`${fieldClass} resize-none`}
                       placeholder={t("commentPlaceholder")}
                     />
+                    <FieldError id="contact-comment-error" message={fieldErrors.comment} />
                   </div>
 
                   {errorMessage && (
@@ -311,5 +382,15 @@ export function CallToAction() {
         </div>
       </div>
     </SectionContainer>
+  );
+}
+
+/** Inline field error, linked to its input via aria-describedby. */
+function FieldError({ id, message }: { id: string; message?: string }) {
+  if (!message) return null;
+  return (
+    <p id={id} className="mt-2 font-[family-name:var(--font-inter)] text-[13px] text-accent-red-bright">
+      {message}
+    </p>
   );
 }
