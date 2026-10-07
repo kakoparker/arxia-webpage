@@ -9,7 +9,7 @@ import { SectionContainer } from "@/components/ui/SectionContainer";
 import { Tag } from "@/components/ui/Tag";
 import { NewsCover } from "@/components/news/NewsCover";
 import { newsSlugs, getNewsArticle, type ArticleListItem } from "@/data/news";
-import { alternatesFor, localizedUrl, SITE_URL } from "@/i18n/metadata";
+import { localizedUrl, pageMetadata, SITE_URL } from "@/i18n/metadata";
 
 interface PageProps {
   params: Promise<{ locale: string; slug: string }>;
@@ -33,19 +33,15 @@ export async function generateMetadata({
   const article = getNewsArticle(slug, locale);
   if (!article) return { title: "Not Found" };
 
-  return {
-    title: article.title,
+  return pageMetadata({
+    locale,
+    path: `/news/${slug}`,
+    title: article.seoTitle ?? article.title,
     description: article.metaDescription,
-    alternates: alternatesFor(locale, `/news/${slug}`),
-    openGraph: {
-      title: article.title,
-      description: article.metaDescription,
-      type: "article",
-      publishedTime: article.isoDate,
-      url: localizedUrl(locale, `/news/${slug}`),
-      images: [{ url: article.coverImage, alt: article.coverAlt }],
-    },
-  };
+    type: "article",
+    publishedTime: article.isoDate,
+    image: { url: article.coverImage, alt: article.coverAlt },
+  });
 }
 
 export default async function NewsArticlePage({ params }: PageProps) {
