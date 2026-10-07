@@ -160,21 +160,6 @@
     "errorGeneric": "Une erreur s'est produite. Veuillez réessayer.",
     "errorNetwork": "Impossible de joindre le serveur. Veuillez réessayer.",
     "formTitle": "Nouvelle demande",
-    "stepsLabel": "Et ensuite",
-    "steps": [
-      {
-        "title": "Exposez-nous le problème",
-        "text": "Quelques lignes suffisent : l’institution, le défi, le calendrier."
-      },
-      {
-        "title": "Nous l’examinons",
-        "text": "Votre message arrive directement à notre équipe de direction, pas dans une file de tickets."
-      },
-      {
-        "title": "Une réponse franche",
-        "text": "Nous vous disons clairement si nous sommes le bon partenaire."
-      }
-    ],
     "privacyNote": "Aucune liste de diffusion. Vos coordonnées servent uniquement à vous répondre.",
     "successNext": "Envoyer un autre message",
     "errorName": "Veuillez indiquer votre nom.",

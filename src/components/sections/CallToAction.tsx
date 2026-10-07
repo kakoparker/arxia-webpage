@@ -41,8 +41,7 @@ const fieldClass =
 /**
  * Homepage contact section.
  *
- * Reading order is pitch first, form second: the claim and "what happens
- * next" on the left, the form on the right as a framed panel — a plate with a
+ * Reading order is pitch first, form second: the claim on the left, the form on the right as a framed panel — a plate with a
  * standing red rule, a mono header strip and corner ticks, lit by a soft
  * Blueprint glow so it is the brightest object on the dark grid. The submit
  * is the site's primary action button (white on dark; red stays a mark,
@@ -54,7 +53,6 @@ export function CallToAction() {
   const [state, setState] = useState<SubmitState>({ status: "idle" });
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
   const commentRef = useRef<HTMLTextAreaElement>(null);
-  const steps = t.raw("steps") as { title: string; text: string }[];
 
   // Arriving from a domain page ("/?topic=…#contact"): seed the message with
   // the topic so the enquiry keeps its context. Only fills an empty field.
@@ -137,7 +135,7 @@ export function CallToAction() {
   return (
     <SectionContainer mode="dark" showCornerMarks id="contact" fitScreen>
       <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
-        {/* ── Left: the pitch and what happens next ─────────────────────── */}
+        {/* ── Left: the pitch ─────────────────────────────────────────────── */}
         <div className="lg:col-span-6">
           <p className={`${mono} mb-4 text-[11px] leading-[1.2] tracking-[2.5px] text-accent-red-bright`}>
             {t("connect")}
@@ -166,45 +164,6 @@ export function CallToAction() {
           >
             {t("body")}
           </p>
-
-          {/* What happens next: three numbered stations on a rail. */}
-          <div className="mt-10" style={{ maxWidth: "520px" }}>
-            <p className={`${mono} mb-5 text-[10px] tracking-[2px] text-gray-medium`}>
-              {t("stepsLabel")}
-            </p>
-            <ol className="relative">
-              {/* The rail behind the numbers. */}
-              <span aria-hidden className="absolute bottom-4 left-[15px] top-4 w-px bg-white/15" />
-              {steps.map((step, i) => (
-                <li key={step.title} className="relative flex gap-5 pb-5 last:pb-0">
-                  <span
-                    aria-hidden
-                    className={`${mono} relative z-10 flex h-8 w-8 shrink-0 items-center justify-center border text-[10px] tracking-[1px] ${
-                      i === steps.length - 1
-                        ? "border-accent-red bg-blueprint-dark text-white"
-                        : "border-white/25 bg-blueprint-dark text-white"
-                    }`}
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <div className="pt-1">
-                    <p
-                      className="font-semibold text-white"
-                      style={{ fontFamily: "var(--font-primary)", fontSize: "15px", lineHeight: 1.3 }}
-                    >
-                      {step.title}
-                    </p>
-                    <p
-                      className="mt-1 text-gray-medium"
-                      style={{ fontFamily: "var(--font-primary)", fontSize: "14px", lineHeight: 1.55 }}
-                    >
-                      {step.text}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
         </div>
 
         {/* ── Right: the form, as a lit panel ──────────────────────────── */}
