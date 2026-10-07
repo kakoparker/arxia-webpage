@@ -602,8 +602,8 @@ export const featuredProjects = portfolioProjects.filter((p) => p.featured);
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Localization — overlay translated text. English is the structural source;
-// es/fr overlays carry title / description / categoryLabel keyed by stable
-// project slug. Missing entries fall back to English.
+// es/fr overlays carry title / description / categoryLabel / client / country
+// keyed by stable project slug. Missing entries fall back to English.
 // ─────────────────────────────────────────────────────────────────────────────
 import { portfolioEs, type PortfolioOverlay } from "./i18n/portfolio.es";
 import { portfolioFr } from "./i18n/portfolio.fr";
@@ -623,6 +623,8 @@ function localizeProject(p: PortfolioProject, locale: string): PortfolioProject 
     title: ov.title ?? p.title,
     description: ov.description ?? p.description,
     categoryLabel: ov.categoryLabel ?? p.categoryLabel,
+    client: ov.client ?? p.client,
+    country: ov.country ?? p.country,
   };
 }
 
