@@ -12,7 +12,7 @@ export const caseStudiesFr: Record<string, CaseStudyContent> = {
     summary:
       "Protection sociale, éducation et emploi des réfugiés ukrainiens, réunis sur une seule plateforme multilingue. Un compte, réutilisé d’une institution à l’autre.",
     metaDescription:
-      "Étude de cas : comment la Roumanie a réuni la protection sociale, l’éducation et l’emploi des réfugiés ukrainiens sur une plateforme multilingue et interopérable. Financée par la Banque mondiale, citée par l’UE.",
+      "La Roumanie a réuni protection sociale, éducation et emploi des réfugiés ukrainiens sur une plateforme multilingue et interopérable, financée par la Banque mondiale.",
     metrics: [
       { value: "3", label: "Domaines de service, un seul parcours" },
       { value: "1", label: "Compte, réutilisé entre institutions" },

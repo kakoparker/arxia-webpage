@@ -16,11 +16,13 @@ export async function generateMetadata({
   const page = getDomainPage(DOMAIN, locale);
   if (!page) return { title: "Not found" };
   const t = await getTranslations({ locale, namespace: "DomainSeoTitle" });
+  // Optional search-snippet override when the hero description runs long.
+  const tDesc = await getTranslations({ locale, namespace: "DomainSeoDescription" });
   return pageMetadata({
     locale,
     path: `/${DOMAIN}`,
     title: t(DOMAIN),
-    description: page.description,
+    description: tDesc.has(DOMAIN) ? tDesc(DOMAIN) : page.description,
   });
 }
 

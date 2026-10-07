@@ -107,7 +107,7 @@ const caseStudies: CaseStudy[] = [
       summary:
         "Social protection, education and employment for Ukrainian refugees, brought onto one multilingual platform. One account, reused across agencies.",
       metaDescription:
-        "Case study: how Romania brought social protection, education and employment for Ukrainian refugees onto one multilingual, interoperable platform. World Bank–financed, cited by the EU.",
+        "How Romania brought social protection, education and employment for Ukrainian refugees onto one multilingual, interoperable platform, financed by the World Bank.",
       metrics: [
         { value: "3", label: "Service domains, one journey" },
         { value: "1", label: "Account, reused across agencies" },

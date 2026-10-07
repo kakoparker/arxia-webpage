@@ -356,5 +356,8 @@
     "web-portals": "Portales web gubernamentales",
     "agentic-state": "Estado agéntico: IA para el gobierno",
     "e-services": "Servicios públicos digitales"
+  },
+  "DomainSeoDescription": {
+    "data-governance": "Gobernanza de datos para el sector público: marcos de gobernanza, consentimiento, protección de datos, modelos semánticos y evaluaciones de madurez."
   }
 }

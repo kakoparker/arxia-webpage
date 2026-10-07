@@ -339,8 +339,8 @@
     "explorePortfolio": "Voir le portfolio"
   },
   "Meta": {
-    "homeTitle": "Transformation Numérique et Infrastructure Publique Numérique — Arxia",
-    "homeDescription": "Arxia est une entreprise de transformation numérique et d'Infrastructure Publique Numérique. Nous construisons les systèmes sur lesquels les gouvernements fonctionnent, puis nous les leur remettons.",
+    "homeTitle": "Transformation et infrastructure publique numériques — Arxia",
+    "homeDescription": "Transformation numérique et infrastructure publique numérique : Arxia construit les systèmes sur lesquels les gouvernements fonctionnent, puis les leur remet.",
     "homeOgDescription": "Nous construisons l'infrastructure publique numérique sur laquelle les gouvernements fonctionnent, puis nous la leur remettons."
   },
   "LogoCarousel": {
@@ -356,5 +356,8 @@
     "web-portals": "Portails web gouvernementaux",
     "agentic-state": "État agentique : l'IA au service de l'État",
     "e-services": "Services publics numériques"
+  },
+  "DomainSeoDescription": {
+    "data-governance": "Gouvernance des données du secteur public : cadres de gouvernance, consentement, protection des données, modèles sémantiques et évaluations de maturité."
   }
 }
