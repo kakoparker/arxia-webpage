@@ -72,19 +72,43 @@ export function Globe({ className, markers = DEFAULT_MARKERS }: GlobeProps) {
     });
     globeRef.current = globe;
 
-    // Auto-rotation via requestAnimationFrame + globe.update
+    // Render loop. WebGL frames are expensive, so it only runs while the
+    // globe is on screen and the tab is visible. Under reduced motion there
+    // is no auto-rotation: it draws once, then only while being dragged or
+    // after a resize (`dirty`).
+    let onScreen = false;
+    let dirty = true;
     const animate = () => {
-      if (!pointerInteracting.current && !prefersReducedMotion) {
-        phiRef.current += 0.005;
+      const dragging = pointerInteracting.current !== null;
+      if (!prefersReducedMotion || dragging || dirty) {
+        if (!dragging && !prefersReducedMotion) phiRef.current += 0.005;
+        globe.update({
+          phi: phiRef.current + pointerInteractionMovement.current / 200,
+          width: width * dpr,
+          height: width * dpr,
+        });
+        dirty = false;
       }
-      globe.update({
-        phi: phiRef.current + pointerInteractionMovement.current / 200,
-        width: width * dpr,
-        height: width * dpr,
-      });
       rafRef.current = requestAnimationFrame(animate);
     };
-    rafRef.current = requestAnimationFrame(animate);
+    const start = () => {
+      if (!rafRef.current && onScreen && !document.hidden) {
+        rafRef.current = requestAnimationFrame(animate);
+      }
+    };
+    const stop = () => {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = 0;
+    };
+
+    const io = new IntersectionObserver(([entry]) => {
+      onScreen = entry.isIntersecting;
+      if (onScreen) start();
+      else stop();
+    });
+    io.observe(canvas);
+    const onVisibility = () => (document.hidden ? stop() : start());
+    document.addEventListener("visibilitychange", onVisibility);
 
     // Fade in
     setTimeout(() => {
@@ -95,12 +119,15 @@ export function Globe({ className, markers = DEFAULT_MARKERS }: GlobeProps) {
     const onResize = () => {
       if (canvas) {
         width = canvas.offsetWidth;
+        dirty = true;
       }
     };
     window.addEventListener("resize", onResize);
 
     return () => {
-      cancelAnimationFrame(rafRef.current);
+      stop();
+      io.disconnect();
+      document.removeEventListener("visibilitychange", onVisibility);
       window.removeEventListener("resize", onResize);
       globe.destroy();
     };

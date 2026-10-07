@@ -66,9 +66,9 @@ export default async function NewsIndexPage({
                 </div>
                 <div className="flex flex-col flex-1 p-6 md:p-7">
                   <Tag>{article.date}</Tag>
-                  <h3 className="font-[family-name:var(--font-inter)] text-[16px] font-semibold leading-[1.3] text-blueprint-blue mt-4 mb-3">
+                  <h2 className="font-[family-name:var(--font-inter)] text-[16px] font-semibold leading-[1.3] text-blueprint-blue mt-4 mb-3">
                     {article.title}
-                  </h3>
+                  </h2>
                   <p className="font-[family-name:var(--font-inter)] text-[var(--text-small)] leading-[1.6] text-gray-dark mb-4 flex-1">
                     {article.excerpt}
                   </p>
