@@ -8,6 +8,12 @@ import { Link, usePathname } from "@/i18n/navigation";
 import { navLinks } from "@/data/navigation";
 import { LocaleSwitcher } from "./LocaleSwitcher";
 
+/** Page links are active on their route and its children; hash links never are. */
+function isActiveLink(pathname: string, href: string): boolean {
+  if (href.includes("#")) return false;
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const t = useTranslations("Nav");
@@ -55,10 +61,14 @@ export function Navbar() {
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-50 h-14 bg-blueprint-dark/92 backdrop-blur-[12px] flex items-center px-[var(--margin-page)] max-sm:px-6"
+      className="fixed top-0 left-0 right-0 z-50 h-14 flex items-center px-[var(--margin-page)] max-sm:px-6"
       role="navigation"
       aria-label={t("mainNavigation")}
     >
+      {/* Frosted bar lives on its own layer: a backdrop-filter on <nav> itself
+          would make it the containing block for the fixed mobile overlay below,
+          collapsing that overlay to the nav's 56px box (0px tall below it). */}
+      <div aria-hidden className="absolute inset-0 -z-10 bg-blueprint-dark/92 backdrop-blur-[12px]" />
       <div className="mx-auto max-w-[var(--content-max)] w-full flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex-shrink-0">
@@ -75,14 +85,19 @@ export function Navbar() {
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-7">
           {navLinks.map((link) => {
-            const isActive = pathname === link.href;
+            const isActive = isActiveLink(pathname, link.href);
             const className = `font-[family-name:var(--font-jetbrains)] text-[10px] uppercase tracking-[2px] transition-colors duration-200 ${
               isActive
                 ? "text-white border-b border-accent-red pb-0.5"
                 : "text-gray-medium hover:text-white"
             }`;
             return (
-              <Link key={link.href} href={link.href} className={className}>
+              <Link
+                key={link.href}
+                href={link.href}
+                className={className}
+                aria-current={isActive ? "page" : undefined}
+              >
                 {t(link.key)}
               </Link>
             );
@@ -95,7 +110,7 @@ export function Navbar() {
         <button
           ref={buttonRef}
           type="button"
-          className="md:hidden text-gray-medium hover:text-white transition-colors duration-200 p-2 -mr-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-red focus-visible:outline-offset-2"
+          className="md:hidden text-gray-medium hover:text-white transition-colors duration-200 p-2.5 -mr-2.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-red focus-visible:outline-offset-2"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-expanded={menuOpen}
           aria-controls="mobile-nav"
@@ -113,13 +128,14 @@ export function Navbar() {
           role="dialog"
           aria-modal="true"
           aria-label={t("mobileNavigation")}
-          className="fixed inset-0 top-14 bg-blueprint-dark/98 backdrop-blur-[12px] md:hidden flex flex-col items-center justify-center gap-8 z-40"
+          className="fixed inset-0 top-14 bg-blueprint-dark/98 backdrop-blur-[12px] md:hidden flex flex-col items-center justify-center-safe gap-4 overflow-y-auto overscroll-contain py-6 z-40"
         >
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="font-[family-name:var(--font-jetbrains)] text-sm uppercase tracking-[2px] text-gray-medium hover:text-white focus-visible:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-red focus-visible:outline-offset-4 transition-colors duration-200"
+              aria-current={isActiveLink(pathname, link.href) ? "page" : undefined}
+              className="inline-flex items-center min-h-[44px] px-4 font-[family-name:var(--font-jetbrains)] text-sm uppercase tracking-[2px] text-gray-medium hover:text-white focus-visible:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-red focus-visible:outline-offset-4 transition-colors duration-200"
               onClick={() => setMenuOpen(false)}
             >
               {t(link.key)}
