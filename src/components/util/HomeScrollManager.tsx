@@ -1,26 +1,21 @@
 "use client";
 
 import { useEffect } from "react";
-import { ScrollTrigger } from "@/hooks/useGsapScrollTrigger";
 
 /**
  * Home-only scroll-position memory.
  *
  * Takes manual control of scroll restoration on the home route so that:
- *   1. Returning to the homepage in the same tab session lands you back where
- *      you were, after a ScrollTrigger.refresh() so the page has reached its
- *      true full height (the logo carousel and world map both build
- *      GSAP timelines that can change layout height).
- *   2. The first visit of a session always starts at the top, on the hero,
- *      rather than wherever the browser felt like restoring to.
+ *   1. A URL hash always wins: arriving at "/#contact" or "/#news" (from the
+ *      nav, a domain page's Contact CTA, or a shared link) lands on that
+ *      section, never on a remembered position from earlier in the session.
+ *   2. Otherwise, returning to the homepage in the same tab session lands you
+ *      back where you were, once the dynamic sections have reached their full
+ *      height.
+ *   3. The first visit of a session starts at the top, on the hero.
  *
  * On unmount, native `scrollRestoration` is restored so every other route
  * keeps normal per-page scroll memory.
- *
- * NOTE: this originally existed to work around GSAP pin-spacers injected by a
- * pinned Introduction section. That section is gone and the homepage no longer
- * pins anything, so the refresh() call is now belt-and-braces rather than
- * load-bearing — the scroll memory itself is still the point.
  */
 const STORAGE_KEY = "arxia:home:scrollY";
 
@@ -41,8 +36,10 @@ export function HomeScrollManager() {
       saved = 0;
     }
 
-    // Until the saved position is restored (or we've decided to start at the
-    // top), do not let the scroll listener overwrite the saved value.
+    const hashId = decodeURIComponent(window.location.hash.slice(1));
+
+    // Until the target position is applied, do not let the scroll listener
+    // overwrite the saved value.
     let restored = false;
 
     const persist = () => {
@@ -63,60 +60,48 @@ export function HomeScrollManager() {
       });
     };
 
-    const refresh = () => ScrollTrigger.refresh();
-
-    // Re-sync everything to a target scroll position once the pinned layout
-    // is fully built. refresh() first (build/measure pins → full height),
-    // then jump, then update() so scrubbed timelines reflect the new scroll.
-    const applyScroll = (y: number) => {
-      ScrollTrigger.refresh();
+    const jump = (y: number) =>
       window.scrollTo({ top: y, left: 0, behavior: "instant" as ScrollBehavior });
-      ScrollTrigger.update();
-    };
 
     let raf1 = 0;
     let raf2 = 0;
     const timers: ReturnType<typeof setTimeout>[] = [];
-    let settleAttempts = 0;
+    let attempts = 0;
 
-    // The dynamic sections + pins + fonts + images all change total height.
-    // Poll until the document is tall enough to honour the saved position
-    // (or we exhaust attempts), then restore. Capped so a genuinely shorter
-    // page — e.g. viewport resized larger — still resolves quickly.
-    const trySettleAndRestore = () => {
-      settleAttempts += 1;
-      ScrollTrigger.refresh();
+    const finish = () => {
+      restored = true;
+      persist();
+      window.addEventListener("scroll", onScroll, { passive: true });
+    };
 
-      const maxScroll =
-        document.documentElement.scrollHeight - window.innerHeight;
+    // Dynamic sections, fonts and images all change total height. Poll until
+    // the target can be honoured (or attempts run out), then apply it.
+    const settle = () => {
+      attempts += 1;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
 
-      const tallEnough = saved <= 0 || maxScroll >= saved - 4;
-
-      if (tallEnough || settleAttempts >= 12) {
-        if (saved > 0) {
-          applyScroll(Math.min(saved, Math.max(0, maxScroll)));
+      if (hashId) {
+        const target = document.getElementById(hashId);
+        if (target || attempts >= 12) {
+          target?.scrollIntoView({ block: "start", behavior: "instant" as ScrollBehavior });
+          finish();
+          return;
         }
-        restored = true;
-        persist();
-        window.addEventListener("scroll", onScroll, { passive: true });
-        return;
+      } else {
+        const tallEnough = saved <= 0 || maxScroll >= saved - 4;
+        if (tallEnough || attempts >= 12) {
+          if (saved > 0) jump(Math.min(saved, Math.max(0, maxScroll)));
+          finish();
+          return;
+        }
       }
-      timers.push(setTimeout(trySettleAndRestore, 120));
+      timers.push(setTimeout(settle, 120));
     };
 
     // Give the dynamic imports two frames to mount before the first attempt.
     raf1 = requestAnimationFrame(() => {
-      raf2 = requestAnimationFrame(trySettleAndRestore);
+      raf2 = requestAnimationFrame(settle);
     });
-
-    // Late layout shifts (web fonts, images) → re-measure pins. If we've
-    // already restored we keep the user where they are; refresh() preserves
-    // the current scroll position.
-    const onLoad = () => refresh();
-    window.addEventListener("load", onLoad);
-    if (document.fonts?.ready) {
-      document.fonts.ready.then(refresh).catch(() => {});
-    }
 
     // Capture the position synchronously when the page is being hidden /
     // navigated away (covers cases the rAF-throttled listener might miss).
@@ -129,14 +114,10 @@ export function HomeScrollManager() {
       if (scrollRaf) cancelAnimationFrame(scrollRaf);
       timers.forEach(clearTimeout);
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("load", onLoad);
       window.removeEventListener("pagehide", onPageHide);
       // Final capture on unmount (client-side navigation away from "/").
       persist();
-      if (
-        "scrollRestoration" in window.history &&
-        prevRestoration !== undefined
-      ) {
+      if ("scrollRestoration" in window.history && prevRestoration !== undefined) {
         window.history.scrollRestoration = prevRestoration;
       }
     };

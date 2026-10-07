@@ -96,10 +96,9 @@
   box-sizing: border-box;
 }
 
-/* NOTE: do NOT set `scroll-behavior: smooth` on html. GSAP ScrollTrigger
-   (used for the homepage pinned/scrubbed sections) is incompatible with
-   CSS smooth scrolling — it fights programmatic scroll restoration and
-   leaves pinned timelines mismeasured (blank sections on back-navigation).
+/* NOTE: do NOT set `scroll-behavior: smooth` on html. HomeScrollManager
+   restores scroll position and hash targets programmatically with instant
+   jumps; CSS smooth scrolling would animate those restores and fight them.
    Anchor-link smoothing, if ever needed, must be done in JS instead. */
 
 body {
@@ -115,9 +114,8 @@ body {
    SCROLL SNAP — section-by-section after the verticals
    ============================================
    `proximity` so it kicks in lazily (only when the user is already
-   close to a target). The domain chapter intentionally
-   carry no `.snap-section` — their internal GSAP pin+snap drives per-card
-   landings and we don't want browser CSS snap competing there.
+   close to a target). The domain chapter intentionally carries no
+   `.snap-section`, so tall card grids scroll freely.
 */
 html {
   scroll-snap-type: y proximity;
@@ -742,7 +740,7 @@ html {
 
 /* ============================================
    LOGO CAROUSEL
-   (Handled by useAnimationFrame + GSAP velocity — no CSS animation needed)
+   (Handled by LogoCarouselTrack's rAF loop — no CSS animation needed)
    ============================================ */
 
 /* ============================================

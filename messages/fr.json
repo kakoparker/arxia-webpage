@@ -332,5 +332,10 @@
     "homeTitle": "Transformation Numérique et Infrastructure Publique Numérique — Arxia",
     "homeDescription": "Arxia est une entreprise de transformation numérique et d'Infrastructure Publique Numérique. Nous construisons les systèmes sur lesquels les gouvernements fonctionnent, puis nous les leur remettons.",
     "homeOgDescription": "Nous construisons l'infrastructure publique numérique sur laquelle les gouvernements fonctionnent, puis nous la leur remettons."
+  },
+  "LogoCarousel": {
+    "label": "Clients et partenaires",
+    "pause": "Mettre en pause l'animation des logos",
+    "play": "Relancer l'animation des logos"
   }
 }
