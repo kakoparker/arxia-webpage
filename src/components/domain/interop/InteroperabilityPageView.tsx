@@ -60,7 +60,7 @@ export function InteroperabilityPageView() {
     description: page.description,
     url: localizedUrl(locale, `/${DOMAIN}`),
     inLanguage: locale,
-    provider: { "@type": "Organization", name: "Arxia", url: SITE_URL },
+    provider: { "@id": `${SITE_URL}/#organization` },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: page.name,

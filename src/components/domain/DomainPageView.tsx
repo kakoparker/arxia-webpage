@@ -10,7 +10,9 @@ import { DomainCTA } from "@/components/domain/DomainCTA";
 import {
   DomainBreadcrumbJsonLd,
   DomainRelated,
+  JsonLd,
 } from "@/components/domain/DomainShared";
+import { localizedUrl, SITE_URL } from "@/i18n/metadata";
 import { ScrollProgressRail } from "@/components/ui/ScrollProgressRail";
 import { getDomainPage } from "@/data/domain-pages";
 import type { ExpertiseDomainSlug } from "@/data/expertise-domains";
@@ -59,10 +61,34 @@ export function DomainPageView({ domain }: DomainPageViewProps) {
     { id: "contact", label: t("railContact") },
   ];
 
+  // The offer catalogue, grouped by kind of work, for search engines.
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: page.name,
+    description: page.description,
+    url: localizedUrl(locale, `/${domain}`),
+    inLanguage: locale,
+    provider: { "@id": `${SITE_URL}/#organization` },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: page.name,
+      itemListElement: orderedCategories.map((c) => ({
+        "@type": "OfferCatalog",
+        name: t(`categoryName.${c.name}`),
+        itemListElement: c.items.map((item) => ({
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: item.title, description: item.description },
+        })),
+      })),
+    },
+  };
+
   return (
     <>
       <Navbar />
       <DomainBreadcrumbJsonLd name={page.name} slug={domain} />
+      <JsonLd data={serviceSchema} />
       <ScrollProgressRail sections={railSections} />
       <main id="main" tabIndex={-1} className="outline-none">
         <DomainHero
