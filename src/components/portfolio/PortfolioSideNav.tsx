@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import type { PortfolioDomain } from "@/data/portfolio-domains";
 
 interface PortfolioSideNavProps {
@@ -20,6 +21,7 @@ export function PortfolioSideNav({
   filter,
   onSelect,
 }: PortfolioSideNavProps) {
+  const t = useTranslations("Portfolio");
   const [activeSlug, setActiveSlug] = useState(domains[0]?.slug ?? "");
 
   useEffect(() => {
@@ -59,10 +61,12 @@ export function PortfolioSideNav({
 
   return (
     <nav
+      aria-labelledby="portfolio-sidenav-label"
       className="hidden lg:block w-[200px] flex-shrink-0 pr-5 border-r border-gray-light"
       style={{ position: "sticky", top: "80px", alignSelf: "flex-start" }}
     >
       <p
+        id="portfolio-sidenav-label"
         className="text-gray-dark uppercase mb-4"
         style={{
           fontFamily: "var(--font-mono)",
@@ -71,7 +75,7 @@ export function PortfolioSideNav({
           lineHeight: "1.2",
         }}
       >
-        Domains
+        {t("statDomains")}
       </p>
       {domains.map((domain) => {
         const isActive = (filter ?? activeSlug) === domain.slug;

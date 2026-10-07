@@ -74,174 +74,176 @@ export function PortfolioPageClient() {
     <>
       <Navbar />
 
-      {/* Hero Banner + featured projects. The featured plates live inside the
-          hero so they are on screen the moment the page opens, not one scroll
-          down behind the catalogue's introduction. */}
-      <SectionContainer mode="dark" showCornerMarks className="!pt-[max(96px,12vh)] !pb-[clamp(56px,9vh,96px)]">
-        <div ref={heroRef}>
-          <div className="grid items-end gap-8 lg:grid-cols-12">
-            <div data-animate data-animate-index="0" className="animate-on-scroll lg:col-span-8">
-              <p
-                className="text-accent-red-bright uppercase mb-4"
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "11px",
-                  letterSpacing: "2.5px",
-                  lineHeight: "1.2",
-                }}
-              >
-                {t("heroAnnotation")}
-              </p>
-              <h1
-                className="text-white mb-4"
-                style={{
-                  fontFamily: "var(--font-primary)",
-                  fontWeight: 300,
-                  fontSize: "clamp(32px, 4vw, 56px)",
-                  lineHeight: "1.1",
-                  letterSpacing: "-1px",
-                }}
-              >
-                {t("heading")}
-              </h1>
-              <div className="h-[3px] w-12 bg-accent-red mb-6" />
-              <p
-                className="text-gray-medium"
-                style={{
-                  fontFamily: "var(--font-primary)",
-                  fontSize: "18px",
-                  lineHeight: "1.8",
-                  maxWidth: "var(--content-narrow)",
-                }}
-              >
-                {t("heroBody", portfolioCopyValues(localizedProjects.length))}
-              </p>
-            </div>
+      <main id="main" tabIndex={-1} className="outline-none">
+        {/* Hero Banner + featured projects. The featured plates live inside the
+            hero so they are on screen the moment the page opens, not one scroll
+            down behind the catalogue's introduction. */}
+        <SectionContainer mode="dark" showCornerMarks className="!pt-[max(96px,12vh)] !pb-[clamp(56px,9vh,96px)]">
+          <div ref={heroRef}>
+            <div className="grid items-end gap-8 lg:grid-cols-12">
+              <div data-animate data-animate-index="0" className="animate-on-scroll lg:col-span-8">
+                <p
+                  className="text-accent-red-bright uppercase mb-4"
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "11px",
+                    letterSpacing: "2.5px",
+                    lineHeight: "1.2",
+                  }}
+                >
+                  {t("heroAnnotation")}
+                </p>
+                <h1
+                  className="text-white mb-4"
+                  style={{
+                    fontFamily: "var(--font-primary)",
+                    fontWeight: 300,
+                    fontSize: "clamp(32px, 4vw, 56px)",
+                    lineHeight: "1.1",
+                    letterSpacing: "-1px",
+                  }}
+                >
+                  {t("heading")}
+                </h1>
+                <div className="h-[3px] w-12 bg-accent-red mb-6" />
+                <p
+                  className="text-gray-medium"
+                  style={{
+                    fontFamily: "var(--font-primary)",
+                    fontSize: "18px",
+                    lineHeight: "1.8",
+                    maxWidth: "var(--content-narrow)",
+                  }}
+                >
+                  {t("heroBody", portfolioCopyValues(localizedProjects.length))}
+                </p>
+              </div>
 
-            {/* Stats */}
-            <div
-              data-animate
-              data-animate-index="1"
-              className="animate-on-scroll flex gap-12 flex-wrap lg:col-span-4 lg:justify-end"
-            >
-              {[
-                { value: String(localizedProjects.length), label: t("statProjects") },
-                { value: `${company.figures.countries}+`, label: t("statCountries") },
-                { value: String(expertiseDomainEntries.length), label: t("statDomains") },
-              ].map((stat) => (
-                <div key={stat.label}>
-                  <p
-                    className="text-white font-bold"
-                    style={{
-                      fontFamily: "var(--font-primary)",
-                      fontSize: "clamp(28px, 3vw, 42px)",
-                    }}
-                  >
-                    {stat.value}
-                  </p>
-                  <p
-                    className="text-gray-medium uppercase"
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "10px",
-                      letterSpacing: "1.5px",
-                    }}
-                  >
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Featured projects: every project with a case study page. */}
-          {featured.length > 0 && (
-            <div id="featured" className="mt-12 lg:mt-14">
+              {/* Stats */}
               <div
                 data-animate
-                data-animate-index="2"
-                className="animate-on-scroll mb-6 flex items-center gap-4"
+                data-animate-index="1"
+                className="animate-on-scroll flex gap-12 flex-wrap lg:col-span-4 lg:justify-end"
               >
-                <h2 className="shrink-0 font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2.5px] text-white">
-                  {t("featuredAnnotation")}
-                </h2>
-                <span aria-hidden className="h-px flex-1 bg-white/15" />
-                <span aria-hidden className="h-[6px] w-[6px] bg-accent-red" />
-              </div>
-              <div className={`grid gap-5 ${featured.length > 1 ? "xl:grid-cols-2" : ""}`}>
-                {featured.map(({ caseStudy, project }, i) => (
-                  <article
-                    key={caseStudy.slug}
-                    data-animate
-                    data-animate-index={i + 3}
-                    className="animate-on-scroll"
-                  >
-                    <FeaturedProjectCard caseStudy={caseStudy} project={project} />
-                  </article>
+                {[
+                  { value: String(localizedProjects.length), label: t("statProjects") },
+                  { value: `${company.figures.countries}+`, label: t("statCountries") },
+                  { value: String(expertiseDomainEntries.length), label: t("statDomains") },
+                ].map((stat) => (
+                  <div key={stat.label}>
+                    <p
+                      className="text-white font-bold"
+                      style={{
+                        fontFamily: "var(--font-primary)",
+                        fontSize: "clamp(28px, 3vw, 42px)",
+                      }}
+                    >
+                      {stat.value}
+                    </p>
+                    <p
+                      className="text-gray-medium uppercase"
+                      style={{
+                        fontFamily: "var(--font-mono)",
+                        fontSize: "10px",
+                        letterSpacing: "1.5px",
+                      }}
+                    >
+                      {stat.label}
+                    </p>
+                  </div>
                 ))}
               </div>
             </div>
-          )}
-        </div>
-      </SectionContainer>
 
-      {/* Mobile Navigation */}
-      <PortfolioMobileNav
-        domains={portfolioDomains}
-        filter={filter}
-        onSelect={applyFilter}
-      />
-
-      {/* Main Content */}
-      <SectionContainer mode="light">
-        <div id="projects" className="flex gap-8">
-          {/* Desktop Side Nav */}
-          <PortfolioSideNav
-            domains={portfolioDomains}
-            projectCounts={projectCounts}
-            filter={filter}
-            onSelect={applyFilter}
-          />
-
-          {/* Domain Sections */}
-          <div className="flex-1 min-w-0">
-            {filtered && (
-              <div className="mb-10 flex flex-wrap items-center justify-between gap-4 border border-gray-light bg-gray-lightest px-5 py-4">
-                <p
-                  className="text-gray-dark"
-                  style={{ fontFamily: "var(--font-primary)", fontSize: "14px" }}
+            {/* Featured projects: every project with a case study page. */}
+            {featured.length > 0 && (
+              <div id="featured" className="mt-12 lg:mt-14">
+                <div
+                  data-animate
+                  data-animate-index="2"
+                  className="animate-on-scroll mb-6 flex items-center gap-4"
                 >
-                  <span className="mr-2 font-[family-name:var(--font-jetbrains)] text-[10px] uppercase tracking-[2px]">
-                    {t("filterLabel")}
-                  </span>
-                  <span className="font-semibold text-blueprint-blue">{filtered.label}</span>{" "}
-                  ({projectCounts[filtered.slug]})
-                </p>
-                <button
-                  type="button"
-                  onClick={() => applyFilter(null)}
-                  className="font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2px] text-blueprint-blue underline-offset-4 hover:underline"
-                >
-                  {t("showAll")} →
-                </button>
+                  <h2 className="shrink-0 font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2.5px] text-white">
+                    {t("featuredAnnotation")}
+                  </h2>
+                  <span aria-hidden className="h-px flex-1 bg-white/15" />
+                  <span aria-hidden className="h-[6px] w-[6px] bg-accent-red" />
+                </div>
+                <div className={`grid gap-5 ${featured.length > 1 ? "xl:grid-cols-2" : ""}`}>
+                  {featured.map(({ caseStudy, project }, i) => (
+                    <article
+                      key={caseStudy.slug}
+                      data-animate
+                      data-animate-index={i + 3}
+                      className="animate-on-scroll"
+                    >
+                      <FeaturedProjectCard caseStudy={caseStudy} project={project} />
+                    </article>
+                  ))}
+                </div>
               </div>
             )}
-            {portfolioDomains.map((domain, index) => {
-              const projects = projectsByDomain[domain.slug] ?? [];
-              if (projects.length === 0) return null;
-              if (filter && domain.slug !== filter) return null;
-              return (
-                <PortfolioSection
-                  key={domain.slug}
-                  domain={domain}
-                  projects={projects}
-                  index={index}
-                />
-              );
-            })}
           </div>
-        </div>
-      </SectionContainer>
+        </SectionContainer>
+
+        {/* Mobile Navigation */}
+        <PortfolioMobileNav
+          domains={portfolioDomains}
+          filter={filter}
+          onSelect={applyFilter}
+        />
+
+        {/* Main Content */}
+        <SectionContainer mode="light">
+          <div id="projects" className="flex gap-8">
+            {/* Desktop Side Nav */}
+            <PortfolioSideNav
+              domains={portfolioDomains}
+              projectCounts={projectCounts}
+              filter={filter}
+              onSelect={applyFilter}
+            />
+
+            {/* Domain Sections */}
+            <div className="flex-1 min-w-0">
+              {filtered && (
+                <div className="mb-10 flex flex-wrap items-center justify-between gap-4 border border-gray-light bg-gray-lightest px-5 py-4">
+                  <p
+                    className="text-gray-dark"
+                    style={{ fontFamily: "var(--font-primary)", fontSize: "14px" }}
+                  >
+                    <span className="mr-2 font-[family-name:var(--font-jetbrains)] text-[10px] uppercase tracking-[2px]">
+                      {t("filterLabel")}
+                    </span>
+                    <span className="font-semibold text-blueprint-blue">{filtered.label}</span>{" "}
+                    ({projectCounts[filtered.slug]})
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => applyFilter(null)}
+                    className="font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2px] text-blueprint-blue underline-offset-4 hover:underline"
+                  >
+                    {t("showAll")} →
+                  </button>
+                </div>
+              )}
+              {portfolioDomains.map((domain, index) => {
+                const projects = projectsByDomain[domain.slug] ?? [];
+                if (projects.length === 0) return null;
+                if (filter && domain.slug !== filter) return null;
+                return (
+                  <PortfolioSection
+                    key={domain.slug}
+                    domain={domain}
+                    projects={projects}
+                    index={index}
+                  />
+                );
+              })}
+            </div>
+          </div>
+        </SectionContainer>
+      </main>
 
       <Footer />
     </>

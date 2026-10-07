@@ -146,6 +146,7 @@ export default async function LocaleLayout({
   }
   // Enable static rendering for this locale.
   setRequestLocale(locale);
+  const tCommon = await getTranslations({ locale, namespace: "Common" });
 
   // Plausible is cookieless and GDPR-friendly; we only inject the script when
   // a domain is configured, so dev environments stay silent.
@@ -184,7 +185,7 @@ export default async function LocaleLayout({
             href="#main"
             className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-blueprint-blue focus:text-white focus:px-4 focus:py-2 focus:font-[family-name:var(--font-jetbrains)] focus:text-[12px] focus:uppercase focus:tracking-[2px]"
           >
-            Skip to content
+            {tCommon("skipToContent")}
           </a>
           {children}
         </NextIntlClientProvider>
