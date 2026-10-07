@@ -49,7 +49,7 @@ All variables are documented in [.env.example](./.env.example). Summary:
 | ------------------------------ | --------- | -------------------------------------------------------------------------------------------------------- |
 | `RESEND_API_KEY`               | Yes (prod)| Resend API key for the contact-form pipeline (`/api/contact`).                                           |
 | `RESEND_FROM`                  | Yes (prod)| Verified sender, e.g. `"Arxia <contact@arxia.com>"`. Requires DKIM/SPF for `arxia.com` set up in Resend. |
-| `CONTACT_RECIPIENTS`           | No        | Comma-separated override. Defaults to `carlos.parker@arxia.com,daniel.homorodean@arxia.com`.             |
+| `CONTACT_RECIPIENTS`           | Yes       | Comma-separated inboxes for form submissions. Kept out of the repo; set per environment in Vercel.       |
 | `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | No        | The domain registered at plausible.io (e.g. `arxia.com`). When unset, the script is not injected.        |
 
 Server-only variables (no `NEXT_PUBLIC_` prefix) are never exposed to the client.

@@ -22,6 +22,9 @@ export const routing = defineRouting({
   // request-host-derived cluster that can contradict it (and it wrongly
   // advertises es/fr alternates for English-only pages like /privacy).
   alternateLinks: false,
+  // With detection off nothing reads the NEXT_LOCALE cookie (the locale is
+  // always in the URL), so don't set one: the site stays cookie-free.
+  localeCookie: false,
 });
 
 export type Locale = (typeof routing.locales)[number];

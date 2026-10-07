@@ -4,13 +4,6 @@ import { SITE_HOST } from "@/i18n/metadata";
 
 export const runtime = "nodejs";
 
-// Both recipients confirmed by Carlos for v1. Override via CONTACT_RECIPIENTS
-// (comma-separated) when staging or testing without spamming the real inboxes.
-const DEFAULT_RECIPIENTS = [
-  "carlos.parker@arxia.com",
-  "daniel.homorodean@arxia.com",
-];
-
 // Per-IP rate limit, in memory. NOTE: on Vercel this is per function
 // instance, so it only blunts bursts that hit one warm instance. The durable
 // limit belongs in a Vercel Firewall rate-limit rule on POST /api/contact
@@ -79,8 +72,9 @@ function isCrossSite(req: Request) {
   if (site && site !== "same-origin") return true;
   const origin = req.headers.get("origin");
   if (!origin) return false;
+  const host = req.headers.get("x-forwarded-host") ?? req.headers.get("host");
   try {
-    return new URL(origin).host !== req.headers.get("host");
+    return new URL(origin).host !== host;
   } catch {
     return true;
   }
@@ -158,11 +152,15 @@ function emailHtml(payload: { name: string; email: string; comment: string }) {
 export async function POST(req: Request) {
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.RESEND_FROM;
-  const recipients = (process.env.CONTACT_RECIPIENTS?.split(",").map((s) => s.trim()).filter(Boolean) ?? DEFAULT_RECIPIENTS);
+  // Recipients live in the environment, not in this (public) source, so the
+  // inbox addresses can't be harvested from the repo. Set per environment in
+  // Vercel: the real inboxes for Production, a test inbox for Preview.
+  const recipients =
+    process.env.CONTACT_RECIPIENTS?.split(",").map((s) => s.trim()).filter(Boolean) ?? [];
 
-  if (!apiKey || !from) {
+  if (!apiKey || !from || recipients.length === 0) {
     // Misconfigured environment: log it for us, tell the visitor nothing more.
-    console.error("[contact] RESEND_API_KEY or RESEND_FROM is not set");
+    console.error("[contact] RESEND_API_KEY, RESEND_FROM or CONTACT_RECIPIENTS is not set");
     return fail("unavailable", 503);
   }
 
