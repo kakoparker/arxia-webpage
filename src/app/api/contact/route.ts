@@ -194,7 +194,9 @@ export async function POST(req: Request) {
   const comment = typeof body.comment === "string" ? body.comment.trim() : "";
 
   if (!name || name.length > 200) return fail("name", 400);
-  if (!email || !EMAIL_RE.test(email) || email.length > 320) return fail("email", 400);
+  // Length first: EMAIL_RE backtracks quadratically on long dotted input,
+  // so it must only ever see strings within the RFC 5321 limit.
+  if (!email || email.length > 320 || !EMAIL_RE.test(email)) return fail("email", 400);
   if (!comment || comment.length > 5000) return fail("comment", 400);
 
   // Vercel sets x-real-ip to the connecting client and overwrites any value
