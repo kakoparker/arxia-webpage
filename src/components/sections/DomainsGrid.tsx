@@ -96,8 +96,7 @@ export function DomainsGrid({
             }}
           >
             {/* Entity definition first: who Arxia is, in one verifiable line. */}
-            {t("intro", { founded: company.foundingYear, countries: company.figures.countries })}{" "}
-            {t("body")}
+            {t("intro", { founded: company.foundingYear, countries: company.figures.countries })}
           </p>
         </div>
 
