@@ -145,7 +145,7 @@
   "ContactForm": {
     "connect": "Conectemos",
     "heading": "Cuéntenos qué está construyendo.",
-    "body": "Trabajamos con gobiernos, organizaciones internacionales y los donantes que los financian. Cuéntenos el problema y le diremos con franqueza si somos el socio adecuado.",
+    "body": "Trabajamos con gobiernos, organizaciones internacionales, donantes y socios internacionales. Cuéntenos el problema y le diremos con franqueza si somos el socio adecuado.",
     "ariaLabel": "Formulario de contacto",
     "name": "Nombre",
     "namePlaceholder": "Su nombre",

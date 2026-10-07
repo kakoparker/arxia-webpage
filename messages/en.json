@@ -145,7 +145,7 @@
   "ContactForm": {
     "connect": "Connect",
     "heading": "Tell us what you're building.",
-    "body": "We work with governments, international organizations, and the donors who fund them. Send us the problem and we'll tell you straight whether we're the right partner for it.",
+    "body": "We work with governments, international organizations, donors and international partners. Send us the problem and we'll tell you straight whether we're the right partner for it.",
     "ariaLabel": "Contact form",
     "name": "Name",
     "namePlaceholder": "Your name",

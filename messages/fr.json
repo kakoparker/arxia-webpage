@@ -145,7 +145,7 @@
   "ContactForm": {
     "connect": "Connectons-nous",
     "heading": "Dites-nous ce que vous construisez.",
-    "body": "Nous travaillons avec les gouvernements, les organisations internationales et les bailleurs qui les financent. Exposez-nous le problème et nous vous dirons franchement si nous sommes le bon partenaire.",
+    "body": "Nous travaillons avec les gouvernements, les organisations internationales, les bailleurs de fonds et les partenaires internationaux. Exposez-nous le problème et nous vous dirons franchement si nous sommes le bon partenaire.",
     "ariaLabel": "Formulaire de contact",
     "name": "Nom",
     "namePlaceholder": "Votre nom",
