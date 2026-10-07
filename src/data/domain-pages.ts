@@ -690,6 +690,7 @@ export const domainPages: DomainPageContent[] = [
 // ─────────────────────────────────────────────────────────────────────────────
 import { domainPagesEs, type DomainPageOverlay } from "./i18n/domain-pages.es";
 import { domainPagesFr } from "./i18n/domain-pages.fr";
+import { getProjects, type PortfolioProject } from "./portfolio";
 
 const PAGE_OVERLAYS: Record<string, Record<string, DomainPageOverlay>> = {
   es: domainPagesEs,
@@ -767,4 +768,42 @@ export function getDomainPage(
     order: identity.order,
     ...(identity.core ? { core: identity.core } : {}),
   };
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Props for the client page views, resolved on the server.
+//
+// The views are client components; if they called getDomainPage() themselves,
+// every locale's page copy (and the whole portfolio, for the featured cases)
+// would ship in the browser bundle. Server pages resolve one locale here and
+// pass plain, serializable data down. The icon (a component) stays out; the
+// view looks it up by slug.
+// ─────────────────────────────────────────────────────────────────────────────
+
+/** A domain page without its icon component, safe to pass to the client. */
+export type DomainPageData = Omit<DomainPage, "icon">;
+
+export interface DomainPageProps {
+  page: DomainPageData;
+  /** The page's curated featured cases, resolved to localized projects. */
+  featuredProjects: PortfolioProject[];
+}
+
+/** Featured cases shown on a domain page: a proof row, not a catalogue. */
+const FEATURED_SHOWN = 3;
+
+export function getDomainPageProps(
+  slug: string,
+  locale: string = "en",
+): DomainPageProps | undefined {
+  const full = getDomainPage(slug, locale);
+  if (!full) return undefined;
+  const { icon: _icon, ...page } = full;
+  const projects = getProjects(locale);
+  // A slug that no longer exists is skipped rather than rendering an empty card.
+  const featuredProjects = page.featuredCases
+    .map((f) => projects.find((p) => p.slug === f.projectSlug))
+    .filter((p): p is PortfolioProject => Boolean(p))
+    .slice(0, FEATURED_SHOWN);
+  return { page, featuredProjects };
 }

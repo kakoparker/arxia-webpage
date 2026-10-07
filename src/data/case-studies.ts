@@ -12,6 +12,13 @@
 // back to English.
 // ─────────────────────────────────────────────────────────────────────────────
 
+import {
+  CASE_STUDY_SLUGS,
+  caseStudyHref,
+  formatDuration,
+  hasCaseStudy,
+  videoPoster,
+} from "./case-study-links";
 import { caseStudiesEs } from "./i18n/case-studies.es";
 import { caseStudiesFr } from "./i18n/case-studies.fr";
 
@@ -202,14 +209,18 @@ function localize(cs: CaseStudy, locale: string): CaseStudy {
 /** Slugs of every project that has a case study page. */
 export const caseStudySlugs: string[] = caseStudies.map((c) => c.slug);
 
-export function hasCaseStudy(slug: string): boolean {
-  return caseStudySlugs.includes(slug);
+// Client components read the slug list from case-study-links.ts so they don't
+// bundle this module's content. Fail loudly if the two ever disagree.
+if (
+  caseStudySlugs.length !== CASE_STUDY_SLUGS.length ||
+  caseStudySlugs.some((s) => !CASE_STUDY_SLUGS.includes(s))
+) {
+  throw new Error(
+    "case-study-links.ts CASE_STUDY_SLUGS is out of sync with case-studies.ts",
+  );
 }
 
-/** Where a project's card should lead: its case study page. */
-export function caseStudyHref(slug: string): string {
-  return `/portfolio/${slug}`;
-}
+export { hasCaseStudy, caseStudyHref, videoPoster, formatDuration };
 
 export function getCaseStudy(slug: string, locale: string = "en"): CaseStudy | undefined {
   const cs = caseStudies.find((c) => c.slug === slug);
@@ -221,14 +232,4 @@ export function getCaseStudies(locale: string = "en"): CaseStudy[] {
   return caseStudies.map((c) => localize(c, locale));
 }
 
-/** YouTube's 4:5 poster frame (the "oar" thumbnail); served through next/image. */
-export function videoPoster(video: CaseStudyVideo): string {
-  return `https://i.ytimg.com/vi/${video.youtubeId}/oardefault.jpg`;
-}
 
-/** "1:22" */
-export function formatDuration(seconds: number): string {
-  const m = Math.floor(seconds / 60);
-  const s = String(seconds % 60).padStart(2, "0");
-  return `${m}:${s}`;
-}

@@ -1,28 +1,36 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { PortfolioSideNav } from "@/components/portfolio/PortfolioSideNav";
 import { PortfolioMobileNav } from "@/components/portfolio/PortfolioMobileNav";
 import { PortfolioSection } from "@/components/portfolio/PortfolioSection";
-import { getProjects, type PortfolioProject } from "@/data/portfolio";
-import { getCaseStudies } from "@/data/case-studies";
+import type { PortfolioProject } from "@/data/portfolio";
+import type { CaseStudy } from "@/data/case-studies";
 import { FeaturedProjectCard } from "@/components/portfolio/FeaturedProjectCard";
-import { getPortfolioDomains } from "@/data/portfolio-domains";
+import type { PortfolioDomain } from "@/data/portfolio-domains";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { company, portfolioCopyValues } from "@/data/company";
 import { expertiseDomainEntries } from "@/data/expertise-domains";
 
-export function PortfolioPageClient() {
+interface PortfolioPageClientProps {
+  /** Already localized on the server, so only this locale ships to the browser. */
+  projects: PortfolioProject[];
+  portfolioDomains: PortfolioDomain[];
+  caseStudies: CaseStudy[];
+}
+
+export function PortfolioPageClient({
+  projects: localizedProjects,
+  portfolioDomains,
+  caseStudies,
+}: PortfolioPageClientProps) {
   const t = useTranslations("Portfolio");
-  const locale = useLocale();
   const heroRef = useScrollAnimation();
-  const localizedProjects = getProjects(locale);
-  const portfolioDomains = getPortfolioDomains(locale);
-  const featured = getCaseStudies(locale)
+  const featured = caseStudies
     .map((caseStudy) => ({
       caseStudy,
       project: localizedProjects.find((p) => p.slug === caseStudy.slug),

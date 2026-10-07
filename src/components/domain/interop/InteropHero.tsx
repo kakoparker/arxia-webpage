@@ -5,7 +5,7 @@ import { SectionContainer } from "@/components/ui/SectionContainer";
 import { DomainBreadcrumb } from "@/components/domain/DomainShared";
 import { IsoStackFigure, PLATES, ISO } from "@/components/figures/IsoStack";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import type { DomainPage } from "@/data/domain-pages";
+import type { DomainPageData } from "@/data/domain-pages";
 
 /**
  * Hero: the claim on the left, the stack on the right. The figure is the same
@@ -13,7 +13,7 @@ import type { DomainPage } from "@/data/domain-pages";
  * sits level with its plate and jumps to that layer's section. Hovering or
  * focusing a label lights its plate (`.interop-stack` rules in globals.css).
  */
-export function InteropHero({ page, coreLabel }: { page: DomainPage; coreLabel: string }) {
+export function InteropHero({ page, coreLabel }: { page: DomainPageData; coreLabel: string }) {
   const t = useTranslations("Interop");
   const ref = useScrollAnimation();
   const layers = page.layers ?? [];

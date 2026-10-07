@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Play } from "lucide-react";
 import type { CaseStudyVideo as Video } from "@/data/case-studies";
-import { videoPoster } from "@/data/case-studies";
+import { videoPoster } from "@/data/case-study-links";
 
 interface CaseStudyVideoProps {
   video: Video;

@@ -3,12 +3,8 @@ import { useTranslations } from "next-intl";
 import { Play } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import type { PortfolioProject } from "@/data/portfolio";
-import {
-  caseStudyHref,
-  formatDuration,
-  videoPoster,
-  type CaseStudy,
-} from "@/data/case-studies";
+import type { CaseStudy } from "@/data/case-studies";
+import { caseStudyHref, formatDuration, videoPoster } from "@/data/case-study-links";
 
 /**
  * A featured project on the dark portfolio hero: poster on the left, the case

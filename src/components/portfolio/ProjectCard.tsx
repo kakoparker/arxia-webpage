@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import type { PortfolioProject } from "@/data/portfolio";
-import { caseStudyHref, hasCaseStudy } from "@/data/case-studies";
+import { caseStudyHref, hasCaseStudy } from "@/data/case-study-links";
 
 /**
  * One portfolio case, as a plate: rests white, flips to Blueprint Blue on

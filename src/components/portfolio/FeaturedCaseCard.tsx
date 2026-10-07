@@ -3,12 +3,8 @@ import { useTranslations } from "next-intl";
 import { Play } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import type { PortfolioProject } from "@/data/portfolio";
-import {
-  caseStudyHref,
-  formatDuration,
-  videoPoster,
-  type CaseStudy,
-} from "@/data/case-studies";
+import type { CaseStudy } from "@/data/case-studies";
+import { caseStudyHref, formatDuration, videoPoster } from "@/data/case-study-links";
 
 /**
  * The lead plate of the homepage portfolio row: a project with a full case

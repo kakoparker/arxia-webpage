@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Card } from "@/components/ui/Card";
 import type { PortfolioProject } from "@/data/portfolio";
-import { caseStudyHref, hasCaseStudy } from "@/data/case-studies";
+import { caseStudyHref, hasCaseStudy } from "@/data/case-study-links";
 
 interface PortfolioCardProps {
   project: PortfolioProject;

@@ -607,7 +607,7 @@ export const featuredProjects = portfolioProjects.filter((p) => p.featured);
 // ─────────────────────────────────────────────────────────────────────────────
 import { portfolioEs, type PortfolioOverlay } from "./i18n/portfolio.es";
 import { portfolioFr } from "./i18n/portfolio.fr";
-import { hasCaseStudy } from "./case-studies";
+import { hasCaseStudy } from "./case-study-links";
 
 const PORTFOLIO_OVERLAYS: Record<string, Record<string, PortfolioOverlay>> = {
   es: portfolioEs,

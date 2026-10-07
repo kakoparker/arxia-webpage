@@ -3,7 +3,9 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { pageMetadata } from "@/i18n/metadata";
 import { PortfolioPageClient } from "./PortfolioPageClient";
 import { portfolioCopyValues } from "@/data/company";
-import { portfolioProjects } from "@/data/portfolio";
+import { getProjects, portfolioProjects } from "@/data/portfolio";
+import { getCaseStudies } from "@/data/case-studies";
+import { getPortfolioDomains } from "@/data/portfolio-domains";
 
 export async function generateMetadata({
   params,
@@ -27,5 +29,11 @@ export default async function PortfolioPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  return <PortfolioPageClient />;
+  return (
+    <PortfolioPageClient
+      projects={getProjects(locale)}
+      portfolioDomains={getPortfolioDomains(locale)}
+      caseStudies={getCaseStudies(locale)}
+    />
+  );
 }
