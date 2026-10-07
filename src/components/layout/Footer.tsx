@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Mail, MapPin } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { company, registeredOfficeLine } from "@/data/company";
+import { company, officeAddressLine } from "@/data/company";
 
 // lucide-react 1.x dropped brand icons, so the LinkedIn mark is inline.
 // Uses currentColor so it inherits the footer's gray→white hover transition.
@@ -220,13 +220,13 @@ export function Footer() {
             <p>
               &copy; {new Date().getFullYear()} {company.legalName}. {t("rights")}
             </p>
-            {/* Legal identity (EU e-commerce disclosure): registry IDs + registered office. */}
+            {/* Legal identity: registry IDs + office address. */}
             <p>
               CUI {company.registrationCode} · {t("tradeRegister")} {company.tradeRegistryNumber} ·{" "}
               {t("vat")} {company.vatNumber}
             </p>
             <p>
-              {t("registeredOffice")}: {registeredOfficeLine()}
+              {t("officeAddress")}: {officeAddressLine()}
             </p>
           </div>
           <div className="flex gap-6">

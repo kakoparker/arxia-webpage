@@ -104,7 +104,7 @@ export const portfolioFr: Record<string, PortfolioOverlay> = {
     country: "Rwanda",
   },
   "romania-ukrainian-interop": {
-    title: "Cadre d'interopérabilité pour le soutien aux réfugiés ukrainiens – Roumanie",
+    title: "Services interopérables pour les réfugiés",
     description:
       "Cadre national d'interopérabilité interinstitutionnelle et numérisation de la prestation de services pour les réfugiés ukrainiens en Roumanie.",
     categoryLabel: C.interoperability,

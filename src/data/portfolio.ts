@@ -181,7 +181,7 @@ export const portfolioProjects: PortfolioProject[] = [
   },
   {
     slug: "romania-ukrainian-interop",
-    title: "Interoperability Framework for Ukrainian Refugees Support – Romania",
+    title: "Interoperable Refugee Services",
     domain: "data",
     description:
       "National inter-institutional interoperability framework and digitalization of service delivery for Ukrainian refugees in Romania.",

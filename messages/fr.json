@@ -187,7 +187,6 @@
   },
   "Footer": {
     "emailLabel": "E-mail",
-    "registeredOffice": "Siège social",
     "tradeRegister": "Reg. du commerce",
     "vat": "TVA",
     "tagline": "Transformation numérique et Infrastructure Publique Numérique pour les gouvernements dans le monde entier.",
@@ -203,7 +202,7 @@
     "roleCompany": "Entreprise",
     "roleCeo": "PDG",
     "roleHeadIntl": "Directeur du développement international",
-    "roleBizDevAfrica": "Développement commercial, Afrique",
+    "roleBizDevAfrica": "Responsable du développement commercial, Afrique",
     "rights": "Tous droits réservés.",
     "privacy": "Politique de confidentialité",
     "terms": "Conditions d'utilisation",
@@ -213,7 +212,8 @@
     "eInvoicing": "e-Invoicing",
     "webPortals": "Portails web gouvernementaux",
     "agenticState": "État agentique",
-    "eServices": "e-Services"
+    "eServices": "e-Services",
+    "officeAddress": "Bureaux"
   },
   "Rail": {
     "pageSections": "Sections de la page",

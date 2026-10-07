@@ -21,9 +21,14 @@ export const company = {
   tradeRegistryNumber: "J1996000914126",
   vatNumber: "RO8472530",
   euid: "ROONRC.J1996000914126",
-  /** Registered office (sediu social), per ONRC 2025. */
-  registeredOffice: {
-    streetAddress: "Str. Primăverii nr. 8, ap. 262",
+  /**
+   * Public office address (punct de lucru), shown on the site and in schema.
+   * The registered office (sediu social, ONRC 2025) is a different address
+   * and is deliberately not published here.
+   */
+  office: {
+    streetAddress: "Str. Tipografiei nr. 28, ap. 3 & 4",
+    postalCode: "400101",
     locality: "Cluj-Napoca",
     region: "Cluj",
     countryCode: "RO",
@@ -64,10 +69,10 @@ export function yearsActive(now: Date = new Date()): number {
   return years;
 }
 
-/** One-line postal address for display. */
-export function registeredOfficeLine(): string {
-  const a = company.registeredOffice;
-  return `${a.streetAddress}, ${a.locality}, ${a.region}, ${a.countryName}`;
+/** One-line postal address of the public office, for display. */
+export function officeAddressLine(): string {
+  const a = company.office;
+  return `${a.streetAddress}, ${a.postalCode} ${a.locality}, ${a.countryName}`;
 }
 
 /** ICU values for the Portfolio heroBody / metaDescription messages. */

@@ -123,7 +123,7 @@ const newsSources: NewsArticleSource[] = [
       },
       {
         type: "paragraph",
-        text: "On 24 September, at the TICON Africa Conference in Livingstone, Zambia, Arxia CEO Daniel Homorodean and Arxia Africa Manager Grace Labong led the session \"From Data to Impact: Building Africa's Data and Interoperability Specialists.\"",
+        text: "On 24 September, at the TICON Africa Conference in Livingstone, Zambia, Arxia CEO Daniel Homorodean and Grace Labong, Arxia's Business Development Manager for Africa, led the session \"From Data to Impact: Building Africa's Data and Interoperability Specialists.\"",
       },
       {
         type: "paragraph",

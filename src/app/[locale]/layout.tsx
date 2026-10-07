@@ -106,10 +106,11 @@ const organizationSchema = {
   ],
   address: {
     "@type": "PostalAddress",
-    streetAddress: company.registeredOffice.streetAddress,
-    addressLocality: company.registeredOffice.locality,
-    addressRegion: company.registeredOffice.region,
-    addressCountry: company.registeredOffice.countryCode,
+    streetAddress: company.office.streetAddress,
+    postalCode: company.office.postalCode,
+    addressLocality: company.office.locality,
+    addressRegion: company.office.region,
+    addressCountry: company.office.countryCode,
   },
   employee: {
     "@type": "Person",

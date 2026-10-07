@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/layout/LegalPage";
 import { localizedUrl, pageMetadata, SITE_HOST } from "@/i18n/metadata";
-import { company, registeredOfficeLine } from "@/data/company";
+import { company, officeAddressLine } from "@/data/company";
 
 // Legal copy is English-only: es/fr URLs canonicalize to the English page
 // and carry no hreflang cluster.
@@ -25,7 +25,7 @@ export default function PrivacyPage() {
       sections={[
         {
           heading: "1. Data Controller",
-          body: `${company.legalName} ("Arxia", "we", "us") operates ${SITE_HOST} and is the controller of personal data processed through it. ${company.legalName} is registered in Romania (CUI ${company.registrationCode}, Trade Register no. ${company.tradeRegistryNumber}, VAT ${company.vatNumber}), with its registered office at ${registeredOfficeLine()}.\n\nFor any question or request relating to your personal data, contact us at ${company.email.legal}.`,
+          body: `${company.legalName} ("Arxia", "we", "us") operates ${SITE_HOST} and is the controller of personal data processed through it. ${company.legalName} is registered in Romania (CUI ${company.registrationCode}, Trade Register no. ${company.tradeRegistryNumber}, VAT ${company.vatNumber}), with offices at ${officeAddressLine()}.\n\nFor any question or request relating to your personal data, contact us at ${company.email.legal}.`,
         },
         {
           heading: "2. Data We Collect",

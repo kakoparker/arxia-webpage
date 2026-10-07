@@ -74,7 +74,7 @@ export const newsEs: Record<string, NewsArticleOverlay> = {
       },
       { text: "Una sesión en TICON Africa" },
       {
-        text: "El 24 de septiembre, en la conferencia TICON Africa en Livingstone, Zambia, Daniel Homorodean, CEO de Arxia, y Grace Labong, gerente de Arxia para África, condujeron la sesión \"From Data to Impact: Building Africa's Data and Interoperability Specialists\".",
+        text: "El 24 de septiembre, en la conferencia TICON Africa en Livingstone, Zambia, Daniel Homorodean, CEO de Arxia, y Grace Labong, gerente de desarrollo de negocio de Arxia para África, condujeron la sesión \"From Data to Impact: Building Africa's Data and Interoperability Specialists\".",
       },
       {
         text: "TICON Africa reúne a líderes de las TIC, investigadores y profesionales que están dando forma al futuro digital del continente.",

@@ -187,7 +187,6 @@
   },
   "Footer": {
     "emailLabel": "Email",
-    "registeredOffice": "Registered office",
     "tradeRegister": "Trade Reg.",
     "vat": "VAT",
     "tagline": "Digital transformation and Digital Public Infrastructure for governments worldwide.",
@@ -203,7 +202,7 @@
     "roleCompany": "Company",
     "roleCeo": "CEO",
     "roleHeadIntl": "Head of International Business",
-    "roleBizDevAfrica": "Business Development, Africa",
+    "roleBizDevAfrica": "Business Development Manager, Africa",
     "rights": "All rights reserved.",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
@@ -213,7 +212,8 @@
     "eInvoicing": "e-Invoicing",
     "webPortals": "Government web portals",
     "agenticState": "Agentic state",
-    "eServices": "e-Services"
+    "eServices": "e-Services",
+    "officeAddress": "Office"
   },
   "Rail": {
     "pageSections": "Page sections",
