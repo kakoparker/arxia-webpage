@@ -29,10 +29,33 @@ const nextConfig = {
     root: process.cwd(),
   },
   async headers() {
-    // Safe, non-breaking hardening applied to every response. (A full
-    // Content-Security-Policy is intentionally NOT set here — it needs dedicated
-    // testing against GSAP, Plausible, and Google Fonts; tracked as a follow-up.
-    // HSTS is added at the Caddy/TLS layer in production — see Caddyfile.)
+    // Hardening applied to every response. HSTS is set by Vercel's edge
+    // (max-age=63072000); includeSubDomains/preload are deliberately left off
+    // until every arxia.global subdomain is confirmed HTTPS-only.
+    //
+    // Content-Security-Policy (production only — dev needs eval for HMR).
+    // Origin allow-list rather than nonces: a nonce would force every page to
+    // render dynamically and lose static generation, while Next's own inline
+    // bootstrap scripts still need 'unsafe-inline'. The policy still pins
+    // scripts, frames, images and connections to known origins and blocks
+    // framing, plugins, <base> hijacking and off-site form posts.
+    // vercel.live is the Vercel preview toolbar (preview deployments only).
+    const csp = [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline' https://plausible.io https://vercel.live",
+      "style-src 'self' 'unsafe-inline'",
+      "img-src 'self' data: blob: https://i.ytimg.com https://vercel.live https://vercel.com",
+      "font-src 'self' data:",
+      "connect-src 'self' https://plausible.io https://vercel.live wss://ws-us3.pusher.com",
+      "frame-src https://www.youtube-nocookie.com https://vercel.live",
+      "media-src 'self'",
+      "object-src 'none'",
+      "base-uri 'self'",
+      "form-action 'self'",
+      "frame-ancestors 'self'",
+      "upgrade-insecure-requests",
+    ].join("; ");
+
     return [
       {
         source: "/:path*",
@@ -44,6 +67,9 @@ const nextConfig = {
             key: "Permissions-Policy",
             value: "camera=(), microphone=(), geolocation=(), browsing-topics=()",
           },
+          ...(process.env.NODE_ENV === "production"
+            ? [{ key: "Content-Security-Policy", value: csp }]
+            : []),
         ],
       },
     ];
