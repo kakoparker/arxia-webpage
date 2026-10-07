@@ -3,12 +3,8 @@ import { useTranslations } from "next-intl";
 import { Play } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import type { PortfolioProject } from "@/data/portfolio";
-import {
-  caseStudyHref,
-  formatDuration,
-  videoPoster,
-  type CaseStudy,
-} from "@/data/case-studies";
+import type { CaseStudy } from "@/data/case-studies";
+import { caseStudyHref, formatDuration, videoPoster } from "@/data/case-study-links";
 
 /**
  * The lead plate of the homepage portfolio row: a project with a full case
@@ -37,6 +33,7 @@ export function FeaturedCaseCard({
   return (
     <Link
       href={caseStudyHref(caseStudy.slug)}
+      aria-label={caseStudy.content.title}
       className="group relative grid h-full overflow-hidden border border-gray-light bg-white transition-all duration-300 hover:-translate-y-0.5 hover:border-blueprint-blue hover:shadow-card-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-red sm:grid-cols-[minmax(0,40%)_1fr]"
     >
       {/* Standing red rule: this plate is always "lit". */}
@@ -52,8 +49,8 @@ export function FeaturedCaseCard({
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 40vw, 260px"
               className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
             />
-            <span className="absolute bottom-3 left-3 flex items-center gap-2 bg-accent-red px-3 py-2 text-white shadow-[0_6px_20px_rgba(237,28,36,0.35)]">
-              <Play aria-hidden size={12} strokeWidth={1.5} className="fill-white" />
+            <span className="absolute bottom-3 left-3 flex items-center gap-2 bg-blueprint-dark/90 px-3 py-2 text-white">
+              <Play aria-hidden size={12} strokeWidth={1.5} className="fill-accent-red text-accent-red" />
               <span className="font-[family-name:var(--font-jetbrains)] text-[9px] uppercase tracking-[1.5px]">
                 {t("watchVideo")} · {formatDuration(video.durationSeconds)}
               </span>

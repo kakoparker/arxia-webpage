@@ -26,14 +26,16 @@
       "dpi": "Infrastructure Publique Numérique",
       "interoperability": "Interopérabilité"
     },
-    "cta": "Contactez-nous"
+    "cta": "Contactez-nous",
+    "proof": "Depuis {founded}"
   },
   "Domains": {
     "annotation": "INFRASTRUCTURE PUBLIQUE NUMÉRIQUE ET TRANSFORMATION NUMÉRIQUE",
     "heading": "Les briques de votre indépendance numérique",
     "body": "L'infrastructure publique numérique est ce que ces sept pratiques produisent ensemble. L'interopérabilité est le cœur qui relie les six autres.",
     "coreLabel": "CŒUR",
-    "explore": "Découvrir"
+    "explore": "Découvrir",
+    "intro": "Arxia est une entreprise de transformation numérique et d'Infrastructure Publique Numérique qui travaille avec les gouvernements depuis {founded}, dans plus de {countries} pays."
   },
   "Portfolio": {
     "annotation": "Travaux sélectionnés",
@@ -41,9 +43,9 @@
     "body": "Une sélection de projets qui définissent notre travail.",
     "viewFull": "Voir tout le portfolio →",
     "metaTitle": "Portfolio",
-    "metaDescription": "44 projets dans plus de 20 pays. Deux décennies de travail sur le gouvernement numérique, des cadres nationaux d'interopérabilité aux plateformes de commande publique.",
-    "heroAnnotation": "// Portfolio",
-    "heroBody": "44 projets dans plus de 20 pays. Deux décennies de travail sur le gouvernement numérique, des cadres nationaux d'interopérabilité aux plateformes de commande publique.",
+    "metaDescription": "{projects} projets dans plus de {countries} pays. Du gouvernement numérique depuis {founded}, des cadres nationaux d'interopérabilité aux plateformes de commande publique.",
+    "heroAnnotation": "Portfolio",
+    "heroBody": "{projects} projets dans plus de {countries} pays. Du gouvernement numérique depuis {founded}, des cadres nationaux d'interopérabilité aux plateformes de commande publique.",
     "statProjects": "Projets",
     "statCountries": "Pays",
     "statDomains": "Domaines",
@@ -56,7 +58,8 @@
     "readCaseStudy": "Lire l’étude de cas",
     "video": "Vidéo",
     "featuredCase": "Étude de cas phare",
-    "watchVideo": "Voir la vidéo"
+    "watchVideo": "Voir la vidéo",
+    "seoTitle": "Projets de gouvernement numérique"
   },
   "CaseStudy": {
     "breadcrumb": "Fil d’Ariane",
@@ -91,7 +94,9 @@
     "indexHeading": "Toutes les actualités",
     "indexBody": "Récits, études de cas et nouveautés d'Arxia et des partenaires avec qui nous travaillons partout dans le monde.",
     "metaTitle": "Actualités",
-    "metaDescription": "Dernières actualités, études de cas et nouveautés d'Arxia : transformation numérique, Infrastructure Publique Numérique et IA agentique en action."
+    "metaDescription": "Dernières actualités, études de cas et nouveautés d'Arxia : transformation numérique, Infrastructure Publique Numérique et IA agentique en action.",
+    "seoTitle": "Actualités de l'infrastructure publique numérique",
+    "byline": "Par {name}"
   },
   "GlobalPresence": {
     "annotation": "Portée",
@@ -104,8 +109,8 @@
     "regions": {
       "Europe": "Europe",
       "Latin America": "Amérique latine",
-      "West Africa": "Afrique de l'Ouest",
-      "East Africa": "Afrique de l'Est",
+      "North & West Africa": "Afrique du Nord et de l'Ouest",
+      "East & Central Africa": "Afrique de l'Est et centrale",
       "Southeast Asia": "Asie du Sud-Est",
       "Southern Africa": "Afrique australe"
     },
@@ -172,9 +177,19 @@
       }
     ],
     "privacyNote": "Aucune liste de diffusion. Vos coordonnées servent uniquement à vous répondre.",
-    "successNext": "Envoyer un autre message"
+    "successNext": "Envoyer un autre message",
+    "errorName": "Veuillez indiquer votre nom.",
+    "errorEmail": "Veuillez indiquer une adresse e-mail valide.",
+    "errorComment": "Veuillez écrire un court message.",
+    "errorRateLimited": "Trop de messages en peu de temps. Veuillez réessayer dans quelques minutes.",
+    "errorUnavailable": "Le formulaire est temporairement indisponible. Écrivez-nous à info@arxia.com.",
+    "honeypotLabel": "Laissez ce champ vide",
+    "topicPrefill": "Objet : {topic}\n\n"
   },
   "Footer": {
+    "emailLabel": "E-mail",
+    "tradeRegister": "Reg. du commerce",
+    "vat": "TVA",
     "tagline": "Transformation numérique et Infrastructure Publique Numérique pour les gouvernements dans le monde entier.",
     "company": "Entreprise",
     "services": "Services",
@@ -188,7 +203,7 @@
     "roleCompany": "Entreprise",
     "roleCeo": "PDG",
     "roleHeadIntl": "Directeur du développement international",
-    "roleBizDevAfrica": "Développement commercial, Afrique",
+    "roleBizDevAfrica": "Responsable du développement commercial, Afrique",
     "rights": "Tous droits réservés.",
     "privacy": "Politique de confidentialité",
     "terms": "Conditions d'utilisation",
@@ -198,7 +213,8 @@
     "eInvoicing": "e-Invoicing",
     "webPortals": "Portails web gouvernementaux",
     "agenticState": "État agentique",
-    "eServices": "e-Services"
+    "eServices": "e-Services",
+    "officeAddress": "Bureaux"
   },
   "Rail": {
     "pageSections": "Sections de la page",
@@ -324,8 +340,25 @@
     "explorePortfolio": "Voir le portfolio"
   },
   "Meta": {
-    "homeTitle": "Transformation Numérique et Infrastructure Publique Numérique — Arxia",
-    "homeDescription": "Arxia est une entreprise de transformation numérique et d'Infrastructure Publique Numérique. Nous construisons les systèmes sur lesquels les gouvernements fonctionnent, puis nous les leur remettons.",
+    "homeTitle": "Transformation et infrastructure publique numériques — Arxia",
+    "homeDescription": "Transformation numérique et infrastructure publique numérique : Arxia construit les systèmes sur lesquels les gouvernements fonctionnent, puis les leur remet.",
     "homeOgDescription": "Nous construisons l'infrastructure publique numérique sur laquelle les gouvernements fonctionnent, puis nous la leur remettons."
+  },
+  "LogoCarousel": {
+    "label": "Clients et partenaires",
+    "pause": "Mettre en pause l'animation des logos",
+    "play": "Relancer l'animation des logos"
+  },
+  "DomainSeoTitle": {
+    "interoperability": "Interopérabilité et X-Road pour l'État",
+    "data-governance": "Gouvernance des données du secteur public",
+    "e-procurement": "Marchés publics électroniques",
+    "e-invoicing": "Facturation électronique pour l'État",
+    "web-portals": "Portails web gouvernementaux",
+    "agentic-state": "État agentique : l'IA au service de l'État",
+    "e-services": "Services publics numériques"
+  },
+  "DomainSeoDescription": {
+    "data-governance": "Gouvernance des données du secteur public : cadres de gouvernance, consentement, protection des données, modèles sémantiques et évaluations de maturité."
   }
 }

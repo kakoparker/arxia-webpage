@@ -35,6 +35,7 @@ export function News() {
             >
               <Link
                 href={`/news/${article.slug}`}
+                aria-label={article.title}
                 className="block h-full group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blueprint-blue"
               >
                 <Card className="h-full flex flex-col p-0 overflow-hidden">
@@ -53,7 +54,7 @@ export function News() {
                     <p className="font-[family-name:var(--font-inter)] text-[var(--text-small)] leading-[1.6] text-gray-dark mb-3 flex-1 line-clamp-2">
                       {article.excerpt}
                     </p>
-                    <span className="inline-flex items-center font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2px] text-accent-red/85 group-hover:text-accent-red transition-colors duration-200">
+                    <span className="inline-flex items-center font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2px] text-accent-red-deep group-hover:text-blueprint-blue transition-colors duration-200">
                       {t("readMore")}
                     </span>
                   </div>

@@ -10,6 +10,7 @@ interface LegalSection {
 interface LegalPageProps {
   annotation: string;
   title: string;
+  /** ISO date (YYYY-MM-DD). */
   lastUpdated: string;
   intro: string;
   sections: LegalSection[];
@@ -27,9 +28,11 @@ export function LegalPage({
       <Navbar />
       <main id="main">
         <SectionContainer mode="light">
-          <article className="max-w-[var(--content-narrow)] mx-auto">
+          {/* Legal copy is English-only; mark it so es/fr pages don't claim
+              English text is Spanish/French (screen readers, search). */}
+          <article lang="en" className="max-w-[var(--content-narrow)] mx-auto">
             <p
-              className="text-accent-red uppercase mb-4"
+              className="text-accent-red-deep uppercase mb-4"
               style={{
                 fontFamily: "var(--font-mono)",
                 fontSize: "11px",
@@ -52,7 +55,7 @@ export function LegalPage({
             </h1>
             <div className="h-[3px] w-12 bg-accent-red mb-6" />
             <p
-              className="text-gray-medium mb-10"
+              className="text-gray-dark mb-10"
               style={{
                 fontFamily: "var(--font-mono)",
                 fontSize: "12px",
@@ -60,7 +63,15 @@ export function LegalPage({
                 textTransform: "uppercase",
               }}
             >
-              Last updated · {lastUpdated}
+              Last updated ·{" "}
+              <time dateTime={lastUpdated}>
+                {new Intl.DateTimeFormat("en-US", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                  timeZone: "UTC",
+                }).format(new Date(`${lastUpdated}T00:00:00Z`))}
+              </time>
             </p>
             <p
               className="mb-12"

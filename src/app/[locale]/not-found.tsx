@@ -20,7 +20,7 @@ export default function NotFound() {
         <SectionContainer mode="dark" fullHeight showCornerMarks>
           <div className="flex flex-col justify-center min-h-[calc(100vh-200px)]">
             <p
-              className="text-accent-red/85 uppercase mb-4"
+              className="text-accent-red-bright uppercase mb-4"
               style={{
                 fontFamily: "var(--font-mono)",
                 fontSize: "11px",

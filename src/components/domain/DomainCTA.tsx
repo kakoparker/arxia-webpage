@@ -11,6 +11,17 @@ interface DomainCTAProps {
   domainTitle: string;
 }
 
+/**
+ * A domain name used mid-sentence ("Ready to discuss full-stack
+ * interoperability?"): lowercase the first letter unless the first word is an
+ * acronym or brand (e.g. "X-Road", "AI").
+ */
+function inSentence(title: string): string {
+  const firstWord = title.split(/[\s-]/)[0];
+  if (firstWord.length > 1 && firstWord === firstWord.toUpperCase()) return title;
+  return title.charAt(0).toLowerCase() + title.slice(1);
+}
+
 export function DomainCTA({ domainTitle }: DomainCTAProps) {
   const t = useTranslations("DomainCTA");
   const ref = useScrollAnimation();
@@ -25,7 +36,7 @@ export function DomainCTA({ domainTitle }: DomainCTAProps) {
         >
           <SectionHeader
             annotation={t("annotation")}
-            heading={t("heading", { title: domainTitle })}
+            heading={t("heading", { title: inSentence(domainTitle) })}
             body={t("body")}
             centered
             dark
@@ -37,7 +48,7 @@ export function DomainCTA({ domainTitle }: DomainCTAProps) {
           data-animate-index="1"
           className="animate-on-scroll flex flex-col sm:flex-row items-center justify-center gap-4 mt-10"
         >
-          <Button variant="primary" href="/#contact">
+          <Button variant="primary" dark href={`/?topic=${encodeURIComponent(domainTitle)}#contact`}>
             {t("contact")}
           </Button>
           <Link

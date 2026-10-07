@@ -181,7 +181,7 @@ export const portfolioProjects: PortfolioProject[] = [
   },
   {
     slug: "romania-ukrainian-interop",
-    title: "Interoperability Framework for Ukrainian Refugees Support – Romania",
+    title: "Interoperable Refugee Services",
     domain: "data",
     description:
       "National inter-institutional interoperability framework and digitalization of service delivery for Ukrainian refugees in Romania.",
@@ -259,7 +259,7 @@ export const portfolioProjects: PortfolioProject[] = [
     title: "E-Procurement Web Platform – Romania",
     domain: "process",
     description:
-      "Web platform for public institutions providing workflows for the entire procurement lifecycle. Implemented by over 100 public institutions.",
+      "Web platform for public institutions providing workflows for the entire procurement lifecycle. Used by 50+ public organizations.",
     client: "Arxia (own product)",
     country: "Romania",
     year: "2016",
@@ -602,12 +602,12 @@ export const featuredProjects = portfolioProjects.filter((p) => p.featured);
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Localization — overlay translated text. English is the structural source;
-// es/fr overlays carry title / description / categoryLabel keyed by stable
-// project slug. Missing entries fall back to English.
+// es/fr overlays carry title / description / categoryLabel / client / country
+// keyed by stable project slug. Missing entries fall back to English.
 // ─────────────────────────────────────────────────────────────────────────────
 import { portfolioEs, type PortfolioOverlay } from "./i18n/portfolio.es";
 import { portfolioFr } from "./i18n/portfolio.fr";
-import { hasCaseStudy } from "./case-studies";
+import { hasCaseStudy } from "./case-study-links";
 
 const PORTFOLIO_OVERLAYS: Record<string, Record<string, PortfolioOverlay>> = {
   es: portfolioEs,
@@ -623,6 +623,8 @@ function localizeProject(p: PortfolioProject, locale: string): PortfolioProject 
     title: ov.title ?? p.title,
     description: ov.description ?? p.description,
     categoryLabel: ov.categoryLabel ?? p.categoryLabel,
+    client: ov.client ?? p.client,
+    country: ov.country ?? p.country,
   };
 }
 

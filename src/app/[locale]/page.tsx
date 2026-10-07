@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { alternatesFor } from "@/i18n/metadata";
+import { pageMetadata } from "@/i18n/metadata";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
@@ -33,15 +33,18 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Meta" });
-  return {
+  const meta = pageMetadata({
+    locale,
+    path: "/",
     title: t("homeTitle"),
     description: t("homeDescription"),
-    alternates: alternatesFor(locale, "/"),
-    openGraph: {
-      title: t("homeTitle"),
-      description: t("homeOgDescription"),
-      type: "website",
-    },
+    absoluteTitle: true,
+  });
+  // Share cards get the shorter, punchier line.
+  return {
+    ...meta,
+    openGraph: { ...meta.openGraph, description: t("homeOgDescription") },
+    twitter: { ...meta.twitter, description: t("homeOgDescription") },
   };
 }
 

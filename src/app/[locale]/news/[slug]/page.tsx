@@ -1,3 +1,4 @@
+import { company } from "@/data/company";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
@@ -9,7 +10,7 @@ import { SectionContainer } from "@/components/ui/SectionContainer";
 import { Tag } from "@/components/ui/Tag";
 import { NewsCover } from "@/components/news/NewsCover";
 import { newsSlugs, getNewsArticle, type ArticleListItem } from "@/data/news";
-import { alternatesFor, localizedUrl, SITE_URL } from "@/i18n/metadata";
+import { localizedUrl, pageMetadata, SITE_URL } from "@/i18n/metadata";
 
 interface PageProps {
   params: Promise<{ locale: string; slug: string }>;
@@ -33,19 +34,15 @@ export async function generateMetadata({
   const article = getNewsArticle(slug, locale);
   if (!article) return { title: "Not Found" };
 
-  return {
-    title: article.title,
+  return pageMetadata({
+    locale,
+    path: `/news/${slug}`,
+    title: article.seoTitle ?? article.title,
     description: article.metaDescription,
-    alternates: alternatesFor(locale, `/news/${slug}`),
-    openGraph: {
-      title: article.title,
-      description: article.metaDescription,
-      type: "article",
-      publishedTime: article.isoDate,
-      url: localizedUrl(locale, `/news/${slug}`),
-      images: [{ url: article.coverImage, alt: article.coverAlt }],
-    },
-  };
+    type: "article",
+    publishedTime: article.isoDate,
+    image: { url: article.coverImage, alt: article.coverAlt },
+  });
 }
 
 export default async function NewsArticlePage({ params }: PageProps) {
@@ -54,6 +51,7 @@ export default async function NewsArticlePage({ params }: PageProps) {
   const article = getNewsArticle(slug, locale);
   if (!article) notFound();
   const t = await getTranslations("News");
+  const tFooter = await getTranslations("Footer");
 
   const articleUrl = localizedUrl(locale, `/news/${slug}`);
   const articleSchema = {
@@ -65,15 +63,14 @@ export default async function NewsArticlePage({ params }: PageProps) {
     datePublished: article.isoDate,
     dateModified: article.isoDate,
     inLanguage: locale,
-    author: { "@type": "Organization", name: "Arxia", url: SITE_URL },
-    publisher: {
-      "@type": "Organization",
-      name: "Arxia",
-      logo: {
-        "@type": "ImageObject",
-        url: `${SITE_URL}/logos/brand/arxia-logo-color.png`,
-      },
+    author: {
+      "@type": "Person",
+      name: company.newsAuthor.name,
+      jobTitle: company.newsAuthor.jobTitle,
+      sameAs: company.newsAuthor.sameAs,
+      worksFor: { "@id": `${SITE_URL}/#organization` },
     },
+    publisher: { "@id": `${SITE_URL}/#organization` },
     mainEntityOfPage: { "@type": "WebPage", "@id": articleUrl },
   };
   const breadcrumbSchema = {
@@ -97,7 +94,7 @@ export default async function NewsArticlePage({ params }: PageProps) {
       />
       <main id="main">
       <SectionContainer mode="light">
-        <article className="mx-auto" style={{ maxWidth: "780px" }}>
+        <article className="mx-auto" style={{ maxWidth: "var(--content-narrow)" }}>
           <Link
             href="/news"
             className="inline-flex items-center font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2px] text-gray-dark hover:text-blueprint-blue transition-colors duration-200 mb-10"
@@ -124,13 +121,25 @@ export default async function NewsArticlePage({ params }: PageProps) {
             {article.title}
           </h1>
 
-          <div className="h-[3px] w-12 bg-accent-red mb-10" />
+          <div className="h-[3px] w-12 bg-accent-red mb-6" />
+
+          <p
+            className="mb-10 text-gray-dark"
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: "12px",
+              letterSpacing: "1.5px",
+              textTransform: "uppercase",
+            }}
+          >
+            {t("byline", { name: company.newsAuthor.name })} · {tFooter("roleHeadIntl")}
+          </p>
 
           <figure className="mb-12">
             <div className="relative w-full aspect-[16/9] bg-gray-lightest overflow-hidden">
               <NewsCover
                 article={article}
-                sizes="(max-width: 1024px) 100vw, 780px"
+                sizes="(max-width: 1024px) 100vw, 720px"
                 priority
               />
             </div>
@@ -188,7 +197,7 @@ export default async function NewsArticlePage({ params }: PageProps) {
                           alt={block.alt}
                           width={block.width}
                           height={block.height}
-                          sizes="(max-width: 1024px) 100vw, 780px"
+                          sizes="(max-width: 1024px) 100vw, 720px"
                           className="h-auto w-full"
                           // Cap height at 640px by capping width at the matching ratio.
                           style={{ maxWidth: `${Math.round((640 * block.width) / block.height)}px` }}
@@ -200,7 +209,7 @@ export default async function NewsArticlePage({ params }: PageProps) {
                           src={block.src}
                           alt={block.alt}
                           fill
-                          sizes="(max-width: 1024px) 100vw, 780px"
+                          sizes="(max-width: 1024px) 100vw, 720px"
                           className="object-cover"
                         />
                       </div>
@@ -227,7 +236,7 @@ export default async function NewsArticlePage({ params }: PageProps) {
                     key={i}
                     className={`flex flex-col gap-3 text-body-text ${
                       block.ordered
-                        ? "list-decimal pl-6 marker:text-accent-red marker:font-semibold"
+                        ? "list-decimal pl-6 marker:text-accent-red-deep marker:font-semibold"
                         : "list-none"
                     }`}
                     style={{

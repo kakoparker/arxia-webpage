@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { alternatesFor } from "@/i18n/metadata";
+import { pageMetadata } from "@/i18n/metadata";
 import { PortfolioPageClient } from "./PortfolioPageClient";
+import { portfolioCopyValues } from "@/data/company";
+import { getProjects, portfolioProjects } from "@/data/portfolio";
+import { getCaseStudies } from "@/data/case-studies";
+import { getPortfolioDomains } from "@/data/portfolio-domains";
 
 export async function generateMetadata({
   params,
@@ -10,11 +14,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Portfolio" });
-  return {
-    title: t("metaTitle"),
-    description: t("metaDescription"),
-    alternates: alternatesFor(locale, "/portfolio"),
-  };
+  return pageMetadata({
+    locale,
+    path: "/portfolio",
+    title: t("seoTitle"),
+    description: t("metaDescription", portfolioCopyValues(portfolioProjects.length)),
+  });
 }
 
 export default async function PortfolioPage({
@@ -24,5 +29,11 @@ export default async function PortfolioPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  return <PortfolioPageClient />;
+  return (
+    <PortfolioPageClient
+      projects={getProjects(locale)}
+      portfolioDomains={getPortfolioDomains(locale)}
+      caseStudies={getCaseStudies(locale)}
+    />
+  );
 }

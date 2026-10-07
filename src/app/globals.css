@@ -8,6 +8,12 @@
   --blueprint-blue: #162036;
   --blueprint-dark: #0D1520;
   --accent-red: #ED1C24;
+  /* Text-safe reds. Brand red is a graphic mark (lines, dots, stripes); as
+     small text it fails WCAG AA (4.18:1 on blueprint-dark, 4.0:1 on white).
+     bright: red text on dark  — 5.53:1 on #0D1520, 4.89:1 on #162036.
+     deep:   red text on light — 5.85:1 on #FFFFFF, 5.58:1 on #F7FAFC. */
+  --accent-red-bright: #F2585D;
+  --accent-red-deep: #C8161D;
   --gray-dark: #4A5568;
   --gray-medium: #A0AEC0;
   --gray-light: #E2E8F0;
@@ -68,6 +74,8 @@
   --color-blueprint-blue: #162036;
   --color-blueprint-dark: #0D1520;
   --color-accent-red: #ED1C24;
+  --color-accent-red-bright: #F2585D;
+  --color-accent-red-deep: #C8161D;
   --color-gray-dark: #4A5568;
   --color-gray-medium: #A0AEC0;
   --color-gray-light: #E2E8F0;
@@ -88,10 +96,9 @@
   box-sizing: border-box;
 }
 
-/* NOTE: do NOT set `scroll-behavior: smooth` on html. GSAP ScrollTrigger
-   (used for the homepage pinned/scrubbed sections) is incompatible with
-   CSS smooth scrolling — it fights programmatic scroll restoration and
-   leaves pinned timelines mismeasured (blank sections on back-navigation).
+/* NOTE: do NOT set `scroll-behavior: smooth` on html. HomeScrollManager
+   restores scroll position and hash targets programmatically with instant
+   jumps; CSS smooth scrolling would animate those restores and fight them.
    Anchor-link smoothing, if ever needed, must be done in JS instead. */
 
 body {
@@ -107,9 +114,8 @@ body {
    SCROLL SNAP — section-by-section after the verticals
    ============================================
    `proximity` so it kicks in lazily (only when the user is already
-   close to a target). The domain chapter intentionally
-   carry no `.snap-section` — their internal GSAP pin+snap drives per-card
-   landings and we don't want browser CSS snap competing there.
+   close to a target). The domain chapter intentionally carries no
+   `.snap-section`, so tall card grids scroll freely.
 */
 html {
   scroll-snap-type: y proximity;
@@ -260,6 +266,27 @@ html {
       transparent 1px,
       transparent var(--grid-major)
     );
+}
+
+/* ============================================
+   HERO ENTRANCE
+   Above-the-fold content must not wait on JS or an IntersectionObserver:
+   a pure CSS entrance plays at first paint, runs without JS, and resolves
+   to its end state under prefers-reduced-motion (fill-mode both).
+   ============================================ */
+.hero-enter {
+  animation: hero-enter var(--duration-entrance) var(--ease-default) both;
+}
+
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* ============================================
@@ -713,7 +740,7 @@ html {
 
 /* ============================================
    LOGO CAROUSEL
-   (Handled by useAnimationFrame + GSAP velocity — no CSS animation needed)
+   (Handled by LogoCarouselTrack's rAF loop — no CSS animation needed)
    ============================================ */
 
 /* ============================================

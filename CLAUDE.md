@@ -179,20 +179,33 @@ Alternation rhythm: Dark → Light → Ultra-light → Light → Dark (no consec
 Minor grid: every 20px (very subtle). Major grid: every 100px (slightly more visible).
 
 #### Red Accent Budget: 3–8% maximum per viewport
-Used for: accent lines (48×3px), connection dots (6–8px), bullet markers, map indicators.
-Never for: backgrounds, body text, buttons, large fills, card borders.
+Red is the **signature mark**, never the call to action.
+Used for: accent lines (48×3px), connection dots (6–8px), bullet markers, map indicators, play glyphs, small mono annotations (via the text-safe tokens below).
+Never for: backgrounds, body text, buttons or CTA fills, glows/shadows, large fills, card borders.
 
-#### WCAG 2.1 AA Contrast
+Text-safe red tokens (brand red `#ED1C24` itself fails AA as small text):
+| Token | Hex | Use | Ratio |
+|-------|-----|-----|-------|
+| `accent-red` | `#ED1C24` | Graphic marks only (lines, dots, stripes) | n/a |
+| `accent-red-bright` | `#F2585D` | Red text on dark surfaces | 5.53:1 on Blueprint Dark, 4.89:1 on Blueprint Blue |
+| `accent-red-deep` | `#C8161D` | Red text on light surfaces | 5.85:1 on White, 5.58:1 on `#F7FAFC` |
+
+Never apply opacity (`/85`) to red text: it drops below AA.
+
+#### WCAG 2.1 AA Contrast (measured, WCAG relative luminance)
 | Combination | Ratio | Rating |
 |-------------|-------|--------|
 | Blueprint Blue on White | 15.7:1 | AAA |
 | White on Blueprint Dark | 18.1:1 | AAA |
 | Body Text on White | 16.3:1 | AAA |
-| Gray Dark on White | 5.9:1 | AA |
-| Gray Medium on White | 3.0:1 | Large text only |
-| Red on White | 4.0:1 | Large text/icons only |
+| Gray Dark on White | 7.53:1 | AAA |
+| Gray Medium on Blueprint Dark | 8.13:1 | AAA |
+| Gray Medium on White | **2.26:1** | **Fails — never use on light surfaces; use Gray Dark** |
+| Brand Red on Blueprint Dark | 4.18:1 | Fails for small text — use `accent-red-bright` |
+| Brand Red on White | 4.0:1 | Fails for small text — use `accent-red-deep` |
+| White on Brand Red | 4.38:1 | Fails — no red button fills |
 
-Red and Gray Medium are never used for body text.
+Red and Gray Medium are never used for body text. Gray Medium is for dark surfaces only.
 
 ### Component Library
 
@@ -232,9 +245,11 @@ Left-aligned default. Center-aligned for statement sections on dark backgrounds.
 - First card: top-rounded 6px; last card: bottom-rounded 6px
 
 #### Buttons
-- **Primary CTA:** Blueprint Blue bg, white text, Inter Semi 15px, 14px 36px padding, no border-radius. Hover: darken + translateY(-1px). Focus: 2px outline. Min 48px height.
-- **Secondary/Ghost:** 1px Blueprint Blue border, transparent bg, Blueprint Blue text. Hover: 5% fill.
-- **Text Link (dark):** JetBrains Mono 11px, Accent Red 85% opacity → 100% hover.
+One CTA system, implemented in `src/components/ui/Button.tsx` — use it, don't hand-roll buttons.
+- **Primary CTA (light surface):** Blueprint Blue bg, white text, Inter Semi 15px, 14px 36px padding, no border-radius. Hover: darken + translateY(-1px). Focus: 2px Blueprint Blue outline. Min 48px height.
+- **Primary CTA (dark surface, `<Button dark>`):** White bg, Blueprint Dark text; hover Gray Light. A Blueprint Blue fill on Blueprint Dark all but vanishes — never use it there.
+- **Secondary/Ghost:** 1px Blueprint Blue border (white/60 on dark), transparent bg. Hover: 5% fill.
+- **Text Link:** JetBrains Mono 11px, `accent-red-bright` on dark / `accent-red-deep` on light; hover to white / Blueprint Blue.
 
 #### Tags/Pills
 - JetBrains Mono 9px uppercase, 1px tracking, 3px 8px padding
@@ -252,6 +267,10 @@ Left-aligned default. Center-aligned for statement sections on dark backgrounds.
 - Default: opacity 0→1, translateY(30→0), 700ms ease
 - Stagger siblings by 100ms
 - Accent line: width 0→48px (draw-in)
+- **Never on above-the-fold content or the page's H1/LCP element.** The hero H1 renders at full opacity from the server HTML; hero supporting elements use the CSS-only `.hero-enter` entrance (no JS, no observer).
+
+#### Motion that must be pausable
+- Anything that moves for more than 5 seconds (logo marquee) needs a visible Pause control (WCAG 2.2.2), must stop under `prefers-reduced-motion`, and must not run off-screen or in a hidden tab.
 
 #### Hover States (required on all interactive elements)
 | Element | Effect | Duration |
@@ -300,7 +319,17 @@ Left-aligned default. Center-aligned for statement sections on dark backgrounds.
 | FID | < 100ms |
 | CLS | < 0.1 |
 | Total page weight | < 800KB first load |
-| JS bundle | < 150KB gzipped |
+| JS, framework baseline | ~165KB gzipped (React DOM + Next.js runtime; fixed cost) |
+| JS, app code per page | < 90KB gzipped on top of the baseline (total ≈ 255KB) |
+
+JS rules that keep app code inside budget:
+- Client components never import localized data modules (`portfolio`, `case-studies`, `domain-pages`, `news`): server pages resolve one locale and pass props (see `getDomainPageProps`). Client-side helpers that need only slugs live in `case-study-links.ts`.
+- No animation library for scroll effects; native IntersectionObserver / rAF.
+
+#### Site-wide sources of truth
+- Company facts (legal identity, founding year, headline figures): `src/data/company.ts` — never hard-code years or counts.
+- Canonical origin: `SITE_URL` in `src/i18n/metadata.ts` (env `NEXT_PUBLIC_SITE_URL`).
+- Per-page SEO/OG metadata: `pageMetadata()` in `src/i18n/metadata.ts`.
 
 ### Accessibility Requirements
 - WCAG 2.1 AA contrast minimum (AAA preferred for body text)

@@ -26,9 +26,9 @@ export function PlayVideoButton({ label, href }: { label: string; href: string }
           frame.scrollIntoView({ block: "center" });
         }
       }}
-      className="group inline-flex min-h-12 items-center gap-3 bg-accent-red px-7 py-3.5 text-white shadow-[0_8px_28px_rgba(237,28,36,0.3)] transition-all duration-200 hover:-translate-y-px hover:bg-[#C8101A] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+      className="group inline-flex min-h-12 items-center gap-3 bg-white px-7 py-3.5 text-blueprint-dark transition-all duration-200 hover:-translate-y-px hover:bg-gray-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
     >
-      <Play aria-hidden size={16} strokeWidth={1.5} className="fill-white" />
+      <Play aria-hidden size={16} strokeWidth={1.5} className="fill-accent-red text-accent-red" />
       <span className="font-[family-name:var(--font-inter)] text-[14px] font-semibold uppercase tracking-[1.5px]">
         {label}
       </span>

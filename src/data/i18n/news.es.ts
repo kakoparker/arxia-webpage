@@ -3,6 +3,7 @@
 
 export interface NewsArticleOverlay {
   title?: string;
+  seoTitle?: string;
   excerpt?: string;
   metaDescription?: string;
   coverAlt?: string;
@@ -20,10 +21,11 @@ export const newsEs: Record<string, NewsArticleOverlay> = {
   "arxia-uganda-digital-public-services-kampala": {
     title:
       "Registros, intercambio de datos y un portal de servicios: Arxia acompaña la siguiente fase de los servicios públicos digitales de Uganda",
+    seoTitle: "Servicios públicos digitales en Uganda con Arxia",
     excerpt:
       "Arxia pasó una semana en Kampala planificando el futuro de tres componentes de los que dependen los servicios públicos: registros de datos de referencia, un hub de intercambio de datos y un portal único de servicios.",
     metaDescription:
-      "Arxia pasó una semana en Kampala apoyando el avance de los servicios públicos digitales de Uganda, con la planificación de registros de datos de referencia, un hub de intercambio de datos y un portal para la prestación de servicios digitales.",
+      "Arxia pasó una semana en Kampala planificando tres componentes de los servicios públicos digitales de Uganda: registros, intercambio de datos y un portal.",
     coverAlt: "Daniel Homorodean, de Arxia, en Kampala, Uganda.",
     body: [
       {
@@ -53,16 +55,17 @@ export const newsEs: Record<string, NewsArticleOverlay> = {
       {
         text: "Cada componente es útil por sí solo. Juntos, son lo que hace posible la ejecución y la prestación digital de los servicios públicos. Este enfoque atraviesa el trabajo de Arxia en DPI, desde los estándares regionales de datos en la región de los Grandes Lagos hasta la interoperabilidad nacional en Camboya: si los datos y las conexiones están bien resueltos, los servicios pueden construirse encima con confianza.",
       },
-      { text: "Conoce el trabajo de Arxia en interoperabilidad →" },
+      { text: "Conozca el trabajo de Arxia en interoperabilidad →" },
     ],
   },
   "arxia-ticon-africa-2026-data-interoperability-specialists": {
     title:
       "De los datos al impacto: Arxia en TICON Africa 2026 sobre la formación de especialistas africanos en datos e interoperabilidad",
+    seoTitle: "TICON Africa 2026: datos e interoperabilidad",
     excerpt:
       "En la conferencia TICON Africa, en Livingstone, Daniel Homorodean y Grace Labong, de Arxia, analizaron cómo África puede formar a los especialistas que gobernarán sus datos y harán que sus sistemas funcionen en conjunto.",
     metaDescription:
-      "Daniel Homorodean y Grace Labong, de Arxia, participaron en TICON Africa 2026 en Livingstone, Zambia, en la sesión \"From Data to Impact: Building Africa's Data and Interoperability Specialists\".",
+      "En TICON Africa 2026, en Livingstone, Zambia, Arxia habló sobre cómo formar a los especialistas africanos en datos e interoperabilidad.",
     coverAlt:
       "Tarjeta de oradores de TICON Africa 2026 con Grace Labong, gerente para África, y Daniel Homorodean, CEO de Arxia.",
     body: [
@@ -71,7 +74,7 @@ export const newsEs: Record<string, NewsArticleOverlay> = {
       },
       { text: "Una sesión en TICON Africa" },
       {
-        text: "El 24 de septiembre, en la conferencia TICON Africa en Livingstone, Zambia, Daniel Homorodean, CEO de Arxia, y Grace Labong, gerente de Arxia para África, condujeron la sesión \"From Data to Impact: Building Africa's Data and Interoperability Specialists\".",
+        text: "El 24 de septiembre, en la conferencia TICON Africa en Livingstone, Zambia, Daniel Homorodean, CEO de Arxia, y Grace Labong, gerente de desarrollo de negocio de Arxia para África, condujeron la sesión \"From Data to Impact: Building Africa's Data and Interoperability Specialists\".",
       },
       {
         text: "TICON Africa reúne a líderes de las TIC, investigadores y profesionales que están dando forma al futuro digital del continente.",
@@ -90,16 +93,17 @@ export const newsEs: Record<string, NewsArticleOverlay> = {
       {
         text: "El futuro de África no se construirá solo con tecnología. Lo construirán personas con el conocimiento, las competencias, los valores y las oportunidades para usar esa tecnología con impacto.",
       },
-      { text: "Conoce el trabajo de Arxia en interoperabilidad →" },
+      { text: "Conozca el trabajo de Arxia en interoperabilidad →" },
     ],
   },
   "arxia-gobierna-tus-datos-data-governance-partnership": {
     title:
       "Arxia se asocia con Gobierna Tus Datos para poner la gobernanza de datos en el centro de la adopción de IA",
+    seoTitle: "Arxia y Gobierna Tus Datos: gobernanza de datos",
     excerpt:
       "Una nueva alianza incorpora las herramientas de protección de datos, la consultoría y la capacitación de Gobierna Tus Datos al AI Accelerator de Arxia, para que las organizaciones adopten IA con sus datos en orden desde el inicio.",
     metaDescription:
-      "Arxia y Gobierna Tus Datos firmaron una alianza para fortalecer la gobernanza de datos en el AI Accelerator de Arxia, que suma Pharus Privacy, consultoría en protección de datos, capacitación SENCE y la certificación Lead DPO para mercados internacionales.",
+      "Arxia y Gobierna Tus Datos se asocian para sumar al AI Accelerator herramientas, consultoría y capacitación en protección de datos.",
     coverAlt:
       "Arxia × Gobierna Tus Datos: la gobernanza de datos en el centro de la adopción de IA.",
     body: [
@@ -137,16 +141,17 @@ export const newsEs: Record<string, NewsArticleOverlay> = {
       {
         text: "La alianza se apoya en una colaboración previa, que incluye la serie \"Gobierna tu IA\" sobre Shadow AI. Con ella, los clientes de Arxia cuentan con acompañamiento completo en cada nivel de la adopción de IA, desde la gobernanza y el cumplimiento normativo hasta los flujos de trabajo que generan resultados.",
       },
-      { text: "Conoce el trabajo de Arxia en gobernanza de datos →" },
+      { text: "Conozca el trabajo de Arxia en gobernanza de datos →" },
     ],
   },
   "arxia-rwanda-national-dpi-guidelines-kigali": {
     title:
       "De vuelta en Kigali: Arxia apoya las Directrices Nacionales de Infraestructura Pública Digital de Ruanda",
+    seoTitle: "Infraestructura pública digital: Arxia en Ruanda",
     excerpt:
       "Arxia forma parte del equipo que apoya las próximas Directrices Nacionales de DPI de Ruanda, que orientarán una transición de todo el gobierno hacia una sociedad digital más integrada, inclusiva y centrada en la ciudadanía.",
     metaDescription:
-      "Arxia regresó a Kigali para iniciar un nuevo proyecto de apoyo a las Directrices Nacionales de Infraestructura Pública Digital de Ruanda, un marco para todo el gobierno orientado a una sociedad digital integrada, inclusiva y centrada en la ciudadanía.",
+      "Arxia regresó a Kigali para apoyar las Directrices Nacionales de Infraestructura Pública Digital de Ruanda, un marco para todo el gobierno.",
     coverAlt:
       "Daniel Homorodean, de Arxia, en Kigali, con el Kigali Convention Centre iluminado de noche.",
     body: [
@@ -161,16 +166,17 @@ export const newsEs: Record<string, NewsArticleOverlay> = {
       {
         text: "Arxia forma parte del equipo que apoya este trabajo y aporta su experiencia en DPI, interoperabilidad y gobernanza de datos en proyectos en África, Asia y Europa, desde los estándares regionales de datos en la región de los Grandes Lagos hasta el trabajo de interoperabilidad nacional en Camboya.",
       },
-      { text: "Conoce el trabajo de Arxia en interoperabilidad →" },
+      { text: "Conozca el trabajo de Arxia en interoperabilidad →" },
     ],
   },
   "arxia-caja-cusco-ai-ignite-workshop-peru": {
     title:
       "IA a 3400 metros: Arxia inicia el AI Acceleration Program con Caja Cusco en Perú",
+    seoTitle: "Caja Cusco y Arxia: AI Ignite Workshop en Perú",
     excerpt:
       "En Cusco, Arxia realizó un AI Ignite Workshop de una jornada completa con la alta dirección de Caja Cusco, una de las principales instituciones de microfinanzas del Perú, sobre cómo construir sistemas operativos de IA que funcionen en entornos altamente regulados.",
     metaDescription:
-      "Arxia impartió el AI Ignite Workshop a la alta dirección de Caja Cusco en Cusco, Perú: ocho horas sobre IA agéntica y sistemas operativos de IA para instituciones financieras reguladas, junto a sus socios de IT Studio.",
+      "En Cusco, Perú, Arxia impartió un AI Ignite Workshop de ocho horas a la dirección de Caja Cusco sobre IA agéntica en entidades financieras reguladas.",
     coverAlt:
       "Directivos de Caja Cusco junto a Carlos Parker, de Arxia, tras el AI Ignite Workshop en Cusco, Perú.",
     body: [
@@ -197,16 +203,17 @@ export const newsEs: Record<string, NewsArticleOverlay> = {
       {
         text: "El AI Acceleration Program sigue creciendo y pronto se anunciarán nuevos países. Arxia también está ampliando su red de socios de implementación y recibe con gusto el contacto de organizaciones que vean una oportunidad en su país, así como de consultores que quieran sumarse al equipo como especialistas en operacionalización de IA.",
       },
-      { text: "Conoce más sobre el AI Acceleration Program →" },
+      { text: "Conozca más sobre el AI Acceleration Program →" },
     ],
   },
   "arxia-typo3-burundi-university-web-design-system": {
     title:
       "Un modelo común para cada sitio web universitario de Burundi, construido sobre código abierto",
+    seoTitle: "Universidades de Burundi: sistema de diseño en TYPO3",
     excerpt:
       "Junto al Ministerio de Educación Nacional e Investigación Científica de Burundi y KIT Digital Innovation HUB, Arxia y la TYPO3 Association desarrollaron un sistema de diseño inspirado en GovStack que cualquier universidad puede usar para lanzar un sitio web profesional. La ENS es la primera en adoptarlo.",
     metaDescription:
-      "Arxia y la TYPO3 Association, junto al Ministerio de Educación Nacional e Investigación Científica de Burundi y KIT Digital Innovation HUB, crearon un sistema de diseño de código abierto en TYPO3 para los sitios web de las universidades nacionales, adoptado primero por la École Normale Supérieure.",
+      "Arxia y la TYPO3 Association crearon un sistema de diseño de código abierto para los sitios web universitarios de Burundi. La ENS fue la primera en usarlo.",
     coverAlt:
       "El nuevo sitio web de la École Normale Supérieure du Burundi, construido sobre el sistema de diseño universitario común.",
     body: [
@@ -233,16 +240,17 @@ export const newsEs: Record<string, NewsArticleOverlay> = {
       {
         text: "Así se ve la infraestructura pública digital en la práctica: compartida, reutilizable, abierta y pensada para escalar.",
       },
-      { text: "Conoce el trabajo de Arxia en portales web de gobierno →" },
+      { text: "Conozca el trabajo de Arxia en portales web de gobierno →" },
     ],
   },
   "arxia-bidpa-botswana-digital-transformation-strategy": {
     title:
       "No otra estrategia para el cajón: Arxia inicia la estrategia de transformación digital del BIDPA de Botsuana",
+    seoTitle: "Estrategia de transformación digital del BIDPA",
     excerpt:
       "En la reunión de inicio con el Botswana Institute for Development Policy Analysis, Arxia se comprometió con una estrategia construida en torno a las personas, los procesos y la misión, y con medidas que comienzan desde el primer día, no después del informe final.",
     metaDescription:
-      "Arxia comenzó a desarrollar la estrategia de transformación digital del Botswana Institute for Development Policy Analysis (BIDPA), con una reunión de inicio el 6 de julio de 2026 y medidas implementadas desde el primer día.",
+      "Arxia inició la estrategia de transformación digital del BIDPA de Botsuana el 6 de julio de 2026, con medidas aplicadas desde el primer día.",
     coverAlt:
       "Daniel Homorodean, de Arxia, con representantes del BIDPA en el Botswana Institute for Development Policy Analysis.",
     body: [
@@ -266,16 +274,17 @@ export const newsEs: Record<string, NewsArticleOverlay> = {
       {
         text: "La misión del BIDPA es apoyar la transformación de todo un país mediante la investigación y el análisis de políticas públicas. El rol de Arxia es ayudarlo a avanzar más rápido en ese camino.",
       },
-      { text: "Conoce el trabajo de Arxia en e-Services →" },
+      { text: "Conozca el trabajo de Arxia en e-Services →" },
     ],
   },
   "arxia-typo3-junetech-2026-burundi": {
     title:
       "Constancia, inversión y alianzas: Arxia y la TYPO3 Association en JUNETECH 2026 en Burundi",
+    seoTitle: "JUNETECH 2026 en Burundi: Arxia y TYPO3 Association",
     excerpt:
       "Como socios internacionales de JUNETECH 2026, el festival de innovación y evolución digital de Burundi, Arxia y la TYPO3 Association presentaron los resultados de tres años de trabajo en código abierto y estandarización junto a KIT Digital Innovation HUB.",
     metaDescription:
-      "Arxia y la TYPO3 Association fueron socios internacionales de JUNETECH 2026 en Buyumbura (del 23 al 26 de junio) y presentaron, junto a KIT Digital Innovation HUB, los resultados de tres años de promoción del código abierto y la estandarización en Burundi.",
+      "En JUNETECH 2026, en Buyumbura, Arxia y la TYPO3 Association presentaron tres años de trabajo en código abierto y estandarización en Burundi.",
     coverAlt:
       "Anuncio de socios de JUNETECH 2026 que presenta a Arxia como socio internacional, Buyumbura, del 23 al 26 de junio de 2026.",
     body: [
@@ -298,16 +307,17 @@ export const newsEs: Record<string, NewsArticleOverlay> = {
       {
         text: "Los proyectos y los negocios no aparecen de la noche a la mañana, ni gratis. Arxia y la TYPO3 Association están comprometidas a largo plazo y preparadas para acompañar a cada país en su proceso de transformación, con base en principios y con foco en generar valor duradero.",
       },
-      { text: "Conoce el trabajo de Arxia en portales web de gobierno →" },
+      { text: "Conozca el trabajo de Arxia en portales web de gobierno →" },
     ],
   },
   "arxia-keynote-icac-2026-silicon-valley-ai-operating-system": {
     title:
       "Conferencia magistral de Arxia en ICAC 2026 en Silicon Valley: cómo operacionalizar la IA agéntica de forma segura",
+    seoTitle: "ICAC 2026: conferencia sobre el AI Operating System",
     excerpt:
       "Por invitación de Common Perú, Carlos Parker, de Arxia, dictó una conferencia magistral en el C-Level Americas Summit 2026 en Silicon Valley sobre el AI Operating System, y pasó tres días con líderes latinoamericanos conversando sobre el estado real de la adopción de IA.",
     metaDescription:
-      "Carlos Parker, de Arxia, dictó la conferencia magistral \"AI Operating System (AIOS): cómo operacionalizar la IA agéntica en los procesos de negocio de forma efectiva y segura\" en ICAC 2026 en Silicon Valley, organizada por Common Perú (del 8 al 12 de junio de 2026).",
+      "En ICAC 2026, en Silicon Valley, Carlos Parker, de Arxia, habló sobre el AI Operating System y cómo operacionalizar la IA agéntica con seguridad.",
     coverAlt:
       "Carlos Parker, de Arxia, durante su conferencia magistral en ICAC 2026 en Silicon Valley.",
     body: [
@@ -354,16 +364,17 @@ export const newsEs: Record<string, NewsArticleOverlay> = {
       {
         text: "Arxia agradece a Common Perú y a Manuel Rubén Dueñas Saona por la invitación y la confianza.",
       },
-      { text: "Conoce más sobre el AI Acceleration Program →" },
+      { text: "Conozca más sobre el AI Acceleration Program →" },
     ],
   },
   "arxia-govtech-internationalization-ukraine-kyiv": {
     title:
       "Construir puentes en Kiev: Arxia y la comunidad Govtech de Ucrania ante la internacionalización de la tecnología pública",
+    seoTitle: "Internacionalización Govtech: Arxia en Kiev",
     excerpt:
       "Internacionalizar el Govtech no consiste en exportar productos, sino en construir cooperación entre países. Arxia se reunió con la comunidad Govtech de Ucrania en Kiev para compartir su trayectoria de expansión global y una convicción: la mejor tecnología pública viaja a través de alianzas, no de transacciones.",
     metaDescription:
-      "Arxia se sumó al Global Government Technology Centre Kyiv y a la GovTech Alliance of Ukraine en el Govtech Meet-up para hablar sobre la internacionalización de los servicios Govtech, la cooperación multiactor y el apoyo a los innovadores ucranianos para llevar sus soluciones al mundo.",
+      "En el Govtech Meet-up de Kiev, Arxia habló sobre la internacionalización de la Govtech y cómo ayudar a los innovadores ucranianos a salir al mundo.",
     coverAlt:
       "Daniel Homorodean y Carlos Parker, de Arxia, en el Global Government Technology Centre del Foro Económico Mundial en Kiev.",
     body: [
@@ -393,16 +404,17 @@ export const newsEs: Record<string, NewsArticleOverlay> = {
       {
         text: "Para Carlos Parker, esto se ha convertido en una misión personal en Ucrania. El objetivo es fácil de enunciar y más difícil de lograr: construir los puentes que permiten que la tecnología pública —y las personas que están detrás— circulen entre países. Construyamos esos puentes.",
       },
-      { text: "Conoce el trabajo de Arxia en Gobierno Digital →" },
+      { text: "Conozca el trabajo de Arxia en Gobierno Digital →" },
     ],
   },
   "arxia-rcg-consulting-ai-accelerator-cluj-napoca": {
     title:
       "Del piloto a la práctica: Arxia lanza el AI Accelerator Program con RCG Consulting en Cluj-Napoca",
+    seoTitle: "RCG Consulting y el AI Accelerator Program de Arxia",
     excerpt:
       "Durante dos días en Cluj-Napoca, seis líderes de RCG Consulting se convirtieron en los primeros AI Operators de la firma y construyeron flujos de trabajo funcionales para propuestas a fondos de la UE, auditoría de documentos, redacción de contratos y gestión de facturas.",
     metaDescription:
-      "Arxia dio inicio al AI Accelerator Program con RCG Consulting en Cluj-Napoca, Rumania: un taller de dos días en el que seis líderes construyeron flujos de trabajo reales con IA, seguido de tres meses de gobernanza, gestión del cambio y capacitación.",
+      "En Cluj-Napoca, Rumania, seis líderes de RCG Consulting crearon flujos de trabajo reales con IA en dos días, al inicio del AI Accelerator Program.",
     coverAlt:
       "El equipo directivo de RCG Consulting con Arxia durante el taller del AI Accelerator Program en Cluj-Napoca.",
     body: [
@@ -440,16 +452,17 @@ export const newsEs: Record<string, NewsArticleOverlay> = {
       {
         text: "Arxia lleva más de diez años trabajando en optimización de procesos y gestión del cambio a través de la transformación digital. Su metodología de operacionalización de IA ya se ha aplicado en tres continentes, con clientes de banca, academia, retail, ONG y consultoría. La tecnología no es el objetivo; el proceso sí lo es. Los clientes internalizan el conocimiento, ganan confianza, incorporan a sus equipos, lideran el cambio y siguen mejorando por su cuenta.",
       },
-      { text: "Conoce más sobre el AI Acceleration Program →" },
+      { text: "Conozca más sobre el AI Acceleration Program →" },
     ],
   },
   "arxia-govtech-4-impact-world-congress-madrid-2026": {
     title:
       "Arxia en el Govtech 4 Impact World Congress de Madrid: DPI, IA en el gobierno e interoperabilidad",
+    seoTitle: "Govtech 4 Impact World Congress 2026 en Madrid",
     excerpt:
       "Arxia se sumó a líderes del sector público de cuatro continentes en G4I 2026, en Madrid, para conversar sobre Infraestructura Pública Digital, IA en el gobierno e interoperabilidad, y ayudó a atender el stand de TYPO3 Community Expansion.",
     metaDescription:
-      "Arxia participó en el Govtech 4 Impact World Congress (G4I 2026) en Madrid, del 5 al 7 de mayo, con foco en Infraestructura Pública Digital, IA en el gobierno e interoperabilidad, junto al Community Expansion Committee de la TYPO3 Association.",
+      "Arxia participó en el Govtech 4 Impact World Congress de Madrid, del 5 al 7 de mayo de 2026, sobre DPI, IA en el gobierno e interoperabilidad.",
     coverAlt:
       "Miembros del Community Expansion Committee de TYPO3, entre ellos Arxia, en su stand del Govtech 4 Impact World Congress en Madrid.",
     coverCredit: "Foto: TYPO3 Association",
@@ -484,16 +497,17 @@ export const newsEs: Record<string, NewsArticleOverlay> = {
         caption:
           "Conversaciones en el stand de TYPO3 Community Expansion. Foto: TYPO3 Association.",
       },
-      { text: "Conoce el trabajo de Arxia en interoperabilidad →" },
+      { text: "Conozca el trabajo de Arxia en interoperabilidad →" },
     ],
   },
   "arxia-supports-fawe-uganda-ai-acceleration": {
     title:
       "Arxia apoya a FAWE Uganda en la adopción de IA agéntica mediante el Programa de Aceleración de IA",
+    seoTitle: "FAWE Uganda: adopción de IA agéntica con Arxia",
     excerpt:
       "La mayor parte de las conversaciones sobre IA agéntica ocurren en directorios, pero las ONG son las que más pueden ganar. Arxia condujo su Taller AI Ignite con FAWE Uganda para poner una IA real y responsable en manos de un equipo que impulsa la educación de las niñas en África.",
     metaDescription:
-      "Arxia se asocia con FAWE Uganda para llevar IA agéntica al sector sin fines de lucro mediante el Taller AI Ignite y el Programa de Aceleración de IA: IA práctica y responsable para organizaciones que impulsan la educación de las niñas.",
+      "Arxia impartió el Taller AI Ignite a FAWE Uganda para llevar IA agéntica práctica y responsable a un equipo que impulsa la educación de las niñas.",
     coverAlt:
       "Equipo de Arxia y FAWE Uganda durante el Taller AI Ignite en Kampala",
     body: [
@@ -523,18 +537,19 @@ export const newsEs: Record<string, NewsArticleOverlay> = {
         text: "Ahora avanzamos a la siguiente fase: ayudar a FAWE Uganda a implementar IA agéntica en sus procesos clave a través del Programa de Aceleración de IA, para que el impacto perdure mucho más allá del taller y se traduzca en mejoras medibles para el equipo y las comunidades a las que sirven.",
       },
       {
-        text: "Si trabajas en el sector sin fines de lucro o con él, y te han dicho que esta tecnología no es para ti, o que todavía no es para ti, vale la pena una segunda mirada. Los equipos que realizan el trabajo más importante merecen las mejores herramientas disponibles.",
+        text: "Si trabaja en el sector sin fines de lucro o con él, y le han dicho que esta tecnología no es para usted, o que todavía no es para usted, vale la pena una segunda mirada. Los equipos que realizan el trabajo más importante merecen las mejores herramientas disponibles.",
       },
-      { text: "Conoce más sobre el Programa de Aceleración de IA →" },
+      { text: "Conozca más sobre el Programa de Aceleración de IA →" },
     ],
   },
   "arxia-vision-africa-ai-ignite-workshop-kampala": {
     title:
       "Arxia y Vision Africa AI llevan el AI Ignite Workshop a organizaciones de Uganda",
+    seoTitle: "AI Ignite Workshop en Kampala con Vision Africa AI",
     excerpt:
       "En el Protea Hotel Kololo de Kampala, Arxia y Vision Africa AI realizaron una mañana práctica sobre operacionalización de IA para líderes ugandeses, facilitada por Carlos Parker y CPA Dr. James Okello Onyoin.",
     metaDescription:
-      "Arxia y Vision Africa AI realizaron el AI Ignite Workshop en Kampala el 29 de abril de 2026, una sesión práctica sobre operacionalización de IA para organizaciones de Uganda, facilitada por Carlos Parker (Arxia) y CPA Dr. James Okello Onyoin (HLB, Vision Africa AI).",
+      "El 29 de abril de 2026, en Kampala, Arxia y Vision Africa AI realizaron el AI Ignite Workshop, una sesión práctica sobre IA para organizaciones de Uganda.",
     coverAlt:
       "Tarjeta de orador del AI Ignite Workshop con Carlos Parker, director de Negocios Internacionales de Arxia, Protea Hotel Kololo, 29 de abril de 2026.",
     body: [
@@ -556,16 +571,17 @@ export const newsEs: Record<string, NewsArticleOverlay> = {
       {
         text: "Arxia agradece a Grace Labong, Clarissa Ociti y Patricia Atim por su apoyo en la organización del taller.",
       },
-      { text: "Conoce más sobre el AI Acceleration Program →" },
+      { text: "Conozca más sobre el AI Acceleration Program →" },
     ],
   },
   "arxia-uganda-vice-chancellors-forum-ai-universities": {
     title:
       "IA en las universidades de Uganda: Arxia y Vision Africa AI se reúnen con el Uganda Vice-Chancellors Forum",
+    seoTitle: "IA en las universidades de Uganda, con Arxia",
     excerpt:
       "Durante más de tres horas en Kampala, Arxia y Vision Africa AI trabajaron con los líderes universitarios de Uganda en lo que implica llevar la IA a la educación superior y construir sistemas operativos de IA que den resultados.",
     metaDescription:
-      "Arxia y Vision Africa AI realizaron una sesión de trabajo con el Uganda Vice-Chancellors Forum en Kampala sobre la implementación de IA en las universidades, los sistemas operativos de IA, la propiedad intelectual y el futuro de la educación.",
+      "Arxia y Vision Africa AI se reunieron en Kampala con el Uganda Vice-Chancellors Forum sobre la IA en las universidades y los sistemas operativos de IA.",
     coverAlt:
       "Miembros del Uganda Vice-Chancellors Forum con el equipo de Arxia y Vision Africa AI en Kampala.",
     body: [
@@ -588,16 +604,17 @@ export const newsEs: Record<string, NewsArticleOverlay> = {
       {
         text: "De la sesión surgieron varias iniciativas. Arxia y Vision Africa AI ya trabajan en formas de acelerar la adopción de IA en las universidades de Uganda, a partir del AI Acceleration Program que ya está en marcha con organizaciones ugandesas.",
       },
-      { text: "Conoce más sobre el AI Acceleration Program →" },
+      { text: "Conozca más sobre el AI Acceleration Program →" },
     ],
   },
   "arxia-cambodia-social-protection-interoperability-govstack": {
     title:
       "10% tecnología, 90% mentalidad: Arxia apoya la interoperabilidad de la Plataforma Digital de Protección Social de Camboya",
+    seoTitle: "Plataforma Digital de Protección Social de Camboya",
     excerpt:
       "Arxia pasó una semana con el Consejo Nacional de Protección Social de Camboya trabajando en armonización de datos, reingeniería de procesos e integración con el X-Road nacional, y cerró con un taller práctico sobre GovStack.",
     metaDescription:
-      "Arxia apoyó al Consejo Nacional de Protección Social de Camboya en la evolución de la Plataforma Digital de Protección Social: armonización de registros de datos, optimización de procesos, integración con X-Road y un taller sobre GovStack.",
+      "Arxia trabajó con el Consejo Nacional de Protección Social de Camboya en armonización de datos e integración con X-Road, y cerró con un taller de GovStack.",
     coverAlt:
       "Daniel Homorodean, de Arxia, con el equipo del Consejo Nacional de Protección Social de Camboya tras el taller de GovStack.",
     body: [
@@ -626,14 +643,14 @@ export const newsEs: Record<string, NewsArticleOverlay> = {
         items: [
           {
             lead: "Primero, los datos.",
-            text: "Recopila, corrige, procesa, almacena, protege y armoniza tus datos. Establece una fuente única de verdad, y la interoperabilidad desde el diseño vendrá por añadidura.",
+            text: "Recopile, corrija, procese, almacene, proteja y armonice sus datos. Establezca una fuente única de verdad, y la interoperabilidad desde el diseño vendrá por añadidura.",
           },
           {
-            lead: "Rediseña, no repliques.",
+            lead: "Rediseñe, no replique.",
             text: "Digitalizar la burocracia actual no es transformación. La reingeniería de procesos y la estrategia de cambio deben estar en la caja de herramientas de cada gestor de servicios públicos, no solo en la del área de TI.",
           },
           {
-            lead: "No esperes a la regulación.",
+            lead: "No espere a la regulación.",
             text: "Los buenos procesos y la tecnología para la protección de datos personales y la gestión del consentimiento son funciones básicas de un ecosistema digital al servicio de la ciudadanía, no solo obligaciones legales.",
           },
           {
@@ -643,16 +660,17 @@ export const newsEs: Record<string, NewsArticleOverlay> = {
         ],
       },
       { text: "Arxia espera seguir recorriendo este camino junto a Camboya." },
-      { text: "Conoce el trabajo de Arxia en interoperabilidad →" },
+      { text: "Conozca el trabajo de Arxia en interoperabilidad →" },
     ],
   },
   "icglr-adopts-mining-minerals-data-sharing-standard-brazzaville": {
     title:
       "Doce países, un mismo lenguaje de datos: la ICGLR adopta el Estándar de Intercambio de Datos de Minería y Minerales desarrollado con Arxia",
+    seoTitle: "La ICGLR adopta un estándar de datos mineros",
     excerpt:
       "En Brazzaville, los 12 Estados miembros de la Conferencia Internacional sobre la Región de los Grandes Lagos adoptaron un estándar común para los datos de minería y minerales, resultado de casi dos años de trabajo con Arxia en la trazabilidad desde el sitio minero hasta la exportación.",
     metaDescription:
-      "Los 12 Estados miembros de la ICGLR adoptaron en Brazzaville (del 8 al 10 de abril de 2026) el Estándar de Intercambio de Datos de Minería y Minerales, desarrollado con Arxia para apoyar la trazabilidad y la auditoría de los datos mineros en África Central y Oriental.",
+      "En Brazzaville, los 12 países de la ICGLR adoptaron un estándar de datos mineros desarrollado con Arxia, para la trazabilidad de la mina a la exportación.",
     coverAlt:
       "Daniel Homorodean, de Arxia, presenta el Estándar de Intercambio de Datos de Minería y Minerales a representantes de los Estados miembros de la ICGLR en Brazzaville.",
     body: [
@@ -684,16 +702,17 @@ export const newsEs: Record<string, NewsArticleOverlay> = {
       {
         text: "El mismo problema existe en clima, agricultura, aduanas y salud pública, y tiene la misma respuesta: una capa de datos neutral y compartida. Arxia ve el estándar de la ICGLR como una señal para que países de todo el mundo establezcan la trazabilidad completa de los datos de minería y minerales, a partir de lo que la región de los Grandes Lagos acaba de lograr, y está preparada para apoyar ese trabajo.",
       },
-      { text: "Conoce el trabajo de Arxia en interoperabilidad →" },
+      { text: "Conozca el trabajo de Arxia en interoperabilidad →" },
     ],
   },
   "arxia-gobierna-tu-ia-shadow-ai-webinar": {
     title:
       "Gobernar la IA, no prohibirla: Arxia participa en el panel \"Gobierna tu IA\" sobre Shadow AI",
+    seoTitle: "Shadow AI: Arxia en el panel Gobierna tu IA",
     excerpt:
       "Mientras la dirección debate si adoptar IA, los equipos ya la están usando, muchas veces sin que nadie lo sepa. Carlos Parker, de Arxia, participó en el primer episodio de la serie \"Gobierna tu IA\" para analizar cómo las organizaciones pueden sacar el Shadow AI a la luz.",
     metaDescription:
-      "Carlos Parker, de Arxia, participó en la serie de webinars \"Gobierna tu IA\" (Episodio I) junto a líderes en gobernanza y seguridad de IA para analizar los riesgos del Shadow AI y cómo establecer controles sin frenar la innovación.",
+      "Carlos Parker, de Arxia, participó en el Episodio I de \"Gobierna tu IA\" sobre los riesgos del Shadow AI y cómo poner controles sin frenar la innovación.",
     coverAlt:
       "Afiche del webinar \"Gobierna tu IA\", Episodio I: ¿Qué es el Shadow AI?, con Carlos Parker, de Arxia, entre los panelistas.",
     body: [
@@ -728,16 +747,17 @@ export const newsEs: Record<string, NewsArticleOverlay> = {
       {
         text: "La conclusión coincide con el enfoque de Arxia sobre la adopción de IA: el objetivo no es prohibir la IA, sino gobernarla. Políticas claras, gobernanza de datos y un uso trazable son lo que permite a los equipos usar la IA de forma abierta y segura. Esta reflexión dio forma más adelante a la alianza de Arxia con Gobierna Tus Datos para fortalecer el componente de gobernanza de datos de su oferta AI Accelerator.",
       },
-      { text: "Conoce el trabajo de Arxia en gobernanza de datos →" },
+      { text: "Conozca el trabajo de Arxia en gobernanza de datos →" },
     ],
   },
   "arxia-uganda-ai-acceleration-mission-kampala-gulu": {
     title:
       "Dos semanas en Kampala y Gulu: Arxia lleva la aceleración de IA al ecosistema empresarial y público de Uganda",
+    seoTitle: "Aceleración de IA en Uganda: Kampala y Gulu",
     excerpt:
       "Carlos Parker y Grace Labong, de Arxia, pasaron dos semanas reuniéndose con instituciones, bancos, universidades, asociaciones y empresas de BPO y TI de Uganda, todas en busca de una forma de atravesar el ruido en torno a la IA para obtener resultados directos y medibles.",
     metaDescription:
-      "La misión de dos semanas de Arxia en Kampala y Gulu, Uganda, involucró a instituciones de gobierno, bancos, universidades y empresas de BPO, entre ellas Exquisite Solution Limited, en torno a la adopción de IA en sus operaciones a través del AI Acceleration Program.",
+      "Durante dos semanas en Kampala y Gulu, Arxia se reunió con instituciones, bancos, universidades y empresas de BPO de Uganda sobre la adopción de IA.",
     coverAlt:
       "Carlos Parker, de Arxia, con el equipo de Exquisite Solution Limited en sus oficinas en Uganda.",
     body: [
@@ -763,16 +783,17 @@ export const newsEs: Record<string, NewsArticleOverlay> = {
       {
         text: "Arxia tiene presencia local en Uganda y una visión clara del potencial del mercado. El plan es seguir impulsando el apoyo a la operacionalización de IA en todas las direcciones en las que el ecosistema esté listo para avanzar.",
       },
-      { text: "Conoce más sobre el AI Acceleration Program →" },
+      { text: "Conozca más sobre el AI Acceleration Program →" },
     ],
   },
   "arxia-pravaida-govtech-lab-ukraine-demo-day-kyiv": {
     title:
       "Pravaida llega al Demo Day de GovTech Lab Ukraine: un consorcio Chile–Rumania–Ucrania para orientación legal con IA",
+    seoTitle: "Pravaida en el Demo Day de GovTech Lab Ukraine",
     excerpt:
       "Arxia, la startup chilena Dolfs AI y el socio ucraniano Kitsoft llevaron Pravaida, un asistente de IA que ayuda a la ciudadanía a entender leyes y regulaciones, a la etapa final de GovTech Lab Ukraine, el programa de innovación abierta para el sector público de Kiev.",
     metaDescription:
-      "Arxia, Dolfs AI y Kitsoft presentaron Pravaida, un asistente de IA que orienta a la ciudadanía sobre leyes y regulaciones, como finalistas en el Demo Day de GovTech Lab Ukraine, organizado por el Global Government Technology Centre Kyiv.",
+      "Arxia, Dolfs AI y Kitsoft llegaron al Demo Day de GovTech Lab Ukraine, en Kiev, con Pravaida, un asistente de IA que ayuda a entender las leyes.",
     coverAlt:
       "Carlos Parker, de Arxia, presenta Pravaida durante el programa GovTech Lab Ukraine en Kiev.",
     body: [
@@ -811,7 +832,7 @@ export const newsEs: Record<string, NewsArticleOverlay> = {
       {
         text: "Para Arxia, la experiencia también confirmó una convicción presente en todo su trabajo: la mejor tecnología pública se construye más allá de las fronteras, con chilenos, rumanos y ucranianos trabajando en el mismo problema.",
       },
-      { text: "Conoce el trabajo de Arxia sobre el Estado agéntico →" },
+      { text: "Conozca el trabajo de Arxia sobre el Estado agéntico →" },
     ],
   },
 };

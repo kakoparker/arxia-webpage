@@ -10,16 +10,18 @@ import { DomainCTA } from "@/components/domain/DomainCTA";
 import {
   DomainBreadcrumbJsonLd,
   DomainRelated,
+  JsonLd,
 } from "@/components/domain/DomainShared";
+import { localizedUrl, SITE_URL } from "@/i18n/metadata";
 import { ScrollProgressRail } from "@/components/ui/ScrollProgressRail";
-import { getDomainPage } from "@/data/domain-pages";
-import type { ExpertiseDomainSlug } from "@/data/expertise-domains";
+import type { DomainPageProps } from "@/data/domain-pages";
+import { expertiseDomainEntries, type ExpertiseDomainSlug } from "@/data/expertise-domains";
 
 // Canonical category order for every domain page. Sections without items are
 // skipped at render time; the rail is filtered to match.
 const CATEGORY_ORDER = ["Consultancy", "Services", "Products", "Trainings"] as const;
 
-interface DomainPageViewProps {
+interface DomainPageViewProps extends DomainPageProps {
   domain: ExpertiseDomainSlug;
 }
 
@@ -29,13 +31,11 @@ interface DomainPageViewProps {
  * seven domains use it; interoperability, whose pitch is its layer model, has
  * its own `InteroperabilityPageView` built from the same shared pieces.
  */
-export function DomainPageView({ domain }: DomainPageViewProps) {
+export function DomainPageView({ domain, page, featuredProjects }: DomainPageViewProps) {
   const t = useTranslations("Domain");
   const locale = useLocale();
-  const page = getDomainPage(domain, locale);
-  if (!page) return null;
-
-  const Icon = page.icon;
+  // Icons are components and can't cross the server/client boundary as props.
+  const Icon = expertiseDomainEntries.find((d) => d.slug === domain)!.icon;
   // Sort + filter the page's categories into canonical order. Roadmap items
   // are dropped entirely (no "Coming soon" cards in v1); any category whose
   // items become empty after filtering is skipped.
@@ -59,10 +59,34 @@ export function DomainPageView({ domain }: DomainPageViewProps) {
     { id: "contact", label: t("railContact") },
   ];
 
+  // The offer catalogue, grouped by kind of work, for search engines.
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: page.name,
+    description: page.description,
+    url: localizedUrl(locale, `/${domain}`),
+    inLanguage: locale,
+    provider: { "@id": `${SITE_URL}/#organization` },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: page.name,
+      itemListElement: orderedCategories.map((c) => ({
+        "@type": "OfferCatalog",
+        name: t(`categoryName.${c.name}`),
+        itemListElement: c.items.map((item) => ({
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: item.title, description: item.description },
+        })),
+      })),
+    },
+  };
+
   return (
     <>
       <Navbar />
       <DomainBreadcrumbJsonLd name={page.name} slug={domain} />
+      <JsonLd data={serviceSchema} />
       <ScrollProgressRail sections={railSections} />
       <main id="main" tabIndex={-1} className="outline-none">
         <DomainHero
@@ -85,7 +109,7 @@ export function DomainPageView({ domain }: DomainPageViewProps) {
 
         <div id="featured">
           <DomainFeaturedCases
-            featuredCases={page.featuredCases}
+            projects={featuredProjects}
             portfolioCategory={page.portfolioCategory}
           />
         </div>

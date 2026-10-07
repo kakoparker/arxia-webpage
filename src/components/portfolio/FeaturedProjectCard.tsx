@@ -3,12 +3,8 @@ import { useTranslations } from "next-intl";
 import { Play } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import type { PortfolioProject } from "@/data/portfolio";
-import {
-  caseStudyHref,
-  formatDuration,
-  videoPoster,
-  type CaseStudy,
-} from "@/data/case-studies";
+import type { CaseStudy } from "@/data/case-studies";
+import { caseStudyHref, formatDuration, videoPoster } from "@/data/case-study-links";
 
 /**
  * A featured project on the dark portfolio hero: poster on the left, the case
@@ -32,6 +28,7 @@ export function FeaturedProjectCard({
   return (
     <Link
       href={caseStudyHref(caseStudy.slug)}
+      aria-label={caseStudy.content.title}
       className="group relative grid h-full overflow-hidden border border-white/15 bg-white/[0.02] transition-colors duration-300 hover:border-white/40 hover:bg-white/[0.04] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:grid-cols-[minmax(0,200px)_1fr] lg:grid-cols-[minmax(0,240px)_1fr]"
     >
       <span

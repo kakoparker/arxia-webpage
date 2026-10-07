@@ -26,14 +26,16 @@
       "dpi": "Digital Public Infrastructure",
       "interoperability": "Interoperability"
     },
-    "cta": "Contact Us"
+    "cta": "Contact Us",
+    "proof": "Since {founded}"
   },
   "Domains": {
     "annotation": "DIGITAL PUBLIC INFRASTRUCTURE & DIGITAL TRANSFORMATION",
     "heading": "The building blocks of your digital independence",
     "body": "Digital public infrastructure is what these seven practices add up to. Interoperability is the core the other six route through.",
     "coreLabel": "CORE",
-    "explore": "Explore"
+    "explore": "Explore",
+    "intro": "Arxia is a digital transformation and Digital Public Infrastructure company, working with governments since {founded} in more than {countries} countries."
   },
   "Portfolio": {
     "annotation": "Selected Work",
@@ -41,9 +43,9 @@
     "body": "Selected projects that define what we do.",
     "viewFull": "View Full Portfolio →",
     "metaTitle": "Portfolio",
-    "metaDescription": "44 projects in 20+ countries. Two decades of digital government work, from national interoperability frameworks to procurement platforms.",
-    "heroAnnotation": "// Portfolio",
-    "heroBody": "44 projects in 20+ countries. Two decades of digital government work, from national interoperability frameworks to procurement platforms.",
+    "metaDescription": "{projects} projects in {countries}+ countries. Digital government work since {founded}, from national interoperability frameworks to procurement platforms.",
+    "heroAnnotation": "Portfolio",
+    "heroBody": "{projects} projects in {countries}+ countries. Digital government work since {founded}, from national interoperability frameworks to procurement platforms.",
     "statProjects": "Projects",
     "statCountries": "Countries",
     "statDomains": "Domains",
@@ -56,7 +58,8 @@
     "readCaseStudy": "Read the case study",
     "video": "Video",
     "featuredCase": "Featured case study",
-    "watchVideo": "Watch the video"
+    "watchVideo": "Watch the video",
+    "seoTitle": "Digital Government Project Portfolio"
   },
   "CaseStudy": {
     "breadcrumb": "Breadcrumb",
@@ -91,7 +94,9 @@
     "indexHeading": "All News",
     "indexBody": "Stories, case studies and updates from Arxia and the partners we work with around the world.",
     "metaTitle": "News",
-    "metaDescription": "Latest news, case studies, and updates from Arxia: digital transformation, Digital Public Infrastructure, and Agentic AI in action."
+    "metaDescription": "Latest news, case studies, and updates from Arxia: digital transformation, Digital Public Infrastructure, and Agentic AI in action.",
+    "seoTitle": "News on Digital Public Infrastructure",
+    "byline": "By {name}"
   },
   "GlobalPresence": {
     "annotation": "Reach",
@@ -104,8 +109,8 @@
     "regions": {
       "Europe": "Europe",
       "Latin America": "Latin America",
-      "West Africa": "West Africa",
-      "East Africa": "East Africa",
+      "North & West Africa": "North & West Africa",
+      "East & Central Africa": "East & Central Africa",
       "Southeast Asia": "Southeast Asia",
       "Southern Africa": "Southern Africa"
     },
@@ -172,9 +177,19 @@
       }
     ],
     "privacyNote": "No mailing lists. Your details are only used to reply to you.",
-    "successNext": "Send another message"
+    "successNext": "Send another message",
+    "errorName": "Please enter your name.",
+    "errorEmail": "Please enter a valid email address.",
+    "errorComment": "Please write a short message.",
+    "errorRateLimited": "Too many messages in a short time. Please try again in a few minutes.",
+    "errorUnavailable": "The form is temporarily unavailable. Please email us at info@arxia.com.",
+    "honeypotLabel": "Leave this field empty",
+    "topicPrefill": "About: {topic}\n\n"
   },
   "Footer": {
+    "emailLabel": "Email",
+    "tradeRegister": "Trade Reg.",
+    "vat": "VAT",
     "tagline": "Digital transformation and Digital Public Infrastructure for governments worldwide.",
     "company": "Company",
     "services": "Services",
@@ -188,7 +203,7 @@
     "roleCompany": "Company",
     "roleCeo": "CEO",
     "roleHeadIntl": "Head of International Business",
-    "roleBizDevAfrica": "Business Development, Africa",
+    "roleBizDevAfrica": "Business Development Manager, Africa",
     "rights": "All rights reserved.",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
@@ -198,7 +213,8 @@
     "eInvoicing": "e-Invoicing",
     "webPortals": "Government web portals",
     "agenticState": "Agentic state",
-    "eServices": "e-Services"
+    "eServices": "e-Services",
+    "officeAddress": "Office"
   },
   "Rail": {
     "pageSections": "Page sections",
@@ -327,5 +343,20 @@
     "homeTitle": "Digital Transformation & Digital Public Infrastructure — Arxia",
     "homeDescription": "Arxia is a digital transformation and Digital Public Infrastructure company. We build the systems governments run on, then hand them over.",
     "homeOgDescription": "We build the digital public infrastructure governments run on, then hand it over."
-  }
+  },
+  "LogoCarousel": {
+    "label": "Clients and partners",
+    "pause": "Pause logo animation",
+    "play": "Play logo animation"
+  },
+  "DomainSeoTitle": {
+    "interoperability": "Interoperability & X-Road for Governments",
+    "data-governance": "Data Governance for the Public Sector",
+    "e-procurement": "e-Procurement Systems for Governments",
+    "e-invoicing": "e-Invoicing for Governments & Tax Authorities",
+    "web-portals": "Government Web Portals",
+    "agentic-state": "Agentic State: AI for Government",
+    "e-services": "Digital Public Services (e-Services)"
+  },
+  "DomainSeoDescription": {}
 }

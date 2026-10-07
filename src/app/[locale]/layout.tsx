@@ -3,8 +3,10 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
+import { SITE_URL } from "@/i18n/metadata";
+import { company } from "@/data/company";
 import "../globals.css";
 
 const inter = Inter({
@@ -20,11 +22,8 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-const SITE_URL = "https://www.arxia.com";
-const SITE_NAME = "Arxia";
+const SITE_NAME = company.brandName;
 const SITE_TITLE = "Arxia — Digital Transformation & Digital Public Infrastructure";
-const SITE_DESCRIPTION =
-  "Arxia is a digital transformation and Digital Public Infrastructure company with more than 20 years in the international market. We develop and integrate solutions that transform countries, governments, and the ecosystems around them.";
 
 const OG_LOCALE: Record<string, string> = {
   en: "en_US",
@@ -39,6 +38,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const ogLocale = OG_LOCALE[locale] ?? "en_US";
+  const t = await getTranslations({ locale, namespace: "Meta" });
+  const SITE_DESCRIPTION = t("homeDescription");
   return {
     metadataBase: new URL(SITE_URL),
     title: {
@@ -51,7 +52,6 @@ export async function generateMetadata({
       title: SITE_TITLE,
       description:
         "We develop and integrate solutions that transform countries, governments, and the ecosystems around them.",
-      url: SITE_URL,
       siteName: SITE_NAME,
       type: "website",
       locale: ogLocale,
@@ -83,14 +83,42 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+// Entity markup: legal identity + registry IDs from the ONRC record let search
+// and AI engines tell this Arxia apart from unrelated companies of the same name.
+const ORGANIZATION_ID = `${SITE_URL}/#organization`;
+
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: SITE_NAME,
+  "@id": ORGANIZATION_ID,
+  name: company.brandName,
+  legalName: company.legalName,
   url: SITE_URL,
   logo: `${SITE_URL}/logos/brand/arxia-logo-color.png`,
-  description: SITE_DESCRIPTION,
-  sameAs: ["https://www.linkedin.com/company/arxia/"],
+  description:
+    "Digital transformation and Digital Public Infrastructure company working with governments since 1996.",
+  foundingDate: company.foundingDate,
+  email: company.email.general,
+  vatID: company.vatNumber,
+  identifier: [
+    { "@type": "PropertyValue", propertyID: "CUI", value: company.registrationCode },
+    { "@type": "PropertyValue", propertyID: "EUID", value: company.euid },
+  ],
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: company.office.streetAddress,
+    postalCode: company.office.postalCode,
+    addressLocality: company.office.locality,
+    addressRegion: company.office.region,
+    addressCountry: company.office.countryCode,
+  },
+  employee: {
+    "@type": "Person",
+    name: company.ceo.name,
+    jobTitle: company.ceo.jobTitle,
+    sameAs: company.ceo.sameAs,
+  },
+  sameAs: company.sameAs,
 };
 
 const websiteSchema = {
@@ -98,6 +126,7 @@ const websiteSchema = {
   "@type": "WebSite",
   name: SITE_NAME,
   url: SITE_URL,
+  publisher: { "@id": ORGANIZATION_ID },
 };
 
 export function generateStaticParams() {
@@ -117,6 +146,7 @@ export default async function LocaleLayout({
   }
   // Enable static rendering for this locale.
   setRequestLocale(locale);
+  const tCommon = await getTranslations({ locale, namespace: "Common" });
 
   // Plausible is cookieless and GDPR-friendly; we only inject the script when
   // a domain is configured, so dev environments stay silent.
@@ -137,7 +167,7 @@ export default async function LocaleLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify([
-              { ...organizationSchema, inLanguage: locale },
+              organizationSchema,
               { ...websiteSchema, inLanguage: locale },
             ]),
           }}
@@ -155,7 +185,7 @@ export default async function LocaleLayout({
             href="#main"
             className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-blueprint-blue focus:text-white focus:px-4 focus:py-2 focus:font-[family-name:var(--font-jetbrains)] focus:text-[12px] focus:uppercase focus:tracking-[2px]"
           >
-            Skip to content
+            {tCommon("skipToContent")}
           </a>
           {children}
         </NextIntlClientProvider>

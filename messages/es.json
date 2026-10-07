@@ -26,14 +26,16 @@
       "dpi": "Infraestructura Pública Digital",
       "interoperability": "Interoperabilidad"
     },
-    "cta": "Contáctanos"
+    "cta": "Contáctenos",
+    "proof": "Desde {founded}"
   },
   "Domains": {
     "annotation": "INFRAESTRUCTURA PÚBLICA DIGITAL Y TRANSFORMACIÓN DIGITAL",
-    "heading": "Los bloques de tu independencia digital",
+    "heading": "Los bloques de su independencia digital",
     "body": "La infraestructura pública digital es el resultado de estas siete prácticas. La interoperabilidad es el núcleo que articula las otras seis.",
     "coreLabel": "NÚCLEO",
-    "explore": "Explorar"
+    "explore": "Explorar",
+    "intro": "Arxia es una empresa de transformación digital e Infraestructura Pública Digital que trabaja con gobiernos desde {founded} en más de {countries} países."
   },
   "Portfolio": {
     "annotation": "Trabajo seleccionado",
@@ -41,9 +43,9 @@
     "body": "Proyectos seleccionados que definen lo que hacemos.",
     "viewFull": "Ver portafolio completo →",
     "metaTitle": "Portafolio",
-    "metaDescription": "44 proyectos en más de 20 países. Dos décadas de trabajo en gobierno digital, desde marcos nacionales de interoperabilidad hasta plataformas de contratación.",
-    "heroAnnotation": "// Portafolio",
-    "heroBody": "44 proyectos en más de 20 países. Dos décadas de trabajo en gobierno digital, desde marcos nacionales de interoperabilidad hasta plataformas de contratación.",
+    "metaDescription": "{projects} proyectos en más de {countries} países. Gobierno digital desde {founded}: de marcos nacionales de interoperabilidad a plataformas de contratación pública.",
+    "heroAnnotation": "Portafolio",
+    "heroBody": "{projects} proyectos en más de {countries} países. Gobierno digital desde {founded}: de marcos nacionales de interoperabilidad a plataformas de contratación pública.",
     "statProjects": "Proyectos",
     "statCountries": "Países",
     "statDomains": "Áreas",
@@ -56,7 +58,8 @@
     "readCaseStudy": "Leer el caso de estudio",
     "video": "Vídeo",
     "featuredCase": "Caso de estudio destacado",
-    "watchVideo": "Ver el vídeo"
+    "watchVideo": "Ver el vídeo",
+    "seoTitle": "Portafolio de proyectos de gobierno digital"
   },
   "CaseStudy": {
     "breadcrumb": "Ruta de navegación",
@@ -91,7 +94,9 @@
     "indexHeading": "Todas las noticias",
     "indexBody": "Historias, casos de éxito y novedades de Arxia y de los socios con quienes trabajamos en todo el mundo.",
     "metaTitle": "Noticias",
-    "metaDescription": "Últimas noticias, casos de éxito y novedades de Arxia: transformación digital, Infraestructura Pública Digital e IA agéntica en acción."
+    "metaDescription": "Últimas noticias, casos de éxito y novedades de Arxia: transformación digital, Infraestructura Pública Digital e IA agéntica en acción.",
+    "seoTitle": "Noticias de infraestructura pública digital",
+    "byline": "Por {name}"
   },
   "GlobalPresence": {
     "annotation": "Alcance",
@@ -104,8 +109,8 @@
     "regions": {
       "Europe": "Europa",
       "Latin America": "América Latina",
-      "West Africa": "África Occidental",
-      "East Africa": "África Oriental",
+      "North & West Africa": "África del Norte y Occidental",
+      "East & Central Africa": "África Oriental y Central",
       "Southeast Asia": "Sudeste Asiático",
       "Southern Africa": "África Austral"
     },
@@ -144,17 +149,17 @@
     "body": "Trabajamos con gobiernos, organizaciones internacionales y los donantes que los financian. Cuéntenos el problema y le diremos con franqueza si somos el socio adecuado.",
     "ariaLabel": "Formulario de contacto",
     "name": "Nombre",
-    "namePlaceholder": "Tu nombre",
+    "namePlaceholder": "Su nombre",
     "email": "Correo electrónico",
-    "emailPlaceholder": "tu@correo.com",
+    "emailPlaceholder": "nombre@correo.com",
     "comment": "Mensaje",
-    "commentPlaceholder": "¿Cómo podemos ayudarte?",
+    "commentPlaceholder": "¿Cómo podemos ayudarle?",
     "send": "Enviar mensaje",
     "sending": "Enviando…",
     "successTitle": "Gracias por escribirnos.",
-    "successBody": "Te responderemos en breve.",
-    "errorGeneric": "Algo salió mal. Inténtalo de nuevo.",
-    "errorNetwork": "No se pudo conectar con el servidor. Inténtalo de nuevo.",
+    "successBody": "Le responderemos en breve.",
+    "errorGeneric": "Algo salió mal. Inténtelo de nuevo.",
+    "errorNetwork": "No se pudo conectar con el servidor. Inténtelo de nuevo.",
     "formTitle": "Nueva consulta",
     "stepsLabel": "Qué pasa después",
     "steps": [
@@ -172,23 +177,33 @@
       }
     ],
     "privacyNote": "Sin listas de correo. Sus datos solo se usan para responderle.",
-    "successNext": "Enviar otro mensaje"
+    "successNext": "Enviar otro mensaje",
+    "errorName": "Escriba su nombre.",
+    "errorEmail": "Escriba una dirección de correo válida.",
+    "errorComment": "Escriba un breve mensaje.",
+    "errorRateLimited": "Demasiados mensajes en poco tiempo. Inténtelo de nuevo en unos minutos.",
+    "errorUnavailable": "El formulario no está disponible temporalmente. Escríbanos a info@arxia.com.",
+    "honeypotLabel": "Deje este campo vacío",
+    "topicPrefill": "Sobre: {topic}\n\n"
   },
   "Footer": {
+    "emailLabel": "Correo",
+    "tradeRegister": "Reg. Mercantil",
+    "vat": "IVA",
     "tagline": "Transformación digital e Infraestructura Pública Digital para gobiernos en todo el mundo.",
     "company": "Empresa",
     "services": "Servicios",
     "contact": "Contacto",
     "portfolio": "Portafolio",
     "news": "Noticias",
-    "getInTouch": "Escríbenos a través del formulario de contacto",
+    "getInTouch": "Escríbanos a través del formulario de contacto",
     "headquarters": "Sede central",
     "offices": "Oficinas",
-    "connect": "Síguenos",
+    "connect": "Síganos",
     "roleCompany": "Empresa",
     "roleCeo": "CEO",
     "roleHeadIntl": "Director de Negocio Internacional",
-    "roleBizDevAfrica": "Desarrollo de Negocio, África",
+    "roleBizDevAfrica": "Gerente de Desarrollo de Negocio, África",
     "rights": "Todos los derechos reservados.",
     "privacy": "Política de Privacidad",
     "terms": "Términos del Servicio",
@@ -198,7 +213,8 @@
     "eInvoicing": "e-Invoicing",
     "webPortals": "Portales web de gobierno",
     "agenticState": "Estado agéntico",
-    "eServices": "e-Services"
+    "eServices": "e-Services",
+    "officeAddress": "Oficina"
   },
   "Rail": {
     "pageSections": "Secciones de la página",
@@ -218,7 +234,7 @@
     "railCases": "Casos",
     "railRelated": "Relacionado",
     "railContact": "Contacto",
-    "keepExploring": "Sigue explorando",
+    "keepExploring": "Siga explorando",
     "otherDomains": "Áreas relacionadas",
     "explore": "Explorar {name}",
     "categoryName": {
@@ -238,7 +254,7 @@
     "annotation": "Empecemos",
     "heading": "¿Hablamos de {title}?",
     "body": "Cuéntenos los detalles. Le responderemos con lo que implica el trabajo, quién lo haría y qué requeriría.",
-    "contact": "Contáctanos",
+    "contact": "Contáctenos",
     "viewPortfolio": "Ver Portafolio"
   },
   "DomainFeaturedCases": {
@@ -284,7 +300,7 @@
     "engage": {
       "annotation": "Cómo trabajamos",
       "heading": "En todo el ciclo de vida, o en una sola capa.",
-      "body": "Trabaja con Arxia de principio a fin, o súmanos en la capa donde necesitas profundidad. El camino es el mismo en ambos casos.",
+      "body": "Trabaje con Arxia de principio a fin, o súmenos en la capa donde necesita profundidad. El camino es el mismo en ambos casos.",
       "assessTitle": "Evaluar",
       "assessBody": "Auditorías de madurez y diagnósticos de la situación actual: qué existe, qué falta y qué va primero.",
       "designTitle": "Diseñar",
@@ -312,14 +328,14 @@
   "Errors": {
     "label500": "Error · 500",
     "heading500": "Algo no compiló del todo bien.",
-    "body500": "Un error inesperado impidió que esta página se renderizara. Recarga la página o vuelve a un punto conocido mientras lo revisamos.",
+    "body500": "Un error inesperado impidió que esta página se renderizara. Recargue la página o vuelva a un punto conocido mientras lo revisamos.",
     "retry": "Reintentar",
     "backHome": "Volver al inicio",
     "label404": "Error · 404",
     "heading404": "Esta página no figura en el plano.",
-    "body404": "La URL que seguiste no lleva a ningún lugar de este sitio. Es posible que haya cambiado al reestructurar nuestras áreas de especialización, o que el enlace simplemente sea incorrecto.",
+    "body404": "La URL que siguió no lleva a ningún lugar de este sitio. Es posible que haya cambiado al reestructurar nuestras áreas de especialización, o que el enlace simplemente sea incorrecto.",
     "notFoundMetaTitle": "Página no encontrada",
-    "notFoundMetaDescription": "La página que buscas no existe o se ha movido.",
+    "notFoundMetaDescription": "La página que busca no existe o se ha movido.",
     "exploreExpertise": "Explorar nuestras áreas",
     "explorePortfolio": "Ver portafolio"
   },
@@ -327,5 +343,22 @@
     "homeTitle": "Transformación Digital e Infraestructura Pública Digital — Arxia",
     "homeDescription": "Arxia es una empresa de transformación digital e Infraestructura Pública Digital. Construimos los sistemas sobre los que operan los gobiernos y luego se los entregamos.",
     "homeOgDescription": "Construimos la infraestructura pública digital sobre la que operan los gobiernos y luego se la entregamos."
+  },
+  "LogoCarousel": {
+    "label": "Clientes y socios",
+    "pause": "Pausar la animación de logotipos",
+    "play": "Reanudar la animación de logotipos"
+  },
+  "DomainSeoTitle": {
+    "interoperability": "Interoperabilidad y X-Road para gobiernos",
+    "data-governance": "Gobernanza de datos para el sector público",
+    "e-procurement": "Contratación pública electrónica",
+    "e-invoicing": "Facturación electrónica para gobiernos",
+    "web-portals": "Portales web gubernamentales",
+    "agentic-state": "Estado agéntico: IA para el gobierno",
+    "e-services": "Servicios públicos digitales"
+  },
+  "DomainSeoDescription": {
+    "data-governance": "Gobernanza de datos para el sector público: marcos de gobernanza, consentimiento, protección de datos, modelos semánticos y evaluaciones de madurez."
   }
 }

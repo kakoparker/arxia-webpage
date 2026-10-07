@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/BlueprintGridSVG";
 import { useAnimationFrame } from "@/hooks/useAnimationFrame";
 import { useMousePosition } from "@/hooks/useMousePosition";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { company } from "@/data/company";
 
 /** Hero plates, in order. Keys map to the `Hero.labels` message namespace. */
 const HERO_LABELS = ["transformation", "dpi", "interoperability"] as const;
@@ -21,7 +21,6 @@ export function Hero() {
   const revealGridRef = useRef<BlueprintGridSVGHandle>(null);
   const offsetRef = useRef({ x: 0, y: 0 });
 
-  const contentRef = useScrollAnimation();
   const isHovering = useMousePosition(sectionRef);
 
   // Grid drift — ambient + cursor-reveal grids share offset.
@@ -91,16 +90,16 @@ export function Hero() {
 
       {/* z-40: Content */}
       <div
-        ref={contentRef}
         className="relative z-40 mx-auto max-w-[var(--content-max)] w-full flex flex-col items-center text-center"
       >
+        {/* The H1 is the LCP element: it renders at full opacity in the server
+            HTML and never waits for JS. Only the supporting elements below
+            animate in. Weight and tracking per the brief's hero spec. */}
         <h1
-          data-animate
-          data-animate-index="0"
-          className="animate-on-scroll font-bold leading-[1.1] tracking-[-0.5px] text-white w-full"
+          className="font-light leading-[1.1] tracking-[-1.5px] text-white w-full"
           style={{
             fontFamily: "var(--font-primary)",
-            fontSize: "clamp(36px, 5vw, 72px)",
+            fontSize: "var(--text-hero)",
           }}
         >
           <span className="block">{t("title1")}</span>
@@ -108,18 +107,16 @@ export function Hero() {
         </h1>
 
         <div
-          data-animate
-          data-animate-index="1"
-          className="animate-on-scroll h-[3px] w-12 bg-accent-red mt-8 mb-6"
+          style={{ animationDelay: "90ms" }}
+          className="hero-enter h-[3px] w-12 bg-accent-red mt-8 mb-6"
         />
 
         {/* What Arxia does, as three plates rather than a sentence. Mono,
             uppercase and sharp-cornered: the brand's tag treatment, sized up
             for the hero and inverted for the dark surface. */}
         <ul
-          data-animate
-          data-animate-index="2"
-          className="animate-on-scroll flex flex-wrap items-center justify-center gap-2 sm:gap-2.5"
+          style={{ animationDelay: "180ms" }}
+          className="hero-enter flex flex-wrap items-center justify-center gap-2 sm:gap-2.5"
         >
           {HERO_LABELS.map((key) => (
             <li
@@ -137,12 +134,22 @@ export function Hero() {
           ))}
         </ul>
 
-        <div data-animate data-animate-index="3" className="animate-on-scroll mt-8">
-          <Button
-            variant="primary"
-            href="#contact"
-            className="!px-5 !py-1.5 !min-h-0 !text-[13px] !bg-accent-red hover:!bg-[#c8161d]"
-          >
+        {/* One verifiable proof point in the first screen, from company facts. */}
+        <p
+          className="hero-enter mt-6 text-gray-medium"
+          style={{
+            animationDelay: "270ms",
+            fontFamily: "var(--font-mono)",
+            fontSize: "12px",
+            letterSpacing: "1.5px",
+            textTransform: "uppercase",
+          }}
+        >
+          {t("proof", { founded: company.foundingYear })}
+        </p>
+
+        <div className="hero-enter mt-8" style={{ animationDelay: "360ms" }}>
+          <Button variant="primary" dark href="#contact">
             {t("cta")}
           </Button>
         </div>

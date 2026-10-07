@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/layout/LegalPage";
+import { localizedUrl, pageMetadata, SITE_HOST } from "@/i18n/metadata";
+import { company, officeAddressLine } from "@/data/company";
 
+// Legal copy is English-only: es/fr URLs canonicalize to the English page
+// and carry no hreflang cluster.
 export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description:
-    "How Arxia collects, uses, and protects personal data on arxia.com.",
-  alternates: { canonical: "/privacy" },
-  robots: { index: true, follow: true },
+  ...pageMetadata({
+    locale: "en",
+    path: "/privacy",
+    title: "Privacy Policy",
+    description: `How Arxia collects, uses, and protects personal data on ${SITE_HOST}.`,
+  }),
+  alternates: { canonical: localizedUrl("en", "/privacy") },
 };
 
 export default function PrivacyPage() {
@@ -14,12 +20,12 @@ export default function PrivacyPage() {
     <LegalPage
       annotation="Legal"
       title="Privacy Policy"
-      lastUpdated="2026-06-30"
-      intro="This Privacy Policy explains what personal data Arxia collects through arxia.com, why we collect it, how it is processed, and the rights you have over it. We keep data collection to the minimum needed to run the site and respond to you."
+      lastUpdated="2026-10-07"
+      intro={`This Privacy Policy explains what personal data Arxia collects through ${SITE_HOST}, why we collect it, how it is processed, and the rights you have over it. We keep data collection to the minimum needed to run the site and respond to you.`}
       sections={[
         {
           heading: "1. Data Controller",
-          body: `Arxia S.R.L. ("Arxia", "we", "us") operates arxia.com and is the controller of personal data processed through it. Arxia is a digital transformation and Digital Public Infrastructure company operating internationally, with its principal establishment in Romania.\n\nFor any question or request relating to your personal data, contact us at carlos.parker@arxia.com.`,
+          body: `${company.legalName} ("Arxia", "we", "us") operates ${SITE_HOST} and is the controller of personal data processed through it. ${company.legalName} is registered in Romania (CUI ${company.registrationCode}, Trade Register no. ${company.tradeRegistryNumber}, VAT ${company.vatNumber}), with offices at ${officeAddressLine()}.\n\nFor any question or request relating to your personal data, contact us at ${company.email.legal}.`,
         },
         {
           heading: "2. Data We Collect",
@@ -31,7 +37,7 @@ export default function PrivacyPage() {
         },
         {
           heading: "4. Analytics",
-          body: `arxia.com uses Plausible Analytics, a cookieless, privacy-friendly analytics service. Plausible does not use cookies, does not collect personal data, and does not track visitors across sites or over time. Because no personal data is processed and no cookies are set, no consent banner is required under the GDPR and the ePrivacy Directive.`,
+          body: `${SITE_HOST} uses Plausible Analytics, a cookieless, privacy-friendly analytics service. Plausible does not use cookies, does not collect personal data, and does not track visitors across sites or over time. Because no personal data is processed and no cookies are set, no consent banner is required under the GDPR and the ePrivacy Directive.`,
         },
         {
           heading: "5. Cookies",
@@ -51,7 +57,7 @@ export default function PrivacyPage() {
         },
         {
           heading: "9. Your Rights",
-          body: `Subject to applicable law, you have the right to access, rectify, erase, restrict, or port your personal data, and to object to processing carried out on the basis of legitimate interest. Where processing is based on consent, you may withdraw it at any time.\n\nTo exercise any of these rights, contact carlos.parker@arxia.com. You also have the right to lodge a complaint with your local data protection supervisory authority.`,
+          body: `Subject to applicable law, you have the right to access, rectify, erase, restrict, or port your personal data, and to object to processing carried out on the basis of legitimate interest. Where processing is based on consent, you may withdraw it at any time.\n\nTo exercise any of these rights, contact ${company.email.legal}. You also have the right to lodge a complaint with your local data protection supervisory authority.`,
         },
         {
           heading: "10. Changes",
@@ -59,7 +65,7 @@ export default function PrivacyPage() {
         },
         {
           heading: "11. Contact",
-          body: `Questions about this policy or your personal data: carlos.parker@arxia.com.`,
+          body: `Questions about this policy or your personal data: ${company.email.legal}.`,
         },
       ]}
     />

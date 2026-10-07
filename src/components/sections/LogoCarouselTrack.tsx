@@ -1,94 +1,133 @@
 "use client";
 
-import { useRef, useEffect, useCallback, type ReactNode } from "react";
-import { ScrollTrigger } from "@/hooks/useGsapScrollTrigger";
+import { useRef, useEffect, useState, type ReactNode } from "react";
+import { useTranslations } from "next-intl";
+import { Pause, Play } from "lucide-react";
 
 /**
  * Client-only animation shell for the logo carousel. Receives the
- * server-rendered list of logos as children and wraps them in the
- * <section>/<track> elements that need refs and event handlers.
+ * server-rendered logo list (plus its aria-hidden loop copy) as children.
+ *
+ * Motion rules (WCAG 2.2.2 Pause, Stop, Hide):
+ *  - a visible Pause/Play control stops the marquee completely;
+ *  - hovering or focusing inside the band slows it to a crawl;
+ *  - it never runs under prefers-reduced-motion, while off-screen, or while
+ *    the tab is hidden — no rAF loop burning frames nobody sees.
+ *
+ * Scroll velocity (the marquee speeds up as you scroll) is read from a
+ * passive scroll listener; no animation library is needed for that.
  */
 export function LogoCarouselTrack({ children }: { children: ReactNode }) {
+  const t = useTranslations("LogoCarousel");
   const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-  const offsetRef = useRef(0);
-  const velocityRef = useRef(0);
-  const currentSpeedRef = useRef(0.8);
-  const isPausedRef = useRef(false);
-  const rafRef = useRef(0);
+  const [paused, setPaused] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
+  const pausedRef = useRef(false);
+  const slowRef = useRef(false);
 
-  // Track scroll velocity via ScrollTrigger on the full page
   useEffect(() => {
-    const prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    if (prefersReduced) return;
+    pausedRef.current = paused;
+  }, [paused]);
 
-    const timer = setTimeout(() => {
-      const st = ScrollTrigger.create({
-        trigger: document.documentElement,
-        start: "top top",
-        end: "bottom bottom",
-        onUpdate: (self) => {
-          velocityRef.current = Math.abs(self.getVelocity());
-        },
-      });
-
-      return () => st.kill();
-    }, 100);
-
-    return () => clearTimeout(timer);
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const sync = () => setReducedMotion(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
   }, []);
 
-  const animate = useCallback(() => {
+  useEffect(() => {
+    const section = sectionRef.current;
     const track = trackRef.current;
-    if (!track) {
-      rafRef.current = requestAnimationFrame(animate);
-      return;
-    }
+    if (!section || !track || reducedMotion) return;
 
-    const baseSpeed = 0.8;
-    const velocityBoost = velocityRef.current * 0.00015;
-    const targetSpeed = isPausedRef.current ? 0.05 : baseSpeed + velocityBoost;
+    let offset = 0;
+    let speed = 0.8;
+    let velocity = 0;
+    let lastY = window.scrollY;
+    let lastT = performance.now();
+    let raf = 0;
+    let onScreen = false;
 
-    currentSpeedRef.current +=
-      (targetSpeed - currentSpeedRef.current) * 0.08;
+    const onScroll = () => {
+      const now = performance.now();
+      const dt = Math.max(1, now - lastT);
+      velocity = Math.min(4000, (Math.abs(window.scrollY - lastY) / dt) * 1000);
+      lastY = window.scrollY;
+      lastT = now;
+    };
 
-    offsetRef.current -= currentSpeedRef.current;
-    velocityRef.current *= 0.95;
+    const frame = () => {
+      const base = 0.8;
+      const target = pausedRef.current ? 0 : slowRef.current ? 0.05 : base + velocity * 0.00015;
+      speed += (target - speed) * 0.08;
+      velocity *= 0.95;
+      offset -= speed;
+      const half = track.scrollWidth / 2;
+      if (half > 0 && Math.abs(offset) >= half) offset += half;
+      track.style.transform = `translateX(${offset}px)`;
+      raf = requestAnimationFrame(frame);
+    };
 
-    const halfWidth = track.scrollWidth / 2;
-    if (halfWidth > 0 && Math.abs(offsetRef.current) >= halfWidth) {
-      offsetRef.current += halfWidth;
-    }
+    const start = () => {
+      if (!raf && onScreen && !document.hidden) raf = requestAnimationFrame(frame);
+    };
+    const stop = () => {
+      cancelAnimationFrame(raf);
+      raf = 0;
+    };
 
-    track.style.transform = `translateX(${offsetRef.current}px)`;
-    rafRef.current = requestAnimationFrame(animate);
-  }, []);
+    const io = new IntersectionObserver(([entry]) => {
+      onScreen = entry.isIntersecting;
+      if (onScreen) start();
+      else stop();
+    });
+    io.observe(section);
 
-  useEffect(() => {
-    const prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    if (prefersReduced) return;
+    const onVisibility = () => (document.hidden ? stop() : start());
+    document.addEventListener("visibilitychange", onVisibility);
+    window.addEventListener("scroll", onScroll, { passive: true });
 
-    rafRef.current = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(rafRef.current);
-  }, [animate]);
+    return () => {
+      stop();
+      io.disconnect();
+      document.removeEventListener("visibilitychange", onVisibility);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, [reducedMotion]);
 
   return (
     <section
       ref={sectionRef}
-      className="blueprint-grid-light py-12 overflow-hidden"
-      onMouseEnter={() => {
-        isPausedRef.current = true;
-      }}
-      onMouseLeave={() => {
-        isPausedRef.current = false;
-      }}
-      aria-label="Featured client logos"
+      className="blueprint-grid-light relative py-12 overflow-hidden"
+      onMouseEnter={() => (slowRef.current = true)}
+      onMouseLeave={() => (slowRef.current = false)}
+      onFocus={() => (slowRef.current = true)}
+      onBlur={() => (slowRef.current = false)}
+      aria-labelledby="logo-carousel-label"
     >
-      <div ref={trackRef} className="flex items-center gap-16 w-max">
+      <div className="mx-auto mb-8 flex max-w-[var(--content-max)] items-center justify-between gap-4 px-[var(--margin-page)] max-sm:px-6">
+        <p
+          id="logo-carousel-label"
+          className="font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2.5px] text-gray-dark"
+        >
+          {t("label")}
+        </p>
+        {!reducedMotion && (
+          <button
+            type="button"
+            onClick={() => setPaused((p) => !p)}
+            aria-pressed={paused}
+            aria-label={paused ? t("play") : t("pause")}
+            className="inline-flex h-11 w-11 items-center justify-center border border-gray-light text-gray-dark transition-colors duration-200 hover:border-blueprint-blue hover:text-blueprint-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blueprint-blue"
+          >
+            {paused ? <Play aria-hidden size={16} strokeWidth={1.5} /> : <Pause aria-hidden size={16} strokeWidth={1.5} />}
+          </button>
+        )}
+      </div>
+      <div ref={trackRef} className="flex items-center w-max">
         {children}
       </div>
     </section>

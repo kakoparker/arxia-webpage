@@ -24,7 +24,7 @@ import {
   videoPoster,
 } from "@/data/case-studies";
 import { getProject, getProjects } from "@/data/portfolio";
-import { alternatesFor, localizedUrl, SITE_URL } from "@/i18n/metadata";
+import { localizedUrl, pageMetadata, SITE_URL } from "@/i18n/metadata";
 
 interface PageProps {
   params: Promise<{ locale: string; slug: string }>;
@@ -42,18 +42,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const cs = getCaseStudy(slug, locale);
   if (!cs) return { title: "Not Found" };
   const path = `/portfolio/${slug}`;
-  return {
+  return pageMetadata({
+    locale,
+    path,
     title: cs.content.title,
     description: cs.content.metaDescription,
-    alternates: alternatesFor(locale, path),
-    openGraph: {
-      title: cs.content.title,
-      description: cs.content.metaDescription,
-      type: "article",
-      publishedTime: cs.publishedAt,
-      url: localizedUrl(locale, path),
-    },
-  };
+    type: "article",
+    publishedTime: cs.publishedAt,
+    ...(cs.video ? { image: { url: videoPoster(cs.video), alt: cs.content.title } } : {}),
+  });
 }
 
 /** Body copy, light background. */
@@ -186,7 +183,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
                 data-animate-index="1"
                 className="animate-on-scroll font-[family-name:var(--font-jetbrains)] text-[11px] uppercase leading-[1.6] tracking-[2.5px] text-gray-medium"
               >
-                <span className="text-accent-red/85">{t("annotation")}</span> · {c.eyebrow}
+                <span className="text-accent-red-bright">{t("annotation")}</span> · {c.eyebrow}
               </p>
               <h1
                 data-animate
@@ -513,7 +510,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
                 {c.cta.body}
               </p>
               <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-                <Button variant="primary" href="/#contact" className="border border-white/20">
+                <Button variant="primary" dark href={`/?topic=${encodeURIComponent(project.title)}#contact`}>
                   {t("contact")}
                 </Button>
                 <Link

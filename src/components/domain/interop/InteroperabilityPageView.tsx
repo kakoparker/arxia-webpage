@@ -11,7 +11,7 @@ import {
   JsonLd,
 } from "@/components/domain/DomainShared";
 import { ScrollProgressRail } from "@/components/ui/ScrollProgressRail";
-import { getDomainPage } from "@/data/domain-pages";
+import type { DomainPageProps } from "@/data/domain-pages";
 import { localizedUrl, SITE_URL } from "@/i18n/metadata";
 import { InteropHero } from "./InteropHero";
 import { InteropApproach } from "./InteropApproach";
@@ -32,13 +32,12 @@ const DOMAIN = "interoperability" as const;
  * the generic view uses. Every content section is fitScreen: one screen at
  * 100% zoom, down to a ~700px-tall viewport.
  */
-export function InteroperabilityPageView() {
+export function InteroperabilityPageView({ page, featuredProjects }: DomainPageProps) {
   const t = useTranslations("Interop");
   const tDomain = useTranslations("Domain");
   const tDomains = useTranslations("Domains");
   const locale = useLocale();
-  const page = getDomainPage(DOMAIN, locale);
-  if (!page?.layers) return null;
+  if (!page.layers) return null;
 
   const layers = page.layers;
   const trainings = page.categories.find((c) => c.name === "Trainings")?.items ?? [];
@@ -60,7 +59,7 @@ export function InteroperabilityPageView() {
     description: page.description,
     url: localizedUrl(locale, `/${DOMAIN}`),
     inLanguage: locale,
-    provider: { "@type": "Organization", name: "Arxia", url: SITE_URL },
+    provider: { "@id": `${SITE_URL}/#organization` },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: page.name,
@@ -100,7 +99,7 @@ export function InteroperabilityPageView() {
         <InteropEngage trainings={trainings} />
         <div id="featured">
           <DomainFeaturedCases
-            featuredCases={page.featuredCases}
+            projects={featuredProjects}
             portfolioCategory={page.portfolioCategory}
           />
         </div>

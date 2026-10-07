@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Card } from "@/components/ui/Card";
 import type { PortfolioProject } from "@/data/portfolio";
-import { caseStudyHref, hasCaseStudy } from "@/data/case-studies";
+import { caseStudyHref, hasCaseStudy } from "@/data/case-study-links";
 
 interface PortfolioCardProps {
   project: PortfolioProject;
@@ -38,7 +38,7 @@ export function PortfolioCard({ project }: PortfolioCardProps) {
       <p className="font-[family-name:var(--font-inter)] text-[12px] leading-[1.6] text-gray-dark flex-1">
         {project.description}
       </p>
-      <p className="mt-3 text-gray-medium" style={{ fontSize: "11px" }}>
+      <p className="mt-3 text-gray-dark" style={{ fontSize: "11px" }}>
         {project.client}
       </p>
       {isCaseStudy && (
@@ -53,6 +53,7 @@ export function PortfolioCard({ project }: PortfolioCardProps) {
   return (
     <Link
       href={caseStudyHref(project.slug)}
+      aria-label={project.title}
       className="block h-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blueprint-blue"
     >
       {card}

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { alternatesFor } from "@/i18n/metadata";
+import { pageMetadata } from "@/i18n/metadata";
 import { Link } from "@/i18n/navigation";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -18,11 +18,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "News" });
-  return {
-    title: t("metaTitle"),
+  return pageMetadata({
+    locale,
+    path: "/news",
+    title: t("seoTitle"),
     description: t("metaDescription"),
-    alternates: alternatesFor(locale, "/news"),
-  };
+  });
 }
 
 export default async function NewsIndexPage({
@@ -53,6 +54,7 @@ export default async function NewsIndexPage({
             <Link
               key={article.slug}
               href={`/news/${article.slug}`}
+              aria-label={article.title}
               className="block h-full group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blueprint-blue"
             >
               <Card className="h-full flex flex-col p-0 overflow-hidden">
@@ -65,13 +67,13 @@ export default async function NewsIndexPage({
                 </div>
                 <div className="flex flex-col flex-1 p-6 md:p-7">
                   <Tag>{article.date}</Tag>
-                  <h3 className="font-[family-name:var(--font-inter)] text-[16px] font-semibold leading-[1.3] text-blueprint-blue mt-4 mb-3">
+                  <h2 className="font-[family-name:var(--font-inter)] text-[16px] font-semibold leading-[1.3] text-blueprint-blue mt-4 mb-3">
                     {article.title}
-                  </h3>
+                  </h2>
                   <p className="font-[family-name:var(--font-inter)] text-[var(--text-small)] leading-[1.6] text-gray-dark mb-4 flex-1">
                     {article.excerpt}
                   </p>
-                  <span className="inline-flex items-center font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2px] text-accent-red/85 group-hover:text-accent-red transition-colors duration-200">
+                  <span className="inline-flex items-center font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2px] text-accent-red-deep group-hover:text-blueprint-blue transition-colors duration-200">
                     {t("readMore")}
                   </span>
                 </div>

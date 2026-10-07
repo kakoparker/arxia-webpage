@@ -19,14 +19,14 @@ export function LocaleSwitcher({ className = "" }: { className?: string }) {
 
   return (
     <div
-      className={`flex items-center gap-2 font-[family-name:var(--font-jetbrains)] text-[10px] uppercase tracking-[2px] ${className}`}
+      className={`flex items-center font-[family-name:var(--font-jetbrains)] text-[10px] uppercase tracking-[2px] ${className}`}
       role="group"
       aria-label={t("label")}
     >
       {routing.locales.map((locale, i) => {
         const isActive = locale === active;
         return (
-          <span key={locale} className="flex items-center gap-2">
+          <span key={locale} className="flex items-center">
             {i > 0 && <span aria-hidden className="text-gray-medium/40">/</span>}
             <button
               type="button"
@@ -38,7 +38,7 @@ export function LocaleSwitcher({ className = "" }: { className?: string }) {
                   router.replace(pathname, { locale });
                 })
               }
-              className={`transition-colors duration-200 disabled:cursor-default ${
+              className={`inline-flex items-center justify-center min-w-[44px] min-h-[44px] transition-colors duration-200 disabled:cursor-default ${
                 isActive
                   ? "text-white"
                   : "text-gray-medium hover:text-white cursor-pointer"

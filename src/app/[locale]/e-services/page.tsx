@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { setRequestLocale } from "next-intl/server";
-import { alternatesFor } from "@/i18n/metadata";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { pageMetadata } from "@/i18n/metadata";
 import { DomainPageView } from "@/components/domain/DomainPageView";
-import { getDomainPage } from "@/data/domain-pages";
+import { getDomainPage, getDomainPageProps } from "@/data/domain-pages";
 
 const DOMAIN = "e-services" as const;
 
@@ -15,11 +15,15 @@ export async function generateMetadata({
   const { locale } = await params;
   const page = getDomainPage(DOMAIN, locale);
   if (!page) return { title: "Not found" };
-  return {
-    title: page.name,
-    description: page.description,
-    alternates: alternatesFor(locale, `/${DOMAIN}`),
-  };
+  const t = await getTranslations({ locale, namespace: "DomainSeoTitle" });
+  // Optional search-snippet override when the hero description runs long.
+  const tDesc = await getTranslations({ locale, namespace: "DomainSeoDescription" });
+  return pageMetadata({
+    locale,
+    path: `/${DOMAIN}`,
+    title: t(DOMAIN),
+    description: tDesc.has(DOMAIN) ? tDesc(DOMAIN) : page.description,
+  });
 }
 
 export default async function EservicesDomainPage({
@@ -28,7 +32,8 @@ export default async function EservicesDomainPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  if (!getDomainPage(DOMAIN, locale)) notFound();
+  const props = getDomainPageProps(DOMAIN, locale);
+  if (!props) notFound();
   setRequestLocale(locale);
-  return <DomainPageView domain={DOMAIN} />;
+  return <DomainPageView domain={DOMAIN} {...props} />;
 }

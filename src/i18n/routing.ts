@@ -17,6 +17,11 @@ export const routing = defineRouting({
   // visitors opt into es/fr via the LocaleSwitcher. Keeps the default-locale
   // URLs stable for SEO and avoids surprising redirects.
   localeDetection: false,
+  // hreflang is emitted once, in each page's <head> via alternatesFor(), with
+  // the canonical origin. The middleware's `Link` header would be a second,
+  // request-host-derived cluster that can contradict it (and it wrongly
+  // advertises es/fr alternates for English-only pages like /privacy).
+  alternateLinks: false,
 });
 
 export type Locale = (typeof routing.locales)[number];
