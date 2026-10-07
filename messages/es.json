@@ -175,6 +175,10 @@
     "successNext": "Enviar otro mensaje"
   },
   "Footer": {
+    "emailLabel": "Correo",
+    "registeredOffice": "Domicilio social",
+    "tradeRegister": "Reg. Mercantil",
+    "vat": "IVA",
     "tagline": "Transformación digital e Infraestructura Pública Digital para gobiernos en todo el mundo.",
     "company": "Empresa",
     "services": "Servicios",

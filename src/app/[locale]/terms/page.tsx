@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/layout/LegalPage";
+import { SITE_HOST } from "@/i18n/metadata";
+import { company } from "@/data/company";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: "Terms of service for the arxia.com website.",
+  description: `Terms of service for the ${SITE_HOST} website.`,
   alternates: { canonical: "/terms" },
   robots: { index: true, follow: true },
 };
@@ -13,16 +15,16 @@ export default function TermsPage() {
     <LegalPage
       annotation="Legal"
       title="Terms of Service"
-      lastUpdated="2026-06-30"
-      intro="These Terms govern your access to and use of arxia.com. By using the site you agree to them."
+      lastUpdated="2026-10-07"
+      intro={`These Terms govern your access to and use of ${SITE_HOST}. By using the site you agree to them.`}
       sections={[
         {
           heading: "1. Acceptance",
-          body: `By accessing or using arxia.com you agree to these Terms. If you do not agree, please do not use the site.`,
+          body: `By accessing or using ${SITE_HOST} you agree to these Terms. If you do not agree, please do not use the site.`,
         },
         {
           heading: "2. Use of the Site",
-          body: `arxia.com is an informational marketing website. You may view its content and use the contact form to reach us. You may not interfere with the site's operation or security, attempt unauthorized access, scrape or harvest data at scale, or use the site to transmit unlawful, infringing, or abusive content.`,
+          body: `${SITE_HOST} is an informational marketing website. You may view its content and use the contact form to reach us. You may not interfere with the site's operation or security, attempt unauthorized access, scrape or harvest data at scale, or use the site to transmit unlawful, infringing, or abusive content.`,
         },
         {
           heading: "3. Intellectual Property",
@@ -54,7 +56,7 @@ export default function TermsPage() {
         },
         {
           heading: "10. Contact",
-          body: `Questions about these Terms: carlos.parker@arxia.com.`,
+          body: `Questions about these Terms: ${company.email.legal}.`,
         },
       ]}
     />

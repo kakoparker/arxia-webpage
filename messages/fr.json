@@ -175,6 +175,10 @@
     "successNext": "Envoyer un autre message"
   },
   "Footer": {
+    "emailLabel": "E-mail",
+    "registeredOffice": "Siège social",
+    "tradeRegister": "Reg. du commerce",
+    "vat": "TVA",
     "tagline": "Transformation numérique et Infrastructure Publique Numérique pour les gouvernements dans le monde entier.",
     "company": "Entreprise",
     "services": "Services",

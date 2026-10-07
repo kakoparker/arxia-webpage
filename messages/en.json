@@ -175,6 +175,10 @@
     "successNext": "Send another message"
   },
   "Footer": {
+    "emailLabel": "Email",
+    "registeredOffice": "Registered office",
+    "tradeRegister": "Trade Reg.",
+    "vat": "VAT",
     "tagline": "Digital transformation and Digital Public Infrastructure for governments worldwide.",
     "company": "Company",
     "services": "Services",

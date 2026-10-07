@@ -1,7 +1,8 @@
 import Image from "next/image";
-import { MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { company, registeredOfficeLine } from "@/data/company";
 
 // lucide-react 1.x dropped brand icons, so the LinkedIn mark is inline.
 // Uses currentColor so it inherits the footer's gray→white hover transition.
@@ -123,6 +124,16 @@ export function Footer() {
               {t("getInTouch")}
               <span aria-hidden>→</span>
             </Link>
+            <a
+              href={`mailto:${company.email.general}`}
+              className="mt-3 flex items-center gap-3 text-gray-medium text-[var(--text-small)] hover:text-white transition-colors duration-200"
+            >
+              <Mail size={16} strokeWidth={1.5} className="flex-shrink-0" aria-hidden />
+              <span>
+                <span className="sr-only">{t("emailLabel")}: </span>
+                {company.email.general}
+              </span>
+            </a>
 
             {/* Locations */}
             <div className="mt-6 space-y-4">
@@ -205,9 +216,19 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-gray-medium text-[var(--text-caption)]">
-            &copy; {new Date().getFullYear()} Arxia. {t("rights")}
-          </p>
+          <div className="text-gray-medium text-[var(--text-caption)] leading-[1.7] max-sm:text-center">
+            <p>
+              &copy; {new Date().getFullYear()} {company.legalName}. {t("rights")}
+            </p>
+            {/* Legal identity (EU e-commerce disclosure): registry IDs + registered office. */}
+            <p>
+              CUI {company.registrationCode} · {t("tradeRegister")} {company.tradeRegistryNumber} ·{" "}
+              {t("vat")} {company.vatNumber}
+            </p>
+            <p>
+              {t("registeredOffice")}: {registeredOfficeLine()}
+            </p>
+          </div>
           <div className="flex gap-6">
             <Link
               href="/privacy"

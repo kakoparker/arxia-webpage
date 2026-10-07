@@ -27,7 +27,9 @@ export function LegalPage({
       <Navbar />
       <main id="main">
         <SectionContainer mode="light">
-          <article className="max-w-[var(--content-narrow)] mx-auto">
+          {/* Legal copy is English-only; mark it so es/fr pages don't claim
+              English text is Spanish/French (screen readers, search). */}
+          <article lang="en" className="max-w-[var(--content-narrow)] mx-auto">
             <p
               className="text-accent-red uppercase mb-4"
               style={{
