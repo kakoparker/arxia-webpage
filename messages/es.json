@@ -26,7 +26,8 @@
       "dpi": "Infraestructura Pública Digital",
       "interoperability": "Interoperabilidad"
     },
-    "cta": "Contáctanos"
+    "cta": "Contáctanos",
+    "proof": "Desde {founded} · {projects} proyectos en más de {countries} países"
   },
   "Domains": {
     "annotation": "INFRAESTRUCTURA PÚBLICA DIGITAL Y TRANSFORMACIÓN DIGITAL",
