@@ -9,20 +9,34 @@
 
 The site is small and static. It has one input: the contact form. Its baseline was good: strict security headers, TLS 1.2/1.3 only, no secrets anywhere in git history, sandboxed SVG handling, escaped email HTML, a honeypot, and Vercel's adaptive bot and DDoS mitigation.
 
-Every issue in the site's code and in the GitHub/Vercel settings has been fixed (PR #11 plus settings changes made on 2026-10-07).
+Every issue in the site's code and in the GitHub/Vercel settings has been fixed and verified in production (PRs #11 and the follow-up, plus settings changes on 2026-10-07/08).
 
-What's left lives on infrastructure the site doesn't control: **DNS at the `arxia.com` nameservers and the legacy server at 172.104.235.38**. Those need DNS or hosting access and are listed in §4 with exact steps.
+What's left lives on infrastructure the site doesn't control: **the `arxia.com` DNS servers (which also serve the arxia.global zone) and the legacy server at 172.104.235.38**. Those items are gathered in the **arxia.com checklist** directly below.
 
 | Severity | Found | Fixed | Not fixed |
 |---|---|---|---|
 | High | 2 | 1 | 1 (S-14) |
 | Medium | 5 | 3 | 2 (S-13 DMARC, S-20 webmail cert) |
-| Low | 10 | 7 | 3 (S-15 CAA, S-18 dashboard check; S-16 deliberately deferred) |
+| Low | 11 | 9 | 2 (S-15 CAA; S-16 deliberately deferred) |
 | Info | 7 | 5 | 2 (`unsafe-inline` accepted; 2FA to confirm) |
 
 The most important code finding: **`next@16.2.9` carried 12 published advisories (CVSS up to 9.5)**, and nothing alerted us because Dependabot was off. Both are now fixed.
 
 The most important open finding: **arxia.com does not redirect to arxia.global**. It still serves the old TYPO3 site, with its **admin login exposed at `/typo3/`** (S-14).
+
+## Next steps: arxia.com checklist
+
+Everything below needs access to the `arxia.com` DNS (nameservers `ns1–4.arxia.com`, which also serve the arxia.global zone) or to the legacy cPanel server `172.104.235.38`. Nothing else is open.
+
+1. ☐ **Block the TYPO3 admin login, today** (S-14). In the hosting panel, restrict `https://www.arxia.com/typo3/` to office IPs (`.htaccess` `Require ip …`) or disable the backend.
+2. ☐ **Point arxia.com at Vercel** (S-14). At the arxia.com DNS: `arxia.com A 216.198.79.1` and `www CNAME cname.vercel-dns.com`. Leave the Google MX/TXT records and `send.` (Resend) untouched. Both domains are already on the Vercel project as 308 redirects to `www.arxia.global` (path kept), and the TYPO3-era `.html` redirects in `next.config.mjs` take it from there. Decide what `new.arxia.com` / `www.new.arxia.com` should do (redirect or remove).
+3. ☐ **Fix the webmail certificate** (S-20). In cPanel: SSL/TLS Status → select `mail.` and `webmail.arxia.global` → Run AutoSSL. Check that `curl https://webmail.arxia.global/` works without `-k`.
+4. ☐ **DMARC reporting, then enforcement** (S-13). Set `_dmarc.arxia.com` and `_dmarc.arxia.global` to `v=DMARC1; p=none; rua=mailto:<reports inbox>; fo=1`. After 2–4 weeks of clean reports, go to `p=quarantine`, then `p=reject`. Prune stale IPs from the arxia.com SPF.
+5. ☐ **CAA records** (S-15). On both zones: `0 issue "letsencrypt.org"` and `0 iodef "mailto:<security inbox>"`. On arxia.com, also allow any other issuer still in use until the old site is retired.
+6. ☐ **Plan the legacy host's retirement** (S-14). Decide where arxia.global mail lives, then decommission the TYPO3 site and cPanel. Until then, get an authorised assessment of its TYPO3/PHP/cPanel versions.
+7. ☐ **After 3 and 6:** revisit HSTS `includeSubDomains` (S-16).
+
+Not arxia.com, but only you can do it: **confirm 2FA** on GitHub (`github.com/settings/security`, account `kakoparker`). Daniel, as the Vercel ARXIA team Owner, should turn on *Require two-factor authentication* in the team settings (S-19).
 
 ## 2. Method and standards
 
@@ -33,7 +47,7 @@ The most important open finding: **arxia.com does not redirect to arxia.global**
 - **Production (passive):** response headers, testssl.sh 3.2, redirect behaviour, DNS/SPF/DKIM/DMARC/CAA, subdomain resolution. Seven deliberately invalid POSTs were sent to check the firewall; no email is possible from those.
 - **Platform:** Vercel project, env-var and domain configuration (read-only, via the Vercel connector); GitHub repo settings (read-only, via `gh api`).
 
-## 3. Fixed in code (PR #11) ✅
+## 3. Fixed in code (PR #11 and follow-up) ✅
 
 ### S-01 · High · Vulnerable framework and build dependencies (A03 Software Supply Chain Failures)
 `next@16.2.9` was affected by 12 advisories, including GHSA-2xp9-vwfh-vxw4 (RCE in the image optimiser, 9.5), GHSA-vcvr-r3jv-pc5j (RCE in `next/og`, 9.5), GHSA-p293-qw3h-jr36 (RCE on Windows hosts, 9.0), GHSA-6gpp-xcg3-4w24 (middleware bypass, 8.3) and GHSA-q8wf-6r8g-63ch (SVG image-optimiser DoS).
@@ -110,6 +124,11 @@ Not exploitable on Vercel, which overwrites the header, but the order was fragil
 
 **Fix:** both are untracked and gitignored. They remain in history; nothing sensitive was found there.
 
+### S-21 · Low · Email regex backtracks quadratically (A10 Mishandling of Exceptional Conditions)
+*Found by CodeQL (`js/polynomial-redos`) once code scanning was switched on.* The email pattern was tested before the 320-character length check. A crafted "address" of dots up to the 32 KB body cap costs about 0.5 s of CPU per request (measured: 16 KB → 112 ms, quadratic growth). CodeQL later marked its alert "fixed" only because the line moved; the stricter S-05 pattern has the same shape.
+
+**Fix (follow-up PR):** the length check now runs first, so the regex never sees more than 320 characters (< 0.1 ms).
+
 ## 4. Settings, infrastructure and owner items
 
 ### S-11 · Medium · Dependabot alerts and security updates were disabled ✅
@@ -121,6 +140,11 @@ This is the root cause of S-01 going unnoticed. It is free for every repository.
 - `.github/dependabot.yml` adds weekly npm and Actions update PRs.
 
 Two secret-scanning extras, *non-provider patterns* and *validity checks*, need the paid GitHub Secret Protection add-on. Optional: core secret scanning and push protection are already on.
+
+**First results (2026-10-08):** 0 Dependabot alerts, 0 secret-scanning alerts, 1 real CodeQL finding (S-21, fixed). Of Dependabot's first update PRs:
+- **Merged** after green CI and a preview check: `actions/checkout` and `actions/setup-node` v7 (still SHA-pinned) and the minor/patch npm group.
+- **Closed:** `@types/node` 26. Types follow the Node 24 runtime, and an ignore rule now skips those majors.
+- **Left open for a deliberate decision:** TypeScript 7 (new native compiler, no security impact).
 
 ### S-12 · Medium · `main` was unprotected, and a push deploys to production ✅
 **Done 2026-10-07:** repository ruleset *Protect main* on the default branch:
@@ -179,17 +203,17 @@ Revisit after S-20 is fixed and the S-14 migration is done. Preload is effective
 ### S-17 · Low · Preview deployments used the production recipients ✅
 **Done:** `CONTACT_RECIPIENTS` is set per environment in Vercel (sensitive). Production goes to both inboxes; Preview goes to Carlos only.
 
-### S-18 · Low · Firewall rate-limit rule couldn't be confirmed by testing ⏳ 1-minute check
-The Vercel API returns 404 for the firewall config, and production answers scripted requests with a JS challenge (`X-Vercel-Mitigated: challenge`). That is good protection, but it means the rule never got a chance to fire.
+### S-18 · Low · Firewall rate-limit rule couldn't be confirmed by testing ✅ verified
+The Vercel API returns 404 for the firewall config, and production challenges scripted clients, so the rule couldn't be tested with curl.
 
-**Step:** in the Vercel dashboard (ARXIA → arxia-webpage → Firewall), confirm *Contact form rate limit* is active. The code-level controls from S-02/S-03 now hold regardless.
+**Verified 2026-10-08** from a real browser session on www.arxia.global with seven empty submissions (no email possible). Requests 1–5 reached the route (400 `name`). Requests 6–7 were denied by the firewall (`429 Too Many Requests`, `x-vercel-mitigated: deny`). This also confirms that same-origin browser requests pass the S-02 guards in production.
 
 ### S-19 · Info · Decisions and accepted risks
 - **`'unsafe-inline'` in `script-src`** ➖ Accepted. A nonce-based CSP would force dynamic rendering of every page; the rest of the policy is strict.
 - **Recipient addresses in public source** ✅ Removed from code and docs, and moved to Vercel env vars. They remain in git history.
 - **`NEXT_LOCALE` cookie** ✅ No longer set (`localeCookie: false`, since detection was already off). The site now sets **no cookies**. **`Access-Control-Allow-Origin: *`** on static pages ➖ Public content, no credentials.
 - **`dangerouslyAllowSVG`** ✅ Removed. The 3 SVG logos render `unoptimized`, and the optimiser now refuses SVG (400, verified).
-- **Account 2FA** ⏳ Not readable with the current token scope. Confirm 2FA is on for GitHub `kakoparker` and every member of the Vercel ARXIA team.
+- **Account 2FA** ⏳ Neither API exposes it with the access available. Confirm it on GitHub `kakoparker`. Daniel (Vercel team Owner) should enable *Require two-factor authentication* for the ARXIA team.
 
 ## 5. Verification (after fixes)
 
@@ -213,6 +237,8 @@ The Vercel API returns 404 for the firewall config, and production answers scrip
 | Cookies set by the site | `NEXT_LOCALE` on every page | none |
 | SVG via `/_next/image` | served (sandboxed) | 400 refused; logos still render |
 | Recipients missing from env | silent fallback to hard-coded inboxes | 503 `unavailable` + server log |
+| 16 KB dotted string as email (CPU) | ~112 ms in regex | rejected by length check first |
+| Firewall rule, live (browser, 7 empty posts) | not verifiable | 5 × 400, then 429 `deny` |
 | `typecheck` + `build` | pass | pass (109 static pages) |
 
 ## 6. Controls already in place (keep)
