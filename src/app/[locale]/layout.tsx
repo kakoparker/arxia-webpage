@@ -161,7 +161,7 @@ export default async function LocaleLayout({
             parts (.domain-iso-*, .interop-fig-*) wait on the same `.visible`
             flag, so they are resolved here too. */}
         <noscript>
-          <style>{`.animate-on-scroll{opacity:1!important;transform:none!important}.accent-line-animate{width:48px!important}.domain-iso-dim,.domain-iso-plate,.domain-iso-node,.domain-iso-spine,.interop-fig-fade,.interop-fig-rise{opacity:1!important;transform:none!important}`}</style>
+          <style>{`.animate-on-scroll{opacity:1!important;transform:none!important}.accent-line-animate{width:48px!important}.domain-iso-dim,.domain-iso-plate,.domain-iso-node,.domain-iso-spine,.interop-fig-fade,.interop-fig-rise,.eproc-bar{opacity:1!important;transform:none!important}`}</style>
         </noscript>
         <script
           type="application/ld+json"

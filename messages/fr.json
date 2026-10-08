@@ -309,6 +309,110 @@
       "engage": "Démarche"
     }
   },
+  "Eproc": {
+    "h1": "Marchés publics électroniques, de bout en bout.",
+    "lede": "De la réforme de la commande publique à une plateforme à laquelle chaque acheteur se fie : un seul partenaire, tout le programme.",
+    "body": "La commande publique dématérialisée de la première demande d'achat au dernier paiement, chaque étape étant traçable et auditable. Nous commençons par les règles et les personnes, puis nous déployons ProcessPlayer, notre propre plateforme.",
+    "proof": "ProcessPlayer · plus de {orgs} organismes publics · en production depuis {year}",
+    "programmeNav": "Les trois volets du programme",
+    "figCaption": "Fig. 00 · Un programme de dématérialisation · réforme, personnes, plateforme",
+    "axis": {
+      "diagnose": "Diagnostic",
+      "goLive": "Mise en service",
+      "handover": "Transfert"
+    },
+    "runsIt": "L'institution l'exploite",
+    "approach": {
+      "annotation": "L'approche",
+      "heading": "Pourquoi la réforme d'abord.",
+      "lead": "Une plateforme ne fait que numériser le processus que vous avez déjà.",
+      "problem": "La plupart des programmes de dématérialisation commencent par acheter un logiciel. La loi, les procédures et les personnes viennent après : le système automatise les habitudes papier et les acheteurs le contournent.",
+      "answer": "Arxia procède dans l'autre sens : réformer les règles et le processus, préparer celles et ceux qui le feront vivre, puis déployer la plateforme. Un seul programme, pour que rien ne tombe entre deux contrats.",
+      "oneProgramme": "Un seul programme"
+    },
+    "track": {
+      "position": "Volet {n} sur 3"
+    },
+    "fig": {
+      "requester": "Demandeur",
+      "procurement": "Achats",
+      "finance": "Finances",
+      "need": "Besoin",
+      "approve": "Valider",
+      "plan": "Plan",
+      "contract": "Contrat",
+      "pay": "Payer",
+      "trainers": "Formateurs locaux",
+      "institution": "Institution",
+      "officers": "Acheteurs",
+      "suppliers": "Fournisseurs",
+      "reach": "Portée",
+      "request": "Demande",
+      "order": "Commande",
+      "payment": "Paiement",
+      "portal": "Plateforme nationale",
+      "auditTrail": "Piste d'audit"
+    },
+    "inUse": {
+      "annotation": "En production",
+      "heading": "ProcessPlayer en service.",
+      "body": "Conçu et éprouvé en Roumanie, où des mairies, des universités, des hôpitaux, des aéroports et des institutions culturelles y gèrent leurs achats. Il peut être déployé dans n'importe quel pays, configuré selon son droit et ses procédures de commande publique.",
+      "orgs": "Organismes publics",
+      "requests": "Demandes d'achat",
+      "planLines": "Lignes du plan d'achats",
+      "orders": "Commandes fournisseurs",
+      "source": "Source : données de production ProcessPlayer, {date}",
+      "testimonials": "Ce qu'en disent nos clients",
+      "translated": "Traduit du roumain",
+      "clients": "Quelques-uns de nos clients",
+      "visit": "Visiter processplayer.eu",
+      "newTab": "s'ouvre dans un nouvel onglet",
+      "quotes": {
+        "umfst": {
+          "role": "Directeur administratif",
+          "quote": "Avec ProcessPlayer, il n'y a pas eu un seul document, paiement ou ordonnancement sans sa justification et ses pièces justificatives."
+        },
+        "sibiuAirport": {
+          "role": "Service des achats",
+          "quote": "ProcessPlayer simplifie le processus d'achat et le rend entièrement traçable, des demandes d'achat jusqu'aux contrats. Nous le recommandons vivement !"
+        },
+        "sibiuHospital": {
+          "role": "Directrice administrative",
+          "quote": "Toutes les informations au même endroit : documents, plan d'achats, commandes, contrats. En somme, une efficacité maximale !"
+        }
+      }
+    },
+    "engage": {
+      "annotation": "Notre engagement",
+      "heading": "Tout le programme, ou le volet dont vous avez besoin.",
+      "body": "Faites appel à Arxia du diagnostic au transfert, ou sollicitez-nous là où vous avez besoin de profondeur : une réforme, un programme de formation ou le déploiement de la plateforme.",
+      "assessTitle": "Évaluer",
+      "assessBody": "Un diagnostic du système tel qu'il est : ce que permet la loi, ce que fait le processus, ce qui passe en premier.",
+      "reformTitle": "Réformer",
+      "reformBody": "Stratégie, règles et processus repensés, validés avant toute configuration.",
+      "deployTitle": "Déployer",
+      "deployBody": "Acheteurs formés, fournisseurs embarqués et ProcessPlayer en service, institution par institution.",
+      "sustainTitle": "Pérenniser",
+      "sustainBody": "Formateurs locaux, support et évolution de la plateforme, pour que l'institution l'exploite.",
+      "tracksLabel": "Volets",
+      "who": "Avec qui nous travaillons",
+      "whoRegulators": "Régulateurs et autorités de la commande publique",
+      "whoGovernment": "Administrations centrales et locales",
+      "whoUniversities": "Universités et hôpitaux",
+      "whoSoe": "Aéroports et entreprises publiques",
+      "whoPartners": "Programmes des partenaires au développement",
+      "delivery": "Déploiement",
+      "deliveryBody": "Déployable dans n'importe quel pays et configuré selon son droit et ses procédures de commande publique. En SaaS ou sur site."
+    },
+    "rail": {
+      "approach": "Approche",
+      "reform": "Réforme",
+      "people": "Personnes",
+      "platform": "Plateforme",
+      "inUse": "En service",
+      "engage": "Engagement"
+    }
+  },
   "Errors": {
     "label500": "Erreur · 500",
     "heading500": "La compilation a échoué quelque part.",
@@ -336,13 +440,14 @@
   "DomainSeoTitle": {
     "interoperability": "Interopérabilité et X-Road pour l'État",
     "data-governance": "Gouvernance des données du secteur public",
-    "e-procurement": "Marchés publics électroniques",
+    "e-procurement": "Dématérialisation des marchés publics",
     "e-invoicing": "Facturation électronique pour l'État",
     "web-portals": "Portails web gouvernementaux",
     "agentic-state": "État agentique : l'IA au service de l'État",
     "e-services": "Services publics numériques"
   },
   "DomainSeoDescription": {
-    "data-governance": "Gouvernance des données du secteur public : cadres de gouvernance, consentement, protection des données, modèles sémantiques et évaluations de maturité."
+    "data-governance": "Gouvernance des données du secteur public : cadres de gouvernance, consentement, protection des données, modèles sémantiques et évaluations de maturité.",
+    "e-procurement": "Dématérialisation des marchés publics de bout en bout : réforme, formation des acheteurs publics et ProcessPlayer, plateforme de 50+ organismes publics."
   }
 }

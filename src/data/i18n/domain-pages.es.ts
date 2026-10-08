@@ -6,6 +6,7 @@
 
 type OfferOverlay = Record<string, { title?: string; description?: string }>;
 type LayerId = "L03" | "L02" | "L01";
+type TrackId = "01" | "02" | "03";
 
 export interface DomainPageOverlay {
   categories?: Record<
@@ -22,6 +23,19 @@ export interface DomainPageOverlay {
       {
         name?: string;
         dimension?: string;
+        promise?: string;
+        scope?: string;
+        items?: OfferOverlay;
+      }
+    >
+  >;
+  /** e-Procurement only: its programme tracks, keyed by track id. */
+  tracks?: Partial<
+    Record<
+      TrackId,
+      {
+        name?: string;
+        kind?: string;
         promise?: string;
         scope?: string;
         items?: OfferOverlay;
@@ -165,37 +179,87 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
     },
   },
   "e-procurement": {
-    categories: {
-      Consultancy: {
-        tagline:
-          "Estrategia, estándares y alineación regulatoria para la compra pública.",
+    tracks: {
+      "01": {
+        name: "Reforma",
+        kind: "Consultoría",
+        promise: "Ordenar las reglas y el proceso antes de escribir una sola línea de código.",
+        scope: "Diagnóstico · estrategia · normativa · rediseño de procesos",
         items: {
+          "procurement-assessment": {
+            title: "Diagnóstico del sistema de contratación",
+            description:
+              "Un diagnóstico del marco legal, las instituciones, los procesos y los sistemas, para que la reforma empiece donde más importa.",
+          },
           "eprocurement-strategy": {
-            title: "Estrategia de contratación pública electrónica, estándares y alineación normativa",
+            title: "Estrategia y hoja de ruta de contratación electrónica",
             description:
-              "Trabajo de estrategia nacional de contratación: desde la alineación regulatoria y la adopción de estándares hasta el diseño de la gestión del cambio para las autoridades de contratación.",
+              "Una estrategia nacional o institucional, por etapas y presupuestada, que las autoridades de contratación pueden ejecutar paso a paso.",
+          },
+          "regulatory-alignment": {
+            title: "Alineación normativa y de estándares",
+            description:
+              "Reglas, procedimientos y estándares de datos alineados con las buenas prácticas internacionales, para que la plataforma se apoye en una base firme.",
+          },
+          "process-redesign": {
+            title: "Rediseño de los procesos de contratación",
+            description:
+              "Procesos mapeados y simplificados desde la solicitud de compra hasta el pago, antes de configurar nada en un sistema.",
           },
         },
       },
-      Services: {
-        tagline:
-          "Entrega completa de plataformas.",
+      "02": {
+        name: "Personas",
+        kind: "Desarrollo de capacidades",
+        promise: "Preparar a quienes operarán el sistema, antes de su puesta en marcha.",
+        scope: "Funcionarios · formadores · proveedores · gestión del cambio",
         items: {
-          "eproc-implementation": {
-            title: "Implementación integral de plataformas de contratación pública electrónica",
+          "procurement-officer-training": {
+            title: "Formación para funcionarios de compras",
             description:
-              "Despliegue completo de sistemas de contratación pública (planificación, licitación, evaluación, adjudicación y gestión de contratos) con integración a los sistemas financieros y de auditoría.",
+              "Formación práctica en los nuevos procedimientos y en la plataforma, construida sobre los expedientes de contratación de su día a día.",
+          },
+          "local-trainers": {
+            title: "Formadores locales y capacidad institucional",
+            description:
+              "Formadores y equipos locales preparados para transmitir el conocimiento, de modo que la capacidad siga creciendo tras el traspaso.",
+          },
+          "supplier-engagement": {
+            title: "Acompañamiento a proveedores",
+            description:
+              "Difusión y orientación que incorporan a los proveedores, pequeñas empresas incluidas, a los procedimientos electrónicos.",
+          },
+          "change-management": {
+            title: "Gestión del cambio y soporte",
+            description:
+              "Implicación de los responsables y soporte diario para que un sistema nuevo se convierta en una nueva forma de trabajar.",
           },
         },
       },
-      Products: {
-        tagline:
-          "Plataformas propias que evolucionamos.",
+      "03": {
+        name: "Plataforma",
+        promise: "Cada paso digital, cada documento justificado, cada importe trazable.",
+        scope: "Solicitudes · plan de compras · contratos · auditoría",
         items: {
-          "processplayer": {
-            title: "ProcessPlayer",
+          "purchase-requests": {
+            title: "Solicitudes de compra digitales",
             description:
-              "Plataforma de contratación pública de ciclo completo: planificación, ejecución, acuerdos marco y gestión de contratos. Más de 50 organizaciones, más de 30.000 referencias, en SaaS y on-premise.",
+              "Necesidades registradas, justificadas y aprobadas en línea, con firma electrónica en lugar de expedientes en papel.",
+          },
+          "procurement-plan": {
+            title: "Plan de compras y seguimiento presupuestario",
+            description:
+              "Cantidades e importes controlados frente al plan anual de contratación y los compromisos presupuestarios, en tiempo real.",
+          },
+          "contracts-suppliers": {
+            title: "Contratos, pedidos y proveedores",
+            description:
+              "Contratos, acuerdos marco y pedidos a proveedores seguidos hasta el último pago.",
+          },
+          "audit-reporting": {
+            title: "Informes listos para auditoría",
+            description:
+              "Informes para responsables y auditores de todos los niveles, con cada documento justificado y registrado.",
           },
         },
       },

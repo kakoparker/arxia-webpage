@@ -1,35 +1,34 @@
 "use client";
 
-import { Boxes, Gauge, Grid3x3, ShieldCheck } from "lucide-react";
+import { Gauge, Rocket, Scale, ShieldCheck } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { SectionContainer } from "@/components/ui/SectionContainer";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import type { ServiceItem, StackLayerId } from "@/data/domain-pages";
 import { CompactSectionHeader } from "@/components/domain/CompactSectionHeader";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import type { ProgrammeTrackId } from "@/data/domain-pages";
 
 /**
- * The four phases, and which layers of the stack each one works on. The chips
- * are what make "or at any single layer" concrete: an assessment is a
- * governance job, a build is semantics plus exchange, and so on.
+ * The four steps, and which tracks each one works on. The chips make "or the
+ * track you need" concrete: an assessment is a reform job, a deployment is
+ * people plus platform, and so on.
  */
-const STEPS: { key: "assess" | "design" | "build" | "sustain"; icon: LucideIcon; layers: StackLayerId[] }[] = [
-  { key: "assess", icon: Gauge, layers: ["L03"] },
-  { key: "design", icon: Grid3x3, layers: ["L03", "L02", "L01"] },
-  { key: "build", icon: Boxes, layers: ["L02", "L01"] },
-  { key: "sustain", icon: ShieldCheck, layers: ["L03", "L02"] },
+const STEPS: { key: "assess" | "reform" | "deploy" | "sustain"; icon: LucideIcon; tracks: ProgrammeTrackId[] }[] = [
+  { key: "assess", icon: Gauge, tracks: ["01"] },
+  { key: "reform", icon: Scale, tracks: ["01", "02"] },
+  { key: "deploy", icon: Rocket, tracks: ["02", "03"] },
+  { key: "sustain", icon: ShieldCheck, tracks: ["02", "03"] },
 ];
 
-// Only sectors the portfolio actually evidences.
-const SECTORS = ["sectorSocial", "sectorFinance", "sectorMinerals", "sectorMigration"] as const;
+const WHO = ["whoRegulators", "whoGovernment", "whoUniversities", "whoSoe", "whoPartners"] as const;
 
 /**
- * How we engage: the lifecycle on a rail, ending on the one red node (the
- * nation owning what was built), then the sectors and the capacity-building
- * offer that the Sustain step relies on.
+ * How we engage: the steps on a rail, ending on the one red node (the
+ * institution running it), then who we work with and how the platform is
+ * delivered. Same drawing as the interop page's engage section.
  */
-export function InteropEngage({ trainings }: { trainings: ServiceItem[] }) {
-  const t = useTranslations("Interop.engage");
+export function EprocEngage() {
+  const t = useTranslations("Eproc.engage");
   const ref = useScrollAnimation();
 
   return (
@@ -80,9 +79,9 @@ export function InteropEngage({ trainings }: { trainings: ServiceItem[] }) {
                   >
                     {t(`${step.key}Body`)}
                   </p>
-                  <p className="sr-only">{t("layersLabel")}:</p>
+                  <p className="sr-only">{t("tracksLabel")}:</p>
                   <ul className="mt-3 flex flex-wrap gap-1.5">
-                    {step.layers.map((id) => (
+                    {step.tracks.map((id) => (
                       <li
                         key={id}
                         className="border border-white/20 px-2 py-[3px] font-[family-name:var(--font-jetbrains)] text-[10px] tracking-[1px] text-gray-light"
@@ -104,10 +103,10 @@ export function InteropEngage({ trainings }: { trainings: ServiceItem[] }) {
         >
           <div className="lg:col-span-7">
             <p className="font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2.5px] text-gray-medium">
-              {t("sectors")}
+              {t("who")}
             </p>
             <ul className="mt-3 flex flex-wrap gap-2">
-              {SECTORS.map((key) => (
+              {WHO.map((key) => (
                 <li
                   key={key}
                   className="border border-white/15 px-3 py-1.5 text-gray-light"
@@ -118,30 +117,17 @@ export function InteropEngage({ trainings }: { trainings: ServiceItem[] }) {
               ))}
             </ul>
           </div>
-          {trainings.length > 0 && (
-            <div className="lg:col-span-5">
-              <p className="font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2.5px] text-gray-medium">
-                {t("capacity")}
-              </p>
-              {trainings.map((item) => (
-                <div key={item.slug} className="mt-3">
-                  <h3
-                    className="font-semibold text-white"
-                    style={{ fontFamily: "var(--font-primary)", fontSize: "15px", lineHeight: 1.35 }}
-                  >
-                    {item.title}
-                  </h3>
-                  {/* Teaser, clamped: the full text belongs to the offer. */}
-                  <p
-                    className="mt-1.5 line-clamp-2 text-gray-medium"
-                    style={{ fontFamily: "var(--font-primary)", fontSize: "13.5px", lineHeight: 1.55 }}
-                  >
-                    {item.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          )}
+          <div className="lg:col-span-5">
+            <p className="font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2.5px] text-gray-medium">
+              {t("delivery")}
+            </p>
+            <p
+              className="mt-3 text-gray-light"
+              style={{ fontFamily: "var(--font-primary)", fontSize: "15px", lineHeight: 1.6 }}
+            >
+              {t("deliveryBody")}
+            </p>
+          </div>
         </div>
       </div>
     </SectionContainer>

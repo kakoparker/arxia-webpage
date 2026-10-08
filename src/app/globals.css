@@ -594,6 +594,53 @@ html {
 }
 
 /* ============================================
+   E-PROCUREMENT PAGE (/e-procurement)
+   Fig. 00 is the programme as a timeline: each track's bar draws in from
+   its start date, and a track row lights its bar on hover/focus. The track
+   figures reuse the interop classes above, plus the audit-trail packet.
+   Same contract: entrance states key off `.animate-on-scroll.visible`.
+   ============================================ */
+.eproc-bar {
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background-color: rgba(255, 255, 255, 0.04);
+  /* Drafting hatch, as on a section cut. */
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0 1px,
+    transparent 1px 7px
+  );
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 720ms var(--ease-default),
+              border-color var(--duration-normal) var(--ease-default),
+              background-color var(--duration-normal) var(--ease-default);
+}
+.animate-on-scroll.visible .eproc-bar {
+  transform: scaleX(1);
+}
+.eproc-track-link:hover .eproc-bar,
+.eproc-track-link:focus-visible .eproc-bar {
+  border-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255, 0.14);
+}
+
+/* Fig. 03: a record runs the audit trail, request to payment. */
+.eproc-trail-packet {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.animate-on-scroll.visible .eproc-trail-packet {
+  animation: eproc-trail-flow 5s var(--ease-default) 1.8s infinite;
+}
+@keyframes eproc-trail-flow {
+  0%   { transform: translateX(0);     opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateX(316px); opacity: 0; }
+}
+
+/* ============================================
    PORTFOLIO CARD
    Rests white, flips to Blueprint Blue on hover / keyboard focus. Every
    colour in the card lives here, resting state included, so the inversion
@@ -800,12 +847,14 @@ html {
     transform: none !important;
   }
   .domain-iso-packet,
-  .interop-bus-packet {
+  .interop-bus-packet,
+  .eproc-trail-packet {
     animation: none !important;
     opacity: 0 !important;
   }
   .interop-fig-fade,
-  .interop-fig-rise {
+  .interop-fig-rise,
+  .eproc-bar {
     opacity: 1 !important;
     transform: none !important;
   }

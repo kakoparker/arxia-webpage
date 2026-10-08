@@ -139,37 +139,87 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
     },
   },
   "e-procurement": {
-    categories: {
-      Consultancy: {
-        tagline:
-          "Stratégie, normes et alignement réglementaire pour l'achat public.",
+    tracks: {
+      "01": {
+        name: "Réforme",
+        kind: "Conseil",
+        promise: "Fixer les règles et le processus avant d'écrire une seule ligne de code.",
+        scope: "Diagnostic · stratégie · réglementation · refonte des processus",
         items: {
+          "procurement-assessment": {
+            title: "Diagnostic du système de commande publique",
+            description:
+              "Un diagnostic du cadre juridique, des institutions, des processus et des systèmes, pour que la réforme commence là où elle compte le plus.",
+          },
           "eprocurement-strategy": {
-            title: "Stratégie de commande publique électronique, standards et alignement réglementaire",
+            title: "Stratégie et feuille de route de dématérialisation",
             description:
-              "Travail de stratégie nationale de commande publique : de l'alignement réglementaire et l'adoption de standards à la conception de la conduite du changement pour les autorités de commande.",
+              "Une stratégie nationale ou institutionnelle, phasée et chiffrée, que les autorités de la commande publique peuvent mettre en œuvre pas à pas.",
+          },
+          "regulatory-alignment": {
+            title: "Alignement réglementaire et normatif",
+            description:
+              "Règles, procédures et standards de données alignés sur les bonnes pratiques internationales, pour que la plateforme repose sur des bases solides.",
+          },
+          "process-redesign": {
+            title: "Refonte des processus d'achat",
+            description:
+              "Des processus cartographiés et simplifiés, de la demande d'achat au paiement, avant toute configuration dans un système.",
           },
         },
       },
-      Services: {
-        tagline:
-          "Livraison complète de plateformes.",
+      "02": {
+        name: "Personnes",
+        kind: "Renforcement des capacités",
+        promise: "Préparer celles et ceux qui feront vivre le système, avant sa mise en service.",
+        scope: "Acheteurs · formateurs · fournisseurs · conduite du changement",
         items: {
-          "eproc-implementation": {
-            title: "Mise en œuvre intégrale de plateformes de commande publique électronique",
+          "procurement-officer-training": {
+            title: "Formation des acheteurs publics",
             description:
-              "Déploiement complet des systèmes de commande publique (planification, appel d'offres, évaluation, attribution et gestion des contrats) avec intégration aux systèmes financiers et d'audit.",
+              "Une formation pratique aux nouvelles procédures et à la plateforme, construite autour des dossiers d'achat du quotidien.",
+          },
+          "local-trainers": {
+            title: "Formateurs locaux et capacité institutionnelle",
+            description:
+              "Des formateurs et des équipes locales prêts à transmettre le savoir, pour que la capacité continue de croître après le transfert.",
+          },
+          "supplier-engagement": {
+            title: "Accompagnement des fournisseurs",
+            description:
+              "Sensibilisation et accompagnement qui amènent les fournisseurs, petites entreprises comprises, vers les procédures électroniques.",
+          },
+          "change-management": {
+            title: "Conduite du changement et support",
+            description:
+              "L'engagement des dirigeants et un support au quotidien, pour qu'un nouveau système devienne une nouvelle façon de travailler.",
           },
         },
       },
-      Products: {
-        tagline:
-          "Des plateformes que nous possédons et faisons évoluer.",
+      "03": {
+        name: "Plateforme",
+        promise: "Chaque étape numérique, chaque document justifié, chaque montant traçable.",
+        scope: "Demandes · plan d'achats · contrats · audit",
         items: {
-          "processplayer": {
-            title: "ProcessPlayer",
+          "purchase-requests": {
+            title: "Demandes d'achat dématérialisées",
             description:
-              "Plateforme de commande publique sur tout le cycle : planification, exécution, accords-cadres et gestion des contrats. Plus de 50 organisations, plus de 30 000 références, en SaaS et on-premise.",
+              "Des besoins exprimés, justifiés et approuvés en ligne, avec signature électronique à la place des dossiers papier.",
+          },
+          "procurement-plan": {
+            title: "Plan d'achats et suivi budgétaire",
+            description:
+              "Quantités et montants suivis en temps réel par rapport au plan annuel d'achats et aux engagements budgétaires.",
+          },
+          "contracts-suppliers": {
+            title: "Contrats, commandes et fournisseurs",
+            description:
+              "Contrats, accords-cadres et commandes fournisseurs suivis jusqu'au dernier paiement.",
+          },
+          "audit-reporting": {
+            title: "Rapports prêts pour l'audit",
+            description:
+              "Des rapports pour les responsables et les auditeurs à tous les niveaux, chaque document étant justifié et archivé.",
           },
         },
       },

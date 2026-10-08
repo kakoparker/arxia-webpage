@@ -1,14 +1,15 @@
 /**
- * Section header for the interoperability page: annotation, heading, the
- * 48×3 red accent line, optional body.
+ * Compact section header: annotation, heading, the 48×3 red accent line,
+ * optional body. Used by the flagship domain pages (/interoperability,
+ * /e-procurement) and the case-study pages.
  *
  * Differs from the shared `SectionHeader` in one deliberate way: the
  * annotation is never red. Red is 4.0:1 on white, so at 11px it is accent,
  * not type; the line under the heading carries the red instead. Sizes are the
- * compact fitScreen rhythm (cf. `DomainsGrid`), because every section on this
- * page has to land on one screen.
+ * compact fitScreen rhythm (cf. `DomainsGrid`), because every section on these
+ * pages has to land on one screen.
  */
-export function InteropHeader({
+export function CompactSectionHeader({
   annotation,
   heading,
   body,

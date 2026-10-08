@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { pageMetadata } from "@/i18n/metadata";
-import { DomainPageView } from "@/components/domain/DomainPageView";
+import { EprocurementPageView } from "@/components/domain/eproc/EprocurementPageView";
 import { getDomainPage, getDomainPageProps } from "@/data/domain-pages";
 
 const DOMAIN = "e-procurement" as const;
@@ -35,5 +35,6 @@ export default async function EprocurementDomainPage({
   const props = getDomainPageProps(DOMAIN, locale);
   if (!props) notFound();
   setRequestLocale(locale);
-  return <DomainPageView domain={DOMAIN} {...props} />;
+  // Its own view, organised around the programme tracks.
+  return <EprocurementPageView {...props} />;
 }
