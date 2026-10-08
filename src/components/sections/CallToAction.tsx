@@ -225,7 +225,9 @@ export function CallToAction() {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} aria-label={t("ariaLabel")} className="space-y-5" noValidate>
+                <form method="post" onSubmit={handleSubmit} aria-label={t("ariaLabel")} className="space-y-5" noValidate>
+                  {/* method="post": if the form is submitted before hydration, the
+                      browser must not put the visitor's details in the URL. */}
                   {/* Honeypot — visually hidden, autofill-suppressed. Bots fill it;
                       the API drops the submission silently when it's non-empty. */}
                   <div

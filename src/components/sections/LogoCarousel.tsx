@@ -28,6 +28,9 @@ function LogoSet({ hidden = false }: { hidden?: boolean }) {
               style={{ height: `${h}px`, width: "auto" }}
               className="w-auto max-w-[200px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
               loading="lazy"
+              // Vector logos are served as-is: they are already small and
+              // sharp at any size, and the image optimizer never parses SVG.
+              unoptimized={logo.src.endsWith(".svg")}
             />
           </li>
         );

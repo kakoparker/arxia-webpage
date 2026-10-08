@@ -169,7 +169,7 @@ export default async function LocaleLayout({
             __html: JSON.stringify([
               organizationSchema,
               { ...websiteSchema, inLanguage: locale },
-            ]),
+            ]).replace(/</g, "\\u003c"),
           }}
         />
         {plausibleDomain && (

@@ -89,7 +89,7 @@ export default async function NewsArticlePage({ params }: PageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify([articleSchema, breadcrumbSchema]),
+          __html: JSON.stringify([articleSchema, breadcrumbSchema]).replace(/</g, "\\u003c"),
         }}
       />
       <main id="main">

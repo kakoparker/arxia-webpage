@@ -4,13 +4,6 @@ import { SITE_HOST } from "@/i18n/metadata";
 
 export const runtime = "nodejs";
 
-// Both recipients confirmed by Carlos for v1. Override via CONTACT_RECIPIENTS
-// (comma-separated) when staging or testing without spamming the real inboxes.
-const DEFAULT_RECIPIENTS = [
-  "carlos.parker@arxia.com",
-  "daniel.homorodean@arxia.com",
-];
-
 // Per-IP rate limit, in memory. NOTE: on Vercel this is per function
 // instance, so it only blunts bursts that hit one warm instance. The durable
 // limit belongs in a Vercel Firewall rate-limit rule on POST /api/contact
@@ -36,7 +29,14 @@ function rateLimit(ip: string): boolean {
   return true;
 }
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+// One plain address only: no separators, quotes or brackets, so the value
+// used as Reply-To can't expand into an address list.
+const EMAIL_RE = /^[^\s@,;:<>()[\]\\"]+@[^\s@,;:<>()[\]\\"]+\.[^\s@,;:<>()[\]\\"]+$/;
+
+// The largest legitimate payload (5,000-character message of 4-byte chars
+// plus name and email) is well under this. Anything bigger is rejected
+// before it is buffered or parsed.
+const MAX_BODY_BYTES = 32 * 1024;
 
 /**
  * Stable error codes. The client maps them to localized copy, so visitors on
@@ -59,6 +59,46 @@ function fail(code: ErrorCode, status: number) {
 /** Strip control characters (incl. CR/LF) so user input can't shape headers. */
 function headerSafe(s: string, max = 120) {
   return s.replace(/[\u0000-\u001f\u007f]+/g, " ").trim().slice(0, max);
+}
+
+/**
+ * Browser requests from another site are refused (CSRF): otherwise any page
+ * could make its visitors' browsers post here, each from a different IP,
+ * past the per-IP limits. Browsers always send Sec-Fetch-Site and/or Origin
+ * on a POST; non-browser clients that omit both are left to the firewall.
+ */
+function isCrossSite(req: Request) {
+  const site = req.headers.get("sec-fetch-site");
+  if (site && site !== "same-origin") return true;
+  const origin = req.headers.get("origin");
+  if (!origin) return false;
+  const host = req.headers.get("x-forwarded-host") ?? req.headers.get("host");
+  try {
+    return new URL(origin).host !== host;
+  } catch {
+    return true;
+  }
+}
+
+/** Read the body as text, giving up once it exceeds `max` bytes. */
+async function readBody(req: Request, max: number): Promise<string | null> {
+  const declared = Number(req.headers.get("content-length"));
+  if (declared > max) return null;
+  if (!req.body) return "";
+  const reader = req.body.getReader();
+  const chunks: Uint8Array[] = [];
+  let size = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    size += value.byteLength;
+    if (size > max) {
+      await reader.cancel();
+      return null;
+    }
+    chunks.push(value);
+  }
+  return Buffer.concat(chunks).toString("utf8");
 }
 
 /** Honeypot field name: deliberately meaningless so no autofill or agent fills it. */
@@ -112,17 +152,31 @@ function emailHtml(payload: { name: string; email: string; comment: string }) {
 export async function POST(req: Request) {
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.RESEND_FROM;
-  const recipients = (process.env.CONTACT_RECIPIENTS?.split(",").map((s) => s.trim()).filter(Boolean) ?? DEFAULT_RECIPIENTS);
+  // Recipients live in the environment, not in this (public) source, so the
+  // inbox addresses can't be harvested from the repo. Set per environment in
+  // Vercel: the real inboxes for Production, a test inbox for Preview.
+  const recipients =
+    process.env.CONTACT_RECIPIENTS?.split(",").map((s) => s.trim()).filter(Boolean) ?? [];
 
-  if (!apiKey || !from) {
+  if (!apiKey || !from || recipients.length === 0) {
     // Misconfigured environment: log it for us, tell the visitor nothing more.
-    console.error("[contact] RESEND_API_KEY or RESEND_FROM is not set");
+    console.error("[contact] RESEND_API_KEY, RESEND_FROM or CONTACT_RECIPIENTS is not set");
     return fail("unavailable", 503);
   }
 
+  if (isCrossSite(req)) return fail("invalid_request", 403);
+  // JSON only: a cross-site page can send text/plain or form bodies without a
+  // CORS preflight, but not application/json.
+  const type = req.headers.get("content-type") ?? "";
+  if (!type.toLowerCase().startsWith("application/json")) {
+    return fail("invalid_request", 415);
+  }
+  const raw = await readBody(req, MAX_BODY_BYTES);
+  if (raw === null) return fail("invalid_request", 413);
+
   let body: Record<string, unknown>;
   try {
-    body = await req.json();
+    body = JSON.parse(raw);
   } catch {
     return fail("invalid_request", 400);
   }
@@ -140,12 +194,16 @@ export async function POST(req: Request) {
   const comment = typeof body.comment === "string" ? body.comment.trim() : "";
 
   if (!name || name.length > 200) return fail("name", 400);
-  if (!email || !EMAIL_RE.test(email) || email.length > 320) return fail("email", 400);
+  // Length first: EMAIL_RE backtracks quadratically on long dotted input,
+  // so it must only ever see strings within the RFC 5321 limit.
+  if (!email || email.length > 320 || !EMAIL_RE.test(email)) return fail("email", 400);
   if (!comment || comment.length > 5000) return fail("comment", 400);
 
+  // Vercel sets x-real-ip to the connecting client and overwrites any value
+  // the client sent; x-forwarded-for is only the fallback for other hosts.
   const ip =
-    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
     req.headers.get("x-real-ip") ||
+    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
     "unknown";
   if (!rateLimit(ip)) return fail("rate_limited", 429);
 

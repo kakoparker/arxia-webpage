@@ -40,3 +40,7 @@ next-env.d.ts
 
 # Local working folder for image-system iteration
 /arxia-temp
+
+# Local tool state (brainstorm sessions, personal Claude permissions)
+/.superpowers/
+.claude/settings.local.json

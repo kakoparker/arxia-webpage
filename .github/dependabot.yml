@@ -1,0 +1,22 @@
+# Weekly update PRs for npm packages and the pinned GitHub Actions SHAs.
+# Security advisories open their own PRs immediately once Dependabot security
+# updates are enabled in the repository settings.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      minor-and-patch:
+        update-types: [minor, patch]
+    ignore:
+      # Node type definitions follow the runtime in .nvmrc (Node 24 on Vercel),
+      # not the newest Node release.
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
