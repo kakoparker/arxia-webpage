@@ -6,7 +6,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { Button } from "@/components/ui/Button";
-import { InteropHeader } from "@/components/domain/interop/InteropHeader";
+import { CompactSectionHeader } from "@/components/domain/CompactSectionHeader";
 import { ProjectCard } from "@/components/portfolio/ProjectCard";
 import { PortfolioScrollReveal } from "@/components/sections/PortfolioAnimations";
 import { CaseStudyVideo } from "@/components/case-study/CaseStudyVideo";
@@ -321,7 +321,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
         <SectionContainer mode="light">
           <PortfolioScrollReveal>
             <div data-animate data-animate-index="0" className="animate-on-scroll">
-              <InteropHeader annotation={sec(1)} heading={c.problem.heading} />
+              <CompactSectionHeader annotation={sec(1)} heading={c.problem.heading} />
             </div>
             <div className="mt-8 grid gap-6 md:grid-cols-2 md:gap-12">
               {c.problem.paragraphs.map((p, i) => (
@@ -343,7 +343,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
         <SectionContainer mode="ultra-light">
           <PortfolioScrollReveal>
             <div data-animate data-animate-index="0" className="animate-on-scroll">
-              <InteropHeader annotation={sec(2)} heading={c.solution.heading} />
+              <CompactSectionHeader annotation={sec(2)} heading={c.solution.heading} />
               <p className="mt-6 text-body-text" style={{ ...bodyStyle, maxWidth: "760px" }}>
                 {c.solution.intro}
               </p>
@@ -358,7 +358,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
         <SectionContainer mode="light">
           <PortfolioScrollReveal>
             <div data-animate data-animate-index="0" className="animate-on-scroll">
-              <InteropHeader annotation={sec(3)} heading={c.results.heading} />
+              <CompactSectionHeader annotation={sec(3)} heading={c.results.heading} />
             </div>
             <ol className="mt-10 grid gap-8 md:grid-cols-3 md:gap-8">
               {c.results.outcomes.map((o, i) => (
@@ -391,7 +391,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
         <SectionContainer mode="ultra-light">
           <PortfolioScrollReveal>
             <div data-animate data-animate-index="0" className="animate-on-scroll">
-              <InteropHeader annotation={sec(4)} heading={c.impact.heading} />
+              <CompactSectionHeader annotation={sec(4)} heading={c.impact.heading} />
             </div>
             <ul className="mt-10 grid border border-gray-light bg-white md:grid-cols-3">
               {c.impact.items.map((item, i) => (
@@ -421,7 +421,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
         <SectionContainer mode="light">
           <PortfolioScrollReveal>
             <div data-animate data-animate-index="0" className="animate-on-scroll">
-              <InteropHeader annotation={sec(5)} heading={c.apply.heading} />
+              <CompactSectionHeader annotation={sec(5)} heading={c.apply.heading} />
               <p className="mt-6 text-body-text" style={{ ...bodyStyle, maxWidth: "760px" }}>
                 {c.apply.body}
               </p>
@@ -463,7 +463,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
           <SectionContainer mode="ultra-light">
             <PortfolioScrollReveal>
               <div data-animate data-animate-index="0" className="animate-on-scroll mb-8 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
-                <InteropHeader annotation={t("relatedAnnotation")} heading={t("relatedHeading")} />
+                <CompactSectionHeader annotation={t("relatedAnnotation")} heading={t("relatedHeading")} />
                 <Button
                   variant="ghost"
                   href={`/portfolio?domain=${project.category}#projects`}

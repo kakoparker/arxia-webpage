@@ -309,6 +309,110 @@
       "engage": "Cómo trabajamos"
     }
   },
+  "Eproc": {
+    "h1": "Contratación pública electrónica, de principio a fin.",
+    "lede": "De la reforma de la contratación a una plataforma en la que confía cada funcionario: un solo socio, todo el programa.",
+    "body": "La contratación digitalizada desde la primera solicitud de compra hasta el último pago, con cada paso trazable y auditable. Empezamos por las reglas y las personas, y después desplegamos ProcessPlayer, nuestra propia plataforma.",
+    "proof": "ProcessPlayer · más de {orgs} organizaciones públicas · en producción desde {year}",
+    "programmeNav": "Las tres líneas del programa",
+    "figCaption": "Fig. 00 · Un programa de contratación electrónica · reforma, personas, plataforma",
+    "axis": {
+      "diagnose": "Diagnóstico",
+      "goLive": "Puesta en marcha",
+      "handover": "Traspaso"
+    },
+    "runsIt": "La institución lo opera",
+    "approach": {
+      "annotation": "El enfoque",
+      "heading": "Por qué la reforma va primero.",
+      "lead": "Una plataforma solo digitaliza el proceso que usted ya tiene.",
+      "problem": "La mayoría de los programas de contratación electrónica empiezan comprando software. La ley, los procedimientos y las personas quedan para después, así que el sistema automatiza hábitos de papel y los funcionarios terminan esquivándolo.",
+      "answer": "Arxia lo hace al revés: reformar las reglas y el proceso, preparar a quienes lo operarán y, después, desplegar la plataforma. Un solo programa, para que nada quede entre dos contratos.",
+      "oneProgramme": "Un solo programa"
+    },
+    "track": {
+      "position": "Línea {n} de 3"
+    },
+    "fig": {
+      "requester": "Solicitante",
+      "procurement": "Compras",
+      "finance": "Finanzas",
+      "need": "Necesidad",
+      "approve": "Aprobar",
+      "plan": "Plan",
+      "contract": "Contrato",
+      "pay": "Pagar",
+      "trainers": "Formadores locales",
+      "institution": "Institución",
+      "officers": "Funcionarios",
+      "suppliers": "Proveedores",
+      "reach": "Alcance",
+      "request": "Solicitud",
+      "order": "Pedido",
+      "payment": "Pago",
+      "portal": "Licitación nacional",
+      "auditTrail": "Pista de auditoría"
+    },
+    "inUse": {
+      "annotation": "En producción",
+      "heading": "ProcessPlayer en uso.",
+      "body": "Creado y probado en Rumanía, donde ayuntamientos, universidades, hospitales, aeropuertos e instituciones culturales gestionan con él su contratación. Puede implantarse en cualquier país, configurado según su ley y sus procedimientos de contratación.",
+      "orgs": "Organizaciones públicas",
+      "requests": "Solicitudes de compra",
+      "planLines": "Líneas del plan de compras",
+      "orders": "Pedidos a proveedores",
+      "source": "Fuente: datos de producción de ProcessPlayer, {date}",
+      "testimonials": "Lo que dicen nuestros clientes",
+      "translated": "Traducido del rumano",
+      "clients": "Algunos de nuestros clientes",
+      "visit": "Visite processplayer.eu",
+      "newTab": "se abre en una pestaña nueva",
+      "quotes": {
+        "umfst": {
+          "role": "Director Administrativo",
+          "quote": "Con ProcessPlayer no ha habido un solo documento, pago u orden de pago sin su justificación y sus documentos de respaldo."
+        },
+        "sibiuAirport": {
+          "role": "Departamento de Compras",
+          "quote": "ProcessPlayer simplifica el proceso de compra y lo hace totalmente trazable, desde las solicitudes hasta los contratos. ¡Lo recomendamos de corazón!"
+        },
+        "sibiuHospital": {
+          "role": "Directora Administrativa",
+          "quote": "Toda la información en un solo lugar: documentos, plan de compras, pedidos, contratos. En resumen, ¡máxima eficiencia!"
+        }
+      }
+    },
+    "engage": {
+      "annotation": "Cómo trabajamos",
+      "heading": "Un programa completo, o la línea que usted necesite.",
+      "body": "Cuente con Arxia desde el diagnóstico hasta el traspaso, o incorpórenos donde necesite profundidad: una reforma, un programa de formación o el despliegue de la plataforma.",
+      "assessTitle": "Evaluar",
+      "assessBody": "Un diagnóstico del sistema actual: qué permite la ley, qué hace el proceso, qué va primero.",
+      "reformTitle": "Reformar",
+      "reformBody": "Estrategia, reglas y procesos rediseñados, acordados antes de configurar nada.",
+      "deployTitle": "Desplegar",
+      "deployBody": "Funcionarios formados, proveedores incorporados y ProcessPlayer en marcha, institución por institución.",
+      "sustainTitle": "Sostener",
+      "sustainBody": "Formadores locales, soporte y evolución de la plataforma, para que la institución lo opere.",
+      "tracksLabel": "Líneas",
+      "who": "Con quién trabajamos",
+      "whoRegulators": "Órganos rectores y autoridades de contratación",
+      "whoGovernment": "Gobierno central y local",
+      "whoUniversities": "Universidades y hospitales",
+      "whoSoe": "Aeropuertos y empresas públicas",
+      "whoPartners": "Programas de socios para el desarrollo",
+      "delivery": "Implantación",
+      "deliveryBody": "Implantable en cualquier país y configurado según su ley y sus procedimientos de contratación. En SaaS o en sus propios servidores."
+    },
+    "rail": {
+      "approach": "Enfoque",
+      "reform": "Reforma",
+      "people": "Personas",
+      "platform": "Plataforma",
+      "inUse": "En uso",
+      "engage": "Trabajo"
+    }
+  },
   "Errors": {
     "label500": "Error · 500",
     "heading500": "Algo no compiló del todo bien.",
@@ -336,13 +440,14 @@
   "DomainSeoTitle": {
     "interoperability": "Interoperabilidad y X-Road para gobiernos",
     "data-governance": "Gobernanza de datos para el sector público",
-    "e-procurement": "Contratación pública electrónica",
+    "e-procurement": "Contratación pública electrónica para gobiernos",
     "e-invoicing": "Facturación electrónica para gobiernos",
     "web-portals": "Portales web gubernamentales",
     "agentic-state": "Estado agéntico: IA para el gobierno",
     "e-services": "Servicios públicos digitales"
   },
   "DomainSeoDescription": {
-    "data-governance": "Gobernanza de datos para el sector público: marcos de gobernanza, consentimiento, protección de datos, modelos semánticos y evaluaciones de madurez."
+    "data-governance": "Gobernanza de datos para el sector público: marcos de gobernanza, consentimiento, protección de datos, modelos semánticos y evaluaciones de madurez.",
+    "e-procurement": "Contratación pública electrónica de principio a fin: reforma, formación de compradores públicos y ProcessPlayer, la plataforma de 50+ entidades públicas."
   }
 }

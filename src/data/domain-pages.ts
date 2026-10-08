@@ -65,6 +65,29 @@ export interface StackLayer {
   items: ServiceItem[];
 }
 
+/** A track of the e-procurement programme, numbered in delivery order. */
+export type ProgrammeTrackId = "01" | "02" | "03";
+
+/**
+ * One track of the e-procurement programme (reform, people, platform), with
+ * the offers delivered in it. e-Procurement only: its page is organised by
+ * track, because the order the tracks run in IS the pitch. Same shape as
+ * StackLayer, with `kind` (the kind of work) in place of the EIF dimension.
+ */
+export interface ProgrammeTrack {
+  id: ProgrammeTrackId;
+  /** In-page section id, e.g. "reform". */
+  anchor: string;
+  name: string;
+  /** The kind of work: Consultancy, Capacity building, the platform. */
+  kind: string;
+  /** One line: what this track settles. */
+  promise: string;
+  /** Keyword strip summarising the track's offers. */
+  scope: string;
+  items: ServiceItem[];
+}
+
 export interface FeaturedCase {
   projectSlug: string;
   note?: string;
@@ -76,6 +99,8 @@ export interface DomainPageContent {
   categories: ServiceCategory[];
   /** Opt-in: the offer catalogue by stack layer. Interoperability only. */
   layers?: StackLayer[];
+  /** Opt-in: the offer catalogue by programme track. e-Procurement only. */
+  tracks?: ProgrammeTrack[];
   featuredCases: FeaturedCase[];
   /**
    * The /portfolio category this domain's work is filed under. The cases
@@ -302,59 +327,126 @@ export const domainPages: DomainPageContent[] = [
   },
 
   // === E PROCUREMENT ===
+  // Organised by programme track, not by kind of work: reform, then people,
+  // then platform is the pitch, and ProcessPlayer is the last track rather
+  // than the headline. Kept deliberately general (owner's call): the offers
+  // say what each track delivers, not which methodology or standard it uses.
+  // The earlier three category offers folded in: eprocurement-strategy into
+  // 01, eproc-implementation and processplayer into 03.
   {
     slug: "e-procurement",
-    categories: [
+    categories: [],
+    tracks: [
       {
-        name: "Consultancy",
-        tagline:
-          "Strategy, standards, and regulatory alignment for public buying.",
+        id: "01",
+        anchor: "reform",
+        name: "Reform",
+        kind: "Consultancy",
+        promise: "Fix the rules and the process before a line of code is written.",
+        scope: "Assessment · strategy · regulation · process redesign",
         items: [
+          {
+            slug: "procurement-assessment",
+            title: "Procurement system assessment",
+            description:
+              "A diagnosis of the legal framework, institutions, processes and systems, so the reform starts where it matters most.",
+          },
           {
             slug: "eprocurement-strategy",
-            title: "e-Procurement strategy, standards and regulatory alignment",
+            title: "e-Procurement strategy and roadmap",
             description:
-              "National procurement strategy work, from regulatory alignment and standards adoption to change-management design for procurement authorities.",
-            image: "/images/services/govtech-process/eprocurement-strategy-illustration-v2.webp",
+              "A national or institutional strategy, phased and costed, that procurement authorities can carry out step by step.",
+          },
+          {
+            slug: "regulatory-alignment",
+            title: "Regulatory and standards alignment",
+            description:
+              "Rules, procedures and data standards aligned with international good practice, so the platform has firm ground to stand on.",
+          },
+          {
+            slug: "process-redesign",
+            title: "Procurement process redesign",
+            description:
+              "Processes mapped and simplified from purchase request to payment, before anything is configured in a system.",
           },
         ],
       },
       {
-        name: "Services",
-        tagline:
-          "Platform delivery, start to finish.",
+        id: "02",
+        anchor: "people",
+        name: "People",
+        kind: "Capacity building",
+        promise: "Prepare the people who will run the system, before it goes live.",
+        scope: "Officers · trainers · suppliers · change management",
         items: [
           {
-            slug: "eproc-implementation",
-            title: "Full e-procurement platform implementation",
+            slug: "procurement-officer-training",
+            title: "Training for procurement officers",
             description:
-              "Full rollout of public procurement systems (planning, tender, evaluation, award, contract management), with integration into financial and audit systems.",
-            image: "/images/services/govtech-process/eproc-implementation-illustration-v2.webp",
+              "Practical training on the new procedures and the platform, built around the officers' everyday procurement files.",
+          },
+          {
+            slug: "local-trainers",
+            title: "Local trainers and institutional capacity",
+            description:
+              "Local trainers and teams prepared to carry the knowledge forward, so capacity keeps growing after handover.",
+          },
+          {
+            slug: "supplier-engagement",
+            title: "Supplier engagement",
+            description:
+              "Outreach and guidance that bring suppliers, small businesses included, into electronic procedures.",
+          },
+          {
+            slug: "change-management",
+            title: "Change management and support",
+            description:
+              "Leadership engagement and day-to-day support that turn a new system into a new way of working.",
           },
         ],
       },
       {
-        name: "Products",
-        tagline:
-          "Platforms we own and evolve.",
+        id: "03",
+        anchor: "platform",
+        name: "Platform",
+        kind: "ProcessPlayer",
+        promise: "Every step digital, every document justified, every value traceable.",
+        scope: "Requests · procurement plan · contracts · audit",
         items: [
           {
-            slug: "processplayer",
-            title: "ProcessPlayer",
+            slug: "purchase-requests",
+            title: "Digital purchase requests",
             description:
-              "Public procurement platform covering planning, execution, framework agreements, and contract management. 50+ organizations, 30,000+ references, SaaS and on-premise.",
-            image: "/images/services/govtech-process/processplayer-illustration-v2.webp",
+              "Needs raised, justified and approved online, with electronic signatures instead of paper files.",
+          },
+          {
+            slug: "procurement-plan",
+            title: "Procurement plan and budget tracking",
+            description:
+              "Quantities and values tracked against the annual procurement plan and budget commitments, in real time.",
+          },
+          {
+            slug: "contracts-suppliers",
+            title: "Contracts, orders and suppliers",
+            description:
+              "Contracts, framework agreements and supplier orders followed through to the last payment.",
+          },
+          {
+            slug: "audit-reporting",
+            title: "Audit-ready reporting",
+            description:
+              "Reports for managers and auditors at every level, with every document justified and on record.",
           },
         ],
       },
     ],
     featuredCases: [
+      { projectSlug: "uganda-ppda" },
       { projectSlug: "romania-public-procurement" },
       { projectSlug: "romania-eprocurement-platform" },
-      { projectSlug: "uganda-ppda" },
     ],
     portfolioCategory: "public-procurement",
-    relatedSlugs: ["e-invoicing", "interoperability", "web-portals"],
+    relatedSlugs: ["e-invoicing", "interoperability", "data-governance"],
   },
 
   // === E INVOICING ===
@@ -732,6 +824,26 @@ function localizeContent(
         scope: lo.scope ?? l.scope,
         items: l.items.map((it) => {
           const io = lo.items?.[it.slug];
+          if (!io) return it;
+          return {
+            ...it,
+            title: io.title ?? it.title,
+            description: io.description ?? it.description,
+          };
+        }),
+      };
+    }),
+    tracks: page.tracks?.map((tr) => {
+      const to = overlay.tracks?.[tr.id];
+      if (!to) return tr;
+      return {
+        ...tr,
+        name: to.name ?? tr.name,
+        kind: to.kind ?? tr.kind,
+        promise: to.promise ?? tr.promise,
+        scope: to.scope ?? tr.scope,
+        items: tr.items.map((it) => {
+          const io = to.items?.[it.slug];
           if (!io) return it;
           return {
             ...it,

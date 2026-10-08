@@ -309,6 +309,110 @@
       "engage": "Engage"
     }
   },
+  "Eproc": {
+    "h1": "Public <nobreak>e-procurement</nobreak>, end to end.",
+    "lede": "From procurement reform to a platform every officer trusts: one partner, the whole programme.",
+    "body": "Procurement digitalized from the first purchase request to the last payment, with every step traceable and auditable. We start with the rules and the people, then deploy ProcessPlayer, our own platform.",
+    "proof": "ProcessPlayer · {orgs}+ public organizations · in production since {year}",
+    "programmeNav": "The three tracks of the programme",
+    "figCaption": "Fig. 00 · An e-procurement programme · reform, people, platform",
+    "axis": {
+      "diagnose": "Diagnose",
+      "goLive": "Go-live",
+      "handover": "Handover"
+    },
+    "runsIt": "The institution runs it",
+    "approach": {
+      "annotation": "The approach",
+      "heading": "Why reform comes first.",
+      "lead": "A platform only digitalizes the process you already have.",
+      "problem": "Most e-procurement programmes start by buying software. The law, the procedures and the people are left for later, so the system automates paper habits and officers work around it.",
+      "answer": "Arxia runs it the other way round: reform the rules and the process, prepare the people who will run it, then deploy the platform. One programme, so nothing falls between contracts.",
+      "oneProgramme": "One programme"
+    },
+    "track": {
+      "position": "Track {n} of 3"
+    },
+    "fig": {
+      "requester": "Requester",
+      "procurement": "Procurement",
+      "finance": "Finance",
+      "need": "Need",
+      "approve": "Approve",
+      "plan": "Plan",
+      "contract": "Contract",
+      "pay": "Pay",
+      "trainers": "Local trainers",
+      "institution": "Institution",
+      "officers": "Officers",
+      "suppliers": "Suppliers",
+      "reach": "Reach",
+      "request": "Request",
+      "order": "Order",
+      "payment": "Payment",
+      "portal": "National e-tendering",
+      "auditTrail": "Audit trail"
+    },
+    "inUse": {
+      "annotation": "In production",
+      "heading": "ProcessPlayer in use.",
+      "body": "Built and proven in Romania, where city halls, universities, hospitals, airports and cultural institutions run their procurement on it. It can be set up in any country, configured to its procurement law and procedures.",
+      "orgs": "Public organizations",
+      "requests": "Purchase requests",
+      "planLines": "Procurement plan lines",
+      "orders": "Supplier orders",
+      "source": "Source: ProcessPlayer production data, {date}",
+      "testimonials": "What our clients say",
+      "translated": "Translated from Romanian",
+      "clients": "Some of our clients",
+      "visit": "Visit processplayer.eu",
+      "newTab": "opens in a new tab",
+      "quotes": {
+        "umfst": {
+          "role": "Administrative Director",
+          "quote": "With ProcessPlayer, there has not been a single document, payment or payment order without its justification and supporting documents behind it."
+        },
+        "sibiuAirport": {
+          "role": "Procurement Department",
+          "quote": "ProcessPlayer simplifies the procurement process and makes it fully traceable, from purchase requests to contracts. We warmly recommend it!"
+        },
+        "sibiuHospital": {
+          "role": "Administrative Director",
+          "quote": "All the information in one place: documents, procurement plan, orders, contracts. In short, maximum efficiency!"
+        }
+      }
+    },
+    "engage": {
+      "annotation": "How we engage",
+      "heading": "One programme, or the track you need.",
+      "body": "Engage Arxia from diagnosis to handover, or bring us in where you need depth: a reform, a training programme or a platform rollout.",
+      "assessTitle": "Assess",
+      "assessBody": "A diagnosis of the system as it stands: what the law allows, what the process does, what comes first.",
+      "reformTitle": "Reform",
+      "reformBody": "Strategy, rules and redesigned processes, agreed before anything is configured.",
+      "deployTitle": "Deploy",
+      "deployBody": "Officers trained, suppliers on board and ProcessPlayer live, institution by institution.",
+      "sustainTitle": "Sustain",
+      "sustainBody": "Local trainers, support and platform evolution, so the institution runs it.",
+      "tracksLabel": "Tracks",
+      "who": "Who we work with",
+      "whoRegulators": "Procurement regulators and authorities",
+      "whoGovernment": "Central and local government",
+      "whoUniversities": "Universities and hospitals",
+      "whoSoe": "Airports and state-owned enterprises",
+      "whoPartners": "Development-partner programmes",
+      "delivery": "Delivery",
+      "deliveryBody": "Set up in any country and configured to its procurement law and procedures. SaaS or on-premise."
+    },
+    "rail": {
+      "approach": "Approach",
+      "reform": "Reform",
+      "people": "People",
+      "platform": "Platform",
+      "inUse": "In use",
+      "engage": "Engage"
+    }
+  },
   "Errors": {
     "label500": "Error · 500",
     "heading500": "Something didn't compile cleanly.",
@@ -336,11 +440,13 @@
   "DomainSeoTitle": {
     "interoperability": "Interoperability & X-Road for Governments",
     "data-governance": "Data Governance for the Public Sector",
-    "e-procurement": "e-Procurement Systems for Governments",
+    "e-procurement": "Public e-Procurement Systems: Strategy to Platform",
     "e-invoicing": "e-Invoicing for Governments & Tax Authorities",
     "web-portals": "Government Web Portals",
     "agentic-state": "Agentic State: AI for Government",
     "e-services": "Digital Public Services (e-Services)"
   },
-  "DomainSeoDescription": {}
+  "DomainSeoDescription": {
+    "e-procurement": "Public e-procurement end to end: procurement reform, training for procurement officers and ProcessPlayer, the platform used by 50+ public bodies."
+  }
 }
