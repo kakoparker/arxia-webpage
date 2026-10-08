@@ -108,28 +108,31 @@ export function LogoCarouselTrack({ children }: { children: ReactNode }) {
       onBlur={() => (slowRef.current = false)}
       aria-labelledby="logo-carousel-label"
     >
-      <div className="mx-auto mb-8 flex max-w-[var(--content-max)] items-center justify-between gap-4 px-[var(--margin-page)] max-sm:px-6">
-        <p
-          id="logo-carousel-label"
-          className="font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2.5px] text-gray-dark"
-        >
-          {t("label")}
-        </p>
-        {!reducedMotion && (
+      {/* The band's name is for assistive tech only: on screen the logos
+          speak for themselves, and a visible caption row opened a gap
+          between the hero and the band. */}
+      <p id="logo-carousel-label" className="sr-only">
+        {t("label")}
+      </p>
+      <div ref={trackRef} className="flex items-center w-max">
+        {children}
+      </div>
+      {/* WCAG 2.2.2: the pause control stays, floated over the band's right
+          edge so it takes no height. The white fade lets the logos slide
+          under it instead of colliding with it. */}
+      {!reducedMotion && (
+        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center bg-gradient-to-l from-white from-60% to-transparent pl-12 pr-[max(24px,calc(var(--margin-page)/2))]">
           <button
             type="button"
             onClick={() => setPaused((p) => !p)}
             aria-pressed={paused}
             aria-label={paused ? t("play") : t("pause")}
-            className="inline-flex h-11 w-11 items-center justify-center border border-gray-light text-gray-dark transition-colors duration-200 hover:border-blueprint-blue hover:text-blueprint-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blueprint-blue"
+            className="pointer-events-auto inline-flex h-11 w-11 items-center justify-center border border-gray-light bg-white text-gray-dark transition-colors duration-200 hover:border-blueprint-blue hover:text-blueprint-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blueprint-blue"
           >
             {paused ? <Play aria-hidden size={16} strokeWidth={1.5} /> : <Pause aria-hidden size={16} strokeWidth={1.5} />}
           </button>
-        )}
-      </div>
-      <div ref={trackRef} className="flex items-center w-max">
-        {children}
-      </div>
+        </div>
+      )}
     </section>
   );
 }
