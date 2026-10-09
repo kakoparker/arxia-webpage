@@ -26,15 +26,42 @@
       "dpi": "Infrastructure Publique Numérique",
       "interoperability": "Interopérabilité"
     },
-    "cta": "Contactez-nous",
-    "proof": "Depuis {founded}"
+    "claim": "Nous sommes experts en Transformation Numérique et Infrastructure Publique Numérique.",
+    "lede": "Nous accompagnons nos partenaires internationaux pour relever des défis numériques complexes grâce à une gouvernance complète, un conseil spécialisé et une mise en œuvre logicielle de premier plan.",
+    "ctaPrimary": "Parlons-en",
+    "ctaSecondary": "Voir le portfolio",
+    "figures": {
+      "countries": "Pays",
+      "organizations": "Organisations accompagnées"
+    },
+    "stack": {
+      "title": "Les pratiques d'Arxia comme briques de construction",
+      "ground": "Infrastructure publique numérique",
+      "axis": "e-Gouvernement",
+      "blocks": {
+        "interoperability": "Interopérabilité",
+        "dataGovernance": "Gouvernance des données",
+        "eProcurement": "e-Procurement",
+        "eInvoicing": "e-Invoicing",
+        "webPortals": "Portails web",
+        "eServices": "e-Services",
+        "ai": "Intelligence artificielle"
+      }
+    }
   },
   "Domains": {
     "annotation": "INFRASTRUCTURE PUBLIQUE NUMÉRIQUE ET TRANSFORMATION NUMÉRIQUE",
-    "heading": "Les briques de votre indépendance numérique",
+    "heading": "Les briques de l'évolution numérique",
     "coreLabel": "CŒUR",
     "explore": "Découvrir",
-    "intro": "Arxia est une entreprise de transformation numérique et d'Infrastructure Publique Numérique qui travaille avec les gouvernements depuis {founded}, dans plus de {countries} pays."
+    "intro": "Chez Arxia, nous pensons que l'expertise technique s'effondre sans une bonne gouvernance et des principes solides.",
+    "readMore": "En savoir plus",
+    "panel": {
+      "offers": "Ce que propose Arxia",
+      "explore": "Découvrir {name}",
+      "projects": "Voir les projets",
+      "close": "Fermer"
+    }
   },
   "Portfolio": {
     "annotation": "Travaux sélectionnés",
@@ -42,9 +69,9 @@
     "body": "Une sélection de projets qui définissent notre travail.",
     "viewFull": "Voir tout le portfolio →",
     "metaTitle": "Portfolio",
-    "metaDescription": "{projects} projets dans plus de {countries} pays. Du gouvernement numérique depuis {founded}, des cadres nationaux d'interopérabilité aux plateformes de commande publique.",
+    "metaDescription": "{projects} projets de gouvernement numérique dans plus de {countries} pays, des cadres nationaux d'interopérabilité aux plateformes de commande publique.",
     "heroAnnotation": "Portfolio",
-    "heroBody": "{projects} projets dans plus de {countries} pays. Du gouvernement numérique depuis {founded}, des cadres nationaux d'interopérabilité aux plateformes de commande publique.",
+    "heroBody": "{projects} projets de gouvernement numérique dans plus de {countries} pays, des cadres nationaux d'interopérabilité aux plateformes de commande publique.",
     "statProjects": "Projets",
     "statCountries": "Pays",
     "statDomains": "Domaines",
@@ -102,9 +129,6 @@
     "heading": "Notre présence mondiale",
     "headquarters": "Siège social",
     "offices": "Bureaux",
-    "statOrganizations": "Organisations",
-    "statCountries": "Pays",
-    "statYears": "Années",
     "regions": {
       "Europe": "Europe",
       "Latin America": "Amérique latine",
@@ -139,13 +163,18 @@
       "KE": "Kenya",
       "SO": "Somalie",
       "DJ": "Djibouti",
-      "AO": "Angola"
-    }
+      "NL": "Pays-Bas",
+      "FR": "France",
+      "CI": "Côte d'Ivoire",
+      "BW": "Botswana"
+    },
+    "office": "Bureau",
+    "projectCountries": "Pays avec des projets réalisés"
   },
   "ContactForm": {
     "connect": "Connectons-nous",
-    "heading": "Dites-nous ce que vous construisez.",
-    "body": "Nous travaillons avec les gouvernements, les organisations internationales, les bailleurs de fonds et les partenaires internationaux. Exposez-nous le problème et nous vous dirons franchement si nous sommes le bon partenaire.",
+    "heading": "Parlons-en.",
+    "body": "Un projet, un appel d'offres, une offre conjointe ou une idée encore en gestation : écrivez-nous et la bonne personne de l'équipe vous répondra.",
     "ariaLabel": "Formulaire de contact",
     "name": "Nom",
     "namePlaceholder": "Votre nom",
@@ -174,7 +203,7 @@
     "emailLabel": "E-mail",
     "tradeRegister": "Reg. du commerce",
     "vat": "TVA",
-    "tagline": "Transformation numérique et Infrastructure Publique Numérique pour les gouvernements dans le monde entier.",
+    "tagline": "Transformation numérique et Infrastructure Publique Numérique, de la stratégie au transfert.",
     "company": "Entreprise",
     "services": "Services",
     "contact": "Contact",
@@ -237,7 +266,7 @@
   "DomainCTA": {
     "annotation": "Commençons",
     "heading": "Envie d'échanger sur {title} ?",
-    "body": "Donnez-nous les détails. Nous reviendrons vers vous avec ce que le travail implique, qui le ferait et ce qu'il exigerait.",
+    "body": "Écrivez-nous au sujet d'un projet, d'un appel d'offres ou d'un partenariat dans ce domaine. Nous reviendrons vers vous avec ce que le travail implique, qui le ferait et ce qu'il exigerait.",
     "contact": "Contactez-nous",
     "viewPortfolio": "Voir le portfolio"
   },
@@ -284,7 +313,7 @@
     "engage": {
       "annotation": "Notre démarche",
       "heading": "Sur tout le cycle de vie, ou sur une seule couche.",
-      "body": "Confiez à Arxia l'ensemble du parcours, ou faites appel à nous pour la couche où il vous faut de la profondeur. Le chemin est le même dans les deux cas.",
+      "body": "Arxia peut mener l'ensemble du parcours, ou intervenir sur la seule couche qui demande de la profondeur. Le chemin est le même dans les deux cas.",
       "assessTitle": "Évaluer",
       "assessBody": "Audits de maturité et diagnostics de l'existant : ce qui existe, ce qui manque, ce qui passe en premier.",
       "designTitle": "Concevoir",
@@ -325,7 +354,7 @@
     "approach": {
       "annotation": "L'approche",
       "heading": "Pourquoi la réforme d'abord.",
-      "lead": "Une plateforme ne fait que numériser le processus que vous avez déjà.",
+      "lead": "Une plateforme ne fait que numériser le processus qui existe déjà.",
       "problem": "La plupart des programmes de dématérialisation commencent par acheter un logiciel. La loi, les procédures et les personnes viennent après : le système automatise les habitudes papier et les acheteurs le contournent.",
       "answer": "Arxia procède dans l'autre sens : réformer les règles et le processus, préparer celles et ceux qui le feront vivre, puis déployer la plateforme. Un seul programme, pour que rien ne tombe entre deux contrats.",
       "oneProgramme": "Un seul programme"
@@ -384,8 +413,8 @@
     },
     "engage": {
       "annotation": "Notre engagement",
-      "heading": "Tout le programme, ou le volet dont vous avez besoin.",
-      "body": "Faites appel à Arxia du diagnostic au transfert, ou sollicitez-nous là où vous avez besoin de profondeur : une réforme, un programme de formation ou le déploiement de la plateforme.",
+      "heading": "Tout le programme, ou un seul volet.",
+      "body": "Arxia peut mener le programme du diagnostic au transfert, ou intervenir là où il faut de la profondeur : une réforme, un programme de formation ou le déploiement de la plateforme.",
       "assessTitle": "Évaluer",
       "assessBody": "Un diagnostic du système tel qu'il est : ce que permet la loi, ce que fait le processus, ce qui passe en premier.",
       "reformTitle": "Réformer",
@@ -429,11 +458,11 @@
   },
   "Meta": {
     "homeTitle": "Transformation et infrastructure publique numériques — Arxia",
-    "homeDescription": "Transformation numérique et infrastructure publique numérique : Arxia construit les systèmes sur lesquels les gouvernements fonctionnent, puis les leur remet.",
-    "homeOgDescription": "Nous construisons l'infrastructure publique numérique sur laquelle les gouvernements fonctionnent, puis nous la leur remettons."
+    "homeDescription": "Arxia est une entreprise de transformation numérique et d'Infrastructure Publique Numérique qui accompagne des partenaires du monde entier, de la gouvernance et du conseil à la mise en œuvre logicielle.",
+    "homeOgDescription": "Transformation numérique et Infrastructure Publique Numérique avec des partenaires du monde entier : gouvernance, conseil spécialisé et mise en œuvre logicielle."
   },
   "LogoCarousel": {
-    "label": "Clients et partenaires",
+    "label": "Quelques-uns de nos clients",
     "pause": "Mettre en pause l'animation des logos",
     "play": "Relancer l'animation des logos"
   },

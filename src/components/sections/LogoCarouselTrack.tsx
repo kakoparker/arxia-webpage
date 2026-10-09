@@ -108,11 +108,22 @@ export function LogoCarouselTrack({ children }: { children: ReactNode }) {
       onBlur={() => (slowRef.current = false)}
       aria-labelledby="logo-carousel-label"
     >
-      {/* The band's name is for assistive tech only: on screen the logos
-          speak for themselves, and a visible caption row opened a gap
-          between the hero and the band. */}
-      <p id="logo-carousel-label" className="sr-only">
-        {t("label")}
+      {/* Visible label that costs no height: a caption row above the logos
+          opened a gap between the hero and the band, so the label floats
+          instead. From md up it is a legend over the band's left edge (the
+          logos slide under a white fade, mirroring the pause control on the
+          right); on phones it sits in the band's top padding. */}
+      <p
+        id="logo-carousel-label"
+        className="
+          pointer-events-none absolute left-6 top-3 z-10 flex items-center gap-2
+          font-[family-name:var(--font-jetbrains)] text-[11px] uppercase leading-[1.4] tracking-[2px] text-gray-dark
+          md:inset-y-0 md:left-0 md:top-0 md:bg-gradient-to-r md:from-white md:from-65% md:to-transparent
+          md:pl-[max(24px,calc(var(--margin-page)/2))] md:pr-16
+        "
+      >
+        <span aria-hidden className="h-2 w-2 shrink-0 bg-accent-red" />
+        <span className="md:max-w-[8.5rem]">{t("label")}</span>
       </p>
       <div ref={trackRef} className="flex items-center w-max">
         {children}

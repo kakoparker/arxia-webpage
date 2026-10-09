@@ -289,6 +289,59 @@ html {
   }
 }
 
+/* Hero building-blocks figure (BuildingBlocksFigure.tsx). The resting state
+   is the finished drawing; the build-up only runs when motion is allowed.
+   Order: set-out lines and the dashed plan, then each block drops onto its
+   outline, 500ms apart, lettering included. The foundation's red edge draws
+   once the first block has landed. Plays once and ends inside 5s. */
+@media (prefers-reduced-motion: no-preference) {
+  .bb-draw {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: bb-draw 1100ms var(--ease-default) forwards;
+    animation-delay: var(--d, 0ms);
+  }
+  .bb-ghost {
+    opacity: 0;
+    animation: bb-fade 700ms var(--ease-default) forwards;
+    animation-delay: calc(200ms + var(--i, 0) * 90ms);
+  }
+  .bb-slab {
+    opacity: 0;
+    animation: bb-drop 820ms cubic-bezier(0.22, 1.08, 0.36, 1) forwards;
+    animation-delay: calc(650ms + var(--i, 0) * 500ms);
+  }
+  .bb-core-mark {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: bb-draw 700ms var(--ease-default) forwards;
+    animation-delay: 1500ms;
+  }
+}
+
+@keyframes bb-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes bb-fade {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes bb-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-64px);
+  }
+  35% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 /* ============================================
    SCROLL ANIMATIONS
    ============================================ */
@@ -361,7 +414,7 @@ html {
   transition-delay: 260ms;
 }
 .domain-plate:hover .domain-plate-corner,
-.domain-plate:focus-visible .domain-plate-corner {
+.domain-plate:has(:focus-visible) .domain-plate-corner {
   border-color: color-mix(in srgb, var(--accent-red) 55%, transparent);
 }
 
@@ -372,48 +425,50 @@ html {
   transition: transform var(--duration-normal) var(--ease-default);
 }
 .domain-plate:hover .domain-plate-accent,
-.domain-plate:focus-visible .domain-plate-accent {
+.domain-plate:has(:focus-visible) .domain-plate-accent {
   transform: scaleY(1);
 }
 
-/* 3b — Satellite hover reveal. Two fr rows trade places: the spacer above
-       the name collapses while the row below it opens, which drags the name
-       to the top of the plate and gives the one-phrase description the middle.
-       Interpolating `grid-template-rows` is what makes this work without
-       hard-coding a travel distance; browsers that can't interpolate fr units
-       snap between the two states instead, which is still correct. */
-.domain-plate-reveal {
-  display: grid;
-  grid-template-rows: 1fr auto 0fr;
-  min-height: 0;
-  transition: grid-template-rows 380ms var(--ease-default);
+/* 3c — Open state (DomainsGrid). One domain opens into a panel across four
+       columns; the other six stack in the fifth as tabs. The section keeps
+       its height. Each plate has its own view-transition-name, so the switch
+       is drawn as every plate gliding to its new place; snapshots keep their
+       natural size (no stretched text) and are clipped by the moving box. */
+.domain-grid > li {
+  view-transition-class: domain-plate;
 }
-.domain-plate:hover .domain-plate-reveal,
-.domain-plate:focus-visible .domain-plate-reveal {
-  grid-template-rows: 0fr auto 1fr;
-}
-
-/* Collapsed, not hidden: screen readers still reach the line. */
-.domain-plate-line {
-  overflow: hidden;
-  min-height: 0;
-  opacity: 0;
-  transition: opacity 240ms var(--ease-default);
-}
-.domain-plate:hover .domain-plate-line,
-.domain-plate:focus-visible .domain-plate-line {
-  opacity: 1;
-  transition-delay: 140ms;
-}
-
-/* Touch devices never hover, so the line is simply open there. */
-@media (hover: none) {
-  .domain-plate-reveal {
-    grid-template-rows: 0fr auto 1fr;
+@media (min-width: 1024px) {
+  .domain-grid[data-open] {
+    grid-template-rows: repeat(6, minmax(0, 1fr));
+    row-gap: 8px;
   }
-  .domain-plate-line {
-    opacity: 1;
+  .domain-grid[data-open] > li {
+    grid-column: 5;
+    grid-row: var(--tab-row);
   }
+  .domain-grid[data-open] > li[data-active] {
+    grid-column: 1 / span 4;
+    grid-row: 1 / span 6;
+  }
+}
+@media (max-width: 1023.98px) {
+  .domain-grid[data-open] {
+    grid-auto-flow: row dense;
+  }
+  .domain-grid[data-open] > li[data-active] {
+    grid-column: 1 / -1;
+  }
+}
+::view-transition-group(*.domain-plate) {
+  animation-duration: 560ms;
+  animation-timing-function: var(--ease-default);
+  overflow: clip;
+}
+::view-transition-old(*.domain-plate),
+::view-transition-new(*.domain-plate) {
+  height: 100%;
+  object-fit: none;
+  object-position: left top;
 }
 
 /* 4 — "Explore" cue: rests hidden, slides in with the plate's hover. */
@@ -424,7 +479,7 @@ html {
               transform var(--duration-normal) var(--ease-default);
 }
 .domain-plate:hover .domain-plate-cue,
-.domain-plate:focus-visible .domain-plate-cue {
+.domain-plate:has(:focus-visible) .domain-plate-cue {
   opacity: 1;
   transform: translateX(0);
 }
@@ -432,7 +487,7 @@ html {
   transition: transform var(--duration-normal) var(--ease-default);
 }
 .domain-plate:hover .domain-plate-cue-arrow,
-.domain-plate:focus-visible .domain-plate-cue-arrow {
+.domain-plate:has(:focus-visible) .domain-plate-cue-arrow {
   transform: translateX(4px);
 }
 
@@ -857,13 +912,6 @@ html {
   .eproc-bar {
     opacity: 1 !important;
     transform: none !important;
-  }
-  /* The hover reveal resolves open, so the description is never unreachable. */
-  .domain-plate-reveal {
-    transition: none !important;
-  }
-  .domain-plate-line {
-    opacity: 1 !important;
   }
   .pf-card,
   .pf-card-accent,

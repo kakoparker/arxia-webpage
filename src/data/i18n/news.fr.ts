@@ -379,7 +379,7 @@ export const newsFr: Record<string, NewsArticleOverlay> = {
       },
       { text: "Pourquoi la gouvernance multipartite est essentielle" },
       {
-        text: "C'est aussi pourquoi un impact durable repose sur une gouvernance multipartite. Les relations durables entre les pays ne sont pas l'œuvre d'un seul acteur ; elles exigent que gouvernements, innovateurs, experts et entreprises partagent la responsabilité du résultat. C'est plus lent et plus exigeant qu'une vente — et c'est la seule approche qui tienne.",
+        text: "C'est aussi pourquoi un impact durable repose sur une gouvernance multipartite. Les relations durables entre les pays ne sont pas l'œuvre d'un seul acteur. Elles exigent que gouvernements, innovateurs, experts et entreprises partagent la responsabilité du résultat. C'est plus lent et plus exigeant qu'une vente — et c'est la seule approche qui tienne.",
       },
       { text: "L'Ukraine a une histoire à raconter" },
       {
@@ -436,7 +436,7 @@ export const newsFr: Record<string, NewsArticleOverlay> = {
       },
       { text: "Une approche éprouvée" },
       {
-        text: "Arxia travaille depuis plus de dix ans sur l'optimisation des processus et la conduite du changement dans le cadre de la transformation numérique. Sa méthodologie d'opérationnalisation de l'IA a déjà été appliquée sur trois continents, auprès de clients de la banque, du monde universitaire, de la distribution, des ONG et du conseil. La technologie n'est pas l'essentiel ; le processus l'est. Les clients s'approprient le savoir-faire, gagnent en confiance, embarquent leurs équipes, portent le changement et continuent de s'améliorer par eux-mêmes.",
+        text: "Arxia travaille depuis plus de dix ans sur l'optimisation des processus et la conduite du changement dans le cadre de la transformation numérique. Sa méthodologie d'opérationnalisation de l'IA a déjà été appliquée sur trois continents, auprès de clients de la banque, du monde universitaire, de la distribution, des ONG et du conseil. La technologie n'est pas l'essentiel. Le processus l'est. Les clients s'approprient le savoir-faire, gagnent en confiance, embarquent leurs équipes, portent le changement et continuent de s'améliorer par eux-mêmes.",
       },
       { text: "En savoir plus sur l'AI Acceleration Program →" },
     ],
@@ -674,7 +674,7 @@ export const newsFr: Record<string, NewsArticleOverlay> = {
         text: "Cette adoption conclut près de deux ans d'engagement d'Arxia auprès de l'ICGLR sur la politique régionale de partage des données (Data Sharing Policy) et la norme de partage des données (Data Sharing Standard). Ensemble, elles couvrent la collecte, la validation, le reporting et la mise à jour des données minières et minérales aux niveaux national et régional : sites miniers, permis, chaîne de possession complète, opérations connexes et suivi des exportations. Le tout est exprimé dans des modèles sémantiques assortis de spécifications techniques complètes pour la mise en œuvre.",
       },
       {
-        text: "Arxia est partie de la norme de données, pas du logiciel. Le modèle commun est publié en JSON Schema, OpenAPI et JSON-LD ; au-dessus viennent la saisie mobile hors ligne dans chaque pays, une couche d'interopérabilité fondée sur des API, une plateforme régionale de reporting et des registres de cycle de vie immuables. Quand la norme évolue, la plateforme suit sans être reprogrammée.",
+        text: "Arxia est partie de la norme de données, pas du logiciel. Le modèle commun est publié en JSON Schema, OpenAPI et JSON-LD. Au-dessus viennent la saisie mobile hors ligne dans chaque pays, une couche d'interopérabilité fondée sur des API, une plateforme régionale de reporting et des registres de cycle de vie immuables. Quand la norme évolue, la plateforme suit sans être reprogrammée.",
       },
       { alt: "Présentation du modèle de données au public régional" },
       { text: "Ce que cela change concrètement" },
@@ -704,7 +704,7 @@ export const newsFr: Record<string, NewsArticleOverlay> = {
       },
       { text: "Le problème de l'interdiction" },
       {
-        text: "L'adoption de l'IA avance plus vite que les politiques internes ne peuvent suivre. Le réflexe de nombreuses entreprises est de l'interdire. Mais une interdiction ne met pas fin à l'usage ; elle le repousse dans l'ombre, où il expose l'organisation à des risques de sécurité, à des pertes de données et à des failles de conformité que personne ne suit.",
+        text: "L'adoption de l'IA avance plus vite que les politiques internes ne peuvent suivre. Le réflexe de nombreuses entreprises est de l'interdire. Mais une interdiction ne met pas fin à l'usage. Elle le repousse dans l'ombre, où il expose l'organisation à des risques de sécurité, à des pertes de données et à des failles de conformité que personne ne suit.",
       },
       { text: "Ce qu'a abordé le panel" },
       {

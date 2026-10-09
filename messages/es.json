@@ -26,15 +26,42 @@
       "dpi": "Infraestructura Pública Digital",
       "interoperability": "Interoperabilidad"
     },
-    "cta": "Contáctenos",
-    "proof": "Desde {founded}"
+    "claim": "Somos expertos en Transformación Digital e Infraestructura Pública Digital.",
+    "lede": "Acompañamos a nuestros socios globales para afrontar desafíos digitales complejos mediante una gobernanza integral, consultoría especializada e implementación de software de primer nivel.",
+    "ctaPrimary": "Hablemos",
+    "ctaSecondary": "Ver el portafolio",
+    "figures": {
+      "countries": "Países",
+      "organizations": "Organizaciones atendidas"
+    },
+    "stack": {
+      "title": "Las prácticas de Arxia como bloques de construcción",
+      "ground": "Infraestructura pública digital",
+      "axis": "Gobierno electrónico",
+      "blocks": {
+        "interoperability": "Interoperabilidad",
+        "dataGovernance": "Gobernanza de datos",
+        "eProcurement": "e-Procurement",
+        "eInvoicing": "e-Invoicing",
+        "webPortals": "Portales web",
+        "eServices": "e-Services",
+        "ai": "Inteligencia artificial"
+      }
+    }
   },
   "Domains": {
     "annotation": "INFRAESTRUCTURA PÚBLICA DIGITAL Y TRANSFORMACIÓN DIGITAL",
-    "heading": "Los bloques de su independencia digital",
+    "heading": "Los bloques de la evolución digital",
     "coreLabel": "NÚCLEO",
     "explore": "Explorar",
-    "intro": "Arxia es una empresa de transformación digital e Infraestructura Pública Digital que trabaja con gobiernos desde {founded} en más de {countries} países."
+    "intro": "En Arxia creemos que el conocimiento técnico experto se desmorona sin una buena gobernanza y unos principios sólidos.",
+    "readMore": "Leer más",
+    "panel": {
+      "offers": "Qué ofrece Arxia",
+      "explore": "Explorar {name}",
+      "projects": "Ver los proyectos",
+      "close": "Cerrar"
+    }
   },
   "Portfolio": {
     "annotation": "Trabajo seleccionado",
@@ -42,9 +69,9 @@
     "body": "Proyectos seleccionados que definen lo que hacemos.",
     "viewFull": "Ver portafolio completo →",
     "metaTitle": "Portafolio",
-    "metaDescription": "{projects} proyectos en más de {countries} países. Gobierno digital desde {founded}: de marcos nacionales de interoperabilidad a plataformas de contratación pública.",
+    "metaDescription": "{projects} proyectos de gobierno digital en más de {countries} países, desde marcos nacionales de interoperabilidad hasta plataformas de contratación pública.",
     "heroAnnotation": "Portafolio",
-    "heroBody": "{projects} proyectos en más de {countries} países. Gobierno digital desde {founded}: de marcos nacionales de interoperabilidad a plataformas de contratación pública.",
+    "heroBody": "{projects} proyectos de gobierno digital en más de {countries} países, desde marcos nacionales de interoperabilidad hasta plataformas de contratación pública.",
     "statProjects": "Proyectos",
     "statCountries": "Países",
     "statDomains": "Áreas",
@@ -102,9 +129,6 @@
     "heading": "Nuestra presencia global",
     "headquarters": "Sede central",
     "offices": "Oficinas",
-    "statOrganizations": "Organizaciones",
-    "statCountries": "Países",
-    "statYears": "Años",
     "regions": {
       "Europe": "Europa",
       "Latin America": "América Latina",
@@ -139,13 +163,18 @@
       "KE": "Kenia",
       "SO": "Somalia",
       "DJ": "Yibuti",
-      "AO": "Angola"
-    }
+      "NL": "Países Bajos",
+      "FR": "Francia",
+      "CI": "Costa de Marfil",
+      "BW": "Botsuana"
+    },
+    "office": "Oficina",
+    "projectCountries": "Países con proyectos realizados"
   },
   "ContactForm": {
     "connect": "Conectemos",
-    "heading": "Cuéntenos qué está construyendo.",
-    "body": "Trabajamos con gobiernos, organizaciones internacionales, donantes y socios internacionales. Cuéntenos el problema y le diremos con franqueza si somos el socio adecuado.",
+    "heading": "Hablemos.",
+    "body": "Un proyecto, una licitación, una propuesta conjunta o una idea que aún está tomando forma: escríbanos y la persona adecuada del equipo le responderá.",
     "ariaLabel": "Formulario de contacto",
     "name": "Nombre",
     "namePlaceholder": "Su nombre",
@@ -174,7 +203,7 @@
     "emailLabel": "Correo",
     "tradeRegister": "Reg. Mercantil",
     "vat": "IVA",
-    "tagline": "Transformación digital e Infraestructura Pública Digital para gobiernos en todo el mundo.",
+    "tagline": "Transformación digital e Infraestructura Pública Digital, de la estrategia a la transferencia.",
     "company": "Empresa",
     "services": "Servicios",
     "contact": "Contacto",
@@ -237,7 +266,7 @@
   "DomainCTA": {
     "annotation": "Empecemos",
     "heading": "¿Hablamos de {title}?",
-    "body": "Cuéntenos los detalles. Le responderemos con lo que implica el trabajo, quién lo haría y qué requeriría.",
+    "body": "Escríbanos sobre un proyecto, una licitación o una alianza en este ámbito. Le responderemos con lo que implica el trabajo, quién lo haría y qué requeriría.",
     "contact": "Contáctenos",
     "viewPortfolio": "Ver Portafolio"
   },
@@ -284,7 +313,7 @@
     "engage": {
       "annotation": "Cómo trabajamos",
       "heading": "En todo el ciclo de vida, o en una sola capa.",
-      "body": "Trabaje con Arxia de principio a fin, o súmenos en la capa donde necesita profundidad. El camino es el mismo en ambos casos.",
+      "body": "Arxia puede llevar todo el programa de principio a fin, o sumarse en la capa que necesita profundidad. El camino es el mismo en ambos casos.",
       "assessTitle": "Evaluar",
       "assessBody": "Auditorías de madurez y diagnósticos de la situación actual: qué existe, qué falta y qué va primero.",
       "designTitle": "Diseñar",
@@ -325,7 +354,7 @@
     "approach": {
       "annotation": "El enfoque",
       "heading": "Por qué la reforma va primero.",
-      "lead": "Una plataforma solo digitaliza el proceso que usted ya tiene.",
+      "lead": "Una plataforma solo digitaliza el proceso que ya existe.",
       "problem": "La mayoría de los programas de contratación electrónica empiezan comprando software. La ley, los procedimientos y las personas quedan para después, así que el sistema automatiza hábitos de papel y los funcionarios terminan esquivándolo.",
       "answer": "Arxia lo hace al revés: reformar las reglas y el proceso, preparar a quienes lo operarán y, después, desplegar la plataforma. Un solo programa, para que nada quede entre dos contratos.",
       "oneProgramme": "Un solo programa"
@@ -384,8 +413,8 @@
     },
     "engage": {
       "annotation": "Cómo trabajamos",
-      "heading": "Un programa completo, o la línea que usted necesite.",
-      "body": "Cuente con Arxia desde el diagnóstico hasta el traspaso, o incorpórenos donde necesite profundidad: una reforma, un programa de formación o el despliegue de la plataforma.",
+      "heading": "Un programa completo, o una sola línea.",
+      "body": "Arxia puede llevar el programa desde el diagnóstico hasta el traspaso, o sumarse donde haga falta profundidad: una reforma, un programa de formación o el despliegue de la plataforma.",
       "assessTitle": "Evaluar",
       "assessBody": "Un diagnóstico del sistema actual: qué permite la ley, qué hace el proceso, qué va primero.",
       "reformTitle": "Reformar",
@@ -429,11 +458,11 @@
   },
   "Meta": {
     "homeTitle": "Transformación Digital e Infraestructura Pública Digital — Arxia",
-    "homeDescription": "Arxia es una empresa de transformación digital e Infraestructura Pública Digital. Construimos los sistemas sobre los que operan los gobiernos y luego se los entregamos.",
-    "homeOgDescription": "Construimos la infraestructura pública digital sobre la que operan los gobiernos y luego se la entregamos."
+    "homeDescription": "Arxia es una empresa de transformación digital e Infraestructura Pública Digital que trabaja con socios de todo el mundo, de la gobernanza y la consultoría a la implementación de software.",
+    "homeOgDescription": "Transformación digital e Infraestructura Pública Digital junto a socios de todo el mundo: gobernanza, consultoría especializada e implementación de software."
   },
   "LogoCarousel": {
-    "label": "Clientes y socios",
+    "label": "Algunos de nuestros clientes",
     "pause": "Pausar la animación de logotipos",
     "play": "Reanudar la animación de logotipos"
   },

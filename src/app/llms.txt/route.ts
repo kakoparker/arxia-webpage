@@ -1,4 +1,4 @@
-import { company, yearsActive } from "@/data/company";
+import { company } from "@/data/company";
 import { getExpertiseDomains } from "@/data/expertise-domains";
 import { getCaseStudies } from "@/data/case-studies";
 import { getNewsArticles } from "@/data/news";
@@ -19,9 +19,9 @@ export function GET() {
 
   const body = `# ${company.brandName}
 
-> ${company.brandName} (${company.legalName}, Romania) is a digital transformation and Digital Public Infrastructure company. Since ${company.foundingYear} (${yearsActive()} years) it has worked with governments, international organizations and the donors who fund them, in more than ${company.figures.countries} countries: ${portfolioProjects.length} projects in the public portfolio.
+> ${company.brandName} (${company.legalName}, Romania) is a digital transformation and Digital Public Infrastructure company with offices in ${new Intl.ListFormat("en").format(company.offices.map((o) => `${o.city} (${o.countryName})`))}. It has delivered projects in more than ${company.figures.countries} countries, with ${portfolioProjects.length} projects in the public portfolio.
 
-Interoperability is the core practice; the other six domains are built on and routed through it. The site is available in English (default), Spanish (/es) and French (/fr).
+Interoperability is the core practice, and the other six domains are built on and routed through it. The site is available in English (default), Spanish (/es) and French (/fr).
 
 ## Domains of expertise
 

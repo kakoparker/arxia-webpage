@@ -12,9 +12,13 @@ export const company = {
   brandName: "Arxia",
   legalName: "ARXIA SRL",
   legalForm: "Societate cu Răspundere Limitată (SRL)",
-  /** Date of incorporation (ONRC). */
+  /**
+   * Date of incorporation (ONRC). Legal identity only (schema.org
+   * foundingDate). Never shown as a marketing claim ("since 1996",
+   * "30 years"): Arxia had no activity until 2000 and today's business is
+   * much newer, so the portfolio carries the proof instead (CEO, Oct 2026).
+   */
   foundingDate: "1996-05-28",
-  foundingYear: 1996,
   /** Unique registration code (CUI). */
   registrationCode: "8472530",
   /** Trade Registry number (legacy format J12/914/1996). */
@@ -34,6 +38,17 @@ export const company = {
     countryCode: "RO",
     countryName: "Romania",
   },
+  /**
+   * Where Arxia has offices, headquarters first. Kept apart from the list of
+   * countries with delivered projects (GlobalPresence) so the two are never
+   * conflated. City and country names are proper nouns, shown untranslated in
+   * the footer; GlobalPresence localizes the country by its code.
+   */
+  offices: [
+    { city: "Cluj-Napoca", countryCode: "RO", countryName: "Romania", headquarters: true, location: [46.7712, 23.6236] },
+    { city: "Santiago", countryCode: "CL", countryName: "Chile", headquarters: false, location: [-33.4489, -70.6693] },
+    { city: "Kampala", countryCode: "UG", countryName: "Uganda", headquarters: false, location: [0.3476, 32.5825] },
+  ],
   email: {
     /** Public / inbound enquiries. */
     general: "info@arxia.com",
@@ -62,19 +77,6 @@ export const company = {
   },
 } as const;
 
-/** Whole years since incorporation, e.g. 30 in 2026. */
-export function yearsActive(now: Date = new Date()): number {
-  const founded = new Date(company.foundingDate);
-  let years = now.getFullYear() - founded.getFullYear();
-  if (
-    now.getMonth() < founded.getMonth() ||
-    (now.getMonth() === founded.getMonth() && now.getDate() < founded.getDate())
-  ) {
-    years -= 1;
-  }
-  return years;
-}
-
 /** One-line postal address of the public office, for display. */
 export function officeAddressLine(): string {
   const a = company.office;
@@ -83,5 +85,5 @@ export function officeAddressLine(): string {
 
 /** ICU values for the Portfolio heroBody / metaDescription messages. */
 export function portfolioCopyValues(projects: number) {
-  return { projects, countries: company.figures.countries, founded: company.foundingYear };
+  return { projects, countries: company.figures.countries };
 }

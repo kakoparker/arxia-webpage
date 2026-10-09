@@ -49,6 +49,8 @@ export interface ExpertiseDomainEntry {
    * Keep it under ~60 characters or it will wrap past the space available.
    */
   oneLine: string;
+  /** Three keywords, shown as tags on the homepage plate. */
+  scope: string[];
   icon: LucideIcon;
   /** The anchor domain — rendered as the large plate with the schematic. */
   core?: true;
@@ -60,8 +62,9 @@ export const expertiseDomainEntries: ExpertiseDomainEntry[] = [
     order: "01",
     name: "Full-stack interoperability",
     description:
-      "Governance, standards, policy and the data-exchange platform itself. The technical layer is the easy part; we cover the rest too.",
+      "Governance, standards, policy and the data-exchange platform itself. The technical layer is the easy part, and we cover the rest too.",
     oneLine: "Every layer of the exchange, not just the technical one.",
+    scope: ["Frameworks", "Standards", "Exchange"],
     icon: Network,
     core: true,
   },
@@ -72,6 +75,7 @@ export const expertiseDomainEntries: ExpertiseDomainEntry[] = [
     description:
       "The rules that decide who may use which data, and on what basis: governance frameworks, consent regimes, data protection, semantic models and maturity assessments.",
     oneLine: "Who may use which data, and on what basis.",
+    scope: ["Frameworks", "Consent", "Data protection"],
     icon: Lock,
   },
   {
@@ -81,6 +85,7 @@ export const expertiseDomainEntries: ExpertiseDomainEntry[] = [
     description:
       "Procurement digitalized from tender publication through contract management, with every step traceable and auditable.",
     oneLine: "Tender to contract, with every step traceable.",
+    scope: ["Reform", "People", "Platform"],
     icon: ClipboardCheck,
   },
   {
@@ -90,6 +95,7 @@ export const expertiseDomainEntries: ExpertiseDomainEntry[] = [
     description:
       "Electronic invoicing, transaction reporting and tax-compliance systems, including cross-border standards.",
     oneLine: "Invoicing and tax compliance, including across borders.",
+    scope: ["Strategy", "Tax compliance", "Reporting"],
     icon: ReceiptText,
   },
   {
@@ -99,6 +105,7 @@ export const expertiseDomainEntries: ExpertiseDomainEntry[] = [
     description:
       "Citizen and institutional portals built on one standard, so every ministry ships the same quality of service.",
     oneLine: "One standard, so every ministry ships the same quality.",
+    scope: ["Design systems", "Multi-tenant", "Accessibility"],
     icon: Globe,
   },
   {
@@ -108,6 +115,7 @@ export const expertiseDomainEntries: ExpertiseDomainEntry[] = [
     description:
       "Chatbots are the visible part. We build the strategy, policy and data layers underneath that make AI in government safe to run.",
     oneLine: "The strategy and data layers that make AI safe to run.",
+    scope: ["Readiness", "Governance", "AI agents"],
     icon: Bot,
   },
   {
@@ -117,6 +125,7 @@ export const expertiseDomainEntries: ExpertiseDomainEntry[] = [
     description:
       "We redesign and build e-services using AI and low-code tooling, so delivery is measured in weeks rather than budget cycles.",
     oneLine: "Services rebuilt with AI and low-code, delivered in weeks.",
+    scope: ["Life events", "BPMN", "Low-code"],
     icon: Blocks,
   },
 ];
@@ -153,6 +162,7 @@ export function getExpertiseDomains(
       name: o.name ?? d.name,
       description: o.description ?? d.description,
       oneLine: o.oneLine ?? d.oneLine,
+      scope: o.scope ?? d.scope,
     };
   });
 }

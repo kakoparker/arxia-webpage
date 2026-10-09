@@ -8,6 +8,9 @@ import { Hero } from "@/components/sections/Hero";
 import { LogoCarousel } from "@/components/sections/LogoCarousel";
 import { ScrollProgressRail } from "@/components/ui/ScrollProgressRail";
 import { HomeScrollManager } from "@/components/util/HomeScrollManager";
+import { domainPageSlugs, getDomainHighlights } from "@/data/domain-pages";
+import { getDomainIntro } from "@/data/domain-intros";
+import type { DomainPanelData } from "@/components/sections/DomainsGrid";
 
 // Below-the-fold sections — code-split for faster TTI. ssr:true keeps
 // the markup in the server-rendered HTML for SEO/crawlers; only the
@@ -63,6 +66,13 @@ export default async function Home({
     { id: "news", label: t("news") },
     { id: "contact", label: t("contact") },
   ];
+  // Each domain's panel (intro + headline offers), resolved here for this
+  // locale only, so the grid's client bundle never carries the other locales.
+  const domainPanels: Record<string, DomainPanelData> = {};
+  for (const slug of domainPageSlugs) {
+    const highlights = getDomainHighlights(slug, locale);
+    if (highlights) domainPanels[slug] = { ...highlights, intro: getDomainIntro(slug, locale) };
+  }
   return (
     <>
       <HomeScrollManager />
@@ -80,7 +90,7 @@ export default async function Home({
             between the hero and them. Ultra-light keeps the surface
             alternation honest against the carousel's white band. */}
         <div className="snap-section">
-          <DomainsGrid tone="ultra-light" />
+          <DomainsGrid tone="ultra-light" panels={domainPanels} />
         </div>
 
         {/* 4 — Global presence */}

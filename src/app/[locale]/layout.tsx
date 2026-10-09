@@ -95,8 +95,9 @@ const organizationSchema = {
   legalName: company.legalName,
   url: SITE_URL,
   logo: `${SITE_URL}/logos/brand/arxia-logo-color.png`,
-  description:
-    "Digital transformation and Digital Public Infrastructure company working with governments since 1996.",
+  description: `Digital transformation and Digital Public Infrastructure company, with offices in ${new Intl.ListFormat(
+    "en",
+  ).format(company.offices.map((o) => o.countryName))} and projects in more than ${company.figures.countries} countries.`,
   foundingDate: company.foundingDate,
   email: company.email.general,
   vatID: company.vatNumber,

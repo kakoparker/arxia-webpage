@@ -395,7 +395,7 @@ export const newsEs: Record<string, NewsArticleOverlay> = {
       },
       { text: "Por qué importa la gobernanza multiactor" },
       {
-        text: "Por eso el impacto duradero depende de una gobernanza multiactor. Las relaciones sostenibles entre países no las construye un solo actor; requieren que gobiernos, innovadores, expertos y empresas compartan la responsabilidad del resultado. Es más lento y más exigente que una venta, y es el único enfoque que perdura.",
+        text: "Por eso el impacto duradero depende de una gobernanza multiactor. Las relaciones sostenibles entre países no las construye un solo actor. Requieren que gobiernos, innovadores, expertos y empresas compartan la responsabilidad del resultado. Es más lento y más exigente que una venta, y es el único enfoque que perdura.",
       },
       { text: "Ucrania tiene una historia para contar" },
       {
@@ -443,14 +443,14 @@ export const newsEs: Record<string, NewsArticleOverlay> = {
       },
       { text: "Ahora empieza la parte más difícil" },
       {
-        text: "El taller fue el primer paso. Los próximos tres meses abordan las preguntas más difíciles: cómo operacionalizar la IA en una firma donde cada persona trabaja de manera distinta; cómo establecer una gobernanza que haga que el uso de la IA sea consistente, trazable y respetuoso de la confidencialidad de los clientes; cómo gestionar las dudas, los hábitos y los temores que trae el cambio; y cómo capacitar al resto de la organización para que el conocimiento no se quede en seis personas.",
+        text: "El taller fue el primer paso. Los próximos tres meses abordan las preguntas más difíciles: cómo operacionalizar la IA en una firma donde cada persona trabaja de manera distinta, cómo establecer una gobernanza que haga que el uso de la IA sea consistente, trazable y respetuoso de la confidencialidad de los clientes, cómo gestionar las dudas, los hábitos y los temores que trae el cambio y cómo capacitar al resto de la organización para que el conocimiento no se quede en seis personas.",
       },
       {
         text: "Arxia trabajará codo a codo con RCG en gobernanza, gestión del cambio, capacitación interna y en escalar los flujos de trabajo desde un grupo piloto a toda la empresa.",
       },
       { text: "Un enfoque probado" },
       {
-        text: "Arxia lleva más de diez años trabajando en optimización de procesos y gestión del cambio a través de la transformación digital. Su metodología de operacionalización de IA ya se ha aplicado en tres continentes, con clientes de banca, academia, retail, ONG y consultoría. La tecnología no es el objetivo; el proceso sí lo es. Los clientes internalizan el conocimiento, ganan confianza, incorporan a sus equipos, lideran el cambio y siguen mejorando por su cuenta.",
+        text: "Arxia lleva más de diez años trabajando en optimización de procesos y gestión del cambio a través de la transformación digital. Su metodología de operacionalización de IA ya se ha aplicado en tres continentes, con clientes de banca, academia, retail, ONG y consultoría. La tecnología no es el objetivo. El proceso sí lo es. Los clientes internalizan el conocimiento, ganan confianza, incorporan a sus equipos, lideran el cambio y siguen mejorando por su cuenta.",
       },
       { text: "Conozca más sobre el AI Acceleration Program →" },
     ],

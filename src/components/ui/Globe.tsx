@@ -3,40 +3,54 @@
 import { useEffect, useRef } from "react";
 import createGlobe from "cobe";
 import { cn } from "@/lib/utils";
+import { company } from "@/data/company";
 
 interface GlobeProps {
   className?: string;
+  /** Must be referentially stable: a new array rebuilds the WebGL globe. */
   markers?: Array<{ location: [number, number]; size: number }>;
 }
 
-const DEFAULT_MARKERS: Array<{ location: [number, number]; size: number }> = [
-  { location: [44.4268, 26.1025], size: 0.08 },   // Romania (HQ)
-  { location: [-33.4489, -70.6693], size: 0.07 },  // Chile
-  { location: [4.711, -74.0721], size: 0.07 },     // Colombia
-  { location: [-12.0464, -77.0428], size: 0.07 },  // Peru
-  { location: [13.6929, -89.2182], size: 0.07 },   // El Salvador
-  { location: [52.52, 13.405], size: 0.07 },       // Germany
-  { location: [46.948, 7.4474], size: 0.07 },      // Switzerland
-  { location: [48.2082, 16.3738], size: 0.07 },    // Austria
-  { location: [50.4501, 30.5234], size: 0.07 },    // Ukraine
-  { location: [36.8065, 10.1815], size: 0.07 },    // Tunisia
-  { location: [14.7167, -17.4677], size: 0.07 },   // Senegal
-  { location: [5.6037, -0.187], size: 0.07 },      // Ghana
-  { location: [9.0579, 7.4951], size: 0.07 },      // Nigeria
-  { location: [4.3947, 18.5582], size: 0.07 },     // CAR
-  { location: [4.8594, 31.5713], size: 0.07 },     // South Sudan
-  { location: [0.3476, 32.5825], size: 0.07 },     // Uganda
-  { location: [-1.9403, 29.8739], size: 0.07 },    // Rwanda
-  { location: [-3.3731, 29.3189], size: 0.07 },    // Burundi
-  { location: [-15.3875, 28.3228], size: 0.07 },   // Zambia
-  { location: [11.5564, 104.9282], size: 0.07 },   // Cambodia
-  { location: [59.9139, 10.7522], size: 0.07 },    // Norway
-  { location: [9.03, 38.74], size: 0.07 },         // Ethiopia
-  { location: [-1.2921, 36.8219], size: 0.07 },    // Kenya
-  { location: [2.0469, 45.3182], size: 0.07 },     // Somalia
-  { location: [11.588, 43.145], size: 0.07 },      // Djibouti
-  { location: [-8.839, 13.2894], size: 0.07 },     // Angola
+type Marker = { location: [number, number]; size: number };
+
+// Offices are plotted larger than project countries, from company facts.
+const OFFICE_MARKERS: Marker[] = company.offices.map((o) => ({
+  location: [o.location[0], o.location[1]],
+  size: o.headquarters ? 0.1 : 0.09,
+}));
+
+// Countries with delivered projects (capitals), matching the GlobalPresence
+// list. Romania, Chile and Uganda are already plotted as offices.
+const PROJECT_MARKERS: Marker[] = [
+  { location: [4.711, -74.0721], size: 0.06 },     // Colombia
+  { location: [-12.0464, -77.0428], size: 0.06 },  // Peru
+  { location: [13.6929, -89.2182], size: 0.06 },   // El Salvador
+  { location: [52.52, 13.405], size: 0.06 },       // Germany
+  { location: [48.8566, 2.3522], size: 0.06 },     // France
+  { location: [52.3676, 4.9041], size: 0.06 },     // Netherlands
+  { location: [46.948, 7.4474], size: 0.06 },      // Switzerland
+  { location: [48.2082, 16.3738], size: 0.06 },    // Austria
+  { location: [59.9139, 10.7522], size: 0.06 },    // Norway
+  { location: [50.4501, 30.5234], size: 0.06 },    // Ukraine
+  { location: [36.8065, 10.1815], size: 0.06 },    // Tunisia
+  { location: [14.7167, -17.4677], size: 0.06 },   // Senegal
+  { location: [5.36, -4.0083], size: 0.06 },       // Côte d'Ivoire
+  { location: [5.6037, -0.187], size: 0.06 },      // Ghana
+  { location: [9.0579, 7.4951], size: 0.06 },      // Nigeria
+  { location: [4.3947, 18.5582], size: 0.06 },     // CAR
+  { location: [4.8594, 31.5713], size: 0.06 },     // South Sudan
+  { location: [-1.9403, 29.8739], size: 0.06 },    // Rwanda
+  { location: [-3.3731, 29.3189], size: 0.06 },    // Burundi
+  { location: [9.03, 38.74], size: 0.06 },         // Ethiopia
+  { location: [-1.2921, 36.8219], size: 0.06 },    // Kenya
+  { location: [2.0469, 45.3182], size: 0.06 },     // Somalia
+  { location: [11.588, 43.145], size: 0.06 },      // Djibouti
+  { location: [-15.3875, 28.3228], size: 0.06 },   // Zambia
+  { location: [-24.6282, 25.9231], size: 0.06 },   // Botswana
+  { location: [11.5564, 104.9282], size: 0.06 },   // Cambodia
 ];
+
+const DEFAULT_MARKERS: Marker[] = [...OFFICE_MARKERS, ...PROJECT_MARKERS];
 
 export function Globe({ className, markers = DEFAULT_MARKERS }: GlobeProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);

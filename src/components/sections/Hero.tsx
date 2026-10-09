@@ -1,159 +1,168 @@
-"use client";
-
-import { useRef } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
-import {
-  BlueprintGridSVG,
-  type BlueprintGridSVGHandle,
-} from "@/components/ui/BlueprintGridSVG";
-import { useAnimationFrame } from "@/hooks/useAnimationFrame";
-import { useMousePosition } from "@/hooks/useMousePosition";
+import { BuildingBlocksFigure } from "@/components/figures/BuildingBlocksFigure";
+import { HeroShell } from "./HeroShell";
 import { company } from "@/data/company";
 
-/** Hero plates, in order. Keys map to the `Hero.labels` message namespace. */
+/** Practice labels, in order. Keys map to the `Hero.labels` message namespace. */
 const HERO_LABELS = ["transformation", "dpi", "interoperability"] as const;
 
+/** Building blocks, foundation first. Keys map to `Hero.stack.blocks`. */
+const STACK_BLOCKS = [
+  "interoperability",
+  "dataGovernance",
+  "eProcurement",
+  "eInvoicing",
+  "webPortals",
+  "eServices",
+  "ai",
+] as const;
+
+const mono = "font-[family-name:var(--font-jetbrains)] uppercase";
+
+/**
+ * Homepage hero. Everything a first-time visitor needs to decide whether to
+ * keep reading sits in the first screen: what Arxia does (headline + lede),
+ * what to do next (two calls to action), proof drawn from the portfolio (the
+ * figures bar) and the practices drawn as building blocks stacking up on a
+ * blueprint (`BuildingBlocksFigure`).
+ *
+ * Proof comes from data, never from a hard-coded claim: the figures come
+ * from `company.figures`.
+ *
+ * Server component. Only the animated grid behind it (`HeroShell`) is client
+ * code. The H1 is the LCP element and renders at full opacity from the server
+ * HTML; only supporting elements use the CSS `.hero-enter` entrance.
+ */
 export function Hero() {
   const t = useTranslations("Hero");
-  const sectionRef = useRef<HTMLElement>(null);
-  const scrollGridRef = useRef<BlueprintGridSVGHandle>(null);
-  const revealGridRef = useRef<BlueprintGridSVGHandle>(null);
-  const offsetRef = useRef({ x: 0, y: 0 });
+  const blocks = STACK_BLOCKS.map((key) => t(`stack.blocks.${key}`));
 
-  const isHovering = useMousePosition(sectionRef);
-
-  // Grid drift — ambient + cursor-reveal grids share offset.
-  useAnimationFrame(() => {
-    offsetRef.current.x = (offsetRef.current.x + 0.042) % 100;
-    offsetRef.current.y = (offsetRef.current.y + 0.042) % 100;
-    const { x, y } = offsetRef.current;
-    scrollGridRef.current?.setOffset(x, y);
-    if (isHovering) revealGridRef.current?.setOffset(x, y);
-  });
+  const figures = [
+    { value: `${company.figures.countries}+`, label: t("figures.countries") },
+    { value: `${company.figures.organizations}+`, label: t("figures.organizations") },
+  ];
 
   return (
-    <section
-      ref={sectionRef}
-      className="hero-grid-bg relative min-h-screen flex items-center justify-center px-[var(--margin-page)] overflow-hidden"
-    >
-      {/* z-10: Auto-scrolling grid — subtle ambient drift */}
-      <div className="absolute inset-0 z-10 hidden sm:block">
-        <BlueprintGridSVG
-          ref={scrollGridRef}
-          minorOpacity={0.03}
-          majorOpacity={0.06}
-        />
-      </div>
-
-      {/* z-20: Mouse-reveal grid — brighter, masked to cursor */}
-      <div
-        className="absolute inset-0 z-20 transition-opacity duration-500 hidden sm:block"
-        style={{
-          opacity: isHovering ? 1 : 0,
-          maskImage:
-            "radial-gradient(circle 300px at var(--mouse-x, -1000px) var(--mouse-y, -1000px), black 0%, transparent 100%)",
-          WebkitMaskImage:
-            "radial-gradient(circle 300px at var(--mouse-x, -1000px) var(--mouse-y, -1000px), black 0%, transparent 100%)",
-        }}
-      >
-        <BlueprintGridSVG
-          ref={revealGridRef}
-          minorOpacity={0.12}
-          majorOpacity={0.22}
-        />
-      </div>
-
-      {/* z-30: Ambient glows */}
-      <div className="absolute inset-0 pointer-events-none z-30">
-        <div
-          className="absolute rounded-full blur-[120px]"
-          style={{
-            right: "-10%",
-            top: "-15%",
-            width: "35%",
-            height: "35%",
-            background: "rgba(22, 32, 54, 0.35)",
-          }}
-        />
-        <div
-          className="absolute rounded-full blur-[100px]"
-          style={{
-            left: "-5%",
-            bottom: "-10%",
-            width: "18%",
-            height: "18%",
-            background: "rgba(237, 28, 36, 0.03)",
-          }}
-        />
-      </div>
-
-      {/* z-40: Content */}
-      <div
-        className="relative z-40 mx-auto max-w-[var(--content-max)] w-full flex flex-col items-center text-center"
-      >
-        {/* The H1 is the LCP element: it renders at full opacity in the server
-            HTML and never waits for JS. Only the supporting elements below
-            animate in. Weight and tracking per the brief's hero spec. */}
-        <h1
-          className="font-light leading-[1.1] tracking-[-1.5px] text-white w-full"
-          style={{
-            fontFamily: "var(--font-primary)",
-            fontSize: "var(--text-hero)",
-          }}
-        >
-          <span className="block">{t("title1")}</span>
-          <span className="block">{" "}{t("title2")}</span>
-        </h1>
-
-        <div
-          style={{ animationDelay: "90ms" }}
-          className="hero-enter h-[3px] w-12 bg-accent-red mt-8 mb-6"
-        />
-
-        {/* What Arxia does, as three plates rather than a sentence. Mono,
-            uppercase and sharp-cornered: the brand's tag treatment, sized up
-            for the hero and inverted for the dark surface. */}
+    <HeroShell>
+      <div className="mx-auto flex w-full max-w-[var(--content-max)] flex-1 flex-col justify-center pb-[clamp(24px,4vh,48px)] pt-[calc(56px+clamp(24px,6vh,88px))]">
+        {/* The three practices, as one annotation line across the full width
+            (inside the pitch column it wrapped mid-list). */}
         <ul
-          style={{ animationDelay: "180ms" }}
-          className="hero-enter flex flex-wrap items-center justify-center gap-2 sm:gap-2.5"
+          className={`${mono} hero-enter mb-6 flex flex-wrap gap-x-3 gap-y-1 text-[11px] leading-[1.6] tracking-[2px] text-accent-red-bright sm:text-[12px] lg:mb-[clamp(16px,3vh,32px)]`}
+          style={{ animationDelay: "60ms" }}
         >
-          {HERO_LABELS.map((key) => (
-            <li
-              key={key}
-              className="border border-white/[0.18] px-3 py-2 text-[10px] text-gray-light sm:px-3.5 sm:text-[11px]"
-              style={{
-                fontFamily: "var(--font-mono)",
-                letterSpacing: "2px",
-                lineHeight: 1,
-                textTransform: "uppercase",
-              }}
-            >
+          {HERO_LABELS.map((key, i) => (
+            <li key={key} className="flex items-center gap-3">
+              {i > 0 && <span aria-hidden className="h-1 w-1 bg-white/40" />}
               {t(`labels.${key}`)}
             </li>
           ))}
         </ul>
 
-        {/* One verifiable proof point in the first screen, from company facts. */}
-        <p
-          className="hero-enter mt-6 text-gray-medium"
-          style={{
-            animationDelay: "270ms",
-            fontFamily: "var(--font-mono)",
-            fontSize: "12px",
-            letterSpacing: "1.5px",
-            textTransform: "uppercase",
-          }}
-        >
-          {t("proof", { founded: company.foundingYear })}
-        </p>
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-14">
+          {/* Pitch */}
+          <div className="lg:col-span-7">
+            <h1
+              className="font-semibold text-white"
+              style={{
+                fontFamily: "var(--font-primary)",
+                fontSize: "clamp(38px, min(5vw, 9vh), 68px)",
+                lineHeight: 1.04,
+                letterSpacing: "-0.03em",
+              }}
+            >
+              <span className="block">{t("title1")}</span>
+              <span className="block">{t("title2")}</span>
+            </h1>
 
-        <div className="hero-enter mt-8" style={{ animationDelay: "360ms" }}>
-          <Button variant="primary" dark href="#contact">
-            {t("cta")}
-          </Button>
+            <div
+              className="hero-enter mt-[clamp(16px,3vh,24px)] h-[3px] w-12 bg-accent-red"
+              style={{ animationDelay: "120ms" }}
+            />
+
+            {/* Claim line, then the paragraph that backs it. */}
+            <p
+              className="hero-enter mt-[clamp(16px,3vh,24px)] max-w-[38rem] font-semibold text-white"
+              style={{
+                animationDelay: "180ms",
+                fontFamily: "var(--font-primary)",
+                fontSize: "clamp(19px, 1.6vw, 22px)",
+                lineHeight: 1.35,
+              }}
+            >
+              {t("claim")}
+            </p>
+            <p
+              className="hero-enter mt-2 max-w-[38rem] text-gray-light"
+              style={{
+                animationDelay: "220ms",
+                fontFamily: "var(--font-primary)",
+                fontSize: "clamp(17px, 1.35vw, 19px)",
+                lineHeight: 1.65,
+              }}
+            >
+              {t("lede")}
+            </p>
+
+            <div
+              className="hero-enter mt-[clamp(20px,4vh,32px)] flex flex-wrap gap-3"
+              style={{ animationDelay: "260ms" }}
+            >
+              <Button variant="primary" dark href="#contact">
+                {t("ctaPrimary")}
+              </Button>
+              <Button variant="ghost" dark href="/portfolio">
+                {t("ctaSecondary")}
+              </Button>
+            </div>
+          </div>
+
+          {/* The practices as building blocks, stacking up on the blueprint.
+              Hidden on phones, where the labels would be too small to read. */}
+          {/* From lg up the drawing bleeds into the page's right margin, so
+              it can be drawn large and its lettering stays legible. */}
+          <div className="hidden items-center justify-center sm:flex lg:col-span-5 lg:-mr-[calc(var(--margin-page)*0.55)]">
+            <BuildingBlocksFigure
+              labels={blocks}
+              ground={t("stack.ground")}
+              axis={t("stack.axis")}
+              title={`${t("stack.title")}: ${t("stack.ground")}, ${t("stack.axis")}, ${blocks.join(", ")}.`}
+              className="h-auto w-full max-w-[600px] lg:max-h-[min(600px,58vh)]"
+            />
+          </div>
         </div>
       </div>
-    </section>
+
+      {/* Figures bar: proof in the first screen. Static numbers (no odometer)
+          so they are right in the HTML and for crawlers. Phones stack them,
+          number beside label, so long labels never squeeze into a third of
+          the screen. */}
+      <div className="mx-auto w-full max-w-[var(--content-max)] border-t border-white/[0.12] pb-[clamp(20px,4vh,40px)] pt-5">
+        <dl className="grid grid-cols-1 gap-y-3 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4">
+          {figures.map((f) => (
+            <div
+              key={f.label}
+              className="flex flex-row-reverse items-baseline justify-end gap-3 sm:flex-col-reverse sm:items-start sm:gap-1"
+            >
+              <dt className={`${mono} text-[11px] leading-[1.5] tracking-[2px] text-gray-light sm:text-[12px]`}>
+                {f.label}
+              </dt>
+              <dd
+                className="font-bold text-white"
+                style={{
+                  fontFamily: "var(--font-primary)",
+                  fontSize: "clamp(30px, 3vw, 42px)",
+                  lineHeight: 1,
+                  letterSpacing: "-1px",
+                }}
+              >
+                {f.value}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </HeroShell>
   );
 }

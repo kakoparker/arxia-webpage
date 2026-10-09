@@ -116,12 +116,12 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
           "data-governance": {
             title: "Gouvernance des données",
             description:
-              "Politiques, rôles, règles de responsabilité et dispositifs institutionnels pour un partage de confiance des données publiques. Livré comme un cadre formel que votre conseil des ministres ou votre agence numérique peut adopter et faire appliquer.",
+              "Politiques, rôles, règles de responsabilité et dispositifs institutionnels pour un partage de confiance des données publiques. Livré comme un cadre formel qu'un conseil des ministres ou une agence numérique peut adopter et faire appliquer.",
           },
           "digital-maturity": {
             title: "Évaluations de la maturité numérique",
             description:
-              "Diagnostics structurés qui hiérarchisent la maturité numérique de votre institution et produisent un plan d'investissement défendable, pas seulement un rapport.",
+              "Diagnostics structurés qui hiérarchisent la maturité numérique d'une institution et produisent un plan d'investissement défendable, pas seulement un rapport.",
           },
         },
       },
@@ -308,7 +308,7 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
           "ai-readiness-gov": {
             title: "Évaluations de la maturité IA des gouvernements",
             description:
-              "Diagnostics de votre situation sur les données, les compétences, l'infrastructure et la préparation juridique, et de ce qu'il faut corriger en premier pour adopter l'IA de manière responsable.",
+              "Diagnostics de la situation d'une institution sur les données, les compétences, l'infrastructure et la préparation juridique, et de ce qu'il faut corriger en premier pour adopter l'IA de manière responsable.",
           },
           "agentic-state-strategy": {
             title: "Stratégie et architecture de l'État agentique",
@@ -323,7 +323,7 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
           "responsible-ai-policy": {
             title: "Politique d'IA responsable et conseil en commande publique",
             description:
-              "Conseil sur les politiques de commande publique en IA, les clauses contractuelles types et les exigences de transparence, pour que votre prochain appel d'offres en IA parte d'une meilleure position.",
+              "Conseil sur les politiques de commande publique en IA, les clauses contractuelles types et les exigences de transparence, pour que le prochain appel d'offres en IA parte d'une meilleure position.",
           },
         },
       },
@@ -339,7 +339,7 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
           "ai-acceleration-gov": {
             title: "Programme d'Accélération IA pour le Gouvernement",
             description:
-              "Programme d'adoption structuré de 12 semaines pour les organisations du secteur public. Fait passer votre équipe de la stratégie à des cas d'usage IA en fonctionnement en un seul trimestre.",
+              "Programme d'adoption structuré de 12 semaines pour les organisations du secteur public. Il fait passer une équipe de la stratégie à des cas d'usage IA en fonctionnement en un seul trimestre.",
           },
           "inter-institutional-workflows": {
             title: "Flux de travail interinstitutionnels automatisés",
@@ -355,7 +355,7 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
           "ai-governance-platform-gov": {
             title: "Plateforme de Gouvernance de l'IA pour les Gouvernements",
             description:
-              "Votre organisation s'oriente vers des déploiements d'IA et un État agentique ? Vous avez besoin d'une gouvernance solide. Notre plateforme surveille la conformité, les vulnérabilités de sécurité et l'évaluation des risques pour chaque système d'IA utilisé dans votre organisation.",
+              "Une organisation qui s'oriente vers des déploiements d'IA et un État agentique a besoin d'une gouvernance solide. La plateforme surveille la conformité, les vulnérabilités de sécurité et les risques de chaque système d'IA utilisé par l'organisation.",
           },
           "holonn": {
             title: "Holonn: Plateforme de matchmaking et de communauté pour écosystèmes",
@@ -371,7 +371,7 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
           "ai-ignite-gov": {
             title: "Atelier AI IGNITE pour le secteur public",
             description:
-              "Atelier de découverte pour identifier les premières opportunités d'IA dans vos opérations, avec une liste priorisée, des estimations d'effort et un plan à 90 jours.",
+              "Atelier de découverte pour identifier les premières opportunités d'IA dans les opérations d'une institution, avec une liste priorisée, des estimations d'effort et un plan à 90 jours.",
           },
         },
       },
@@ -407,7 +407,7 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
           "low-code-eservices": {
             title: "Plateformes low-code de services électroniques",
             description:
-              "Des plateformes qui permettent à vos équipes de lancer de nouveaux services publics et agents d'IA en jours et non en trimestres, avec gouvernance et auditabilité intégrées.",
+              "Des plateformes qui permettent aux équipes d'une institution de lancer de nouveaux services publics et agents d'IA en jours et non en trimestres, avec gouvernance et auditabilité intégrées.",
           },
           "document-processing": {
             title: "Traitement documentaire augmenté par l'IA",
@@ -428,7 +428,7 @@ export const domainPagesFr: Record<string, DomainPageOverlay> = {
           "bpmn-coaching": {
             title: "Atelier : Coaching à la mise en œuvre BPMN",
             description:
-              "Coaching pratique sur Camunda, Flowable et des moteurs de workflow similaires. Livré au sein de votre équipe, pour que la capacité demeure après notre départ.",
+              "Coaching pratique sur Camunda, Flowable et des moteurs de workflow similaires. Livré au sein de l'équipe du client, pour que la capacité demeure après le départ d'Arxia.",
           },
           "ecosystem-capacity": {
             title: "Internationalisation de l'écosystème et proposition de valeur",

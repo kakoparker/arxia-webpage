@@ -35,7 +35,7 @@ export const caseStudiesEs: Record<string, CaseStudyContent> = {
       figTo: "Una puerta de entrada inclusiva",
       steps: [
         { title: "Mapear", text: "Los tres ámbitos recorridos de principio a fin con las instituciones que los gestionan." },
-        { title: "Rediseñar", text: "El recorrido reconstruido desde el lado de la persona refugiada; sin duplicidades ni pasos inútiles." },
+        { title: "Rediseñar", text: "El recorrido reconstruido desde el lado de la persona refugiada, sin duplicidades ni pasos inútiles." },
         { title: "Registro único", text: "Identidad y datos básicos recogidos una sola vez y reutilizados de forma segura." },
         { title: "Una puerta de entrada", text: "Prestaciones, plazas escolares y empleo desde una sola cuenta y cualquier dispositivo." },
         { title: "Caso resuelto", text: "Derivado a la institución adecuada y seguido hasta la entrega." },
@@ -49,7 +49,7 @@ export const caseStudiesEs: Record<string, CaseStudyContent> = {
         },
         {
           title: "Expediente compartido entre instituciones",
-          text: "Un solo expediente entre instituciones; las ONG y el personal de primera línea pueden actuar en nombre de la persona.",
+          text: "Un solo expediente entre instituciones. Las ONG y el personal de primera línea pueden actuar en nombre de la persona.",
           icon: "case-rails",
         },
       ],
@@ -71,9 +71,9 @@ export const caseStudiesEs: Record<string, CaseStudyContent> = {
       ],
     },
     apply: {
-      heading: "Apliquemos este modelo en su país",
+      heading: "Dónde más se aplica el modelo",
       body:
-        "La crisis puso de manifiesto la fragmentación; no la creó. Cualquier hecho vital que atraviese varias instituciones choca con el mismo muro. El modelo de puerta de entrada se mantiene; solo cambian los servicios que hay detrás.",
+        "La crisis puso de manifiesto la fragmentación. No la creó. Cualquier hecho vital que atraviese varias instituciones choca con el mismo muro. El modelo de puerta de entrada se mantiene y solo cambian los servicios que hay detrás.",
       figCaption: "El modelo de puerta de entrada",
       pattern: {
         users: "Ciudadanía · Personas refugiadas · Gestores de ONG",
@@ -89,7 +89,7 @@ export const caseStudiesEs: Record<string, CaseStudyContent> = {
     cta: {
       heading: "Hablemos.",
       body:
-        "Si sus instituciones atienden a personas más allá de las fronteras entre organismos e idiomas, lo hemos construido de principio a fin: rediseño de procesos, plataforma y despliegue en condiciones de crisis.",
+        "Para cualquier servicio que cruce fronteras entre organismos e idiomas, Arxia lo ha construido de principio a fin: rediseño de procesos, plataforma y despliegue en condiciones de crisis.",
     },
     videoTitle: "Servicios interoperables para personas refugiadas: el caso en 80 segundos",
     videoDescription:

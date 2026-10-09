@@ -86,7 +86,7 @@ export function Navbar() {
         <div className="hidden md:flex items-center gap-7">
           {navLinks.map((link) => {
             const isActive = isActiveLink(pathname, link.href);
-            const className = `font-[family-name:var(--font-jetbrains)] text-[10px] uppercase tracking-[2px] transition-colors duration-200 ${
+            const className = `font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2px] transition-colors duration-200 ${
               isActive
                 ? "text-white border-b border-accent-red pb-0.5"
                 : "text-gray-medium hover:text-white"

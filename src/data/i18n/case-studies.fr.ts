@@ -22,8 +22,8 @@ export const caseStudiesFr: Record<string, CaseStudyContent> = {
     problem: {
       heading: "Le problème",
       paragraphs: [
-        "Des centaines de milliers de personnes arrivant d’Ukraine se sont heurtées à un paysage de services conçu pour d’autres. Les prestations en espèces, la scolarisation et le placement professionnel relevaient d’institutions différentes, chacune avec ses propres procédures, formulaires et système informatique — aucun n’étant conçu pour un usage multilingue ni pour une gestion de dossiers partagée.",
-        "Les formulaires n’existaient qu’en roumain et les institutions improvisaient avec des traducteurs bénévoles. Des politiques généreuses existaient ; les personnes pour qui elles avaient été écrites ne pouvaient pas y accéder.",
+        "Des centaines de milliers de personnes arrivant d’Ukraine se sont heurtées à un paysage de services conçu pour d’autres. Les prestations en espèces, la scolarisation et le placement professionnel relevaient d’institutions différentes, chacune avec ses propres procédures, formulaires et système informatique. Aucun n’étant conçu pour un usage multilingue ni pour une gestion de dossiers partagée.",
+        "Les formulaires n’existaient qu’en roumain et les institutions improvisaient avec des traducteurs bénévoles. Des politiques généreuses existaient, mais les personnes pour qui elles avaient été écrites ne pouvaient pas y accéder.",
       ],
     },
     solution: {
@@ -35,7 +35,7 @@ export const caseStudiesFr: Record<string, CaseStudyContent> = {
       figTo: "Un guichet unique inclusif",
       steps: [
         { title: "Cartographier", text: "Les trois domaines parcourus de bout en bout avec les institutions qui les gèrent." },
-        { title: "Repenser", text: "Le parcours reconstruit du point de vue du réfugié ; doublons et étapes inutiles supprimés." },
+        { title: "Repenser", text: "Le parcours reconstruit du point de vue du réfugié, sans doublons ni étapes inutiles." },
         { title: "Saisie unique", text: "Identité et données de base saisies une seule fois, puis réutilisées en toute sécurité." },
         { title: "Un guichet unique", text: "Prestations, places scolaires et emplois accessibles depuis un seul compte, sur tout appareil." },
         { title: "Dossier clos", text: "Orienté vers la bonne institution, suivi jusqu’à la prestation." },
@@ -44,12 +44,12 @@ export const caseStudiesFr: Record<string, CaseStudyContent> = {
       layers: [
         {
           title: "Couche de traduction par IA",
-          text: "Formulaires, notifications et messages rendus en UA, RO ou EN — sans interprète intermédiaire.",
+          text: "Formulaires, notifications et messages rendus en UA, RO ou EN, sans interprète intermédiaire.",
           icon: "translation",
         },
         {
           title: "Dossier partagé entre institutions",
-          text: "Un seul dossier d’une institution à l’autre ; les ONG et le personnel de terrain peuvent agir au nom de la personne.",
+          text: "Un seul dossier d’une institution à l’autre. Les ONG et le personnel de terrain peuvent agir au nom de la personne.",
           icon: "case-rails",
         },
       ],
@@ -71,9 +71,9 @@ export const caseStudiesFr: Record<string, CaseStudyContent> = {
       ],
     },
     apply: {
-      heading: "Appliquons ce modèle dans votre pays",
+      heading: "Où le modèle s’applique aussi",
       body:
-        "La crise a révélé la fragmentation ; elle ne l’a pas créée. Tout événement de vie qui traverse plusieurs institutions se heurte au même mur. Le modèle du guichet unique tient ; seuls les services derrière lui changent.",
+        "La crise a révélé la fragmentation. Elle ne l’a pas créée. Tout événement de vie qui traverse plusieurs institutions se heurte au même mur. Le modèle du guichet unique tient, et seuls les services derrière lui changent.",
       figCaption: "Le modèle du guichet unique",
       pattern: {
         users: "Citoyen · Réfugié · Travailleur social d’ONG",
@@ -89,9 +89,9 @@ export const caseStudiesFr: Record<string, CaseStudyContent> = {
     cta: {
       heading: "Parlons-en.",
       body:
-        "Si vos institutions servent des personnes au-delà des frontières administratives et linguistiques, nous l’avons construit de bout en bout — refonte des processus, plateforme et déploiement en situation de crise.",
+        "Pour tout service qui traverse les frontières administratives et linguistiques, Arxia l’a construit de bout en bout : refonte des processus, plateforme et déploiement en situation de crise.",
     },
-    videoTitle: "Services interopérables pour les réfugiés — le cas en 80 secondes",
+    videoTitle: "Services interopérables pour les réfugiés : le cas en 80 secondes",
     videoDescription:
       "Un court film sur la façon dont la Roumanie a reconstruit les parcours des réfugiés en protection sociale, éducation et emploi autour d’un seul compte et d’une couche de traduction par IA.",
   },
