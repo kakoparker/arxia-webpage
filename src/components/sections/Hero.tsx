@@ -46,15 +46,17 @@ export function Hero() {
   return (
     <HeroShell>
       <div className="mx-auto flex w-full max-w-[var(--content-max)] flex-1 flex-col justify-center pb-[clamp(24px,4vh,48px)] pt-[calc(56px+clamp(24px,6vh,88px))]">
-        {/* The three practices, as one annotation line across the full width
-            (inside the pitch column it wrapped mid-list). */}
+        {/* The three practices as outlined tags across the full width: the
+            brand's tag treatment, sized up and inverted for the dark hero. */}
         <ul
-          className={`${mono} hero-enter mb-6 flex flex-wrap gap-x-3 gap-y-1 text-[11px] leading-[1.6] tracking-[2px] text-accent-red-bright sm:text-[12px] lg:mb-[clamp(16px,3vh,32px)]`}
+          className={`${mono} hero-enter mb-6 flex flex-wrap gap-1.5 lg:mb-[clamp(16px,3vh,32px)]`}
           style={{ animationDelay: "60ms" }}
         >
-          {HERO_LABELS.map((key, i) => (
-            <li key={key} className="flex items-center gap-3">
-              {i > 0 && <span aria-hidden className="h-1 w-1 bg-white/40" />}
+          {HERO_LABELS.map((key) => (
+            <li
+              key={key}
+              className="border border-white/[0.18] px-2 py-[5px] text-[9px] leading-none tracking-[1.5px] text-accent-red-bright sm:px-2.5 sm:text-[10px]"
+            >
               {t(`labels.${key}`)}
             </li>
           ))}
