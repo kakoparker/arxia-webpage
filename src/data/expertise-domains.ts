@@ -62,7 +62,7 @@ export const expertiseDomainEntries: ExpertiseDomainEntry[] = [
     order: "01",
     name: "Full-stack interoperability",
     description:
-      "Governance, standards, policy and the data-exchange platform itself. The technical layer is the easy part, and we cover the rest too.",
+      "Governance, standards, policy and the data-exchange platform itself.",
     oneLine: "Every layer of the exchange, not just the technical one.",
     scope: ["Frameworks", "Standards", "Exchange"],
     icon: Network,

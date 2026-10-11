@@ -8,7 +8,7 @@ export const expertiseDomainsFr: Record<string, ExpertiseDomainOverlay> = {
   interoperability: {
     name: "Interopérabilité full-stack",
     description:
-      "Gouvernance, normes, politiques et la plateforme d'échange de données elle-même. La couche technique est la partie facile, et nous couvrons aussi le reste.",
+      "Gouvernance, normes, politiques et la plateforme d'échange de données elle-même.",
     oneLine: "Toutes les couches de l'échange, pas seulement la technique.",
     scope: ["Cadres", "Standards", "Échange"],
   },

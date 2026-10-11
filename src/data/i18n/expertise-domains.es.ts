@@ -14,7 +14,7 @@ export const expertiseDomainsEs: Record<string, ExpertiseDomainOverlay> = {
   interoperability: {
     name: "Interoperabilidad full-stack",
     description:
-      "Gobernanza, estándares, políticas y la propia plataforma de intercambio de datos. La capa técnica es la parte fácil, y también cubrimos el resto.",
+      "Gobernanza, estándares, políticas y la propia plataforma de intercambio de datos.",
     oneLine: "Todas las capas del intercambio, no solo la técnica.",
     scope: ["Marcos", "Estándares", "Intercambio"],
   },
