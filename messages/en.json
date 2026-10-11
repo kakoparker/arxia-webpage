@@ -26,15 +26,42 @@
       "dpi": "Digital Public Infrastructure",
       "interoperability": "Interoperability"
     },
-    "cta": "Contact Us",
-    "proof": "Since {founded}"
+    "claim": "We are experts in Digital Transformation and DPI.",
+    "lede": "We support our global partners to tackle complex digital challenges through comprehensive governance, specialized consultancy and top-of-the-line software implementation.",
+    "ctaPrimary": "Let's talk",
+    "ctaSecondary": "View the portfolio",
+    "figures": {
+      "countries": "Countries",
+      "organizations": "Organizations served"
+    },
+    "stack": {
+      "title": "Arxia's practices as building blocks",
+      "ground": "Digital public infrastructure",
+      "axis": "e-Governance",
+      "blocks": {
+        "interoperability": "Interoperability",
+        "dataGovernance": "Data governance",
+        "eProcurement": "e-Procurement",
+        "eInvoicing": "e-Invoicing",
+        "webPortals": "Web portals",
+        "eServices": "e-Services",
+        "ai": "Artificial intelligence"
+      }
+    }
   },
   "Domains": {
     "annotation": "DIGITAL PUBLIC INFRASTRUCTURE & DIGITAL TRANSFORMATION",
-    "heading": "The building blocks of your digital independence",
+    "heading": "The building blocks of the digital evolution",
     "coreLabel": "CORE",
     "explore": "Explore",
-    "intro": "Arxia is a digital transformation and Digital Public Infrastructure company, working with governments since {founded} in more than {countries} countries."
+    "intro": "At Arxia, we believe that expert technical knowledge falls apart without good governance and solid principles.",
+    "readMore": "Read more",
+    "panel": {
+      "offers": "What Arxia offers",
+      "explore": "Explore {name}",
+      "projects": "See the projects",
+      "close": "Close"
+    }
   },
   "Portfolio": {
     "annotation": "Selected Work",
@@ -42,9 +69,9 @@
     "body": "Selected projects that define what we do.",
     "viewFull": "View Full Portfolio →",
     "metaTitle": "Portfolio",
-    "metaDescription": "{projects} projects in {countries}+ countries. Digital government work since {founded}, from national interoperability frameworks to procurement platforms.",
+    "metaDescription": "{projects} digital government projects in {countries}+ countries, from national interoperability frameworks to procurement platforms.",
     "heroAnnotation": "Portfolio",
-    "heroBody": "{projects} projects in {countries}+ countries. Digital government work since {founded}, from national interoperability frameworks to procurement platforms.",
+    "heroBody": "{projects} digital government projects in {countries}+ countries, from national interoperability frameworks to procurement platforms.",
     "statProjects": "Projects",
     "statCountries": "Countries",
     "statDomains": "Domains",
@@ -102,9 +129,6 @@
     "heading": "Our Global Presence",
     "headquarters": "Headquarters",
     "offices": "Offices",
-    "statOrganizations": "Organizations",
-    "statCountries": "Countries",
-    "statYears": "Years",
     "regions": {
       "Europe": "Europe",
       "Latin America": "Latin America",
@@ -139,13 +163,18 @@
       "KE": "Kenya",
       "SO": "Somalia",
       "DJ": "Djibouti",
-      "AO": "Angola"
-    }
+      "NL": "Netherlands",
+      "FR": "France",
+      "CI": "Côte d'Ivoire",
+      "BW": "Botswana"
+    },
+    "office": "Office",
+    "projectCountries": "Countries with delivered projects"
   },
   "ContactForm": {
     "connect": "Connect",
-    "heading": "Tell us what you're building.",
-    "body": "We work with governments, international organizations, donors and international partners. Send us the problem and we'll tell you straight whether we're the right partner for it.",
+    "heading": "Let's talk.",
+    "body": "A project, a tender, a joint bid or an idea that is still taking shape: write to us and the right person on the team will reply.",
     "ariaLabel": "Contact form",
     "name": "Name",
     "namePlaceholder": "Your name",
@@ -174,7 +203,7 @@
     "emailLabel": "Email",
     "tradeRegister": "Trade Reg.",
     "vat": "VAT",
-    "tagline": "Digital transformation and Digital Public Infrastructure for governments worldwide.",
+    "tagline": "Digital transformation and Digital Public Infrastructure, from strategy to handover.",
     "company": "Company",
     "services": "Services",
     "contact": "Contact",
@@ -237,7 +266,7 @@
   "DomainCTA": {
     "annotation": "Get Started",
     "heading": "Ready to discuss {title}?",
-    "body": "Send us the specifics. We'll come back with what the work involves, who would do it, and what it would take.",
+    "body": "Write to us about a project, a tender or a partnership in this area. We'll come back with what the work involves, who would do it and what it would take.",
     "contact": "Contact Us",
     "viewPortfolio": "View Portfolio"
   },
@@ -284,7 +313,7 @@
     "engage": {
       "annotation": "How we engage",
       "heading": "Across the lifecycle, or at any single layer.",
-      "body": "Engage Arxia end to end, or bring us in for the layer where you need depth. The path is the same either way.",
+      "body": "Arxia can run the whole programme end to end, or join for the one layer that needs depth. The path is the same either way.",
       "assessTitle": "Assess",
       "assessBody": "Maturity audits and current-state diagnostics: what exists, what is missing, what comes first.",
       "designTitle": "Design",
@@ -325,7 +354,7 @@
     "approach": {
       "annotation": "The approach",
       "heading": "Why reform comes first.",
-      "lead": "A platform only digitalizes the process you already have.",
+      "lead": "A platform only digitalizes the process that already exists.",
       "problem": "Most e-procurement programmes start by buying software. The law, the procedures and the people are left for later, so the system automates paper habits and officers work around it.",
       "answer": "Arxia runs it the other way round: reform the rules and the process, prepare the people who will run it, then deploy the platform. One programme, so nothing falls between contracts.",
       "oneProgramme": "One programme"
@@ -384,8 +413,8 @@
     },
     "engage": {
       "annotation": "How we engage",
-      "heading": "One programme, or the track you need.",
-      "body": "Engage Arxia from diagnosis to handover, or bring us in where you need depth: a reform, a training programme or a platform rollout.",
+      "heading": "One programme, or a single track.",
+      "body": "Arxia can run the programme from diagnosis to handover, or join where depth is needed: a reform, a training programme or a platform rollout.",
       "assessTitle": "Assess",
       "assessBody": "A diagnosis of the system as it stands: what the law allows, what the process does, what comes first.",
       "reformTitle": "Reform",
@@ -429,11 +458,11 @@
   },
   "Meta": {
     "homeTitle": "Digital Transformation & Digital Public Infrastructure — Arxia",
-    "homeDescription": "Arxia is a digital transformation and Digital Public Infrastructure company. We build the systems governments run on, then hand them over.",
-    "homeOgDescription": "We build the digital public infrastructure governments run on, then hand it over."
+    "homeDescription": "Arxia is a digital transformation and Digital Public Infrastructure company working with partners worldwide, from governance and consultancy to software implementation.",
+    "homeOgDescription": "Digital transformation and Digital Public Infrastructure with partners worldwide: governance, specialized consultancy and software implementation."
   },
   "LogoCarousel": {
-    "label": "Clients and partners",
+    "label": "Some of our clients",
     "pause": "Pause logo animation",
     "play": "Play logo animation"
   },

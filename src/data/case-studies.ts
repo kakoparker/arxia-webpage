@@ -103,7 +103,7 @@ const caseStudies: CaseStudy[] = [
       eyebrow: "Inclusive and interoperable digital services",
       practices: ["Service integration", "Citizen e-services"],
       lede:
-        "How Romania brought social protection, education and employment for Ukrainian refugees onto a single multilingual platform — a World Bank–financed programme, and a model the EU has since cited.",
+        "How Romania brought social protection, education and employment for Ukrainian refugees onto a single multilingual platform: a World Bank–financed programme, and a model the EU has since cited.",
       summary:
         "Social protection, education and employment for Ukrainian refugees, brought onto one multilingual platform. One account, reused across agencies.",
       metaDescription:
@@ -117,8 +117,8 @@ const caseStudies: CaseStudy[] = [
       problem: {
         heading: "The problem",
         paragraphs: [
-          "Hundreds of thousands of people arriving from Ukraine met a service landscape built for someone else. Cash benefits, school enrolment and job placement sat with different institutions, each with its own process, forms and IT system — none designed for multilingual use or joined-up case management.",
-          "Forms were in Romanian only and institutions improvised with volunteer translators. Generous policies existed; the people they were written for could not reach them.",
+          "Hundreds of thousands of people arriving from Ukraine met a service landscape built for someone else. Cash benefits, school enrolment and job placement sat with different institutions, each with its own process, forms and IT system. None was designed for multilingual use or joined-up case management.",
+          "Forms were in Romanian only and institutions improvised with volunteer translators. Generous policies existed, but the people they were written for could not reach them.",
         ],
       },
       solution: {
@@ -130,7 +130,7 @@ const caseStudies: CaseStudy[] = [
         figTo: "One inclusive gateway",
         steps: [
           { title: "Map", text: "Three domains walked end to end with the institutions that run them." },
-          { title: "Redesign", text: "The journey rebuilt from the refugee’s side; duplication and dead steps cut." },
+          { title: "Redesign", text: "The journey rebuilt from the refugee’s side, with duplication and dead steps cut." },
           { title: "Register once", text: "Identity and basic data captured a single time, then reused securely." },
           { title: "One gateway", text: "Benefits, school places and jobs reached from one account, any device." },
           { title: "Case closed", text: "Routed to the right institution, tracked to delivery." },
@@ -139,12 +139,12 @@ const caseStudies: CaseStudy[] = [
         layers: [
           {
             title: "AI translation layer",
-            text: "Forms, notifications and messages rendered in UA, RO or EN — no interpreter in the middle.",
+            text: "Forms, notifications and messages rendered in UA, RO or EN, with no interpreter in the middle.",
             icon: "translation",
           },
           {
             title: "Cross-agency case rails",
-            text: "One case file across institutions; NGOs and front-line staff can act on a person’s behalf.",
+            text: "One case file across institutions. NGOs and front-line staff can act on a person’s behalf.",
             icon: "case-rails",
           },
         ],
@@ -166,9 +166,9 @@ const caseStudies: CaseStudy[] = [
         ],
       },
       apply: {
-        heading: "Let’s apply this pattern in your country",
+        heading: "Where else the pattern applies",
         body:
-          "The crisis exposed the fragmentation; it did not create it. Any life event crossing several agencies meets the same wall. The gateway pattern holds; only the services behind it change.",
+          "The crisis exposed the fragmentation. It did not create it. Any life event crossing several agencies meets the same wall. The gateway pattern holds, and only the services behind it change.",
         figCaption: "The gateway pattern",
         pattern: {
           users: "Citizen · Refugee · NGO caseworker",
@@ -184,9 +184,9 @@ const caseStudies: CaseStudy[] = [
       cta: {
         heading: "Let’s talk.",
         body:
-          "If your institutions are serving people across agency and language boundaries, we have built this end to end — process redesign, platform and rollout under crisis conditions.",
+          "For any service that crosses agency and language boundaries, Arxia has built this end to end: process redesign, platform and rollout under crisis conditions.",
       },
-      videoTitle: "Interoperable Refugee Services — the case in 80 seconds",
+      videoTitle: "Interoperable Refugee Services: the case in 80 seconds",
       videoDescription:
         "A short film on how Romania rebuilt refugee journeys across social protection, education and employment around one account and an AI translation layer.",
     },

@@ -8,41 +8,41 @@ export const portfolioDomainsEs: Record<string, PortfolioDomainOverlay> = {
   "digital-government": {
     label: "Gobierno Digital",
     description:
-      "Diseñamos e implementamos servicios digitales centrados en la ciudadanía que modernizan la administración pública, mejoran la transparencia y reducen la fricción burocrática, para que el Estado funcione mejor para todas las personas.",
+      "Servicios digitales diseñados en torno a quienes los usan: trámites más simples, más transparencia y menos papeleo en la administración pública.",
   },
   interoperability: {
     label: "Interoperabilidad y Estandarización",
     description:
-      "Construimos el tejido conectivo entre sistemas, habilitando el intercambio fluido de datos entre instituciones, fronteras y plataformas mediante estándares abiertos y marcos de integración robustos.",
+      "Intercambio de datos entre instituciones, fronteras y plataformas, sobre estándares abiertos y una integración gobernada.",
   },
   "public-procurement": {
     label: "Contratación Pública",
     description:
-      "Implementamos sistemas integrales de contratación electrónica que aumentan la competencia, reducen la corrupción y aportan mayor valor al gasto público: desde la publicación de licitaciones hasta la gestión de contratos.",
+      "Contratación electrónica desde la publicación de la licitación hasta la gestión del contrato, con más competencia, menos margen para la corrupción y mejor uso del gasto público.",
   },
   "web-development": {
     label: "Desarrollo Web",
     description:
-      "Creamos puertas de entrada digitales unificadas (portales ciudadanos, directorios de servicios y sitios institucionales) que consolidan el acceso a los servicios e información públicos en una experiencia intuitiva.",
+      "Portales ciudadanos, directorios de servicios y sitios institucionales que reúnen los servicios y la información públicos en un solo lugar.",
   },
   "artificial-intelligence": {
     label: "Inteligencia Artificial",
     description:
-      "Desplegamos soluciones de IA que aumentan las capacidades del sector público —desde el procesamiento inteligente de documentos hasta la analítica predictiva— siempre con transparencia, ética y apropiación local en el centro.",
+      "IA que amplía lo que las organizaciones pueden hacer, del procesamiento de documentos a la analítica predictiva, desplegada con transparencia y apropiación local.",
   },
   "electronic-invoicing": {
     label: "Facturación Electrónica",
     description:
-      "Diseñamos y desplegamos infraestructura de facturación electrónica que agiliza el cumplimiento tributario, reduce el fraude y acelera los ciclos de pago tanto para gobiernos como para empresas.",
+      "Infraestructura de facturación electrónica que simplifica el cumplimiento tributario, reduce el fraude y acorta los ciclos de pago para gobiernos y empresas.",
   },
   "data-governance": {
     label: "Gobernanza de Datos",
     description:
-      "Desarrollamos políticas de intercambio de datos, estándares técnicos y marcos de gobernanza que permiten una gestión responsable de los datos entre instituciones y fronteras.",
+      "Políticas de intercambio de datos, estándares técnicos y marcos de gobernanza para usar los datos de forma responsable entre instituciones y fronteras.",
   },
   "business-strategy": {
     label: "Estrategia y Consultoría de Negocios",
     description:
-      "Fortalecemos los ecosistemas tecnológicos locales mediante transferencia de conocimiento, evaluaciones estratégicas y alianzas que aseguran que los países puedan construir, mantener y hacer evolucionar su propia infraestructura digital.",
+      "Transferencia de conocimiento, evaluaciones estratégicas y alianzas para que los ecosistemas tecnológicos locales construyan, mantengan y hagan evolucionar su propia infraestructura digital.",
   },
 };

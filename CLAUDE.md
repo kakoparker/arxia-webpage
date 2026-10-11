@@ -389,9 +389,42 @@ and is treated as such visually and in the content, not as a peer.
 
 **Homepage flow:** Hero → client carousel → `#expertise` domain plate → global
 presence → portfolio → news → contact. There is deliberately **nothing between
-the hero and the domains** — no "who we are" interlude. (A pinned Introduction
-section used to sit there and was removed; the homepage now carries no company
-intro copy at all.)
+the hero and the domains** — no "who we are" interlude.
+
+**Hero (Oct 2026, after CEO review: "too sparse and grim, put more content
+above the fold").** Server component (`Hero.tsx`) inside a client animation
+shell (`HeroShell.tsx`). First screen carries: practice annotation, H1, a
+claim line ("We are experts in Digital Transformation.") and its paragraph,
+two CTAs (*Let's talk* → `#contact`, *View the portfolio*), the building-blocks
+figure, and a figures bar (countries, organizations). Figures come from
+`company.figures`, static, no odometer. H1
+is semibold, not the spec's 300. Pattern reference: id30.org.
+
+**Building-blocks figure** (`src/components/figures/BuildingBlocksFigure.tsx`):
+an isometric tower of seven slabs drawn like an architectural elevation, each
+practice lettered on its long wall (Interoperability at the base with the red
+edge, Artificial intelligence on top). Digital public infrastructure labels
+the ground axis, e-Governance the vertical axis. CSS-only build-up (`.bb-*` in
+globals.css), plays once and ends inside 5s so it needs no pause control, and
+is skipped under reduced motion. Hidden below `sm`.
+
+**Copy rules (CEO, Oct 2026).**
+- **No founding-year claims.** No "since 1996", "30 years", "working with
+  governments since…". Incorporation is 1996 but there was no activity until
+  2000 and today's business is much newer. `company.foundingDate` exists for
+  schema.org only. The portfolio is the proof.
+- **Neutral addressing.** Don't address "you/your" as if the reader were a
+  government ("your digital independence"). Governments mostly can't hire
+  Arxia directly. The audience is a range of actors who should come to trust
+  Arxia and propose a partnership.
+- **Don't narrow the audience.** No lists like "we work with governments,
+  international organizations, donors…": a consultancy from Tanzania reads it
+  and leaves. Name the kinds of enquiry (a project, a tender, a joint bid, an
+  idea) instead of the kinds of client.
+- **No semicolons in copy.** Rewrite them as two sentences or a comma.
+- **Offices ≠ project countries.** `company.offices` (Cluj-Napoca HQ, Santiago,
+  Kampala) is shown separately from the "countries with delivered projects"
+  list in `GlobalPresence`. Never merge the two.
 
 ### One-screen section rhythm (supersedes the 100–120px rule above)
 
@@ -431,16 +464,40 @@ replaces the 100–120px section padding in the spec above.
 
 Measured, every section at 1.00 screens: 1920×1080, 1920×900, 1536×864,
 1536×760, 1280×1024. At the extreme 1536×700, `#expertise` is 1.01 and the
-rest are 1.00. Mobile is exempt by design — seven stacked plates cannot fit a
+rest are 1.00. Since the Oct 2026 hero rework (EN measured 1.00 everywhere,
+including 1366×700 and 1280×720), Spanish and French run long on short laptop
+screens: the hero is 1.04–1.08 (three-line H1, longer lede) and `#expertise`
+1.02–1.05 at ≤760px tall. Mobile is exempt by design — seven stacked plates cannot fit a
 phone screen, and `min-height` correctly lets the section grow. Re-measure
 after any section change; the useful probe is section height ÷ `innerHeight`.
 
 **Domain plate design** (`DomainsGrid.tsx`): a 5×2 drafting grid. The anchor
 (interoperability) holds the left two columns as a 2×2 Blueprint Blue plate
 with a six-spoke node schematic — one spoke per surrounding domain. The six
-white satellites carry **number, icon and name only**; their descriptions live
-on their own pages, so the plate stays scannable rather than becoming six
-paragraphs. Motion is three layers (construction set-out sweep → plates
+white satellites read top-down: **number and icon, name, one-line
+description, three keyword tags (`scope` in expertise-domains), and a
+permanent "Read more" footer**. Names sit right under the header so they line
+up across a row. Tags hide below 880px viewport height; the description clamps
+to three lines below 800px, so every section still fits one screen.
+
+**Opening a domain (Oct 2026).** Clicking a plate opens it into a Blueprint
+Blue panel across four columns (introduction, up to four headline offers,
+*Explore {domain}* and *See the projects*); the other six become compact tabs
+in column 5. The section keeps its height. Layout is CSS
+(`.domain-grid[data-open]` in globals.css); the move is a View Transition
+(each `li` has its own `view-transition-name`), instant under reduced motion
+or without the API. Below lg the open domain spans the full width in place.
+Before hydration the plates are links to the domain pages. All seven panels
+are in the server HTML (indexable: ~840 words in EN), each in a wrapper that
+is `hidden` from the server and upgraded to `hidden="until-found"` after
+hydration (React only knows `hidden` as a boolean), so the browser's
+find-in-page can match their text; the wrapper's `beforematch` event opens
+that domain without taking focus from the find bar. Intros live in
+`src/data/domain-intros.ts` (en/es/fr, server-only); offers come from
+`getDomainHighlights()` (layers or tracks where a page has them). The homepage
+resolves both per locale and passes them as props, so no locale's copy ships
+to the client. Measured: every domain fits one screen at ≥720px tall in EN;
+FR runs up to 1.10 at 1366×700. Motion is three layers (construction set-out sweep → plates
 materialise with registration marks → schematic draws itself, then the core
 pulses), all keyed off `.visible` so `prefers-reduced-motion` is honoured by
 the existing rules in globals.css.

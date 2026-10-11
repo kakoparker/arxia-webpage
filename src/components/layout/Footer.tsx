@@ -38,9 +38,10 @@ const serviceLinks = [
 ] as const;
 
 // Place names are proper nouns — not translated.
+const place = (o: (typeof company.offices)[number]) => `${o.city}, ${o.countryName}`;
 const offices = {
-  headquarters: "Cluj-Napoca, Romania",
-  others: ["Santiago, Chile", "Kampala, Uganda"],
+  headquarters: company.offices.filter((o) => o.headquarters).map(place),
+  others: company.offices.filter((o) => !o.headquarters).map(place),
 };
 
 const linkedinLinks = [
@@ -141,27 +142,29 @@ export function Footer() {
                 <MapPin size={16} strokeWidth={1.5} className="mt-0.5 flex-shrink-0" />
                 <div>
                   <p
-                    className="text-gray-medium/80 mb-1"
+                    className="text-gray-medium mb-1"
                     style={{
                       fontFamily: "var(--font-mono)",
-                      fontSize: "9px",
+                      fontSize: "11px",
                       letterSpacing: "1.5px",
                       textTransform: "uppercase",
                     }}
                   >
                     {t("headquarters")}
                   </p>
-                  <p>{offices.headquarters}</p>
+                  {offices.headquarters.map((city) => (
+                    <p key={city}>{city}</p>
+                  ))}
                 </div>
               </div>
               <div className="flex items-start gap-3 text-gray-medium text-[var(--text-small)]">
                 <MapPin size={16} strokeWidth={1.5} className="mt-0.5 flex-shrink-0" />
                 <div>
                   <p
-                    className="text-gray-medium/80 mb-1"
+                    className="text-gray-medium mb-1"
                     style={{
                       fontFamily: "var(--font-mono)",
-                      fontSize: "9px",
+                      fontSize: "11px",
                       letterSpacing: "1.5px",
                       textTransform: "uppercase",
                     }}
@@ -177,10 +180,10 @@ export function Footer() {
 
             {/* LinkedIn */}
             <p
-              className="text-gray-medium/80 mt-6 mb-3"
+              className="text-gray-medium mt-6 mb-3"
               style={{
                 fontFamily: "var(--font-mono)",
-                fontSize: "9px",
+                fontSize: "11px",
                 letterSpacing: "1.5px",
                 textTransform: "uppercase",
               }}
@@ -202,7 +205,7 @@ export function Footer() {
                       <LinkedInIcon className="mt-0.5 flex-shrink-0 h-4 w-4" />
                       <span className="text-[var(--text-small)] leading-tight">
                         {person.name}
-                        <span className="block text-gray-medium/80 group-hover:text-white transition-colors duration-200 text-[var(--text-caption)]">
+                        <span className="block text-gray-medium group-hover:text-white transition-colors duration-200 text-[var(--text-caption)]">
                           {role}
                         </span>
                       </span>

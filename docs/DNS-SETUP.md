@@ -1,19 +1,19 @@
-# DNS setup for arxia.com
+# DNS setup
 
-Two independent things need DNS records once the site goes live on Vercel:
-
-1. **The website** — point `www.arxia.com` (and the apex `arxia.com`) at Vercel.
-2. **The contact form email** — verify `arxia.com` in Resend so the form can send
-   from `contact@arxia.com`.
-
-Neither depends on the other. Do them in either order.
+The website lives on **arxia.global** (permanent domain, decided Oct 2026).
+**arxia.com is a separate site for the TYPO3 business** and must not point at
+this Vercel project. Email still uses arxia.com: the contact form sends from
+`contact@arxia.com`, so its Resend records (section 2) must stay in the
+arxia.com DNS zone whatever hosts the arxia.com website.
 
 ---
 
 ## 1. Website (Vercel)
 
-In **Vercel → Project → Settings → Domains**, add `www.arxia.com` (primary) and
-`arxia.com` (redirect to `www`). Vercel shows the exact records to add — typically:
+In **Vercel → Project → Settings → Domains**: `www.arxia.global` is the
+production domain and the apex `arxia.global` redirects to it. Do not add
+`arxia.com` or `www.arxia.com` to this project. Vercel shows the exact records
+to add at the arxia.global DNS host — typically:
 
 | Type | Host | Value |
 | --- | --- | --- |

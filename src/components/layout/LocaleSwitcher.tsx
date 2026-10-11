@@ -19,7 +19,7 @@ export function LocaleSwitcher({ className = "" }: { className?: string }) {
 
   return (
     <div
-      className={`flex items-center font-[family-name:var(--font-jetbrains)] text-[10px] uppercase tracking-[2px] ${className}`}
+      className={`flex items-center font-[family-name:var(--font-jetbrains)] text-[11px] uppercase tracking-[2px] ${className}`}
       role="group"
       aria-label={t("label")}
     >

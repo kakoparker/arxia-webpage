@@ -156,12 +156,12 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
           "data-governance": {
             title: "Gobernanza de datos",
             description:
-              "Políticas, roles, reglas de responsabilidad y arreglos institucionales para un intercambio confiable de datos públicos. Se entrega como un marco formal que su consejo de ministros o agencia digital puede adoptar y hacer cumplir.",
+              "Políticas, roles, reglas de responsabilidad y arreglos institucionales para un intercambio confiable de datos públicos. Se entrega como un marco formal que un consejo de ministros o una agencia digital puede adoptar y hacer cumplir.",
           },
           "digital-maturity": {
             title: "Evaluaciones de madurez digital",
             description:
-              "Diagnósticos estructurados que jerarquizan la madurez digital de su institución y producen un plan de inversión defendible, no solo un informe.",
+              "Diagnósticos estructurados que jerarquizan la madurez digital de una institución y producen un plan de inversión defendible, no solo un informe.",
           },
         },
       },
@@ -348,7 +348,7 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
           "ai-readiness-gov": {
             title: "Evaluaciones de preparación para la IA en el gobierno",
             description:
-              "Diagnósticos sobre dónde se encuentra su institución en datos, competencias, infraestructura y preparación jurídica, y qué corregir primero para adoptar IA de forma responsable.",
+              "Diagnósticos sobre dónde se encuentra una institución en datos, competencias, infraestructura y preparación jurídica, y qué corregir primero para adoptar IA de forma responsable.",
           },
           "agentic-state-strategy": {
             title: "Estrategia y arquitectura del Estado agéntico",
@@ -363,7 +363,7 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
           "responsible-ai-policy": {
             title: "Política de IA responsable y asesoría en contratación",
             description:
-              "Asesoría en políticas de contratación de IA, cláusulas contractuales tipo y requisitos de transparencia, para que su próxima licitación de IA parta desde una mejor posición.",
+              "Asesoría en políticas de contratación de IA, cláusulas contractuales tipo y requisitos de transparencia, para que la próxima licitación de IA parta desde una mejor posición.",
           },
         },
       },
@@ -379,7 +379,7 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
           "ai-acceleration-gov": {
             title: "Programa de Aceleración de IA para el Gobierno",
             description:
-              "Programa estructurado de adopción de 12 semanas para organizaciones del sector público. Lleva a su equipo de la estrategia a casos de uso de IA en funcionamiento dentro de un solo trimestre.",
+              "Programa estructurado de adopción de 12 semanas para organizaciones del sector público. Lleva a un equipo de la estrategia a casos de uso de IA en funcionamiento dentro de un solo trimestre.",
           },
           "inter-institutional-workflows": {
             title: "Flujos de trabajo interinstitucionales automatizados",
@@ -395,7 +395,7 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
           "ai-governance-platform-gov": {
             title: "Plataforma de Gobernanza de IA para Gobiernos",
             description:
-              "¿Su organización avanza hacia implementaciones de IA y un Estado agéntico? Entonces necesita una gobernanza sólida. Nuestra plataforma monitoriza cumplimiento, vulnerabilidades de seguridad y evaluación de riesgos de cada sistema de IA en uso dentro de su organización.",
+              "Una organización que avanza hacia implementaciones de IA y un Estado agéntico necesita una gobernanza sólida. La plataforma monitoriza el cumplimiento, las vulnerabilidades de seguridad y el riesgo de cada sistema de IA que la organización utiliza.",
           },
           "holonn": {
             title: "Holonn: Plataforma de matchmaking e IA para ecosistemas",
@@ -411,7 +411,7 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
           "ai-ignite-gov": {
             title: "Taller AI IGNITE para el sector público",
             description:
-              "Taller de descubrimiento para identificar las primeras oportunidades de IA en sus operaciones, con una lista priorizada, estimaciones de esfuerzo y un plan a 90 días.",
+              "Taller de descubrimiento para identificar las primeras oportunidades de IA en las operaciones de una institución, con una lista priorizada, estimaciones de esfuerzo y un plan a 90 días.",
           },
         },
       },
@@ -447,7 +447,7 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
           "low-code-eservices": {
             title: "Plataformas low-code de servicios electrónicos",
             description:
-              "Plataformas que permiten a sus propios equipos lanzar nuevos servicios públicos y agentes de IA en días, no en trimestres, con gobernanza y trazabilidad integradas.",
+              "Plataformas que permiten a los equipos propios de una institución lanzar nuevos servicios públicos y agentes de IA en días, no en trimestres, con gobernanza y trazabilidad integradas.",
           },
           "document-processing": {
             title: "Procesamiento documental con IA",
@@ -468,7 +468,7 @@ export const domainPagesEs: Record<string, DomainPageOverlay> = {
           "bpmn-coaching": {
             title: "Taller: Acompañamiento en implementación de BPMN",
             description:
-              "Acompañamiento práctico sobre Camunda, Flowable y motores de flujos de trabajo similares. Se entrega dentro de su equipo, para que la capacidad permanezca cuando nos vamos.",
+              "Acompañamiento práctico sobre Camunda, Flowable y motores de flujos de trabajo similares. Se entrega dentro del equipo del cliente, para que la capacidad permanezca cuando Arxia se va.",
           },
           "ecosystem-capacity": {
             title: "Internacionalización del ecosistema y propuesta de valor",

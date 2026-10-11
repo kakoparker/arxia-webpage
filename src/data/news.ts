@@ -675,7 +675,7 @@ const newsSources: NewsArticleSource[] = [
       {
         type: "paragraph",
         text:
-          "That is also why lasting impact depends on multi-stakeholder governance. Sustainable relationships between countries are not built by any single actor; they require governments, innovators, experts, and companies sharing responsibility for the outcome. It is slower and more demanding than a sale — and it is the only approach that holds.",
+          "That is also why lasting impact depends on multi-stakeholder governance. Sustainable relationships between countries are not built by any single actor. They require governments, innovators, experts, and companies sharing responsibility for the outcome. It is slower and more demanding than a sale — and it is the only approach that holds.",
       },
       {
         type: "heading",
@@ -773,7 +773,7 @@ const newsSources: NewsArticleSource[] = [
       },
       {
         type: "paragraph",
-        text: "Arxia has worked on process optimisation and change management through digital transformation for more than ten years. Its AI operationalisation methodology has already been applied on three continents, with clients in banking, academia, retail, NGOs and consulting. Technology is not the point; the process is. Clients internalise the know-how, gain confidence, onboard their teams, champion the change and keep improving on their own.",
+        text: "Arxia has worked on process optimisation and change management through digital transformation for more than ten years. Its AI operationalisation methodology has already been applied on three continents, with clients in banking, academia, retail, NGOs and consulting. Technology is not the point. The process is. Clients internalise the know-how, gain confidence, onboard their teams, champion the change and keep improving on their own.",
       },
       {
         type: "cta",
@@ -1235,7 +1235,7 @@ const newsSources: NewsArticleSource[] = [
       },
       {
         type: "paragraph",
-        text: "AI adoption is moving faster than internal policies can keep up with. The instinctive reaction of many companies is to ban it. But a ban does not stop use; it pushes it into the shadows, where it exposes the organisation to security risks, data loss and compliance gaps that nobody is tracking.",
+        text: "AI adoption is moving faster than internal policies can keep up with. The instinctive reaction of many companies is to ban it. But a ban does not stop use. It pushes it into the shadows, where it exposes the organisation to security risks, data loss and compliance gaps that nobody is tracking.",
       },
       {
         type: "heading",

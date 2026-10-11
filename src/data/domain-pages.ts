@@ -154,7 +154,7 @@ export const domainPages: DomainPageContent[] = [
             slug: "interoperability-maturity",
             title: "Interoperability maturity assessment and audit",
             description:
-              "Readiness diagnosed across people, policy, data and systems, so you know what to build first.",
+              "Readiness diagnosed across people, policy, data and systems, so it is clear what to build first.",
           },
           {
             slug: "data-sharing-policy",
@@ -288,14 +288,14 @@ export const domainPages: DomainPageContent[] = [
             slug: "data-governance",
             title: "Data Governance",
             description:
-              "Policies, roles, accountability rules, and institutional arrangements for trusted government data sharing. Delivered as a formal framework your council of ministers or digital agency can adopt and enforce.",
+              "Policies, roles, accountability rules, and institutional arrangements for trusted government data sharing. Delivered as a formal framework that a council of ministers or a digital agency can adopt and enforce.",
             image: "/images/services/govtech-data/data-governance-illustration.webp",
           },
           {
             slug: "digital-maturity",
             title: "Digital maturity assessments",
             description:
-              "Structured diagnostics that rank your institution's digital maturity and produce a defendable investment plan, not just a report.",
+              "Structured diagnostics that rank an institution's digital maturity and produce a defendable investment plan, not just a report.",
             image: "/images/services/govtech-intelligence/digital-maturity-illustration.webp",
           },
         ],
@@ -575,7 +575,7 @@ export const domainPages: DomainPageContent[] = [
             slug: "ai-readiness-gov",
             title: "AI readiness assessments for government",
             description:
-              "Diagnostic assessments of where your institution stands on data, skills, infrastructure, and legal readiness, and what to fix first to absorb AI responsibly.",
+              "Diagnostic assessments of where an institution stands on data, skills, infrastructure, and legal readiness, and what to fix first to absorb AI responsibly.",
             image: "/images/services/govtech-intelligence/ai-readiness-gov-illustration.webp",
           },
           {
@@ -596,7 +596,7 @@ export const domainPages: DomainPageContent[] = [
             slug: "responsible-ai-policy",
             title: "Responsible AI policy and procurement advisory",
             description:
-              "Advisory on AI procurement policies, standard contract clauses, and transparency requirements, so your next AI tender starts from a stronger position.",
+              "Advisory on AI procurement policies, standard contract clauses, and transparency requirements, so the next AI tender starts from a stronger position.",
             image: "/images/services/govtech-intelligence/responsible-ai-policy-illustration.webp",
           },
         ],
@@ -617,7 +617,7 @@ export const domainPages: DomainPageContent[] = [
             slug: "ai-acceleration-gov",
             title: "AI Acceleration Program for Government",
             description:
-              "Structured 12-week adoption program for public-sector organizations. Moves your team from strategy to working AI use cases inside a single quarter.",
+              "Structured 12-week adoption program for public-sector organizations. It takes a team from strategy to working AI use cases inside a single quarter.",
             image: "/images/services/govtech-intelligence/ai-acceleration-gov-illustration.webp",
           },
           {
@@ -638,7 +638,7 @@ export const domainPages: DomainPageContent[] = [
             slug: "ai-governance-platform-gov",
             title: "AI Governance Platform for Governments",
             description:
-              "Is your organization moving towards AI implementations and an agentic state? Then you need strong governance. Our platform monitors compliance, security vulnerabilities, and risk assessment across every AI system in use inside your organization.",
+              "An organization moving towards AI implementations and an agentic state needs strong governance. The platform monitors compliance, security vulnerabilities, and risk across every AI system the organization runs.",
             image: "/images/services/govtech-intelligence/ai-governance-platform-gov-illustration.webp",
           },
           {
@@ -659,7 +659,7 @@ export const domainPages: DomainPageContent[] = [
             slug: "ai-ignite-gov",
             title: "AI IGNITE Workshop for Public Sector",
             description:
-              "Discovery workshop to identify first AI opportunities in your operations, with a prioritized shortlist, effort estimates, and a 90-day plan.",
+              "Discovery workshop to identify the first AI opportunities in an institution's operations, with a prioritized shortlist, effort estimates, and a 90-day plan.",
             image: "/images/services/govtech-intelligence/ai-ignite-gov-illustration.webp",
           },
         ],
@@ -690,7 +690,7 @@ export const domainPages: DomainPageContent[] = [
             slug: "egov-strategy",
             title: "e-Government strategies and roadmaps",
             description:
-              "National digitalization strategies translated into roadmaps you can execute: sequencing, budget, governance, and institutional ownership, so the strategy doesn't sit on a shelf.",
+              "National digitalization strategies translated into roadmaps that can be executed: sequencing, budget, governance, and institutional ownership, so the strategy doesn't sit on a shelf.",
             image: "/images/services/govtech-process/egov-strategy-illustration-v2.webp",
           },
           {
@@ -718,7 +718,7 @@ export const domainPages: DomainPageContent[] = [
             slug: "low-code-eservices",
             title: "Low-code e-service platforms",
             description:
-              "Platforms that let your own teams launch new government services and AI agents in days rather than quarters, with governance and auditability built in.",
+              "Platforms that let an institution's own teams launch new government services and AI agents in days rather than quarters, with governance and auditability built in.",
             image: "/images/services/govtech-intelligence/low-code-eservices-illustration.webp",
           },
           {
@@ -746,7 +746,7 @@ export const domainPages: DomainPageContent[] = [
             slug: "bpmn-coaching",
             title: "Workshop: BPMN implementation coaching",
             description:
-              "Hands-on coaching on Camunda, Flowable, and similar workflow engines. Delivered inside your team, so the capability remains after we leave.",
+              "Hands-on coaching on Camunda, Flowable, and similar workflow engines. Delivered inside the client's team, so the capability remains after Arxia leaves.",
             image: "/images/services/govtech-process/bpmn-coaching-illustration-v2.webp",
           },
           {
@@ -918,4 +918,40 @@ export function getDomainPageProps(
     .filter((p): p is PortfolioProject => Boolean(p))
     .slice(0, FEATURED_SHOWN);
   return { page, featuredProjects };
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Homepage domain panel: what a domain offers, in four lines at most.
+// ─────────────────────────────────────────────────────────────────────────────
+
+export interface DomainHighlight {
+  title: string;
+  /** Keyword strip, where the domain is organised by layer or track. */
+  detail?: string;
+}
+
+export interface DomainHighlights {
+  items: DomainHighlight[];
+  /** The /portfolio category for the panel's "see the projects" link. */
+  portfolioCategory: string;
+}
+
+const HIGHLIGHTS_SHOWN = 4;
+
+/**
+ * Headline offers for the homepage panel. A domain organised by layer or
+ * track (interoperability, e-procurement) is summarised by those, since they
+ * ARE its model; any other domain lists its first offers.
+ */
+export function getDomainHighlights(
+  slug: ExpertiseDomainSlug,
+  locale: string = "en",
+): DomainHighlights | undefined {
+  const page = getDomainPage(slug, locale);
+  if (!page) return undefined;
+  const groups = page.layers ?? page.tracks;
+  const items: DomainHighlight[] = groups
+    ? groups.map((g) => ({ title: g.name, detail: g.scope }))
+    : page.categories.flatMap((c) => c.items).map((i) => ({ title: i.title }));
+  return { items: items.slice(0, HIGHLIGHTS_SHOWN), portfolioCategory: page.portfolioCategory };
 }
