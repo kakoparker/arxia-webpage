@@ -10,7 +10,8 @@
     "domains": "Domains",
     "portfolio": "Portfolio",
     "news": "News",
-    "contact": "Contact"
+    "contact": "Contact",
+    "workWithUs": "Work with us"
   },
   "LocaleSwitcher": {
     "label": "Language",
@@ -124,6 +125,36 @@
     "seoTitle": "News on Digital Public Infrastructure",
     "byline": "By {name}"
   },
+  "Careers": {
+    "annotation": "Careers",
+    "indexHeading": "Work with us",
+    "indexBody": "Arxia is a small, senior team working on digital transformation and Digital Public Infrastructure across Europe, Latin America and Africa. These are the roles open right now.",
+    "openRoles": "{count, plural, =0 {No open roles} one {# open role} other {# open roles}}",
+    "noOpenings": "There are no open roles at the moment.",
+    "openApplication": "No role that fits? Open applications are welcome at",
+    "openApplicationSubject": "Open application",
+    "posted": "Posted",
+    "location": "Location",
+    "type": "Type",
+    "languages": "Languages",
+    "employmentType": {
+      "FULL_TIME": "Full-time",
+      "PART_TIME": "Part-time",
+      "CONTRACTOR": "Contract"
+    },
+    "viewRole": "View role →",
+    "backToAll": "← All open roles",
+    "responsibilities": "What the role involves",
+    "requirements": "What we are looking for",
+    "niceToHave": "Nice to have",
+    "howToApply": "How to apply",
+    "howToApplyBody": "Send your CV and a short note on why this role fits you to {email}, with the job title in the subject line.",
+    "apply": "Apply by email",
+    "applySubject": "Application: {title}",
+    "metaTitle": "Work with us",
+    "seoTitle": "Work with us: open roles at Arxia",
+    "metaDescription": "Open roles at Arxia, a digital transformation and Digital Public Infrastructure company working across Europe, Latin America and Africa."
+  },
   "GlobalPresence": {
     "annotation": "Reach",
     "heading": "Our Global Presence",
@@ -227,7 +258,8 @@
     "webPortals": "Government web portals",
     "agenticState": "Agentic state",
     "eServices": "e-Services",
-    "officeAddress": "Office"
+    "officeAddress": "Office",
+    "workWithUs": "Work with us"
   },
   "Rail": {
     "pageSections": "Page sections",

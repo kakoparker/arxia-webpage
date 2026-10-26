@@ -10,7 +10,8 @@
     "domains": "Áreas",
     "portfolio": "Portafolio",
     "news": "Noticias",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "workWithUs": "Empleo"
   },
   "LocaleSwitcher": {
     "label": "Idioma",
@@ -124,6 +125,36 @@
     "seoTitle": "Noticias de infraestructura pública digital",
     "byline": "Por {name}"
   },
+  "Careers": {
+    "annotation": "Empleo",
+    "indexHeading": "Trabaja con nosotros",
+    "indexBody": "Arxia es un equipo pequeño y sénior que trabaja en transformación digital e Infraestructura Pública Digital en Europa, América Latina y África. Estas son las posiciones abiertas ahora mismo.",
+    "openRoles": "{count, plural, =0 {No hay posiciones abiertas} one {# posición abierta} other {# posiciones abiertas}}",
+    "noOpenings": "En este momento no hay posiciones abiertas.",
+    "openApplication": "¿Ninguna posición encaja? Las candidaturas espontáneas son bienvenidas en",
+    "openApplicationSubject": "Candidatura espontánea",
+    "posted": "Publicado",
+    "location": "Ubicación",
+    "type": "Tipo",
+    "languages": "Idiomas",
+    "employmentType": {
+      "FULL_TIME": "Jornada completa",
+      "PART_TIME": "Media jornada",
+      "CONTRACTOR": "Contrato"
+    },
+    "viewRole": "Ver posición →",
+    "backToAll": "← Todas las posiciones",
+    "responsibilities": "En qué consiste el puesto",
+    "requirements": "Qué buscamos",
+    "niceToHave": "Valorable",
+    "howToApply": "Cómo postular",
+    "howToApplyBody": "Envía tu CV y una breve nota sobre por qué este puesto encaja contigo a {email}, con el nombre del puesto en el asunto.",
+    "apply": "Postular por email",
+    "applySubject": "Candidatura: {title}",
+    "metaTitle": "Trabaja con nosotros",
+    "seoTitle": "Trabaja con nosotros: empleo en Arxia",
+    "metaDescription": "Posiciones abiertas en Arxia, empresa de transformación digital e Infraestructura Pública Digital con trabajo en Europa, América Latina y África."
+  },
   "GlobalPresence": {
     "annotation": "Alcance",
     "heading": "Nuestra presencia global",
@@ -227,7 +258,8 @@
     "webPortals": "Portales web de gobierno",
     "agenticState": "Estado agéntico",
     "eServices": "e-Services",
-    "officeAddress": "Oficina"
+    "officeAddress": "Oficina",
+    "workWithUs": "Trabaja con nosotros"
   },
   "Rail": {
     "pageSections": "Secciones de la página",

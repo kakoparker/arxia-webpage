@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { getNewsArticles } from "@/data/news";
 import { domainPageSlugs } from "@/data/domain-pages";
 import { getCaseStudies } from "@/data/case-studies";
+import { getJobOpenings } from "@/data/jobs";
 import { localizedUrl } from "@/i18n/metadata";
 
 type ChangeFrequency = MetadataRoute.Sitemap[number]["changeFrequency"];
@@ -41,6 +42,7 @@ function entry(
 export default function sitemap(): MetadataRoute.Sitemap {
   const articles = getNewsArticles("en");
   const caseStudies = getCaseStudies("en");
+  const jobs = getJobOpenings("en");
   const latestNews = articles[0]?.isoDate;
   const latestCase = caseStudies.map((c) => c.publishedAt).sort().at(-1);
   const latestContent = [latestNews, latestCase].filter(Boolean).sort().at(-1);
@@ -52,6 +54,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...caseStudies.flatMap((c) => entry(`/portfolio/${c.slug}`, "monthly", 0.8, c.publishedAt)),
     ...entry("/news", "weekly", 0.7, latestNews),
     ...articles.flatMap((a) => entry(`/news/${a.slug}`, "monthly", 0.6, a.isoDate)),
+    ...entry("/work-with-us", "weekly", 0.5, jobs[0]?.isoDate),
+    ...jobs.flatMap((j) => entry(`/work-with-us/${j.slug}`, "weekly", 0.5, j.isoDate)),
     // Legal pages: English only.
     ...entry("/privacy", "yearly", 0.3, undefined, false),
     ...entry("/terms", "yearly", 0.3, undefined, false),
