@@ -26,8 +26,11 @@ export const jobsEs: Record<string, JobOpeningOverlay> = {
     requirements: [
       "Título en Ciencia Política o Relaciones Internacionales.",
       "Al menos 10 años de experiencia en desarrollo de negocio.",
+      "Experiencia en venta consultiva en la industria del software y la tecnología.",
       "Experiencia en Govtech, gobierno digital e Infraestructura Pública Digital (DPI).",
-      "Uso avanzado de la IA para operaciones de negocio.",
+      "Experiencia trabajando en entornos de América Latina y África.",
+      "Experiencia prestando servicios de consultoría en inglés y en español.",
+      "Uso avanzado de Claude Cowork u otras herramientas de IA para el trabajo y las operaciones de negocio.",
       "Dominio de español, inglés y portugués.",
       "Disponibilidad para viajar internacionalmente.",
     ],

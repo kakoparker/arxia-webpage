@@ -77,8 +77,11 @@ const jobSources: JobOpeningSource[] = [
     requirements: [
       "A degree in Political Science or International Relations.",
       "At least 10 years of experience in business development.",
+      "Experience in consultative selling in the software and technology industry.",
       "Experience in Govtech, digital government and Digital Public Infrastructure (DPI).",
-      "Advanced use of AI for business operations.",
+      "Experience working in Latin American and African environments.",
+      "Experience delivering consultancy in English and Spanish.",
+      "Advanced use of Claude Cowork or other AI tools for work and business operations.",
       "Fluent Spanish, English and Portuguese.",
       "Availability to travel internationally.",
     ],
