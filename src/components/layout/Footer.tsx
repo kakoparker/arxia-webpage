@@ -23,6 +23,7 @@ function LinkedInIcon({ className }: { className?: string }) {
 const companyLinks = [
   { labelKey: "portfolio", href: "/portfolio" },
   { labelKey: "news", href: "/news" },
+  { labelKey: "workWithUs", href: "/work-with-us" },
 ] as const;
 
 // The seven domains of expertise. The footer is where the full set is

@@ -2,6 +2,7 @@ import { company } from "@/data/company";
 import { getExpertiseDomains } from "@/data/expertise-domains";
 import { getCaseStudies } from "@/data/case-studies";
 import { getNewsArticles } from "@/data/news";
+import { getJobOpenings } from "@/data/jobs";
 import { portfolioProjects } from "@/data/portfolio";
 import { localizedUrl, SITE_URL } from "@/i18n/metadata";
 
@@ -16,6 +17,7 @@ export function GET() {
   const domains = getExpertiseDomains("en");
   const caseStudies = getCaseStudies("en");
   const news = getNewsArticles("en").slice(0, 10);
+  const jobs = getJobOpenings("en");
 
   const body = `# ${company.brandName}
 
@@ -36,6 +38,11 @@ ${caseStudies.map((c) => `- [${c.content.title}](${localizedUrl("en", `/portfoli
 
 ${news.map((a) => `- [${a.seoTitle ?? a.title}](${localizedUrl("en", `/news/${a.slug}`)}) (${a.isoDate})`).join("\n")}
 - [All news](${localizedUrl("en", "/news")})
+
+## Open roles
+
+${jobs.map((j) => `- [${j.title}](${localizedUrl("en", `/work-with-us/${j.slug}`)}) (posted ${j.isoDate})`).join("\n")}
+- [Work with us](${localizedUrl("en", "/work-with-us")})
 
 ## Company
 
