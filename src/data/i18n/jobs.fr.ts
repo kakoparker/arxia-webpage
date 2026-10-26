@@ -26,8 +26,11 @@ export const jobsFr: Record<string, JobOpeningOverlay> = {
     requirements: [
       "Un diplôme en science politique ou en relations internationales.",
       "Au moins 10 ans d'expérience en développement commercial.",
+      "Une expérience de la vente consultative dans le secteur du logiciel et des technologies.",
       "Une expérience dans la Govtech, l'administration numérique et l'infrastructure publique numérique (DPI).",
-      "Une utilisation avancée de l'IA pour les opérations commerciales.",
+      "Une expérience de travail dans des environnements latino-américains et africains.",
+      "Une expérience de missions de conseil menées en anglais et en espagnol.",
+      "Une utilisation avancée de Claude Cowork ou d'autres outils d'IA pour le travail et les opérations commerciales.",
       "Maîtrise de l'espagnol, de l'anglais et du portugais.",
       "Disponibilité pour des déplacements internationaux.",
     ],
