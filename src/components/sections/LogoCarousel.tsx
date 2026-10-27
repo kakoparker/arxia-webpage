@@ -14,7 +14,7 @@ function LogoSet({ hidden = false }: { hidden?: boolean }) {
         // Optical sizing: a compact, square emblem (a seal/crest) reads much
         // smaller than a wide wordmark at the same pixel height. So scale the
         // render height down as a logo gets wider — square emblems grow to
-        // ~56px, while wide wordmarks (Audi, Falabella, RISA) stay ~40px.
+        // ~56px, while wide wordmarks (DT Global, GIZ, RISA) stay ~40px.
         const aspect = logo.width / logo.height;
         const base = Math.min(56, Math.max(40, 56 * Math.sqrt(1.2 / aspect)));
         const h = Math.round(base * (logo.scale ?? 1));
@@ -26,7 +26,7 @@ function LogoSet({ hidden = false }: { hidden?: boolean }) {
               width={logo.width}
               height={logo.height}
               style={{ height: `${h}px`, width: "auto" }}
-              className="w-auto max-w-[200px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+              className={`w-auto max-w-[200px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300${logo.darken ? " brightness-50 hover:brightness-100" : ""}`}
               loading="lazy"
               // Vector logos are served as-is: they are already small and
               // sharp at any size, and the image optimizer never parses SVG.
