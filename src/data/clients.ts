@@ -35,7 +35,6 @@ export const clientLogos: ClientLogo[] = [
   { src: "/logos/clients/client-02.webp", alt: "ICGLR", width: 102, height: 120, scale: 1.3 },
   { src: "/logos/clients/opcw.webp", alt: "OPCW", width: 322, height: 120 },
   { src: "/logos/clients/itc.webp", alt: "ITC", width: 113, height: 120 },
-  { src: "/logos/clients/irembo.webp", alt: "Irembo", width: 437, height: 120 },
   { src: "/logos/clients/gopa.webp", alt: "GOPA", width: 424, height: 120, darken: true },
   { src: "/logos/clients/salience.webp", alt: "Salience Consulting", width: 349, height: 120 },
   { src: "/logos/clients/swiss-tph.webp", alt: "Swiss TPH", width: 484, height: 120 },
