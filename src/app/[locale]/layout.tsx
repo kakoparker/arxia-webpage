@@ -99,7 +99,12 @@ const organizationSchema = {
     "en",
   ).format(company.offices.map((o) => o.countryName))} and projects in more than ${company.figures.countries} countries.`,
   foundingDate: company.foundingDate,
-  email: company.email.general,
+  contactPoint: company.contacts.map((c) => ({
+    "@type": "ContactPoint",
+    contactType: "sales",
+    name: `${c.name}, ${c.jobTitle}`,
+    email: c.email,
+  })),
   vatID: company.vatNumber,
   identifier: [
     { "@type": "PropertyValue", propertyID: "CUI", value: company.registrationCode },
@@ -113,12 +118,13 @@ const organizationSchema = {
     addressRegion: company.office.region,
     addressCountry: company.office.countryCode,
   },
-  employee: {
+  employee: company.contacts.map((c) => ({
     "@type": "Person",
-    name: company.ceo.name,
-    jobTitle: company.ceo.jobTitle,
-    sameAs: company.ceo.sameAs,
-  },
+    name: c.name,
+    jobTitle: c.jobTitle,
+    email: c.email,
+    sameAs: c.sameAs,
+  })),
   sameAs: company.sameAs,
 };
 

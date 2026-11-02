@@ -226,7 +226,7 @@
     "errorEmail": "Escriba una dirección de correo válida.",
     "errorComment": "Escriba un breve mensaje.",
     "errorRateLimited": "Demasiados mensajes en poco tiempo. Inténtelo de nuevo en unos minutos.",
-    "errorUnavailable": "El formulario no está disponible temporalmente. Escríbanos a info@arxia.com.",
+    "errorUnavailable": "El formulario no está disponible temporalmente. Escriba a Carlos Parker (carlos.parker@arxia.com) o a Daniel Homorodean (daniel.homorodean@arxia.com).",
     "honeypotLabel": "Deje este campo vacío",
     "topicPrefill": "Sobre: {topic}\n\n"
   },

@@ -212,7 +212,7 @@ Arxia operates across 4 continents and 20+ countries:
 
 ## Contact
 
-**Email:** info@arxia.com
+**Email:** carlos.parker@arxia.com (Carlos Parker, International Business Director) · daniel.homorodean@arxia.com (Daniel Homorodean, CEO)
 **Web:** arxia.com
 
 Whether you are modernizing public services, building digital infrastructure, or strengthening local tech ecosystems — we are ready to partner with you.

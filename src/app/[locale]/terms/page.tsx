@@ -61,7 +61,7 @@ export default function TermsPage() {
         },
         {
           heading: "10. Contact",
-          body: `Questions about these Terms: ${company.email.legal}.`,
+          body: `Questions about these Terms: ${company.ceo.name} (${company.ceo.email}).`,
         },
       ]}
     />

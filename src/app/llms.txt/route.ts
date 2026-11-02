@@ -47,7 +47,7 @@ ${jobs.map((j) => `- [${j.title}](${localizedUrl("en", `/work-with-us/${j.slug}`
 ## Company
 
 - Legal name: ${company.legalName}; CUI ${company.registrationCode}; Trade Register ${company.tradeRegistryNumber}; VAT ${company.vatNumber}
-- Contact: ${company.email.general} or the form at ${SITE_URL}/#contact
+- Contact: ${company.contacts.map((c) => `${c.name}, ${c.jobTitle} (${c.email})`).join("; ")}, or the form at ${SITE_URL}/#contact
 - [Privacy Policy](${localizedUrl("en", "/privacy")}) · [Terms of Service](${localizedUrl("en", "/terms")})
 `;
 

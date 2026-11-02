@@ -1,4 +1,4 @@
-import { company } from "@/data/company";
+import { company, primaryContact } from "@/data/company";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { setRequestLocale, getTranslations } from "next-intl/server";
@@ -69,7 +69,7 @@ export default async function JobOpeningPage({ params }: PageProps) {
   const t = await getTranslations("Careers");
 
   const jobUrl = localizedUrl(locale, `/work-with-us/${slug}`);
-  const applyHref = `mailto:${company.email.general}?subject=${encodeURIComponent(
+  const applyHref = `mailto:${primaryContact.email}?subject=${encodeURIComponent(
     t("applySubject", { title: job.title }),
   )}`;
 
@@ -196,7 +196,7 @@ export default async function JobOpeningPage({ params }: PageProps) {
               {t("howToApply")}
             </h2>
             <p className="text-body-text" style={bodyStyle}>
-              {t("howToApplyBody", { email: company.email.general })}
+              {t("howToApplyBody", { email: primaryContact.email })}
             </p>
             <a
               href={applyHref}

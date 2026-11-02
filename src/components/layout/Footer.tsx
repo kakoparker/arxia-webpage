@@ -126,16 +126,26 @@ export function Footer() {
               {t("getInTouch")}
               <span aria-hidden>→</span>
             </Link>
-            <a
-              href={`mailto:${company.email.general}`}
-              className="mt-3 flex items-center gap-3 text-gray-medium text-[var(--text-small)] hover:text-white transition-colors duration-200"
-            >
-              <Mail size={16} strokeWidth={1.5} className="flex-shrink-0" aria-hidden />
-              <span>
-                <span className="sr-only">{t("emailLabel")}: </span>
-                {company.email.general}
-              </span>
-            </a>
+            <ul className="mt-4 space-y-3">
+              {company.contacts.map((person) => (
+                <li key={person.email}>
+                  <a
+                    href={`mailto:${person.email}`}
+                    className="group flex items-start gap-3 text-gray-medium hover:text-white transition-colors duration-200"
+                  >
+                    <Mail size={16} strokeWidth={1.5} className="mt-0.5 flex-shrink-0" aria-hidden />
+                    <span className="text-[var(--text-small)] leading-tight">
+                      {person.name}
+                      <span className="block text-[var(--text-caption)]">{t(person.roleKey)}</span>
+                      <span className="block text-[var(--text-caption)] break-all">
+                        <span className="sr-only">{t("emailLabel")}: </span>
+                        {person.email}
+                      </span>
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
 
             {/* Locations */}
             <div className="mt-6 space-y-4">

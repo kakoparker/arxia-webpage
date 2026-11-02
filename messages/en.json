@@ -226,7 +226,7 @@
     "errorEmail": "Please enter a valid email address.",
     "errorComment": "Please write a short message.",
     "errorRateLimited": "Too many messages in a short time. Please try again in a few minutes.",
-    "errorUnavailable": "The form is temporarily unavailable. Please email us at info@arxia.com.",
+    "errorUnavailable": "The form is temporarily unavailable. Please email Carlos Parker (carlos.parker@arxia.com) or Daniel Homorodean (daniel.homorodean@arxia.com).",
     "honeypotLabel": "Leave this field empty",
     "topicPrefill": "About: {topic}\n\n"
   },
@@ -246,7 +246,7 @@
     "connect": "Connect",
     "roleCompany": "Company",
     "roleCeo": "CEO",
-    "roleHeadIntl": "Head of International Business",
+    "roleHeadIntl": "International Business Director",
     "roleBizDevAfrica": "Business Development Manager, Africa",
     "rights": "All rights reserved.",
     "privacy": "Privacy Policy",

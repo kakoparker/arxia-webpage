@@ -142,7 +142,7 @@ Form fields: Name, Email, Comment
 - Ecosystems: AI-Powered Ecosystems, Internationalization, Capacity Building
 - Companies: Digital Transformation, Artificial Intelligence, Data Governance
 
-**Contact:** info@arxia.com, Global Offices
+**Contact:** Carlos Parker, International Business Director (carlos.parker@arxia.com) · Daniel Homorodean, CEO (daniel.homorodean@arxia.com), Global Offices
 **Social:** LinkedIn, Twitter, Email
 **Legal:** Privacy Policy, Terms of Service
 
