@@ -8,7 +8,7 @@ import { SectionContainer } from "@/components/ui/SectionContainer";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Card } from "@/components/ui/Card";
 import { Tag } from "@/components/ui/Tag";
-import { company } from "@/data/company";
+import { primaryContact } from "@/data/company";
 import { getJobOpenings } from "@/data/jobs";
 
 export async function generateMetadata({
@@ -103,10 +103,10 @@ export default async function WorkWithUsPage({
         <p className="mt-16 text-body-text text-[var(--text-body)] leading-[1.7] max-w-[640px]">
           {t("openApplication")}{" "}
           <a
-            href={`mailto:${company.email.general}?subject=${encodeURIComponent(t("openApplicationSubject"))}`}
+            href={`mailto:${primaryContact.email}?subject=${encodeURIComponent(t("openApplicationSubject"))}`}
             className="text-blueprint-blue font-semibold underline underline-offset-4 hover:text-blueprint-dark"
           >
-            {company.email.general}
+            {primaryContact.email}
           </a>
         </p>
       </SectionContainer>

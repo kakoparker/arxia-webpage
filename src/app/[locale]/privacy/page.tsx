@@ -25,7 +25,7 @@ export default function PrivacyPage() {
       sections={[
         {
           heading: "1. Data Controller",
-          body: `${company.legalName} ("Arxia", "we", "us") operates ${SITE_HOST} and is the controller of personal data processed through it. ${company.legalName} is registered in Romania (CUI ${company.registrationCode}, Trade Register no. ${company.tradeRegistryNumber}, VAT ${company.vatNumber}), with offices at ${officeAddressLine()}.\n\nFor any question or request relating to your personal data, contact us at ${company.email.legal}.`,
+          body: `${company.legalName} ("Arxia", "we", "us") operates ${SITE_HOST} and is the controller of personal data processed through it. ${company.legalName} is registered in Romania (CUI ${company.registrationCode}, Trade Register no. ${company.tradeRegistryNumber}, VAT ${company.vatNumber}), with offices at ${officeAddressLine()}.\n\nFor any question or request relating to your personal data, contact us at ${company.ceo.name} (${company.ceo.email}).`,
         },
         {
           heading: "2. Data We Collect",
@@ -57,7 +57,7 @@ export default function PrivacyPage() {
         },
         {
           heading: "9. Your Rights",
-          body: `Subject to applicable law, you have the right to access, rectify, erase, restrict, or port your personal data, and to object to processing carried out on the basis of legitimate interest. Where processing is based on consent, you may withdraw it at any time.\n\nTo exercise any of these rights, contact ${company.email.legal}. You also have the right to lodge a complaint with your local data protection supervisory authority.`,
+          body: `Subject to applicable law, you have the right to access, rectify, erase, restrict, or port your personal data, and to object to processing carried out on the basis of legitimate interest. Where processing is based on consent, you may withdraw it at any time.\n\nTo exercise any of these rights, contact ${company.ceo.name} (${company.ceo.email}). You also have the right to lodge a complaint with your local data protection supervisory authority.`,
         },
         {
           heading: "10. Changes",
@@ -65,7 +65,7 @@ export default function PrivacyPage() {
         },
         {
           heading: "11. Contact",
-          body: `Questions about this policy or your personal data: ${company.email.legal}.`,
+          body: `Questions about this policy or your personal data: ${company.ceo.name} (${company.ceo.email}).`,
         },
       ]}
     />

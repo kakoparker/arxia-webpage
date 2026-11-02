@@ -49,22 +49,37 @@ export const company = {
     { city: "Santiago", countryCode: "CL", countryName: "Chile", headquarters: false, location: [-33.4489, -70.6693] },
     { city: "Kampala", countryCode: "UG", countryName: "Uganda", headquarters: false, location: [0.3476, 32.5825] },
   ],
-  email: {
-    /** Public / inbound enquiries. */
-    general: "info@arxia.com",
-    /** Contractual, privacy and legal notices. */
-    legal: "legal@arxia.com",
-  },
+  /**
+   * Named people who take public enquiries, in display order. The site lists
+   * people, never a generic inbox. `roleKey` is the Footer message for the title.
+   */
+  contacts: [
+    {
+      name: "Carlos Parker",
+      jobTitle: "International Business Director",
+      roleKey: "roleHeadIntl",
+      email: "carlos.parker@arxia.com",
+      sameAs: "https://www.linkedin.com/in/carlosparker/",
+    },
+    {
+      name: "Daniel Homorodean",
+      jobTitle: "CEO",
+      roleKey: "roleCeo",
+      email: "daniel.homorodean@arxia.com",
+      sameAs: "https://www.linkedin.com/in/danielhomorodean/",
+    },
+  ],
   /** Legal representative / administrator (ONRC); titled CEO across the site. */
   ceo: {
     name: "Daniel Homorodean",
     jobTitle: "CEO",
+    email: "daniel.homorodean@arxia.com",
     sameAs: "https://www.linkedin.com/in/danielhomorodean/",
   },
   /** Author of record for every news article. */
   newsAuthor: {
     name: "Carlos Parker",
-    jobTitle: "Head of International Business",
+    jobTitle: "International Business Director",
     sameAs: "https://www.linkedin.com/in/carlosparker/",
   },
   sameAs: ["https://www.linkedin.com/company/arxia/"],
@@ -76,6 +91,9 @@ export const company = {
     organizations: 100,
   },
 } as const;
+
+/** First named contact: the address for applications and enquiries by email. */
+export const primaryContact = company.contacts[0];
 
 /** One-line postal address of the public office, for display. */
 export function officeAddressLine(): string {
