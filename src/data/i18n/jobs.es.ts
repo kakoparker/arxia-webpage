@@ -9,7 +9,7 @@ export const jobsEs: Record<string, JobOpeningOverlay> = {
       "Liderar las operaciones de negocio de Arxia en el mercado internacional, con foco en instituciones internacionales y gobiernos, y gestionarlas con la IA en el centro.",
     metaDescription:
       "Arxia busca un Head of International Business and AI Operations para liderar su negocio internacional con instituciones y gobiernos. Español, inglés, portugués.",
-    location: "Remoto, con viajes internacionales",
+    location: "Híbrido, con base en Cluj-Napoca",
     languages: ["Español", "Inglés", "Portugués"],
     intro: [
       "Arxia busca un Head of International Business and AI Operations para liderar las operaciones de negocio de la compañía en el mercado internacional, en particular con instituciones internacionales y gobiernos.",

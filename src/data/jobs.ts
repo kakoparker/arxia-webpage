@@ -13,9 +13,9 @@ export interface JobOpening {
   seoTitle?: string;
   excerpt: string;
   metaDescription: string;
-  /** Display location, e.g. "Remote, with international travel". */
+  /** Display location, e.g. "Hybrid, based in Cluj-Napoca". */
   location: string;
-  /** Remote roles are marked TELECOMMUTE in the JobPosting schema. */
+  /** Remote roles are marked TELECOMMUTE in the JobPosting schema. Others are placed at `company.office`. */
   remote: boolean;
   /** schema.org employmentType value. */
   employmentType: "FULL_TIME" | "PART_TIME" | "CONTRACTOR";
@@ -58,8 +58,8 @@ const jobSources: JobOpeningSource[] = [
       "Lead Arxia's business operations on the international market, with a focus on international institutions and governments, and run them with AI at the core.",
     metaDescription:
       "Arxia is hiring a Head of International Business and AI Operations to lead its international business with institutions and governments. Spanish, English, Portuguese.",
-    location: "Remote, with international travel",
-    remote: true,
+    location: "Hybrid, based in Cluj-Napoca",
+    remote: false,
     employmentType: "FULL_TIME",
     languages: ["Spanish", "English", "Portuguese"],
     intro: [

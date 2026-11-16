@@ -93,7 +93,22 @@ export default async function JobOpeningPage({ params }: PageProps) {
       name: company.brandName,
       sameAs: SITE_URL,
     },
-    ...(job.remote ? { jobLocationType: "TELECOMMUTE" } : {}),
+    ...(job.remote
+      ? { jobLocationType: "TELECOMMUTE" }
+      : {
+          // Hybrid and on-site roles are based at the public office.
+          jobLocation: {
+            "@type": "Place",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: company.office.streetAddress,
+              postalCode: company.office.postalCode,
+              addressLocality: company.office.locality,
+              addressRegion: company.office.region,
+              addressCountry: company.office.countryCode,
+            },
+          },
+        }),
     directApply: false,
   };
   const breadcrumbSchema = {
